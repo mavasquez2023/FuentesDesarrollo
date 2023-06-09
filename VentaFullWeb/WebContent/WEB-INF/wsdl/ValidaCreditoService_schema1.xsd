@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/validaCredito" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/validaCredito">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="validaCredito" type="tns:validaCredito"/>
+
+  <xs:element name="validaCreditoResponse" type="tns:validaCreditoResponse"/>
+
+  <xs:complexType name="validaCredito">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Request"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="CLAVE" type="xs:string"/>
+      <xs:element name="RUTAFILIADO" type="xs:string"/>
+      <xs:element name="SERIECEDULA" type="xs:string"/>
+      <xs:element name="MONTOSIMULADO" type="xs:string"/>
+      <xs:element name="PLAZOSIMULADO" type="xs:string"/>
+      <xs:element name="MONTOTOTAL" type="xs:string"/>
+      <xs:element name="MONTOCUOTA" type="xs:string"/>
+      <xs:element name="RENTACOTIZADA" type="xs:string"/>
+      <xs:element name="SEGMENTO" type="xs:string"/>
+      <xs:element name="RUTEMPRESA" type="xs:string"/>
+      <xs:element name="ANEXOCAMPAGNA" type="xs:string"/>
+      <xs:element name="PENSIONCAMPAGNA" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validaCreditoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Response"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element name="codigoRespuesta" type="xs:int"/>
+      <xs:element name="RUTAFILIADO" type="xs:string"/>
+      <xs:element name="RUTEMPRESA" type="xs:string"/>
+      <xs:element name="AFILIADOVIGENTE" type="xs:string"/>
+      <xs:element name="RIESGOTOTAL" type="xs:double"/>
+      <xs:element name="VECESRENTA" type="xs:string"/>
+      <xs:element name="SUPERAVECESRENTA" type="xs:string"/>
+      <xs:element name="MAXIMOENDEUDAMIENTO" type="xs:string"/>
+      <xs:element name="PORCENTAJEENDEUDAMIENTO" type="xs:double"/>
+      <xs:element name="SUPERAMAXENDEUDAMIENTONORMATIVO" type="xs:string"/>
+      <xs:element name="FUERARANGOEDAD" type="xs:string"/>
+      <xs:element name="FUERARANGOANTIGUEDAD" type="xs:string"/>
+      <xs:element name="PLAZOCREDITOEDAD" type="xs:string"/>
+      <xs:element name="AFILIADOPEP" type="xs:string"/>
+      <xs:element name="ESTADOINSOLVENCIA" type="xs:string"/>
+      <xs:element name="AFILBLOQUEOALCREDITO" type="xs:string"/>
+      <xs:element name="EMPBLOQUEOALCREDITO" type="xs:string"/>
+      <xs:element name="DEUDAINTERCAJA" type="xs:string"/>
+      <xs:element name="LICENCIAACTIVA" type="xs:string"/>
+      <xs:element name="DIASLICENCIA" type="xs:string"/>
+      <xs:element name="CREDITOSCASTIGASDOS" type="xs:string"/>
+      <xs:element name="CREDITOSAFPPROVIDA" type="xs:string"/>
+      <xs:element name="CREDITOMOROSIDAD" type="xs:string"/>
+      <xs:element name="PENSIONADOAFP" type="xs:string"/>
+      <xs:element name="AFILIADOPUBLICO15" type="xs:string"/>
+      <xs:element name="FUNCIONARIOCAJA" type="xs:string"/>
+      <xs:element name="DATOSOBLIGATORIOS" type="xs:string"/>
+      <xs:element name="SUPERATASAPIZARRA" type="xs:string"/>
+      <xs:element name="TASAMENSUALCERO" type="xs:string"/>
+      <xs:element name="CALIFICA_UCHILE" type="xs:string"/>
+      <xs:element name="EXITOSINACOFI" type="xs:string"/>
+      <xs:element name="AFILIADOMANTENEDOR" type="xs:string"/>
+      <xs:element name="EMPRESAMANTENEDOR" type="xs:string"/>
+      <xs:element name="SEXO" type="xs:string"/>
+      <xs:element name="RIESGOEMPRESA" type="xs:string"/>
+      <xs:element name="FECHANACIMIENTO" type="xs:string"/>
+      <xs:element name="AFILCREDITOREPROVIGENTE" type="xs:string"/>
+      <xs:element name="PENSIONADOPBS" type="xs:string"/>
+      <xs:element name="AFILCAMPREPROVIGENTE" type="xs:string"/>
+      <xs:element name="PERIODO1" type="xs:double"/>
+      <xs:element name="MONTO1" type="xs:double"/>
+      <xs:element name="PERIODO2" type="xs:double"/>
+      <xs:element name="MONTO2" type="xs:double"/>
+      <xs:element name="PERIODO3" type="xs:double"/>
+      <xs:element name="MONTO3" type="xs:double"/>
+      <xs:element name="PERIODO4" type="xs:double"/>
+      <xs:element name="MONTO4" type="xs:double"/>
+      <xs:element name="PERIODO5" type="xs:double"/>
+      <xs:element name="MONTO5" type="xs:double"/>
+      <xs:element name="PERIODO6" type="xs:double"/>
+      <xs:element name="MONTO6" type="xs:double"/>
+      <xs:element name="PERIODO7" type="xs:double"/>
+      <xs:element name="MONTO7" type="xs:double"/>
+      <xs:element name="PERIODO8" type="xs:double"/>
+      <xs:element name="MONTO8" type="xs:double"/>
+      <xs:element name="PERIODO9" type="xs:double"/>
+      <xs:element name="MONTO9" type="xs:double"/>
+      <xs:element name="PERIODO10" type="xs:double"/>
+      <xs:element name="MONTO10" type="xs:double"/>
+      <xs:element name="PERIODO11" type="xs:double"/>
+      <xs:element name="MONTO11" type="xs:double"/>
+      <xs:element name="PERIODO12" type="xs:double"/>
+      <xs:element name="MONTO12" type="xs:double"/>
+      <xs:element name="PERIODO13" type="xs:double"/>
+      <xs:element name="MONTO13" type="xs:double"/>
+      <xs:element name="PERIODO14" type="xs:double"/>
+      <xs:element name="MONTO14" type="xs:double"/>
+      <xs:element name="PERIODO15" type="xs:double"/>
+      <xs:element name="MONTO15" type="xs:double"/>
+      <xs:element name="PERIODO16" type="xs:double"/>
+      <xs:element name="MONTO16" type="xs:double"/>
+      <xs:element name="PERIODO17" type="xs:double"/>
+      <xs:element name="MONTO17" type="xs:double"/>
+      <xs:element name="PERIODO18" type="xs:double"/>
+      <xs:element name="MONTO18" type="xs:double"/>
+      <xs:element name="SEGMENTO" type="xs:string"/>
+      <xs:element name="FECHAFALLECIMIENTO" type="xs:string"/>
+      <xs:element name="FECHACONTRATO" type="xs:string"/>
+      <xs:element name="ESTADOCIVIL" type="xs:string"/>
+      <xs:element name="TIPOCONTRATO" type="xs:string"/>
+      <xs:element name="DIRECCION" type="xs:string"/>
+      <xs:element name="NUMERO" type="xs:string"/>
+      <xs:element name="DEPTO" type="xs:string"/>
+      <xs:element name="VILLAPOBLACION" type="xs:string"/>
+      <xs:element name="CODIGOREGION" type="xs:string"/>
+      <xs:element name="CODIGOPROVINCIA" type="xs:string"/>
+      <xs:element name="CODIGOCOMUNA" type="xs:string"/>
+      <xs:element name="EMAIL" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:string"/>
+      <xs:element name="TELEFONO" type="xs:string"/>
+      <xs:element name="NUMEROCUENTA" type="xs:string"/>
+      <xs:element name="TIPOCUENTA" type="xs:string"/>
+      <xs:element name="CODIGOBANCO" type="xs:string"/>
+      <xs:element name="DECLARACIONJURADA" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

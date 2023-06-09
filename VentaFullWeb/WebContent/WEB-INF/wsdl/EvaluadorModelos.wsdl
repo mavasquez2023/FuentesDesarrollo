@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://schemas.ais-int.net/soap/AIS.Rules.WebServices/EvaluadorModelos" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://schemas.ais-int.net/soap/AIS.Rules.WebServices/EvaluadorModelos">
+  <wsdl:documentation>Evaluador de modelos</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.ais-int.net/soap/AIS.Rules.WebServices/EvaluadorModelos">
+      <s:element name="EvaluarMotorGMR">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="IdModelo" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContenidoPeticion" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EvaluarMotorGMRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="RespuestaPeticion" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader"/>
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EvaluarMotorGMRSoapIn">
+    <wsdl:part element="tns:EvaluarMotorGMR" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="EvaluarMotorGMRSoapOut">
+    <wsdl:part element="tns:EvaluarMotorGMRResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="EvaluarMotorGMRAuthHeader">
+    <wsdl:part element="tns:AuthHeader" name="AuthHeader"/>
+  </wsdl:message>
+  <wsdl:portType name="EvaluadorModelosSoap">
+    <wsdl:operation name="EvaluarMotorGMR">
+      <wsdl:documentation>Evalua un modelo, a partir de su ID y de los datos a evaluar. Devuelve el resultado de la evaluación</wsdl:documentation>
+      <wsdl:input message="tns:EvaluarMotorGMRSoapIn"/>
+      <wsdl:output message="tns:EvaluarMotorGMRSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EvaluadorModelosSoap" type="tns:EvaluadorModelosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EvaluarMotorGMR">
+      <soap:operation soapAction="http://schemas.ais-int.net/soap/AIS.Rules.WebServices/EvaluadorModelos/EvaluarMotorGMR" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:EvaluarMotorGMRAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EvaluadorModelosSoap12" type="tns:EvaluadorModelosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EvaluarMotorGMR">
+      <soap12:operation soapAction="http://schemas.ais-int.net/soap/AIS.Rules.WebServices/EvaluadorModelos/EvaluarMotorGMR" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:EvaluarMotorGMRAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EvaluadorModelos">
+    <wsdl:documentation>Evaluador de modelos</wsdl:documentation>
+    <wsdl:port binding="tns:EvaluadorModelosSoap" name="EvaluadorModelosSoap">
+      <soap:address location="https://saas1.ais-int.net/AISRulesScoSaaSWS/EvaluadorModelos.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:EvaluadorModelosSoap12" name="EvaluadorModelosSoap12">
+      <soap12:address location="https://saas1.ais-int.net/AISRulesScoSaaSWS/EvaluadorModelos.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

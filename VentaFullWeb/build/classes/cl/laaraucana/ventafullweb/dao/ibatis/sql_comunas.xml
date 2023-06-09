@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="comuna">
+	
+	<resultMap id="resultComunas" class="cl.laaraucana.ventafullweb.dto.ComunasDto">
+		<result property="idcomuna" 		column="idcomuna"/>
+		<result property="nombre" 	column="nombre"/>
+		<result property="region" 	column="region"/>
+	</resultMap>
+	
+	
+	<select id="selectComuna" resultMap="resultComunas">
+		select idcomuna, nombre, region from Comunas order by nombre
+	</select>
+	
+	<select id="selectComunaByRegion" resultMap="resultComunas">
+		select idcomuna, nombre, region from Comunas where region = #region# order by nombre
+	</select>
+	
+</sqlMap> 

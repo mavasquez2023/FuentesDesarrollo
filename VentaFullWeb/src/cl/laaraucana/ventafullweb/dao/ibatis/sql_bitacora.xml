@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="bitacora">
+	
+	<typeAlias alias="RegistroBitacoraGenesys" type="cl.laaraucana.ventafullweb.dto.BitacoraGenesysDto"/>
+	<typeAlias alias="RegistroBitacoraSimulacion" type="cl.laaraucana.ventafullweb.dto.BitacoraSimulacionDto"/>
+	<typeAlias alias="RegistroBitacoraEvaluadorAIS" type="cl.laaraucana.ventafullweb.dto.BitacoraEvaluadorAISDto"/>
+	<typeAlias alias="RegistroBitacoraSeguimiento" type="cl.laaraucana.ventafullweb.dto.BitacoraSeguimientoDto"/>
+	
+	<insert id="insertBitacoraGenesys" parameterClass="RegistroBitacoraGenesys">
+		insert into BitacoraFullWeb_Agenda (RutAfiliado, DvAfiliado, Celular, FechaAgenda, IdConversation, Estado, FechaCreacion, IdEncode) 
+			values(#rutAfiliado#, #dvAfiliado#, #celular#, #fechaAgenda#, #idConversation#, #estado#, #fechaCreacion#, #idEncode#)
+	</insert>
+	
+	<update id="updateBitacoraGenesys" parameterClass="RegistroBitacoraGenesys">
+		update BitacoraFullWeb_Agenda
+			set estado=1, idConversation=#idConversation#,
+			autorizacion=#autorizar#
+			where idEncode= #idEncode#
+	</update>
+	
+	<insert id="insertBitacoraSimulacion" parameterClass="RegistroBitacoraSimulacion">
+		insert into BitacoraFullWeb_Simulacion (RutAfiliado, DvAfiliado, Nombre, Celular, MontoCampana, MontoSolicitado, NroCuotas, MontoCuota, MontoMensualSeguroDesgravamen, MontoMensualSeguroCesantia, TasaInteresMensual, CAE, impuestoLTE, GastoNotarial, CostoTotalCredito, Sucursal, FechaPrimerVencimiento, FechaCreacion) 
+			values(#rutAfiliado#, #dvAfiliado#, #nombre#, #celular#, #montoCampana#, #montoSolicitado#, #nroCuotas#, #montoCuota#, #montoMensualSeguroDesgravamen#, #montoMensualSeguroCesantia#, #tasaInteresMensual#, #cae#, #impuestoLTE#, #gastoNotarial#, #costoTotalCredito#, #sucursal#, #fechaPrimerVencimiento#, getDate())
+	</insert>
+	
+	<insert id="insertBitacoraAIS" parameterClass="RegistroBitacoraEvaluadorAIS">
+		insert into BitacoraFullWeb_AIS (RutAfiliado, RutEmpresa, Dictamen, MontoAprobado, PlazoAprobado, OpcionMonto1, OpcionPlazo1, OpcionMonto2, OpcionPlazo2, OpcionMonto3, OpcionPlazo3, EqEstadoCivil, EqFechaNacimient, EqNacionalidad, Politicas, ReglasNegocio, Alerta, AAPerfilRiesEmpr, AASegmento, Segmento3, VCPerfilPersona, Priorizacion, VecesRenta, Renta, MaxMonto, MontoSimulado, PlazoSimulado, Cotizacion, MaxPorcDesc, Monto, MontoCuotaSol, MontoCuotaSim, MontoCuota12, MontoCuota24, MontoCuota36, MontoCuota48, MontoCuota60, MaxDescuentoSol, MaxDescuentoSim, MaxDescuento12, MaxDescuento24, MaxDescuento36, MaxDescuento48, MaxDescuento60, AAPensionadoPBS, AASexo, FechaEvaluacion, CodigoError) 
+			values(#rutAfiliado#, #rutEmpresa#, #dictamen#, #montoAprobado#, #plazoAprobado#, #opcionMonto1#, #opcionPlazo1#, #opcionMonto2#, #opcionPlazo2#, #opcionMonto3#, #opcionPlazo3#, #eqEstadoCivil#, #eqFechaNacimient#, #eqNacionalidad#, #politicas#, #reglasNegocio#, #alerta#, #aAPerfilRiesEmpr#, #aASegmento#, #segmento3#, #vCPerfilPersona#, #priorizacion#, #vecesRenta#, #renta#, #maxMonto#, #montoSimulado#, #plazoSimulado#, #cotizacion#, #maxPorcDesc#, #monto#, #montoCuotaSol#, #montoCuotaSim#, #montoCuota12#, #montoCuota24#, #montoCuota36#, #montoCuota48#, #montoCuota60#, #maxDescuentoSol#, #maxDescuentoSim#, #maxDescuento12#, #maxDescuento24#, #maxDescuento36#, #maxDescuento48#, #maxDescuento60#, #aAPensionadoPBS#, #aASexo#, #fechaEvaluacion#, #codigoError#)
+	</insert>
+	
+	<insert id="insertBitacoraSeguimiento" parameterClass="RegistroBitacoraSeguimiento">
+		insert into BitacoraFullWeb_Seguimiento (RutAfiliado, DVRutAfiliado, RutEmpresa, DVRutEmpresa, FechaSeguimiento, Accion, Servicio, Resultado) 
+			values(#rutAfiliado#, #dVRutAfiliado#, #rutEmpresa#, #dVRutEmpresa#, #fechaSeguimiento#, #accion#, #servicio#, #resultado#)
+	</insert>
+	
+</sqlMap> 

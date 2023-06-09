@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	
+	<context:component-scan
+		base-package="cl.laaraucana.ventafullweb.services" />
+		
+	<context:component-scan base-package="cl.laaraucana.ventafullweb.dto" />
+	
+	<context:component-scan base-package="cl.laaraucana.ventafullweb.persistence" />
+	
+	<context:component-scan base-package="cl.laaraucana.ventafullweb.services" />
+	
+	<context:component-scan base-package="cl.laaraucana.servicios.validaNumeroSerie" />
+	
+	<context:component-scan base-package="cl.laaraucana.servicios.validaCliente" />
+	
+	<context:component-scan base-package="cl.laaraucana.servicios.validaCredito" />
+	
+	<context:component-scan base-package="cl.laaraucana.servicios.simulaCredito" />
+	
+	<context:component-scan base-package="cl.laaraucana.ventafullweb.util" />
+	
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:cronta.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="asyncVentaFullWeb"
+		class="cl.laaraucana.ventafullweb.quartz.AsyncProcessVentaFullWeb"></bean>
+	
+	<context:annotation-config />
+
+	<tx:annotation-driven />
+	
+	<task:annotation-driven />
+</beans>

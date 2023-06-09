@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="sucursal">
+	
+	<resultMap id="resultSucursales" class="cl.laaraucana.ventafullweb.dto.SucursalesDto">
+			<result property="codigo" 		column="codigo"/>
+			<result property="descripcion" 	column="descripcion"/>
+		</resultMap>
+	
+	
+	<select id="selectSucursal" resultMap="resultSucursales">
+		select codigo, descripcion from Sucursales order by descripcion
+	</select>
+	
+</sqlMap> 

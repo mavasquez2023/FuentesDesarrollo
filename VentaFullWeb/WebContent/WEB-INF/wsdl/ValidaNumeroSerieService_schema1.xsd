@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/validaNumeroSerie" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/validaNumeroSerie">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="validaNumeroSerie" type="tns:validaNumeroSerie"/>
+
+  <xs:element name="validaNumeroSerieResponse" type="tns:validaNumeroSerieResponse"/>
+
+  <xs:complexType name="validaNumeroSerie">
+    <xs:sequence>
+      <xs:element name="credenciales" type="tns:credencialesWS"/>
+      <xs:element name="cedula" type="tns:DatosCedula"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credencialesWS">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="PASSWORD" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DatosCedula">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:string"/>
+      <xs:element name="NUMERO_SERIE" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validaNumeroSerieResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRetorno" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+      <xs:element minOccurs="0" name="existeDetalle" type="xs:string"/>
+      <xs:element minOccurs="0" name="cedulaVigente" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroRegistros" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
