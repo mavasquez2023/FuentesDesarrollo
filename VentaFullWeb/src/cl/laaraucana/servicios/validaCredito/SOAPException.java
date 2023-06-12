@@ -6,7 +6,7 @@
  */
 
 package cl.laaraucana.servicios.validaCredito;
-
+//hugo
 public class SOAPException  extends org.apache.axis.AxisFault  implements java.io.Serializable {
     private java.lang.String message1;
 
