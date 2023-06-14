@@ -1,0 +1,24 @@
+!SESSION 2023-01-27 13:18:37.233 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.7.0 IBM J9 2.6 Windows 7 x86-32 20121024_126071 (JIT enabled, AOT enabled)
+J9VM - R26_Java726_SR3_20121024_1635_B126071
+JIT  - r11.b02_20120924_26343a
+GC   - R26_Java726_SR3_20121024_1635_B126071
+J9CL - 20121024_126071
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_CL
+Framework arguments:  -product com.ibm.rational.rsa.product.v80.ide
+Command-line arguments:  -data C:\RSA8.5\projects\groups\Contabilidad -os win32 -ws win32 -arch x86 -product com.ibm.rational.rsa.product.v80.ide
+
+!ENTRY org.eclipse.ui 2 0 2023-01-27 13:18:44.733
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2023-01-27 13:18:44.733
+!MESSAGE Commands should really have a category: plug-in='com.ibm.xtools.modeler.ui.diagrams.statechart', id='com.ibm.xtools.modeler.ui.diagrams.statechart.moveLeft', categoryId='com.ibm.xtools.modeler.ui.diagrams.statechart.moveTransitiontools.modeler.ui.diagrams.statechart.moveTransition'
+
+!ENTRY org.eclipse.ui 4 4 2023-01-27 13:18:51.301
+!MESSAGE Unable to find Action Set: com.ibm.xtools.pluglets.ui.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2023-01-27 13:19:03.608
+!MESSAGE Invalid preference page path: Service Testing
+
+!ENTRY org.eclipse.ui 4 4 2023-01-27 13:19:03.609
+!MESSAGE Invalid preference page path: Field Assist
