@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: log4j.jar schema-lib.jar araucana.common.jar jt400.jar
+

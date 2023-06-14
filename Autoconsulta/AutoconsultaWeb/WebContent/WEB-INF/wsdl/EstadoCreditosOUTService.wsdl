@@ -1,0 +1,87 @@
+s<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EstadoCreditosOUT"
+	targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile" xmlns:p1="http://lautaro.com/xi/CRM/WEB-Mobile"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation />
+	<wsp:UsingPolicy wsdl:required="true" />
+	<wsp:Policy wsu:Id="OP_EstadoCreditosOUT" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lautaro.com/xi/CRM/WEB-Mobile">
+			<xsd:element name="EstadoCreditosResponseOUT" type="EstadoCreditosResponse" />
+			<xsd:element name="EstadoCreditosRequestOUT" type="EstadoCreditosRequest" />
+			<xsd:complexType name="EstadoCreditosResponse">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Response -
+						Servicio</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">ee6daa2b2a7211e58e0b0000001dd09e</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:attribute name="TYPE" type="xsd:string" />
+				<xsd:attribute name="ID" type="xsd:string" />
+				<xsd:attribute name="NUMERO" type="xsd:string" />
+				<xsd:attribute name="MESSAGE" type="xsd:string" />
+			</xsd:complexType>
+			<xsd:complexType name="EstadoCreditosRequest">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Request -
+						Servicio</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">2bb3271e2afe11e5c0e50000001dd09e</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="RUT">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">076c5b612afa11e58bc38c705adde959</xsd:appinfo>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="10" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="EstadoCreditosRequestOUT">
+		<wsdl:documentation />
+		<wsdl:part name="EstadoCreditosRequestOUT" element="p1:EstadoCreditosRequestOUT" />
+	</wsdl:message>
+	<wsdl:message name="EstadoCreditosResponseOUT">
+		<wsdl:documentation />
+		<wsdl:part name="EstadoCreditosResponseOUT" element="p1:EstadoCreditosResponseOUT" />
+	</wsdl:message>
+	<wsdl:portType name="EstadoCreditosOUT">
+		<wsdl:documentation />
+		<wsdl:operation name="EstadoCreditosOUT">
+			<wsdl:documentation />
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_EstadoCreditosOUT" />
+			</wsp:Policy>
+			<wsdl:input message="p1:EstadoCreditosRequestOUT" />
+			<wsdl:output message="p1:EstadoCreditosResponseOUT" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="EstadoCreditosOUTBinding" type="p1:EstadoCreditosOUT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="EstadoCreditosOUT">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="EstadoCreditosOUTService">
+		<wsdl:port name="HTTP_Port" binding="p1:EstadoCreditosOUTBinding">
+			<soap:address
+				location="http://araqacipit.laaraucana.local:50000/sap/xi/engine?type=entry&version=3.0&Sender.Service=WEB_Mobile&Interface=http://lautaro.com/xi/CRM/WEB-Mobile^EstadoCreditosOUT"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

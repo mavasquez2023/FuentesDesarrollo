@@ -1,0 +1,288 @@
+#spiffycalendar
+{
+    BACKGROUND-COLOR: black;
+    HEIGHT: 130px;
+    LEFT: 0px;
+    POSITION: absolute;
+    TOP: 0px;
+    VISIBILITY: hidden;
+    WIDTH: 185px
+}
+.cal-SymbolBtn
+{
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    outline-style: none;
+    outline-width: 0px
+}
+.cal-BtnLink
+{
+    FONT-SIZE: 10px;
+    outline-style: none;
+    outline-width: 0px
+}
+
+
+/* INICIO ONMOUSE DE LOS DIAS DEL CALENDARIO  1*/
+
+A.cal-DayLink  
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+A.cal-DayLink:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+A.cal-DayLink:active
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+A.cal-DayLink:visited
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+/* FIN ONMOUSE DE LOS DIAS DEL CALENDARIO  1*/
+
+
+/* INICIO COLOR FLECHAS SEL MESES */
+.Flecha 
+{
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+/* FIN COLOR FLECHAS SEL MESES */
+
+
+
+/* INICIO COLOR CAJA DE DESPLIEGUE DE FECHA*/
+.cal-TextBox
+{
+/*
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+	TEXT-DECORATION: none
+	*/
+font-weight: normal;
+font-size: 13px;
+font-family: Arial,Helvetica;
+}
+
+/* FIN COLOR CAJA DE DESPLIEGUE DE FECHA*/
+
+
+.cal-TextBoxInvalid
+{
+    BORDER-BOTTOM-COLOR: red;
+    BORDER-BOTTOM-STYLE: solid;
+    BORDER-LEFT-COLOR: red;
+    BORDER-LEFT-STYLE: solid;
+    BORDER-RIGHT-COLOR: red;
+    BORDER-RIGHT-STYLE: solid;
+    BORDER-TOP-COLOR: red;
+    BORDER-TOP-STYLE: solid;
+	/*
+    COLOR: #FFFFFF;
+	
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal
+	*/
+	font-weight: normal;
+	font-size: 13px;
+	font-family: Arial,Helvetica;
+}
+
+.cal-TextBoxDisabled
+{
+    BORDER-BOTTOM-COLOR: silver;
+    BORDER-BOTTOM-STYLE: solid;
+    BORDER-LEFT-COLOR: silver;
+    BORDER-LEFT-STYLE: solid;
+    BORDER-RIGHT-COLOR: silver;
+    BORDER-RIGHT-STYLE: solid;
+    BORDER-TOP-COLOR: silver;
+    BORDER-TOP-STYLE: solid;
+    COLOR: #808080;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal
+}
+
+/* INICIO FONDO DE LOS SELECT DEL CALENDARIO*/
+
+.cal-ComboBox
+{
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal
+}
+
+/* FIN FONDO DE LOS SELECT DEL CALENDARIO*/
+
+
+.cal-Today
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+
+.cal-Day
+{
+    BACKGROUND-COLOR: transparent;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+/* INICIO ONMOUSE DEL DIA EN EL QUE ESTAMOS */
+
+A.cal-TodayLink
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A.cal-TodayLink:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A.cal-TodayLink:active
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+
+A.cal-TodayLink:visited
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+/* FIN ONMOUSE DEL DIA EN EL QUE ESTAMOS */
+
+
+/* INICIO COLOR FECHAS INVALIDAS */
+
+.cal-GreyDate
+{
+    BACKGROUND-COLOR: #D6D6D6;
+    COLOR: #999999;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+    Amarillo: #999999
+}
+
+.cal-GreyInvalidDate
+{
+    BACKGROUND-COLOR: #D6D6D6;
+    COLOR: #999999;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: line-through
+}
+
+/* FIN COLOR FECHAS INVALIDAS */
+
+
+/* INICIO COLOR DIAS HABILES */
+.cal-DayCell
+{
+    BACKGROUND-COLOR: #ffffff;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal
+}
+
+/* FIN COLOR DIAS HABILES */
+
+/* INICIO COLOR DIAS FIN DE SEMANA Y FERIADOS */
+.cal-WeekendCell
+{
+    BACKGROUND-COLOR: #9DEFFB;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal;
+    Amarillo: 
+}
+.cal-HolidayCell
+{
+    BACKGROUND-COLOR: #FFD302;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: normal
+}
+
+/* 	FIN COLOR DIAS FIN DE SEMANA Y FERIADOS */
+
+.cal-HeadCell
+{
+    BACKGROUND-COLOR: #02B2E1;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    Azul: 
+}
+.cal-Table
+{
+    BACKGROUND-COLOR: #0186A7;
+    BORDER-BOTTOM: #ffffff 1px solid;
+    BORDER-LEFT: #ffffff 1px solid;
+    BORDER-RIGHT: #ffffff 1px solid;
+    BORDER-TOP: #000000 1px solid;
+    FONT-SIZE: 10px;
+}

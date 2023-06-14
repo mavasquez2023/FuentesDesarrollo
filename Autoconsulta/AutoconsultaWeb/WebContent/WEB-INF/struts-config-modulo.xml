@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<!-- Application Forms -->
+	<form-beans>
+    	<form-bean name="PARAMForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="dv" type="java.lang.String" initial=""/>
+      		<form-property name="tipoConsulta" type="java.lang.String" initial=""/>
+   		    <form-property name="validar" type="java.lang.String" initial=""/>
+      		<form-property name="ingresosLiquidos" type="java.lang.Integer"/>    	
+    	    <form-property name="montoSolicitado" type="java.lang.Integer"/>
+    	    <form-property name="cantidadCuotas" type="java.lang.Integer"/>
+      		<form-property name="fechaNacimiento" type="java.lang.String" initial=""/>    	    
+      		<form-property name="fechaIngresoEmpresa" type="java.lang.String" initial=""/>
+      		<form-property name="seguroDesgravamen" type="java.lang.String" initial=""/>
+      		<form-property name="seguroVida" type="java.lang.String" initial=""/>
+      		<form-property name="seguroCesantia" type="java.lang.String" initial=""/>
+    	    <form-property name="campo" type="java.lang.String" initial=""/>
+    	    <form-property name="campoAnterior" type="java.lang.String" initial=""/>
+    	    <form-property name="marcado" type="java.lang.String[]"/>   		    
+    	</form-bean>
+    	<form-bean name="CARAHOForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="cuenta" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="LoginForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="user" type="java.lang.String" initial=""/>
+      		<form-property name="dv" type="java.lang.String" initial=""/>
+      		<form-property name="pass" type="java.lang.String" initial=""/>
+      		<form-property name="accion" type="java.lang.String" initial=""/>
+      		<form-property name="newClave" type="java.lang.String" initial=""/>
+      		<form-property name="reNewClave" type="java.lang.String" initial=""/>
+      		<form-property name="tipoUsuario" type="java.lang.String" initial=""/> 
+      		<form-property name="paso" type="java.lang.String" initial="1"/>      		
+    	</form-bean>
+	   	<form-bean name="ValidadorForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="id" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="ChangeClaveForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+    	    <form-property name="user" type="java.lang.String" initial=""/>
+      		<form-property name="pass" type="java.lang.String" initial=""/>
+      		<form-property name="newClave" type="java.lang.String" initial=""/>
+      		<form-property name="reNewClave" type="java.lang.String" initial=""/>
+    	</form-bean>
+   	</form-beans>  
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+    	<exception handler="cl.araucana.common.ui.struts.UserFriendlyExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.ui.UserFriendlyException" />
+    	<exception handler="cl.araucana.common.ui.struts.BusinessExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.BusinessException" />
+    	<exception handler="cl.araucana.common.ui.struts.ExceptionHandler"
+        	       key="exception"
+            	   type="java.lang.Exception" />
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+    	<forward name="failure" path="/common/failure.jsp" />
+    	<forward name="success" path="/common/success.jsp" />
+     	<forward name="message" path="/common/message.jsp" />    	
+    	<forward name="seleccionaPerfil" path="/pages/seleccionaPerfil.jsp"/>
+    	<forward name="seleccionaEmpresaACargo" path="/pages/seleccionaEmpresaACargo.jsp"/>
+		<forward name="changeClave" path="/pages/changeClave.jsp"/>
+  		<forward name="loginpage" path="/pages/login.jsp?data=on"/>
+  		<forward name="logoutpage" path="/pages/login.jsp"/>
+  		<forward name="definirEmpleado" path="/pages/empresa/definirEmpleado.jsp"></forward>
+	</global-forwards>
+
+  	<!-- Action Mappings -->
+
+  	<action-mappings>
+
+	  <action path="/SecurityPageError" type="org.apache.struts.actions.ForwardAction"
+	          parameter="/modulo/pages/login.jsp"/>
+	          
+	  <action parameter="/modulo/pages/welcome.jsp" path="/Menu"
+	  		  type="org.apache.struts.actions.ForwardAction"/>
+	  		  
+      <!-- print de servicios -->
+   
+	  <action parameter="/modulo/pages/consultaCheques/imprimeConsultaCheques.jsp" path="/showConsultaCheques"
+			  type="org.apache.struts.actions.ForwardAction"/>
+
+	  <action parameter="/modulo/pages/asignacionFamiliar/imprimeCertificadoAsignacionFamiliar.jsp" path="/showCertificadoASFAM"
+			  type="org.apache.struts.actions.ForwardAction"/>
+
+	  <action parameter="/modulo/pages/certificadoAfiliacion/imprimeCertificadoAfiliacion.jsp" path="/showCertificadoAFILI"
+			  type="org.apache.struts.actions.ForwardAction"/>
+  
+  	  <action parameter="/modulo/pages/cartola/imprimeCartola.jsp" path="/showCartola"
+			  type="org.apache.struts.actions.ForwardAction"/>
+			  
+  	  <action parameter="/modulo/pages/deudaVigente/imprimeCertificadoDeudaVigente.jsp" path="/showDeudaVigente"
+			  type="org.apache.struts.actions.ForwardAction"/>
+				  
+	  <action parameter="/modulo/pages/creditoVigente/imprimeConsultaCreditoVigente.jsp" path="/showCreditoVigente"
+			  type="org.apache.struts.actions.ForwardAction"/>			  
+			  
+   	  <action parameter="/modulo/pages/licenciasMedicas/imprimeCertificadoLicenciasMedicas.jsp" path="/showCertificadoLicenciasMedicas"
+			  type="org.apache.struts.actions.ForwardAction"/>
+			  
+   	  <action parameter="/modulo/pages/licenciasMedicas/imprimeListaLicenciasMedicas.jsp" path="/showListaLicenciasMedicas"
+			  type="org.apache.struts.actions.ForwardAction"/>
+			  
+  	  <action parameter="/modulo/pages/simulacionCredito/imprimeSimulacion.jsp" path="/showSimulacion"
+			  type="org.apache.struts.actions.ForwardAction"/>
+            
+      <!-- servicios -->
+      
+  		<action name="LoginForm" path="/Welcome"
+			type="cl.araucana.autoconsulta.ui.actions.PrepareWelcomeAction">
+  			<forward name="welcome" path="/pages/welcome.jsp"></forward>
+ 			<forward name="changeClave2" path="/pages/changeClave2.jsp"/>  	 
+ 			<forward name="publicidadModulo" path="/pages/pubCredito.jsp"/>		 
+  		</action>      
+            
+  		<action path="/getConsultaChequesEmpresa"
+			type="cl.araucana.autoconsulta.ui.actions.consultaChequesEmpresa.GetConsultaChequesEmpresaAction">
+  			<forward name="consultaChequesEmpresa" path="/pages/consultaCheques/consultaCheques.jsp">
+  			</forward>
+  		</action>
+  		<action name="PARAMForm" path="/getListaLicenciasMedicas"
+			type="cl.araucana.autoconsulta.ui.actions.licenciasMedicas.GetListaLicenciasMedicasAction" scope="request" validate="true" input="/pages/empresa/definirEmpleado.jsp">
+  			<forward name="listaLicencias" path="/pages/licenciasMedicas/listaLicenciasMedicas.jsp"></forward>
+  		</action>
+		<action name="PARAMForm" path="/getCertificadoLicenciasMedicas"
+			type="cl.araucana.autoconsulta.ui.actions.licenciasMedicas.GetCertificadoLicenciasMedicasAction" scope="request" validate="true" input="/pages/empresa/definirEmpleado.jsp">
+  			<forward name="certificadoLicencias" path="/showCertificadoLicenciasMedicas.do">
+  			</forward>
+  		</action>
+		<action name="PARAMForm" path="/getDeudaVigente"
+			type="cl.araucana.autoconsulta.ui.actions.deudaVigente.GetDeudaVigenteAction"  scope="request" validate="true" input="/pages/empresa/definirEmpleado.jsp">
+  			<forward name="certificadoDeudaVigente" path="/showDeudaVigente.do"></forward>
+  		</action>
+  		<action name="PARAMForm" path="/getCreditosVigentes"
+			type="cl.araucana.autoconsulta.ui.actions.consultaCreditos.GetCreditosVigentesAction"  scope="request" validate="true" input="/pages/empresa/definirEmpleado.jsp">
+  			<forward name="consultaCreditoVigente" path="/pages/creditoVigente/consultaCreditoVigente.jsp"></forward>
+  		</action>
+		<action name="PARAMForm" path="/getAsignacionFamiliar"
+			type="cl.araucana.autoconsulta.ui.actions.asignacionFamiliar.GetAsignacionFamiliarAction" scope="request" validate="true" input="/pages/empresa/definirEmpleado.jsp">
+  			<forward name="certificadoAsignacionFamiliar" path="/showCertificadoASFAM.do"></forward>
+  			<forward name="listaEmpleadores" path="/pages/asignacionFamiliar/listaEmpleadores.jsp"></forward>
+			<forward name="seleccionTipoConsulta" path="/pages/asignacionFamiliar/seleccionTipoConsulta.jsp"></forward>
+  		</action>
+  		<action name="PARAMForm" path="/getCertificadoAfiliacion"
+			type="cl.araucana.autoconsulta.ui.actions.afiliacion.GetCertificadoAfiliacionAction"  scope="request" validate="false">
+  			<forward name="certificadoAfiliacion" path="/showCertificadoAFILI.do"></forward>
+  		</action>
+  		<action name="CARAHOForm" path="/getCartolaAhorro"
+			type="cl.araucana.autoconsulta.ui.actions.cartola.GetCartolaAhorroAction" scope="request">
+  			<forward name="cartola" path="/pages/cartola/cartola.jsp"></forward>
+  			<forward name="listaCuentasAhorro" path="/pages/cartola/listaCuentasAhorro.jsp"></forward>
+  			<forward name="sinCuentasAhorro" path="/pages/cartola/sinCuentasAhorro.jsp"></forward>
+  		</action>
+
+  		<action name="ValidadorForm" path="/validarCertificado" 
+			type="cl.araucana.autoconsulta.ui.actions.validador.ValidarCertificadoAction" scope="request">
+ 			<forward name="ingresoDatos" path="/pages/validador/ingresoDatos.jsp"></forward>
+			<forward name="showDatos" path="/pages/validador/showDatos.jsp"></forward>
+  		</action>
+  		<action name="ChangeClaveForm" path="/changeClave" 
+			type="cl.araucana.autoconsulta.ui.actions.ChangeClaveAction" scope="request">
+			<forward name="changeClave2" path="/pages/changeClave2.jsp"/>
+			<forward name="welcome" path="/pages/welcome.jsp"></forward>
+  		</action>
+		<action name="PARAMForm" path="/prepareSimulacionCredito"
+			type="cl.araucana.autoconsulta.ui.actions.simulacionCredito.PrepareSimulacionCreditoAction" scope="request">
+  			<forward name="ingresoDatos" path="/pages/simulacionCredito/ingresoDatos.jsp"></forward>
+  			<forward name="seleccionSeguros" path="/pages/simulacionCredito/seleccionSeguros.jsp"></forward>  			
+  			<forward name="creditos" path="/pages/simulacionCredito/creditos.jsp"></forward>   			
+  			<forward name="resultado" path="/pages/simulacionCredito/simulacion.jsp"></forward>
+  			<forward name="erroresSimulacion" path="/pages/simulacionCredito/erroresSimulacion.jsp"></forward>
+  		</action>	
+  	</action-mappings>
+
+ <!-- Se reemplazó el request processor por 'cl.araucana.autoconsulta.ui.processors.FlexibleRequestProcessor' para
+      permitir el acceso público a actions que lo requieran (por ejemplo: '/validarCertificado'), manteniendo la
+      ambientación de la sesión HTTP para un request dirigido a un action protegido.
+ 
+      Baja la actual versión de AC basada en seguridad J2EE, los actions que requieren acceso restringido quedan
+      protegidos en una <security-constraint> del web.xml respectivo.
+      
+      En cambio, la versión anterior que estaba basada en seguridad programada, protegía TODOS LOS ACTIONS mediante
+      el request processor personalizado 'cl.araucana.common.ui.struts.ExternalSecureRequestProcessor', el cual
+      verifica que el usuario que envía el request esté previamente autenticado. En caso de no estarlo, se realiza
+      un forward al action '/SecurityPageError'. (gpavez@hotmail.com, 20/11/2007, REQ4369).
+ 
+    <controller nocache="true" processorClass="cl.araucana.common.ui.struts.ExternalSecureRequestProcessor"/> -->
+        
+    <controller nocache="true" processorClass="cl.araucana.autoconsulta.ui.processors.FlexibleRequestProcessor"/>
+
+  	<!-- Message Resources Definitions -->
+  	<message-resources parameter="resources.application" />
+
+  	<!-- Plug Ins Configuration -->
+  	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    	<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-modulo.xml" property="pathnames" />
+  	</plug-in> 
+  	<plug-in className="cl.araucana.common.ui.struts.AppPlugIn">
+    	<set-property property="settingsFileName" value="arau-settings.xml"/>
+    	<set-property property="errorsFileName" value="arau-errors.properties"/>
+  	</plug-in>
+</struts-config>

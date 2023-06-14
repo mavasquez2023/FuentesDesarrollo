@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+
+	<!-- Action Servlet Configuration -->
+	<display-name>Autoconsulta</display-name>
+	<description>Autoconsulta Multicanal</description>
+	<context-param>
+		<param-name>startMode</param-name>
+		<param-value>RA</param-value>
+		<description>SimulacionManager Start Mode (MQ/RA).</description>
+	</context-param>
+	
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<display-name>LoginFilter</display-name>
+		<filter-class>cl.araucana.core.util.http.LoginFilter</filter-class>
+		<init-param>
+			<param-name>securityMode</param-name>
+			<param-value>j2ee</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>dump</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/web/pages/j_security_check</url-pattern>
+	</filter-mapping>
+			
+	<listener>
+		<listener-class>cl.araucana.autoconsulta.listeners.ACServletContextListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/web</param-name>
+			<param-value>/WEB-INF/struts-config-web.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/modulo</param-name>
+			<param-value>/WEB-INF/struts-config-modulo.xml</param-value>
+		</init-param>
+
+		<load-on-startup>2</load-on-startup>
+		<security-role-ref>
+			<description></description>
+			<role-name>ValidUser</role-name>
+			<role-link>ValidUser</role-link>
+		</security-role-ref>
+	</servlet>
+
+	<!-- Action Servlet Mapping -->
+	<servlet>
+		<servlet-name>CrearPublicidadWeb</servlet-name>
+		<display-name>CrearPublicidadWeb</display-name>
+		<servlet-class>cl.araucana.autoconsulta.common.CrearPublicidadWeb</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MostrarPublicidadWeb</servlet-name>
+		<display-name>MostrarPublicidadWeb</display-name>
+		<servlet-class>cl.araucana.autoconsulta.common.MostrarPublicidadWeb</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- The Usual Welcome File List -->
+	<servlet-mapping>
+		<servlet-name>CrearPublicidadWeb</servlet-name>
+		<url-pattern>/web/CrearPublicidadWeb</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MostrarPublicidadWeb</servlet-name>
+		<url-pattern>/web/MostrarPublicidadWeb</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/admin/login.jsp?error=app</location>
+	</error-page>
+
+	<!-- Struts Tag Library Descriptors -->
+	<taglib>
+		<taglib-uri>/tags/struts-bean</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-html</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-logic</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-nested</taglib-uri>
+		<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-template</taglib-uri>
+		<taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-tiles</taglib-uri>
+		<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+	</taglib>
+	<resource-ref id="ResourceRef_1176219460125">
+		<res-ref-name>jdbc/SeguroCesantia</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>CONTAINER</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1176219460140">
+		<res-ref-name>jdbc/ComunasCiudades</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>CONTAINER</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1176219460141">
+		<res-ref-name>jdbc/EntidadesFinancieras</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>CONTAINER</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1176219460142">
+		<res-ref-name>jdbc/UF</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>CONTAINER</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1176219460156">
+		<res-ref-name>jdbc/Oficinas</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>CONTAINER</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>(Colección de recursos Web nueva)</web-resource-name>
+			<description></description>
+			<url-pattern>*.do</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description></description>
+			<role-name>ValidUser</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description></description>
+		<role-name>ValidUser</role-name>
+	</security-role>
+
+	<env-entry>
+		<description>Tabla de Factores para Seguro de Cesantía</description>
+		<env-entry-name>table/SeguroCesantia</env-entry-name>
+		<env-entry-value>CRDTA.CRF4000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>cache/SeguroCesantia/ttl</env-entry-name>
+		<env-entry-value>86000000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<description>Tabla de Comunas y Ciudades</description>
+		<env-entry-name>table/ComunasCiudades</env-entry-name>
+		<env-entry-value>BCDTA.BC23F1</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>cache/ComunasCiudades/ttl</env-entry-name>
+		<env-entry-value>86000000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<description>Tabla de Entidades Financieras</description>
+		<env-entry-name>table/EntidadesFinancieras</env-entry-name>
+		<env-entry-value>CRDTA.CRF8050</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>cache/EntidadesFinancieras/ttl</env-entry-name>
+		<env-entry-value>86000000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<description>Tabla de UF Mensual</description>
+		<env-entry-name>table/UF</env-entry-name>
+		<env-entry-value>GENERAL.TAF2000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>cache/UF/ttl</env-entry-name>
+		<env-entry-value>86000000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<description>Tabla de Oficinas de la Caja</description>
+		<env-entry-name>table/Oficinas</env-entry-name>
+		<env-entry-value>CMDTA.CM01F1</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>cache/Oficinas/ttl</env-entry-name>
+		<env-entry-value>86000000</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<description>ip servidor windows que genera Imagen on fly</description>
+		<env-entry-name>conf/ipServerImagen</env-entry-name>
+		<env-entry-value>146.83.1.78</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<description>puerto del servidor windows que genera Imagen on fly</description>
+		<env-entry-name>conf/puertoServerImagen</env-entry-name>
+		<env-entry-value>9080</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<description>path de la imagen en testdesa</description>
+		<env-entry-name>conf/imgTestdesa</env-entry-name>
+		<env-entry-value>/ac/images/publicidad/</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<description>path del PDF credito para afiliados en testdesa</description>
+		<env-entry-name>conf/pdfAfiliados</env-entry-name>
+		<env-entry-value>/web/PDF/SolicitudesAfiliados.pdf</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<description>path del PDF credito para Pensionados en testdesa</description>
+		<env-entry-name>conf/pdfPensionados</env-entry-name>
+		<env-entry-value>/web/PDF/SolicitudesPensionados.pdf</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+</web-app>
+
