@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_06
+Built-By: Paul
+UseWSFEP61ScanPolicy: true
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+

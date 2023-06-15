@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><web-app id="WebApp_1437572432337" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Cartas Cuotas Duplicadas</display-name>
+	<!-- Pagina de inicio de Autoconsulta -->
+
+
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/main</param-name>
+			<param-value>/WEB-INF/struts-main.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ExportPDF</servlet-name>
+		<servlet-class>cl.laaraucana.cuotasdup.servlets.ExportPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ExportJson</servlet-name>
+		<servlet-class>cl.laaraucana.cuotasdup.servlets.ExportJson</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetImages</servlet-name>
+		<servlet-class>cl.laaraucana.cuotasdup.servlets.GetImages</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- Servlet export pdf -->
+	<servlet-mapping>
+		<servlet-name>ExportPDF</servlet-name>
+		<url-pattern>/ExportPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ExportJson</servlet-name>
+		<url-pattern>/ExportJson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetImages</servlet-name>
+		<url-pattern>/GetImages</url-pattern>
+	</servlet-mapping>
+	<!-- Configuracion de sesion -->
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
