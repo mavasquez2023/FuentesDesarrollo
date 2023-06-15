@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="bitacora">
+	
+	
+	<insert id="insertConsulta" parameterClass="java.util.Map">
+		
+		insert into BITWSEMPAF (PERIODO, USUARIO, RUT, ESTADO, GLOSA) 
+		values (#periodo#, #usuario#, #rut#, #estado#, #glosa#)
+		
+	</insert>
+	
+</sqlMap> 

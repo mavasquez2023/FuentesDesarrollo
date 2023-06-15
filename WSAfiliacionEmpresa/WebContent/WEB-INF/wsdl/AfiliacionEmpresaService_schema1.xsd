@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/afiliacionEmpresa" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/afiliacionEmpresa">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="getAfiliacionEmpresa" type="tns:getAfiliacionEmpresa"/>
+
+  <xs:element name="getAfiliacionEmpresaResponse" type="tns:getAfiliacionEmpresaResponse"/>
+
+  <xs:complexType name="getAfiliacionEmpresa">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWSTGR"/>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWSTGR">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWS">
+    <xs:sequence>
+      <xs:element name="rut_empresa" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAfiliacionEmpresaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWS">
+    <xs:sequence>
+      <xs:element name="estado" type="xs:int"/>
+      <xs:element minOccurs="0" name="razonSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosaError" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
