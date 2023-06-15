@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="cuotasResult" class="cl.laaraucana.simulacion.ibatis.vo.CuotasVO" >
+	  <result column="id" property="id" jdbcType="NUMBER" />
+	  <result column="numero" property="valor" jdbcType="NUMBER" />
+  </resultMap>
+  
+ 	<select id="cuotas" resultMap="cuotasResult" parameterClass="string">
+		select * from Cuotas order by numero
+	</select>
+	
+	 
+</sqlMap>

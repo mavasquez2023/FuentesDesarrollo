@@ -1,0 +1,234 @@
+//Condicion 1
+insert into nrpdta.nrp15ips
+ select 
+        PERIODO
+        ,TIPO_NOMINA
+        ,OFICINA_PAGO
+        ,OFICINA_CREDITO
+        ,NUMERO_CONTRATO
+        ,FECHA_VCTO_CUOTA
+        ,NRO_CUOTA
+        ,CANTIDAD_CUOTAS
+        ,IMPORTE_CUOTA_MONEDA_TX
+        ,IMPORTE_CUOTA_MONEDA_LOCAL
+        ,IMPORTE_GRAVE_MONEDA_LOCAL
+        ,CODIGO_MONEDA_LOCAL
+        ,CODIGO_MONEDA_TX
+        ,COTIZACION_MONEDA_TX
+        ,RUT_PAGADOR
+        ,DV_PAGADOR
+        ,RUT_EMPRESA
+        ,DV_EMPRESA
+        ,ID_BP_SAP
+        ,NRO_INSCRIPCION
+        ,CAJA_PREVISION
+        ,GRUPO_PAGO
+        ,NUMERO_BENEFICIARIO
+        ,ANEXO_NOMINA
+        ,SUCURSAL_CCLA
+        ,PRODUCTO
+        ,CCAF
+        ,NRO_CONTRATO_EXTERNO
+        ,TIPO_OPERACION
+        ,LINEA_CREDITO
+        ,TIPO_PAGADOR
+        ,NRO_MESES_MOROSOS
+        ,FECHA_COLOCACION
+        ,NOMBRE_DEUDOR
+        ,APELLIDO_PATERNO
+        ,APELLIDO_MATERNO
+        ,NOMBRE_EMPRESA
+        ,3 EMPLANILLADO_SN
+        ,RENTAS
+        ,MONTO_TOTAL_NOMINA
+        ,FOLIO_NOMINA
+        ,CODIGO_CAJA_ORIGEN
+        ,NUMERO_PAGARE
+        ,CODIGO_HOLDING
+        ,ORIGEN
+        ,CUOTON
+        ,ID_DATA_ARCHIVO
+        ,FECHA_VCTO_NOMINA
+        ,CODIGO_NOMINA
+        ,ACTUALIZA
+from nrpdta.nrp15hf1 th15 
+where 
+        th15.periodo = '202006'
+        and th15.rut_empresa = '61533000'
+        and th15.nro_cuota = cantidad_cuotas
+        
+and th15.numero_contrato not in ( 
+        select numero_contrato
+        from nrpdta.nrp15ips1 t15 
+        where 
+            t15.periodo = '202007'
+            and t15.rut_empresa = th15.rut_empresa
+            and t15.nro_cuota = th15.nro_cuota
+ )
+
+
+
+//Condicion 2, contratos nuevos, 23889638
+//cuotas en nrp15f1 con nrocuota = 1, y fecha_vcto_cuota = fecha_vcto_nomina
+// y no esté en el mes anterior 
+insert into nrpdta.nrp15ips
+select 
+PERIODO
+,TIPO_NOMINA
+,OFICINA_PAGO
+,OFICINA_CREDITO
+,NUMERO_CONTRATO
+,FECHA_VCTO_CUOTA
+,NRO_CUOTA
+,CANTIDAD_CUOTAS
+,IMPORTE_CUOTA_MONEDA_TX
+,IMPORTE_CUOTA_MONEDA_LOCAL
+,IMPORTE_GRAVE_MONEDA_LOCAL
+,CODIGO_MONEDA_LOCAL
+,CODIGO_MONEDA_TX
+,COTIZACION_MONEDA_TX
+,RUT_PAGADOR
+,DV_PAGADOR
+,RUT_EMPRESA
+,DV_EMPRESA
+,ID_BP_SAP
+,NRO_INSCRIPCION
+,CAJA_PREVISION
+,GRUPO_PAGO
+,NUMERO_BENEFICIARIO
+,ANEXO_NOMINA
+,SUCURSAL_CCLA
+,PRODUCTO
+,CCAF
+,NRO_CONTRATO_EXTERNO
+,TIPO_OPERACION
+,LINEA_CREDITO
+,TIPO_PAGADOR
+,NRO_MESES_MOROSOS
+,FECHA_COLOCACION
+,NOMBRE_DEUDOR
+,APELLIDO_PATERNO
+,APELLIDO_MATERNO
+,NOMBRE_EMPRESA
+,1 EMPLANILLADO_SN
+,RENTAS
+,MONTO_TOTAL_NOMINA
+,FOLIO_NOMINA
+,CODIGO_CAJA_ORIGEN
+,NUMERO_PAGARE
+,CODIGO_HOLDING
+,ORIGEN
+,CUOTON
+,ID_DATA_ARCHIVO
+,FECHA_VCTO_NOMINA
+,CODIGO_NOMINA
+,ACTUALIZA
+from nrpdta.nrp15ips1 t15 
+where 
+        t15.rut_empresa = '61533000' 
+        and t15.nro_cuota = 1 
+        and t15.fecha_vcto_cuota = t15.fecha_vcto_nomina
+        and t15.ID_DATA_ARCHIVO not in ( select ID_DATA_ARCHIVO from nrpdta.nrp15ips where periodo = '202007' )
+        
+and numero_contrato not in ( 
+        select numero_contrato 
+        from nrpdta.nrp15hf1 th15 
+        where 
+                th15.periodo = '202006'
+                and t15.rut_empresa = th15.rut_empresa 
+                and t15.numero_contrato = th15.numero_contrato
+        )
+        
+        
+        
+        
+//Condicion 3 contratos con mora
+
+insert into nrpdta.nrp15ips
+select 
+PERIODO
+,TIPO_NOMINA
+,OFICINA_PAGO
+,OFICINA_CREDITO
+,NUMERO_CONTRATO
+,FECHA_VCTO_CUOTA
+,NRO_CUOTA
+,CANTIDAD_CUOTAS
+,IMPORTE_CUOTA_MONEDA_TX
+,IMPORTE_CUOTA_MONEDA_LOCAL
+,IMPORTE_GRAVE_MONEDA_LOCAL
+,CODIGO_MONEDA_LOCAL
+,CODIGO_MONEDA_TX
+,COTIZACION_MONEDA_TX
+,RUT_PAGADOR
+,DV_PAGADOR
+,RUT_EMPRESA
+,DV_EMPRESA
+,ID_BP_SAP
+,NRO_INSCRIPCION
+,CAJA_PREVISION
+,GRUPO_PAGO
+,NUMERO_BENEFICIARIO
+,ANEXO_NOMINA
+,SUCURSAL_CCLA
+,PRODUCTO
+,CCAF
+,NRO_CONTRATO_EXTERNO
+,TIPO_OPERACION
+,LINEA_CREDITO
+,TIPO_PAGADOR
+,NRO_MESES_MOROSOS
+,FECHA_COLOCACION
+,NOMBRE_DEUDOR
+,APELLIDO_PATERNO
+,APELLIDO_MATERNO
+,NOMBRE_EMPRESA
+,2 EMPLANILLADO_SN
+,RENTAS
+,MONTO_TOTAL_NOMINA
+,FOLIO_NOMINA
+,CODIGO_CAJA_ORIGEN
+,NUMERO_PAGARE
+,CODIGO_HOLDING
+,ORIGEN
+,CUOTON
+,ID_DATA_ARCHIVO
+,FECHA_VCTO_NOMINA
+,CODIGO_NOMINA
+,ACTUALIZA
+from nrpdta.nrp15ips1 t15 
+where 
+        t15.rut_empresa = '61533000' 
+        and t15.fecha_vcto_cuota <> t15.fecha_vcto_nomina
+        and t15.ID_DATA_ARCHIVO not in ( select ID_DATA_ARCHIVO from nrpdta.nrp15ips where periodo = '202007' )
+     
+     
+     
+
+
+
+
+create table NRPDTA_2.hips202007 as
+( select * from NRPDTA_2.nrp15ips )
+with data
+
+
+
+
+//tabla para trabajar, data actual:
+
+create table nrpdta_2.nrp15f1_ia
+as
+(
+select * from nrpdta_2.nrp15f1 where  rut_empresa = '61533000' 
+)
+with data
+
+//tabla para trabajar, periodo anterior
+create table nrpdta_2.nrp15f1_ib
+as
+(
+select * from nrpdta_2.nrp15hf1 where periodo ='202007' and rut_empresa = '61533000' 
+)
+with data
+ 

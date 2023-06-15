@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+<parameterMap id="cotizacionInsert" class="cl.laaraucana.simulacion.ibatis.vo.SolicitudCotizacionVO" >
+	  <parameter property="tipoForm" jdbcType="CHAR"/>
+	  <parameter property="nombre" jdbcType="CHAR"/>
+	  <parameter property="rut" jdbcType="CHAR"/>
+	  <parameter property="fono"/>
+	  <parameter property="celular"/>
+	  
+	  <parameter property="email" jdbcType="CHAR"/>
+	  <parameter property="comuna" jdbcType="CHAR"/>
+	  
+	  <parameter property="direccion" jdbcType="CHAR"/>
+	  <parameter property="numCuotas" jdbcType="SMALLINT"/>
+	  	  
+	  <parameter property="montoSoli" jdbcType="INTEGER"/>
+	  <parameter property="fechaCreacion"/>
+	  <parameter property="region" jdbcType="INTEGER"/>
+  </parameterMap>
+ 	<insert id="registrarSolicitudCotizacion" >
+		insert into SWDTA.FORMULARIO (
+		TIPO_FORM, 
+		NOMBRE, 
+		RUT, 
+		FONO, 
+		CELULAR, 
+		EMAIL, 
+		COMUNA, 
+		DIRECCION, 
+		NUM_CUOTAS,
+		MONTO_SOLI, 
+		FECHA_CREA, 
+		REGION ) 
+		values( 
+		#tipoForm#, 
+		#nombre#, 
+		#rut#, 
+		#fono#, 
+		#celular#, 
+		#email#, 
+		#comuna#, 
+		#direccion#,
+		#numCuotas#, 
+		#montoSoli#, 
+		#fechaCreacion#,
+		#region#) with nc
+	</insert>
+</sqlMap>

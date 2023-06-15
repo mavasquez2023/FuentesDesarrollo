@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="6" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd">
+ <display-name>SimuladorCreditoSocialEAR</display-name>
+ <module id="Module_1565985883777">
+ 	<web>
+ 		<web-uri>SimuladorCreditoSocialWeb.war</web-uri>
+ 		<context-root>SimuladorCreditoSocialWeb</context-root>
+ 	</web>
+ </module>
+  <security-role id="SecurityRole_1381153818741">
+	<description>valid user app</description>
+	<role-name>ValidUser</role-name>
+ </security-role>
+ </application> 

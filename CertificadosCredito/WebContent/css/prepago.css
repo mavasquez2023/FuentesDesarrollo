@@ -1,0 +1,168 @@
+body {
+	font-weight: normal;
+	font-size: 13px !important;
+	color: #333;
+	font-family: arial, helvetica;
+	/* font-family: 'Droid Sans', sans-serif; */
+}
+
+hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border: none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	background-image: url(../img/linea_puntos.gif);
+}
+
+#contenedorCreditos{
+	font-size: 13px !important;
+	color: #333;
+	font-family: arial, helvetica;
+}
+
+.texto-centrado {
+	text-align: center;
+}
+.texto-der{
+	text-align: right;
+}
+
+.texto-izq{
+	text-align: left;
+}
+html body div div.field label{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 13px;
+	width: 250px;
+}
+/****************** Mensajes de error ************/
+.error {
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+}
+
+label.error {
+	text-align: left;
+}
+
+input.error,select.error {
+	color: #000000;
+	text-align: left;
+}
+
+/*********** Inicio Prepago *********/
+#inicioPrepago .divCentrado {
+	width: 460px;
+	margin: 0 auto;
+}
+
+#inicioPrepago {
+
+	margin: 0 auto;
+}
+#inicioPrepago .titulo {
+	text-align: center;
+}
+
+#inicioPrepago .field {
+	height: 25px;
+	clear: both;
+}
+
+#inicioPrepago .field label {
+	float: left;
+	width: 100px;
+}
+
+#inicioPrepago .field label.error {
+	width: 200px;
+	padding-left: 5px;
+}
+
+#inicioPrepago .espacio-med {
+	margin-left: 113px;
+}
+
+#inicioPrepago input {
+	float: left;
+}
+
+/*********** Detalle Prepago *********/
+
+#detallePrepagoCont {
+/* 	width: 700px; */
+	margin: 10px;
+}
+
+
+
+#detallePrepagoCont .field {
+	height: 25px;
+	clear: both;
+}
+
+#detallePrepagoCont div.field label {
+	float: left;
+	width: 200px;
+}
+#detallePrepagoCont .ContBtnGenerarPrepago{
+	width: 95%;
+	margin-top: 10px;
+	float: left;
+}
+#detallePrepagoCont .ContBtnGenerarPrepago input{
+	float: right;
+	margin-left: 10px;
+}
+
+#detallePrepagoCont .tablaDetCredito {
+	float: left;
+	clear: both;
+	width: 95%;
+}
+
+#detallePrepagoCont #contenedorCreditos .tablaDetCredito table {
+	width: 100%;
+}
+
+#detallePrepagoCont .tablaDetCredito table {
+	border-collapse: collapse;
+	border: 1px solid #CECECE;
+}
+
+#detallePrepagoCont table {
+  font-size: 13px;
+}
+
+#detallePrepagoCont table th {
+  background: none repeat scroll 0 0 #EAEAEA;
+}
+
+#detallePrepagoCont .tablaDetCredito table td,.tablaDetCredito table th {
+	border: 1px #CECECE solid;
+	padding-left: 3px;
+  	padding-right: 3px;
+	width: 170px;
+	text-align: center;
+}
+
+#detallePrepagoCont .tablaDetCredito table td.texto-der, .tablaDetCredito table th.texto-der{
+	text-align: right;
+}
+
+#detallePrepagoCont .tablaDetCredito table td.texto-izq, .tablaDetCredito table th.texto-izq{
+	text-align: left;
+}
+
+#detallePrepagoCont #totalPrepago{
+	margin-top: 15px;
+	float: right;
+}

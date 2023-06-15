@@ -1,0 +1,192 @@
+body {
+	font-weight: normal;
+	font-size: 16px;
+	font-family: arial, helvetica, sans-serif;
+	/* font-family: 'Droid Sans', sans-serif; */
+	background-color: white;
+}
+
+.form-fieldset h2{
+	font-weight: 700;
+	font-size: 17px;
+	color: rgb(0, 93, 139);
+	font-style: normal;
+	font-family: Arial;
+	text-decoration: none;
+	padding-left: 5px;
+}
+
+hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border: none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	background-image: url(../img/linea_puntos.gif);
+}
+
+.texto-centrado {
+	text-align: center;
+}
+.texto-der{
+	text-align: right;
+}
+
+.texto-izq{
+	text-align: left;
+}
+
+/****************** Mensajes de error ************/
+.error {
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+.error2 {
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 16px;
+	text-align: left;
+}
+
+label.error {
+	text-align: left;
+	width:100% !important;
+}
+
+input.error,select.error {
+	color: #000000;
+	text-align: left;
+}
+
+/*********** Inicio finiquito *********/
+
+.bloque-explorer{
+	text-align : center;
+	width: 100%;
+}
+
+#inicioFiniquito {
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#inicioFiniquito .divCentrado {
+	/* width: 460px; */
+	margin: 0 auto;
+	text-align: left;
+}
+#inicioFiniquito .fila {
+	width: 100%
+}
+#inicioFiniquito .fila .columna50 {
+	float:left;
+	width: 50%;
+	text-align: left;
+}
+
+#inicioFiniquito .titulo {
+	text-align: center;
+}
+
+#inicioFiniquito .field {
+	height: 25px;
+	clear: both;
+}
+
+#inicioFiniquito .field label {
+	float: left;
+	width: 100px;
+	padding-left: 0;
+}
+
+#inicioFiniquito .field label.error {
+	width: 200px;
+	padding-left: 5px;
+}
+
+#inicioFiniquito .espacio-med {
+	margin-left: 113px;
+}
+
+#inicioFiniquito input {
+	float: left;
+}
+#inicioFiniquito input[type='text'] {
+	float: left;
+	padding:1em;
+}
+/*********** Detalle finiquito *********/
+
+#detalleFiniquitoCont {
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+
+#detalleFiniquitoCont .field {
+	height: 25px;
+	clear: both;
+}
+
+#detalleFiniquitoCont div.field label {
+	float: left;
+	width: width: 100%;
+}
+#detalleFiniquitoCont .ContBtnGenerarFiniquito{
+	width: 95%;
+	margin-top: 10px;
+	float: left;
+}
+#detalleFiniquitoCont .ContBtnGenerarFiniquito input{
+	float: right;
+	margin-left: 10px;
+}
+
+#detalleFiniquitoCont .tablaDetCredito {
+	float: left;
+	clear: both;
+	width: 95%;
+}
+
+#detalleFiniquitoCont #contenedorCreditos .tablaDetCredito table {
+	width: 100%;
+}
+
+#detalleFiniquitoCont .tablaDetCredito table {
+	border-collapse: collapse;
+	border: 1px solid #CECECE;
+	font-size: 16px;
+}
+
+#detalleFiniquitoCont table th {
+  background: none repeat scroll 0 0 #EAEAEA;
+}
+
+#detalleFiniquitoCont .tablaDetCredito table td,.tablaDetCredito table th {
+	border: 1px #CECECE solid;
+	width: 170px;
+	text-align: center;
+}
+
+#detalleFiniquitoCont .tablaDetCredito table td.texto-der, .tablaDetCredito table th.texto-der{
+	text-align: right;
+}
+
+#detalleFiniquitoCont .tablaDetCredito table td.texto-izq, .tablaDetCredito table th.texto-izq{
+	text-align: left;
+}
+
+#detalleFiniquitoCont #totalFiniquito{
+	margin-top: 15px;
+	float: right;
+}

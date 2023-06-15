@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaCreditosARepactarPorRutAs400" type="tns:consultaCreditosARepactarPorRutAs400"/>
+
+  <xs:element name="consultaCreditosARepactarPorRutAs400Response" type="tns:consultaCreditosARepactarPorRutAs400Response"/>
+
+  <xs:complexType name="consultaCreditosARepactarPorRutAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaCreditosARepactarPorRutAs400EntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosARepactarPorRutAs400EntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaColocacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag1" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag2" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag3" type="xs:string"/>
+      <xs:element minOccurs="0" name="periodoRepactacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosARepactarPorRutAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditosARepactarPorRutAs400ListaSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosARepactarPorRutAs400ListaSalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadCreditos" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listaSalida" nillable="true" type="tns:consultaCreditosARepactarPorRutAs400SalidaVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosARepactarPorRutAs400SalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comisionPrepago" type="xs:string"/>
+      <xs:element minOccurs="0" name="descuentoConMora" type="xs:string"/>
+      <xs:element minOccurs="0" name="descuentoSinMora" type="xs:string"/>
+      <xs:element minOccurs="0" name="descuentoSoloMora" type="xs:string"/>
+      <xs:element minOccurs="0" name="digitoVerificadorRutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="linea" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoARepactar" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoExentoMoroso" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoExentoRepactado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoGastoCobranza" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoInteres" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoInteresMora" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoMoroso" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoOtorgado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoReajuste" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSeguroVida" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficina" type="xs:string"/>
+      <xs:element minOccurs="0" name="plazo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoDeOperacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalCuotasImpagas" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalCuotasVigentes" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

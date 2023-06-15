@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados456.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados456.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaCreditoCrc456" type="tns:consultaCreditoCrc456"/>
+
+  <xs:element name="consultaCreditoCrc456Response" type="tns:consultaCreditoCrc456Response"/>
+
+  <xs:complexType name="consultaCreditoCrc456">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaCreditoCRC456EntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoCRC456EntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaFiniquito" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficina" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoCrc456Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditoCRC456SalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoCRC456SalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuotaImpagaDesde" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuotaVigenteDesde" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuotaVigenteHasta" type="xs:string"/>
+      <xs:element minOccurs="0" name="dvRutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaCancela" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="lineaCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="montoCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoDeudaCapital" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoImpuestoLTE" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoNominal" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoNominalAcumulado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoReajustado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSaldoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreDeudor" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAval1" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAval2" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutDeudor" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="situacionDeudor" type="xs:string"/>
+      <xs:element minOccurs="0" name="tasaCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoOperacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="dVRutAval1" type="xs:string"/>
+      <xs:element minOccurs="0" name="dVRutAval2" type="xs:string"/>
+      <xs:element minOccurs="0" name="dVRutDeudor" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

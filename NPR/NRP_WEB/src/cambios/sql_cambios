@@ -1,0 +1,62 @@
+alter table nrpdta.nrp15f1 add FRENOVACION 		varchar(8);
+alter table nrpdta.nrp15f1 add PENDEUDAMIENTO   decimal(5);
+alter table nrpdta.nrp15f1 add FULTVCTOCRE 		varchar(8);
+alter table nrpdta.nrp15f1 add DIRECCION 		varchar(100);
+alter table nrpdta.nrp15f1 add NDIRECCION 		varchar(10);
+alter table nrpdta.nrp15f1 add CDIRECCION 		varchar(100);
+alter table nrpdta.nrp15f1 add PDIRECCION 		varchar(100);
+alter table nrpdta.nrp15f1 add RDIRECCION 		varchar(100);
+alter table nrpdta.nrp15f1 add CELECTRONICO 	varchar(100);
+alter table nrpdta.nrp15f1 add NUMCREORI 		varchar(20);
+alter table nrpdta.nrp15f1 add FGENERACIO 		varchar(10);
+alter table nrpdta.nrp15f1 add HGENERACION 		varchar(10);
+alter table nrpdta.nrp15f1 add UGENERACION 		varchar(20);
+
+
+
+
+CREATE TABLE NRPDTA.NRP95F1 ( 
+	EMPRUT INTEGER  DEFAULT NULL , 
+	EMPRUTDV  VARCHAR(1)  DEFAULT NULL , 
+	AFIRUT INTEGER  DEFAULT NULL , 
+	AFIRUTDV  VARCHAR(1)  DEFAULT NULL , 
+	FICHA  VARCHAR(8)  DEFAULT NULL , 
+	ROL  VARCHAR(1)  DEFAULT NULL 
+)
+
+
+create table nrpdta.nrp99f1(
+RUT_EMPRESA varchar(10),
+CODIGO_HOLDING varchar(10)
+);
+
+
+COMMENT ON NRPDTA.NRP15f1 (FECHA_VCTO_CUOTA is 'Fecha Vencimiento Nomina')
+
+
+
+alter table nrpdta.nrp10f1 add column NOMDEU    varchar(100);
+alter table nrpdta.nrp10f1 add column APEPATDEU varchar(50);
+alter table nrpdta.nrp10f1 add column APEMATDEU varchar(50);
+alter table nrpdta.nrp10f1 add column RENTAS    decimal(12);
+alter table nrpdta.nrp10f1 add column FULVCTOCRE decimal(8);
+alter table nrpdta.nrp10f1 add column NUMCREORI decimal(20);
+
+
+create table nrpdta.nrp10f1a(
+	PERIODO VARCHAR(6),
+	RUTEMP DECIMAL(10),
+	DVEMP VARCHAR(1),
+	N_BP_ANEXO DECIMAL(10),
+	NOMEMP VARCHAR(40),
+	RDIRECCION VARCHAR(100),
+	PDIRECCION VARCHAR(100),
+	CDIRECCION VARCHAR(100),
+	DIRECCION VARCHAR(100),
+	NDIRECCION VARCHAR(10),
+	CODHOL VARCHAR(10),
+	CELECTRONICO VARCHAR(100),
+	TELEFONO_F varchar(12),
+	TELEFONO_C varchar(12)
+);
+

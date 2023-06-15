@@ -1,0 +1,506 @@
+body {
+	font-weight: normal;
+	font-size: 12px;
+	color: #333;
+	font-family: arial,helvetica,sans-serif;
+	/* font-family: 'Droid Sans', sans-serif; */
+}
+
+hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border: none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	background-image: url(../img/linea_puntos.gif);
+}
+
+.hr {
+  clear: both;
+  height: 2px;
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+  border: none !important;
+  padding: 0px;
+  margin-top: 5px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  background-image: url(../img/linea_puntos.gif);
+}
+
+.link-volver{
+	font-family: Arial,Helvetica,sans-serif;
+	text-decoration: none;
+	padding-left: 10px;
+	background-image: url(../img/boton_volver.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	color: #999999;
+	font-size: 11px;
+	font-weight: bold;
+	
+}
+
+.form-fieldset h2{
+	font-weight: 700;
+	font-size: 17px;
+	color: rgb(0, 93, 139);
+	font-style: normal;
+	font-family: Arial;
+	text-decoration: none;
+	padding-left: 5px;
+}
+
+.espacio-small{
+	margin-left: 15px; 
+}
+
+.espacio-med{
+	margin-left: 50px; 
+}
+
+input{
+	font-family: Arial, Helvetica;
+}
+
+#resultado table{
+	width: 95%;
+	border: 1px;
+	border-style: solid;
+	border-color: #CECECE;
+	margin-top: 5px;
+	border-spacing: 0;
+}
+
+#resultado table th{
+	margin-top: 20px;
+	text-align: left;
+	background: #EAEAEA;
+	font-size: 12px;
+	padding: 2px;
+}
+
+#resultado table th.top{
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	
+}
+
+#resultado table tr td{
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	margin-left: 10px;
+	font-size: 12px;
+	padding: 0 5px 0 5px;
+}
+
+#resultado-top {
+	width: 100%;
+}
+
+#resultado-left {
+	width: 50%;
+	float: left;
+}
+
+#resultado-right{
+	float: left;
+	width: 45%;
+}
+
+#resultado-right table{
+	width: 100%;
+}
+
+#resultado-right .td-small{
+	/* width: 10px; */
+}
+
+#resultado-bottom {
+	clear: both;
+}
+/************************Inicio**********************/
+
+#inicio-formalizar {
+	width: 100%;
+}
+#inicio-formalizar .boton-gris{
+	height: 20px;
+}
+#inicio-formalizar .link-cerrar{
+	text-decoration: none;
+}
+
+.cont-inicio{
+	width: 100%;
+	text-align: center;
+}
+
+/****************** Mensajes de error ************/
+
+.error {
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+}
+
+label.error {
+	text-align: left;
+}
+	
+input.error, select.error {
+	color: #000000;
+	text-align: left;
+}
+
+.derechaAbajo{
+	clear: both;
+	text-align: right;
+}
+
+/***********Mensajes pre aprobados*******************/
+.contentMsjPreAprobado{
+	/*float: left;
+	margin: 15px;*/
+	margin: 0 auto;
+	width: 295px;
+	text-align: center;
+}
+
+.contentMsjPreAprobado form{
+	margin: 5px;
+}
+
+.msjPreAprobado {
+	display: table;
+	min-height: 230px;
+	height:230px;
+	padding: 0 10px;
+	/*border: dotted #025D8C 2px;*/
+	font-size: 15px;
+	margin: 10px auto;
+	border: 1px solid silver;
+	text-align: left;
+}
+
+.msjPreAprobadoHijo {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.msjPreAprobadoHijo .boton {
+	margin-top: 10px;
+}
+
+#formSimularPre{
+	text-align: center;
+	margin: 10px 0;
+}
+
+.divTituloPreInicio{
+	float: left;
+	width: 100%;
+}
+
+.divTituloPreInicio img{
+	float: right;
+}
+
+.divTituloPreInicio h2{
+	float: left;
+	color: #666666;
+	margin-top: 15px;
+	margin-left: 25px;
+	font-size: 25px;
+}
+
+.contentMsjPreAprobado .infoPreAprobado{
+	clear: both;
+	text-align: center;
+}
+
+.contentMsjPreAprobado h2.montoPre{
+	color: red;
+	text-align: center;
+	display: block;
+	margin: 5px;
+}
+
+/*********** calculadora*********/
+
+.simulador_explica{
+	color: #0F3175
+}
+#formCalculadoraDiv .field{
+	height: 25px;
+	clear: both;
+}
+
+#formCalculadoraDiv .field label {
+	float: left;
+	width: 150px;
+}
+
+#formCalculadoraDiv .field label.error {
+	width: 200px;
+	padding-left: 5px;
+}
+
+#formCalculadoraDiv .field input, #formCalculadoraDiv .field select {
+	float: left;
+}
+
+#formCalculadoraDiv .form-fieldset input[type="text"], #formCalculadoraDiv select{
+	width: 150px;
+}
+
+#formCalculadoraDiv .boton{
+	margin: 10px 0 0 130px;
+}
+
+#resultadoCalculadoraDiv{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#resultadoCalculadoraDiv .field {
+	width: 550px;
+}
+
+#resultadoCalculadoraDiv .field {
+	float: left;
+	height: 20px;
+	clear: both;
+	font-size: 14px;
+	padding-left: 14px;
+	padding-top: 4px;
+}
+
+#resultadoCalculadoraDiv .field label{
+	float: left;
+	width: 300px;
+}
+
+#resultadoCalculadoraDiv .field span {
+	float: left;
+}
+
+/*********************Sin pre aprobado********************/
+#simulacionNormal .field {
+	height: 25px;
+	clear: both;
+	/*width: 400px;*/
+}
+
+#simulacionNormal .field label {
+	float: left;
+	width: 200px;
+}
+
+
+#simulacionNormal .field input, #simulacionNormal .field select {
+	float: left;
+}
+
+#simulacionNormal .form-fieldset input[type="text"], #simulacionNormal .form-fieldset select{
+	width: 180px;
+}
+
+
+/***************************Datos de contacto******************************/
+
+#contactoDiv .field {
+	float:left;
+	margin-top:10px;
+	clear: both;
+}
+
+#contactoDiv .field label{
+	float: left;
+	width: 200px;
+}
+
+#contactoDiv .field input, #contactoDiv .field select {
+	float: left;
+}
+
+#contactoDiv .tam-small {
+	width: 40px;
+	margin-right: 10px;
+}
+
+#contactoDiv #preMovil{
+	width: 40px;
+	margin-right: 10px;
+}
+
+#contactoDiv label.error{
+	width: 130px;
+}
+
+#contactoDiv label[for="extension"].error{
+	width: 5px;
+	padding: 0;
+	margin: 0 2px 0 0;
+}
+
+#contactoDiv .tam-medium{
+	width: 80px;
+}
+
+/**********************Con credito pre aprobado****************************/
+
+
+#simuladorPreAProbado .field {
+	float:left;
+	margin-top:10px;
+	clear: both;
+}
+	
+#simuladorPreAProbado .field label{
+	float: left;
+	width: 200px;
+}
+
+#simuladorPreAProbado .field label.error{
+	width: 235px;
+}
+
+#simuladorPreAProbado #divBtn{
+	clear: both;
+	float:right;
+	margin-top: 30px;
+}
+#simuladorPreAProbado #btnSimular{
+	width: 100px;
+}
+
+#simuladorPreAProbado input[type="text"], #simuladorPreAProbado .field select{
+	float:left;
+	width: 180px;
+}
+
+div.ui-dialog div.ui-dialog-buttonpane div.ui-dialog-buttonset button.ui-button{
+	background-image:  url("../img/boton.jpg");
+	background-color:transparent;
+	border: none;
+	color: #FFFFFF;
+	font-family: arial,helvetica,sans-serif;
+}
+
+
+/*  Cuenta bancaria */
+
+#formularioCuentaBancaria table td{
+	padding: 0 10px;
+}
+
+#formularioCuentaBancaria input[type="text"], #formularioCuentaBancaria select{
+	width: 180px;
+}
+
+/* Dialog*/
+
+#dialogSocial{
+	text-align: justify;
+}
+
+/* Modificando estilos del acordion */
+
+.accordion .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: url("themes/araucana/images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+  border: 1px solid #D3D3D3;
+  color: #555555;
+  font-weight: normal;
+}
+
+.accordion .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background: url("themes/araucana/images/ui-bg_glass_65_ffffff_1x400.png") repeat-x scroll 50% 50% #FFFFFF;
+  border: 1px solid #AAAAAA;
+  color: #212121;
+  font-weight: normal;
+}
+
+.accordion .ui-state-active .ui-icon {
+  background-image: url("themes/araucana/images/ui-icons_454545_256x240.png");
+}
+
+.accordion .ui-state-default .ui-icon {
+  background-image: url("themes/araucana/images/ui-icons_888888_256x240.png");
+}
+
+/* Simular Crédito universal */
+
+#simCreditoUniversal .field {
+	height: 25px;
+	clear: both;
+}
+#simCreditoUniversal .field label {
+	float: left;
+	width: 150px;
+}
+#simCreditoUniversal input[type="text"], #simCreditoUniversal .field select{
+	float:left;
+	width: 180px;
+}
+#simCreditoUniversal .field .radio{
+	float:left;
+	width: 50px;
+	vertical-align: middle;
+}
+#simCreditoUniversal .field label.error{
+	float: left;
+	width: 235px;
+}
+
+/* Resultado simulación crédito universal */
+
+#resSimUniv{
+	width: 800px;
+	height: auto;
+}
+
+#resSimUniv .field{
+	height: 20px;
+}
+
+#resSimUniv .field .span{
+	float:left;
+	width: 180px;
+	display: inline-block;
+}
+
+#resSimUniv .field p{
+	float:left;
+	width: auto;
+}
+
+/* Consulta de pre aprobado */
+
+#centrarRutPre{
+	margin:0 auto;
+	width: 330px;
+}
+
+#montoPreAprobado{
+	/* width: 500px; */
+	margin: auto;
+}
+
+#montoPreAprobado .form-fieldset{
+	/* padding: 20px; */
+}
+
+
+.padding-m{
+	padding: 15px;
+}

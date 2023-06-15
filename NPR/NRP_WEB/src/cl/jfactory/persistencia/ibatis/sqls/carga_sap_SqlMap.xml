@@ -1,0 +1,1818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="carga_SAP">
+
+
+	
+	<insert id="insertarRegistro" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	insert into NRPDTA.NRP10F1
+	(
+	PERIODO,
+	TIPO_NOMINA,
+	OFICINA_PAGO,
+	NUMERO_CONTRATO,
+	FECHA_VCTO,
+	NUMERO_CUOTA,
+	CANTIDAD_CUOTAS,
+	IMPORTE_CUOTA_MONEDA_TX,
+	IMPORTE_CUOTA_MONEDA_LOCAL,
+	IMPORTE_GRAVAMEN_MONEDA_LOCAL,
+	CODIGO_MONEDA_LOCAL,
+	MONEDA_TX,
+	COTIZACION_MONEDA_TX,
+	RUT_PAGADOR,
+	RUT_EMPRESA,
+	BP_ANEXO_SAP,
+	NRO_INSCRIP,
+	CAJA_PREVIS,
+	GRUPO_PAGO,
+	NUM_BENEF,
+	EMPNOMCODP,
+	SUCUR_CCLA,
+	PRODUCTO,
+	CCAF,
+	CONTREXTE,
+	IDENTIFIC,
+	TIPOOPERACION,
+	PAGADOR,
+	N_MESES_MOROSO,
+	FECHA_DE_COLOCACION,
+	EMPLANILLADO_SN,
+	ORIGEN,
+	CODIGO_CAJA_ORIGEN,
+	CODIGO_CAJA_DESTINO,
+	NUMERO_PAGARE,
+	IDENT_ENTIDAD_PAG,
+	IDENT_DEUDOR,
+	NOMBRE_DEUDOR,
+	NOMDEU,
+	IDENT_AVAL,
+	SUJETO_DESCUENTO,
+	TIPO_IDENTIFICADOR,
+	TIPO_AFILIADO,
+	TIPO_DEUDA,
+	MONTO_COBRAR,
+	MONTO_PAGADO,
+	FECHA_PAGO,
+	ESTADO,
+	RENTA_LIQUIDA,
+	PORCENTAJE_CARGA_FINANC,
+	CARGA_MAXIMA,
+	CODIGO_HOLDING
+	)
+	
+	values
+	
+	(
+	#PERIODO#,
+	#TIPO_NOMINA#,
+	#OFICINA_PAGO#,
+	#NUMERO_CONTRATO#,
+	#FECHA_VCTO#,
+	#NUMERO_CUOTA#,
+	#CANTIDAD_CUOTAS#,
+	#IMPORTE_CUOTA_MONEDA_TX#,
+	#IMPORTE_CUOTA_MONEDA_LOCAL#,
+	#IMPORTE_GRAVAMEN_MONEDA_LOCAL#,
+	#CODIGO_MONEDA_LOCAL#,
+	#MONEDA_TX#,
+	#COTIZACION_MONEDA_TX#,
+	#RUT_PAGADOR#,
+	#RUT_EMPRESA#,
+	#BP_ANEXO_SAP#,
+	#NRO_INSCRIP#,
+	#CAJA_PREVIS#,
+	#GRUPO_PAGO#,
+	#NUM_BENEF#,
+	#EMPNOMCODP#,
+	#SUCUR_CCLA#,
+	#PRODUCTO#,
+	#CCAF#,
+	#CONTREXTE#,
+	#IDENTIFIC#,
+	#TIPOOPERACION#,
+	#PAGADOR#,
+	#N_MESES_MOROSO#,
+	#FECHA_DE_COLOCACION#,
+	#EMPLANILLADO_SN#,
+	#__origen#,
+	#CODIGO_CAJA_ORIGEN#,
+	#CODIGO_CAJA_DESTINO#,
+	#NUMERO_PAGARE#,
+	#IDENT_ENTIDAD_PAG#,
+	#IDENT_DEUDOR#,
+	#NOMBRE_DEUDOR#,
+	#NOMBRE_DEUDOR#,
+	#IDENT_AVAL#,
+	#SUJETO_DESCUENTO#,
+	#TIPO_IDENTIFICADOR#,
+	#TIPO_AFILIADO#,
+	#TIPO_DEUDA#,
+	#MONTO_COBRAR#,
+	#MONTO_PAGADO#,
+	#FECHA_PAGO#,
+	#ESTADO#,
+	#RENTA_LIQUIDA#,
+	#PORCENTAJE_CARGA_FINANC#,
+	#CARGA_MAXIMA#
+	#CODIGO_HOLDING#
+	)
+	
+	</insert>
+	
+	<select id="obtenerFolioUsado" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from folio_nomina
+		where
+		periodo =#PERIODO#
+		and rut_empresa = #RUT-EMPRESA#
+		and oficina_pago =#OFICINA-PAGO#
+		and codigo_nomina = #EMPNOMCODP#
+		and tipo_nomina = #TIPO-NOMINA#
+		and fec_vencimiento = #FECHA-VCTO#
+	</select>
+	
+	
+	<select id="obtenerDataSinacaff" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+
+		SINCAJO	CODIGO_CAJA_ORIGEN,
+		SINCAJD	CODIGO_CAJA_DESTINO,
+		SINNPAG	NUMERO_PAGARE,
+		SINIDEM	IDENT_ENTIDAD_PAG,
+		SINIDED	IDENT_DEUDOR,
+		SUBSTR(SINNOMD,1, 60) 	NOMBRE_DEUDOR,
+		SINIDEA	IDENT_AVAL,
+		SINSUJD	SUJETO_DESCUENTO,
+		SINTIPI	TIPO_IDENTIFICADOR,
+		SINTIPA	TIPO_AFILIADO,
+		SINIDEN	TIPO_DEUDA,
+		SINMCOB	MONTO_COBRAR,
+		SINMPAG	MONTO_PAGADO,
+		SINFECP	FECHA_PAGO,
+		SINESTA	ESTADO,
+		SINRLIQ	RENTA_LIQUIDA,
+		SINPORC	PORCENTAJE_CARGA_FINANC,
+		SINCFIN	CARGA_MAXIMA,
+		YEAR((CURRENT_DATE ) ) || RIGHT('00'||  MONTH((CURRENT_DATE) ),2 ) PERIODO,
+		SINFECC	FECHA_DE_COLOCACION,
+		
+		SINCODHOL ID_CODIGO_HOLDING,
+		'N' EMPLANILLADO_SN,
+		SINCAJD	CCAF,
+		'1' TIPO_NOMINA,
+		'700' OFICINA_CREDITO,
+		SINNPAG NUMERO_CONTRATO,
+		CURRENT_DATE FGENERACION,
+		CURRENT_TIME HGENERACION,
+		'PROCESO_MANUAL' UGENERADOR
+		
+		 from SINADTA.SINAF06H sin
+		 
+		 where 
+		  sinperi = YEAR((CURRENT_DATE - 1 MONTH) -1 MONTH) || RIGHT('00'||  MONTH((CURRENT_DATE - 1 MONTH) -1 MONTH),2) 
+		  
+		  order by SINIDED asc, SINFECC asc 
+		  
+		  
+		 <isNotNull property="limite">
+		 	fetch first 1 rows only
+		</isNotNull>
+		
+		
+		
+	</select>
+	
+
+	
+	<select id="obtenerDataSinacaff_lite" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+
+		
+		SINCAJO	CODIGO_CAJA_ORIGEN,
+		SINCAJD	CODIGO_CAJA_DESTINO,
+		SINNPAG	NUMERO_PAGARE,
+		SINIDEM	IDENT_ENTIDAD_PAG,
+		SINIDED	IDENT_DEUDOR,
+		SUBSTR(SINNOMD,1, 60) 	NOMBRE_DEUDOR,
+		SINIDEA	IDENT_AVAL,
+		SINSUJD	SUJETO_DESCUENTO,
+		SINTIPI	TIPO_IDENTIFICADOR,
+		SINTIPA	TIPO_AFILIADO,
+		SINIDEN	TIPO_DEUDA,
+		SINMCOB	MONTO_COBRAR,
+		SINMPAG	MONTO_PAGADO,
+		SINFECP	FECHA_PAGO,
+		SINESTA	ESTADO,
+		SINRLIQ	RENTA_LIQUIDA,
+		SINPORC	PORCENTAJE_CARGA_FINANC,
+		SINCFIN	CARGA_MAXIMA,
+		YEAR((CURRENT_DATE ) ) || RIGHT('00'||  MONTH((CURRENT_DATE) ),2 ) PERIODO,
+		SINFECC	FECHA_DE_COLOCACION,
+		
+		( select min(CMCODHOL)  from cmdta.cm36f1 where cmna = SUBSTR(SINIDEM , 1,LOCATE('-',SINIDEM )-1)  group by (CMCODHOL) ) CODIGO_HOLDING,
+		'N' EMPLANILLADO_SN,
+		SINCAJD	CCAF,
+		'1' TIPO_NOMINA,
+		'700' OFICINA_CREDITO,
+		SINNPAG NUMERO_CONTRATO
+		
+		 from SINADTA.SINAF06H sin
+		 where 
+		  sinperi = YEAR((CURRENT_DATE - 1 MONTH) -1 MONTH) || RIGHT('00'||  MONTH((CURRENT_DATE - 1 MONTH) -1 MONTH),2) 
+		 
+		 <isNotNull property="limite">
+		 	fetch first 1 rows only
+		</isNotNull>
+		
+		
+		 <isNull property="limite">
+		 	fetch first 100 rows only
+		</isNull>
+		
+		
+		  order by SINIDED asc, SINFECC asc 
+		
+	</select>
+	
+	<select id="obtenerIdMinimoCargado" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+			min(da.id) desde,
+			max(da.id) hasta,
+	        (select valor from NRPDTA.NRP40F1 where codigo = 'CANTIDAD_REGISTROS_A_PROCESAR') CANTIDAD_REGISTROS_A_PROCESAR,
+	        (select valor from NRPDTA.NRP40F1 where codigo = 'CUOTON_SAP') CUOTON_SAP
+		from NRPDTA.NRP10F1 da
+		where 
+			1=1
+			and periodo = #PERIODO#
+			and da.id > 0 
+			<isNotNull property="CODIGO">
+				and da.ORIGEN  = #CODIGO# 	
+			</isNotNull>
+			<isNotNull property="codigo">
+				and da.ORIGEN  = #codigo# 	
+			</isNotNull>
+			fetch first 100 rows only
+						
+	</select>	
+	<select id="obtenerDataMirrorSAP" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+
+  		select 
+				da.PERIODO,
+				da.TIPO_NOMINA,
+				da.OFICINA_PAGO,
+				da.NUMERO_CONTRATO,
+				da.FECHA_VCTO FECHA_VCTO_CUOTA,
+				da.NUMERO_CUOTA NRO_CUOTA,
+				da.CANTIDAD_CUOTAS,
+				coalesce(da.IMPORTE_CUOTA_MONEDA_TX,0) IMPORTE_CUOTA_MONEDA_TX,
+				coalesce(da.IMPORTE_CUOTA_MONEDA_LOCAL,0) MONTO_COBRAR,
+				coalesce(da.IMPORTE_CUOTA_MONEDA_LOCAL,0) IMPORTE_CUOTA_MONEDA_LOCAL,
+				coalesce(da.IMPORTE_GRAVAMEN_MONEDA_LOCAL,0) IMPORTE_GRAVE_MONEDA_LOCAL,
+				da.CODIGO_MONEDA_LOCAL,
+				da.MONEDA_TX CODIGO_MONEDA_TX,
+				da.COTIZACION_MONEDA_TX,
+				da.RUT_PAGADOR RUT_PAGADOR_COMPLETO,
+				da.RUT_EMPRESA RUT_EMPRESA_COMPLETO,	
+				da.BP_ANEXO_SAP  ID_BP_SAP,
+				da.NRO_INSCRIP NRO_INSCRIPCION,
+				da.CAJA_PREVIS CAJA_PREVISION,
+				da.GRUPO_PAGO,
+				da.NUM_BENEF NUMERO_BENEFICIARIO,
+				da.EMPNOMCODP,
+				da.SUCUR_CCLA SUCURSAL_CCLA,
+				da.PRODUCTO,
+				da.CCAF,
+				da.CONTREXTE NRO_CONTRATO_EXTERNO,
+				da.IDENTIFIC,
+				da.TIPOOPERACION,
+				da.PAGADOR,
+				da.N_MESES_MOROSO,
+				da.FECHA_DE_COLOCACION FECHA_COLOCACION,
+				'N' EMPLANILLADO_SN,
+				da.ORIGEN,
+               INTEGER(SUBSTR(NUMERO_CONTRATO,0,4)) OFICINA_CREDITO,
+                                
+				 N_MESES_MOROSO  NRO_MESES_MOROSOS, 
+				FECHA_DE_COLOCACION  FECHA_COLOCACION, 
+				DAA.CODHOL CODIGO_HOLDING,
+					ID ID_DATA_ARCHIVO,
+				(CURRENT_DATE + 1 MONTH) - (DAY(CURRENT DATE)) DAY  ULTIMO_DIA_PERIODO,
+				
+				(CURRENT_DATE + 2 MONTH) - (DAY(CURRENT DATE)) DAY  ULTIMO_DIA_SIGUIENTE_PERIODO,
+				(select MAX(SUBSTR(dp.SE5FBIM, 1,LOCATE(' ',dp.SE5FBIM)-1) ||'::'|| 
+                                        SUBSTR(dp.SE5FBIK, 1,LOCATE(' ',dp.SE5FBIK)-1) ||'::'|| 
+                                        dp.SE5FBIO||'::'|| 
+                                        dp.RETAIMPB) from AFDTA.AFP45F1 dp  where 
+                                        dp.RUTAFIL = SUBSTR(da.RUT_PAGADOR, 1,LOCATE('-',da.RUT_PAGADOR)-1)
+                                                and dp.PERICODI = YEAR((CURRENT_DATE - 1 MONTH) -1 MONTH) || RIGHT('00'||  MONTH((CURRENT_DATE - 1 MONTH) -2 MONTH),2) ) DATOS_AFP,
+                EMPNOMCODP  EMPNOMCODP,
+                '0'  RENTAS_MONTO_TOTAL_NOMINA, 
+				'0'  CODIGO_CAJA_ORIGEN, 
+				'0'  NUMERO_PAGARE, 
+				EMPNOMCODP ANEXO_NOMINA,
+				'0' MONTO_TOTAL_NOMINA,
+				'0' FOLIO_NOMINA,
+				0  TIPO_OPERACION, 
+				da.IDENTIFIC  LINEA_CREDITO, 
+				PAGADOR  TIPO_PAGADOR, 
+				daa.NOMEMP NOMBRE_EMPRESA,
+				FRENOVACION,
+				PENDEUDAMIENTO,
+				0 RENTAS,
+				FULVCTOCRE,
+				NUMCREORI,
+				NOMDEU NOMBRE_DEUDOR,
+				APEPATDEU APELLIDO_PATERNO,
+				APEMATDEU APELLIDO_MATERNO,
+                daa.DIRECCION,
+                daa.NDIRECCION,
+                daa.CDIRECCION,
+                daa.PDIRECCION,
+                daa.RDIRECCION,
+                daa.CELECTRONICO,
+                NUMCREORI,
+                CURRENT_DATE FGENERACION,
+	            CURRENT_TIME HGENERACION,
+	            'PROCESO_MANUAL' UGENERADOR
+				                      
+				
+			from NRPDTA.NRP10F1 da
+			left join nrpdta.nrp10f1a daa on da.periodo = daa.periodo 
+			     and cast( SUBSTR(da.RUT_EMPRESA, 1,LOCATE('-',da.RUT_EMPRESA)-1) as int ) = daa.rutemp
+			     and cast(BP_ANEXO_SAP as int) = cast (  daa.N_BP_ANEXO as int )
+			where
+							da.ORIGEN  = #CODIGO# 	
+                        
+		                <isNotNull property="ID_DESDE">
+							and da.ID &gt;= #ID_DESDE# 	
+                        </isNotNull>
+		                <isNotNull property="ID_HASTA">
+							and da.ID &lt; #ID_HASTA# 	
+                        </isNotNull>
+                        
+                        
+                         <isNotNull property="codigo">
+							and da.ORIGEN  = #codigo# 	
+                        </isNotNull>
+		                <isNotNull property="id_desde">
+							and da.ID &gt;= #id_desde# 	
+                        </isNotNull>
+		                <isNotNull property="id_hasta">
+							and da.ID &lt; #id_hasta# 	
+                        </isNotNull>   
+                        
+		             
+						
+						
+	</select>
+	
+	<select id="obtenerDataMirrorSINACAFF" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		
+
+               select 
+
+				da.PERIODO,
+				ID ID_DATA_ARCHIVO,
+				COALESCE(da.MONTO_COBRAR,0) MONTO_COBRAR,
+				
+				da.CODIGO_CAJA_ORIGEN,
+				da.ORIGEN,
+				da.CODIGO_CAJA_DESTINO,
+				da.NUMERO_PAGARE,
+				da.IDENT_ENTIDAD_PAG,
+				da.IDENT_DEUDOR,
+				da.SUJETO_DESCUENTO,
+				da.TIPO_IDENTIFICADOR,
+				da.TIPO_AFILIADO,
+				da.TIPO_DEUDA,
+				da.MONTO_PAGADO,
+				da.FECHA_PAGO,
+				da.ESTADO,
+				da.RENTA_LIQUIDA,
+				da.PORCENTAJE_CARGA_FINANC,
+				COALESCE(da.CARGA_MAXIMA,0) CARGA_MAXIMA,
+                                (select CMPA from CMDTA.CM02F1 ep where ep.cmna = SUBSTR(da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) ) NOMBRE_EMPRESA_PRIVADA, 
+				(select CMPA from BPAFDTA.CM02F1 ep where ep.cmna = SUBSTR(da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) ) NOMBRE_EMPRESA_PUBLICA,
+				CODIGO_HOLDING,
+				da.IDENT_DEUDOR RUT_PAGADOR_COMPLETO,
+				da.IDENT_ENTIDAD_PAG RUT_EMPRESA_COMPLETO,
+				coalesce((select sum(decimal(IMPORTE_CUOTA_MONEDA_LOCAL)) 
+						from NRPDTA.NRP15F1 
+						where 
+							origen != 'SINACAFF' 
+							and RUT_PAGADOR = SUBSTR(da.IDENT_DEUDOR, 1,LOCATE('-',da.IDENT_DEUDOR)-1) 
+							and RUT_EMPRESA = SUBSTR(da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) 
+							and da.PERIODO = PERIODO),0) SUMA_DEUDA_SAP,
+				'N' EMPLANILLADO_SN, 
+				da.FECHA_DE_COLOCACION FECHA_COLOCACION,
+				RENTA_LIQUIDA, 
+				CODIGO_CAJA_DESTINO,
+				'1' TIPO_NOMINA,
+				'700' OFICINA_CREDITO,
+				RIGHT('000000000'||ID, 9 ) NUMERO_CONTRATO,
+				NUMERO_PAGARE NRO_CONTRATO_EXTERNO,
+				'' NOMBRE_EMPRESA,
+				(CURRENT_DATE + 1 MONTH) - (DAY(CURRENT DATE)) DAY  ULTIMO_DIA_PERIODO,
+				( SELECT ANEXO_NOMINA from NRPDTA.NRP15F1 WHERE RUT_PAGADOR = da.rut_pagador and RUT_EMPRESA = SUBSTR ( da.rut_empresa , 1, LOCATE('-', da.rut_EMPRESA ) -1 ) ) ANEXO_NOMINA_SAP,
+				'CLP' CODIGO_MONEDA_LOCAL,
+				'' CODIGO_MONEDA_TX,
+				'CAF' PRODUCTO,
+				(select MAX(SUBSTR(dp.SE5FBIM, 1,LOCATE(' ',dp.SE5FBIM)-1) ||'::'|| 
+                                        SUBSTR(dp.SE5FBIK, 1,LOCATE(' ',dp.SE5FBIK)-1) ||'::'|| 
+                                        dp.SE5FBIO||'::'|| 
+                                        dp.RETAIMPB) from AFDTA.AFP45F1 dp  where 
+                                        dp.RUTAFIL = SUBSTR(da.IDENT_DEUDOR, 1,LOCATE('-',da.IDENT_DEUDOR)-1)
+                                                and dp.PERICODI = YEAR((CURRENT_DATE - 1 MONTH) -1 MONTH) || RIGHT('00'||  MONTH((CURRENT_DATE - 1 MONTH) -2 MONTH),2) ) DATOS_AFP,
+                
+                 coalesce( coalesce( (select MAX(OFICINA_PAGO) from NRPDTA.NRP15F1 
+                        where 
+                                rut_empresa = 
+                                        SUBSTR(
+                                                da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) )
+                         ,  (select   RIGHT( '000'||  MAX(CMBA) ,3 ) from AFDTA.AFP02F1 
+                                where cmna = SUBSTR(da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) )
+                                                  
+                          ),'1'                      ) OFICINA_PAGO,
+                 COALESCE(da.CARGA_MAXIMA,0),
+                 'C' LINEA_CREDITO,
+                 'TIT' TIPO_PAGADOR,
+                 TIPOOPERACION TIPO_OPERACION,
+				0 IMPORTE_CUOTA_MONEDA_TX,
+				0 IMPORTE_GRAVE_MONEDA_LOCAL,
+				0 NRO_CUOTA,
+				0 CANTIDAD_CUOTAS,
+				daa.NOMEMP NOMBRE_EMPRESA,
+				FRENOVACION,
+				PENDEUDAMIENTO,
+				RENTAS,
+				FULVCTOCRE,
+				NUMCREORI,
+				NOMDEU NOMBRE_DEUDOR,
+				NOMDEU NOMBRE_DEUDOR_AUX,
+				APEPATDEU APELLIDO_PATERNO,
+				APEMATDEU APELLIDO_MATERNO,
+                daa.DIRECCION,
+                daa.NDIRECCION,
+                daa.CDIRECCION,
+                daa.PDIRECCION,
+                daa.RDIRECCION,
+                daa.CELECTRONICO,
+                NUMCREORI,
+                CURRENT_DATE FGENERACION,
+	            CURRENT_TIME HGENERACION,
+	            'PROCESO_MANUAL' UGENERADOR
+                
+                from NRPDTA.NRP10F1 da
+                left join nrpdta.view_nrp10f1a_unique daa on da.periodo = daa.periodo 
+                and cast( SUBSTR(da.IDENT_ENTIDAD_PAG, 1,LOCATE('-',da.IDENT_ENTIDAD_PAG)-1) as int ) = daa.rutemp
+            
+            
+				where 	
+						da.ORIGEN  = #CODIGO# 	
+                        <isNotNull property="ID_DESDE">
+							and da.ID &gt;= #ID_DESDE# 	
+                        </isNotNull>
+		                <isNotNull property="ID_HASTA">
+							and da.ID &lt; #ID_HASTA# 	
+                        </isNotNull>
+                        
+                        
+                         <isNotNull property="codigo">
+							and da.ORIGEN  = #codigo# 	
+                        </isNotNull>
+		                <isNotNull property="id_desde">
+							and da.ID &gt;= #id_desde# 	
+                        </isNotNull>
+		                <isNotNull property="id_hasta">
+							and da.ID &lt; #id_hasta# 	
+                        </isNotNull>  
+						
+	</select>
+
+	<insert id="insertar_data_nomina" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		
+		insert into NRPDTA.NRP15F1
+(
+PERIODO 			,
+TIPO_NOMINA			,
+OFICINA_PAGO			,
+OFICINA_CREDITO			,
+NUMERO_CONTRATO			,
+FECHA_VCTO_CUOTA		,
+NRO_CUOTA			,
+CANTIDAD_CUOTAS			,
+IMPORTE_CUOTA_MONEDA_TX		,
+IMPORTE_CUOTA_MONEDA_LOCAL	,
+IMPORTE_GRAVE_MONEDA_LOCAL	,
+CODIGO_MONEDA_LOCAL		,
+CODIGO_MONEDA_TX		,
+COTIZACION_MONEDA_TX		,
+RUT_PAGADOR			,
+DV_PAGADOR			,
+RUT_EMPRESA			,
+DV_EMPRESA			,
+ID_BP_SAP			,
+NRO_INSCRIPCION			,
+CAJA_PREVISION			,
+GRUPO_PAGO			,
+NUMERO_BENEFICIARIO		,
+ANEXO_NOMINA			,
+SUCURSAL_CCLA			,
+PRODUCTO			,
+CCAF				,
+NRO_CONTRATO_EXTERNO		,
+TIPO_OPERACION			,
+LINEA_CREDITO			,
+TIPO_PAGADOR			,
+NRO_MESES_MOROSOS		,
+FECHA_COLOCACION		,
+NOMBRE_DEUDOR			,
+APELLIDO_PATERNO		,
+APELLIDO_MATERNO		,
+NOMBRE_EMPRESA			,
+EMPLANILLADO_SN			,
+RENTAS				,
+MONTO_TOTAL_NOMINA		,
+FOLIO_NOMINA			,
+CODIGO_CAJA_ORIGEN		,
+NUMERO_PAGARE			,
+CODIGO_HOLDING,
+CUOTON,			
+ORIGEN
+)
+
+values
+(
+#PERIODO# 			,
+#TIPO_NOMINA#			,
+#OFICINA_PAGO#			,
+#OFICINA_CREDITO#			,
+#NUMERO_CONTRATO#			,
+#FECHA_VCTO_CUOTA#		,
+#NRO_CUOTA#			,
+#CANTIDAD_CUOTAS#			,
+#IMPORTE_CUOTA_MONEDA_TX#		,
+#IMPORTE_CUOTA_MONEDA_LOCAL#	,
+#IMPORTE_GRAVE_MONEDA_LOCAL#	,
+#CODIGO_MONEDA_LOCAL#		,
+#CODIGO_MONEDA_TX#		,
+#COTIZACION_MONEDA_TX#		,
+#RUT_PAGADOR#			,
+#DV_PAGADOR#			,
+#RUT_EMPRESA#			,
+#DV_EMPRESA#			,
+#ID_BP_SAP#			,
+#NRO_INSCRIPCION#			,
+#CAJA_PREVISION#			,
+#GRUPO_PAGO#			,
+#NUMERO_BENEFICIARIO#		,
+#ANEXO_NOMINA#			,
+#SUCURSAL_CCLA#			,
+#PRODUCTO#			,
+#CCAF#				,
+#NRO_CONTRATO_EXTERNO#		,
+#TIPO_OPERACION#			,
+#LINEA_CREDITO#			,
+#TIPO_PAGADOR#			,
+#NRO_MESES_MOROSOS#		,
+#FECHA_COLOCACION#		,
+#NOMBRE_DEUDOR#			,
+#APELLIDO_PATERNO#		,
+#APELLIDO_MATERNO#		,
+#NOMBRE_EMPRESA#			,
+#EMPLANILLADO_SN#			,
+#RENTAS#				,
+#MONTO_TOTAL_NOMINA#		,
+#FOLIO_NOMINA#			,
+#CODIGO_CAJA_ORIGEN#		,
+#NUMERO_PAGARE#			,
+#CODIGO_HOLDING#	,
+#CUOTON#,
+#ORIGEN#		
+)
+	
+	</insert>
+	
+	
+	<delete id="deleteDataMirror" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP10F1
+		
+	</delete>
+	
+	<delete id="deleteDataNomina" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP15F1
+	</delete>
+	<delete id="deleteErrorCargaSinacaff" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP65F1
+		
+	</delete>
+	
+	
+	<delete id="deleteDataMagallanes" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP70F1
+		
+	</delete>
+	
+	<delete id="deleteDataBP" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP80F1
+		
+	</delete>
+	
+	<delete id="deleteDataPBS" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP85F1
+		
+	</delete>
+	
+	
+	
+
+
+	<select id="obtenerCantidadCuotones" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP15F1 where origen = #CODIGO# and PERIODO = #PERIODO# and CUOTON = 'X'
+	
+	</select>	
+	
+	<select id="obtenerCantidadRegistrosConsolidados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP15F1 where origen = #CODIGO# and PERIODO = #PERIODO# 
+	
+	</select>	
+	
+	<!-- 
+	<insert id="insertarMontoIncobrable" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		
+		insert into DATA_NOMINA_INCOBRABLE
+			(MONTO_DEUDA, MONTO_COBRADO,ID_DATA_ARCHIVO, PROCESO, LIMITE_COBRO, MONTO_NO_COBRADO, PERIODO)
+		VALUES
+			(#MONTO_DEUDA#, #MONTO_COBRADO#,#ID_DATA_ARCHIVO#, #PROCESO#, #LIMITE_COBRO#, #MONTO_NO_COBRADO#, #PERIODO#)
+				
+	
+	</insert>
+	 -->
+	 <insert id="insertarMontoIncobrable" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		
+		insert into NRPDTA.NRP65F1
+			(SINPERI,SINCAJO,SINNPAG,SINIDEM,SINIDED,SINNOMD,SINIDEN,SINMCOB,SINTERR,SINPORC,MONTO_COBRADO, ID_ARCHIVO, ORIGEN)
+		VALUES
+			(#PERIODO#, #CODIGO_CAJA_ORIGEN#,#NUMERO_PAGARE#, #IDENT_ENTIDAD_PAG#,#IDENT_DEUDOR#,#NOMBRE_DEUDOR#,#TIPO_COBRO#,#MONTO_COBRAR#,#TIPO_ERROR#,#PORCENTAJE_CARGA_FINANC#,#MONTO_COBRADO#,  #ID_ARCHIVO#, #ORIGEN#)
+				
+	
+	</insert>
+	 
+	<select id="obtenerResumenProceso" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		
+		
+
+
+	select * from ( 
+        SELECT 
+                'A'   Codigo ,                    
+                sum(decimal(a.importe_cuota_moneda_local)) MONTO_CARGADOS , 
+                count(*)  REGISTROS_CARGADOS 
+        FROM 
+                NRPDTA.NRP15F1 a 
+        EXCEPTION JOIN 
+                NRPDTA.NRP65F1 B   
+        on      A.id_data_archivo = id_archivo 
+        WHERE a.periodo = #PERIODO# and a.origen= #CODIGO# ) a 
+        inner join 
+        ( SELECT 
+                'A' Codigo , 
+                count(*) REGISTROS_CUOTONES , 
+                sum(IMPORTE_CUOTA_MONEDA_LOCAL) MONTO_CUOTONES 
+        FROM 
+                NRPDTA.NRP15F1 a 
+        WHERE   
+                a.periodo = #PERIODO# and a.origen= #CODIGO#
+                and CUOTON = 'X' ) b 
+        on      a.codigo = b.codigo      
+        inner join 
+        (SELECT 
+                'A' Codigo , 
+                count(*) REGISTROS_INICIALES , 
+                sum(dec(trim( IMPORTE_CUOTA_MONEDA_LOCAL))+ dec(trim(MONTO_COBRAR)) ) MONTO_INICIAL  
+        FROM 
+                NRPDTA.NRP10F1 a 
+        WHERE 
+                a.periodo = #PERIODO# and a.origen= #CODIGO# ) c 
+        on a.codigo =    C.codigo 
+        
+        Inner join 
+        
+        ( SELECT 
+                'A' Codigo , 
+                Sum( case when MONTO_COBRADO =0 then 1 else 0 end ) REGISTROS_NO_CARGADOS , 
+                Sum( case when   MONTO_COBRADO >0 then 1 else 0 end ) REGISTROS_PARCIALES ,  
+                sum(SINMCOB -  MONTO_COBRADO ) MONTO_NO_CARGADOS , 
+                sum(MONTO_COBRADO ) TOTAL_PARCIALES 
+         FROM         
+                NRPDTA.NRP65F1 a where a.SINPERI = #PERIODO# and a.ORIGEN = #CODIGO#) D 
+         on a.codigo = d.codigo                         
+
+
+
+
+		 
+	</select>
+	
+	 
+	<select id="obtenerDataNominasParaFolio" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+MAX(OFICINA_PAGO) OFICINA_PAGO,
+MAX(RUT_EMPRESA) RUT_EMPRESA,
+MAX(FECHA_VCTO_NOMINA) FECHA_VCTO_NOMINA,
+MAX( TIPO_NOMINA) TIPO_NOMINA, 
+MAX(CODIGO_NOMINA) CODIGO_NOMINA,
+SUM(IMPORTE_CUOTA_MONEDA_LOCAL) MONTO_TOTAL_NOMINA
+from NRPDTA.NRP15F1 
+where periodo = YEAR((CURRENT_DATE ) ) || RIGHT('00'||  MONTH((CURRENT_DATE) ),2 )
+group by OFICINA_PAGO,RUT_EMPRESA, FECHA_VCTO_NOMINA, TIPO_NOMINA, CODIGO_NOMINA
+
+
+	</select>
+	
+	
+	
+	
+	
+	
+	<update id="setearFolio" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		update NRPDTA.NRP15F1
+		set
+			FOLIO_NOMINA = #FOLIO_ASIGNADO#,
+			MONTO_TOTAL_NOMINA = #MONTO_TOTAL_NOMINA#
+		where
+			OFICINA_PAGO=#OFICINA_PAGO# AND
+			RUT_EMPRESA=#RUT_EMPRESA# AND
+			FECHA_VCTO_NOMINA=#FECHA_VCTO_NOMINA# AND 
+			TIPO_NOMINA=#TIPO_NOMINA# AND
+			CODIGO_NOMINA=#CODIGO_NOMINA#
+	
+	</update>
+	
+	
+		 
+	<select id="obtenerFormatos" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * 
+		from 
+			NRPDTA.NRP35F1
+		where 
+			rut_empresa = #codigo# 
+			or codigo_holding = #codigo# 
+		union
+		
+		select * 
+				from 
+					NRPDTA.NRP35F1
+				where 
+					rut_empresa is null
+					and codigo_holding is null			
+
+	</select>
+	
+	<select id="obtenerConfiguracionesNominas" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * 
+		from 
+			NRPDTA.NRP30F1
+		where 
+			rut_empresa = #codigo# 
+			or codigo_holding = #codigo# 
+			<isNotNull property="nombre_config">
+				and nombre_config = #nombre_config#
+			</isNotNull>
+		union
+		select * from NRPDTA.NRP30F1
+		where 
+							rut_empresa is null
+							and codigo_holding is null			
+
+		 
+			<isNotNull property="nombre_config">
+				and nombre_config = #nombre_config#
+			</isNotNull>
+
+		union
+		select * from NRPDTA.NRP30F1
+		where 
+			nombre_config = #nombre_config#
+			
+		
+
+	</select>
+	
+	<select id="obtenerConfiguracionesNominasEspeciales" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * 
+		from 
+			NRPDTA.NRP30F1
+			
+		
+
+	</select>
+	
+			
+	<select id="obtenerConfiguracionesEnvio" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP25F1
+		where 
+			rut_empresa = #codigo# 
+			or codigo_holding = #codigo# 
+			
+
+	</select>
+	
+	
+		
+	
+	<delete id="eliminarFormato" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP35F1 where 
+			nombre_nomina = #nombre_nomina#
+		
+	</delete>
+	
+	
+	<delete id="eliminarConfiguracionesAsociadasAlFormato" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP30F1 where 
+			formato_nomina = #nombre_nomina#
+		
+	</delete>
+	
+	
+	<delete id="eliminarConfiguracion" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP30F1 where
+			nombre_config = #nombre_config#
+			and 
+			( 
+			rut_empresa = #codigo_entidad# 
+			or codigo_holding = #codigo_entidad#
+			 )
+		
+	</delete>
+	
+	
+	<delete id="eliminarEnvio" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		delete from NRPDTA.NRP25F1 where 
+			rut_empresa = #codigo# 
+			or codigo_holding = #codigo# 
+		
+	</delete>
+	
+	
+	<insert id="agregarFormato" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		insert into NRPDTA.NRP35F1 
+		(rut_empresa,codigo_holding,nombre_nomina,descripcion)
+		values
+		(#rut_empresa#,#codigo_holding#,#nombre_nomina#,#descripcion#) 
+		
+	</insert>
+	
+	
+	<insert id="agregarConfiguracion" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		
+		insert into NRPDTA.NRP30F1 
+		(rut_empresa,codigo_holding,tipo,data_adicional,formato_salida,nombre_salida,formato_nomina,nombre_config, par_generacion)
+		values
+		(#rut_empresa#,#codigo_holding#,#tipo#,#data_adicional#,#formato_salida#,#nombre_salida#,#formato_nomina#,#nombre_config#, #par_generacion#) 
+		
+	</insert>
+	
+	
+	<insert id="agregarEnvio" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		insert into NRPDTA.NRP25F1
+		(rut_empresa,codigo_holding,tipo,data_adicional)
+		values
+		(#rut_empresa#,#codigo_holding#,#tipo#,#data_adicional#) 
+		
+	</insert>
+	
+	
+	<select id="obtenerAgrupacion" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		<![CDATA[
+		
+		select 
+			$agrupacion$ 
+		from 
+			NRPDTA.NRP15F1
+		where
+			1 = 1
+			$filtro$
+		group by 
+			$agrupacion$
+		
+		]]>
+	
+	</select>
+	
+	<select id="obtenerInformacionParaNombre" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	<![CDATA[
+		select PERIODO,
+			 RIGHT('00'|| MONTH((date(concat(SUBSTR(a.FECHA_VCTO_NOMINA,1,4),concat('-', concat (SUBSTR(a.FECHA_VCTO_NOMINA,5,2) ,concat('-',SUBSTR(a.FECHA_VCTO_NOMINA,7,2)))))))),2 ) PERIODO_VCTO_NOMINA,
+			 RIGHT('00'|| RUT_EMPRESA , 9 ) RUT_EMPRESA,
+         RIGHT('00'|| OFICINA_PAGO , 3 ) OFICINA_PAGO,
+         RIGHT('00'|| CODIGO_NOMINA , 3 ) CODIGO_NOMINA,
+         concat(SUBSTR(a.FECHA_VCTO_NOMINA,5,2),SUBSTR(a.FECHA_VCTO_NOMINA,3,2)) FEC_VTO_MM_YY
+		from 
+			NRPDTA.NRP15F1 a
+		where
+			1 = 1
+			$filtro$
+		
+		fetch first 1 rows only
+	]]>
+	</select>
+	
+	<select id="obtenerInformacionParaNombrePef" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	<![CDATA[
+		 select 
+			( substr(nom.FECHA_VCTO_NOMINA,5,2) || substr(nom.FECHA_VCTO_NOMINA,3,2) ) PERI_CORTO, nom.FECHA_VCTO_NOMINA, pef.*, nom.* 
+		from 
+			NRPDTA.NRP15F1 nom, PREXP.PEF1510 pef
+		where
+			1 = 1
+			$filtro$
+		
+		fetch first 1 rows only
+	]]>
+	</select>
+	
+	
+	<select id="obtenerInformacionNominaAGenerar" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+			distinct(rut_empresa) rut_empresa
+		from 
+			NRPDTA.NRP15F1
+	
+	</select>
+	
+	
+		 
+	<delete id="eliminarTablaProcesos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		drop table NRPDTA.RESULTADOS_$PERIODO$
+
+	</delete>
+		
+		 
+	<insert id="crearTablaProcesos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	
+	create table NRPDTA.RESULTADOS_$PERIODO$
+		AS
+		(
+		select 
+			MAX(RUT_EMPRESA)  RUT_EMPRESA,
+			MAX(CODIGO_HOLDING)  CODIGO_HOLDING,
+			MAX(IMPORTE_CUOTA_MONEDA_LOCAL)  MONTO_TOTAL_NOMINA,
+			MAX(FOLIO_NOMINA)  FOLIO_NOMINA,
+            -1 ESTADO,
+            -1 ESTADO_ENVIO,
+            '                                                                                                                     ' RUTA_ARCHIVO,
+            min(TIPO_NOMINA) TIPO_NOMINA
+            
+			from NRPDTA.NRP15F1
+			where periodo = $PERIODO$ and 
+				(
+						'false' = ( select VALOR from nrpdta.nrp40f1 where codigo ='EJECUCION_ACOTADA' ) 
+						OR (
+								'true' = ( select VALOR from nrpdta.nrp40f1 where codigo ='EJECUCION_ACOTADA' )
+								and (
+										rut_empresa in ( select t99.rut_empresa from nrpdta.nrp99f1 t99 where t99.rut_empresa = rut_empresa)
+										OR 
+										codigo_holding in ( select t99.codigo_holding from nrpdta.nrp99f1 t99 where t99.codigo_holding = codigo_holding)
+								)
+						)
+				)
+				
+				group by FOLIO_NOMINA	)
+				with data
+			
+	</insert>
+	
+	<insert id="crearJournalProcesos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	STRJRNPF FILE(NRPDTA.RESULTADOS_$PERIODO$) JRN(NRPDTA.QSQJRN) ;
+
+	</insert>
+	
+
+
+		 
+	<update id="inicializarEstadosEnvio" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	
+	
+	update NRPDTA.RESULTADOS_$PERIODO$
+	set estado_envio = -1
+
+	</update>
+	
+
+			 
+	<delete id="guardarResultadoGeneracion" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		update NRPDTA.RESULTADOS_$PERIODO$
+		set
+			ESTADO = #ESTADO#,
+			RUTA_ARCHIVO = #RUTA_ARCHIVO#
+		where
+			FOLIO_NOMINA = #FOLIO_NOMINA# 
+			
+
+	</delete>
+	
+	
+	<select id="obtenerHoldingPendientes" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+			DISTINCT CODIGO_HOLDING
+		from 
+			NRPDTA.RESULTADOS_$PERIODO$
+		where 
+			codigo_holding != '-1' 
+			and codigo_holding != '0'
+			<isNull property="envio">
+				and estado = '-1'
+			</isNull>
+			<isNotNull property="envio">
+				and estado_envio = '-1'
+			</isNotNull>
+		order by 
+			CODIGO_HOLDING asc
+		fetch first 1 rows only
+	</select>
+	
+	<select id="obtenerFormatosPorHolding" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 1 
+		from 
+			NRPDTA.NRP35F1
+		where 
+			codigo_holding = #codigo_holding# 
+		
+	</select>
+	
+	
+	<select id="obtenerEmpresasPorHolding" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+			distinct RUT_EMPRESA, TIPO_NOMINA
+		from 
+			NRPDTA.RESULTADOS_$PERIODO$
+		where 
+			codigo_holding = #codigo_holding#  
+
+		
+	</select>
+	
+	
+	<select id="obtenerEmpresasPendientes" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+			DISTINCT RUT_EMPRESA, TIPO_NOMINA
+		from 
+			NRPDTA.RESULTADOS_$PERIODO$
+		where 
+			1 = 1
+			<isNull property="envio">
+				and estado = '-1'
+			</isNull>
+			<isNotNull property="envio">
+				and estado_envio = '-1'
+			</isNotNull>
+	</select>
+	
+	<update id="marcarHoldingComoTomado" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		update
+			NRPDTA.RESULTADOS_$PERIODO$
+		set
+			<isNull property="envio">
+				estado = 0
+			</isNull>
+			<isNotNull property="envio">
+				estado_envio = 0
+			</isNotNull>
+		where 
+			codigo_holding = #codigo_holding#  
+	</update>		
+	
+	<update id="marcarEmpresaComoTomada" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		update
+			NRPDTA.RESULTADOS_$PERIODO$
+		set
+			<isNull property="envio">
+				estado = 0
+			</isNull>
+			<isNotNull property="envio">
+				estado_envio = 0
+			</isNotNull>
+		where 
+			rut_empresa = #rut_empresa#  
+	</update>			
+	
+	
+	<insert id="registrarEnvioCarta" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	
+		insert into 
+			NRPDTA.NRP20F1 (CODIGO_ENTIDAD, PERIODO, ESTADO)
+		values
+			(#CODIGO_ENTIDAD#, #PERIODO#, #ESTADO#)
+
+	</insert>
+
+	<select id="buscarEntidades" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		<isEqual property="tipo_entidad" compareValue="empresa_publica">
+			select TRIM(CMPA) nombre_entidad, TRIM(CMNA) codigo_entidad from BPAFDTA.CM02F1 ep where UPPER(CMPA)  like  UPPER($like$)
+			
+		</isEqual>
+		<isEqual property="tipo_entidad" compareValue="empresa_privada">
+			select TRIM(CMPA) nombre_entidad, TRIM(CMNA) codigo_entidad from CMDTA.CM02F1 ep where UPPER(CMPA)  like UPPER($like$)
+			
+		</isEqual>
+		
+		<isEqual property="tipo_entidad" compareValue="holding">
+			select TRIM(CMHOLNOM) NOMBRE_ENTIDAD, TRIM(CMCODHOL) CODIGO_ENTIDAD  from cmdta.cm35f1 where UPPER(CMHOLNOM) like UPPER($like$) 
+		</isEqual>
+		fetch first 10 rows only
+	</select>
+	
+	
+	<select id="buscarEmpresasAsociadas" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select emp.CMNA codigo_entidad, emp.CMPA nombre_entidad from CMDTA.CM02F1 emp,
+		(select distinct CMNA from cmdta.cm36f1  where CMCODHOL = #codigo_entidad#) hol
+		where hol.CMNA = emp.CMNA
+		union
+		select emp.CMNA codigo_entidad, emp.CMPA nombre_entidad from BPAFDTA.CM02F1 emp,
+		(select distinct CMNA from cmdta.cm36f1  where CMCODHOL = #codigo_entidad#) hol
+		where hol.CMNA = emp.CMNA
+	</select>
+		
+		
+	<select id="validarNombreNomina" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="java.lang.Boolean">
+		
+		select 1 from NRPDTA.NRP30F1 where nombre_config = #nombre#
+		
+	</select>
+	
+	
+	<select id="validarNombreFormato" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="java.lang.Boolean">
+		
+		select 1 from NRPDTA.NRP35F1 where nombre_nomina = #nombre#
+		
+	</select>
+		
+		
+	<select id="validarSiEsPensionado" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="java.lang.Boolean">
+		
+		select 1 from CRDTA.CSF5700 where emprut = #codigo_entidad# fetch first 1 rows only
+		
+	</select>
+		
+		
+	<select id="validarHoldingConNominasEspeciales" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="java.lang.String">
+		
+		
+			select CMCODHOL from cmdta.cm36f1 hol,
+		NRPDTA.NRP30F1 config 
+		where hol.CMNA = #codigo_entidad#
+		and hol.CMCODHOL = config.codigo_holding
+		 fetch first 1 rows only	
+		
+	</select>
+			
+	<insert id="insertarRegistroEjemplo" parameterClass="java.lang.String">
+		$insert$
+	</insert>
+		
+	<select id="autenticarUsuario" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select * from WF_NOMINAS.USUARIO where id_usuario = #id_usuario# and password = #password#
+		
+	</select>
+	
+	
+	<select id="validarToken" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select * from NRPDTA.NRP60F1 where token = #token#
+		
+	</select>
+	
+	<delete id="eliminarToken" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		
+		delete from NRPDTA.NRP60F1 where id_usuario = #id_usuario#
+	
+	</delete>
+	
+	<insert id="generarToken" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		
+		insert into NRPDTA.NRP60F1 values (#id_usuario#,#token#,current_timestamp)
+	
+	</insert>
+		
+	<update id="refrescarToken" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		update NRPDTA.NRP60F1
+		set
+			fecha = current_timestamp
+		where 
+			token = #token# 
+	
+	</update>
+		
+	<update id="resetearPassword" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		update USUARIO
+		set
+			password = #password#
+		where 
+		 id_usuario = #id_usuario#  
+	
+	</update>	
+		
+	<select id="formatosDisponibles" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select nombre_nomina texto, nombre_nomina valor from NRPDTA.NRP35F1 order by nombre_nomina asc
+		
+	</select>	
+	
+	
+	<select id="obtenerMinimoIdArchivo" resultClass="java.math.BigDecimal">
+	
+		select min(id_data_archivo) - 1 id_archivo from NRPDTA.NRP15F1
+	
+	</select>
+	
+	<select id="obtenerDataParaComprobantes" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP15F1
+		
+		where 
+			id_data_archivo &gt; #id_data_archivo#
+	
+		order by id_data_archivo asc
+		
+		fetch first 1000 rows only
+	
+	</select>
+	
+	<delete id="eliminarComprobantesGenerados" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		delete  from TEDTA.TE07F1 where SAJKM94 = #codigo_proceso#
+	</delete>
+	
+	<delete id="eliminarDetalleComprobantesGenerados" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		delete  from TEDTA.TE07F2 where SAJKM94 = #codigo_proceso#
+	</delete>
+	
+	
+	<select id="obtenerDataEnvioNomina" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	
+	
+		select 
+        max(rut_empresa) rut_empresa,
+        max(nombre_empresa) nombre_cliente,
+        max(fecha_vcto_nomina) fecha_vencimiento, 
+        max(monto_total_nomina) monto_total_nomina,
+        max(substr(periodo,0,5)) year_proceso,
+        max(substr(periodo,5,2)) mes_proceso,
+        count(1) total_registros ,
+        max(tipo_nomina) tipo_nomina
+		
+		from nrpdta.nrp15f1 c where 
+			1 = 1
+			<isNotEmpty property="rut_empresa">
+				AND RUT_EMPRESA = #rut_empresa#
+			</isNotEmpty>
+		 
+		 	<isNotEmpty property="codigo_holding">
+				AND CODIGO_HOLDING = #codigo_holding#
+			</isNotEmpty>
+		
+		<isNotEmpty property="tipo_nomina">
+			and tipo_nomina = #tipo_nomina#
+		</isNotEmpty>
+		group by rut_empresa
+		fetch first 1 rows only 
+		
+	</select>
+	
+	
+	<select id="obtenerPagadoresAval" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+			select * from nrpdta.nrp10f1 where pagador = 'AVA'
+	</select>
+	
+	<update id="actualizarAval" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		update nrpdta.nrp15f1 set tipo_pagador = 'AVA' where RUT_PAGADOR = #RUT#
+	</update>
+	
+	<insert id="limpiarDataMagallanes" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		delete from nrpdta.nrp70f1
+		
+	</insert>
+	
+	<insert id="agregarRegistroMagallanes">
+	
+		insert into nrpdta.nrp70f1
+		(RUTDEU, FICHA, PERIODO)
+		VALUES (#RUT#,#FICHA#,#PERIODO#)
+		
+	</insert>
+	
+	<select id="validarDataMagallanesCargada" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		
+ 		select count(1) CONTADOR from NRPDTA.NRP70F1  a where periodo = YEAR((CURRENT_DATE - 1 MONTH) ) || RIGHT('00'||  MONTH((CURRENT_DATE - 1 MONTH) ),2 ) 
+ 
+		
+	</select>
+		
+	
+	<select id="obtenerNombreEntidadPagadora" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		
+ 		SELECT * FROM prexp.PEF1010 WHERE EMPRUT = #RUT_EMPRESA#
+		
+	</select>
+			
+	<select id="obtenerMinimoMaximoData" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		select min(id_data_archivo) minimo, max(id_data_archivo) maximo from nrpdta.nrp15f1
+	</select>
+		
+		
+		
+	<select id="obtenerInformacionCargaSAP" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		select a.COMANDO, b.ARCHIVO from 
+		( select 'a' codigo, VALOR COMANDO from nrpdta.nrp40f1 where codigo = 'ENVIO_SAP_COMANDO' ) a ,
+		( select 'a' codigo, VALOR ARCHIVO from nrpdta.nrp40f1 where codigo = 'ENVIO_SAP_ARCHIVO' ) b
+			
+	</select>
+	
+
+	<select id="getDataSession" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	
+		select * from NRPDTA.NRP60f1 where token = #token#
+	
+	</select>
+
+
+	<select id="obtenerInfoAlertaEstado" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP45F1 where cambio_estado = 1 and estado = #estado# and nuevo_estado = #nuevo_estado#
+	
+	</select>
+	
+	
+	<select id="obtenerInfoAlertaError" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP45F1 where error_proceso = 1 and codigo_error = #codigo_error#
+	
+	</select>
+
+	<select id="obtenerMailsRelacionadosAlerta" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP50F1 where id_alerta = #id_alerta#
+	
+	</select>
+
+
+	<select id="obtenerProcesosCarga" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP55F1
+		where
+		1=1
+		<isNotNull property="estado">
+			and estado = #estado#
+		</isNotNull>
+		
+		<isNotNull property="codigo">
+			and codigo = #codigo#
+		</isNotNull>
+
+		order by orden_ejecucion asc
+	</select>
+
+	<select id="obtenerProcesosNoInvalidantes" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select * from NRPDTA.NRP55F1
+		where
+		INVALIDANTE = 0
+		order by orden_ejecucion asc
+	</select>
+
+	<select id="validarCodigoEntidadHolding" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 1 resultado from CMDTA.CM36f1 where CMCODHOL = #codigo_entidad# fetch first 1 rows only
+		
+		
+	</select>
+	
+	<select id="validarCodigoEntidadEmpresaPublica" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 1 resultado from CMDTA.CM02f1 where cmna = #codigo_entidad# fetch first 1 rows only
+		
+		
+	</select>
+	
+	<select id="validarCodigoEntidadEmpresaPrivada" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 1 resultado from BPAFDTA.CM02F1 where cmna = #codigo_entidad# fetch first 1 rows only
+		
+	</select>
+	
+	
+	<select id="validarCodigoEntidadPagadora" resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		
+ 		SELECT 1 resultado  FROM prexp.PEF1010 WHERE EMPRUT = #codigo_entidad#
+		
+	</select>
+
+	
+	<insert id="guardarDataHistorica" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		
+		
+		insert into NRPDTA.NRP15HF1 select * from nrpdta.nrp15f1
+		
+	</insert>
+	
+	<update id="actualizacionDataPrevisional1" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+				
+		
+		update nrpdta.nrp15f1 nom
+			set (actualiza , grupo_pago, caja_prevision) =
+			(
+			      select max(1), max(coalesce(cod_gp, nom.grupo_pago)), max(coalesce(inst, nom.caja_prevision)) from
+			        nrpdta.nrp8085V1 bp
+			        where 
+					nom.rut_pagador = bp.rut
+					and nom.dv_pagador = bp.dv_rut
+					and RIGHT('00000000000000000000'||substr(nro_inscripcion,1,18), 20 ) = RIGHT('00000000000000000000'|| bp.nro_ins, 20 )
+			)
+			where 
+			     rut_empresa = 61533000
+			     and actualiza = 0
+			     
+			     and 1 = ( select distinct 1 from nrpdta.nrp8085V1 bp1 where   nom.rut_pagador = bp1.rut
+					and nom.dv_pagador = bp1.dv_rut
+					and RIGHT('00000000000000000000'||substr(nro_inscripcion,1,18), 20 ) = RIGHT('00000000000000000000'|| bp1.nro_ins, 20 ) )
+			     
+			     
+	</update>
+	
+	
+	<update id="actualizacionDataPrevisional2" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+			
+		
+		update nrpdta.nrp15f1 nom
+			set (actualiza , grupo_pago, caja_prevision) =
+			(
+			      select max(1), max(coalesce(cod_gp, nom.grupo_pago)), max(coalesce(inst, nom.caja_prevision)) from
+			        nrpdta.nrp8085V1 bp
+			        where 
+					nom.rut_pagador = bp.rut
+					and RIGHT('00000000000000000000'||substr(nro_inscripcion,1,18), 20 ) = RIGHT('00000000000000000000'|| bp.nro_ins, 20 )
+			)
+			where 
+			     rut_empresa = 61533000
+			     and  actualiza = 0 
+			     
+			     and 1 = ( select distinct 1 from nrpdta.nrp8085V1 bp1 where   
+			     	nom.rut_pagador = bp1.rut
+					and RIGHT('00000000000000000000'||substr(nro_inscripcion,1,18), 20 ) = RIGHT('00000000000000000000'|| bp1.nro_ins, 20 ) )
+			     
+			     
+		     
+	</update>
+	
+	
+	<update id="actualizacionDataPrevisional3" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		
+		update nrpdta.nrp15f1 nom
+			set (actualiza , grupo_pago, caja_prevision) =
+			(
+			      select max(1), max(coalesce(cod_gp, nom.grupo_pago)), max(coalesce(inst, nom.caja_prevision)) from
+			        nrpdta.nrp8085V1 bp
+			        where 
+					nom.rut_pagador = bp.rut
+			)
+			where 
+			     rut_empresa = 61533000
+			     and actualiza = 0 
+			     
+			     and 1 = ( select distinct 1 from nrpdta.nrp8085V1 bp1 where   nom.rut_pagador = bp1.rut
+					and nom.dv_pagador = bp1.dv_rut )
+	
+	</update>
+	
+	
+	
+	<select id="obtenerRegistrosTablaTMPAnexos"  resultClass="cl.liv.comun.utiles.MiHashMap" parameterClass="cl.liv.comun.utiles.MiHashMap">
+			select 
+					distinct
+			        CMBA as OFICINA, 
+			        CM13A as SUCURSAL, 
+			        CM1WA as ANEXO_NOMINA ,
+			        CMNA,
+			        SE5FAJC 
+			from AFDTA.AF03U110 a, nrpdta.nrp10f1 b
+			where
+			b.ID &gt;= $ID_DESDE$ 	
+            and b.ID &lt; $ID_HASTA$ 
+			and a.cmna = SUBSTR(b.IDENT_ENTIDAD_PAG, 1,LOCATE('-',b.IDENT_ENTIDAD_PAG)-1)
+			and a.se5fajc = SUBSTR(b.IDENT_DEUDOR, 1,LOCATE('-',b.IDENT_DEUDOR)-1)		
+		union
+			select 
+					distinct
+			        CMBA as OFICINA, 
+			        CM13A as SUCURSAL, 
+			        CM1WA as ANEXO_NOMINA ,
+			        CMNA,
+			        SE5FAJC 
+			from BPAFDTA.AF03U110 a, nrpdta.nrp10f1 b
+			where
+			b.ID &gt;= $ID_DESDE$ 	
+            and b.ID &lt; $ID_HASTA$ 
+			and a.cmna = SUBSTR(b.IDENT_ENTIDAD_PAG, 1,LOCATE('-',b.IDENT_ENTIDAD_PAG)-1)
+			and a.se5fajc = SUBSTR(b.IDENT_DEUDOR, 1,LOCATE('-',b.IDENT_DEUDOR)-1)
+			
+			with UR
+	</select>
+	
+	
+	
+	
+	<insert id="insert_cmd" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		insert into NRPDTA.CMD_$PERIODO$
+			(entidad, nomina, comando, estado, largo_archivo)
+		values
+			(#entidad#, #nomina#, #comando#, #estado#, #largo_archivo#)
+		
+	</insert>
+	
+	<insert id="insert_files" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		insert into NRPDTA.FILES_$PERIODO$ 
+			(entidad, nomina, comando, largo_archivo, ruta_archivo, tiempo_generacion, rut_entidad, oficina, codigo_nomina, cantidad_registros, monto_nomina, tipo_nomina)
+		VALUES
+			(#entidad#,#nomina#,#comando#,#largo_archivo#,#ruta_archivo#,#tiempo_generacion#,#rut_entidad#,#oficina#,#codigo_nomina#, #cantidad_registros#,#monto_nomina#, #tipo_nomina#)
+	</insert>
+	
+	<delete id="eliminarComandoEntidadConInconsistencia" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		delete 
+		from 
+			NRPDTA.CMD_$PERIODO$
+		where 
+			entidad = #entidad#
+	</delete>
+	
+	
+	<update id="update_cmd" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		update NRPDTA.CMD_$PERIODO$
+		set
+			estado = #estado#,
+			largo_archivo = #largo_archivo#,
+			fecha_generacion = current_timestamp,
+			ruta_archivo = #ruta_archivo#,
+			tiempo_generacion = #tiempo_generacion#
+		where
+			entidad = #entidad#
+			and nomina = #nomina#
+			
+	</update>
+	
+	<insert id="crearTablaComandos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		create table NRPDTA.CMD_$PERIODO$
+		(
+			entidad varchar(12), 
+			nomina varchar(50), 
+			comando varchar(256), 
+			estado int default 0, 
+			largo_archivo int default 0,
+			fecha_generacion timestamp,
+			ruta_archivo varchar(256),
+			tiempo_generacion int default 0
+		)
+	</insert>
+	
+		
+	<insert id="crearTablaFiles" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		create table nrpdta.files_$PERIODO$ (
+			entidad varchar(12),
+			nomina  varchar(64),
+			comando varchar(128),
+			largo_archivo int,
+			fecha_feneracion timestamp default current_timestamp,
+			ruta_archivo varchar(128),
+			tiempo_generacion int,
+			rut_entidad varchar(12),
+			oficina varchar(5),
+			codigo_nomina varchar(5),
+			cantidad_registros numeric(12,0),
+			monto_nomina  numeric(12,0),
+			tipo_nomina int default 0,
+			PRIMARY KEY (ruta_archivo)
+			
+		)
+	
+	</insert>
+	
+	
+	<insert id="crearJournalComandos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		STRJRNPF FILE(NRPDTA.CMD_$PERIODO$) JRN(NRPDTA.QSQJRN) ;
+	</insert>
+	
+	<insert id="eliminarTablaComandos" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		drop table NRPDTA.CMD_$PERIODO$
+
+	</insert>
+	
+	<insert id="eliminarTablaFiles" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		drop table NRPDTA.FILES_$PERIODO$
+
+	</insert>
+	
+	<insert id="eliminarRegistroTablaFiles" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		delete from NRPDTA.FILES_$PERIODO$ where entidad = #entidad#
+
+	</insert>
+	
+	
+	<select id="obtenerHoldingsNoRegistrados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select 
+		        distinct ( d.codigo_holding ) entidad
+		from 
+		        nrpdta.nrp15f1 d,
+		        nrpdta.nrp30f1 cfg
+		where 	
+				d.codigo_holding is not null
+		      	and d.codigo_holding = cfg.codigo_holding
+				and cast(d.codigo_holding as varchar(12) ) not in ( select cast( entidad as varchar(12) ) from NRPDTA.CMD_$PERIODO$ )
+	</select>
+	
+	<select id="obtenerEmpresasHoldingsNoRegistradas" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+		        distinct ( d.rut_empresa ) entidad
+		from 
+		        nrpdta.nrp15f1 d
+		where 
+				d.codigo_holding is not null
+				and d.codigo_holding not in ( select codigo_holding from nrpdta.nrp30f1 )
+				and cast(d.codigo_holding as varchar(12) ) not in ( select cast( entidad as varchar(12) ) from NRPDTA.CMD_$PERIODO$ )
+	
+	</select>
+	
+	<select id="obtenerEmpresasNoRegistradas" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+	
+		select 
+				distinct ( rut_empresa ) entidad 
+		from 
+				nrpdta.nrp15f1
+		where 
+				codigo_holding is null
+				and cast(rut_empresa as varchar(12) ) not in ( select cast( entidad as varchar(12) ) from NRPDTA.CMD_$PERIODO$  )
+	
+	</select>
+	
+	<select id="obtenerDatosNomina"  parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select * from NRPDTA.FILES_$PERIODO$ 
+		where 1 = 1 
+			<isNotNull property="rut_empresa">
+				and entidad = #rut_empresa#
+			</isNotNull>
+			<isNotNull property="codigo_holding">
+				and entidad = #codigo_holding#
+			</isNotNull>
+		 	and largo_archivo > 0
+	</select>
+	
+	<select id="validarEstadoFinalGeneracion" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select 1 resultado from nrpdta.files_$PERIODO$ having count(1) > ( select count(1)*0.8 from nrpdta.files_$PERIODO_ANTERIOR$ )
+	</select>
+	
+	<delete id="deleteDataSAPAnexo" parameterClass="java.lang.String" >
+	
+		delete from nrpdta.nrp10f1a where periodo = #value#
+		
+	</delete>
+	
+	
+	<delete id="deleteDataSAPAnexoAll" parameterClass="java.lang.String" >
+	
+		delete from nrpdta.nrp10f1a
+		
+	</delete>
+	
+	
+	<insert id="insertFichaHuachipato" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+	
+		insert into nrpdta.nrp95f1
+			(EMPRUT,EMPRUTDV,AFIRUT,AFIRUTDV,FICHA,ROL)
+		values
+			(#EMPRUT#,#EMPRUTDV#,#AFIRUT#,#AFIRUTDV#,#FICHA#,#ROL#)
+		
+	</insert>
+	
+	<select id="getFichasHuachipato" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select * from nrpdta.nrp95f1 
+		where 1 = 1
+		<isNotEmpty property="CAMPO">
+			AND $CAMPO$ = #DATA_TO_SEARCH#
+		</isNotEmpty>
+		
+		fetch first 100 rows only
+	</select>
+	
+	<update id="updateFichaHuachipato" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		update nrpdta.nrp95f1 
+		set
+			FICHA = #FICHA#,
+			ROL = #ROL#
+		where
+			EMPRUT = #EMPRUT#
+			and AFIRUT = #AFIRUT#
+			
+	</update>
+	
+	<delete id="deteleFichaHuachipato" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		DELETE FROM  nrpdta.nrp95f1 
+
+		where
+			EMPRUT = #EMPRUT#
+			and AFIRUT = #AFIRUT#
+			
+	</delete>
+
+	<update id="update_holding_anexos" >
+	<![CDATA[
+		
+		update nrpdta.nrp10f1a a      
+
+		 set a.CODHOL =       
+		
+		 (SELECT  max(B.CMCODHOL)     
+		
+		 FROM  cmdta.cm36f1 b         
+		
+		 where a.rutemp = b.cmna     ) 
+		
+		
+		 where  exists                
+		
+		 (SELECT  1                   
+		
+		 FROM  cmdta.cm36f1 b         
+		
+		 where a.rutemp = b.cmna      
+		
+		 )  
+
+		
+		]]>
+		
+				
+		 
+	
+	</update>
+	
+</sqlMap> 

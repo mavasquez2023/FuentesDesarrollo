@@ -1,0 +1,166 @@
+<%@ include file="../../comun/headerJsp.jsp"%>
+<html>
+<head>
+<%@ include file="../../comun/header.jsp"%>
+<link rel="stylesheet" href="../../css/finiquito.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>Certificado Saldo Capital por Finiquito</title>
+</head>
+<body>
+	<div class="bloque-explorer">
+		<div id="detalleFiniquitoCont">
+			<p class="titulo texto-centrado">Certificado Saldo deuda Capital s&oacute;lo para Finiquito</p>
+			
+			<div class="field">
+				<label>Afiliado:</label>
+				<label>${certificadoFiniquito.rut}</label>
+				<label>${certificadoFiniquito.nombre}</label>
+			</div>
+			
+			<div class="field">
+				<label>Empresa:</label>
+				<label>${certificadoFiniquito.rutEmpresa}</label>
+				<label>${certificadoFiniquito.nombreEmpresa}</label>
+			</div>
+			
+			<div class="field">
+				<label>Fecha finiquito:</label>
+				<label>${certificadoFiniquito.fechaFiniquito}</label>
+			</div>
+			
+			<div class="field">
+				<label>Fecha solicitud:</label>
+				<label>${certificadoFiniquito.fechaSolicitud}</label>
+			</div>
+			
+			<div id="contenedorCreditos">
+						
+				<div class="tablaDetCredito">
+					<p>Detalle Cr&eacute;dito social</p>
+					<table>
+						<tr>
+							<th>Folio</th>
+							<th>Cuotas</th>
+							<th>Saldo Capital</th>
+							<th>Grav&aacute;menes</th>
+							<!-- <th>Cuotas morosas</th> -->
+							<th>Gastos de cobranza</th>
+						</tr>
+						<c:forEach items="${certificadoFiniquito.listaCreditosSocial}" var="credito">
+							<tr>
+								<td>${credito.folio}</td>
+								<td>${credito.cuotaCredito}</td>
+								<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${credito.saldoCapital}" type="currency" /></td>
+								<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${credito.gravamenes}" type="currency" /></td>
+								<%-- <td>${credito.sumaCuotasFormato}</td> --%>
+								<td class="texto-der">
+									<%-- <c:choose>
+										<c:when test="${credito.sumaGCob != ''}">
+											<fmt:formatNumber currencySymbol="$" value="${credito.sumaGCob}" type="currency" />
+										</c:when>
+									</c:choose> --%> 
+									${credito.sumaGCobFormato}
+								</td>
+							</tr>
+						</c:forEach>
+						<tr>
+							<td colspan="3"></td>
+							<td class="texto-izq"><b>Sub Total:</b></td>
+							<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${certificadoFiniquito.totalSocial}" type="currency" /></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablaDetCredito">
+					<p>Detalle Cr&eacute;dito Especial</p>
+					<table>
+						<tr>
+							<th>Folio</th>
+							<th>Cuotas</th>
+							<th>Saldo Capital</th>
+							<th>Grav&aacute;menes</th>
+							<!-- <th>Cuotas morosas</th> -->
+							<th>Gastos de cobranza</th>
+						</tr>
+						<c:forEach items="${certificadoFiniquito.listaCreditosEspecial}" var="credito">
+							<tr>
+								<td>${credito.folio}</td>
+								<td>${credito.cuotaCredito}</td>
+								<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${credito.saldoCapital}" type="currency" /></td>
+								<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${credito.gravamenes}" type="currency" /></td>
+								<%-- <td>${credito.sumaCuotasFormato}</td> --%>
+								<td class="texto-der">
+									<%-- <c:choose>
+										<c:when test="${credito.sumaGCob != ''}">
+											<fmt:formatNumber currencySymbol="$" value="${credito.sumaGCob}" type="currency" />
+										</c:when>
+									</c:choose> --%>
+									${credito.sumaGCobFormato}
+								</td>
+							</tr>
+						</c:forEach>
+						<tr>
+							<td colspan="3"></td>
+							<td class="texto-izq"><b>Sub Total:</b></td>
+							<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${certificadoFiniquito.totalEspecial}" type="currency" /></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablaDetCredito">
+					<p>Detalle Cr&eacute;dito Educacional Superior</p>
+					<table>
+						<tr>
+							<th>Folio</th>
+							<th>Cuotas</th>
+							<th>Cuotas a descontar</th>
+							<th>Grav&aacute;menes</th>
+						</tr>
+						<c:forEach items="${certificadoFiniquito.listaCreditosEducacion}" var="credito">
+							 <c:forEach items="${credito.listaCuotasUltimos}" var="detalle">
+								<tr>
+									<td>${credito.folio}</td>
+									<td>
+										<%-- ${detalle.nCuota} o  --%>
+										${detalle.cuotaCount}
+									</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${detalle.monto}" type="currency" />
+									</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${detalle.montoGravamen}" type="currency" /></td>
+								</tr>
+							</c:forEach> 
+						</c:forEach>
+						
+						<tr>
+							<td colspan="2"></td>
+							<td class="texto-izq"><b>Sub Total:</b></td>
+							<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${certificadoFiniquito.totalEducacion}" type="currency" /></td>
+						</tr>
+					</table>
+				</div>
+				
+			</div>
+			<div class="tablaDetCredito">
+				<table id="totalFiniquito">
+					<tr>
+						<th class="texto-izq">Total a descontar</th>
+						<th class="texto-der"><fmt:formatNumber currencySymbol="$" value="${certificadoFiniquito.total}" type="currency" /></th>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="ContBtnGenerarFiniquito">
+				<form action="generarCertificadoFiniquito.do" method="post" target="blank">
+					<input type="submit" value="Generar certificado" class="boton"> 
+					<input type="button" class="boton" value="<< Volver" onclick="history.back()"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			parent.document.getElementById("mainIframe").style.height = document.body.scrollHeight;
+		});
+	</script>
+</body>
+</html>

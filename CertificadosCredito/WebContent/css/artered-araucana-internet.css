@@ -1,0 +1,15 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+header .contenedor {
+	padding-left: 30px;
+	text-align: left;
+}
+header {
+	background-color: #fff;
+	padding: 15px 0px;
+	box-shadow: -8px 0px 10px 0px;
+	margin-bottom: 8px;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaCreditoPorFolioEnAs400" type="tns:consultaCreditoPorFolioEnAs400"/>
+
+  <xs:element name="consultaCreditoPorFolioEnAs400Response" type="tns:consultaCreditoPorFolioEnAs400Response"/>
+
+  <xs:complexType name="consultaCreditoPorFolioEnAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaCreditoPorFolioEntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoPorFolioEntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCredito" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoPorFolioEnAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditoPorFolioSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditoPorFolioSalidaVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="detalle" nillable="true" type="tns:detalleConsultaCreditoPorFolioSalidaVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="numeroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleConsultaCreditoPorFolioSalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estadoCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoAbonado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoCapitalAmortizado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoGravamen" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoInteres" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSeguros" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="saldoCapital" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="resultadonrp">
+<typeAlias alias="Concepto" type="cl.laaraucana.resultadonrp.dao.vo.ConceptoVO"/>
+<typeAlias alias="Disponibiliza" type="cl.laaraucana.resultadonrp.dao.vo.ResumenDisponibilizacionVO"/>
+<typeAlias alias="Correo" type="cl.laaraucana.resultadonrp.dao.vo.CorreoVO"/>
+<resultMap id="data_productos" class="cl.laaraucana.resultadonrp.dao.vo.ProductoVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="ORIGEN"   property="origen" />
+	<result column="TIPO_AFILIADO"   property="tipo_afiliado" />
+	<result column="PRODUCTO"   property="producto" />
+	<result column="REGISTROS"   property="registros" />
+	<result column="MONTO"   property="monto" />
+</resultMap>
+
+<resultMap id="data_archivos" class="cl.laaraucana.resultadonrp.dao.vo.ArchivosVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="TIPOAFIL"   property="tipo_afiliado" />
+	<result column="TIPOFILE"   property="tipo_archivo" />
+	<result column="ARCHIVOS"   property="archivos" />
+	<result column="CUOTAS"   property="cuotas" />
+	<result column="MONTO"   property="monto" />
+</resultMap>
+
+<resultMap id="data_folios" class="cl.laaraucana.resultadonrp.dao.vo.FolioVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="TIPO_AFILIADO"   property="tipo_afiliado" />
+	<result column="REGISTROS"   property="registros" />
+	<result column="MONTO"   property="monto" />
+</resultMap>
+
+<resultMap id="data_resumen_con" class="cl.laaraucana.resultadonrp.dao.vo.ResumenConsolidacionVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="CONCEPTO"   property="concepto" />
+	<result column="REGISTROS"   property="registros" />
+	<result column="MONTO"   property="monto" />
+	<result column="PERIODO_ANT"   property="periodo_mesanterior" />
+	<result column="REGISTROS_ANT"   property="registros_mesanterior" />
+	<result column="MONTO_ANT"   property="monto_mesanterior" />
+	<result column="PORC_REG"   property="porcentajeDiferenciaRegistros" />
+	<result column="PORC_MONTO"   property="porcentajeDiferenciaMonto" />
+</resultMap>
+<resultMap id="data_resumen_gen" class="cl.laaraucana.resultadonrp.dao.vo.ResumenGeneracionVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="CONCEPTO"   property="concepto" />
+	<result column="ARCHIVOS"   property="archivos" />
+	<result column="CUOTAS"   property="cuotas" />
+	<result column="MONTO"   property="monto" />
+	<result column="PERIODO_ANT"   property="periodo_mesanterior" />
+	<result column="ARCHIVOS_ANT"   property="archivos_mesanterior" />
+	<result column="CUOTAS_ANT"   property="cuotas_mesanterior" />
+	<result column="MONTO_ANT"   property="monto_mesanterior" />
+</resultMap>
+<resultMap id="data_resumen_dis" class="cl.laaraucana.resultadonrp.dao.vo.ResumenDisponibilizacionVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="CONCEPTO"   property="concepto" />
+	<result column="NUMTXT"   property="cantidadArchivos" />
+	<result column="RUTA"   property="ruta" />
+</resultMap>
+<resultMap id="datosCorreo" class="cl.laaraucana.resultadonrp.dao.vo.CorreoVO">
+	<result column="ID"   property="id" />
+	<result column="CORREO"   property="correo" />
+	<result column="USUARIO"   property="usuario" />
+	<result column="PROCESO"   property="proceso" />
+</resultMap>
+
+<delete id="deleteConsolidacionCabecera" >
+ 	delete from NRPDTA.NRP100F1
+ 	where periodo=#periodo#
+ 	WITH NC
+</delete>
+
+<delete id="deleteConsolidacionDetalle" >
+ 	delete from NRPDTA.NRP105F1
+ 	where periodo=#periodo#
+ 	WITH NC
+</delete>
+
+<delete id="deleteGeneracionCabecera" >
+ 	delete from NRPDTA.NRP115F1
+ 	where periodo=#periodo#
+ 	WITH NC
+</delete>
+
+<delete id="deleteGeneracionDetalle" >
+ 	delete from NRPDTA.NRP120F1
+ 	where periodo=#periodo#
+ 	WITH NC
+</delete>
+
+<select id="consultaConceptos" resultClass="java.lang.String" parameterClass="java.lang.String">
+	select  concepto
+    	from NRPDTA.NRP110F1
+    	where tipo=#tipo#
+	WITH UR
+
+</select>
+
+<select id="consultaProductos" resultMap="data_productos" parameterClass="java.util.HashMap">
+	select  periodo,
+        origen, 
+        case when tipo_nomina=1 then 'TRABAJADOR'
+        	when tipo_nomina=4 then 'PENSIONADO' 
+        	else 'OTRO' end as tipo_afiliado,
+        producto, 
+        count(1) as registros, 
+        sum(importe_cuota_moneda_local) as monto 
+    <isNull property="periodo">
+    	from nrpdta.nrp15f1
+    </isNull>
+    <isNotNull property="periodo">
+    	from nrpdta.nrp15hf1
+    	where periodo= #periodo#
+    </isNotNull>
+	group by periodo, origen, producto, tipo_nomina 
+	order by 2, 3
+	WITH UR
+
+</select>
+
+<select id="consultaFolios" resultMap="data_folios" parameterClass="java.util.HashMap">
+
+	select max(periodo) as PERIODO, tipo_afiliado, count(*) as REGISTROS, sum(monto) as MONTO from (
+		select max(periodo) as periodo,
+       		case when tipo_nomina = 1 then 'TRABAJADOR'
+       			 when tipo_nomina = 4 then 'PENSIONADO' 
+       			 else 'OTRO' end as tipo_afiliado,
+       		count(1),
+       		sum(importe_cuota_moneda_local) as monto
+       	 <isNull property="periodo">
+    		from nrpdta.nrp15f1
+    	</isNull>
+    	<isNotNull property="periodo">
+    		from nrpdta.nrp15hf1
+    		where periodo= #periodo#
+    	</isNotNull>
+		group by folio_nomina, tipo_nomina
+	) as a
+	group by tipo_afiliado
+	WITH UR
+	
+</select>
+
+<select id="consultaTotalesRegistros" resultClass="java.util.HashMap">
+	select  max(periodo) as PERIODO,
+			count(*) as REGISTROS, 
+			sum(importe_cuota_moneda_local) as MONTO 
+			from NRPDTA.NRP15F1
+	WITH UR
+</select>
+
+<select id="consultaTotalesFolios" resultClass="java.util.HashMap">
+	select 	max(a.periodo) as PERIODO,
+			count(1) as REGISTROS, 
+			sum(a.monto) as MONTO 
+	from (
+			select 	max(periodo) as periodo,
+					count(1), 
+					sum(importe_cuota_moneda_local) as monto 
+			from nrpdta.nrp15f1
+			group by folio_nomina
+		) as a
+	WITH UR
+</select>
+
+<select id="consultaResumenConsolidacion" resultMap="data_resumen_con" parameterClass="java.util.HashMap">
+ 	select A.PERIODO, 
+		C.ORDER || '.- ' || trim(C.NOMBRE) as CONCEPTO, 
+		A.REGISTROS, A.MONTO, 
+		B.PERIODO as PERIODO_ANT, 
+		B.REGISTROS as REGISTROS_ANT, 
+		B.MONTO as MONTO_ANT, 
+		DEC((A.REGISTROS-B.REGISTROS)*100/B.REGISTROS, 6, 3) as PORC_REG, 
+		DEC((A.MONTO-B.MONTO)*100/B.MONTO, 6, 3) as PORC_MONTO
+	from NRPDTA.NRP105F1 A left join  NRPDTA.NRP105F1 B
+		on A.CONCEPTO = B.CONCEPTO
+		join  NRPDTA.NRP110F1 C
+		on A.CONCEPTO= C.CONCEPTO
+	WHERE A.PERIODO=#periodo# 
+		AND B.PERIODO=#periodo_anterior#
+		AND C.TIPO='C'
+	ORDER BY C.ORDER
+	WITH UR
+</select>
+
+<select id="consultaArchivosGeneracion" resultMap="data_archivos" parameterClass="java.lang.String">
+	select periodo,
+        tipoafil, 
+        UPPER(tipofile) as tipofile, 
+        count(1) as archivos, 
+        sum(cantidad_cuotas) as cuotas,
+        sum(monto_cuotas) as monto
+    from nrpdta.nrp120f1
+    where periodo= #periodo#
+	group by periodo, tipoafil, tipofile 
+	WITH UR
+
+</select>
+
+<select id="consultaResumenGeneracion" resultMap="data_resumen_gen" parameterClass="java.util.HashMap">
+ 	select A.PERIODO, 
+		C.ORDER || '.- ' || trim(C.NOMBRE) as CONCEPTO, 
+		A.ARCHIVOS, A.CUOTAS, A.MONTO, 
+		coalesce(B.PERIODO, 0) as PERIODO_ANT, 
+		coalesce(B.ARCHIVOS, 0) as ARCHIVOS_ANT,
+		coalesce(B.CUOTAS, 0) as CUOTAS_ANT,
+		coalesce(B.MONTO, 0) as MONTO_ANT
+	from NRPDTA.NRP115F1 A left join  NRPDTA.NRP115F1 B
+		on A.CONCEPTO = B.CONCEPTO
+		AND B.PERIODO=#periodo_anterior#
+		join  NRPDTA.NRP110F1 C
+		on A.CONCEPTO= C.CONCEPTO
+	WHERE A.PERIODO=#periodo# 
+		AND C.TIPO='G'
+	ORDER BY C.ORDER
+	WITH UR
+</select>
+
+
+<select id="consultaResumenDisponibilizacion" resultMap="data_resumen_dis" parameterClass="java.util.HashMap">
+ 	select A.PERIODO, trim(C.NOMBRE) as CONCEPTO, NUMTXT, RUTA
+	from NRPDTA.NRP125F1 A
+	join  NRPDTA.NRP110F1 C
+		on A.CONCEPTO= C.CONCEPTO
+	WHERE PERIODO=#periodo# 
+	WITH UR
+</select>
+
+<select id="estadisticasRegistrosConsolidacion" resultClass="java.util.HashMap">
+	select periodo, total_registros as valor from nrpdta.nrp100f1
+	where periodo> #periodo#
+	order by periodo
+	WITH UR
+</select>
+
+<select id="estadisticasMontoConsolidacion" resultClass="java.util.HashMap">
+	select periodo, decimal(total_monto/1000, 9, 1) as valor from nrpdta.nrp100f1
+	where periodo> #periodo#
+	and concepto= 'TOTNOM'
+	order by periodo
+	WITH UR
+</select>
+
+<select id="estadisticasArchivosGeneracion" resultClass="java.util.HashMap">
+	select periodo, archivos as valor from nrpdta.nrp115f1
+	where periodo> #periodo#
+	and concepto= 'TOTNOM'
+	order by periodo
+	WITH UR
+</select>
+
+<select id="estadisticasArchivosDisponibilizacion" resultClass="java.util.HashMap">
+	select periodo, numtxt as valor from nrpdta.nrp125f1
+	where periodo>= #periodo#
+	order by periodo
+	WITH UR
+</select>
+
+<select id="estadisticasMontoGeneracion" resultClass="java.util.HashMap">
+	select periodo, decimal(monto/1000, 9, 1) as valor from nrpdta.nrp115f1
+	where periodo>= #periodo#
+	WITH UR
+</select>
+
+<select id="consultaCorreosUsuarios" resultMap="datosCorreo" parameterClass="java.util.HashMap">
+ 	select * from NRPDTA.NRP130F1
+ 	where proceso= #proceso#
+ 	order by usuario
+ 	WITH UR
+</select>
+
+<delete id="deleteCorreoByID" >
+ 	delete from NRPDTA.NRP130F1
+ 	where id= #iD#
+ 	WITH NC
+</delete>
+
+<delete id="deleteUsuarioByCorreoProceso" parameterClass="Correo">
+ 	delete from NRPDTA.NRP130F1
+ 	where correo= #correo#
+ 	and proceso= #proceso#
+ 	WITH NC
+</delete>
+
+<insert id="insertConsolidadoCabecera" parameterClass="Concepto">
+	insert into NRPDTA.NRP100F1 (PERIODO, TOTAL_REGISTROS, TOTAL_MONTO) values(#periodo#, #registros#, #monto#)
+	WITH NC
+</insert>
+ 
+<insert id="insertConsolidadoDetalle" parameterClass="java.util.HashMap">
+	insert into NRPDTA.NRP105F1 
+	<dynamic>
+		<iterate prepend="VALUES" conjunction=", " property="List">
+			( 
+				#List[].periodo# 
+				, #List[].concepto#
+				, #List[].registros#
+				, #List[].monto#
+			)
+		</iterate>
+	</dynamic>
+</insert>
+
+<insert id="insertGeneracionCabecera" parameterClass="java.util.HashMap">
+	insert into NRPDTA.NRP115F1 
+	<dynamic>
+		<iterate prepend="VALUES" conjunction=", " property="List">
+			( 
+				#List[].periodo# 
+				, #List[].concepto#
+				, #List[].archivos#
+				, #List[].cuotas#
+				, #List[].monto#
+			)
+		</iterate>
+	</dynamic>
+</insert>
+
+<insert id="insertCorreo" parameterClass="Correo">
+	insert into NRPDTA.NRP130F1 
+	(PROCESO, USUARIO, CORREO) values(#proceso#, #usuario#, #correo#)
+	WITH NC
+</insert>
+
+<insert id="insertDetalleGeneracion">
+	insert into NRPDTA.NRP120F1 (periodo, tipoafil, rutemp, holding, folio_nomina, cantidad_cuotas, monto_cuotas, nombre_archivo, tipofile, fecha, hora, usuario, estado)
+		select periodo, tipoafil, rut_empresa, holding, max(folio_nomina), cuotas, monto, archivo, tipo, fecha, hora, usuario, estado from (
+		select b.periodo as periodo, 'TRA' as tipoafil, 
+			a.entidad as rut_empresa, '' as  holding,
+			b.folio_nomina as folio_nomina,
+			COALESCE(a.cantidad_registros, 0) as cuotas, COALESCE(a.monto_nomina, 0) as monto,
+			a.ruta_archivo as archivo, right(a.ruta_archivo, 3) as tipo, 
+			date(fecha_feneracion) as fecha, time(fecha_feneracion) as hora,
+			'NRPSystem' as usuario, case when largo_archivo=-1 then 0 else 1 end as estado
+		from nrpdta.files_$periodo$ a  join nrpdta.nrp15f1 b
+			on a.rut_entidad= b.rut_empresa
+			and a.oficina= b.oficina_pago
+			and a.codigo_nomina= b.anexo_nomina
+		where b.periodo= #periodo#
+		and a.tipo_nomina=1
+		and substr(a.entidad, 1, 2)!='HO'
+		group by a.entidad, a.rut_entidad, b.periodo, b.folio_nomina, a.cantidad_registros, 
+			a.monto_nomina, a.ruta_archivo, fecha_feneracion, largo_archivo
+		UNION
+		select b.periodo as periodo, 'PEN' as tipoafil,  
+			a.entidad as rut_empresa, '' as holding,
+			b.folio_nomina as folio_nomina,
+			COALESCE(a.cantidad_registros, 0) as cuotas, COALESCE(a.monto_nomina, 0) as monto,
+			a.ruta_archivo as archivo, right(a.ruta_archivo, 3) as tipo, 
+			date(fecha_feneracion) as fecha, time(fecha_feneracion) as hora,
+			'NRPSystem' as usuario, case when largo_archivo=-1 then 0 else 1 end as estado
+		from nrpdta.files_$periodo$ a  join nrpdta.nrp15f1 b
+			on int(a.entidad)= b.rut_empresa
+            and a.tipo_nomina= b.tipo_nomina
+		where b.periodo= #periodo#
+			and a.tipo_nomina=4
+			and substr(a.entidad, 1, 2)!='HO'
+    	group by b.periodo, a.entidad, b.folio_nomina, a.cantidad_registros, 
+    		a.monto_nomina, a.ruta_archivo, fecha_feneracion, largo_archivo
+		UNION
+		select $periodo$ as periodo,
+			'TRA' as tipoafil,
+			case when substr(a.entidad, 1, 2)='HO' then 0 else a.entidad end as rut_empresa,
+			case when substr(a.entidad, 1, 2)='HO' then a.entidad else '' end as holding,
+			0 as folio_nomina,
+			COALESCE(a.cantidad_registros, 0) as cuotas, COALESCE(a.monto_nomina, 0) as monto,
+			a.ruta_archivo as archivo, right(a.ruta_archivo, 3) as tipo, 
+			date(fecha_feneracion) as fecha, time(fecha_feneracion) as hora,
+			'NRPSystem' as usuario, case when largo_archivo=-1 then 0 else 1 end as estado
+		from nrpdta.files_$periodo$ a
+		where (substr(a.entidad, 1, 2)='HO' or a.rut_entidad is null)
+			and (a.tipo_nomina=1 or a.tipo_nomina is null)
+		group by a.entidad, a.cantidad_registros, a.monto_nomina,
+			a.ruta_archivo, fecha_feneracion, largo_archivo
+		UNION
+		select $periodo$ as periodo,
+			'PEN' as tipoafil,
+			case when substr(a.entidad, 1, 2)='HO' then 0 else a.entidad end as rut_empresa,
+			case when substr(a.entidad, 1, 2)='HO' then a.entidad else '' end as holding,
+			0 as folio_nomina,
+			COALESCE(a.cantidad_registros, 0) as cuotas, COALESCE(a.monto_nomina, 0) as monto,
+			a.ruta_archivo as archivo, right(a.ruta_archivo, 3) as tipo, 
+			date(fecha_feneracion) as fecha, time(fecha_feneracion) as hora,
+			'NRPSystem' as usuario, case when largo_archivo=-1 then 0 else 1 end as estado
+		from nrpdta.files_$periodo$ a
+		where (substr(a.entidad, 1, 2)='HO' or a.rut_entidad is null)
+			and a.tipo_nomina=4
+		group by a.entidad, a.cantidad_registros, a.monto_nomina,
+			a.ruta_archivo, fecha_feneracion, largo_archivo
+        ) as A
+        group by periodo, tipoafil, rut_empresa, holding, cuotas, monto, archivo, tipo, fecha, hora, usuario, estado
+		order by 2, 3
+		WITH NC
+</insert> 
+<select id="countDetalleGeneracion" resultClass="java.lang.Integer">
+	select count(1) from NRPDTA.NRP120F1
+	where periodo= #periodo#
+	WITH UR
+</select>
+
+<delete id="deleteDisponibilizacion" >
+ 	delete from NRPDTA.NRP125F1
+ 	where periodo=#periodo#
+ 	WITH NC
+</delete>
+
+<insert id="insertDisponibilizacion" parameterClass="Disponibiliza">
+	insert into NRPDTA.NRP125F1 (PERIODO, CONCEPTO, NUMTXT, RUTA) values(#periodo#, #concepto#, #numTXT#, #ruta#)
+	WITH NC
+</insert>
+
+</sqlMap>

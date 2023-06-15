@@ -1,0 +1,60 @@
+var validacionesOBJ = new function(){
+	this.validarEmail = function (email){
+		var regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		console.log("validarEmail ["+email+"] ? "+ (regex.test(email)))
+		return (regex.test(email))
+	}
+	this.validarIP = function (ip){
+		var regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/i;
+		console.log("validarIP ["+ip+"] ? "+ (regex.test(ip)))
+		return (regex.test(ip))
+	}
+	this.validarInt = function (int){
+		console.log("validarInt ["+int+"] ? "+ (!isNaN(int)))
+		return !isNaN(int);
+	}
+
+	this.validarRut = function(rut) {
+	rut= rut.replace(/\./g, "");
+		if(rut.length>0){
+			var partes = rut.split("-");
+			var digv = partes[1];
+			var rut = partes[0];
+			if (digv == 'K') {
+				digv = 'k';
+			}
+			var digesto = dv(rut);
+			if (digesto == digv) {
+				console.log("validarRutIngresado ["+rut+"] ? "+ true )
+				return true;
+			} else {
+				console.log("validarRutIngresado ["+rut+"] ? "+ false )
+				return false;
+			}
+		}
+	}
+
+	this.dv = function (T) {
+	var M = 0, S = 1;
+	for (; T; T = Math.floor(T / 10)) {
+		S = (S + T % 10 * (9 - M++ % 6)) % 11;
+	}
+	return S ? S - 1 : 'k';
+}
+
+	this.validarDirectorio  = function (directorio){
+		if(directorio.indexOf("/") ==0)
+			return true;
+
+		return false;
+	}
+
+
+}
+
+/*
+validacionesOBJ.validarEmail("xx@gmail.com");
+validacionesOBJ.validarIP("146.83.1.1");
+validacionesOBJ.validarInt("1460");
+validacionesOBJ.validarRut("1-9");
+*/

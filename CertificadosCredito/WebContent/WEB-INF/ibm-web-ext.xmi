@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.extensions.webappext:WebAppExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.extensions.webappext="webappext.xmi" xmi:id="WebAppExtension_1367266976001" reloadInterval="3" reloadingEnabled="true" additionalClassPath="" fileServingEnabled="true" directoryBrowsingEnabled="false" contextRoot="/CertificadosCredito2">
+  <webApp href="WEB-INF/web.xml#WebApp_ID"/>
+  <jspAttributes xmi:id="JSPAttribute_1440806615067" name="useFullPackageNames" value="true"/>
+  <jspAttributes xmi:id="JSPAttribute_1440806615068" name="jdkSourceLevel" value="13"/>
+  <jspAttributes xmi:id="JSPAttribute_1440806615069" name="disableJspRuntimeCompilation" value="false"/>
+  <jspAttributes xmi:id="JSPAttribute_1440806615070" name="reloadEnabled" value="true"/>
+  <jspAttributes xmi:id="JSPAttribute_1440806615071" name="reloadInterval" value="10"/>
+</com.ibm.ejs.models.base.extensions.webappext:WebAppExtension>

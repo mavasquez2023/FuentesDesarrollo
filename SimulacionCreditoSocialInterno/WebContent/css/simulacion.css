@@ -1,0 +1,496 @@
+
+body{
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  margin-top: 0px;
+}
+
+h2{
+  font-weight: 700;
+  font-size: 17px;
+  color: rgb(0, 93, 139);
+  font-style: normal;
+  font-family: Arial;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.lista{
+	height: 10px;
+}
+
+.hr {
+  clear: both;
+  height: 2px;
+  padding: 0px;
+  margin-top: 5px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  border-bottom:2px dotted #025D8C;
+}
+
+/*field-set para input*/
+
+/* .fieldset-med input[type='text'], .fieldset-med input.text ,.fieldset-med select{
+	width: 200px;
+} */
+
+/*Bloque ie*/
+
+.bloque-explorer{
+	text-align : center;
+	width: 100%;
+}
+
+#bloque-normal-med{
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.centrado-med {
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/*Separadores*/
+.espacio-small{
+  height: 10px;
+}
+.espacio-med{
+  height: 20px;
+}
+
+/* Paddings */
+
+.margin-xs{
+	5px;
+}
+
+.margin-left-xl{
+  margin-left: 65px;
+}
+.margin-left-xxl{
+	margin-left: 113px;
+}
+
+/* Paddings */
+.padding-xs{
+  padding: 5px;
+}
+.padding-s{
+  padding: 8px;
+}
+.padding-m{
+  padding: 10px;
+}
+
+.padding-l{
+  padding: 25px;
+}
+.padding-xl{
+  padding: 55px;
+}
+
+/* ancho */
+
+.width-xs{
+	width: 40px !important;
+	margin-right: 10px;
+}
+
+.width-small-2{
+  width: 76px !important;
+}
+
+.width-small{
+  width: 100px !important;
+}
+
+.width-small-normal{
+  width: 150px;
+}
+
+.width-normal{
+  width: 200px;
+}
+
+.width-large{
+  width: 350px;
+}
+
+.width-auto{
+  width: auto;
+}
+
+/* Formularios */
+
+p.li{
+	padding-left: 10px;
+}
+
+.li{
+  padding-left: 12px;
+  background-image: url(../img/li.gif);
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.ejemplo{font-size: 9px;}
+
+input[type='text'], select, radio{
+  font-family: Arial, Helvetica;
+  float: left;
+}
+
+.radio-horiz{
+	width: auto;
+	text-align: left;
+	float:left;
+	display: block;
+}
+
+.field{
+  height: 25px;
+  /* width: 100%; 
+   float: left; */
+  clear: both;
+}
+
+.field-l{
+	height: auto;
+	clear: both;
+}
+
+.field label{
+	float: left;
+}
+
+.field .label-medium{
+	width: 200px;
+}
+.label-small{
+	width: 50px;
+}
+.label-large{
+	width: 300px;
+}
+
+.no-float{
+  float:none;
+}
+
+.field-no-float{
+  float: none;
+}
+
+.field input.text, .field input[type='text'].text, .field select{
+	width: 30%;
+	float: left;
+}
+
+input, select
+{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.field input.text-min, .field input[type='text'].text-min{
+	width: 8%;
+	float: left;
+}
+.field input.text-med, .field input[type='text'].text-med{
+	width: 20%;
+	float: left;
+}
+.field span.espacio-min{
+	width: 2%;
+	float: left;
+}
+
+.field span.espacio-min label.error{
+	float: none;
+}
+
+/* Mensajes de error */
+
+label{
+	padding-top: 3px !important;
+	margin-right: 10px;
+	/* float: right; */
+}
+
+.error {
+  color: red;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 12px;
+  float: left;
+}
+
+
+
+label.error {
+  	width: auto;
+  	max-width: 35%;
+  	float: left;
+	/* margin-left: 5px; */
+}
+
+#mensajeMonto label.error{
+	float: none;
+}
+
+#mensajePorcentaje label.error{
+	float: none;
+}
+
+label.error-min {
+  	width: 5px;
+	padding: 0;
+	margin: 0 2px 0 0;
+}
+  
+input.error, select.error {
+  color: #000000;
+  text-align: left;
+}
+
+/* Modificando estilos del acordion */
+
+.accordion .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: url("themes/araucana/images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+  border: 1px solid #D3D3D3;
+  color: #555555;
+  font-weight: normal;
+}
+
+.accordion .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background: url("themes/araucana/images/ui-bg_glass_65_ffffff_1x400.png") repeat-x scroll 50% 50% #FFFFFF;
+  border: 1px solid #AAAAAA;
+  color: #212121;
+  font-weight: normal;
+}
+
+.accordion .ui-state-active .ui-icon {
+  background-image: url("themes/araucana/images/ui-icons_454545_256x240.png");
+}
+
+.accordion .ui-state-default .ui-icon {
+  background-image: url("themes/araucana/images/ui-icons_888888_256x240.png");
+}
+
+/* Consulta preaprobado portal */
+
+.container{
+	width: 100%;
+	/* height: 200px; */
+}
+.container-left{
+	width: 40%;
+	height: 100px;
+	float: left;
+}
+.container-right{
+	width: 60%;
+	height: 100px;
+	float: left;
+}
+
+#formSimularPre{
+	text-align: center;
+	margin: 10px 0;
+}
+
+/* Resultado simulación universal */
+.titulo-universal{
+	font-size: 11px;
+	color: #0F3175;
+	font-weight: bold;
+}
+.texto-universal{
+	height: auto;
+	font-size:11px;
+	font-family: arial, helvetica, sans-serif;
+	color: #515c71;
+}
+
+/********resultado simulacion********/
+
+#resultado table{
+	width: 100%;
+	border: 1px;
+	border-style: solid;
+	border-color: #CECECE;
+	margin-top: 5px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+#resultado table th{
+	margin-top: 20px;
+	text-align: left;
+	background: #EAEAEA;
+	font-size: 12px;
+	padding: 2px;
+}
+
+#resultado table th.top{
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	
+}
+
+#resultado table tr td{
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	margin-left: 10px;
+	font-size: 12px;
+	padding: 0 5px 0 5px;
+}
+
+#resultado-top {
+	width: 100%;
+}
+
+.resultado-left {
+	width: 40%;
+	float: left;
+}
+
+.resultado-right{
+	float: left;
+	width: 54%;
+	margin-left: 1%;
+}
+
+.resultado-completo {
+	width: 95%;
+}
+
+/* #resultado-right table{
+	width: 100%;
+} */
+
+#resultado-right .td-small{
+	/* width: 10px; */
+}
+
+#resultado-bottom {
+	clear: both;
+	margin-top: 10px;
+}
+
+/********fin resultado simulacion********/
+
+
+
+/***********Mensajes pre aprobados*******************/
+
+
+.cont-inicio{
+	width: 100%;
+	text-align: center;
+}
+
+
+.contentMsjPreAprobado{
+	/*float: left;
+	margin: 15px;*/
+	margin: 0 auto;
+	width: 295px;
+	text-align: center;
+}
+
+.contentMsjPreAprobado form{
+	margin: 5px;
+}
+
+.msjPreAprobado {
+	display: table;
+	min-height: 230px;
+	height:230px;
+	padding: 0 10px;
+	/*border: dotted #025D8C 2px;*/
+	font-size: 15px;
+	margin: 10px auto;
+	border: 1px solid silver;
+	text-align: left;
+}
+
+.msjPreAprobadoHijo {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.msjPreAprobadoHijo .boton {
+	margin-top: 10px;
+}
+
+#formSimularPre{
+	text-align: center;
+	margin: 10px 0;
+}
+
+.divTituloPreInicio{
+	float: left;
+	width: 100%;
+}
+
+.divTituloPreInicio img{
+	float: right;
+}
+
+.divTituloPreInicio h2{
+	float: left;
+	color: #666666;
+	margin-top: 15px;
+	margin-left: 25px;
+	font-size: 25px;
+}
+
+.contentMsjPreAprobado .infoPreAprobado{
+	clear: both;
+	text-align: center;
+}
+
+.contentMsjPreAprobado h2.montoPre{
+	color: red;
+	text-align: center;
+	display: block;
+	margin: 5px;
+}
+
+/***********FIN pre aprobados*******************/
+
+
+/**************INICIO SELECT EMPRESA***********/
+
+#selectEmpresa .divCentrado {
+	width: 40%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#selectEmpresa {
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.error2 {
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+}
+
+#selectEmpresa .espacio-left-med {
+	margin-left: 45px;
+}
+
+/**********FIN INICIO SELECT EMPRESA***********/

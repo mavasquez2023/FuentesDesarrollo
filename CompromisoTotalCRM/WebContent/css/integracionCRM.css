@@ -1,0 +1,67 @@
+HTML {
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	COLOR: #000;
+	/*background: -moz-linear-gradient(top, #DEEDF7 , #FFFFFF);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#DEEDF7),  to(#FFFFFF));
+    overflow-y: scroll;*/
+}
+
+BODY {
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	COLOR: #000;
+	font-size: 12px;
+}
+#navegador ul{
+   text-align: center;
+   padding: 0;
+   margin: 0;
+   
+}
+#navegador li{
+   display: inline;
+     padding: 0;
+   margin: 0;
+}
+#navegador li a {
+	background-color:#B3D9F7;
+	
+background-image: linear-gradient(bottom, rgb(201,214,247) 100%, rgb(232,241,255) 0%);
+background-image: -o-linear-gradient(bottom, rgb(201,214,247) 100%, rgb(232,241,255) 0%);
+background-image: -moz-linear-gradient(bottom, rgb(201,214,247) 100%, rgb(232,241,255) 0%);
+background-image: -webkit-linear-gradient(bottom, rgb(201,214,247) 100%, rgb(232,241,255) 0%);
+background-image: -ms-linear-gradient(bottom, rgb(201,214,247) 100%, rgb(232,241,255) 0%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(1, rgb(201,214,247)),
+	color-stop(0, rgb(232,241,255))
+);
+
+   padding: 6px;
+   color: 757575;
+  
+   border: 1px solid #ccc;
+   text-decoration: none;
+   font-family: arial,helvetica,sans-serif;
+   font-size: 13px;
+}
+#navegador li a:hover{
+  
+   color: black;
+}
+
+.contieneIframe{
+	width: 100%;
+height:800px;
+	text-align:center;  
+
+}
+
+.error{
+	color: red;
+}
+
+
+

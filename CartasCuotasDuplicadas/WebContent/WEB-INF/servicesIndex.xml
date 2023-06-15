@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<services>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaCreditoPorRutEnAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaCreditoPorRutEnAs400Port">
+            <operation name="consultaCreditosPorRutEnAs400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaCuotasCreditoPartidasAbiertasPorFolioEnAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaCuotasCreditoPartidasAbiertasPorFolioEnAs400Port">
+            <operation name="consultaCuotasCreditoPartidasAbiertasPorFolioEnAs400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaCreditosCanceladosPorRutCRC438As400Service" type="JAX-WS">
+        <endpoint name="ConsultaCreditosCanceladosPorRutCRC438As400Port">
+            <operation name="consultaCreditosCanceladosPorRutCRC438As400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaDatosPagosCreditosPorFolioAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaDatosPagosCreditosPorFolioAs400Port">
+            <operation name="consultaDatosPagosCreditosPorFolioAs400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaDatosAfiliacionAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaDatosAfiliacionAs400Port">
+            <operation name="consultaDatosAfiliacionAs400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaFolioFormulario24Service" type="JAX-WS">
+        <endpoint name="ConsultaFolioFormulario24Port">
+            <operation name="consultaFolioFormulario24"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaCreditoPorFolioEnAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaCreditoPorFolioEnAs400Port">
+            <operation name="consultaCreditoPorFolioEnAs400"/>
+        </endpoint>
+    </webserviceClient>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaCreditosARepactarPorRutAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaCreditosARepactarPorRutAs400Port">
+            <operation name="consultaCreditosARepactarPorRutAs400"/>
+        </endpoint>
+    </webserviceClient>
+</services>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="creditScoring" targetNamespace="http://www.araucana.cl/creditScoring/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.araucana.cl/creditScoring/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.araucana.cl/creditScoring/">
+			<xsd:element name="evaluarCreditoSyncFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="mensajeError" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="condicion">
+				<xsd:sequence>
+					<xsd:element name="nombre" type="xsd:string"/>
+					<xsd:element name="descripcion" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="evaluarCreditoSync">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rut" type="xsd:string"/>
+						<xsd:element name="digito" type="xsd:string"/>
+						<xsd:element name="monto" type="xsd:int"/>
+						<xsd:element name="tipoAfiliado" type="xsd:int"/>
+						<xsd:element name="oficina" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="evaluarCreditoSyncResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="idSolicitud" type="xsd:string"/>
+						<xsd:element name="perfil" type="xsd:string"/>
+						<xsd:element name="score" type="xsd:double"/>
+						<xsd:element maxOccurs="unbounded" minOccurs="1" name="condiciones" type="tns:condicion"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="evaluarCreditoSyncFull">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rut" type="xsd:int"/>
+						<xsd:element name="digito">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+
+									<xsd:length value="1"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="tipoAfiliado" type="xsd:int">
+						</xsd:element>
+                        <xsd:element name="genero">
+                        	<xsd:simpleType>
+                        		<xsd:restriction base="xsd:string">
+
+                        			<xsd:length value="1"/>
+                        		</xsd:restriction>
+                        	</xsd:simpleType>
+                        </xsd:element>
+
+                        <xsd:element name="fechaNac">
+                        	<xsd:simpleType>
+                        		<xsd:restriction base="xsd:string">
+
+                        			<xsd:length value="8"/>
+                        		</xsd:restriction>
+                        	</xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="estadoCivil" type="xsd:string"/>
+						<xsd:element name="remuneracion" type="xsd:int"/>
+                        <xsd:element name="monto" type="xsd:int"/>
+                        <xsd:element name="diasMorosidad">
+                        	<xsd:simpleType>
+                        		<xsd:restriction base="xsd:string">
+
+                        			<xsd:length value="8"/>
+                        		</xsd:restriction>
+                        	</xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="numCreditosAnteriores" type="xsd:int"/>
+						<xsd:element name="numDiasLicencia" type="xsd:int"/>
+						<xsd:element name="antiguedadLaboral">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+
+									<xsd:length value="8"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="rutEmpleador" type="xsd:int"/>
+                        <xsd:element name="digitoEmpleador" type="xsd:string">
+						</xsd:element>
+                        <xsd:element name="clasifRiesgoEmpresa">
+                        	<xsd:simpleType>
+                        		<xsd:restriction base="xsd:string">
+                        			<xsd:maxLength value="2"/>
+                        		</xsd:restriction>
+                        	</xsd:simpleType>
+                        </xsd:element>
+						<xsd:element name="codSectorEmpresa" type="xsd:string"></xsd:element>
+						<xsd:element name="nroTrabajadoresEmpresa" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="evaluarCreditoSyncFullResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rutCli" type="xsd:int">
+						</xsd:element>
+						<xsd:element name="dvCli" type="xsd:string">
+						</xsd:element>
+						<xsd:element name="idSolicitud" type="xsd:string"/>
+						<xsd:element name="perfil" type="xsd:string"/>
+						<xsd:element name="score" type="xsd:float"/>
+                        <xsd:element name="scoreEquifax" type="xsd:int">
+						</xsd:element>
+                        <xsd:element name="rentas" type="xsd:int">
+						</xsd:element>
+						<xsd:element name="endeudMax" type="xsd:int">
+						</xsd:element>
+						<xsd:element maxOccurs="unbounded" minOccurs="1" name="condiciones" type="tns:condicion"/>
+						<xsd:element name="codSectorEmpresaOut" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="evaluarCreditoSyncFullFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="mensajeError" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="evaluarCreditoSyncFull2">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rut" type="xsd:int"/>
+						<xsd:element name="digito" type="xsd:string"/>
+						<xsd:element name="tipoAfiliado" type="xsd:int"/>
+						<xsd:element name="genero" type="xsd:string"/>
+						<xsd:element name="fechaNac" type="xsd:string"/>
+						<xsd:element name="estadoCivil" type="xsd:string"/>
+						<xsd:element name="remuneracion" type="xsd:int"/>
+						<xsd:element name="monto" type="xsd:int"/>
+						<xsd:element name="diasMorosidad" type="xsd:string"/>
+						<xsd:element name="numCreditosAnteriores" type="xsd:int"/>
+						<xsd:element name="numDiasLicencia" type="xsd:int"/>
+						<xsd:element name="antiguedadLaboral" type="xsd:string"/>
+						<xsd:element name="rutEmpleador" type="xsd:int"/>
+						<xsd:element name="digitoEmpleador" type="xsd:string"/>
+						<xsd:element name="clasifRiesgoEmpresa" type="xsd:string"/>
+						<xsd:element name="as400Id" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="evaluarCreditoSyncFull2Response">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="evaluarCreditoSyncFull2Fault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="mensajeError" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="evaluarCreditoSyncFull2Response1">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="evaluarCreditoSyncFullRequest">
+    <wsdl:part element="tns:evaluarCreditoSyncFull" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSync_faultMsg">
+    <wsdl:part element="tns:evaluarCreditoSyncFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncResponse">
+    <wsdl:part element="tns:evaluarCreditoSyncResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncRequest">
+    <wsdl:part element="tns:evaluarCreditoSync" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFull_faultMsg">
+    <wsdl:part element="tns:evaluarCreditoSyncFullFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFullResponse">
+    <wsdl:part element="tns:evaluarCreditoSyncFullResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFull2Request">
+  	<wsdl:part element="tns:evaluarCreditoSyncFull2" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFull2Response">
+
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFull2Fault">
+  	<wsdl:part element="tns:evaluarCreditoSyncFull2Fault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="evaluarCreditoSyncFull2Response1">
+  	<wsdl:part element="tns:evaluarCreditoSyncFull2Response" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="creditScoring">
+    <wsdl:operation name="evaluarCreditoSync">
+      <wsdl:input message="tns:evaluarCreditoSyncRequest"/>
+      <wsdl:output message="tns:evaluarCreditoSyncResponse"/>
+      <wsdl:fault message="tns:evaluarCreditoSync_faultMsg" name="fault"/>
+    </wsdl:operation>
+    <wsdl:operation name="evaluarCreditoSyncFull">
+      <wsdl:input message="tns:evaluarCreditoSyncFullRequest"/>
+      <wsdl:output message="tns:evaluarCreditoSyncFullResponse"/>
+      <wsdl:fault message="tns:evaluarCreditoSyncFull_faultMsg" name="fault"/>
+    </wsdl:operation>
+
+  </wsdl:portType>
+  <wsdl:binding name="motorCreditScoringSOAP" type="tns:creditScoring">
+
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="evaluarCreditoSync">
+
+  		<soap:operation soapAction="http://www.araucana.cl/creditScoring/evaluarCreditoSync"/>
+  		<wsdl:input>
+
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+
+  			<soap:fault name="fault" use="literal"/>
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="evaluarCreditoSyncFull">
+
+  		<soap:operation soapAction="http://www.araucana.cl/creditScoring/evaluarCreditoSyncFull"/>
+  		<wsdl:input>
+
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+
+  			<soap:fault name="fault" use="literal"/>
+  		</wsdl:fault>
+  	</wsdl:operation>
+
+  </wsdl:binding>
+  <wsdl:service name="creditScoring">
+    <wsdl:port binding="tns:motorCreditScoringSOAP" name="creditScoringSOAP">
+      <soap:address location="http://localhost:9080/MotorRiesgoCrediticio/services/creditScoringSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

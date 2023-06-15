@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbext:EJBJarExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbext="ejbext.xmi" xmi:id="EJBJarExtension_1338442131609">
+  <ejbExtensions xmi:type="ejbext:MessageDrivenExtension" xmi:id="MessageDrivenExtension_1338442131609">
+    <enterpriseBean xmi:type="ejb:MessageDriven" href="META-INF/ejb-jar.xml#TheAgent"/>
+  </ejbExtensions>
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+</ejbext:EJBJarExtension>

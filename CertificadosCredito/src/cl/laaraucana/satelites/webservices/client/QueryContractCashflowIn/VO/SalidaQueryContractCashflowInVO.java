@@ -1,0 +1,195 @@
+package cl.laaraucana.satelites.webservices.client.QueryContractCashflowIn.VO;
+
+public class SalidaQueryContractCashflowInVO {
+
+	private String fechaVencCuota;
+	private String nroCuota;
+	private String estadoCuota;
+	private String montoCapital;
+	private String montoInteres;
+	private String montoServAdic;
+	private String totalCuota;
+	private String montoGravamenes;
+	private String montoSeguros;
+	private String montoAbono;
+	private String ultFechaPago;
+	private String ultFechaContablePago;
+	private String oficinaPago;
+	private String folioPago;
+	private String transactionType;
+	private String estadoPago;
+	private String moneda;
+	private String capitalRestante;
+	private String Monto_pagado;
+
+	public String getFechaVencCuota() {
+		return fechaVencCuota;
+	}
+
+	public void setFechaVencCuota(String fechaVencCuota) {
+		this.fechaVencCuota = fechaVencCuota;
+	}
+
+	public String getNroCuota() {
+		return nroCuota;
+	}
+
+	public void setNroCuota(String nroCuota) {
+		this.nroCuota = nroCuota;
+	}
+
+	public String getEstadoCuota() {
+		return estadoCuota;
+	}
+
+	public void setEstadoCuota(String estadoCuota) {
+		this.estadoCuota = estadoCuota;
+	}
+
+	public String getMontoCapital() {
+		return montoCapital;
+	}
+
+	public void setMontoCapital(String montoCapital) {
+		this.montoCapital = montoCapital;
+	}
+
+	public String getMontoInteres() {
+		return montoInteres;
+	}
+
+	public void setMontoInteres(String montoInteres) {
+		this.montoInteres = montoInteres;
+	}
+	
+	/**
+	 * @return the montoSeguros
+	 */
+	public String getMontoSeguros() {
+		return montoSeguros;
+	}
+
+	/**
+	 * @param montoSeguros the montoSeguros to set
+	 */
+	public void setMontoSeguros(String montoSeguros) {
+		this.montoSeguros = montoSeguros;
+	}
+
+	public String getMontoServAdic() {
+		return montoServAdic;
+	}
+
+	public void setMontoServAdic(String montoServAdic) {
+		this.montoServAdic = montoServAdic;
+	}
+
+	public String getTotalCuota() {
+		return totalCuota;
+	}
+
+	public void setTotalCuota(String totalCuota) {
+		this.totalCuota = totalCuota;
+	}
+
+	public String getMontoGravamenes() {
+		return montoGravamenes;
+	}
+
+	public void setMontoGravamenes(String montoGravamenes) {
+		this.montoGravamenes = montoGravamenes;
+	}
+
+	public String getMontoAbono() {
+		return montoAbono;
+	}
+
+	public void setMontoAbono(String montoAbono) {
+		this.montoAbono = montoAbono;
+	}
+
+	public String getUltFechaPago() {
+		return ultFechaPago;
+	}
+	
+	/**
+	 * @return the ultFechaContablePago
+	 */
+	public String getUltFechaContablePago() {
+		return ultFechaContablePago;
+	}
+
+	/**
+	 * @param ultFechaContablePago the ultFechaContablePago to set
+	 */
+	public void setUltFechaContablePago(String ultFechaContablePago) {
+		this.ultFechaContablePago = ultFechaContablePago;
+	}
+
+	public void setUltFechaPago(String ultFechaPago) {
+		this.ultFechaPago = ultFechaPago;
+	}
+
+	public String getOficinaPago() {
+		return oficinaPago;
+	}
+
+	public void setOficinaPago(String oficinaPago) {
+		this.oficinaPago = oficinaPago;
+	}
+
+	public String getFolioPago() {
+		return folioPago;
+	}
+
+	public void setFolioPago(String folioPago) {
+		this.folioPago = folioPago;
+	}
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+	public String getEstadoPago() {
+		return estadoPago;
+	}
+
+	public void setEstadoPago(String estadoPago) {
+		this.estadoPago = estadoPago;
+	}
+
+	public String getMoneda() {
+		return moneda;
+	}
+
+	public void setMoneda(String moneda) {
+		this.moneda = moneda;
+	}
+
+	public String getCapitalRestante() {
+		return capitalRestante;
+	}
+
+	public void setCapitalRestante(String capitalRestante) {
+		this.capitalRestante = capitalRestante;
+	}
+
+	/**
+	 * @return the monto_pagado
+	 */
+	public String getMonto_pagado() {
+		return Monto_pagado;
+	}
+
+	/**
+	 * @param monto_pagado the monto_pagado to set
+	 */
+	public void setMonto_pagado(String monto_pagado) {
+		Monto_pagado = monto_pagado;
+	}
+	
+}

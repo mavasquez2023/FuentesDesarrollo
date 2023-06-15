@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/estadoAfiliacion" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/estadoAfiliacion">
+
+  <xs:element name="SEGMENTO" type="tns:segmentoWS"/>
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="SQLException" type="tns:SQLException"/>
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="getDatosAfiliacion" type="tns:getDatosAfiliacion"/>
+
+  <xs:element name="getDatosAfiliacionResponse" type="tns:getDatosAfiliacionResponse"/>
+
+  <xs:element name="getEstadoAfiliacion" type="tns:getEstadoAfiliacion"/>
+
+  <xs:element name="getEstadoAfiliacionResponse" type="tns:getEstadoAfiliacionResponse"/>
+
+  <xs:element name="getStatus" type="tns:getStatus"/>
+
+  <xs:element name="getStatusResponse" type="tns:getStatusResponse"/>
+
+  <xs:element name="isAfiliadoTitular" type="tns:isAfiliadoTitular"/>
+
+  <xs:element name="isAfiliadoTitularResponse" type="tns:isAfiliadoTitularResponse"/>
+
+  <xs:complexType name="getEstadoAfiliacion">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWS">
+    <xs:sequence>
+      <xs:element name="rut_trabajador" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEstadoAfiliacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWS">
+    <xs:sequence>
+      <xs:element name="afiliado" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="isAfiliadoTitular">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="isAfiliadoTitularResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWSTGR">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SQLState" type="xs:string"/>
+      <xs:element name="errorCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="nextException" type="tns:sqlException"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sqlException">
+    <xs:complexContent>
+      <xs:extension base="tns:exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nextException" type="tns:sqlException"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="exception">
+    <xs:complexContent>
+      <xs:extension base="tns:throwable">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="stackTrace" nillable="true" type="tns:stackTraceElement"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="stackTraceElement">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getStatus">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDatosAfiliacion">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDatosAfiliacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:dataWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dataWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NOMBRE" type="xs:string"/>
+      <xs:element name="ESTADO" type="xs:int"/>
+      <xs:element minOccurs="0" ref="tns:SEGMENTO"/>
+      <xs:element minOccurs="0" name="TIPO" type="xs:string"/>
+      <xs:element name="CODIGO_RESPUESTA" type="xs:int"/>
+      <xs:element minOccurs="0" name="OBSERVACION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="segmentoWS">
+    <xs:sequence>
+      <xs:element name="TRABAJADOR" type="xs:string"/>
+      <xs:element name="PENSIONADO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

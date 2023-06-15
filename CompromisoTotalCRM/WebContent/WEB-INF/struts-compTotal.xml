@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="datosCompromiso" type="cl.laaraucana.compromisototal.compTotal.forms.DatosCompromiso"/>
+		<form-bean name="contratoForm" type="cl.laaraucana.compromisototal.compTotal.forms.ContratoForm"/>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="ExportPDF" path="/../ExportPDF"></forward>
+		<forward name="error" path="main/error.do"/>
+		<forward name="errorTabla" path="/errorCreditos.do"/>
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/listadoContratos" 
+		name="datosCompromiso" 
+		parameter="accion"
+		type="cl.laaraucana.compromisototal.compTotal.actions.ListadoContratosAction">
+			<forward name="success" path="/listadoContratos.jsp"/>
+		</action>
+		<action name="contratoForm" path="/detalleContratoBanking" type="cl.laaraucana.compromisototal.compTotal.actions.DetalleContratoBankingAction">
+			<forward name="detBankingOk" path="/detalleContratoBanking.jsp"/>
+		</action>
+		<action name="contratoForm" path="/detalleContratoPresupuestoBanking" type="cl.laaraucana.compromisototal.compTotal.actions.DetalleContratoPresupuestoBankingAction">
+			<forward name="detBankingOk" path="/detalleContratoPresupuestoBanking.jsp"/>
+		</action>
+		<action name="contratoForm" path="/detalleContratoAs400" type="cl.laaraucana.compromisototal.compTotal.actions.DetalleContratoAs400Action">
+			<forward name="detAs400Ok" path="/detalleContratoAs400.jsp"/>
+		</action>
+		<action name="contratoForm" path="/detalleContratoAsicom" type="cl.laaraucana.compromisototal.compTotal.actions.DetalleContratoAsicomAction">
+			<forward name="detAsicomOk" path="/detalleContratoAsicom.jsp"/>
+		</action>
+
+	
+		<action path="/getContratoAsicom" type="cl.laaraucana.compromisototal.compTotal.actions.GetContratoAsicomAction">
+			<forward name="datosTablas" path="/datosTablas.jsp"/>
+		</action>
+		<action path="/getContratoIntercaja" type="cl.laaraucana.compromisototal.compTotal.actions.GetContratoIntercajaAction">
+			<forward name="datosTablas" path="/datosTablas.jsp"/>
+		</action>
+		<action path="/errorCreditos" type="cl.laaraucana.compromisototal.compTotal.actions.ErrorCreditosAction">
+		<forward name="disp" path="/error.jsp"/>
+		</action>
+		<action path="/getContratos" type="cl.laaraucana.compromisototal.compTotal.actions.GetContratosAction">
+			<forward name="datosTablas" path="/datosTablas.jsp"/>
+		</action>
+	</action-mappings>
+</struts-config>

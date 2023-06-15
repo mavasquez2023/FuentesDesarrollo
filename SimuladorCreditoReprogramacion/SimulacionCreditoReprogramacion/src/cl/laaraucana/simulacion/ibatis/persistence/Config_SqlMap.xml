@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+	
+	<insert id="insertBitacoraReprogramacion" parameterClass="cl.laaraucana.simulacion.VO.BitacoraVo">
+		
+		insert into BitacoraSimuladorRepro (
+		rutEjecutivo, dvEjecutivo, rutCliente, dvCliente, contrato, 
+		tipoCliente, producto, cuotas, mesesGracia, montoAbono, renta, 
+		seguroCesantia, seguroDesgravamen, fechaSimulacion, montoAdeudado, montoCuota, 
+		tasaMensual, tasaAnual, cae, 
+		montoSeguroCesantia, montoSeguroDesgravamen, 
+		montoGravamenesCondonado, montoGastoCobCondonado, montoInteresesCondonado, costoTotalCredito, 
+		porcentajeMaximoEndeudamiento, porcentajeEndeudamientoSimulado, fechaPrimerVencimiento
+		) 
+		values (
+		#rutEjecutivo#, #dvEjecutivo#, #rutAfiliado#, #dvAfiliado#, #contrato#, 
+		#tipoAfiliado#, #producto#, #plazo#, #mesesGracia#, #montoAbono#, #renta#, 
+		#conSeguroCesantia#, #conSeguroDesgravamen#,
+		#fechaSimulacion#, #montoAdeudado#, #montoCuota#, 
+		#tasaMensual#, #tasaAnual#, #cae#,
+		#montoSeguroCesantia#, #montoSeguroDesgravamen#,
+		#montoGravamenesCondonado#, #montoGastosCobCondonado#, #montoInteresesCondonado#, #costoTotal#,
+		#porcentajeMaximoEndeudamiento#, #porcentajeEndeudamientoSimulado#, #fechaPrimerVencimiento#
+		)
+		
+	</insert>
+	
+	<insert id="insertBitacoraAcuerdo" parameterClass="cl.laaraucana.simulacion.VO.BitacoraVo">
+		
+		insert into BitacoraSimuladorAcuerdo (
+		rutEjecutivo, dvEjecutivo, rutCliente, dvCliente, contrato, 
+		tipoCliente, producto, 
+		cuotas, montoAbono, porcentajeCapital, fechaSimulacion, 
+		capitalAdeudado, cuotasxPagar, montoCuota, 
+		tasaMensual, cae, 
+		capitalComprometido, capitalACondonar, costoTotalCredito,
+		fechaPrimerVencimiento
+		
+		) 
+		values (
+		#rutEjecutivo#, #dvEjecutivo#, #rutAfiliado#, #dvAfiliado#, #contrato#, 
+		#tipoAfiliado#, #producto#, 
+		#plazo#, #montoAbono#, #porcentajeCondonacionCapital#, #fechaSimulacion#,
+		#capitalAdeudado#, #cuotasxPagar#, #montoCuota#, 
+		#tasaMensual#, #cae#,
+		#capitalComprometido#, #capitalCondonado#, #costoTotal#,
+		#fechaPrimerVencimiento#
+		)
+		
+	</insert>
+</sqlMap>

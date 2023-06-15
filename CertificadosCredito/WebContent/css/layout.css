@@ -1,0 +1,262 @@
+body{
+	font-family: Arial,Helvetica,sans-serif;
+	font-size:12px;
+	text-align:center;
+	margin: 0px;
+}
+
+.margin-10{
+	margin-left: 10px;
+}
+.margin-15{
+	margin-left: 15px;
+}
+.margin-20{
+	margin-left: 20px;
+}
+
+/* Elementos genericos */
+a{
+	color: #005D8B;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #005D8B;
+	text-decoration: underline;
+}
+
+hr{
+	border: 0; 
+	border-top: 2px solid #CCCCCC;
+}
+
+label{
+	float: left;
+	width: 100px;
+}
+
+label.error{
+	float: left;
+	width: 100%;
+}
+
+.linea-puntos {
+  clear: both;
+  height: 2px;
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+  border: none !important;
+  padding: 0px;
+  margin: 5px 0px;
+  background-image: url(../img/linea_puntos.gif);
+}
+
+/* Maqueta */
+#banner{
+	margin: 0px;
+	text-align: left;
+	height: 85px;
+	width: 100%;
+	border-bottom: 5px solid #005D8B;	
+	border-top: 10px solid #005D8B;
+}
+.content{
+	width: 1024px;
+	margin-left: 20px;
+	margin-right:auto;
+	text-align: left;
+}
+.caja{
+	border: 1px solid #CCC;
+	height: 100%;
+	padding: 10px 10px;
+}
+
+.field{
+	margin-bottom: 5px;
+	display: inline-block;
+	width:100%;
+}
+
+#content-header{
+	height: 150px;
+	width: 100%;
+}
+
+#content-principal{
+	width: 100%;
+	height: 265px;
+	margin-top: 20px;
+}
+
+#content-left{
+	width: 68%;
+	height: 265px;
+	float: left;
+}
+
+#content-right{
+	width: 30%;
+	height: 265px;
+	float: right;
+}
+
+#content-footer{
+	text-align: left;
+}
+/* Elementos de la pagina */
+
+#caja-left{
+	width: 58%;
+	height: 100%;
+	float: left;
+}
+
+#caja-right{
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+#caja-login{
+	width: 230px;
+	height: 160px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;
+	padding: 20px;
+	border-radius: 10px 10px 10px 10px;
+	border: solid 1px #CCCCCC;
+}
+
+#caja-login .text{
+	width: 130px;}
+
+#caja-login .titulo{
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	color: #333333;
+}
+
+#caja-login label{
+	float: left;
+	width: 80px;
+	font-weight: normal;
+}
+
+#barra{
+	width: 1024px;
+	height: 45px;
+	border-bottom: solid 1px #CCCCCC; 
+	display: inline-block;}
+
+#barra .texto{
+	line-height: 45px;
+	width: auto;
+	float: left;
+}
+
+#side-menu{
+	width: 225px;
+	height: 100%;
+	min-height:500px;
+	float: left;
+	border-right: solid 1px #CCCCCC; 
+}
+
+.textRut{
+	margin-left: 10px;
+	width: 100px;
+	border: 1px solid #CCCCCC;
+	font-size: 12px;
+	font-weight: normal;
+	height: 20px;
+}
+
+#contenedorIframe{
+	float: left;
+	width: 790px;
+	height:100%;
+	min-height:500px;
+	text-align:center; 
+}
+
+#mainIframe{
+	width: 100%;
+	height: 100%;
+	min-height: 500px;
+}
+
+#errores label{
+	width: auto;
+}
+
+.mensaje-gris{
+	background-color:#EFEFEF;
+	background-image: url("../img/mensaje.gif");
+    background-position: 5px;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 55px; 
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#imgContacto{
+	align: left;
+	padding: 5px 15px 15px 0px;
+	border: 0px;
+}
+
+.titulo_menu
+{
+    padding:0px;
+    margin:0px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    color:#666;
+    list-style:none;
+    margin-bottom: 10px;
+}
+
+.titulo_certificados
+{
+    color:#013679;
+}
+
+.menu_div ul
+{
+    padding:0px;
+    margin:0px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    color:#666;
+    list-style:none;
+    text-indent:10px;
+}
+.menu_div ul li
+{
+    background:white;
+    line-height:21px;
+    border-bottom:solid 1px #CCCCCC;
+}
+.menu_div ul li a
+{
+    text-decoration:none;
+    color:#666;
+    display:block;
+}
+.menu_div ul li a:hover
+{
+    background: #005D8B;
+    color: white;
+    font-weight: bold;
+    /* #d40203; */
+}
+.menu_div ul li#active
+{
+    background:#d40203;
+}

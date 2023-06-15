@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><web-app id="WebApp_1437572432337" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Satelites</display-name>
+	<!-- Pagina de inicio de Autoconsulta -->
+	<filter>
+		<description>Carga el rut a consultar</description>
+		<filter-name>RutFilter</filter-name>
+		<filter-class>cl.laaraucana.satelites.filters.RutFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RutFilter</filter-name>
+		<url-pattern>/certificados/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>RutFilter</filter-name>
+		<url-pattern>/kiosco/*</url-pattern>
+	</filter-mapping>
+	<servlet>  
+  <servlet-name>ImageServlet</servlet-name>  
+  <servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>  
+</servlet>  
+  
+<servlet-mapping>  
+  <servlet-name>ImageServlet</servlet-name>  
+  <url-pattern>/kiosco/image</url-pattern>  
+</servlet-mapping>  
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/main</param-name>
+			<param-value>/WEB-INF/struts-main.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados</param-name>
+			<param-value>/WEB-INF/struts-certificados.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/afiliacion</param-name>
+			<param-value>/WEB-INF/struts-certificados-afiliacion.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/creditosvigentes</param-name>
+			<param-value>/WEB-INF/struts-certificados-creditosvigentes.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/creditoscancelados</param-name>
+			<param-value>/WEB-INF/struts-certificados-creditoscancelados.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/prepago</param-name>
+			<param-value>/WEB-INF/struts-certificados-prepago.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/deuda</param-name>
+			<param-value>/WEB-INF/struts-certificados-deuda.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/certificados/finiquito</param-name>
+			<param-value>/WEB-INF/struts-certificados-finiquito.xml</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>config/kiosco</param-name>
+			<param-value>/WEB-INF/struts-kiosco.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/kiosco/afiliacion</param-name>
+			<param-value>/WEB-INF/struts-kiosco-afiliacion.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/kiosco/creditosvigentes</param-name>
+			<param-value>/WEB-INF/struts-kiosco-creditosvigentes.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/kiosco/creditoscancelados</param-name>
+			<param-value>/WEB-INF/struts-kiosco-creditoscancelados.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/kiosco/prepago</param-name>
+			<param-value>/WEB-INF/struts-kiosco-prepago.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/kiosco/finiquito</param-name>
+			<param-value>/WEB-INF/struts-kiosco-finiquito.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ExportPDF</servlet-name>
+		<servlet-class>cl.laaraucana.satelites.servlets.ExportPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ExportJson</servlet-name>
+		<servlet-class>cl.laaraucana.satelites.servlets.ExportJson</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetImages</servlet-name>
+		<servlet-class>cl.laaraucana.satelites.servlets.GetImages</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- Servlet export pdf -->
+	<servlet-mapping>
+		<servlet-name>ExportPDF</servlet-name>
+		<url-pattern>/ExportPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ExportJson</servlet-name>
+		<url-pattern>/ExportJson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetImages</servlet-name>
+		<url-pattern>/GetImages</url-pattern>
+	</servlet-mapping>
+	<!-- Configuracion de sesion -->
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<listener>
+        <listener-class>cl.laaraucana.satelites.job.JobListener</listener-class>     
+    </listener>
+</web-app>

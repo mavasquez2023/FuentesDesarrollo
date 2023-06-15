@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SINADTA_SINAF20H">
+	<resultMap id="sinaf20hResult"
+		class="cl.laaraucana.compromisototal.dao.intercaja.domain.Sinaf20h">
+
+		<result column="SINPERI" property="sinperi" jdbcType="CHAR" />
+		<result column="SINCAJO" property="sincajo" jdbcType="CHAR" />
+		<result column="SINCAJD" property="sincajd" jdbcType="CHAR" />
+		<result column="SINNPAG" property="sinnpag" jdbcType="CHAR" />
+		<result column="SINIDEM" property="sinidem" jdbcType="CHAR" />
+		<result column="SINIDED" property="sinided" jdbcType="CHAR" />
+		<result column="SINNOMD" property="sinnomd" jdbcType="CHAR" />
+		<result column="SINIDEA" property="sinidea" jdbcType="CHAR" />
+		<result column="SINSUJD" property="sinsujd" jdbcType="CHAR" />
+		<result column="SINTIPI" property="sintipi" jdbcType="CHAR" />
+		<result column="SINTIPA" property="sintipa" jdbcType="CHAR" />
+		<result column="SINIDEN" property="siniden" jdbcType="CHAR" />
+		<result column="SINMCOB" property="sinmcob" jdbcType="CHAR" />
+		<result column="SINFECP" property="sinfecp" jdbcType="CHAR" />
+		<result column="SINMCOB06" property="sinmcob06" jdbcType="CHAR" />
+
+	</resultMap>
+
+	<!-- select id="selectByRut" resultMap="sinaf20hResult" parameterClass="string">
+
+		select *
+		from SINADTA.SINAF20H
+		where SINIDED = #value# and SINPERI = (SELECT max(SINPERI) from
+		SINADTA.SINAF20H where SINIDED = #value# )
+    
+  </select -->
+  <select id="selectByRut" resultMap="sinaf20hResult" parameterClass="string">
+		select year(current_date)||right('0' || month(current_date), 2) as SINPERI, a.SINCAJO, a.SINCAJD, 
+			a.SINNPAG, a.SINIDEM, a.SINIDED, a.SINNOMD, a.SINIDEA, a.SINSUJD, 
+			a.SINTIPI, a.SINTIPA, a.SINIDEN, a.SINMCOB, a.SINFECP, COALESCE(e.SINMCOB,0) as SINMCOB06
+		from SINADTA.SINAF20 a
+		left outer join SINADTA.SINAF06 e on a.SINNPAG = e.SINNPAG
+		where a.SINIDED = #value#
+  </select>
+</sqlMap>

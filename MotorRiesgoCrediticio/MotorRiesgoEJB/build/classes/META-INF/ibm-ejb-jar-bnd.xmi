@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.commonbnd="commonbnd.xmi" xmlns:com.ibm.ejs.models.base.bindings.ejbbnd="ejbbnd.xmi" xmlns:com.ibm.etools.ejb="ejb.xmi" xmi:id="EJBJarBinding_1338412137421">
+  <defaultDatasource xmi:id="ResourceRefBinding_1360948755922">
+    <defaultAuth xmi:type="com.ibm.ejs.models.base.bindings.commonbnd:BasicAuthData" xmi:id="BasicAuthData_1360948755922"/>
+  </defaultDatasource>
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:type="com.ibm.ejs.models.base.bindings.ejbbnd:MessageDrivenBeanBinding" xmi:id="MessageDrivenBeanBinding_1338412137421" activationSpecJndiName="eis/CreditScoringEspecAct">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:MessageDriven" href="META-INF/ejb-jar.xml#TheAgent"/>
+    <!--
+    <resRefBindings xmi:id="ResourceRefBinding_1342808071342" jndiName="jdbc/CreditScoringEmbedded" loginConfigurationName="DefaultPrincipalMapping">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1342808071342"/>
+      <properties xmi:id="Property_1360948755922" name="com.ibm.mapping.authDataAlias" value="serv-151Node01/CreditScoring" description="description"/>
+    </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_1346363835210" jndiName="jdbc/AS400DataSource" loginConfigurationName="DefaultPrincipalMapping">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1346363835210"/>
+      <properties xmi:id="Property_1360948755923" name="com.ibm.mapping.authDataAlias" value="serv-151Node01/AS400Credentials" description="description"/>
+    </resRefBindings>
+  -->
+    <resRefBindings xmi:id="ResourceRefBinding_1342808071342" jndiName="jdbc/CreditScoringEmbedded" loginConfigurationName="DefaultPrincipalMapping">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1342808071342"/>
+    </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_1346363835210" jndiName="jdbc/AS400DataSource" loginConfigurationName="DefaultPrincipalMapping">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1346363835210"/>
+    </resRefBindings>
+  </ejbBindings>
+  <defaultCMPConnectionFactory xmi:id="CMPConnectionFactoryBinding_1360948755922"/>
+</com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding>
