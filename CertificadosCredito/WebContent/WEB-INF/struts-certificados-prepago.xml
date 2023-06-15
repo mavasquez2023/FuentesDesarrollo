@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="listadoCreditosForm" type="cl.laaraucana.satelites.certificados.prepago.forms.ListadoCreditosForm">
+		</form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="ExportPDF" path="/../../ExportPDF"></forward>
+ 		<forward name="error" path="/../../main/error.do"></forward>
+		<forward name="customError" path="/../../main/error.do?tipo=custom"></forward>
+	</global-forwards>
+	
+	<action-mappings>
+		<action name="listadoCreditosForm" 
+		path="/listado" 
+		type="cl.laaraucana.satelites.certificados.prepago.actions.GetCreditosPrepagoAction">
+			<forward name="cargarDatos" path="certificados/certificadoPrepago/creditos.jsp"></forward>
+		</action>
+		<action name="listadoCreditosForm" 
+		path="/generarCertificadoPrepago" 
+		type="cl.laaraucana.satelites.certificados.prepago.actions.GenerarCertificadoPrepagoAction">
+		</action>
+		
+		<action name="listadoCreditosForm" 
+		path="/getCreditosPrepago" 
+		type="cl.laaraucana.satelites.certificados.prepago.actions.ListadoCreditosAction">
+			<forward name="success" path="certificados/certificadoPrepago/anterior.jsp"></forward>
+		</action>
+	</action-mappings>
+</struts-config>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/rolesLDAP" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/rolesLDAP">
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="getRolesinApp" type="tns:getRolesinApp"/>
+
+  <xs:element name="getRolesinAppResponse" type="tns:getRolesinAppResponse"/>
+
+  <xs:element name="getUsersinRole" type="tns:getUsersinRole"/>
+
+  <xs:element name="getUsersinRoleResponse" type="tns:getUsersinRoleResponse"/>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWSTGR">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUsersinRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:requestUsersWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestUsersWS">
+    <xs:sequence>
+      <xs:element name="rolId" type="xs:string"/>
+      <xs:element name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUsersinRoleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usersRol"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usersRol">
+    <xs:sequence>
+      <xs:element name="CODIGO_RESPUESTA" type="xs:int"/>
+      <xs:element minOccurs="0" name="USERS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="USERID" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRolesinApp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:requestRolesWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestRolesWS">
+    <xs:sequence>
+      <xs:element name="userId" type="xs:string"/>
+      <xs:element name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRolesinAppResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:rolesAPP"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rolesAPP">
+    <xs:sequence>
+      <xs:element name="CODIGO_RESPUESTA" type="xs:int"/>
+      <xs:element minOccurs="0" name="ROLES">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="ROL" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

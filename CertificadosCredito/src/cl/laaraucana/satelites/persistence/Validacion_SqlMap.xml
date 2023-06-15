@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+  <resultMap id="bitacoraMap" class="cl.laaraucana.satelites.dao.VO.BitacoraVO" >
+    <result column="ICID" property="idCertificado" />
+    <result column="ICFOLIO" property="folio" />
+    <result column="ICTIPO" property="tipoCertificado" />
+    <result column="ICRUTDEU" property="rutDeudor" />
+    <result column="ICNOMDEU" property="nombreDeudor" />
+    <result column="ICFECHA" property="fechaCreacion" />
+    <result column="ICHORA" property="horaCreacion" />
+    <result column="ICTOTPAG" property="totalPagar" />
+    <result column="ICRUTUSU" property="rutUsuario" />
+    <result column="ICNOMUSU" property="nombreUsuario" />
+    
+  </resultMap>
+  
+ 	<select id="consultaBitacora" resultMap="bitacoraMap" >
+		select ICID, ICFOLIO, ICNOMCERT as ICTIPO, ICRUTDEU, ICNOMDEU, ICFECHA, ICHORA, ICTOTPAG, ICRUTUSU, ICNOMUSU
+		from BITCERCRE a
+		join BITNOMCER b
+		on a.ICTIPO= b.ICTIPO
+		where ICRUTDEU=#rut#
+		UNION
+		select ICID, ICFOLIO, ICNOMCERT as ICTIPO, ICRUTDEU, ICNOMDEU, ICFECHA, ICHORA, ICTOTPAG, ICRUTUSU, ICNOMUSU
+		from BITCERCRE a
+		join BITNOMCER b
+		on a.ICTIPO= b.ICTIPO
+		where ICRUTUSU=#rut#
+	</select>
+	
+	<insert id="insertBitacora" parameterClass="cl.laaraucana.satelites.dao.VO.BitacoraVO">
+		
+		insert into BITCERCRE (ICID, ICFOLIO, ICTIPO, ICRUTDEU, ICNOMDEU, ICTOTPAG, ICRUTUSU, ICNOMUSU) 
+		values (#idCertificado#, #folio#, #tipoCertificado#, #rutDeudor#, #nombreDeudor#, #totalPagar#, #rutUsuario#, #nombreUsuario#)
+		
+	</insert>
+
+</sqlMap>

@@ -1,0 +1,77 @@
+<%@ include file="../comun/headerJsp.jsp" %>
+<html>
+	<head>
+		<jsp:include flush="true" page="../comun/headerCRM.jsp"></jsp:include>
+		<title>Certificados de Cr&eacute;dito - La Araucana C.C.A.F.</title>
+	</head>
+	<body>
+	<div id="banner">
+		<div class="content">
+			<img src="<%=request.getContextPath() %>/img/logo_araucana.gif"> 
+		</div>
+	</div>
+	<div class="content">
+		<div id="barra">
+			<div class="texto">
+				<b>Emisor:</b> ${userInfo.name.toUpperCase()} ${userInfo.firstName.toUpperCase()}
+			</div>
+			<div class="boton-gris margin-10" onclick="window.location='<%=request.getContextPath() %>/main/logout.do'">
+				Cerrar sesión
+			</div>
+		</div>
+		
+		<div id="side-menu">
+			<form action="<%=request.getContextPath() %>/main/changeBpRut.do" method="post">
+				<div class="field">
+					<p class="margin-10"><strong>Rut Trabajador:</strong></p>
+				</div>
+				<div class="field">
+					<input type="text" class="textRut" maxlength="11" id="rut" name="rut" value="${rutCRM}">&nbsp;
+					<input type="submit" class="boton" value="consultar">				
+				</div>
+			</form>
+			<div class="error">
+				<html:errors/>
+			</div>
+			<br><br>
+			<div class="menu_div">
+			        <ul>
+			        <c:if test="${CerCreAfil=='X'}">
+			       		<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/afiliacion/generaCertificado.do">Certificado de Afiliaci&oacute;n</a></li>
+			       	</c:if>
+			       	 <c:if test="${CerCreVigen=='X'}">
+					<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/creditosvigentes/listarCreditosVigentes.do">Certificado de Cr&eacute;ditos Vigentes</a></li>
+					</c:if>
+					 <c:if test="${CerCreCance=='X'}">
+					<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/creditoscancelados/listarCreditosCancelados.do">Cert. de Cr&eacute;ditos Cancelados</a></li>
+					 </c:if>
+					 <c:if test="${CerCreFiniq=='X'}">								
+ 					<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/finiquito/finiquitoInicioView.do">Certificado de Finiquito</a></li>
+ 					 </c:if>
+ 					 <c:if test="${CerCrePrepa=='X'}"> 
+ 					<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/prepago/getCreditosPrepago.do">Certificado de Prepago</a></li>
+ 					 </c:if>
+ 					 <c:if test="${CerCreDeuda=='X'}"> 
+ 					<li><a href="<%=request.getContextPath() %>/main/localRouter.do?url=certificados/deuda/deudaInicioView.do">Certificado Liquidación Deuda</a></li>
+					</c:if>
+			        </ul>
+			</div>
+		</div>
+	
+		<div id="contenedorIframe">
+			<iframe src="${url}" id="mainIframe" name="mainIframe" frameborder="0"></iframe>
+		</div>
+	</div>
+	
+	<script>
+	$(document).ready(function() {
+		$('a').click(function() {
+			var url = $(this).attr('rel');
+			$('#mainIframe').attr('src', url);
+	
+		});
+	});
+	
+</script>
+</body>
+</html>

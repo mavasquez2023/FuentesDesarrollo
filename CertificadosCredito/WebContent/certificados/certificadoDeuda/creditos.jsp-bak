@@ -1,0 +1,179 @@
+<%@ include file="../../comun/headerJsp.jsp"%>
+<html>
+<head>
+<jsp:include page="../../comun/header.jsp" flush="true" />
+<link rel="stylesheet" href="../../css/prepago.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>Certificado Prepago</title>
+</head>
+<body>
+	<div>
+		<p class="titulo texto-centrado">Certificado Prepago</p>
+		
+		<div class="field">
+			<label><b>RUT:</b> ${certificadoPrepago.rut}</label>
+			<label><b>Nombre:</b> ${certificadoPrepago.nombreCompleto}</label>
+		</div>
+		<div id="detallePrepagoCont">
+			<div id="contenedorCreditos">
+				<form name="frm" action="generarCertificadoPrepago.do" method="post" target="_blank">
+					<div class="tablaDetCredito">
+						<p>Cr&eacute;dito Social</p>
+						<table>
+							<tr>
+								<th>Elegir folios</th>
+								<th>Folio del Cr&eacute;dito</th>
+								<th>Desde Cuota</th>
+								<th>Hasta Cuota</th>
+								<th>Fecha Otorga.</th>
+								<th>Cuota a Descuento</th>
+<!-- 								<th>Tasa Impuesto LTE</th> -->
+								<th>Monto Impuesto LTE</th>
+								<th>Folio Formulario #24</th>
+								<th>Saldo Capital</th>
+<!-- 								<th>Comisi&oacute;n de Prepago</th> -->
+								<th>Grav&aacute;menes</th>
+<!-- 								<th>Cuotas Morosas</th> -->
+								<th>Gastos de Cobranza</th>
+								<th>Total</th>
+							</tr>
+							<c:forEach items="${certificadoPrepago.creditoSocial}" var="listaCreditos">
+								<tr>
+									<td><input type="checkbox" name="prepago" value="${listaCreditos.folio}"></td>
+									<td>${listaCreditos.folio}</td>
+									<td>${listaCreditos.desdeCuota}</td>
+									<td>${listaCreditos.hastaCuota}</td>
+									<td>${listaCreditos.fechaOtorgamiento}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoCuota}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.tasaImpuestoLTE}</td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoImpuestoLTE}" type="currency" /></td>
+									<td>${listaCreditos.folioForm24}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.saldoCapital}" type="currency" /></td>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.comisionPrepago}" type="currency" /></td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gravamenes}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.sumaCuotas}</td> --%>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gastosDeCobranza}" type="currency" /></td> --%>
+									<td>${listaCreditos.gastosDeCobranza}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.total}" type="currency" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+						<p>Cr&eacute;dito de Educaci&oacute;n Superior</p>
+						<table>
+							<tr>
+								<th>Elegir folios</th>
+								<th>Folio del Cr&eacute;dito</th>
+								<th>Desde Cuota</th>
+								<th>Hasta Cuota</th>
+								<th>Fecha Otorga.</th>
+								<th>Cuota a Descuento</th>
+<!-- 								<th>Tasa Impuesto LTE</th> -->
+								<th>Monto Impuesto LTE</th>
+								<th>Folio Formulario #24</th>
+								<th>Saldo Capital</th>
+<!-- 								<th>Comisi&oacute;n de Prepago</th> -->
+								<th>Grav&aacute;menes</th>
+<!-- 								<th>Cuotas Morosas</th> -->
+								<th>Gastos de Cobranza</th>
+								<th>Total</th>
+							</tr>
+							<c:forEach items="${certificadoPrepago.creditoCes}" var="listaCreditos">
+								<tr>
+									<td><input type="checkbox" name="prepago" value="${listaCreditos.folio}"></td>
+									<td>${listaCreditos.folio}</td>
+									<td>${listaCreditos.desdeCuota}</td>
+									<td>${listaCreditos.hastaCuota}</td>
+									<td>${listaCreditos.fechaOtorgamiento}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoCuota}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.tasaImpuestoLTE}</td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoImpuestoLTE}" type="currency" /></td>
+									<td>${listaCreditos.folioForm24}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.saldoCapital}" type="currency" /></td>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.comisionPrepago}" type="currency" /></td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gravamenes}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.sumaCuotas}</td> --%>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gastosDeCobranza}" type="currency" /></td> --%>
+									<td>${listaCreditos.gastosDeCobranza}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.total}" type="currency" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+						<p>Cr&eacute;dito Especial</p>
+						<table>
+							<tr>
+								<th>Elegir folios</th>
+								<th>Folio del Cr&eacute;dito</th>
+								<th>Desde Cuota</th>
+								<th>Hasta Cuota</th>
+								<th>Fecha Otorga.</th>
+								<th>Cuota a Descuento</th>
+<!-- 								<th>Tasa Impuesto LTE</th> -->
+								<th>Monto Impuesto LTE</th>
+								<th>Folio Formulario #24</th>
+								<th>Saldo Capital</th>
+<!-- 								<th>Comisi&oacute;n de Prepago</th> -->
+								<th>Grav&aacute;menes</th>
+<!-- 								<th>Cuotas Morosas</th> -->
+								<th>Gastos de Cobranza</th>
+								<th>Total</th>
+							</tr>
+							<c:forEach items="${certificadoPrepago.creditoEspecial}" var="listaCreditos">
+								<tr>
+									<td><input type="checkbox" name="prepago" value="${listaCreditos.folio}"></td>
+									<td>${listaCreditos.folio}</td>
+									<td>${listaCreditos.desdeCuota}</td>
+									<td>${listaCreditos.hastaCuota}</td>
+									<td>${listaCreditos.fechaOtorgamiento}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoCuota}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.tasaImpuestoLTE}</td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.montoImpuestoLTE}" type="currency" /></td>
+									<td>${listaCreditos.folioForm24}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.saldoCapital}" type="currency" /></td>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.comisionPrepago}" type="currency" /></td> --%>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gravamenes}" type="currency" /></td>
+<%-- 									<td>${listaCreditos.sumaCuotas}</td> --%>
+<%-- 									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.gastosDeCobranza}" type="currency" /></td> --%>
+									<td>${listaCreditos.gastosDeCobranza}</td>
+									<td class="texto-der"><fmt:formatNumber currencySymbol="$" value="${listaCreditos.total}" type="currency" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+						<p><b>NOTA: El usuario debe seleccionar al menos un cr&eacute;dito para poder generar el certificado.</b></p>
+					</div>
+					<div class="ContBtnGenerarPrepago">
+						<input type="submit" value="Generar certificado" class="boton" name="sub" disabled="disabled" id="botonasd"> 
+						<input type="button" class="boton" value="<< Volver" onclick="history.back()"/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+// 		$(document).ready(function(){
+// 			parent.document.getElementById("mainIframe").style.height = document.body.scrollHeight;
+//  			parent.document.getElementById("mainIframe").style.width = document.body.scrollWidth;
+// 		}); 
+
+		$(document).ready(function(){
+            $('input[type="checkbox"]').bind('click',function() {
+//             	alert("se apreto algo");
+            	var existe = false;
+            	$('input[type="checkbox"]').each(function() {
+                	if($(this).is(':checked')) {
+                    	existe = true;
+//                     	alert("existe alguno");
+                    }
+                });
+                if(existe == true){
+//                 	alert("se debería habilitar");
+                	$("#botonasd").removeAttr("disabled");
+                }else{
+//                 	alert("se debería desa");
+                	$("#botonasd").attr("disabled","disabled");
+                }
+            });
+		});
+ 	</script>
+</body>
+</html>
