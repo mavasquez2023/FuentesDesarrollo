@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="generacionCesantia">
+	
+	<insert id="insertSCF041" parameterClass="cl.araucana.sivegam.vo.LinCesantia041VO">
+		INSERT INTO SCDTA.SCF041
+			(
+				IDSC041,
+				IDMTRSC,
+				FLGMDF,
+				FLGDLT,
+				MESINF,
+				CODENT,
+				CODARC,
+				MESEMI,
+				TIPEGR,
+				RUTBEN,
+				DVRUTBEN,
+				NOMBEN,
+				CODCOM,
+				FECCES,
+				FECSOL,
+				FECINICUO,
+				FECTERCUO,
+				MONSCES,
+				MODPAG,
+				SERDOC,
+				NUMDOC,
+				MONDOC,
+				FECEMIDOC,
+				CODBAN
+			)
+			VALUES
+			(
+				#id_sc041#,
+				#id_maestro_sivegam#,
+				#flag_modificacion#,
+				#flag_eliminacion#,
+				#mes_if#,
+				#codigo_entidad#,
+				#codigo_archivo#,
+				#mes_emision#,
+				#tipo_egreso#,       
+				#rut_beneficiario#,    
+				#dv_beneficiario#,  
+				#nombre_beneficiario#,   
+				#comuna#,
+				#fecha_cesantia#,        
+				#fecha_solicitud#,   
+				#fecha_inicio_cuota#,     
+				#fecha_termino_cuota#,    
+				#monto_subsidio_cesantia#,
+				#mod_pago#,              
+				#serie_documento#,        
+				#numero_documento#,     
+				#monto_documento#,  
+				#fecha_emision_documento#,
+				#codigo_banco#
+			)
+
+	</insert>
+	
+	<insert id="insertSCF042" parameterClass="cl.araucana.sivegam.vo.LinCesantia042VO">
+		INSERT INTO SCDTA.SCF042
+		(
+			IDSC042,
+			IDMTRSC,
+			FLGMDF,
+			FLGDLT,
+			MESINF,
+			CODENT,
+			CODARC,
+			TIPREI,
+			RUTBEN,
+			DVRUTBEN,
+			NOMBEN,
+			CODCOM,
+			MSCESREI,
+			FECINIREI,
+			FECTERREI
+		)
+		VALUES
+		(
+			#id_sc042#,
+			#id_maestro_sivegam#,
+			#flag_modificacion#,
+			#flag_eliminacion#,
+			#mes_if#,
+			#codigo_entidad#, 
+			#codigo_archivo#,
+			#tipo_reintegro#,
+			#rut_beneficiario#, 
+			#dv_beneficiario#,
+			#nombre_beneficiario#, 
+			#comuna#,
+			#monto_sub_cesantia_reintegrado#, 
+			#fecha_inicio_reintegro#,
+			#fecha_termino_reintegro#
+		)	
+	</insert>
+	
+	<insert id="insertSCF043" parameterClass="cl.araucana.sivegam.vo.LinCesantia043VO">
+		INSERT INTO SCDTA.SCF043
+			(
+				IDSC043,
+				IDMTRSC,
+				FLGMDF,
+				FLGDLT,
+				MESINF,
+				CODENT,
+				CODARC,
+				MESEMI,
+				RUTBEN,
+				DVRUTBEN,
+				NOMBEN,
+				TIPEGR,
+				MODPAG,
+				SERDOC,
+				NUMDOC,
+				MONSCES,
+				MONDOC,
+				FECEMIDOC,
+				CODBAN,
+				FECCAMEST,
+				NUMCAR
+			)
+		VALUES
+			(
+				#id_sc043#,
+				#id_maestro_sivegam#,
+				#flag_modificacion#,
+				#flag_eliminacion#,
+				#mes_if#,
+				#codigo_entidad#, 
+				#codigo_archivo#,
+				#mes_emision#,
+				#rut_beneficiario#, 
+				#dv_beneficiario#,
+				#nombre_beneficiario#, 
+				#tipo_egreso#,
+				#mod_pago#,
+				#serie_documento#, 
+				#numero_documento#,
+				#monto_subsidio_cesantia#, 
+				#monto_documento#,
+				#fecha_emision_documento#,
+				#codigo_banco#,
+				#fecha_cambio_estado_documento#,
+				#numero_cartola#
+		)	
+	</insert>
+	
+	<insert id="insertSCF044" parameterClass="cl.araucana.sivegam.vo.LinCesantia044VO">
+		INSERT INTO SCDTA.SCF044
+		(
+			IDSC044,
+			IDMTRSC,
+			FLGMDF,
+			FLGDLT,
+			MESINF,
+			CODENT,
+			CODARC,
+			RUTBEN,
+			DVRUTBEN,
+			NOMBEN,
+			MESDOCINF,
+			MODPAGORI,
+			SERDOCORI,
+			NUMDOCORI,
+			MONSORI,
+			MONORI,
+			FECEMIORI,
+			CODBANORI,
+			MODPAGNVO,
+			SERDOCNVO,
+			NUMDOCNVO,
+			MONSNVO,
+			MONNVO,
+			FECEMINVO,
+			CODBANNVO
+		)
+		VALUES
+		(
+			#id_sc044#,
+			#id_mtr_sivegam#,
+			#flg_mod#,
+			#flg_eli#,
+			#mes_if#,
+			#cod_ent#,
+			#cod_arc#,
+			#rut_ben#,
+			#dv_ben#,
+			#nom_ben#,
+			#mes_doc_inf#,
+			#mod_pag_doc_ori#,
+			#ser_doc_ori#,
+			#num_doc_ori#,
+			#mto_sub_ori#,
+			#mto_doc_ori#,
+			#fec_emi_doc_ori#,
+			#cod_bco_doc_ori#,
+			#mod_pag_nvo#,
+			#ser_doc_nvo#,
+			#num_doc_nvo#,
+			#mto_sub_nvo#,
+			#mto_doc_nvo#,
+			#fec_emi_doc_nvo#,
+			#cod_bco_doc_nvo#
+		)	
+	</insert>
+	
+	<update id="deleteLogicSC41">
+		UPDATE 	SCDTA.SCF041
+		SET		FLGDLT = 1
+		
+	</update>
+	
+	<update id="deleteLogicSC42">
+		UPDATE 	SCDTA.SCF042
+		SET		FLGDLT = 1
+	</update>
+	
+	<update id="deleteLogicSC43">
+		UPDATE 	SCDTA.SCF043
+		SET		FLGDLT = 1	
+	</update>
+	
+	<update id="deleteLogicSC44">
+		UPDATE 	SCDTA.SCF044
+		SET		FLGDLT = 1	
+	</update>
+	
+	<select id="actualizaStatusPerProCesantia" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="cl.araucana.sivegam.vo.RespuestaVO">
+		SELECT 	A.IDMAESTROSIVEGAM maxId,
+               	A.STATUSPROCESO status
+		FROM   	SVDTAD.SVMTRSVG A
+		WHERE 	A.IDMAESTROSIVEGAM = (SELECT 	MAX(B.IDMAESTROSIVEGAM) 
+                                      FROM 		SVDTAD.SVMTRSVG B
+                                      WHERE     B.IDPERIODOPROCESO = #mesConsultado#
+                                      AND       B.IDTIPOARCHIVO = #idTipoReporte#
+                                      AND       B.STATUSPROCESO IN (1,2,3,4,5))
+	</select>
+	
+	<select id="obtenerMaxSivegamCesantia" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO" resultClass="string">
+		SELECT 	MAX(IDMAESTROSIVEGAM) AS maxIdSivegam
+		FROM	SVDTAD.SVMTRSVG
+		WHERE	IDPERIODOPROCESO = #periodo_proceso#
+		AND		IDTIPOARCHIVO = #tipo_archivo#
+		AND		STATUSPROCESO IN (1,2,3,4,5) 
+	</select>
+
+	<select id="obtenerMaestroSivegamCesantia041" resultClass="string">
+		SELECT  A.IDMTRSC AS idMaestroSivegam
+		FROM	SCDTA.SCF041 A
+		WHERE	IDSC041 IN (SELECT 	MAX(B.IDSC041)
+							FROM	SCDTA.SCF041 B)
+	</select>
+	
+	<select id="obtenerMaestroSivegamCesantia042" resultClass="string">
+		SELECT  A.IDMTRSC AS idMaestroSivegam
+		FROM	SCDTA.SCF042 A
+		WHERE	IDSC042 IN (SELECT 	MAX(B.IDSC042)
+							FROM	SCDTA.SCF042 B)
+	</select>
+
+	<select id="obtenerMaestroSivegamCesantia043" resultClass="string">
+		SELECT  A.IDMTRSC AS idMaestroSivegam
+		FROM	SCDTA.SCF043 A
+		WHERE	IDSC043 IN (SELECT 	MAX(B.IDSC043)
+							FROM	SCDTA.SCF043 B)
+	</select>
+
+	<select id="obtenerMaestroSivegamCesantia044" resultClass="string">
+		SELECT  A.IDMTRSC AS idMaestroSivegam
+		FROM	SCDTA.SCF044 A
+		WHERE	IDSC044 IN (SELECT 	MAX(B.IDSC044)
+							FROM	SCDTA.SCF044 B)
+	</select>
+		
+	<insert id="insertSCF041E" parameterClass="cl.araucana.sivegam.vo.LinCesantiaError041VO">
+		INSERT INTO SCDTA.SCF041E
+		(IDSC041,
+		RUTBEN,
+		DVRUTBEN,
+		NOMBEN,
+		CODERR,
+		DESERR)
+		VALUES
+		(#id_sc041#,
+		#rut_beneficiario#,
+		#dv_beneficiario#,
+		#nombre_beneficiario#,
+		#codigo_error#,
+		#descripcion_error#)
+	</insert>
+	
+	<insert id="insertSCF042E" parameterClass="cl.araucana.sivegam.vo.LinCesantiaError042VO">
+		INSERT INTO SCDTA.SCF042E
+		(IDSC042,
+		RUTBEN,
+		DVRUTBEN,
+		NOMBEN,
+		CODERR,
+		DESERR)
+		VALUES
+		(#id_sc042#,
+		#rut_beneficiario#,
+		#dv_beneficiario#,
+		#nombre_beneficiario#,
+		#codigo_error#,
+		#descripcion_error#)
+	</insert>
+	
+	<insert id="insertSCF043E" parameterClass="cl.araucana.sivegam.vo.LinCesantiaError043VO">
+		INSERT INTO SCDTA.SCF043E
+		(IDSC043,
+		RUTBEN,
+		DVRUTBEN,
+		NOMBEN,
+		CODERR,
+		DESERR)
+		VALUES
+		(#id_sc043#,
+		#rut_beneficiario#,
+		#dv_beneficiario#,
+		#nombre_beneficiario#,
+		#codigo_error#,
+		#descripcion_error#)
+	</insert>
+	
+	<insert id="insertSCF044E" parameterClass="cl.araucana.sivegam.vo.LinCesantiaError044VO">
+		INSERT INTO SCDTA.SCF044E
+		(IDSC044,
+		RUTBEN,
+		DVRUTBEN,
+		NOMBEN,
+		CODERR,
+		DESERR)
+		VALUES
+		(#id_sc044#,
+		#rut_beneficiario#,
+		#dv_beneficiario#,
+		#nombre_beneficiario#,
+		#codigo_error#,
+		#descripcion_error#)
+	</insert>
+	
+	<delete id="deleteSCF041E">
+	DELETE FROM SCDTA.SCF041E
+	</delete>
+
+	<delete id="deleteSCF042E">
+	DELETE FROM SCDTA.SCF042E
+	</delete>
+
+	<delete id="deleteSCF043E">
+	DELETE FROM SCDTA.SCF043E
+	</delete>
+
+	<delete id="deleteSCF044E">
+	DELETE FROM SCDTA.SCF044E
+	</delete>
+
+</sqlMap>

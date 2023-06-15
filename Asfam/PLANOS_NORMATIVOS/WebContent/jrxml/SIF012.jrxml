@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SIF012 - Egresos Asig. Fam. Retroactivas por Causante" language="groovy" pageWidth="3600" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="3580" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="0" uuid="2087f357-0dbb-4e7a-a17f-e09d552bb5cc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Prdo" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+	SV.IDSIF012,
+	SV.IDMTRSVG,
+	SV.FLGMDF,
+	SV.FLGDLT,
+	SV.SIFFECPRO,
+	SV.SIFCODENT,
+	SV.SIFCODARC,
+	SV.SIFMESREC,
+	SV.SIFMESREM,
+	SV.SIFTIPDEC,
+	SV.SIFNUMDEC,
+	SV.SIFRUTEMP,
+	SV.SIFDVREMP,
+	SV.SIFNOMEMP,
+	SV.SIFRUTAFI,
+	SV.SIFDVRAFI,
+	SV.SIFNOMAFI,
+	SV.SIFTIPBEN,
+	SV.SIFCODTBE,
+	SV.SIFRUTCAU,
+	SV.SIFDVRCAU,
+	SV.SIFNOMCAU,
+	SV.SIFTIPCAU,
+	SV.SIFFECINI,
+	SV.SIFFECTER,
+	SV.SIFDIASAF,
+	SV.SIFCODTRA,
+	SV.SIFMTOBEN,
+	SV.SIFCAUREL,
+	SV.SIFTIPEMI,
+	SV.SIFTIPEGR,
+	CASE
+            WHEN SV.SIFORIGEN = 1 THEN ''
+            WHEN SV.SIFORIGEN = 2 THEN CHAR(SV.SIFMTODOC)
+            WHEN SV.SIFORIGEN = 3 THEN CHAR(SV.SIFMTODOC)
+            WHEN SV.SIFORIGEN = 4 THEN ''
+        END AS SIFMTODOC,
+	SV.SIFMODPAG,
+        CASE
+            WHEN SV.SIFORIGEN = 1 THEN ''
+            WHEN SV.SIFORIGEN = 2 THEN CHAR(SV.SIFFECEMI)
+            WHEN SV.SIFORIGEN = 3 THEN CHAR(SV.SIFFECEMI)
+            WHEN SV.SIFORIGEN = 4 THEN ''
+        END AS SIFFECEMI,
+        CASE
+        	WHEN SV.SIFNUMSER = '0' THEN ''
+        	ELSE
+        	CASE
+	            WHEN SV.SIFORIGEN = 1 THEN ''
+    	        WHEN SV.SIFORIGEN = 2 THEN CHAR(SV.SIFNUMSER)
+        	    WHEN SV.SIFORIGEN = 3 THEN CHAR(SV.SIFNUMSER)
+            	WHEN SV.SIFORIGEN = 4 THEN ''
+            END
+        END AS SIFNUMSER,
+        CASE
+        	WHEN SV.SIFNUMDOC = '0' THEN ''
+        	ELSE
+        	CASE
+        		WHEN SV.SIFORIGEN = 1 THEN ''
+	            WHEN SV.SIFORIGEN = 2 THEN CHAR(SV.SIFNUMDOC)
+    	        WHEN SV.SIFORIGEN = 3 THEN CHAR(SV.SIFNUMDOC)
+        	    WHEN SV.SIFORIGEN = 4 THEN ''
+        	END
+        END AS SIFNUMDOC,
+        CASE
+            WHEN SV.SIFORIGEN = 1 THEN ''
+            WHEN SV.SIFORIGEN = 2 THEN CHAR(SV.SIFCODBCO)
+            WHEN SV.SIFORIGEN = 3 THEN CHAR(SV.SIFCODBCO)
+            WHEN SV.SIFORIGEN = 4 THEN ''
+        END AS SIFCODBCO,
+	SV.SIFORIGEN
+FROM SVDTA.SIF012TOAP SV
+WHERE SV.SIFFECPRO = $P{Prdo} AND SV.FLGDLT = 0]]>
+	</queryString>
+	<field name="IDSIF012" class="java.math.BigDecimal"/>
+	<field name="IDMTRSVG" class="java.math.BigDecimal"/>
+	<field name="FLGMDF" class="java.math.BigDecimal"/>
+	<field name="FLGDLT" class="java.math.BigDecimal"/>
+	<field name="SIFFECPRO" class="java.math.BigDecimal"/>
+	<field name="SIFCODENT" class="java.math.BigDecimal"/>
+	<field name="SIFCODARC" class="java.math.BigDecimal"/>
+	<field name="SIFMESREC" class="java.math.BigDecimal"/>
+	<field name="SIFMESREM" class="java.math.BigDecimal"/>
+	<field name="SIFTIPDEC" class="java.math.BigDecimal"/>
+	<field name="SIFNUMDEC" class="java.lang.String"/>
+	<field name="SIFRUTEMP" class="java.math.BigDecimal"/>
+	<field name="SIFDVREMP" class="java.lang.String"/>
+	<field name="SIFNOMEMP" class="java.lang.String"/>
+	<field name="SIFRUTAFI" class="java.math.BigDecimal"/>
+	<field name="SIFDVRAFI" class="java.lang.String"/>
+	<field name="SIFNOMAFI" class="java.lang.String"/>
+	<field name="SIFTIPBEN" class="java.math.BigDecimal"/>
+	<field name="SIFCODTBE" class="java.math.BigDecimal"/>
+	<field name="SIFRUTCAU" class="java.math.BigDecimal"/>
+	<field name="SIFDVRCAU" class="java.lang.String"/>
+	<field name="SIFNOMCAU" class="java.lang.String"/>
+	<field name="SIFTIPCAU" class="java.math.BigDecimal"/>
+	<field name="SIFFECINI" class="java.math.BigDecimal"/>
+	<field name="SIFFECTER" class="java.math.BigDecimal"/>
+	<field name="SIFDIASAF" class="java.math.BigDecimal"/>
+	<field name="SIFCODTRA" class="java.math.BigDecimal"/>
+	<field name="SIFMTOBEN" class="java.math.BigDecimal"/>
+	<field name="SIFCAUREL" class="java.math.BigDecimal"/>
+	<field name="SIFTIPEMI" class="java.math.BigDecimal"/>
+	<field name="SIFTIPEGR" class="java.math.BigDecimal"/>
+	<field name="SIFMTODOC" class="java.lang.String"/>
+	<field name="SIFMODPAG" class="java.math.BigDecimal"/>
+	<field name="SIFFECEMI" class="java.lang.String"/>
+	<field name="SIFNUMSER" class="java.lang.String"/>
+	<field name="SIFNUMDOC" class="java.lang.String"/>
+	<field name="SIFCODBCO" class="java.lang.String"/>
+	<field name="SIFORIGEN" class="java.math.BigDecimal"/>
+	<group name="SIFRUTAFI">
+		<groupExpression><![CDATA[$F{SIFRUTAFI}]]></groupExpression>
+	</group>
+	<title>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="55f9b63b-1bec-4e8a-8124-b9b09fd16a10" mode="Opaque" x="856" y="110" width="66" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DV Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="575f34b1-d0ff-4a49-a54c-2bfeefb935b3" mode="Opaque" x="1314" y="110" width="244" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Afiliado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="558fde8c-f2b3-479c-bd86-3101b1d8026a" mode="Opaque" x="742" y="110" width="114" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="866caca9-32b9-44b5-8da9-969ce257a806" mode="Opaque" x="81" y="110" width="88" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Periodo Informe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56f7189a-c1cc-47da-b028-2abfb5e23250" mode="Opaque" x="1161" y="110" width="93" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut Afiliado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ad02c60-68bb-48fa-860a-bed347535f9f" mode="Opaque" x="365" y="110" width="88" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes Recaudación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88d2d1e8-e116-4764-9095-9788f6cd916b" mode="Opaque" x="169" y="110" width="122" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Cod. Entidad Administradora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e72846ab-da42-49b1-a1aa-f3f80d94dc28" mode="Opaque" x="635" y="110" width="107" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Declaración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a366d049-a1db-45af-8537-2dbafbd728b5" mode="Opaque" x="551" y="110" width="84" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Declaración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8e0e16e5-1275-4ebc-9605-7f6204857f37" x="0" y="34" width="632" height="51" forecolor="#0000F4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Egresos de Asignaciones Familiares Retroactivas por Causante  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c79269b-f806-42be-9bd6-d1b28c1b9b1a" mode="Opaque" x="922" y="110" width="239" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c16c99b-4692-4b73-be4d-6513eddf9ec3" x="0" y="0" width="632" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  SIVEGAM - SIF012]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cbce8c2-3aa9-4309-b3d9-910b644eaa6c" mode="Opaque" x="291" y="110" width="74" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Archivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e7d0bba-3644-4dca-afa4-ab5f6beca033" mode="Opaque" x="1558" y="110" width="100" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Tipo Beneficio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9510bef-4a73-4b48-8946-da62639e53b4" mode="Opaque" x="1658" y="110" width="88" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Beneficiario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14efb07c-891c-40f9-b7a3-6d3d8ddb42e1" mode="Opaque" x="1746" y="110" width="93" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut Causante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="461a060f-fd8b-4247-9a7f-8f5b6b862fac" mode="Opaque" x="1839" y="110" width="66" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DV Causante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="433e8c23-c271-4167-b255-6540fe5a55a2" mode="Opaque" x="1905" y="110" width="275" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Causante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a6bd2a27-e05c-43f2-8f49-9b9d6a685eed" mode="Opaque" x="2279" y="110" width="111" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio Pago Retroactivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="189d9416-7885-4adc-993f-8ca9700ec9ae" mode="Opaque" x="2390" y="110" width="107" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Termino Pago Retroactivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2c5d343-8021-4c5f-8fda-7dcb82d7ac27" mode="Opaque" x="2497" y="110" width="54" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dias Asfam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="436f5f91-71c0-4f40-adfb-f5139c6ad20b" mode="Opaque" x="2551" y="110" width="60" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Tramo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6386e1a-a000-4073-88ca-f0f7078dcc67" mode="Opaque" x="2611" y="110" width="111" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Beneficio Retroactivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6c1faab-5a36-4183-bc9f-492e4c5c9896" mode="Opaque" x="2810" y="110" width="60" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Emisión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da465c0a-5ed4-4f93-92f4-0344393883cf" mode="Opaque" x="2870" y="110" width="66" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Tipo Egreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa4129ee-c6e2-4321-b2d0-c5fac7e08987" mode="Opaque" x="3025" y="110" width="80" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modalidad Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="456e316e-5357-4a0b-af00-cb9d58f95dd8" mode="Opaque" x="2936" y="110" width="89" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8c5959bd-5e52-42ff-926b-4499c13a966e" mode="Opaque" x="3205" y="110" width="121" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96b3bef0-d334-48a0-aef6-346eca241dd2" mode="Opaque" x="3326" y="110" width="94" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5a557a0-150c-41be-962e-a8d64c066f5c" mode="Opaque" x="3105" y="110" width="100" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Emisión Documento ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9226bc4b-6404-4213-9cc8-361fc5181b57" mode="Opaque" x="3420" y="110" width="79" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod. Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2971e219-f162-4aed-907a-8fc02ff8451a" mode="Opaque" x="2722" y="110" width="88" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Causal Reliquidación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cbc9a634-35b4-4a66-bb2d-2057fc361345" x="632" y="0" width="2948" height="85"/>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="94d955fe-17cd-4726-b25b-c04612ee0996" x="0" y="85" width="169" height="25" forecolor="#006699"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Periodo Proceso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="866caca9-32b9-44b5-8da9-969ce257a806" mode="Opaque" x="2180" y="110" width="99" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código Tipo de Causante]]></text>
+			</staticText>
+			<textField pattern="MMM-yy" isBlankWhenNull="false">
+				<reportElement uuid="1660b973-c7cb-40f5-93a1-b295d95c89e1" x="169" y="85" width="3411" height="25" forecolor="#006699"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $P{Prdo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="866caca9-32b9-44b5-8da9-969ce257a806" mode="Opaque" x="3499" y="110" width="81" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f2d9d70-014f-4f9c-bf9e-beefd489166b" mode="Opaque" x="453" y="110" width="98" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes Remuneración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c01488c9-39bd-4f89-a63f-95530797e007" mode="Opaque" x="1254" y="110" width="60" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DV Afiliado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="866caca9-32b9-44b5-8da9-969ce257a806" mode="Opaque" x="0" y="110" width="81" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Correlativo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement uuid="19df05c1-6b96-457c-bf10-14d837922e5f" x="81" y="0" width="88" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFFECPRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8bce1d33-4e61-4fc4-846d-4ce656694e78" x="169" y="0" width="122" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCODENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0a2df08-5ea9-4908-89ab-b95a60449ad4" x="291" y="0" width="74" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCODARC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="76247659-72e3-49d6-8062-156d3be9c068" x="365" y="0" width="88" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFMESREC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="54d37cb9-4355-4fec-99aa-6c6cc5690cf6" x="453" y="0" width="98" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFMESREM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cae045d6-ddfc-4ba0-b400-243b28cecae5" x="551" y="0" width="84" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFTIPDEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="24dac1f8-4bd5-46d0-b408-e47f32188e61" x="635" y="0" width="107" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFNUMDEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="62d0a4ba-72f9-4987-bf06-146ef491c4fd" x="742" y="0" width="114" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFRUTEMP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="597ee02d-c6c8-4adb-aa2f-f39b74f0f513" x="856" y="0" width="66" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFDVREMP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fb44625a-14f6-48b6-939c-f35a1d35fc32" x="922" y="0" width="239" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  " + $F{SIFNOMEMP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9ea6252d-b6b7-44cd-bd22-9f5f3ed89d5f" x="1161" y="0" width="93" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFRUTAFI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f42c051-3514-40c1-b4af-05a30e704316" x="1254" y="0" width="60" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFDVRAFI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1f2ffe6d-3932-4ec1-877d-b13302b113d8" x="1314" y="0" width="244" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  " + $F{SIFNOMAFI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9a9638e8-e945-4913-a3e6-1d4d8ee8a195" x="1558" y="0" width="100" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFTIPBEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3df1ee2-0e91-4b26-8c90-b8ff19ced707" x="1658" y="0" width="88" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCODTBE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1a48c861-e1fe-4df4-baa3-0423c2953813" x="1746" y="0" width="93" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFRUTCAU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="366b1ce2-16d7-4a03-a99e-573ab237695b" x="1839" y="0" width="66" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFDVRCAU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a26ec8d-2df2-4750-82d5-c0ec2fd035fa" x="1905" y="0" width="275" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  " + $F{SIFNOMCAU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ea401039-e603-44c7-af74-2797fdb6e997" x="2279" y="0" width="111" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFFECINI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="08559204-b7f7-49a5-96e3-3acb5403c21f" x="2390" y="0" width="107" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFFECTER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7124326-6376-4612-95b5-5162260fac4b" x="2497" y="0" width="54" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFDIASAF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="848ee37e-923e-4daf-89cc-8485fd1edd07" x="2551" y="0" width="60" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCODTRA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a46b3fe-81f7-40c6-aa79-3b44b31f6584" x="2611" y="0" width="111" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFMTOBEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd70b062-ce9c-4c84-81cc-fe0c3126dcf2" x="2722" y="0" width="88" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCAUREL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0363011b-fc0d-40fe-991d-e20460d99c96" x="2810" y="0" width="60" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFTIPEMI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="386dcbe6-8ff2-4f1a-a7b1-f8f2b51ec4e2" x="2870" y="0" width="66" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFTIPEGR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cc1135ef-8701-4ac5-ae13-b956f25442e0" x="3025" y="0" width="80" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFMODPAG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2b7ead90-41f3-4bab-82ea-ea4f17f8d256" x="2936" y="0" width="89" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFMTODOC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9203832a-b0df-42b6-8278-3b31c0b1fcdb" x="3205" y="0" width="121" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFNUMSER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d346c74-0f5b-44bb-a61e-d062ea973bc2" x="3326" y="0" width="94" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFNUMDOC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dd664fe6-a6d7-4a55-9279-f33aee168f1f" x="3420" y="0" width="79" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFCODBCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ac65bc53-47a6-4ff2-8043-9859d42dc3bb" x="3105" y="0" width="100" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFFECEMI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19df05c1-6b96-457c-bf10-14d837922e5f" x="2180" y="0" width="99" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFTIPCAU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19df05c1-6b96-457c-bf10-14d837922e5f" x="3499" y="0" width="81" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFORIGEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19df05c1-6b96-457c-bf10-14d837922e5f" x="0" y="0" width="81" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IDSIF012}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

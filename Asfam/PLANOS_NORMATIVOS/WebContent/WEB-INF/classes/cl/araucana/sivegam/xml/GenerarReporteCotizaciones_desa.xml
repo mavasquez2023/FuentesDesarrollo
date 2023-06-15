@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="cotizacionesSiv">
+
+	<!-- AREA DE CONSULTAS TIPO SELECT -->
+	<select id="selectIdMaestroSivegam" resultClass="string" >
+		SELECT nextval FOR SVDTAD.IDMAESVG_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdDetalleReporte" resultClass="string">
+		SELECT nextval FOR SVDTAD.IDDETRPT_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="obtenerStatusProceso" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO" resultClass="string">
+		SELECT 	STATUSPROCESO status_proceso
+		FROM	SVDTAD.SVMTRSVG
+		WHERE	IDPERIODOPROCESO = #periodo_proceso#
+		AND		IDTIPOARCHIVO =	#tipo_archivo#
+	</select>
+	
+	<select id="selectMaxIdMaestroSivegam" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO" resultClass="string">
+		SELECT 	MAX(IDMAESTROSIVEGAM) AS MaxId
+		FROM  	SVDTAD.SVMTRSVG
+		WHERE 	IDPERIODOPROCESO = #periodo_proceso#
+		AND 	IDTIPOARCHIVO = #tipo_archivo#
+		AND		STATUSPROCESO = 3
+	</select>
+	
+	<select id="actualizaStatusPerPro" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT 	MAX(IDMAESTROSIVEGAM)
+		FROM	SVDTAD.SVMTRSVG
+		WHERE	IDPERIODOPROCESO = #mesConsultado#
+		AND		IDTIPOARCHIVO = #idTipoReporte#
+		AND		STATUSPROCESO = 3
+	</select>
+	
+	<select id="selectTipoArchivoFromTipoProceso" parameterClass="cl.araucana.sivegam.vo.TipoProcesosVO" resultClass="string">
+		SELECT 	IDTPOARCH id_tipo_archivo
+		FROM	SVDTAD.SVTPOPRO
+		WHERE	IDTIPOPROCESO = #id_tipo_proceso#
+	</select>
+	
+	<select id="selectPeriodoAndStatusSivegam" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO" resultClass="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		SELECT 	IDPERIODOPROCESO periodo_proceso,
+				STATUSPROCESO status_proceso
+		FROM	SVDTAD.SVMTRSVG
+		WHERE	IDMAESTROSIVEGAM = #maestro_sivegam#		
+	</select>
+
+	<select id="actualizaStatusPerDivPrev" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="cl.araucana.sivegam.vo.RespuestaVO">
+		SELECT 	A.IDMAESTROSIVEGAM maxId,
+               	A.STATUSPROCESO status
+		FROM   	SVDTAD.SVMTRSVG A
+		WHERE 	A.IDMAESTROSIVEGAM = (SELECT 	MAX(B.IDMAESTROSIVEGAM) 
+                                      FROM 		SVDTAD.SVMTRSVG B
+                                      WHERE     B.IDPERIODOPROCESO = #mesConsultado#
+                                      AND       B.IDTIPOARCHIVO = #idTipoReporte#
+                                      AND       B.STATUSPROCESO IN (1,2,3,4,5,6))
+	</select>
+		
+	<select id="selectId" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO" resultClass="string">
+		SELECT 	A.IDMAESTROSIVEGAM maxId
+		FROM   	SVDTAD.SVMTRSVG A
+		WHERE 	A.IDMAESTROSIVEGAM = (SELECT 	MAX(B.IDMAESTROSIVEGAM) 
+                                      FROM 		SVDTAD.SVMTRSVG B
+                                      WHERE     B.IDPERIODOPROCESO = #periodo_proceso#
+                                      AND       B.IDTIPOARCHIVO = #tipo_archivo#
+                                      AND       B.STATUSPROCESO IN (1,2,3,4,5,6))
+	</select>	
+	
+	<!-- AREA DE INSERT -->
+	<insert id="insertMaestroSivegam" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		INSERT INTO SVDTAD.SVMTRSVG
+		( 
+			IDMAESTROSIVEGAM,
+			FECHAPROCESO,
+			IDPERIODOPROCESO,
+			STATUSPROCESO,
+			IDTIPOARCHIVO,
+			IDUSUARIOSIVEGAM 
+		)
+		VALUES(
+			#maestro_sivegam#,
+			#fechaProcesoDate#,
+			#periodo_proceso#,
+			#status_proceso#,
+			#tipo_archivo#,
+			#usuario_sivegam# 
+		)
+	</insert>
+	
+	<insert id="insertDetalleReportesSivegam" parameterClass="cl.araucana.sivegam.vo.DetalleReporteSivegamVO">
+		INSERT INTO SVDTAD.SVDETRPT
+		(
+			IDDETALLEREPORTE,
+			IDMAESTROSIVEGAM,
+			NOMBREREPORTE,
+			FECHAREPORTE,
+			STATUSPROCESO,
+			IDTIPOPROCESO,
+			IDPERIODOPROCESO,
+			IDFORMATOREPORTE,
+			IDUSUARIOSIVEGAM
+		)
+		VALUES(
+			#detalle_reporte#,
+			#maestro_sivegam#,
+			#nombre_reporte#,
+			#fechaReporteDate#,
+			#status_proceso#,
+			#tipo_proceso#,
+			#periodo_proceso#,
+			#fomato_reporte#,
+			#usuario_sivegam#
+		)	
+	</insert>
+	
+	<!-- AREA DE UPDATES -->
+	<update id="updateStatusMaestroSivegam" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		UPDATE 	SVDTAD.SVMTRSVG
+		SET		FECHAPROCESO = #fechaProcesoDate#,
+				STATUSPROCESO = #status_proceso#
+		WHERE	IDMAESTROSIVEGAM = #maestro_sivegam#		
+	</update>
+	
+	<update id="updateStatusPorReproceso112" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		UPDATE 	SVDTAD.SVMTRSVG
+		SET		STATUSPROCESO = 6
+		WHERE	IDMAESTROSIVEGAM = #maestro_sivegam#
+	</update>
+	
+	<update id="updateStatusReprocesar" parameterClass="cl.araucana.sivegam.vo.RespuestaVO">
+		UPDATE 	SVDTAD.SVMTRSVG
+		SET		STATUSPROCESO = #status#
+		WHERE	IDMAESTROSIVEGAM = #maxId#
+	</update>
+</sqlMap>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cuadroEstadistico_4" language="groovy" pageWidth="550" pageHeight="842" columnWidth="540" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF" lineSpacing="Single"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<subDataset name="Table Dataset 2"/>
+	<subDataset name="Table Dataset 3"/>
+	<subDataset name="Table Dataset 4"/>
+	<subDataset name="Table Dataset 5"/>
+	<field name="periodo" class="java.lang.String"/>
+	<field name="entidad" class="java.lang.String"/>
+	<field name="sub_PostPar_Iniciados_Jornada_Completa" class="java.lang.String"/>
+	<field name="sub_PostPar_Iniciados_Jornada_Parcial" class="java.lang.String"/>
+	<field name="sub_PostPar_Iniciados_Total" class="java.lang.String"/>
+	<field name="sub_PostPar_Traspasados_Jornada_Completa" class="java.lang.String"/>
+	<field name="sub_PostPar_Traspasados_Jornada_Parcial" class="java.lang.String"/>
+	<field name="sub_PostPar_Traspasados_Total" class="java.lang.String"/>
+	<field name="sub_PostPar_Pagados_Jornada_Completa" class="java.lang.String"/>
+	<field name="sub_PostPar_Pagados_Jornada_Parcial" class="java.lang.String"/>
+	<field name="sub_PostPar_Pagados_Total" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="86">
+			<staticText>
+				<reportElement x="10" y="0" width="530" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[CUADRO N° 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="530" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Subsidios por permiso postnatal parental según extensión  del permiso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="60" width="126" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nombre de la Institución:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="60" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="336" y="60" width="84" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Mes Informado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="60" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="15" width="530" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="45" width="530" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="435">
+			<staticText>
+				<reportElement style="table" x="120" y="0" width="200" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tipo de extensión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="66" width="120" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Número de subsidios por permiso postnatal parental iniciados en el mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="120" y="33" width="100" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jornada Completa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="220" y="33" width="100" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jornada Parcial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="320" y="0" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="132" width="120" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Número de subsidios por permiso postnatal parental traspasados en el mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="198" width="120" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Número de subsidios por permiso postnatal parental pagados en el mes]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" x="120" y="66" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Iniciados_Jornada_Completa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="220" y="66" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Iniciados_Jornada_Parcial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Transparent" x="320" y="66" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Iniciados_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="120" y="132" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Traspasados_Jornada_Completa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="220" y="132" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Traspasados_Jornada_Parcial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="320" y="132" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Traspasados_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="120" y="198" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Pagados_Jornada_Completa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="220" y="198" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Pagados_Jornada_Parcial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="320" y="198" width="100" height="66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sub_PostPar_Pagados_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

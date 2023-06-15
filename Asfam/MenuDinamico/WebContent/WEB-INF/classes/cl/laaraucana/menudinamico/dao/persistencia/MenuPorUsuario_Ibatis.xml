@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	<resultMap id="result_MenuPorUsuario" class="cl.laaraucana.menudinamico.vo.MenuPorUsuarioVO" >
+		<result property="id_proc" column="IDUSR"/>
+		<result property="rut_user" column="RUTUSR"/>
+		<result property="codMenu" column="CODMENU"/>
+		<result property="nodoPadre" column="NODPADR"/>
+		<result property="flgHoja" column="FLGHOJA"/>
+		<result property="enlace" column="ENLMENU"/>
+		<result property="etiqueta" column="ETQMENU"/>
+		<result property="nivel" column="NIVEL"/>
+		<result property="seguridad" column="SEGURIDAD"/>
+		<result property="linkInterno" column="LINKINT"/>
+	</resultMap>
+	
+	<resultMap id="result_AdmMenuPorUsuario" class="cl.laaraucana.menudinamico.vo.adm_MenuPorUsuarioVO" >
+		
+		<result property="codMenu" column="CODMENU"/>
+		<result property="nodoPadre" column="NODPADR"/>
+		<result property="flgHoja" column="FLGHOJA"/>
+		<result property="enlace" column="ENLMENU"/>
+		<result property="etiqueta" column="ETQMENU"/>
+		<result property="descripcion" column="DSCMENU"/>
+		<result property="seguridad" column="SEGURIDAD"/>
+		<result property="nivel" column="NIVEL"/>
+		
+		<result property="id_user" column="IDUSR"/>	
+	 	<result property="rut_user" column="RUTUSR"/>	
+		<result property="nombre_user" column="NOMUSR"/>	
+		<result property="ape_paterno" column="APETUSR"/>	
+		<result property="ape_materno" column="MAPEUSR"/>	
+		<result property="email_user" column="MAILUSR"/>
+	</resultMap>
+	
+	<resultMap id="asoc_UserMenu" class="cl.laaraucana.menudinamico.vo.IlfusrmnKey" >
+		<result  property="idproc" column="IDPROC" />
+  		<result  property="codMenu" column="CODMENU" />
+    </resultMap>
+	
+	<select id="getMenuPorUsuario" resultMap="result_MenuPorUsuario">
+		SELECT * FROM (
+		SELECT A.*,C.* FROM
+        	(SELECT * FROM LIEXP.ILFJAUSR 
+            	WHERE RUTUSR=#rut_user#) A
+			INNER JOIN LIEXP.ILFUSRMN B
+			ON A.IDUSR=B.IDPROC
+		INNER JOIN LIEXP.ILFJAMEN C
+		ON B.CODMENU=C.CODMENU
+		) D
+		ORDER BY D.ETQMENU, D.NIVEL, D.CODMENU
+	</select>
+	
+	<select id="getMenuPorUsuarioSorted" resultMap="result_MenuPorUsuario">
+	SELECT * FROM (
+	SELECT A.*,C.* FROM
+	(SELECT * FROM LIEXP.ILFJAUSR
+	WHERE RUTUSR='70016160-9') A
+	INNER JOIN LIEXP.ILFUSRMN B
+	ON A.IDUSR=B.IDPROC
+	INNER JOIN LIEXP.ILFJAMEN C
+	ON B.CODMENU=C.CODMENU
+	) D
+	ORDER BY
+	D.NODPADR ASC, D.FLGHOJA ASC
+	</select>			
+	
+	<select id="getAdmMenuPorUsuario" resultMap="result_AdmMenuPorUsuario">				
+		SELECT A.*,C.* FROM (
+			SELECT * FROM LIEXP.ILFJAUSR 
+            	WHERE RUTUSR = #rut_user#) AS A
+		INNER JOIN LIEXP.ILFUSRMN AS B
+		ON A.IDUSR=B.IDPROC
+		INNER JOIN LIEXP.ILFJAMEN AS C
+		ON B.CODMENU=C.CODMENU
+		ORDER BY NIVEL,CODMENU
+	</select>	
+	
+	<insert id="asignar_MenuPorUsuario" parameterClass="cl.laaraucana.menudinamico.vo.adm_MenuPorUsuarioVO">
+		INSERT INTO LIEXP.ILFUSRMN (IDPROC,CODMENU) 
+		VALUES (
+			#id_user#,
+			#codMenu#
+			)
+		WITH NC
+	</insert>
+	
+	<delete id="del_UsuarioPorMenu" parameterClass="cl.laaraucana.menudinamico.vo.adm_MenuPorUsuarioVO">
+		DELETE FROM LIEXP.ILFUSRMN
+		WHERE IDPROC = #id_user#
+		WITH NC
+	</delete>
+	
+	<delete id="del_MenuPorUsuario" parameterClass="cl.laaraucana.menudinamico.vo.adm_MenuPorUsuarioVO">
+		DELETE FROM LIEXP.ILFUSRMN
+		WHERE CODMENU = #codMenu#
+		WITH NC
+	</delete>
+	
+	<delete id="quitar_MenuPorUsuario" parameterClass="cl.laaraucana.menudinamico.vo.adm_MenuPorUsuarioVO">
+		DELETE FROM LIEXP.ILFUSRMN
+		WHERE  CODMENU = #codMenu# AND IDPROC = #id_user#
+		WITH NC
+	</delete>
+
+	<select id="get_UsuariosPorMenu" resultMap="asoc_UserMenu" parameterClass="java.lang.Long" >
+		SELECT *
+		FROM LIEXP.ILFUSRMN
+		WHERE CODMENU =  #codMenu#
+	</select>
+
+
+
+</sqlMap>

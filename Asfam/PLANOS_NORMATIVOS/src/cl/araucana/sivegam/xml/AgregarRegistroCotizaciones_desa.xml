@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AgregarRegistroCot">
+
+	<select id="selectMaxIdsif018" resultClass="string">
+		SELECT 	MAX(IDSIF018) AS maximo
+		FROM	SVDTAD.SIF018	
+	</select>
+	
+	<select id="obtenerDataTabla018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	IDMTRSVG id_maestro_sivegam,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad
+ 		FROM	SVDTAD.SIF018
+ 		WHERE	IDSIF018 = #idsif018#
+	</select>
+	
+	<insert id="insertNewSif018" parameterClass="cl.araucana.sivegam.vo.LinSif018VO">
+		INSERT	INTO SVDTAD.SIF018
+		(
+			IDSIF018 ,
+			IDMTRSVG ,
+			FLGMDF ,
+			FLGDLT ,
+			SIFFECPRO ,
+			SIFCODENT ,
+			SIFCODARC ,
+			SIFRUTEMP ,
+			SIFDVREMP ,
+			SIFNOMEMP ,
+			SIFMODPAG ,
+			SIFMTODOC ,
+			SIFNUMSER ,
+			SIFNUMDOC ,
+			SIFFECEMI ,
+			SIFCODBCO ,
+			SIFFECCOB 
+		)
+		 VALUES(
+			#id_sif018#,
+			#id_maestro_sivegam#,
+			#flag_reg_modificado#,
+			#flag_reg_eliminado#,
+			#fecha_proceso#,
+			#codigo_entidad#,
+			#codigo_archivo#,
+			#rut_empleador#,
+			#dv_empleador#,
+			#nombre_empleador#,
+			#mod_pago#,
+			#monto_documento#,
+			#numero_serie#,
+			#numero_documento#,
+			#fecha_emision_documento#,
+			#codigo_banco#,
+			#fecha_cobro#
+		)
+	</insert>
+	
+	<select id="selectMaxIdsif019" resultClass="string">
+		SELECT 	MAX(IDSIF019) AS maximo
+		FROM	SVDTAD.SIF019N	
+	</select>
+
+	<select id="obtenerDataTabla019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	IDMTRSVG id_maestro_sivegam,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+ 		FROM	SVDTAD.SIF019N
+ 		WHERE	IDSIF019 = #idSif019#
+	</select>
+	
+	<insert id="insertNewSif019" parameterClass="cl.araucana.sivegam.vo.LinSif019VO">
+		INSERT INTO SVDTAD.SIF019N
+		(
+		 	IDSIF019 ,
+			IDMTRSVG ,
+			FLGMDF ,
+			FLGDLT ,
+			SIFFECPRO ,
+			SIFCODENT ,
+			SIFCODARC ,
+			SIFRUTEMP ,
+			SIFDVREMP ,
+			SIFNOMEMP ,
+			SIFMEORGA ,
+			SIFESDOOR ,
+			SIFMOPAOR ,
+			SIFNUSEOR ,
+			SIFNUDOOR ,
+			SIFMODOOR ,
+			SIFFEEMOR ,
+			SIFCOBAOR ,
+			SIFMOPANU ,
+			SIFNUSENU ,
+			SIFNUDONU ,
+			SIFMODONU ,
+			SIFFEEMNU ,
+			SIFCOBANU
+		)
+		VALUES (
+			#id_sif019#,
+			#id_maestro_sivegam#,
+			#flag_reg_modificado#,
+			#flag_reg_eliminado#,
+			#fecha_proceso#,
+			#codigo_entidad#,
+			#codigo_archivo#,
+			#rut_empresa#,
+			#dv_empresa#,
+			#nombre_empresa#,
+			#mes_origen_gasto#,
+			#estado_doc_orig#,
+			#modo_pago_orig#,
+			#num_serie_orig#,
+			#num_docum_orig#,
+			#monto_docum_orig#,
+			#fecha_emision_orig#,
+			#codigo_banco_orig#,
+			#modo_pago_nuevo#,
+			#num_serie_nuevo#,
+			#num_docum_nuevo#,
+			#monto_docum_nuevo#,
+			#fecha_emision_nuevo#,
+			#codigo_banco_nuevo#
+		)
+	</insert>
+	
+	<select id="selectMaxIdsif017" resultClass="string">
+		SELECT 	MAX(IDSIF017) AS maximo
+		FROM	SVDTAD.SIF017	
+	</select>
+
+	<select id="obtenerDataTabla017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT 	IDMTRSVG id_maestro_sivegam,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+ 		FROM	SVDTAD.SIF017
+ 		WHERE	IDSIF017 = #idsif017#
+	</select>
+	
+	<insert id="insertNewSif017" parameterClass="cl.araucana.sivegam.vo.LinSif017VO">
+		INSERT INTO SVDTAD.SIF017
+		(
+			IDSIF017 ,
+			IDMTRSVG ,
+			FLGMDF ,
+			FLGDLT ,
+			SIFFECPRO ,
+			SIFCODENT ,
+			SIFCODARC ,
+			SIFRUTEMP ,
+			SIFDVREMP ,
+			SIFNOMEMP ,
+			SIFTIPEGR ,
+			SIFMODPAG ,
+			SIFMTODOC ,
+			SIFNUMSER ,
+			SIFNUMDOC ,
+			SIFFECEMI ,
+			SIFCODBCO ,
+			SIFNUMCAR ,
+			SIFESTDOC ,
+			SIFFECREN			
+		)
+		 VALUES(
+		 	#id_sif017#,
+		 	#id_maestro_sivegam#,
+		 	#flag_reg_modificado#,
+		 	#flag_reg_eliminado#,
+		 	#fecha_proceso#,
+		 	#codigo_entidad#,
+		 	#codigo_archivo#,
+		 	#rut_empresa#,
+		 	#dv_empresa#,
+		 	#nombre_empresa#,
+		 	#cod_tipo_egreso#,
+		 	#modalidad_de_pago#,
+		 	#monto_documento#,
+		 	#numero_serie#,
+		 	#numero_documento#,
+		 	#fech_emision_doc#,
+		 	#codigo_banco#,
+		 	#numero_cartola#,
+		 	#estado_documento#,
+		 	#fecha_rendicion#
+		) 
+	</insert>
+	
+	<select id="selectMaxIdsif016" resultClass="string">
+		SELECT 	MAX(IDSIF016) AS maximo
+		FROM	SVDTAD.SIF016A2	
+	</select>
+
+	<select id="obtenerDataTabla016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT 	IDMTRSVG id_maestro_sivegam,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion,
+				SIFCODDEC cod_tipo_declaracion
+		FROM	SVDTAD.SIF016A2
+ 		WHERE	IDSIF016 = #idsif016#
+	</select>
+	
+	<insert id="insertNewSif016" parameterClass="cl.araucana.sivegam.vo.LinSif016VO">
+		INSERT INTO SVDTAD.SIF016A2
+		(
+			IDSIF016 ,
+			IDMTRSVG ,
+			FLGMDF ,
+			FLGDLT ,
+			SIFFECPRO ,
+			SIFCODENT ,
+			SIFCODARC ,
+			SIFMESREC ,
+			SIFMESREM ,
+			SIFCODDEC ,
+			SIFNUMDEC ,
+			SIFFECDEC ,
+			SIFRUTEMP ,
+			SIFDVREMP ,
+			SIFNOMEMP ,
+			SIFTOTTRA ,
+			SIFTOTCAR ,
+			SIFCARRET ,
+			SIFMTOASF ,
+			SIFASFRET ,
+			SIFRETMES ,
+			SIFTOTPAF ,
+			SIFTOTCOT ,
+			SIFOTRDES ,
+			SIFRESNET ,
+			SIFTIPSAL ,
+			SIFMODPAG ,
+			SIFMTODOC ,
+			SIFNUMSER ,
+			SIFNUMDOC ,
+			SIFFECEMI ,
+			SIFCODBCO ,
+			CT1IA ,
+			SIFORIGEN
+						
+		)
+		 VALUES(
+		 	#id_sif016#,
+			#id_maestro_sivegam#,
+			#flag_reg_modificado#,
+			#flag_reg_eliminado#,
+			#fecha_proceso#,       
+			#codigo_entidad#,       
+			#codigo_archivo#,       
+			#mes_recaudacion#,      
+			#mes_remuneracion#,     
+			#cod_tipo_declaracion#, 
+			#numero_declaracion#,  
+			#fech_declaracion#,    
+			#rut_empresa#,          
+			#dv_empresa#,           
+			#nombre_empresa#,      
+			#num_total_trabajador#, 
+			#num_total_cargas#,  
+			#cargas_retroactivas#,  
+			#mto_asfam_mes#,       
+			#mto_asfam_mes_retro#, 
+			#mto_reintegros_mes#,  
+			#total_pago_asigfam#,  
+			#total_de_cotizacion#, 
+			#otros_descuentos#,    
+			#resultado_neto#,      
+			#tipo_de_saldo#,        
+			#modalidad_pago#,    
+			#monto_documento#,     
+			#numero_serie#,        
+			#numero_documento#,    
+			#fech_emision_doc#,    
+			#codigo_banco#,
+			#campo_contingencia#,
+			#fuente_de_origen#
+		 )
+		 
+	</insert>
+	
+	<select id="obtenerFechaProcesoSif016" resultClass="string">
+		SELECT 	MAX(SIFFECPRO) as fecha_proceso
+		FROM	SVDTAD.SIF016A2	
+	</select>
+	
+		<select id="obtenerFechaProcesoSif017" resultClass="string">
+		SELECT 	MAX(SIFFECPRO) as fecha_proceso
+		FROM	SVDTAD.SIF017	
+	</select>
+	
+		<select id="obtenerFechaProcesoSif018" resultClass="string">
+		SELECT 	MAX(SIFFECPRO) as fecha_proceso
+		FROM	SVDTAD.SIF018
+	</select>
+	
+		<select id="obtenerFechaProcesoSif019" resultClass="string">
+		SELECT 	MAX(SIFFECPRO) as fecha_proceso
+		FROM	SVDTAD.SIF019N
+	</select>
+</sqlMap>

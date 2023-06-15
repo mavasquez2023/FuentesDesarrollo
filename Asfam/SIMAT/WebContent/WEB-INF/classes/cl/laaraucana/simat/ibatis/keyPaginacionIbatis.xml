@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultQueryIdVO" class="cl.laaraucana.simat.entidades.QueryIdVO">	
+		<result property="tabla" column="TABLA" />	
+		<result property="inicio" column="INICIO" />	
+		<result property="fin" column="FIN" />	
+		<result property="minId" column="MIN_ID" />
+		<result property="maxId" column="MAX_ID" />		
+	</resultMap>
+		
+	<select id="getMinID" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID from SIMATDTA.#tabla#
+	</select>
+	
+	<select id="getMinID" resultMap="resultQueryIdVO">
+		select max(SM_ID) as MAX_ID from SIMATDTA.#tabla#
+	</select>	
+	
+</sqlMap>	

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<!-- SubsTscVigIbatis -->
+	<resultMap id="resultSubsTscVigVO" class="cl.laaraucana.simat.entidades.SubsTscVigVO">
+	
+		<result property="idSubsTscVig" column="SM_ID" />
+		<result property="mes_informacion" column="SMMESINFO" />
+		<result property="codigo_entidad" column="SMCODENTID" />
+		<result property="agencia_entidad" column="SMAGEENTID" />
+		<result property="run_beneficiaria" column="SMRUNBENEF" />
+		<result property="nombre_beneficiaria" column="SMNOMBENEF" />
+		<result property="edad" column="SMEDAD" />
+		<result property="cod_comuna_beneficiaria" column="SMCODCOBEN" />
+		<result property="actividad_laboral_trabajador" column="SMCALITRAB" />
+		<result property="nro_licencia" column="SMNROLICEN" />
+		<result property="codigo_diagnostico" column="SMCODDIAGN" />
+		<result property="nro_nacimientos" column="SMNRONACIM" />
+		<result property="fecha_nacimiento" column="SMFECNAC" />
+		<result property="num_dias_autorizados" column="SMNUMDIAU" />
+		<result property="fecha_inicio_subsidio" column="SMFECINSUB" />
+		<result property="fecha_termino_subsidio" column="SMFECTESUB" />
+		<result property="num_dias_subsidio_pagado" column="SMNUMDIAPA" />
+		<result property="monto_sub_pagado" column="SMMONSUBPA" />
+		<result property="tipo_emision" column="SMTIPOEMIS" />
+		<result property="mes_nomina" column="SMMESNOMIN" />
+		<result property="mod_pago" column="SMMODPAGO" />
+		<result property="serie_documento" column="SMSERIEDOC" />
+		<result property="num_documento" column="SMNUMDOC" />
+		<result property="fecha_emision_documento" column="SMFECEMDOC" />
+		<result property="monto_documento" column="SMMONTODOC" />
+		<result property="codigo_banco" column="SMCODBANCO" />
+		<result property="cta_cte" column="SMCTA_CTE" />
+		<result property="causal_emision" column="SMCAUSAEMI" />
+		<result property="num_dias_cotiz_pagados" column="SMDIACOTPA" />
+		<result property="monto_fp" column="SMMONTOFP" />
+		<result property="monto_salud" column="SMMONSALUD" />
+		<result property="monto_cotiz" column="SMMONTOCOT" />
+		<result property="entidad_previsional" column="SMMONTPREV" />
+		<result property="subsidio_iniciado" column="SMSUBSINIC" />	
+			
+	</resultMap>
+	
+	
+	<!-- Sentencia Delect SQL -->
+
+	<select id="getTodoSubsTscVigIbatis" resultMap="resultSubsTscVigVO">
+		select * from SIMATDTA.SMF04
+	</select>
+	
+	<select id="getUnoSubsTscVigIbatis" resultMap="resultSubsTscVigVO">
+		select * from SIMATDTA.SMF04 WHERE SM_ID=#idSubsTscVig#		
+	</select>
+		
+	<select id="getSubsTscVigIbatisByMes" resultMap="resultSubsTscVigVO">
+		select * from SIMATDTA.SMF04 WHERE SMMESINFO=#mes_informacion#
+	</select>
+	
+	<!-- Sentencia Insert SQL -->
+		
+	<insert id="setSubsTscVigIbatis" parameterClass="cl.laaraucana.simat.entidades.SubsTscVigVO">		
+
+ 		INSERT INTO SIMATDTA.SMF04 (SM_ID,SMMESINFO,SMCODENTID,SMAGEENTID,SMRUNBENEF,SMNOMBENEF,SMEDAD,SMCODCOBEN,SMACLABTRA,SMNROLICEN,SMCODDIAGN,SMNRONACIM,SMFECNAC,SMNUMDIAU,SMFECINSUB,SMFECTESUB,SMNUMDIAPA,SMMONSUBPA,SMTIPOEMIS,SMMESNOMIN,SMMODPAGO,SMSERIEDOC,SMNUMDOC,SMFECEMDOC,SMMONTODOC,SMCODBANCO,SMCTA_CTE,SMCAUSAEMI,SMDIACOTPA,SMMONTOFP,SMMONSALUD,SMMONTOCOT,SMENTPREVI,SMSUBSINIC)
+		VALUES (IFNULL((select max(SM_ID)+1 from SIMATDTA.SMF04),0),#mes_informacion#,#codigo_entidad#,#agencia_entidad#,#run_beneficiaria#,#nombre_beneficiaria#,#edad#,#cod_comuna_beneficiaria#,#actividad_laboral_trabajador#,#nro_licencia#,#codigo_diagnostico#,#nro_nacimientos#,#fecha_nacimiento#,#num_dias_autorizados#,#fecha_inicio_subsidio#,#fecha_termino_subsidio#,#num_dias_subsidio_pagado#,#monto_sub_pagado#,#tipo_emision#,#mes_nomina#,#mod_pago#,#serie_documento#,#num_documento#,#fecha_emision_documento#,#monto_documento#,#codigo_banco#,#cta_cte#,#causal_emision#,#num_dias_cotiz_pagados#,#monto_fp#,#monto_salud#,#monto_cotiz#,#entidad_previsional#,#subsidio_iniciado#)
+		WITH NC 		
+ 		
+	</insert>
+	
+	
+	
+	<!-- Sentencia Delete SQL -->
+	
+	<delete id="delSubsTscVigIbatis" parameterClass="cl.laaraucana.simat.entidades.SubsTscVigVO">
+		DELETE FROM SIMATDTA.SMF04 WHERE SM_ID=#idSubsTscVig#
+		WITH NC
+	</delete>
+	
+	
+	<!-- Sentencia Update SQL -->
+	
+	<update id="updateUnoSubsTscVigIbatis">
+		 UPDATE SIMATDTA.SMF04 SET 
+		 SMMESINFO=#mes_informacion#,
+		 SMCODENTID=#codigo_entidad#,
+		 SMAGEENTID=#agencia_entidad#,
+		 SMRUNBENEF=#run_beneficiaria#,
+		 SMNOMBENEF=#nombre_beneficiaria#,
+		 SMEDAD=#edad#,
+		 SMCODCOBEN=#cod_comuna_beneficiaria#,
+		 SMCALITRAB=#actividad_laboral_trabajador#,
+		 SMNROLICEN=#nro_licencia#,
+		 SMCODDIAGN=#codigo_diagnostico#,
+		 SMNRONACIM=#nro_nacimientos#,
+		 SMFECNAC=#fecha_nacimiento#,
+		 SMNUMDIAU=#num_dias_autorizados#,
+		 SMFECINSUB=#fecha_inicio_subsidio#,
+		 SMFECTESUB=#fecha_termino_subsidio#,
+		 SMNUMDIAPA=#num_dias_subsidio_pagado#,
+		 SMMONSUBPA=#monto_sub_pagado#,
+		 SMTIPOEMIS=#tipo_emision#,
+		 SMMESNOMIN=#mes_nomina#,
+		 SMMODPAGO=#mod_pago#,
+		 SMSERIEDOC=#serie_documento#,
+		 SMNUMDOC=#num_documento#,
+		 SMFECEMDOC=#fecha_emision_documento#,
+		 SMMONTODOC=#monto_documento#,
+		 SMCODBANCO=#codigo_banco#,
+		 SMCTA_CTE=#cta_cte#,
+		 SMCAUSAEMI=#causal_emision#,
+		 SMDIACOTPA=#num_dias_cotiz_pagados#,
+		 SMMONTOFP=#monto_fp#,
+		 SMMONSALUD=#monto_salud#,
+		 SMMONTOCOT=#monto_cotiz#,
+		 SMMONTPREV=#entidad_previsional#,
+		 SMSUBSINIC=#subsidio_iniciado#
+		 
+		 WHERE SM_ID=#idSubsTscVig#
+		 WITH NC
+	</update>
+</sqlMap>

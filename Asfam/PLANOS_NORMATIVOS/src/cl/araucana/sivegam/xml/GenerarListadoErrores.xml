@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="svListadoErrores">
+
+	<select id="selectErroresSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	SIFFECPRO = #periodoArchivo#
+		AND		FLGMDF = #flagModificado#
+		AND 	FLGDLT NOT IN(1)	
+	</select>
+	
+	<select id="selectErroresSif012" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TODO
+		WHERE	SIFFECPRO = #periodoArchivo#
+		AND		FLGMDF = #flagModificado#
+		AND 	FLGDLT NOT IN(1)
+	</select>
+
+	<update id="updateSif011porId" parameterClass="cl.araucana.sivegam.vo.Sif011VO">
+		UPDATE  SVDTA.SIF011TODO
+		SET		FLGDLT = 1,
+				FLGMDF = 1
+		WHERE	IDSIF011 = #idsif011#
+	</update>
+	
+	<update id="updateSif012porId" parameterClass="cl.araucana.sivegam.vo.Sif012VO">
+		UPDATE  SVDTA.SIF012TODO
+		SET		FLGDLT = 1,
+				FLGMDF = 1
+		WHERE	IDSIF012 = #idsif012#
+	</update>
+</sqlMap>

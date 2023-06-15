@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<!-- Beans de formulario -->
+	<form-beans>
+		<form-bean name="LoginForm" 					type="cl.araucana.sivegam.struts.Forms.LoginForm"></form-bean>
+		<form-bean name="MenuPrincipalForm" 			type="cl.araucana.sivegam.struts.Forms.MenuPrincipalForm"></form-bean>
+		<form-bean name="MenuGenReporteForm" 			type="cl.araucana.sivegam.struts.Forms.MenuGeneracionReporteForm"></form-bean>	
+		<form-bean name="MenuEdiReporteForm" 			type="cl.araucana.sivegam.struts.Forms.MenuEdicionReportesForm"></form-bean>	
+		<form-bean name="GenerarRepDivPrevForm" 		type="cl.araucana.sivegam.struts.Forms.GenerarReporteDivPrevForm"></form-bean>	
+		<form-bean name="GenerarRepCotForm" 			type="cl.araucana.sivegam.struts.Forms.GenerarReporteCotizacionesForm"></form-bean>	
+		<form-bean name="MenuEditCotForm" 				type="cl.araucana.sivegam.struts.Forms.MenuEdicionCotizacionesForm"></form-bean>	
+		<form-bean name="MenuEditDivPrevForm" 			type="cl.araucana.sivegam.struts.Forms.MenuEdicionDivPrevisionalForm"></form-bean>	
+		<form-bean name="GenRepAreaDivPrevForm" 		type="cl.araucana.sivegam.struts.Forms.GenReportePorAreaDivisionPrevisionalForm"></form-bean>
+		<form-bean name="MenuTipRepPorAreaForm" 		type="cl.araucana.sivegam.struts.Forms.MenuTipoReportesPorAreaForm"></form-bean>
+		<form-bean name="GenRepCesantiaForm" 			type="cl.araucana.sivegam.struts.Forms.GeneracionReportesCesantiaForm"></form-bean>
+		<form-bean name="CargaArchivosForm" 			type="cl.araucana.sivegam.struts.Forms.CargarArchivosAFCForm"></form-bean>
+		<form-bean name="ModifSif011Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif011Form"></form-bean>
+		<form-bean name="ModifSif012Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif012Form"></form-bean>
+		<form-bean name="ModifSif014Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif014Form"></form-bean>
+		<form-bean name="ModifSif016Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif016Form"></form-bean>
+		<form-bean name="ModifSif017Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif017Form"></form-bean>
+		<form-bean name="ModifSif018Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif018Form"></form-bean>
+		<form-bean name="ModifSif019Form" 				type="cl.araucana.sivegam.struts.Forms.ModifSif019Form"></form-bean>
+		<form-bean name="AgregarSif011Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif011Form"></form-bean>
+		<form-bean name="AgregarSif012Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif012Form"></form-bean>
+		<form-bean name="AgregarSif014Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif014Form"></form-bean>
+		<form-bean name="AgregarSif016Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif016Form"></form-bean>
+		<form-bean name="AgregarSif017Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif017Form"></form-bean>
+		<form-bean name="AgregarSif018Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif018Form"></form-bean>
+		<form-bean name="AgregarSif019Form" 			type="cl.araucana.sivegam.struts.Forms.AgregarSif019Form"></form-bean>
+		<form-bean name="GenerarListadoErroresForm" 	type="cl.araucana.sivegam.struts.Forms.GenerarListadoErroresForm"></form-bean>
+		<form-bean name="GenerarInformeFinancieroForm" 	type="cl.araucana.sivegam.struts.Forms.GenerarInformeFinancieroForm"></form-bean>
+		<form-bean name="GenerarCuadroComparativoForm"  type="cl.araucana.sivegam.struts.Forms.GenerarCuadroComparativoForm"></form-bean>
+		<form-bean name="CargaCesantiaForm" 			type="cl.araucana.sivegam.struts.Forms.CargaArchivosCesantiaForm"></form-bean>
+	</form-beans>
+
+	<!-- Excepciones globales -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Reenvíos globales -->
+	<global-forwards>
+		<forward name="login" path="/pages/login.jsp"></forward>
+	</global-forwards>
+
+	<!-- Correlaciones de acción -->
+	<action-mappings>
+		<action path="/login" name="LoginForm" type="cl.araucana.sivegam.struts.Actions.LoginAction" scope="request"> 
+		    <forward name="errorLogin"  			path="/pages/login.jsp"/>
+		    <forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+		</action>
+		
+		<action path="/menuPrincipal" name="MenuPrincipalForm" type="cl.araucana.sivegam.struts.Actions.MenuPrincipalAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+			<forward name="menuGeneracionReporte" 	path="/pages/menuGeneracionReporte.jsp"></forward>
+		</action>
+		
+		<action path="/menuGenReporte" name="MenuGenReporteForm" type="cl.araucana.sivegam.struts.Actions.MenuGeneracionReporteAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+			<forward name="menuTipoReportePorArea"  path="/pages/MenuTipoReportesPorArea.jsp"></forward>
+			<forward name="genRepCot" 				path="/pages/GenerarReporteCotizaciones.jsp"></forward>
+			<forward name="fonasaSivegam" 			path="/pages/menuFonasaSivegam.jsp"></forward>
+			<forward name="menuGeneracionReporte" 	path="/pages/menuGeneracionReporte.jsp"></forward>
+		</action>
+		
+		<action path="/menuEditReporte" name="MenuEdiReporteForm" type="cl.araucana.sivegam.struts.Actions.MenuEdicionReporteAction" scope="request">
+			<forward name="logout"	 				path="/pages/login.jsp"></forward>
+			<forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+			<forward name="menuEditDivPrev" 		path="/pages/menuEdicionDivPrevisional.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+			<forward name="listadoErrores" 			path="/pages/GenerarListadoErrores.jsp"></forward>
+			<forward name="informeFinanciero"		path="/pages/GenerarInformeFinanciero.jsp"></forward>
+		</action>
+
+		<action path="/genRepDivPrev" name="GenerarRepDivPrevForm" type="cl.araucana.sivegam.struts.Actions.GenerarReporteDivPrevAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuTipoReportePorArea"  path="/pages/MenuTipoReportesPorArea.jsp"></forward>
+			<forward name="genRepDivPrev" 			path="/pages/GenerarReporteDivPrev.jsp"></forward>
+		</action>
+
+		<action path="/MenuTipoReportePorArea" name="MenuTipRepPorAreaForm" type="cl.araucana.sivegam.struts.Actions.MenuTipoReportesPorAreaAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuTipoReportePorArea"  path="/pages/MenuTipoReportesPorArea.jsp"></forward>
+			<forward name="menuGeneracionReporte" 	path="/pages/menuGeneracionReporte.jsp"></forward>
+			<forward name="genRepDivPrev" 			path="/pages/GenerarReporteDivPrev.jsp"></forward>
+			<forward name="GenRepAreaDivPrev" 		path="/pages/GenReporteAreaDivisionPrevisional.jsp"></forward>
+			<forward name="reporteCesantia" 		path="/pages/GeneracionReportesCesantia.jsp"></forward>
+		</action>
+		
+		<action path="/menuEditCotizacion" name="MenuEditCotForm" type="cl.araucana.sivegam.struts.Actions.MenuEdicionCotizacionesAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+			<forward name="modifSif016" 			path="/pages/ModifSif016.jsp"></forward>
+			<forward name="modifSif017" 			path="/pages/ModifSif017.jsp"></forward>
+			<forward name="modifSif018"				path="/pages/ModifSif018.jsp"></forward>
+			<forward name="modifSif019" 			path="/pages/ModifSif019.jsp"></forward>
+		</action>
+
+		<action path="/genRepCot" name="GenerarRepCotForm" type="cl.araucana.sivegam.struts.Actions.GenerarReporteCotizacionesAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuGeneracionReporte" 	path="/pages/menuGeneracionReporte.jsp"></forward>
+			<forward name="genRepCot" 				path="/pages/GenerarReporteCotizaciones.jsp"></forward>
+		</action>
+				
+		<action path="/menuEditDivPrev" name="MenuEditDivPrevForm" type="cl.araucana.sivegam.struts.Actions.MenuEdicionDivPrevisionalAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuPrincipal" 			path="/pages/menuPrincipal.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+			<forward name="menuEditDivPrev" 		path="/pages/menuEdicionDivPrevisional.jsp"></forward>
+			<forward name="modifSif011" 			path="/pages/ModifSif011.jsp"></forward>
+			<forward name="modifSif012" 			path="/pages/ModifSif012.jsp"></forward>
+			<forward name="modifSif014" 			path="/pages/ModifSif014.jsp"></forward>
+		</action>		
+	
+		<action path="/modificaSif011" name="ModifSif011Form" type="cl.araucana.sivegam.struts.Actions.ModifSif011Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditDivPrev" 		path="/pages/menuEdicionDivPrevisional.jsp"></forward>
+			<forward name="modifSif011" 			path="/pages/ModifSif011.jsp"></forward>
+			<forward name="agregarSif011" 			path="/pages/AgregarSif011.jsp"></forward>
+			<forward name="modifcacionSif011" 		path="/pages/ModificarSif011.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif012" name="ModifSif012Form" type="cl.araucana.sivegam.struts.Actions.ModifSif012Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditDivPrev" 		path="/pages/menuEdicionDivPrevisional.jsp"></forward>
+			<forward name="modifSif012" 			path="/pages/ModifSif012.jsp"></forward>
+			<forward name="agregarSif012" 			path="/pages/AgregarSif012.jsp"></forward>
+			<forward name="modificarSif012" 		path="/pages/ModificarSif012.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif014" name="ModifSif014Form" type="cl.araucana.sivegam.struts.Actions.ModifSif014Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditDivPrev" 		path="/pages/menuEdicionDivPrevisional.jsp"></forward>
+			<forward name="modifSif014" 			path="/pages/ModifSif014.jsp"></forward>
+			<forward name="agregarSif014" 			path="/pages/AgregarSif014.jsp"></forward>
+			<forward name="modificarSif014" 		path="/pages/ModificarSif014.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif016" name="ModifSif016Form" type="cl.araucana.sivegam.struts.Actions.ModifSif016Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="modifSif016" 			path="/pages/ModifSif016.jsp"></forward>
+			<forward name="agregarSif016" 			path="/pages/AgregarSif016.jsp"></forward>
+			<forward name="modificarSif016" 		path="/pages/ModificarSif016.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif017" name="ModifSif017Form" type="cl.araucana.sivegam.struts.Actions.ModifSif017Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="modifSif017" 			path="/pages/ModifSif017.jsp"></forward>
+			<forward name="agregarSif017" 			path="/pages/AgregarSif017.jsp"></forward>
+			<forward name="modificarSif017" 			path="/pages/ModificarSif017.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif018" name="ModifSif018Form" type="cl.araucana.sivegam.struts.Actions.ModifSif018Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="modifSif018" 			path="/pages/ModifSif018.jsp"></forward>
+			<forward name="agregarSif018" 			path="/pages/AgregarSif018.jsp"></forward>
+			<forward name="modificarSif018" 		path="/pages/ModificarSif018.jsp"></forward>
+		</action>
+		
+		<action path="/modificaSif019" name="ModifSif019Form" type="cl.araucana.sivegam.struts.Actions.ModifSif019Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEditCot" 			path="/pages/menuEdicionCotizaciones.jsp"></forward>
+			<forward name="modifSif019" 			path="/pages/ModifSif019.jsp"></forward>
+			<forward name="agregarSif019" 			path="/pages/AgregarSif019.jsp"></forward>
+			<forward name="modificarSif019" 		path="/pages/ModificarSif019.jsp"></forward>
+		</action>
+		
+		<action path="/GenRepoAreaDivPrev" name="GenRepAreaDivPrevForm" type="cl.araucana.sivegam.struts.Actions.GenReportePorAreaDivisionPrevisionalAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="GenRepAreaDivPrev" 		path="/pages/GenReporteAreaDivisionPrevisional.jsp"></forward>
+			<forward name="cargaArchivosAFC" 		path="/pages/CargaArchivosAFC-Suceso.jsp"></forward>
+			<forward name="menuTipoReportePorArea"  path="/pages/MenuTipoReportesPorArea.jsp"></forward>
+		</action>
+		
+		<action path="/GenReportesCesantia" name="GenRepCesantiaForm" type="cl.araucana.sivegam.struts.Actions.GenerarReporteCesantiaAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="reporteCesantia" 		path="/pages/GeneracionReportesCesantia.jsp"></forward>
+			<forward name="menuTipoReportePorArea"  path="/pages/MenuTipoReportesPorArea.jsp"></forward>
+			<forward name="cargaArchivosCesantia" 	path="/pages/CargaArchivosCesantia.jsp"></forward>
+		</action>
+		
+		<!-- afc -->
+		<action path="/CargarArchivos" name="CargaArchivosForm" type="cl.araucana.sivegam.struts.Actions.CargarArchivosAFCAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="cargaArchivosAFC" 		path="/pages/CargaArchivosAFC-Suceso.jsp"></forward>
+			<forward name="GenRepAreaDivPrev" 		path="/pages/GenReporteAreaDivisionPrevisional.jsp"></forward>
+		</action>
+
+		<!-- cesantia -->
+		<action path="/CargarArchivosCesantia" name="CargaCesantiaForm" type="cl.araucana.sivegam.struts.Actions.CargarArchivosCesantiaAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="cargaArchivosCesantia" 	path="/pages/CargaArchivosCesantia.jsp"></forward>
+			<forward name="reporteCesantia" 		path="/pages/GeneracionReportesCesantia.jsp"></forward>
+		</action>
+		
+		<action path="/agregarSif011" name="AgregarSif011Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif011Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif011" 			path="/pages/ModifSif011.jsp"></forward>
+			<forward name="agregarSif011" 			path="/pages/ModificarSif011.jsp"></forward>
+			</action>
+
+		<action path="/agregarSif012" name="AgregarSif012Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif012Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif012" 			path="/pages/ModifSif012.jsp"></forward>
+			<forward name="agregarSif012" 			path="/jrxml/AgregarSif012.jsp"></forward>
+		</action>
+				
+		<action path="/agregarSif014" name="AgregarSif014Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif014Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif014" 			path="/pages/ModifSif014.jsp"></forward>
+			<forward name="agregarSif014" 			path="/pages/AgregarSif014.jsp"></forward>
+		</action>
+		
+		<action path="/agregarSif016" name="AgregarSif016Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif016Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif016" 			path="/pages/ModifSif016.jsp"></forward>
+			<forward name="agregarSif016" 			path="/pages/AgregarSif016.jsp"></forward>
+		</action>
+		
+		<action path="/agregarSif017" name="AgregarSif017Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif017Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif017" 			path="/pages/ModifSif017.jsp"></forward>
+			<forward name="agregarSif017" 			path="/pages/AgregarSif017.jsp"></forward>
+		</action>
+		
+		<action path="/agregarSif018" name="AgregarSif018Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif018Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif018" 			path="/pages/ModifSif018.jsp"></forward>
+			<forward name="agregarSif018" 			path="/pages/AgregarSif018.jsp"></forward>
+		</action>
+		
+		<action path="/agregarSif019" name="AgregarSif019Form" type="cl.araucana.sivegam.struts.Actions.AgregarSif019Action" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="modifSif019" 			path="/pages/ModifSif019.jsp"></forward>
+			<forward name="agregarSif019" 			path="/pages/AgregarSif019.jsp"></forward>
+		</action>
+		
+		<action path="/listadoErrores" name="GenerarListadoErroresForm" type="cl.araucana.sivegam.struts.Actions.GenerarListadoErroresAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="listadoErrores" 			path="/pages/GenerarListadoErrores.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+		</action>
+		
+		<action path="/informeFinanc" name="GenerarInformeFinancieroForm" type="cl.araucana.sivegam.struts.Actions.GenerarInformeFinancieroAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="menuEdicionReportes" 	path="/pages/menuEdicionReportes.jsp"></forward>
+			<forward name="cuadroComparativo" 		path="/pages/GenerarCuadroComparativo.jsp"></forward>
+			<forward name="informeFinanciero" 		path="/pages/GenerarInformeFinanciero.jsp"></forward>
+		</action>
+		
+		<action path="/cuadroCompar" name="GenerarCuadroComparativoForm" type="cl.araucana.sivegam.struts.Actions.GenerarCuadroComparativoAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="informeFinanciero" 		path="/pages/GenerarInformeFinanciero.jsp"></forward>
+			<forward name="cuadroComparativo" 		path="/pages/GenerarCuadroComparativo.jsp"></forward>
+		</action>
+		
+		<!-- Cambios en actions struts por menú dinámico -->
+		<!-- Generación de reportes por regímen legal. -->
+		<action path="/menu_generacionReportesRegLeg" name="MenuTipRepPorAreaForm" type="cl.araucana.sivegam.struts.Actions.Menu_GeneracionReportesRegLegAction" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="generacionReporteRL" 	path="/pages/GenerarReporteDivPrev.jsp"></forward>
+		</action>
+		
+		<!-- Generador de reportes por cotización. -->
+		<action path="/menu_GeneracionReportesCotizacion" name="MenuGenReporteForm" type="cl.araucana.sivegam.struts.Actions.Menu_GeneracionReportesCotizacionAction" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="generacionReporteCot" 	path="/pages/GenerarReporteCotizaciones.jsp"></forward>
+		</action>
+		
+		<!-- Generación de reporte financiero. -->
+		<action path="/menu_GeneracionReporteFinanciero" name="MenuEdiReporteForm" type="cl.araucana.sivegam.struts.Actions.Menu_GeneracionReporteFinancieroAction" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="informeFinanciero"		path="/pages/GenerarInformeFinanciero.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes regímen legal - SIF011 -->
+		<action path="/menu_MantenedorSIF011" name="MenuEditDivPrevForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF011Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif011" 			path="/pages/ModifSif011.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes regímen legal - SIF012 -->
+		<action path="/menu_MantenedorSIF012" name="MenuEditDivPrevForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF012Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif012" 			path="/pages/ModifSif012.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes regímen legal - SIF014 -->
+		<action path="/menu_MantenedorSIF014" name="MenuEditDivPrevForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF014Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif014" 			path="/pages/ModifSif014.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes cotización - SIF016 -->
+		<action path="/menu_MantenedorSIF016" name="MenuEditCotForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF016Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif016" 			path="/pages/ModifSif016.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes cotización - SIF017 -->
+		<action path="/menu_MantenedorSIF017" name="MenuEditCotForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF017Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif017" 			path="/pages/ModifSif017.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes cotización - SIF018 -->
+		<action path="/menu_MantenedorSIF018" name="MenuEditCotForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF018Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif018" 			path="/pages/ModifSif018.jsp"></forward>
+		</action>
+		
+		<!-- Mantenedor de reportes cotización - SIF019 -->
+		<action path="/menu_MantenedorSIF019" name="MenuEditCotForm" type="cl.araucana.sivegam.struts.Actions.Menu_MantenedorSIF019Action" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="modifSif019" 			path="/pages/ModifSif019.jsp"></forward>
+		</action>
+		
+		<!-- Cesantía -->
+		<action path="/menu_Cesantia" name="MenuTipRepPorAreaForm"  type="cl.araucana.sivegam.struts.Actions.Menu_CesantiaAction" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="reporteCesantia" 		path="/pages/GeneracionReportesCesantia.jsp"></forward>
+		</action>
+		
+		<!-- AFC -->
+		<action path="/menu_AFC" name="MenuTipRepPorAreaForm" type="cl.araucana.sivegam.struts.Actions.Menu_AFCAction" scope="request">
+			<forward name="logout" 					path="/pages/close.jsp"></forward>
+			<forward name="GenRepAreaDivPrev" 		path="/pages/GenReporteAreaDivisionPrevisional.jsp"></forward>
+		</action>
+		<action path="/loginOut" type="cl.araucana.sivegam.struts.Actions.LoginOutAction">
+		</action>
+		
+		<!-- FONASA -->
+		<!--<action path="/menu_Fonasa" name="MenuGenReporteForm" type="cl.araucana.sivegam.struts.Actions.Menu_FonasaAction" scope="request">
+			<forward name="logout" 					path="/pages/login.jsp"></forward>
+			<forward name="fonasaSivegam" 			path="/pages/menuFonasaSivegam.jsp"></forward>
+		</action>-->
+		
+	</action-mappings>
+	
+	<message-resources parameter="cl.araucana.sivegam.resources.ApplicationResources"/>
+</struts-config>

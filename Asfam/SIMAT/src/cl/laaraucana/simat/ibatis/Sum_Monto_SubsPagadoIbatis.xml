@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultSumVO" class="cl.laaraucana.simat.entidades.SumVO">
+		<result property="resultadoSum" column="total" />				
+	</resultMap>
+		
+	<select id="getSum_Monto_SubsPagado_Pre_natal" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='650' and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>
+
+	<select id="getSum_Monto_SubsPagado_Post_natal_Madre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5) and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>	
+	
+	<select id="getSum_Monto_SubsPagado_Post_natal_Padre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='1650' and SMVINBEMEN=2 and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>
+	
+	<select id="getSum_Monto_SubsPagado_Parental_Madre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf03 where (SMVINBEMEN=1 or SMVINBEMEN=5) and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>
+	
+	<select id="getSum_Monto_SubsPagado_Parental_Padre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf03 where SMVINBEMEN=2 and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>	
+	
+	<select id="getSum_Monto_SubsPagado_Enf_menor_Madre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf02 where trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5) and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>
+	
+	<select id="getSum_Monto_SubsPagado_Enf_menor_Padre" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as total from simatdta.smf02 where trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and SMVINBEMEN=2 and (trim(SMTIPOEMIS)='N' or trim(SMTIPOEMIS)='RS' or trim(SMTIPOEMIS)='RC')
+	</select>
+	
+</sqlMap>

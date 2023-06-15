@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ibm-metadata>
+  <annotated-classes name="org.springframework.web.filter.OncePerRequestFilter"/>
+  <annotated-classes name="cl.araucana.estasfam.filters.ValidateFilter"/>
+  <annotated-classes name="org.springframework.web.context.ContextLoader"/>
+  <annotated-classes name="org.springframework.web.servlet.HttpServletBean"/>
+  <annotated-classes name="org.springframework.web.util.Log4jConfigListener"/>
+  <annotated-classes name="org.springframework.web.filter.GenericFilterBean"/>
+  <annotated-classes name="cl.araucana.core.util.http.LoginFilter"/>
+  <annotated-classes name="cl.araucana.estasfam.web.listeners.DeleteFileLocksListener"/>
+  <annotated-classes name="org.springframework.web.servlet.FrameworkServlet"/>
+  <annotated-classes name="org.springframework.web.context.request.RequestContextListener"/>
+  <annotated-classes name="org.springframework.web.servlet.DispatcherServlet"/>
+  <annotated-classes name="org.springframework.web.context.ContextLoaderListener"/>
+  <annotated-classes name="org.springframework.web.filter.CharacterEncodingFilter"/>
+</ibm-metadata>

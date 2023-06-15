@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultCountVO" class="cl.laaraucana.simat.entidades.CountVO">
+		<result property="resultadoCount" column="total" />				
+	</resultMap>
+		
+	<select id="getSum_Dias_Pagados_Pre_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIPAG),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='650' and trim(SMTIPOEMIS)='N'
+	</select>
+
+	<select id="getSum_Dias_Pagados_Post_natal_Madre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIPAG),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5) and trim(SMTIPOEMIS)='N'
+	</select>	
+	
+	<select id="getSum_Dias_Pagados_Post_natal_Padre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIPAG),0) as total from simatdta.smf02 where trim(SMCODDIAGN)='1650' and SMVINBEMEN=2 and trim(SMTIPOEMIS)='N'
+	</select>
+	
+	<select id="getSum_Dias_Pagados_Parental_Madre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAPA),0) as total from simatdta.smf03 where (SMVINBEMEN=1 or SMVINBEMEN=5) and trim(SMTIPOEMIS)='N'
+	</select>
+	
+	<select id="getSum_Dias_Pagados_Parental_Padre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAPA),0) as total from simatdta.smf03 where SMVINBEMEN=2 and trim(SMTIPOEMIS)='N'
+	</select>	
+	
+	<select id="getSum_Dias_Pagados_Enf_menor_Madre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIPAG),0) as total from simatdta.smf02 where trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5) and trim(SMTIPOEMIS)='N'
+	</select>
+	
+	<select id="getSum_Dias_Pagados_Enf_menor_Padre" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIPAG),0) as total from simatdta.smf02 where trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and SMVINBEMEN=2 and trim(SMTIPOEMIS)='N'
+	</select>
+	
+</sqlMap>

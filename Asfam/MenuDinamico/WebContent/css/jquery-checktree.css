@@ -1,0 +1,82 @@
+ul.checktree-root, ul#tree ul {
+list-style: none;
+}
+ul.checktree-root label {
+font-weight: normal;
+position: relative;
+}
+ul.checktree-root label input {
+position: relative;
+top: 2px;
+left: -5px;
+}
+
+.tree li {
+    margin: 0px 0;
+	
+	list-style-type: none;
+    position: relative;
+	padding: 2px 0px 0px 5px;
+}
+
+.tree li::before{
+    content: '';
+	position: absolute; 
+    top: 0;
+	width: 1px; 
+    height: 100%;
+	right: auto; 
+    left: -20px;
+	border-left: 1px solid #ccc;
+    bottom: 50px;
+    z-index: -1;
+}
+.tree li::after{
+    content: '';
+	position: absolute; 
+    top: 12px; 
+	width: 25px; 
+    height: 20px;
+	right: auto; 
+    left: -20px;
+	border-top: 1px solid #ccc;
+	z-index: -1;
+}
+
+.tree li a{
+    display: inline-block;
+	padding: 2px 5px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+}
+
+/*Remove connectors before root*/
+.tree > ul > li::before, .tree > ul > li::after{
+	border: 0;
+}
+/*Remove connectors after last child*/
+.tree li:last-child::before{ 
+      height: 12px;
+}
+
+/*------------------------*/
+.collapsibleList li{
+/*   list-style-image:url('button.png') ; */
+  cursor:auto;
+}
+
+li.collapsibleListOpen{
+  list-style-image:url('../img/button-closed.png');
+  cursor:pointer;
+  z-index: 2;
+}
+
+li.collapsibleListClosed{
+  list-style-image:url('../img/button-open.png');
+  cursor:pointer;
+  z-index: 2;
+}
+
+

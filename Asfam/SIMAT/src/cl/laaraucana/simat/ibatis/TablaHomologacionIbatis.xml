@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultTablaHomologacionVO" class="cl.laaraucana.simat.entidades.TablaHomologacionVO">
+	
+		<result property="id_registro" column="SM_ID" />
+		<result property="clasificacion" column="SMCLASIFIC" />
+		<result property="descripcion" column="SMDESCRIP" />
+		<result property="codigo_suceso" column="SMCODSUCE" />
+		<result property="codigo_la" column="SMCODARAU" />
+		
+	</resultMap>
+	
+	
+	<!-- Sentencias Select -->
+	<select id="getTodoTablaHomologacion" resultMap="resultTablaHomologacionVO">
+		select * from SIMATDTA.SMHOMO ORDER BY SMCLASIFIC
+	</select>
+	
+	<select id="getTablaHomologacionByIdRegistro" resultMap="resultTablaHomologacionVO">
+		select * from SIMATDTA.SMHOMO WHERE SM_ID=#id_registro#	
+	</select>
+	
+	<select id="getTablaHomologacionByClasificacion" resultMap="resultTablaHomologacionVO">
+		select * from SIMATDTA.SMHOMO WHERE SMCLASIFIC=#clasificacion# ORDER BY SMCLASIFIC
+	</select>
+	
+	<!-- Sentencias Insert -->
+	<insert id="insertarTablaHomologacion" parameterClass="cl.laaraucana.simat.entidades.TablaHomologacionVO">
+		INSERT INTO SIMATDTA.SMHOMO (SM_ID,SMCLASIFIC,SMDESCRIP,SMCODSUCE,SMCODARAU) 
+   		VALUES ((select IFNULL(max(SM_ID)+1,1) from SIMATDTA.SMHOMO),#clasificacion#,#descripcion#,#codigo_suceso#,#codigo_la#)
+   		WITH NC
+	</insert>
+		
+	<!-- Sentencias Delete -->
+	<delete id="eliminarTablaHomologacion" parameterClass="cl.laaraucana.simat.entidades.TablaHomologacionVO">
+		delete from SIMATDTA.SMHOMO where SM_ID=#id_registro#
+		WITH NC
+	</delete>
+		
+	<!-- Sentencias Update -->
+	<update id="actualizarTablaHomologacion" parameterClass="cl.laaraucana.simat.entidades.TablaHomologacionVO">
+		UPDATE SIMATDTA.SMHOMO SET	
+			
+		SMCLASIFIC=#clasificacion#,
+		SMDESCRIP=#descripcion#,
+		SMCODSUCE=#codigo_suceso#,
+		SMCODARAU=#codigo_la#
+				
+		WHERE SM_ID=#id_registro#		
+		WITH NC
+	</update>
+	
+</sqlMap>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultCountVO" class="cl.laaraucana.simat.entidades.CountVO">
+		<result property="resultadoCount" column="total" />				
+	</resultMap>
+			
+	<select id="getCountSMF01H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF01H
+	</select>
+	
+	<select id="getCountSMF02H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF02H
+	</select>
+	
+	<select id="getCountSMF03H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF03H
+	</select>
+	
+	<select id="getCountSMF05H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF05H
+	</select>
+	
+	<select id="getCountSMF06H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF06H
+	</select>
+	
+	<select id="getCountSMF07H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF07H
+	</select>
+	
+	<select id="getCountSMF08H" resultMap="resultCountVO">
+		select count(distinct SMMESINFO) as total from simatdta.SMF08H
+	</select>
+	
+</sqlMap>

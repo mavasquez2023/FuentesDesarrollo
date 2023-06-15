@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+<!-- <properties resource="cl/araucana/sivegam/resources/SqlMapConfig.properties" /> -->
+<settings  useStatementNamespaces="true" lazyLoadingEnabled="true" cacheModelsEnabled="true"
+		enhancementEnabled="true" maxRequests="512" maxSessions="128"
+		maxTransactions="32"
+	/>
+	<transactionManager type="JDBC">
+		 	<property name="commitRequired" value="false"/>
+			<property name="JDBC.Connection.transactionIsolation" value="1"/>
+	        <dataSource type="JNDI">
+	            <property name="DataSource" value="java:comp/env/SimatDatasource"/>
+	        </dataSource>
+	</transactionManager>
+<!-- 
+	<transactionManager type="JDBC">
+		 	<property name="commitRequired" value="false"/>
+			<property name="JDBC.Connection.transactionIsolation" value="1"/>
+	        <dataSource type="JNDI">
+	            <property name="DataSource" value="java:comp/env/SimatDatasource"/>
+	        </dataSource>
+	</transactionManager>
+	<transactionManager type="JDBC">
+  		<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.5/SIMATDTA"/>
+	  		<property name="JDBC.Username" value="schema"/>
+	  		<property name="JDBC.Password" value="schema"/>
+  		</dataSource>
+  	</transactionManager>
+ 	<transactionManager type="JDBC">
+		 	<property name="commitRequired" value="false"/>
+			<property name="JDBC.Connection.transactionIsolation" value="1"/>
+	        <dataSource type="JNDI">
+	            <property name="DataSource" value="jdbc/SIMAT"/>
+	        </dataSource>
+	</transactionManager>
+ 	<transactionManager type="JDBC">
+  		<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.3/SIMATDTA"/>
+	  		<property name="JDBC.Username" value="sistemas"/>
+	  		<property name="JDBC.Password" value="sistemas"/>
+  		</dataSource>
+  	</transactionManager>
+
+  	
+<transactionManager type="JDBC">
+  	<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.79/SIMATDTA"/>
+	  		<property name="JDBC.Username" value="LVALENZUEM"/>
+	  		<property name="JDBC.Password" value="IBM1234567"/>
+  		</dataSource>
+  	</transactionManager> 
+	<transactionManager type="JDBC">
+  		<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.5/SIMATDTA"/>
+	  		<property name="JDBC.Username" value="lolivam"/>
+	  		<property name="JDBC.Password" value="lolivam"/>
+  		</dataSource>
+  	</transactionManager>		  	
+-->
+	
+<!-- Mantenedores -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/ReintegrosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/SubsParentalIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/SubsPrePostNMIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/SubsTscVigIbatis.xml" />
+	
+	<sqlMap resource="cl/laaraucana/simat/ibatis/ControlDocuIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/DocsRevalReemIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/DatosLicCobIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/DatosLicResolIbatis.xml" />
+	
+	<sqlMap resource="cl/laaraucana/simat/ibatis/UsuariosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/LogProcesosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/TablaHomologacionIbatis.xml" />
+	
+	<sqlMap resource="cl/laaraucana/simat/ibatis/InformeFinanciero_Ibatis.xml" />
+	 
+	<sqlMap resource="cl/laaraucana/simat/ibatis/QueryIdIbatis.xml" />	 
+	<sqlMap resource="cl/laaraucana/simat/ibatis/PeriodoIbatis.xml" />
+	
+<!-- Procedimiento de almacenado -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Procedimientos_Ibatis.xml" />
+	
+<!-- para Resumen Cotizaciones Previsionales -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_RCP_B1P1_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_RCP_B1P2_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_RCP_B2P3_Ibatis.xml" />
+	
+<!-- para ILF4501 -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Count_Lic_AutIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Count_Subs_IniciadosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_Dias_subsPagadosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Count_Pers_SubsIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_Monto_SubsPagadoIbatis.xml" />
+	
+<!-- Para cuadros estadisticos -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/CE_1_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/CE_2_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/CE_3_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/CE_4_Ibatis.xml" />
+
+<!-- Para tabla de control de carga de archivos db2 SIMAT -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/SMF09_Ibatis.xml" />
+	
+<!-- INFORME FINANCIERO -->
+	<sqlMap resource="cl/laaraucana/simat/ibatis/Sum_InformeFinanciero_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/simat/ibatis/PaseContable.xml" />
+
+
+</sqlMapConfig>
+

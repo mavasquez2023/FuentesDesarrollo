@@ -1,0 +1,156 @@
+
+
+body{
+	font-weight: normal;
+	font-size: 12px;
+	color: #333;
+	font-family: Arial, Helvetica;
+
+}
+
+h3{
+	margin-left: 5px;
+}
+
+.centrado{
+	text-align: center;
+}
+
+/* Estilos formulario*/
+#ingreso-rut{
+	width: 800px;
+}
+
+#simulacion2{
+	width: 450px;
+	height: auto;
+}
+
+
+#simulacion2 h2{
+	font-weight: 700;
+	font-size: 17px;
+	color: rgb(0, 93, 139);
+	font-style: normal;
+	font-family: Arial;
+	text-decoration: none;
+	padding-left: 5px;
+}
+
+#simulacion2 .field{
+	height: 25px;
+	width: 400px;
+}
+
+#simulacion2 .field label{
+	float: left;
+	width: 250px;
+}
+
+#simulacion2 .field input,select{
+	float: left;
+}
+
+
+.error-fieldset{
+	width: 800px;
+}
+
+.error-fieldset .error{
+	color: red;
+	font-family: arial,helvetica,sans-serif;
+	font-size: 11px;
+	text-align: center;
+}
+
+/* Fin estilos formulario */
+
+
+/* Estilos resultado de simulación */
+
+#resultado{
+	width: 800px;
+	height: auto;
+}
+
+#resultado-top{
+	width: 800px;
+}
+
+#resultado-left{
+	width: 500px;
+	float: left;
+}
+
+#resultado-right{
+	width: 300px;
+	float: right;
+}
+#resultado-bottom{
+	width: 800px;
+	clear: both;
+}
+#resultado-buttons{
+width: inherit;
+}
+
+hr{
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border: none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	background-image: url(../img/linea_puntos.gif);
+}
+
+table{
+	width: 90%;
+	border: 1px;
+	border-style: solid;
+	border-color: #CECECE;
+	margin-top: 5px;
+}
+
+table th{
+	margin-top: 20px;
+	text-align: left;
+	background: #EAEAEA;
+}
+
+table tr td{
+	border-top: 1px;
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	margin-left: 10px;
+}
+
+/* Fin estilos resultado de simulación */
+
+/* msj pre aprobado*/
+
+#contentMsjPreAprobado{
+	width: 100%;
+}
+
+.msjPreAprobado{
+	display: table;
+	height: 150px;
+	padding: 15px;
+	border: dotted #025D8C 2px;
+	font-size: 15px;
+	float: left;
+	margin: 10px 10px;
+}
+.msjPreAprobadoHijo{
+	display: table-cell;
+	vertical-align: middle;
+}
+.msjPreAprobadoHijo .boton{
+	margin-top: 10px;
+}

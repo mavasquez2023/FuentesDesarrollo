@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<!-- para Informe Financiero -->
+<sqlMap>
+	<resultMap id="resultInformeFinancieroVO" class="cl.laaraucana.simat.entidades.InformeFinancieroVO">
+		<result property="id_inf_fin" column="SM_ID" />	
+		<result property="periodo" column="SMMESINFO" />
+		<result property="nombre_entidad" column="SMENTIDAD" />		
+		<result property="a" column="SM_A" />
+		<result property="a_1" column="SM_A1" />
+		<result property="a_2" column="SM_A2" />
+		<result property="a_3" column="SM_A3" />
+		<result property="a_3_1" column="SM_A31" />
+		<result property="a_3_2" column="SM_A32" />
+		<result property="a_4" column="SM_A4" />
+		<result property="a_4_1" column="SM_A41" />
+		<result property="a_4_2" column="SM_A42" />
+		<result property="b" column="SM_B" />
+		<result property="c" column="SM_C" />
+		<result property="c_1" column="SM_C1" />
+		<result property="c_2" column="SM_C2" />
+		<result property="c_3" column="SM_C3" />
+		<result property="c_4" column="SM_C4" />
+		<result property="c_5" column="SM_C5" />
+		<result property="c_6" column="SM_C6" />
+		<result property="c_6_1" column="SM_C61" />
+		<result property="c_6_2" column="SM_C62" />
+		<result property="c_6_3" column="SM_C63" />
+		<result property="c_6_4" column="SM_C64" />
+		<result property="c_6_5" column="SM_C65" />
+		<result property="c_7" column="SM_C7" />
+		<result property="c_7_1" column="SM_C71" />
+		<result property="c_7_2" column="SM_C72" />
+		<result property="c_7_3" column="SM_C73" />
+		<result property="c_7_4" column="SM_C74" />
+		<result property="c_7_5" column="SM_C75" />
+		<result property="c_8" column="SM_C8" />
+		<result property="c_8_1" column="SM_C81" />
+		<result property="c_8_2" column="SM_C82" />
+		<result property="c_8_3" column="SM_C83" />
+		<result property="c_8_4" column="SM_C84" />
+		<result property="c_8_5" column="SM_C85" />
+		<result property="c_9" column="SM_C9" />
+		<result property="c_9_1" column="SM_C91" />
+		<result property="c_9_2" column="SM_C92" />
+		<result property="c_9_3" column="SM_C93" />
+		<result property="c_9_4" column="SM_C94" />
+		<result property="c_9_5" column="SM_C95" />
+		<result property="d" column="SM_D" />
+		<result property="e" column="SM_E" />
+		<result property="e_1" column="SM_E1" />
+		<result property="e_2" column="SM_E2" />
+		<result property="e_3" column="SM_E3" />
+		<result property="e_4" column="SM_E4" />
+		<result property="e_5" column="SM_E5" />
+		<result property="f" column="SM_F" />
+		<result property="f_1" column="SM_F1" />
+		<result property="f_2" column="SM_F2" />
+		<result property="f_3" column="SM_F3" />
+		<result property="f_4" column="SM_F4" />
+		<result property="f_5" column="SM_F5" />
+		<result property="g" column="SM_G" />
+		<result property="g_1" column="SM_G1" />
+		<result property="g_2" column="SM_G2" />
+		<result property="g_3" column="SM_G3" />
+		<result property="g_4" column="SM_G4" />
+		<result property="h" column="SM_H" />		
+	</resultMap>
+	
+	<!-- Sección sentencias SQL -->
+	
+	<select id="getTodoInformeFinanciero" resultMap="resultInformeFinancieroVO">
+		SELECT * FROM SIMATDTA.SMINF
+	</select>
+	
+	<select id="getUnoInformeFinancieroIbatis" resultMap="resultInformeFinancieroVO">
+		SELECT * FROM SIMATDTA.SMINF WHERE SM_ID=#id_inf_fin#
+	</select>
+	
+	<select id="getInformeFinancieroByPeriodo" resultMap="resultInformeFinancieroVO" >
+		SELECT * FROM SIMATDTA.SMINF WHERE SMMESINFO=#periodo#;
+	</select>
+	<!-- Sección insertar tabla SMINF -->
+	
+	<insert id="insertarInformeFinanciero" parameterClass="cl.laaraucana.simat.entidades.InformeFinancieroVO">
+		INSERT INTO SIMATDTA.SMINF (SM_ID,SMMESINFO,SMENTIDAD,SM_A,SM_A1,SM_A2,SM_A3,SM_A31,SM_A32,SM_A4,SM_A41,SM_A42,SM_B,SM_C,SM_C1,SM_C2,SM_C3,SM_C4,SM_C5,SM_C6,SM_C61,SM_C62,SM_C63,SM_C64,SM_C65,SM_C7,SM_C71,SM_C72,SM_C73,SM_C74,SM_C75,SM_C8,SM_C81,SM_C82,SM_C83,SM_C84,SM_C85,SM_C9,SM_C91,SM_C92,SM_C93,SM_C94,SM_C95,SM_D,SM_E,SM_E1,SM_E2,SM_E3,SM_E4,SM_E5,SM_F,SM_F1,SM_F2,SM_F3,SM_F4,SM_F5,SM_G,SM_G1,SM_G2,SM_G3,SM_G4,SM_H) 
+		VALUES ((select IFNULL(max(SM_ID)+1,0) from SIMATDTA.SMF01),#periodo#,#nombre_entidad#,#a#,#a_1#,#a_2#,#a_3#,#a_3_1#,#a_3_2#,#a_4#,#a_4_1#,#a_4_2#,#b#,#c#,#c_1#,#c_2#,#c_3#,#c_4#,#c_5#,#c_6#,#c_6_1#,#c_6_2#,#c_6_3#,#c_6_4#,#c_6_5#,#c_7#,#c_7_1#,#c_7_2#,#c_7_3#,#c_7_4#,#c_7_5#,#c_8#,#c_8_1#,#c_8_2#,#c_8_3#,#c_8_4#,#c_8_5#,#c_9#,#c_9_1#,#c_9_2#,#c_9_3#,#c_9_4#,#c_9_5#,#d#,#e#,#e_1#,#e_2#,#e_3#,#e_4#,#e_5#,#f#,#f_1#,#f_2#,#f_3#,#f_4#,#f_5#,#g#,#g_1#,#g_2#,#g_3#,#g_4#,#h#)
+   		WITH NC
+	</insert>
+
+	<!-- Sección borrar TABLA SMINF -->
+	<delete id="delInformeFinanciero" parameterClass="cl.laaraucana.simat.entidades.InformeFinancieroVO">
+		DELETE FROM SIMATDTA.SMINF where SM_ID=#id_inf_fin#
+		WITH NC
+	</delete>
+	
+</sqlMap>

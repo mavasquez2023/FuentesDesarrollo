@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="propuestaRentasForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="serviceName" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="PropuestasZip" type="cl.araucana.ctasfam.presentation.struts.vo.PropuestasZipForm"></form-bean>
+		<form-bean name="Propuesta" type="cl.araucana.ctasfam.business.to.AceptaPropuestaForm"></form-bean>
+		<form-bean name="validaTerminosForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="aprobar_empresas" type="java.util.Collection" />
+			<form-property name="aprobar_empresas_map" type="java.util.Map" />
+			<form-property name="aprobar_empresas_size" type="java.lang.Integer" />
+			 
+			 
+		</form-bean>
+		<form-bean name="divicionPrevicionalForm" type="org.apache.struts.action.DynaActionForm">
+			 <form-property name="oficina" type="java.lang.Integer" />
+			<form-property name="empresa" type="java.lang.String" />
+			<form-property name="sucursal" type="java.lang.Integer" />
+			<form-property name="afiliados_propuesta" type="java.util.List" />
+			<form-property name="afiliados_propuesta_size" type="java.lang.Integer" />
+			<form-property name="afiliados_propuesta_informados" type="java.lang.Integer" />
+			<form-property name="afiliados_propuesta_propuesta" type="java.lang.Integer" />
+			<form-property name="propuesta_informados_total" type="java.lang.Integer" />
+			
+		</form-bean>
+		<!-- Integration -->
+		<form-bean name="CargaArchivo" type="cl.araucana.ctasfam.business.to.CargaArchivoTO"/>
+		<form-bean name="holding" type="cl.araucana.ctasfam.business.to.HoldingTO"/>
+		<!-- End Integration -->
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="home_emp" path="/HomePage.do" redirect="true" />
+		<forward name="home_dp" path="/ValidaTerminosPage.do?step=homeDivisionPrevisional" redirect="true" />
+	</global-forwards>
+	<action-mappings>
+		<action path="/HomePage"  type="cl.araucana.ctasfam.presentation.struts.actions.DivisionPrevisionalAction">
+			<forward name="showHome" path="propuesta.consultas.home.page" />
+			<forward name="onError" path="page.error"/>
+		</action>
+		 
+		 
+	<!-- dsfgdfg -->	
+		<action path="/AceptaPropuesta"
+			type="cl.araucana.ctasfam.presentation.struts.actions.AceptaPropuestaAction"
+			  name="Propuesta" scope="session">
+			<forward name="onSuccess" path="propuesta.subida.carga.archivo" />
+			<forward name="showForm" path="propuesta.aprobacion.form.page"></forward>
+			
+			<forward name="onError" path="page.error" />
+		</action>
+		
+		 
+		
+		<action path="/preparedDeclaracion"
+			type="cl.araucana.ctasfam.presentation.struts.actions.PrepareddeclaracionAction"
+			  name="validaTerminosForm" scope="session">
+			<forward name="showForm" path="propuesta.aprobacion.form.page"/>
+			<forward name="onError" path="page.error" />
+		</action>
+		
+		<action path="/BeginPropuesta"
+			type="cl.araucana.ctasfam.presentation.struts.actions.PropuestaBeginAction"
+			   name="validaTerminosForm"  scope="session">
+			<forward name="onSuccess" path="propuesta.subida.informe.aceptapropuesta" />
+			<forward name="onError" path="page.error" />
+		</action>
+		
+		<action path="/DescargaPropuestasZip"
+			type="cl.araucana.ctasfam.presentation.struts.actions.DescargaPropuestasZipAction"
+			  name="PropuestasZip" scope="session">
+			  <forward name="onError" path="page.error"></forward>
+			  <forward name="onSuccess" path="propuesta.subida.informe.aceptapropuesta"></forward>
+			 
+		</action>
+		
+		<action path="/DescargaPropuestas"
+			type="cl.araucana.ctasfam.presentation.struts.actions.DescargaPropuestasAction"
+			  name="Propuesta" scope="session">
+			<forward name="onSuccess" path="propuesta.descarga.home" />
+			<forward name="onError" path="page.error"></forward>
+		</action>
+		
+		<action path="/ValidaTerminosPage"
+			type="cl.araucana.ctasfam.presentation.struts.actions.ValidaTerminosPropuestaAction"
+			parameter="step" name="validaTerminosForm" scope="session">
+			<forward name="showForm" path="propuesta.aprobacion.form.page" />
+			<forward name="onSuccess" path="propuesta.aprobacion.success.page" />
+			<forward name="onError" path="page.error" />
+		</action>
+		
+		<action path="/excel" type="cl.araucana.ctasfam.presentation.struts.actions.DescargarExcelAction"
+			  name="divicionPrevicionalForm" scope="session">
+			 <forward name="onError" path="page.error.division" />
+		</action>
+		
+		<action path="/DivisionPrevisionalPage"
+			type="cl.araucana.ctasfam.presentation.struts.actions.DivisionPrevisionalAction"
+			parameter="step" name="divicionPrevicionalForm" scope="session">
+			<forward name="showHome" path="propuesta.consultas.home.page" />
+			<forward name="onError" path="page.error.division" />
+		</action>
+		 
+		<action path="/Consulta2"
+			type="cl.araucana.ctasfam.presentation.struts.actions.Consulta2Action"
+			parameter="step" name="divicionPrevicionalForm" scope="session">
+			<forward name="consulta2" path="propuesta.consultas.consulta2.page" />
+			<forward name="onError" path="page.error.division" />
+		</action>
+		
+		<action path="/Consulta1"
+			type="cl.araucana.ctasfam.presentation.struts.actions.Consulta1Action"
+			  name="divicionPrevicionalForm" scope="session">
+			<forward name="consulta1" path="propuesta.consultas.consulta1.page" />
+			<forward name="onError" path="page.error.division" />
+		</action>
+		
+			<action path="/descargaArchivos"
+			type="cl.araucana.ctasfam.presentation.struts.actions.DescargaArchivosAction"
+		  name="divicionPrevicionalForm" scope="session">
+			<forward name="onError" path="page.error.division" />
+		</action>
+		
+		<action path="/logout" 
+			type="cl.araucana.ctasfam.presentation.struts.actions.LogoutAction">
+			<forward name="restart" path="/logon.jsp" />
+		</action>
+		
+		<action path="/declaracionjurada" 
+		name="Propuesta" type="cl.araucana.ctasfam.presentation.struts.actions.DeclaracionJuradaAction">
+			<forward name="declaracion" path="propuesta.consultas.termino.page" />
+			<forward name="onError" path="page.error"></forward>
+			<forward name="pretermino" path="propuesta.consultas.pretermino.page" />
+		</action>
+		
+		<action path="/archivosInformados" type="cl.araucana.ctasfam.presentation.struts.actions.ArchivosInformadosAction">
+			<forward name="onError" path="page.error"></forward>
+			<forward name="dispatcher" path="/Consulta1" />
+		</action>
+		
+		<!-- Integration -->
+		<action path="/archivoholding" type="cl.araucana.ctasfam.presentation.struts.actions.ArchivoholdingAction">
+			<forward name="holding" path="propuesta.subida.carga.holding" />
+			<forward name="error" path="page.error.division" />
+		</action>
+		<action path="/estadisticaProceso" type="cl.araucana.ctasfam.presentation.struts.actions.EstadisticaProcesoAction">
+			<forward name="estadisticaProceso" path="propuesta.subida.informe.procesos" />
+			<forward name="error" path="page.error.division" />
+		</action>
+		<action path="/archivoempresa" type="cl.araucana.ctasfam.presentation.struts.actions.ArchivoempresaAction">
+			<forward name="cargado" path="propuesta.subida.carga.archivo" />
+			<forward name="onError" path="page.error.division" />
+		</action>
+		<action name="CargaArchivo" path="/Cargar" type="cl.araucana.ctasfam.presentation.struts.actions.CargarAction">
+			<forward name="cargado" path="propuesta.subida.informe.carga" />
+			<forward name="onError" path="page.error" />
+		</action>
+		<action name="holding" path="/Holding" type="cl.araucana.ctasfam.presentation.struts.actions.HoldingAction">
+			<forward name="informeholding" path="propuesta.subida.informe.holding" />
+			<forward name="onError" path="page.error.division" />
+		</action>
+		<action path="/CambioTramoFecPage"
+			  type="cl.araucana.ctasfam.presentation.struts.actions.CambioTramoFecPageAction"
+			   name="divicionPrevicionalForm" scope="session">
+			<forward name="onSuccess" path="Cambio.fecha.page" />
+			<forward name="onError" path="page.error"></forward>
+		</action>
+		<action path="/EstadosProcesamientosDP"
+			  type="cl.araucana.ctasfam.presentation.struts.actions.EstadosProcesamientosDPAction"
+			   name="divicionPrevicionalForm" scope="session">
+			<forward name="onSuccess" path="Estado.Procesamiento.page" />
+			<forward name="onError" path="page.error"></forward>
+		</action>
+
+		<!-- End Integration -->
+		
+		<action path="/estadoprocesamiento" type="cl.araucana.ctasfam.presentation.struts.actions.EstadoProcesamientoAction">
+			<forward name="estadoprocesamiento" path="propuesta.consultas.estadoprocesamiento" />
+		</action>
+		
+		<action path="/newcomprobante" type="cl.araucana.ctasfam.presentation.struts.actions.NewComprobanteAction">
+			<forward name="errornewcomprobante" path="propuesta.consultas.errornewcomprobante" />
+		</action>
+	</action-mappings>
+	<message-resources parameter="cl.araucana.ctasfam.presentation.struts.resources.ApplicationResources" />
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-parser-validate" value="true" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+</struts-config>

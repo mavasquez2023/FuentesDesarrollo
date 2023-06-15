@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="svCuadroComparativo">
+
+	<select id="obtener11AT" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT 	SUM(SIFMTOBEN) AS total
+		FROM	SVDTA.SIF011TODO
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND 	SIFTIPDEC = 1
+	</select>
+	
+	<select id="obtener11CES" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTOBEN) AS total
+		FROM	SVDTA.SIF011TODO
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND 	SIFTIPDEC = 2
+	</select>
+	
+	<select id="obtener12AT" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTOBEN) AS total
+		FROM 	SVDTA.SIF012TOAP
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND		SIFORIGEN = 1
+	</select>
+	
+	<select id="obtener12PD" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTOBEN) AS total
+		FROM 	SVDTA.SIF012TOAP
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND 	SIFORIGEN = 3
+	</select>
+	
+	<select id="obtener12CES" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTOBEN) AS total
+		FROM 	SVDTA.SIF012TOAP
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND 	SIFORIGEN = 2
+	</select>
+	
+	<select id="obtener12CCqh1nch4n" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTOBEN) AS total
+		FROM 	SVDTA.SIF012TOAP 
+		WHERE	SIFFECPRO = #fechaProceso#
+		AND 	SIFORIGEN = 4
+	</select>
+	
+	<select id="obtenerMtoDocSif016" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTODOC) AS total
+		FROM 	SVDTA.SIF016A2
+		WHERE	SIFFECPRO = #fechaProceso#
+	</select>
+	
+	<select id="obtenerSif017MtoDoc" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTODOC) AS total
+		FROM 	SVDTA.SIF017
+		WHERE	SIFESTDOC = 102
+		AND		SIFFECPRO = #fechaProceso#
+	</select>
+	
+	<select id="e4" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT	SUM(SIFMTODOC) AS total
+		FROM 	SVDTA.SIF018
+		WHERE	SIFFECPRO = #fechaProceso#
+	</select>
+	
+</sqlMap>

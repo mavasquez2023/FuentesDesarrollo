@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultSMF09_VO" class="cl.laaraucana.simat.entidades.SMF09_VO">
+	
+		<result property="fecha_periodo" column="FECHA_PERIODO" />
+		<result property="proceso" column="PROCESO" />
+		<result property="descripcion" column="DESCRIPCION" />
+		<result property="estado_proceso" column="ESTADO_PROCESO" />
+		<result property="fecha_proceso" column="FECHA_PROCESO" />
+		<result property="hora_proceso" column="HORA_PROCESO" />
+		<result property="usuario_proceso" column="USUARIO_PROCESO" />
+		
+	</resultMap>
+	
+	
+<!-- Sentencias Select -->
+	<select id="getTodoEstadoProceso" resultMap="resultSMF09_VO">
+		select * from SIMATDTA.SMF09	
+	</select>
+				
+	<select id="getEstadoPeriodoByProceso" resultMap="resultSMF09_VO">
+		select * from SIMATDTA.SMF09 WHERE FECHA_PERIODO=#fecha_periodo# and PROCESO=#proceso#
+	</select>
+		
+	<insert id="setEstadoPeriodoByProceso" parameterClass="cl.laaraucana.simat.entidades.SMF09_VO">
+		INSERT INTO SIMATDTA.SMF09 (FECHA_PERIODO,PROCESO,DESCRIPCION,ESTADO_PROCESO,FECHA_PROCESO,HORA_PROCESO,USUARIO_PROCESO)
+		VALUES (#fecha_periodo#,#proceso#,#descripcion#,#estado_proceso#,#fecha_proceso#,#hora_proceso#,#usuario_proceso#)
+	   	WITH NC
+	</insert>
+	
+	<delete id="delEstadoPeriodoByProceso" parameterClass="cl.laaraucana.simat.entidades.SMF09_VO">
+		DELETE FROM SIMATDTA.SMF09 WHERE FECHA_PERIODO=#fecha_periodo# and PROCESO=#proceso#
+		WITH NC
+	</delete>
+	
+<!-- Sentencias Update -->
+	<update id="upEstadoPeriodoByProceso" parameterClass="cl.laaraucana.simat.entidades.SMF09_VO">
+		UPDATE SIMATDTA.SMF09 SET 
+		
+		PROCESO=#proceso#,
+		DESCRIPCION=#descripcion#,		
+		ESTADO_PROCESO=#estado_proceso#,
+		FECHA_PROCESO=#fecha_proceso#,
+		HORA_PROCESO=#hora_proceso#,
+		USUARIO_PROCESO=#usuario_proceso#
+		
+		WHERE FECHA_PERIODO=#fecha_periodo# and PROCESO=#proceso#
+		WITH NC
+	</update>
+	
+</sqlMap>	

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!-- /** * 21-11-2014 * IBM Software Factory. * */ -->
+<sqlMap>
+	<resultMap  id="resultPaseContableMap"
+				class="cl.laaraucana.simat.entidades.CuentaPaseContableVO">
+		<result property="nroCuenta" column="CUENTA" />
+		<result property="monto" column="MONTO" />
+		<result property="tipoImporte" column="TIPOCUENTA" />
+		<result property="descConcepto" column="DESCRIPCION" />
+		<result property="claveContabilidad" column="SM10CLA" />
+		<result property="cuentaVigente" column="SM10VIG" />
+	</resultMap>
+
+	<!-- Select para tabla ParametrosVO -->
+
+	<select id="getCuentasPaseContable" resultMap="resultPaseContableMap">
+		SELECT A.CUENTA,
+		COALESCE(A.MONTO,0) AS MONTO, TRIM(B.SM10DES) AS DESCRIPCION, TRIM(SM10DOC) AS TIPOCUENTA, B.SM10CLA, B.SM10VIG
+		FROM SIMATDTA.REGISTRO_PASE_CONTABLE A
+		JOIN (SELECT * FROM SIMATDTA.SMF10) B ON
+		A.CUENTA = B.SM10CTA
+	</select>
+
+	<insert id="ingresarPaseContable" 
+			parameterClass="cl.laaraucana.simat.entidades.CuentaPaseContableVO">
+		INSERT INTO SIMATDTA.SMF11
+		(
+		SM11PER,
+		SM11CTA,
+		SM11DES,
+		SM11DCT,
+		SM11IMP,
+		SM11CLV,
+		SM11VIG
+		)
+		VALUES
+		(
+			#periodo#,
+			#nroCuenta#,
+			#descConcepto#,
+			#tipoImporte#,
+			#monto#,
+			#claveContabilidad#,
+			#cuentaVigente#
+		) WITH NC
+	</insert>
+	
+	<delete id="borrarPeriodoPaseContable" parameterClass="java.lang.String">
+		DELETE FROM SIMATDTA.SMF11 WHERE SM11PER=#periodo# WITH NC
+	</delete>
+	
+	<parameterMap id="creaPaseContableMap" class="java.util.Map"> 
+			<parameter property="periodo" jdbcType="VARCHAR" mode="IN" /> 
+    </parameterMap>
+	<procedure id="creaPaseContableAs400" parameterMap="creaPaseContableMap">
+		{CALL SIMATOBJ.SMC005J(?)}
+	</procedure>
+</sqlMap> 

@@ -1,0 +1,219 @@
+#wrapper {
+	margin: 0 auto;
+	width: 900px;
+	height: 100%;	
+}
+
+#header{
+	width: 900px;
+	height: 100px;
+	border: none;
+}
+
+#workSpace{
+	float: left;
+	width: 900px;
+	/*height: 100px;/*700px;*/
+	height: 100%;
+}
+#workSpaceMensajes{
+	width: auto;
+	/*height: 100px;/*700px;*/
+	height: 400px;
+	padding-top:20px;
+	border: solid 1px #CCCCCC;
+}
+#workSpaceOpciones{
+	text-align: left;
+}
+#workSpacePeriodo{
+	text-align: left;
+	font: bold;
+}
+#workSpacePaginacion{
+	width: 900px;
+	height: 40px;
+	text-align: right;
+	float: left;
+}
+
+/* 
+para TABLE Informe financiero----------------------------------
+*/
+#workSpaceVisorIF{
+	width: 900px;
+	float: left;
+}
+#workSpaceTitle{
+	width: 420px;
+	float: left;
+}
+#workSpaceTable{
+	width: 140px;
+	float: left;
+}
+.labelTableTitle{
+	padding: 4px;
+	width: 410px;
+	display: block;
+	text-align: left;
+}
+.labelTableValor{
+	padding: 4px;
+	width: 130px;
+	text-align: right;
+	display: block;
+}
+/* 
+fin table Informe financiero----------------------------------------------------------------------
+*/
+
+#imgAviso{
+	width: 100px;
+	height: 100px;
+}
+#mensaje{
+	font: bold;
+}
+
+
+/*reglas para cuadro de login-------------------------------------------------------------*/
+#loginBox {
+	padding-top: 20px;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 300px;
+	height: 34px;
+	float: left;
+}
+#errorBox {
+	padding-top: 20px;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 500px;
+	height: 50px;
+	float: left;
+}
+#loginBox1 {
+	padding: 2px;
+	width: 283px;
+	height: 70px;
+	float: left;
+}
+#loginBox2 {
+	padding: 2px;
+	width: 283px;
+	height: 70px;
+	float: left;
+}
+
+#loginBoxBotones {
+	padding-top: 1px;
+	padding-right: 6px;
+	width: 872px;
+	height: 50px;
+	float:left;
+	text-align: center;
+}
+
+.labelLogin{
+	padding: 4px;
+	width: 100px;
+	display: block;
+	float: left;
+}
+
+#msgLogin{
+	font-size: 12px;
+	font: bold;
+	width: 876px;
+	display: block;	
+	background-color: #fef1ec;
+}
+
+/*fin login-------------------------------------------------------------------------*/
+
+/*para mensajes*/
+#periodoBox {
+	padding: 2px;
+	width: 400px;
+	height: 40px;
+	
+}
+#informacionLogin{
+	float: rigth ;
+	height: 70px;
+}
+#RespuestaEjecucion{
+	font-size: 12px;
+	font: bold;	
+}
+/*para formulario mantenedores*/
+.campoForm{
+	padding: 2px;
+	float: left;
+}
+.labelFormPeriodo{
+	padding: 4px;
+	width: 150px;
+	display: block;
+	text-align:center;
+	float: left;
+}
+.labelForm{
+	padding: 4px;
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+.labelFormID{
+	display: inline;
+	width: 100px;
+	float: left;
+	border: solid 1px #CCCCCC;
+}
+
+.labelError{
+	margin:2px;
+	width: 2px;
+	font: bold;
+	display: block;
+	float: left;
+}
+
+#spaceID{
+	width: 10px;
+	display: table;
+	font-style:normal;
+	float: left;
+}
+.inputForm{
+	display: block;
+	float: left;
+}
+#anchoMantenedorTable{
+	width: 850px;
+	height:1px;
+	display: inline;
+	float: left;
+}
+
+.selectPaginar{
+	
+	margin:5px;
+	display: block;
+	float: right;
+}
+
+.botonPaginar{
+	border: 0px;
+	margin:2px;
+	color: #FFFFFF;
+	font-family: arial,helvetica,sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background-image:  url("../img/boton.jpg");
+	height:20px;
+	float: right;
+}

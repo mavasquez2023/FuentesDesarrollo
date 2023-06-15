@@ -1,0 +1,226 @@
+.titulo {
+	font-family: Verdana;
+	font-size: 12px;
+	color: black;
+}
+
+.tituloColor {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #2299b9
+}
+.texto {
+	font-family: Verdana;
+	font-size: 11px;
+	color: black;
+}
+
+.textoBarra {
+	font-size: 12px;
+	color: #FFFFFF;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+.textoMenu {
+	font-size: 11px;
+	color: #FFFFFF;
+	font-family: Verdana;
+}
+
+/*.barraTituloSuperior{
+
+ background-image: url(/CIVILWEB/img/Comun/barraTitulo.jpg);
+ font-family: Verdana;
+ font-size: 12px;
+ color:white;
+ font-weight: bold;
+
+}*/
+
+
+.lenguetaSel{
+
+ background-color: #4181ad;
+ font-family: Verdana;
+ font-size: 12px;
+ color:white;
+ font-weight: bold;
+	
+
+}
+
+
+
+
+.lenguetaNoSel{
+
+ background-color:#e0e9f0;
+ font-family: Verdana;
+ font-size: 12px;
+ color:black;
+ font-weight: bold;
+
+}
+
+
+.fondoCeldaNormal  
+{
+  background-color: #e0e9f0; 
+}
+
+.textoImpresion {
+	font-family: Verdana;
+	font-size: 8px;
+	color: black;
+}
+
+.Button{
+background-color: #5F667B;
+font-weight: bold;
+font-size: 12px;
+color: white;
+height:20px;
+width:90px;
+}
+
+.bigButton{
+background-color: #5F667B;
+font-weight: bold;
+font-size: 12px;
+color: white;
+height:20px;
+width:120px;
+}
+
+.smallButton{
+background-color: #5F667B;
+font-weight: bold;
+font-size: 12px;
+color: white;
+height:20px;
+width:65px;
+}
+
+.adjuntarButton{
+font-size: 13px;
+height:22px;
+width:100px;
+}
+
+.textotabla {
+	font-family: Verdana;
+	font-size: 10px;
+	color: black;
+}
+
+.cabeceraTabla
+{
+ background-color:#4181ad;
+ font-family: Verdana;
+ font-size: 12px;
+ color:white;
+ font-weight: bold;
+}
+
+.textoLengueta
+{
+	font-family: Verdana;
+	font-size: 11px;
+	color: #012385;
+	font-weight: bold;
+}
+
+.combobox {
+	font-family: Verdana;
+	font-size: 11px;
+}
+
+.textoInput {
+	font-family: Verdana;
+	font-size: 11px;
+}
+
+.scrollColor
+{ 
+scrollbar-arrow-color: #000066; 
+scrollbar-track-color: #e0e9f0; 
+scrollbar-face-color: #e0e9f0;
+cursor:default;
+}
+
+.checkBox
+{
+width :12px;
+height:12px;
+}
+
+.radioButton
+{
+width :12px;
+height:12px;
+}
+
+.shadetabs{
+padding: 3px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+}
+/*
+.shadetabs li a{
+text-decoration: none;
+padding: 3px 7px;
+margin-right: 3px;
+border: 1px solid #778;
+color: #2d2b2b;
+background: white url(shade.gif) top left repeat-x;
+}
+*/
+.shadetabs li a:visited{
+color: #2d2b2b;
+}
+
+.shadetabs li a:hover{
+text-decoration: underline;
+color: #2d2b2b;
+}
+
+.shadetabs li.selected{
+position: relative;
+top: 1px;
+}
+/*
+.shadetabs li.selected a{ //selected main tab style //
+background-image: url(shadeactive.gif);
+border-bottom-color: white;
+}*/
+
+.shadetabs li.selected a:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+.tabcontentstyle{ /*style of tab content oontainer*/
+border: 1px solid gray;
+width: 450px;
+margin-bottom: 1em;
+padding: 10px;
+}
+
+.tabcontent{
+display:none;
+}
+
+@media print {
+.tabcontent {
+display:block!important;
+}
+}

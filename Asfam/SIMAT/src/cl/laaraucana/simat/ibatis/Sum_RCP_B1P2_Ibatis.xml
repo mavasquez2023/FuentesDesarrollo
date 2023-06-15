@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultSumVO" class="cl.laaraucana.simat.entidades.SumVO">
+		<result property="resultadoSum" column="resultadoSum" />				
+	</resultMap>
+
+<!-- para bloque 1 parte 2 fondos Salud -->	
+	<select id="getSumB1P2_CCAF_prenatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='650' -->
+		select IFNULL(sum(ROUND( SMMONSALUD * 0.6 / 7 , 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='650'
+		
+	</select>
+	<select id="getSumB1P2_ISP_prenatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='650' -->
+		select IFNULL(sum(SMMONSALUD - ROUND( SMMONSALUD * 0.6 / 7, 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB1P2_EntidadEmpleadora_prenatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and trim(SMCODDIAGN)='650' -->
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and trim(SMCODDIAGN)='650' 
+	</select>
+	
+	<select id="getSumB1P2_CCAF_postNatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='1650' -->
+		select IFNULL(sum(ROUND( SMMONSALUD * 0.6 / 7 , 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB1P2_ISP_postNatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='1650' -->
+		select IFNULL(sum(SMMONSALUD - ROUND( SMMONSALUD * 0.6 / 7, 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB1P2_EntidadEmpleadora_postNatal" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and trim(SMCODDIAGN)='1650' -->
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and trim(SMCODDIAGN)='1650'
+	</select>
+	
+	<select id="getSumB1P2_CCAF_Parental" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) -->
+		select IFNULL(sum(ROUND( SMMONSALUD * 0.6 / 7 , 0 )),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1)
+	</select>
+	<select id="getSumB1P2_ISP_Parental" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) -->
+		select IFNULL(sum(SMMONSALUD - ROUND( SMMONSALUD * 0.6 / 7, 0 )),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1)
+	</select>
+	<select id="getSumB1P2_EntidadEmpleadora_Parental" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) -->
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1)
+	</select>
+	
+	<select id="getSumB1P2_CCAF_EnfGraveNM" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') -->
+		select IFNULL(sum(ROUND( SMMONSALUD * 0.6 / 7 , 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB1P2_ISP_EnfGraveNM" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') -->
+		select IFNULL(sum(SMMONSALUD - ROUND( SMMONSALUD * 0.6 / 7, 0 )),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE=0 or SMINDCONVE=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB1P2_EntidadEmpleadora_EnfGraveNM" resultMap="resultSumVO">
+		<!-- select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') -->
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where SMCAUSAEMI=1 AND (SMINDCONVE!=0 and SMINDCONVE!=1) and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	
+
+	
+	
+</sqlMap>

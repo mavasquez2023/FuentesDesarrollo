@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultSumVO" class="cl.laaraucana.simat.entidades.SumVO">
+		<result property="resultadoSum" column="resultadoSum" />				
+	</resultMap>
+		
+	<select id="getSum_A_4_1" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTRECU),0)) as resultadoSum from simatdta.smf01 where SMORIREINT=1
+	</select>
+	<select id="getSum_A_4_2" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTRECU),0)) as resultadoSum from simatdta.smf01 where SMORIREINT!=1
+	</select>
+	<!-- select (IFNULL(sum(SMMONTRECU),0)) as resultadoSum from simatdta.smf01 where SMORIREINT=2 -->
+	
+	<select id="getSum_C_1" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='650' and SMCAUSAEMI=1
+	</select>
+	
+	<select id="getSum_C_2" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='1650' and SMCAUSAEMI=1
+	</select>
+	
+	<select id="getSum_C_3" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1
+	</select>
+	
+	<select id="getSum_C_4" resultMap="resultSumVO">
+		select IFNULL(sum(SMDFL44_78),0) as resultadoSum from simatdta.smf02 where (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') and SMCAUSAEMI=1
+	</select>	
+	
+		
+	<select id="getSum_C_6_1" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=3 and SMTIPOSUBS=1
+	</select>
+	<select id="getSum_C_6_2" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=3 and SMTIPOSUBS=2
+	</select>	
+	<select id="getSum_C_6_3" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=3 and SMTIPOSUBS=3
+	</select>
+	<select id="getSum_C_6_4" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=3 and SMTIPOSUBS=4
+	</select>
+	
+	
+	<select id="getSum_C_7_1" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=2 and SMTIPOSUBS=1
+	</select>
+	<select id="getSum_C_7_2" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=2 and SMTIPOSUBS=2
+	</select>
+	<select id="getSum_C_7_3" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=2 and SMTIPOSUBS=3
+	</select>
+	<select id="getSum_C_7_4" resultMap="resultSumVO">
+		select (IFNULL(sum(SMMONTODOC),0)*-1) as resultadoSum from simatdta.smf05 where SMESTADDOC=2 and SMTIPOSUBS=4
+	</select>
+	
+	
+	<select id="getSum_C_8_1" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=1 and SMESTDOCOR=2
+	</select>
+	<select id="getSum_C_8_2" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=2 and SMESTDOCOR=2
+	</select>
+	<select id="getSum_C_8_3" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=3 and SMESTDOCOR=2
+	</select>
+	<select id="getSum_C_8_4" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=4 and SMESTDOCOR=2
+	</select>
+	
+	
+	<select id="getSum_C_9_1" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=1 and SMESTDOCOR=3
+	</select>
+	<select id="getSum_C_9_2" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=2 and SMESTDOCOR=3
+	</select>
+	<select id="getSum_C_9_3" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=3 and SMESTDOCOR=3
+	</select>
+	<select id="getSum_C_9_4" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONDOCNU),0) as resultadoSum from simatdta.smf06 where SMTIPOSUBS=4 and SMESTDOCOR=3
+	</select>
+	
+	<select id="getSum_E1" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONTOFP),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='650' and SMCAUSAEMI=1
+	</select>
+	<select id="getSum_E2" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONTOFP),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='1650' and SMCAUSAEMI=1
+	</select>
+	<select id="getSum_E3" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONTOFP),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1
+	</select>
+	<select id="getSum_E4" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONTOFP),0) as resultadoSum from simatdta.smf02 where (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') and SMCAUSAEMI=1
+	</select>
+	
+	<select id="getSum_F1" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='650' and SMCAUSAEMI=1
+	</select>
+	<select id="getSum_F2" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where trim(SMCODDIAGN)='1650' and SMCAUSAEMI=1
+	</select>
+	<select id="getSum_F3" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf03 where SMCAUSAEMI=1
+	</select>
+	<select id="getSum_F4" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONSALUD),0) as resultadoSum from simatdta.smf02 where (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650') and SMCAUSAEMI=1
+	</select>
+	
+	<resultMap id="resultadoPlanosMap" class="java.util.HashMap">
+		<result property="key" javaType="java.lang.String" column="CUENTA"/>
+		<result property="value" javaType="java.lang.Long"  column="RESULTADOSUM"/>     
+	</resultMap>
+	<select id="resultadoPlanos" resultMap="resultadoPlanosMap">
+		SELECT * FROM SIMATDTA.RESULTADO_PLANOS
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+        <parameterMap id="myParamMap" class="java.util.Map"> 
+            <parameter property="Fecha" jdbcType="VARCHAR" mode="IN" /> 
+        </parameterMap>
+		
+		<parameterMap id="myMap2" class="java.util.Map"> 
+            <parameter property="Fecha" jdbcType="VARCHAR" mode="IN" /> 
+			<parameter property="tabla" jdbcType="VARCHAR" mode="IN" /> 
+        </parameterMap>
+		
+		<parameterMap id="myMap3" class="java.util.Map"> 
+			<parameter property="tabla" jdbcType="VARCHAR" mode="IN" /> 
+        </parameterMap>
+		
+	<!-- llama a programa cobol , para respaldar archivos -->
+		<procedure id="ProcedimientoRespaldoHistorico"  parameterMap="myMap2">
+            {call SIMATOBJ.SMC001J(?,?)}
+        </procedure>
+        
+	<!-- llama a programa cobol , para procedimientos validar -->       
+		<procedure id="ProcedimientoValidacion"  parameterMap="myParamMap">
+            {call SIMATOBJ.SMC002J(?)}
+        </procedure>
+        
+	<!-- llama a programa cobol , para Cargar BD SIMAT -->
+        <procedure id="ProcedimientoCargaArchivosDB2"  parameterMap="myParamMap">
+            {call SIMATOBJ.SMC003J(?)}
+        </procedure>
+        
+	<!-- llama a programa cobol , DISTRIBUIR no utilizar -->
+        <procedure id="ProcedimientoDistribucion"  parameterMap="myParamMap">
+            {call SIMATOBJ.SMC004J(?)}
+        </procedure>
+        
+     <!-- llama a programa rpgque cambiara fechas "2039-01-01" por 0001-01-01 -->
+        <procedure id="ProcedimientoFechaPorDefecto"  parameterMap="myMap3">
+            {call SIMATOBJ.SMR010J(?)}
+        </procedure>
+</sqlMap>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultDocsRevalReemVO" class="cl.laaraucana.simat.entidades.DocsRevalReemVO">
+	
+		<result property="id" column="SM_ID" />
+		<result property="mes_informacion" column="SMMESINFO" />
+		<result property="codigo_entidad" column="SMCODENTID" />
+		<result property="tiposubsidio" column="SMTIPOSUBS" />
+		<result property="mod_pago_original" column="SMMODPAGOR" />
+		<result property="codigo_banco_original" column="SMCODBANOR" />
+		<result property="serie_documento_original" column="SMSERDOCOR" />
+		<result property="num_documento_original" column="SMNUMDOCOR" />
+
+		<result property="fecha_emision_documento_original" column="SMFECEMIOR" />
+		<result property="fecha_emision_documento_original_Char" column="SMFECEMIOR_C" />
+		
+		<result property="monto_documento_original" column="SMMONDOCOR" />
+		<result property="estado_documento_original" column="SMESTDOCOR" />
+		<result property="mod_pago_nuevo" column="SMMODPAGNU" />
+		<result property="codigo_banco_nuevo" column="SMCODBANNU" />
+		<result property="serie_documento_nuevo" column="SMSERDOCNU" />
+		<result property="num_documento_nuevo" column="SMNUMDOCNU" />
+		
+		<result property="fecha_emision_documento_nuevo" column="SMFECEMINU" />
+		<result property="fecha_emision_documento_nuevo_Char" column="SMFECEMINU_C" />
+		
+		<result property="monto_documento_nuevo" column="SMMONDOCNU" />
+		
+	</resultMap>
+		
+<!-- Sección sentencias SQL -->
+	
+	<select id="getTodoDocsRevalReem" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06
+	</select>
+	
+	<select id="getUnoDocsRevalReemIbatis" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 WHERE SM_ID=#id#
+	</select>
+	
+	<select id="getDocsRevalReemByEstadoDoc" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 WHERE SMESTDOCOR=#estado_documento_original# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>	
+	<select id="getDocsRevalReemByNumDoc" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 WHERE TRIM(SMNUMDOCOR)=#num_documento_original#	 
+	</select>
+	
+	<select id="getDocsRevalReemIbatisByMes" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 WHERE SMMESINFO=#mes_informacion#
+	</select>
+	
+	<select id="BuscarListaAvanzarEstadoDoc" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 where SM_ID &gt;= #keyFin# and SMESTDOCOR=#estado_documento_original# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	<select id="BuscarListaRetrocederEstadoDoc" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 where SM_ID &gt;= #keyInicio# and SMESTDOCOR=#estado_documento_original# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<select id="getList_avanzar_SMF06" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 where SM_ID &gt;= #keyFin# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	<select id="getList_retroceder_SMF06" resultMap="resultDocsRevalReemVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMMODPAGOR,0)) as SMMODPAGOR,
+			TRIM(IFNULL(SMCODBANOR,'')) as SMCODBANOR,
+			TRIM(IFNULL(SMSERDOCOR,'')) as SMSERDOCOR,
+			TRIM(IFNULL(SMNUMDOCOR,'')) as SMNUMDOCOR,
+			CASE  
+				WHEN SMFECEMIOR IS NULL THEN ''
+				WHEN SMFECEMIOR = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMIOR,ISO)
+			END AS SMFECEMIOR_C,
+			SMFECEMIOR,
+			TRIM(IFNULL(SMMONDOCOR,0)) as SMMONDOCOR,
+			TRIM(IFNULL(SMESTDOCOR,0)) as SMESTDOCOR,
+			TRIM(IFNULL(SMMODPAGNU,0)) as SMMODPAGNU,
+			TRIM(IFNULL(SMCODBANNU,'')) as SMCODBANNU,
+			TRIM(IFNULL(SMSERDOCNU,'')) as SMSERDOCNU,
+			TRIM(IFNULL(SMNUMDOCNU,'')) as SMNUMDOCNU,
+			CASE  
+				WHEN SMFECEMINU IS NULL THEN ''
+				WHEN SMFECEMINU = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMINU,ISO)
+			END AS SMFECEMINU_C,
+			SMFECEMINU,
+			TRIM(IFNULL(SMMONDOCNU,0)) as SMMONDOCNU,
+			TRIM(IFNULL(SMINDCONVE,0)) as SMINDCONVE 
+		from SIMATDTA.SMF06 where SM_ID &gt;= #keyInicio# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+<!-- Sección insertar tabla n°6 -->
+	
+	<insert id="insertarDocsRevalReem"  parameterClass="cl.laaraucana.simat.entidades.DocsRevalReemVO">
+		INSERT INTO SIMATDTA.SMF06 (SM_ID,SMMESINFO,SMCODENTID,SMTIPOSUBS,SMMODPAGOR,SMCODBANOR,SMSERDOCOR,SMNUMDOCOR,SMFECEMIOR,SMMONDOCOR,SMESTDOCOR,SMMODPAGNU,SMCODBANNU,SMSERDOCNU,SMNUMDOCNU,SMFECEMINU,SMMONDOCNU, SMINDCONVE)
+		VALUES (IFNULL((select max(SM_ID)+1 from SIMATDTA.SMF06),0),#mes_informacion#,#codigo_entidad#,#tiposubsidio#,#mod_pago_original#,#codigo_banco_original#,#serie_documento_original#,#num_documento_original#,#fecha_emision_documento_original#,#monto_documento_original#,#estado_documento_original#,#mod_pago_nuevo#,#codigo_banco_nuevo#,#serie_documento_nuevo#,#num_documento_nuevo#,#fecha_emision_documento_nuevo#,#monto_documento_nuevo#, #indicadorConvenio#)
+		WITH NC
+	</insert>
+	
+	
+<!-- Sección eliminar tabla n°6 -->
+	
+	<delete id="delDocsRevalReemIbatis" parameterClass="cl.laaraucana.simat.entidades.DocsRevalReemVO">
+		DELETE FROM SIMATDTA.SMF06 WHERE SM_ID=#id#
+		WITH NC
+	</delete>
+	
+<!-- Sección actualizar tabla n°6 -->
+	
+	<update id="updateDocsRevalReemIbatis" parameterClass="cl.laaraucana.simat.entidades.DocsRevalReemVO">
+		UPDATE SIMATDTA.SMF06 SET 
+			SMMESINFO=#mes_informacion#,
+			SMCODENTID=#codigo_entidad#,
+			SMTIPOSUBS=#tiposubsidio#,
+			SMMODPAGOR=#mod_pago_original#,
+			SMCODBANOR=#codigo_banco_original#,
+			SMSERDOCOR=#serie_documento_original#,
+			SMNUMDOCOR=#num_documento_original#,
+			SMFECEMIOR=#fecha_emision_documento_original#,
+			SMMONDOCOR=#monto_documento_original#,
+			SMESTDOCOR=#estado_documento_original#,
+			SMMODPAGNU=#mod_pago_nuevo#,
+			SMCODBANNU=#codigo_banco_nuevo#,
+			SMSERDOCNU=#serie_documento_nuevo#,
+			SMNUMDOCNU=#num_documento_nuevo#,
+			SMFECEMINU=#fecha_emision_documento_nuevo#,
+			SMMONDOCNU=#monto_documento_nuevo#
+			WHERE SM_ID=#id#
+		WITH NC
+	</update>
+	
+	
+	
+	
+</sqlMap>

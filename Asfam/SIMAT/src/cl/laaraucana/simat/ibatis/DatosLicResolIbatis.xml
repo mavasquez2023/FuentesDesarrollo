@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultDatosLicResolVO" class="cl.laaraucana.simat.entidades.DatosLicResolVO">
+	
+	<result property="id" column="SM_ID" />
+		<result property="mes_informacion" column="SMMESINFO" />
+		<result property="codigo_entidad" column="SMCODENTID" />
+		<result property="nro_licencia" column="SMNROLICEN" />
+		<result property="reconsideracion" column="SMRECONSID" />
+		<result property="run_beneficiario" column="SMRUNBENEF" />
+		<result property="nombre_beneficiario" column="SMNOMBENEF" />
+		<result property="vinculo_beneficiario_menor" column="SMVINBEMEN" />
+		<result property="edad" column="SMEDAD" />
+		<result property="sexo" column="SMSEXO" />
+		<result property="actividad_laboral_trabajador" column="SMACLABTRA" />
+		<result property="nro_nacimientos" column="SMNRONACIM" />
+		
+		<result property="fecha_emision_licencia" column="SMFECEMLIC" />
+		<result property="fecha_emision_licencia_Char" column="SMFECEMLIC_C" />
+		
+		<result property="fecha_inicio_reposo" column="SMFECINREP" />
+		<result property="fecha_inicio_reposo_Char" column="SMFECINREP_C" />
+		
+		<result property="fecha_termino_reposo" column="SMFECTEREP" />
+		<result property="fecha_termino_reposo_Char" column="SMFECTEREP_C" />
+		
+		<result property="num_dias_licencia" column="SMNRODIALI" />
+		<result property="num_dias_licencia_autorizados" column="SMNUMDIAU" />
+		<result property="num_dias_licencia_rechazados" column="SMNDIALIRE" />
+		<result property="run_menor_enfermo" column="SMRUNMENEN" />
+		<result property="nombre_menor_enfermo" column="SMNOMMENEN" />
+		
+		<result property="fecha_nac_menor_enfermo" column="SMFECNAMEN" />
+		<result property="fecha_nac_menor_enfermo_Char" column="SMFECNAMEN_C" />
+		
+		<result property="cod_comuna_beneficiario" column="SMCODCOBEN" />
+		<result property="run_profesional" column="SMRUNPROF" />
+		<result property="nombre_profesional" column="SMNOMPROF" />
+		<result property="registro_colegio_profesional" column="SMREGCOPRO" />
+		<result property="cod_tipo_licencia" column="SMCODTIPLI" />
+		<result property="codigo_diagnostico" column="SMCODDIAGN" />
+		<result property="rut_empleador" column="SMRUTEMPLE" />
+		<result property="nombre_empleador" column="SMNOMEMPLE" />
+		<result property="calidad_trabajador" column="SMCALITRAB" />
+		<result property="estado_tramitacion" column="SMESTATRAM" />
+		<result property="causal_rechazo_licencia" column="SMCAURECLI" />
+		
+	</resultMap>
+	
+	<!-- Sección sentencias SQL -->
+	
+	<select id="getTodoDatosLicResol" resultMap="resultDatosLicResolVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		from SIMATDTA.SMF08
+	</select>
+	
+	<select id="getUnoDatosLicResolIbatis" resultMap="resultDatosLicResolVO">
+		select 
+			 SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		from SIMATDTA.SMF08 WHERE SM_ID=#id#
+	</select>
+	
+	<select id="getDatosLicResolIbatisByMes" resultMap="resultDatosLicResolVO">
+		select 
+			 SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		from SIMATDTA.SMF08 WHERE SMMESINFO=#mes_informacion#
+	</select>
+	
+	<select id="getDatosLicResolByRutBenef" resultMap="resultDatosLicResolVO">
+		select 
+			 SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		FROM SIMATDTA.SMF08 WHERE TRIM(SMRUNBENEF) = #run_beneficiario#
+	</select>
+	
+	<select id="getList_avanzar_SMF08" resultMap="resultDatosLicResolVO">
+		select 
+			 SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		from SIMATDTA.SMF08 where SM_ID &gt;= #keyFin# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<select id="getList_retroceder_SMF08" resultMap="resultDatosLicResolVO">
+		select 
+			 SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRECONSID,0)) as SMRECONSID,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMVINBEMEN,0)) as SMVINBEMEN,
+			TRIM(IFNULL(SMEDAD,0)) as SMEDAD,
+			TRIM(IFNULL(SMSEXO,'')) as SMSEXO,
+			TRIM(IFNULL(SMACLABTRA,'')) as SMACLABTRA,
+			TRIM(IFNULL(SMNRONACIM,0)) as SMNRONACIM,
+			CASE  
+				WHEN SMFECEMLIC IS NULL THEN ''
+				WHEN SMFECEMLIC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMLIC,ISO)
+			END AS SMFECEMLIC_C,
+			SMFECEMLIC,
+			CASE  
+				WHEN SMFECINREP IS NULL THEN ''
+				WHEN SMFECINREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECINREP,ISO)
+			END AS SMFECINREP_C,
+			SMFECINREP,
+			CASE  
+				WHEN SMFECTEREP IS NULL THEN ''
+				WHEN SMFECTEREP = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECTEREP,ISO)
+			END AS SMFECTEREP_C,
+			SMFECTEREP,
+			TRIM(IFNULL(SMNRODIALI,0)) as SMNRODIALI,
+			TRIM(IFNULL(SMNUMDIAU,0)) as SMNUMDIAU,
+			TRIM(IFNULL(SMNDIALIRE,0)) as SMNDIALIRE,
+			TRIM(IFNULL(SMRUNMENEN,'')) as SMRUNMENEN,
+			TRIM(IFNULL(SMNOMMENEN,'')) as SMNOMMENEN,
+			CASE  
+				WHEN SMFECNAMEN IS NULL THEN ''
+				WHEN SMFECNAMEN = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECNAMEN,ISO)
+			END AS SMFECNAMEN_C,
+			SMFECNAMEN,
+			TRIM(IFNULL(SMCODCOBEN,'')) as SMCODCOBEN,
+			TRIM(IFNULL(SMRUNPROF,'')) as SMRUNPROF,
+			TRIM(IFNULL(SMNOMPROF,'')) as SMNOMPROF,
+			TRIM(IFNULL(SMREGCOPRO,'')) as SMREGCOPRO,
+			TRIM(IFNULL(SMCODTIPLI,0)) as SMCODTIPLI,
+			TRIM(IFNULL(SMCODDIAGN,'')) as SMCODDIAGN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMCALITRAB,0)) as SMCALITRAB,
+			TRIM(IFNULL(SMESTATRAM,0)) as SMESTATRAM,
+			TRIM(IFNULL(SMCAURECLI,0)) as SMCAURECLI
+		from SIMATDTA.SMF08 where SM_ID &gt;= #keyInicio# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<!-- Sección insertar tabla n°5 -->
+	
+	<insert id="insertarDatosLicResol"  parameterClass="cl.laaraucana.simat.entidades.DatosLicResolVO">
+		INSERT INTO SIMATDTA.SMF08 (SM_ID,SMMESINFO,SMCODENTID,SMNROLICEN,SMRECONSID,SMRUNBENEF,SMNOMBENEF,SMVINBEMEN,SMEDAD,SMSEXO,SMACLABTRA,SMNRONACIM,SMFECEMLIC,SMFECINREP,SMFECTEREP,SMNRODIALI,SMNUMDIAU,SMNDIALIRE,SMRUNMENEN,SMNOMMENEN,SMFECNAMEN,SMCODCOBEN,SMRUNPROF,SMNOMPROF,SMREGCOPRO,SMCODTIPLI,SMCODDIAGN,SMRUTEMPLE,SMNOMEMPLE,SMCALITRAB,SMESTATRAM,SMCAURECLI)
+   VALUES (IFNULL((select max(SM_ID)+1 from SIMATDTA.SMF08),0),#mes_informacion#,#codigo_entidad#,#nro_licencia#,#reconsideracion#,#run_beneficiario#,#nombre_beneficiario#,#vinculo_beneficiario_menor#,#edad#,#sexo#,#actividad_laboral_trabajador#,#nro_nacimientos#,#fecha_emision_licencia#,#fecha_inicio_reposo#,#fecha_termino_reposo#,#num_dias_licencia#,#num_dias_licencia_autorizados#,#num_dias_licencia_rechazados#,#run_menor_enfermo#,#nombre_menor_enfermo#,#fecha_nac_menor_enfermo#,#cod_comuna_beneficiario#,#run_profesional#,#nombre_profesional#,#registro_colegio_profesional#,#cod_tipo_licencia#,#codigo_diagnostico#,#rut_empleador#,#nombre_empleador#,#calidad_trabajador#,#estado_tramitacion#,#causal_rechazo_licencia#)
+   WITH NC
+	</insert>
+	
+	
+	<!-- Sección eliminar tabla n°5 -->
+	<delete id="eliminarDatosLicResol" parameterClass="cl.laaraucana.simat.entidades.DatosLicResolVO">
+		delete from SIMATDTA.SMF08 where SM_ID=#id#
+		WITH NC
+	</delete>
+	
+	
+	<!-- Sección actualizar tabla n°5 -->
+	<update id="actualizarDatosLicResolb" parameterClass="cl.laaraucana.simat.entidades.DatosLicResolVO">
+		UPDATE SIMATDTA.SMF08 SET
+			SMMESINFO=#mes_informacion#,
+			SMCODENTID=#codigo_entidad#,
+			SMNROLICEN=#nro_licencia#,
+			SMRECONSID=#reconsideracion#,
+			SMRUNBENEF=#run_beneficiario#,
+			SMNOMBENEF=#nombre_beneficiario#,
+			SMVINBEMEN=#vinculo_beneficiario_menor#,
+			SMEDAD=#edad#,
+			SMSEXO=#sexo#,
+			SMACLABTRA=#actividad_laboral_trabajador#,
+			SMNRONACIM=#nro_nacimientos#,
+			SMFECEMLIC=#fecha_emision_licencia#,
+			SMFECINREP=#fecha_inicio_reposo#,
+			SMFECTEREP=#fecha_termino_reposo#,
+			SMNRODIALI=#num_dias_licencia#,
+			SMNUMDIAU=#num_dias_licencia_autorizados#,
+			SMNDIALIRE=#num_dias_licencia_rechazados#,
+			SMRUNMENEN=#run_menor_enfermo#,
+			SMNOMMENEN=#nombre_menor_enfermo#,
+			SMFECNAMEN=#fecha_nac_menor_enfermo#,
+			SMCODCOBEN=#cod_comuna_beneficiario#,
+			SMRUNPROF=#run_profesional#,
+			SMNOMPROF=#nombre_profesional#,
+			SMREGCOPRO=#registro_colegio_profesional#,
+			SMCODTIPLI=#cod_tipo_licencia#,
+			SMCODDIAGN=#codigo_diagnostico#,
+			SMRUTEMPLE=#rut_empleador#,
+			SMNOMEMPLE=#nombre_empleador#,
+			SMCALITRAB=#calidad_trabajador#,
+			SMESTATRAM=#estado_tramitacion#,
+			SMCAURECLI=#causal_rechazo_licencia#
+			
+		 WHERE SM_ID=#id#
+		 WITH NC
+	</update>
+	
+</sqlMap>

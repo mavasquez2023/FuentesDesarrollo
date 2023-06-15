@@ -1,0 +1,2701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResCotizPrevi" language="groovy" pageWidth="920" pageHeight="950" columnWidth="910" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF" lineSpacing="Single"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<subDataset name="Table Dataset 2"/>
+	<subDataset name="Table Dataset 3"/>
+	<subDataset name="Table Dataset 4"/>
+	<subDataset name="Table Dataset 5"/>
+	<field name="periodo" class="java.lang.String"/>
+	<field name="entidad" class="java.lang.String"/>
+	<field name="afp_Cuprum_B1P1_repPreNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_Cuprum_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Cuprum_B1P1_Total" class="java.lang.String"/>
+	<field name="afp_Habitat_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_Habitat_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Habitat_B1P1_Total" class="java.lang.String"/>
+	<field name="afp_PlanVital_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_PlanVital_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_PlanVital_B1P1_Total" class="java.lang.String"/>
+	<field name="afp_Provida_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Provida_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Provida_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_Provida_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Provida_B1P1_Total" class="java.lang.String"/>
+	<field name="afp_Capital_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Capital_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Capital_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_Capital_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Capital_B1P1_Total" class="java.lang.String"/>
+	<field name="afp_Modelo_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B1P1_repParental" class="java.lang.String"/>
+	<field name="afp_Modelo_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Modelo_B1P1_Total" class="java.lang.String"/>
+	<field name="ips_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="ips_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="ips_B1P1_repParental" class="java.lang.String"/>
+	<field name="ips_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="ips_B1P1_Total" class="java.lang.String"/>
+	<field name="capredena_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="capredena_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="capredena_B1P1_repParental" class="java.lang.String"/>
+	<field name="capredena_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="capredena_B1P1_Total" class="java.lang.String"/>
+	<field name="dipreca_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="dipreca_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="dipreca_B1P1_repParental" class="java.lang.String"/>
+	<field name="dipreca_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="dipreca_B1P1_Total" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P1_repParental" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P1_Total" class="java.lang.String"/>
+	<field name="subTotal_B1P1_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B1P1_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B1P1_repParental" class="java.lang.String"/>
+	<field name="subTotal_B1P1_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B1P1_Total" class="java.lang.String"/>
+	<field name="ips_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="ips_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="ips_B1P2_repParental" class="java.lang.String"/>
+	<field name="ips_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="ips_B1P2_Total" class="java.lang.String"/>
+	<field name="ccaf_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="ccaf_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="ccaf_B1P2_repParental" class="java.lang.String"/>
+	<field name="ccaf_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="ccaf_B1P2_Total" class="java.lang.String"/>
+	<field name="isp_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="isp_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="isp_B1P2_repParental" class="java.lang.String"/>
+	<field name="isp_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="isp_B1P2_Total" class="java.lang.String"/>
+	<field name="capredena_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="capredena_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="capredena_B1P2_repParental" class="java.lang.String"/>
+	<field name="capredena_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="capredena_B1P2_Total" class="java.lang.String"/>
+	<field name="dipreca_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="dipreca_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="dipreca_B1P2_repParental" class="java.lang.String"/>
+	<field name="dipreca_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="dipreca_B1P2_Total" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P2_repParental" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P2_Total" class="java.lang.String"/>
+	<field name="subTotal_B1P2_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B1P2_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B1P2_repParental" class="java.lang.String"/>
+	<field name="subTotal_B1P2_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B1P2_Total" class="java.lang.String"/>
+	<field name="ips_B1P3_repPrenatal" class="java.lang.String"/>
+	<field name="ips_B1P3_repPostNatal" class="java.lang.String"/>
+	<field name="ips_B1P3_repParental" class="java.lang.String"/>
+	<field name="ips_B1P3_perEnfmen1" class="java.lang.String"/>
+	<field name="ips_B1P3_Total" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P3_repPrenatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P3_repPostNatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P3_repParental" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P3_perEnfmen1" class="java.lang.String"/>
+	<field name="entidEmpleadora_B1P3_Total" class="java.lang.String"/>
+	<field name="subTotal_B1P3_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B1P3_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B1P3_repParental" class="java.lang.String"/>
+	<field name="subTotal_B1P3_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B1P3_Total" class="java.lang.String"/>
+	<field name="total_B1_prenatal" class="java.lang.String"/>
+	<field name="total_B1_postnatal" class="java.lang.String"/>
+	<field name="total_B1_parental" class="java.lang.String"/>
+	<field name="total_B1_perEnfmen1" class="java.lang.String"/>
+	<field name="total_B1_Total" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P1_repPreNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P1_Total" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P1_Total" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P1_Total" class="java.lang.String"/>
+	<field name="afp_Provida_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Provida_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Provida_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_Provida_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Provida_B2P1_Total" class="java.lang.String"/>
+	<field name="afp_Capital_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Capital_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Capital_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_Capital_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Capital_B2P1_Total" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P1_repParental" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P1_Total" class="java.lang.String"/>
+	<field name="subTotal_B2P1_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B2P1_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B2P1_repParental" class="java.lang.String"/>
+	<field name="subTotal_B2P1_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B2P1_Total" class="java.lang.String"/>
+	<field name="ips_B2P2_repPrenatal" class="java.lang.String"/>
+	<field name="ips_B2P2_repPostnatal" class="java.lang.String"/>
+	<field name="ips_B2P2_repParental" class="java.lang.String"/>
+	<field name="ips_B2P2_perEnfmen1" class="java.lang.String"/>
+	<field name="ips_B2P2_Total" class="java.lang.String"/>
+	<field name="subTotal_B2P2_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B2P2_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B2P2_repParental" class="java.lang.String"/>
+	<field name="subTotal_B2P2_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B2P2_Total" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P3_repPreNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Cuprum_B2P3_Total" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Habitat_B2P3_Total" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_PlanVital_B2P3_Total" class="java.lang.String"/>
+	<field name="afp_Provida_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Provida_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Provida_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_Provida_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Provida_B2P3_Total" class="java.lang.String"/>
+	<field name="afp_Capital_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Capital_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Capital_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_Capital_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Capital_B2P3_Total" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P3_repParental" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="afp_Modelo_B2P3_Total" class="java.lang.String"/>
+	<field name="entidEmpleadora_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="entidEmpleadora_B2P3_repParental" class="java.lang.String"/>
+	<field name="entidEmpleadora_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="entidEmpleadora_B2P3_Total" class="java.lang.String"/>
+	<field name="subTotal_B2P3_repPrenatal" class="java.lang.String"/>
+	<field name="subTotal_B2P3_repPostNatal" class="java.lang.String"/>
+	<field name="subTotal_B2P3_repParental" class="java.lang.String"/>
+	<field name="subTotal_B2P3_perEnfmen1" class="java.lang.String"/>
+	<field name="subTotal_B2P3_Total" class="java.lang.String"/>
+	<field name="total_B2_prenatal" class="java.lang.String"/>
+	<field name="total_B2_postnatal" class="java.lang.String"/>
+	<field name="total_B2_parental" class="java.lang.String"/>
+	<field name="total_B2_perEnfmen1" class="java.lang.String"/>
+	<field name="total_B2_Total" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="112">
+			<staticText>
+				<reportElement x="0" y="0" width="910" height="34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANEXO N° 4: RESUMEN DE COTIZACIONES PREVISIONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="80" height="41"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[INSTITUCION: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="64" width="545" height="41"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="298" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="34" width="251" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[COTIZACIONES CORRESPONDIENTES AL MES DE: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="710" y="34" width="200" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="549" y="34" width="161" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="64" width="285" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="90" width="285" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="549" y="49" width="161" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[________________________]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="940">
+			<staticText>
+				<reportElement style="table" x="0" y="101" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[1.- FONDOS DE PENSIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="903" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE CARGO DE LA BENEFICIARIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="342" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto de Salud Previsional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="266" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="116" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Cuprum S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="493" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="0" width="210" height="71"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[INSTITUCIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="310" y="15" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[REPOSO POSTNATAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="524" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="221" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Capredena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="691" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[2.- FONDOS DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="872" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="210" y="15" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[REPOSO PRENATAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="206" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto de Previsión Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="251" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Entidades Empleadoras (*)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="540" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[II. DE CARGO DE LAS BENEFICIARIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="357" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Capredena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="236" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dipreca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="509" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE CARGO FONDO UNICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="433" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[3.- COTIZACIONES DESAHUCIO E INDEMNIZACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="448" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto de Previsión Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="478" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="71" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="887" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="146" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. PlanVital  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="312" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto de Previsión Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="131" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Habitat S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="281" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="736" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="463" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Entidades Empleadoras (*)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="410" y="15" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ POSTNATAL PARENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="660" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="721" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="555" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[1.- FONDOS DE PENSIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="297" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[2.- FONDOS DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="161" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Provida  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="191" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Modelo  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="752" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[3.- COTIZACIONES SEGURO DE CESANTÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="372" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dipreca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="402" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="387" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Entidades Empleadoras (*)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="327" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Cajas de Compensación de asignación Familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="176" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Capital S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="417" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="210" y="0" width="500" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TIPOS DE SUBSIDIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="86" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[I. DE CARGO DEL FONDO ÚNICO DE PRESTACIONES FAMILIARES Y SUBSIDIO DE CESANTÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="610" y="15" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="0" width="100" height="71"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="0" width="100" height="71"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[N° DE CHEQUE O TRANSFERENCIA ELECTRONICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="645" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Modelo  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="585" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Habitat S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="615" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Provida  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="630" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Capital S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="570" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Cuprum S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="600" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. PlanVital  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="675" width="910" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="706" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto de Previsión Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="827" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Capital S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="812" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Provida  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="782" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Habitat S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="842" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Modelo  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="797" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. PlanVital  S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="767" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.F.P. Cuprum S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="857" width="210" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Entidades Empleadoras (*)]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" x="210" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B1P1_repPreNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="266" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="266" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="266" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="266" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="266" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ccaf_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ccaf_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ccaf_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ccaf_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isp_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isp_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isp_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isp_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{isp_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ccaf_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{capredena_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dipreca_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="402" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="402" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="402" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="402" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="402" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B1P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B1P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="478" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="478" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="478" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="478" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="478" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B1P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="509" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B1_prenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="509" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B1_postnatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="509" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B1_parental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="509" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="509" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P1_repPreNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="660" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P1_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="660" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P1_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="660" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P1_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="660" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P1_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="660" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P1_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B2P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B2P2_repPostnatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B2P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B2P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ips_B2P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="721" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P2_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="721" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P2_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="721" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P2_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="721" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="721" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P2_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P3_repPreNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Cuprum_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Habitat_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_PlanVital_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Provida_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Capital_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{afp_Modelo_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{entidEmpleadora_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="872" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P3_repPrenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="872" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P3_repPostNatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="872" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P3_repParental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="872" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P3_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="872" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal_B2P3_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="210" y="903" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B2_prenatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="310" y="903" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B2_postnatal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="410" y="903" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B2_parental}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="510" y="903" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B2_perEnfmen1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="610" y="903" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total_B2_Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" x="710" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="221" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="251" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="191" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="161" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="236" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="176" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="206" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="131" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="116" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="146" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="357" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="342" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="387" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="327" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="312" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="372" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="448" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="463" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="630" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="585" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="570" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="615" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="600" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="645" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="706" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="827" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="842" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="782" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="767" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="812" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="797" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="810" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="710" y="857" width="100" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="510" y="15" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PERMISO POR ENFERMEDAD GRAVE DEL NIÑO MENOR DE UN AÑO]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

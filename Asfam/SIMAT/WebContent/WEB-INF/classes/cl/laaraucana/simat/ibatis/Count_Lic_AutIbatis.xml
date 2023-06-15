@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultCountVO" class="cl.laaraucana.simat.entidades.CountVO">
+		<result property="resultadoCount" column="total" />				
+	</resultMap>
+		
+	<select id="getNum_Lic_Autorizadas_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2 or SMRECONSID=1) and trim(SMCODDIAGN)='650'
+	</select>
+
+	<select id="getNum_Lic_Autorizadas_Post_natal_Madre" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2 or SMRECONSID=1) and trim(SMCODDIAGN)='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5)
+	</select>	
+	
+	<select id="getNum_Lic_Autorizadas_Post_natal_Padre" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2 or SMRECONSID=1) and trim(SMCODDIAGN)='1650' and SMVINBEMEN=2
+	</select>
+	
+<!-- sin regla para cuadro 1 disponible para separar parentales
+	<select id="getNum_Lic_Autorizadas_Parental_Madre" resultMap="resultCountVO">
+		
+	</select>
+	
+	<select id="getNum_Lic_Autorizadas_Parental_Padre" resultMap="resultCountVO">
+		
+	</select>	
+-->
+	<select id="getNum_Lic_Autorizadas_Enf_menor_Madre" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2 or SMRECONSID=1) and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and (SMVINBEMEN=1 or SMVINBEMEN=5)
+	</select>
+	
+	<select id="getNum_Lic_Autorizadas_Enf_menor_Padre" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2 or SMRECONSID=1) and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and SMVINBEMEN=2
+	</select>
+	
+</sqlMap>

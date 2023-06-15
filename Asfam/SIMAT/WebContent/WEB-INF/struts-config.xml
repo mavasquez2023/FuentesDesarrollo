@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<!-- Form Beans -->
+	<form-beans>				
+		<form-bean name="subsParentalForm" type="cl.laaraucana.simat.forms.SubsParentalForm">
+		</form-bean>
+		<form-bean name="subsTscVigForm" type="cl.laaraucana.simat.forms.SubsTscVigForm">
+		</form-bean>
+		<form-bean name="reintegrosForm" type="cl.laaraucana.simat.forms.ReintegrosForm">
+		</form-bean>
+		<form-bean name="subsPrePostNMForm" type="cl.laaraucana.simat.forms.SubsPrePostNMForm">
+		</form-bean>
+		<form-bean name="controlDocuForm" type="cl.laaraucana.simat.forms.ControlDocuForm">
+		</form-bean>
+		<form-bean name="docsRevalReemForm" type="cl.laaraucana.simat.forms.DocsRevalReemForm">
+		</form-bean>
+		<form-bean name="datosLicCobForm" type="cl.laaraucana.simat.forms.DatosLicCobForm">
+		</form-bean>
+		<form-bean name="datosLicResolForm" type="cl.laaraucana.simat.forms.DatosLicResolForm">
+		</form-bean>
+		<form-bean name="usuariosForm" type="cl.laaraucana.simat.forms.UsuariosForm">
+		</form-bean>
+		<form-bean name="logProcesosForm" type="cl.laaraucana.simat.forms.LogProcesosForm">
+		</form-bean>
+		<form-bean name="tablaHomologacionForm" type="cl.laaraucana.simat.forms.TablaHomologacionForm">
+		</form-bean>
+		
+		<form-bean name="informeFinancieroForm" type="cl.laaraucana.simat.forms.InformeFinancieroForm">
+		</form-bean>
+		
+		<form-bean name="PeriodoForm" type="cl.laaraucana.simat.forms.PeriodoForm">
+		</form-bean>
+		<form-bean name="RegistroAfectadoForm" type="cl.laaraucana.simat.forms.RegistroAfectadoForm">
+		</form-bean>	
+		<form-bean name="loginForm" type="cl.laaraucana.simat.forms.LoginForm">
+		</form-bean>	
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+	</global-forwards>
+	
+	<action-mappings>
+	<!-- 
+	
+		<action path="/loginLDAP" type="cl.laaraucana.simat.actions.LoginAction2" parameter="metodo" name="loginForm" scope="request" validate="false">
+		    <forward name="errorLogin"  path="errorLogin.jsp"/>
+		    <forward name="LoginOK"	path="Principal.jsp"/>
+		</action>
+		
+		<action path="/login" type="cl.laaraucana.simat.actions.LoginAction2" parameter="metodo" name="loginForm" scope="request" validate="false">
+		    <forward name="errorLogin"  path="/login.jsp"/>
+		    <forward name="LoginOK"	path="/SeleccionarPeriodo.jsp"/>
+		</action>
+		 -->
+<!-- Mapping para Login -->
+		<action path="/direcLogin" name="loginForm" type="cl.laaraucana.simat.actions.ProcesaLoginAction" scope="request">
+	    	<forward name="direcLoginok" path="/SeleccionarPeriodo.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+<!-- ActionMapping para  volver al menu principal -->
+		<action path="/mostrarMenu" type="cl.laaraucana.simat.actions.ProcesaVolverMenu" parameter="metodo">
+	    	<forward name="successMenu" path="/menu.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+	    	<forward name="errorPeriodo" path="/SeleccionarPeriodo.jsp"/>	    	
+		</action>
+		
+<!-- Mapping para Menú -->
+		<action path="/mostrarPag1" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag1" path="tabla_plano1_reintegros.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag2" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag2" path="tabla_plano2_subsprepostnm.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag3" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag3" path="tabla_plano3_subparental.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag4" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag4" path="tabla_plano4_substsvig.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag5" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag5" path="tabla_plano5_controldocu.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag6" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag6" path="/tabla_plano6_docsrevalreem.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag7" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag7" path="tabla_plano7_datosliccob.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag8" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag8" path="tabla_plano8_datoslicresol.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>		
+		
+		<action path="/mostrarPag9" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag9" path="tabla_plano9_usuarios.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag10" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag10" path="tabla_plano10_log_procesos.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag11" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag11" path="tabla_plano11_homologacion.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<action path="/mostrarPag12" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+	    	<forward name="mostrarPag12" path="tabla_informefinanciero.jsp"/>
+	    	<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+		
+		<!--<action path="/mostrarPag14" type="cl.laaraucana.simat.actions.ProcesaMenuAction" parameter="metodo">
+			<forward name="mostrarPag1" path="menu.jsp"/>
+			<forward name="errorLogin" path="/index.jsp"/>
+		</action>-->
+		
+<!-- ActionMapping para  GENERAR PLANOS -->
+		<action path="/generarPlano_1" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_2" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_3" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_4" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_5" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_6" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_7" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarPlano_8" type="cl.laaraucana.simat.actions.GeneradorPlanos" parameter="metodo">
+					<forward name="escrituraOK" path="menu.jsp"/>
+					<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+<!-- actionMapping para escribir Resumen CotizacionesPrevisionales -->
+		<action path="/generarRCP" type="cl.laaraucana.simat.actions.GeneradorRCP" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+<!-- actionMapping para escribir ILF4501 -->
+		<action path="/generarILF4501" type="cl.laaraucana.simat.actions.GeneradorILF4501" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+<!-- actionMapping para escribir cuadro estadisticos -->
+		<action path="/generarCuadro_1" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarCuadro_2" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarCuadro_3" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarCuadro_4" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarCuadro_5" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		<action path="/generarCuadro_6" type="cl.laaraucana.simat.actions.GeneradorCuadrosEstadisticos" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+
+<!--  Generar informe financiero -->
+		<action path="/generarIF" type="cl.laaraucana.simat.actions.GeneradorInformeFinanciero" parameter="metodo">
+			<forward name="escrituraOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+		<action path="/visorIF" type="cl.laaraucana.simat.actions.GeneradorInformeFinanciero" parameter="metodo">
+			<forward name="successVisorIF" path="tabla_planno12_InformeFinanciero.jsp"/>
+			<forward name="ErrorVisorIF" path="menu.jsp"/>
+		</action>
+		
+		<action path="/cargarIF" type="cl.laaraucana.simat.actions.GeneradorInformeFinanciero" parameter="metodo">
+			<forward name="successCargarIF" path="tabla_planno12_InformeFinanciero.jsp"/>
+			<forward name="ErrorCargarIF" path="menu.jsp"/>
+		</action>		
+		
+<!-- Actions para llamada a procedimientos cobol-->
+
+		<action path="/ProcedimientoValidar" type="cl.laaraucana.simat.actions.ProcedimientoValidarAction" parameter="metodo">
+			<forward name="validacionOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+		<action path="/ProcedimientoGenerarArchivos" type="cl.laaraucana.simat.actions.ProcedimientoGenerarArchivosAction" parameter="metodo">
+			<forward name="validacionOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>
+		
+		<action path="/ProcedimientoDistribucion" type="cl.laaraucana.simat.actions.ProcedimientoDistribucionAction" parameter="metodo">
+			<forward name="validacionOK" path="menu.jsp"/>
+			<forward name="escrituraError" path="menu.jsp"/>
+		</action>		
+				
+<!-- ActionMapping para  cerrar session 
+		<action path="/mostrarPag15" type="cl.laaraucana.simat.actions.ProcesaLoginAction" parameter="metodo">
+			<forward name="logout" path="index.jsp"/>
+			<forward name="errorLogin" path="/errorLogin.jsp"/>
+		</action>
+-->
+	
+<!-- Actions para T1 Reintegros -->
+	
+		<action path="/cargarBusquedaReintegrosByMes" type="cl.laaraucana.simat.actions.ReintegrosAction"
+		  	parameter="metodo" name="reintegrosForm" input="tabla_plano1_reintegros.jsp" scope="request" validate="false">
+	    	<forward name="sucessBuscarReintegrosByMes" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+		
+		<action path="/buscarReintegrosByRutBenef" type="cl.laaraucana.simat.actions.ReintegrosAction" parameter="metodo">
+	    	<forward name="sucessBuscarByRutBenef" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+		
+		<action path="/insertarReintegros" 	type="cl.laaraucana.simat.actions.ReintegrosAction"
+		  	parameter="metodo" name="reintegrosForm" input="tabla_plano1_reintegros.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarReintegros" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+		
+		<action path="/actualizarReintegros" input="tabla_plano1_reintegros.jsp"		          
+	        type="cl.laaraucana.simat.actions.ReintegrosAction"
+		  	parameter="metodo" name="reintegrosForm" scope="request" validate="false">
+	    	<forward name="successActualizarReintegros" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+		
+		<action path="/eliminarReintegros" input="tabla_plano1_reintegros.jsp"		          
+	        type="cl.laaraucana.simat.actions.ReintegrosAction"
+		  	parameter="metodo" name="reintegrosForm" scope="request" validate="false">
+	    	<forward name="successEliminarReintegros" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+		<action path="/AjaxSubmitActualizarReintegros" input="tabla_plano1_reintegros.jsp" type="cl.laaraucana.simat.actions.ReintegrosAjaxAction" 
+				name="reintegrosForm" scope="request" validate="false" >			
+		</action>
+		
+<!-- Actions para tabla 2_ subprpostNM-->
+	
+		<action path="/cargarBusquedaSubsPrepostNmByMes" input="tabla_plano2_subsprepostnm.jsp"		          
+	        type="cl.laaraucana.simat.actions.SubsPrePostNmAction"
+		  parameter="metodo" name="subsPrePostNMForm" scope="request" validate="false">
+	    	<forward name="sucessBuscarSubsPrePostNmByMes" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>
+		
+		<action path="/buscarByNumDocSubsPrePostNm" type="cl.laaraucana.simat.actions.SubsPrePostNmAction" parameter="metodo">
+	    	<forward name="sucessBuscarByNumDoc" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>
+		<action path="/buscarByRutBenefSubsPrePostNm" type="cl.laaraucana.simat.actions.SubsPrePostNmAction" parameter="metodo">
+	    	<forward name="sucessBuscarByRutBenef" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>
+		
+		<action path="/insertarSubsPrePostNm" input="tabla_plano2_subsprepostnm.jsp"		          
+	        type="cl.laaraucana.simat.actions.SubsPrePostNmAction"
+		  parameter="metodo" name="subsPrePostNMForm" scope="request" validate="false">
+	    	<forward name="successInsertarSubsPrePostNm" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>
+		
+		<action path="/eliminarSubsPrePostNm" input="tabla_plano2_subsprepostnm.jsp"		          
+	        type="cl.laaraucana.simat.actions.SubsPrePostNmAction"
+		  	parameter="metodo" name="subsPrePostNMForm" scope="request" validate="false">
+	    	<forward name="successEliminarSubsPrePostNm" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>	
+		
+		<action path="/actualizarSubsPrePostNm" input="tabla_plano2_subsprepostnm.jsp"		          
+	        type="cl.laaraucana.simat.actions.SubsPrePostNmAction"
+		  	parameter="metodo" name="subsPrePostNMForm" scope="request" validate="false">
+	    	<forward name="successActualizarSubsPrePostNm" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>	
+			
+		<action path="/AjaxSubmitActualizarSubsPrePostNm" input="tabla_plano2_subsprepostnm.jsp" type="cl.laaraucana.simat.actions.SubsPrePostNmAjaxAction" 
+				name="subsPrePostNMForm" scope="request" validate="false" >			
+		</action>
+							
+<!-- Actions para tabla 3_ subsparental-->
+				
+		<action path="/cargarBusquedaSubsParentalByMes" input="tabla_plano3_subparental.jsp" type="cl.laaraucana.simat.actions.SubsParentalAction"
+		  parameter="metodo" name="subsParentalForm" scope="request" validate="false">
+	    	<forward name="sucessBuscarSubsParentalByMes" path="tabla_plano3_subparental.jsp"/>
+		</action>
+		
+		<action path="/buscarSubsParentalByNumDoc" type="cl.laaraucana.simat.actions.SubsParentalAction" parameter="metodo">
+	    	<forward name="sucessBuscarByNumDoc" path="tabla_plano3_subparental.jsp"/>
+		</action>
+		<action path="/buscarSubsParentalByRutBenef" type="cl.laaraucana.simat.actions.SubsParentalAction" parameter="metodo">
+	    	<forward name="sucessBuscarByRutBenef" path="tabla_plano3_subparental.jsp"/>
+		</action>
+		
+		<action path="/insertarSubsParental" input="tabla_plano3_subparental.jsp" type="cl.laaraucana.simat.actions.SubsParentalAction"
+		  parameter="metodo" name="subsParentalForm" scope="request" validate="false">
+	    	<forward name="sucessInsertarSubsParental" path="tabla_plano3_subparental.jsp"/>
+		</action>
+		
+		<action path="/eliminarSubsParental" input="tabla_plano3_subparental.jsp" type="cl.laaraucana.simat.actions.SubsParentalAction"
+		  parameter="metodo" name="subsParentalForm" scope="request" validate="false">
+	    	<forward name="sucessEliminarSubsParental" path="tabla_plano3_subparental.jsp"/>
+		</action>
+		
+		<action path="/actualizarSubsParental" input="tabla_plano3_subparental.jsp" type="cl.laaraucana.simat.actions.SubsParentalAction"
+		  parameter="metodo" name="subsParentalForm" scope="request" validate="false">
+	    	<forward name="sucessActualizarSubsParental" path="tabla_plano3_subparental.jsp"/>
+		</action>
+				
+		<action path="/AjaxSubmitActualizar" type="cl.laaraucana.simat.actions.SubsParentalAjaxAction" 
+				name="subsParentalForm" input="/tabla_plano3_subparental.jsp" scope="request" validate="false" >			
+		</action>
+		
+		<!-- TODO nueva opcion de menu -->
+		<action path="/obtenerPaseContable" type="cl.laaraucana.simat.actions.VisualizarPaseContableAction"
+		  scope="request" validate="false">
+	    	<forward name="success" path="paseContable.jsp"/>
+	    	<forward name="seleccionPeriodo" path="cambiarPeriodo.do?metodo=cambiarPeriodo"/>
+	    	<forward name="validarPreBalance" path="validarPreBalance.do"></forward>
+		</action>
+		<action path="/consultaEstadoProcesos" type="cl.laaraucana.simat.actions.ConsultaEstadoProcesoAction"
+		  scope="request" validate="false">
+	    	<forward name="success" path="/ajax/estadoProcesos.jsp"/>
+		</action>
+		
+		<action path="/validarPreBalance"
+				type="cl.laaraucana.simat.actions.ValidarPreBalanceAction">
+			<forward name="success" path="validarPreBalance.jsp"></forward>
+			<forward name="seleccionPeriodo" path="cambiarPeriodo.do?metodo=cambiarPeriodo"/>
+		</action>
+		
+		<action path="/procesarPaseContable"
+				type="cl.laaraucana.simat.actions.ProcesarPaseContableAction">
+			<forward name="success" path="ajax/resProcesoPaseContable.jsp"/>
+			<forward name="validarPreBalance" path="validarPreBalance.do"></forward>
+			<forward name="obtenerPaseContable" path="obtenerPaseContable.do"></forward>
+		</action>
+		
+<!-- Actions para tabla 4_ SubsTscVig-->
+		
+		<action path="/cargarBusquedaSubsTscVigByMes" type="cl.laaraucana.simat.actions.SubsTscVigAction"
+		  parameter="metodo" name="subsTscVigForm" input="tabla_plano4_substsvig.jsp" scope="request" validate="false">
+	    	<forward name="sucessBuscarSubsTscVigByMes" path="tabla_plano4_substsvig.jsp"/>
+		</action>
+		<action path="/eliminarSubsTscVig" type="cl.laaraucana.simat.actions.SubsTscVigAction"
+		  parameter="metodo" name="subsTscVigForm" input="tabla_plano4_substsvig.jsp" scope="request" validate="false">
+	    	<forward name="sucessEliminarSubsTscVig" path="tabla_plano4_substsvig.jsp"/>
+		</action>
+		<action path="/insertarSubsTscVig" type="cl.laaraucana.simat.actions.SubsTscVigAction"
+		  parameter="metodo" name="subsTscVigForm" input="tabla_plano4_substsvig.jsp" scope="request" validate="false">
+	    	<forward name="sucessInsertarSubsTscVig" path="tabla_plano4_substsvig.jsp"/>
+		</action>
+		
+		<action path="/actualizarSubsTscVig" type="cl.laaraucana.simat.actions.SubsTscVigAction"
+		  parameter="metodo" name="subsTscVigForm" input="tabla_plano4_substsvig.jsp" scope="request" validate="false">
+	    	<forward name="sucessActualizarSubsTscVig" path="tabla_plano4_substsvig.jsp"/>
+		</action>
+		
+		<action path="/AjaxSubmitActualizarSubsTscVig" input="/tabla_plano4_substsvig.jsp" type="cl.laaraucana.simat.actions.SubsTscVigAjaxAction" 
+				name="subsTscVigForm" scope="request" validate="false" >			
+		</action>
+		
+<!-- Actions para tabla 5_ ControlDocu-->
+		
+		<action path="/cargarBusquedaControlDocuByMes" type="cl.laaraucana.simat.actions.ControlDocuAction"
+		  parameter="metodo"  name="controlDocuForm" input="tabla_plano5_controldocu.jsp" scope="request" validate="false">
+	    	<forward name="sucessBuscarControlDocuByMes" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		
+		<action path="/buscarControlDocuByNumDoc" type="cl.laaraucana.simat.actions.ControlDocuAction" parameter="metodo">
+	    	<forward name="sucessBuscarByNumDoc" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		<action path="/buscarControlDocuByEstadoDoc" type="cl.laaraucana.simat.actions.ControlDocuAction" parameter="metodo">
+	    	<forward name="sucessBuscarByEstadoDoc" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		
+		<action path="/insertarControlDocu" type="cl.laaraucana.simat.actions.ControlDocuAction"
+		  parameter="metodo"  name="controlDocuForm" input="tabla_plano5_controldocu.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarControlDocu" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		
+		<action path="/actualizarControlDocu" type="cl.laaraucana.simat.actions.ControlDocuAction"
+		  parameter="metodo"  name="controlDocuForm" input="tabla_plano5_controldocu.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarControlDocu" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		
+		<action path="/eliminarControlDocu" type="cl.laaraucana.simat.actions.ControlDocuAction"
+		  	parameter="metodo" name="controlDocuForm" input="tabla_plano5_controldocu.jsp" scope="request" validate="false" >
+	    	<forward name="successEliminarControlDocu" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+		
+		<action path="/AjaxSubmitActualizarControlDocu" input="/tabla_plano5_controldocu.jsp" type="cl.laaraucana.simat.actions.ControlDocuAjaxAction" 
+				name="controlDocuForm" scope="request" validate="false" >			
+		</action>
+	
+<!-- ActionMapping para tabla 6_ DocsRevalReem -->
+	
+		<action path="/cargarBusquedaDocsRevalReemByMes" type="cl.laaraucana.simat.actions.DocsRevalReemAction"
+		  parameter="metodo" name="docsRevalReemForm" input="tabla_plano6_docsrevalreem.jsp" scope="request" validate="false">
+	    	<forward name="sucessBuscarDocsRevalReemByMes" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		
+		<action path="/buscarDocsRevalReemByNumDoc" type="cl.laaraucana.simat.actions.DocsRevalReemAction" parameter="metodo">
+	    	<forward name="sucessBuscarByNumDoc" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		<action path="/buscarDocsRevalReemByEstadoDoc" type="cl.laaraucana.simat.actions.DocsRevalReemAction" parameter="metodo">
+	    	<forward name="sucessBuscarByEstadoDoc" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		
+		<action path="/insertarDocsRevalReem" type="cl.laaraucana.simat.actions.DocsRevalReemAction"
+		  	parameter="metodo" name="docsRevalReemForm" input="tabla_plano6_docsrevalreem.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarDocsRevalReem" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		
+		<action path="/actualizarDocsRevalReem" type="cl.laaraucana.simat.actions.DocsRevalReemAction"
+		  	parameter="metodo" name="docsRevalReemForm" input="tabla_plano6_docsrevalreem.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarDocsRevalReem" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		
+		<action path="/eliminarDocsRevalReem" type="cl.laaraucana.simat.actions.DocsRevalReemAction"
+		  	parameter="metodo" name="docsRevalReemForm" input="tabla_plano6_docsrevalreem.jsp" scope="request" validate="false">
+	    	<forward name="successEliminarDocsRevalReem" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+		
+		<action path="/AjaxSubmitActualizarDocsRevalReem" type="cl.laaraucana.simat.actions.DocsRevalReemAjaxAction"
+			name="docsRevalReemForm" input="tabla_plano6_docsrevalreem.jsp" scope="request" validate="false">
+		</action>
+		
+		
+<!-- ActionMapping para tabla 7_ DatosLicCob -->
+	
+		<action path="/cargarBusquedaDatosLicCobByMes" type="cl.laaraucana.simat.actions.DatosLicCobAction"
+		  parameter="metodo" name="datosLicCobForm" input="tabla_plano7_datosliccob.jsp" scope="request" validate="false">
+	    	<forward name="successDatosLicCobByMes" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+		
+		<action path="/buscarDatosLicCobByRutBenef" type="cl.laaraucana.simat.actions.DatosLicCobAction" parameter="metodo">
+	    	<forward name="sucessBuscarByRutBenef" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+		
+		<action path="/insertarDatosLicCob" type="cl.laaraucana.simat.actions.DatosLicCobAction"
+		  parameter="metodo" name="datosLicCobForm" input="tabla_plano7_datosliccob.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarDatosLicCob" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+		
+		<action path="/eliminarDatosLicCob" type="cl.laaraucana.simat.actions.DatosLicCobAction"
+		  parameter="metodo" name="datosLicCobForm" input="tabla_plano7_datosliccob.jsp" scope="request" validate="false">
+	    	<forward name="successEliminarDatosLicCob" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+		
+		<action path="/actualizarDatosLicCob" type="cl.laaraucana.simat.actions.DatosLicCobAction"
+		  parameter="metodo" name="datosLicCobForm" input="tabla_plano7_datosliccob.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarDatosLicCob" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+		<action path="/AjaxSubmitActualizardatosLicCob" type="cl.laaraucana.simat.actions.DatosLicCobAjaxAction"
+				name="datosLicCobForm" input="tabla_plano7_datosliccob.jsp" scope="request" validate="false">
+		</action>
+		
+<!-- ActionMapping para tabla 8_ DatosLicResol -->	
+			
+		<action path="/cargarBusquedaDatosLicResolByMes" type="cl.laaraucana.simat.actions.DatosLicResolAction"
+		  parameter="metodo" name="datosLicResolForm" input="tabla_plano8_datoslicresol.jsp" scope="request" validate="false">
+	    	<forward name="successDatosLicResolByMes" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+		
+		<action path="/buscarDatosLicResolByRutBenef" type="cl.laaraucana.simat.actions.DatosLicResolAction" parameter="metodo">
+	    	<forward name="sucessBuscarByRutBenef" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+		
+		<action path="/insertarDatosLicResol"  type="cl.laaraucana.simat.actions.DatosLicResolAction"
+		  parameter="metodo" name="datosLicResolForm" input="tabla_plano8_datoslicresol.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarDatosLicResol" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+		
+		<action path="/actualizarDatosLicResol" type="cl.laaraucana.simat.actions.DatosLicResolAction"
+		  parameter="metodo" name="datosLicResolForm" input="tabla_plano8_datoslicresol.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarControlDocu" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+		
+		<action path="/eliminarDatosLicResol" type="cl.laaraucana.simat.actions.DatosLicResolAction"
+		  parameter="metodo" name="datosLicResolForm" input="tabla_plano8_datoslicresol.jsp" scope="request" validate="false">
+	    	<forward name="successEliminarControlDocu" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+		<action path="/datosLicResolAjax" type="cl.laaraucana.simat.actions.DatosLicResolAjaxAction"
+				name="datosLicResolForm" input="tabla_plano8_datoslicresol.jsp" scope="request" validate="false">
+		</action>
+
+<!-- ActionMapping para tabla 9_ Usuarios -->	
+		
+		<action path="/cargarBusquedaUsuariosById" type="cl.laaraucana.simat.actions.UsuariosAction"
+		  parameter="metodo" name="usuariosForm" input="tabla_plano9_usuarios.jsp" scope="request" validate="false">
+	    	<forward name="successBusquedaUsuariosById" path="tabla_plano9_usuarios.jsp"/>
+		</action>
+		
+		<action path="/insertarUsuarios" type="cl.laaraucana.simat.actions.UsuariosAction"
+		  parameter="metodo" name="usuariosForm" input="tabla_plano9_usuarios.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarUsuarios" path="tabla_plano9_usuarios.jsp"/>
+		</action>
+		
+		<action path="/eliminarUsuarios" type="cl.laaraucana.simat.actions.UsuariosAction"
+		  parameter="metodo" name="usuariosForm" input="tabla_plano9_usuarios.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarUsuarios" path="tabla_plano9_usuarios.jsp"/>
+		</action>
+		
+		<action path="/actualizarUsuarios" type="cl.laaraucana.simat.actions.UsuariosAction"
+		  parameter="metodo" name="usuariosForm" input="tabla_plano9_usuarios.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarUsuarios" path="tabla_plano9_usuarios.jsp"/>
+		</action>
+		
+		<action path="/usuariosAjax" type="cl.laaraucana.simat.actions.UsuariosAjaxAction"
+				name="usuariosForm" input="tabla_plano9_usuarios.jsp" scope="request" validate="false">
+		</action>
+	
+<!-- ActionMapping para tabla 10_ logProcesos -->
+		
+		<action path="/cargarBusquedaLogProcesosByIdRegistro" type="cl.laaraucana.simat.actions.LogProcesoAction"
+		  parameter="metodo" name="logProcesosForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+	    	<forward name="successBusquedaLogProcesoById" path="tabla_plano10_log_procesos.jsp"/>
+	    	<forward name="errorLog" path="menu.jsp"/>
+		</action>
+		
+		<action path="/insertarLogProcesos" type="cl.laaraucana.simat.actions.LogProcesoAction"
+		  parameter="metodo" name="logProcesosForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarLogProcesos" path="tabla_plano10_log_procesos.jsp"/>
+		</action>
+		
+		<action path="/actualizarLogProcesos" type="cl.laaraucana.simat.actions.LogProcesoAction"
+		  parameter="metodo" name="logProcesosForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarLogProcesos" path="tabla_plano10_log_procesos.jsp"/>
+		</action>
+		
+		<action path="/eliminarLogProcesos" type="cl.laaraucana.simat.actions.LogProcesoAction"
+		  parameter="metodo" name="logProcesosForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+	    	<forward name="successEliminarLogProcesos" path="tabla_plano10_log_procesos.jsp"/>
+		</action>
+		<action path="/logProcesoAjax" type="cl.laaraucana.simat.actions.LogProcesoAjaxAction"
+				name="logProcesosForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+		</action>
+		
+<!-- ActionMapping para Tabla 11  Homologación -->
+	
+		<action path="/cargarBusquedaHomologacionByIdRegistro" type="cl.laaraucana.simat.actions.TablaHomologacionAction"
+		  parameter="metodo" name="tablaHomologacionForm" input="tabla_plano11_homologacion.jsp" scope="request" validate="false">
+	    	<forward name="successHomologacionByIdRegistro" path="tabla_plano11_homologacion.jsp"/>
+		</action>
+		
+		<action path="/buscarByClasificacion" type="cl.laaraucana.simat.actions.TablaHomologacionAction"
+		  parameter="metodo" name="tablaHomologacionForm" input="tabla_plano11_homologacion.jsp" scope="request" validate="false">
+	    	<forward name="successHomologacionByClasificacion" path="tabla_plano11_homologacion.jsp"/>
+		</action>
+		
+		
+		<action path="/insertarHomologacion" type="cl.laaraucana.simat.actions.TablaHomologacionAction"
+		  parameter="metodo" name="tablaHomologacionForm" input="tabla_plano11_homologacion.jsp" scope="request" validate="false">
+	    	<forward name="successInsertarHomologacion" path="tabla_plano11_homologacion.jsp"/>
+		</action>
+		
+		<action path="/actualizarHomologacion" type="cl.laaraucana.simat.actions.TablaHomologacionAction"
+		  parameter="metodo" name="tablaHomologacionForm" input="tabla_plano11_homologacion.jsp" scope="request" validate="false">
+	    	<forward name="successActualizarHomologacion" path="tabla_plano11_homologacion.jsp"/>
+		</action>
+				
+		<action path="/eliminarHomologacion" type="cl.laaraucana.simat.actions.TablaHomologacionAction"
+		  parameter="metodo" name="tablaHomologacionForm" input="tabla_plano11_homologacion.jsp" scope="request" validate="false">
+	    	<forward name="successEliminarHomologacion" path="tabla_plano11_homologacion.jsp"/>
+		</action>
+		
+		<action path="/tablaHomologacionAjax" type="cl.laaraucana.simat.actions.TablaHomologacionAjaxAction"
+		input="tabla_plano11_homologacion.jsp" name="tablaHomologacionForm" scope="request" validate="false">
+		</action>
+		
+<!-- ActionMapping para permitir el acceso desde el mantenedor de log a los otros mantenedores de tablas. -->	
+		<action path="/editarTablaAfectada" type="cl.laaraucana.simat.actions.ProcesaLogRegistro" parameter="metodo"
+			name="RegistroAfectadoForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+	
+			<forward name="successEditarTabla_1" path="tabla_plano1_reintegros.jsp"/>
+			<forward name="successEditarTabla_2" path="tabla_plano2_subsprepostnm.jsp"/>
+			<forward name="successEditarTabla_3" path="tabla_plano3_subparental.jsp"/>
+			<forward name="successEditarTabla_5" path="tabla_plano5_controldocu.jsp"/>
+			<forward name="successEditarTabla_6" path="tabla_plano6_docsrevalreem.jsp"/>
+			<forward name="successEditarTabla_7" path="tabla_plano7_datosliccob.jsp"/>
+			<forward name="successEditarTabla_8" path="tabla_plano8_datoslicresol.jsp"/>
+			
+			<forward name="error" path="tabla_plano10_log_procesos.jsp"/>
+			
+		</action>
+		
+		<action path="/BuscarTablaLog" type="cl.laaraucana.simat.actions.ProcesaTablaLogRegistro" parameter="metodo"
+			name="RegistroAfectadoForm" input="tabla_plano10_log_procesos.jsp" scope="request" validate="false">
+			<forward name="successBusquedaTablaLogProceso" path="tabla_plano10_log_procesos.jsp"/>
+		</action>
+		
+<!-- ActionMapping para permitir cargar el periodo y ver el estado en que se encuentra -->	
+		<action path="/cargarPeriodo" type="cl.laaraucana.simat.actions.ProcesaPeriodoAction"
+			parameter="metodo" name="PeriodoForm" input="SeleccionarPeriodo.jsp" scope="request" validate="false">
+			<forward name="successPeriodo" path="menu.jsp"/>
+			<forward name="errorPeriodo" path="SeleccionarPeriodo.jsp"/>
+		</action>
+		
+<!-- ActionMapping para ir a cambiar periodo -->	
+		<action path="/cambiarPeriodo" type="cl.laaraucana.simat.actions.ProcesaPeriodoAction" parameter="metodo">
+			<forward name="successCambioPeriodo" path="SeleccionarPeriodo.jsp"/>
+			<!-- <forward name="errorPeriodo" path="index.jsp"/> -->
+			<forward name="errorPeriodo" path="errorPage.jsp"/>
+		</action>		
+		
+<!-- ActionMapping para Paginaciones -->
+	<!--Paginacion SMF01, reintegros-->		
+		<action path="/PaginarT1" type="cl.laaraucana.simat.actions.ReintegrosAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT1" path="tabla_plano1_reintegros.jsp"/>
+			<forward name="errorPaginacionT1" path="tabla_plano1_reintegros.jsp"/>
+		</action>
+	<!--Paginacion SMF02, SubPrepostNM-->
+		<action path="/PaginarT2" type="cl.laaraucana.simat.actions.SubsPrePostNmAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT2" path="tabla_plano2_subsprepostnm.jsp"/>
+			<forward name="errorPaginacionT2" path="tabla_plano2_subsprepostnm.jsp"/>
+		</action>		
+	<!--Paginacion SMF03, subsparental-->				
+		<action path="/PaginarT3" type="cl.laaraucana.simat.actions.SubsParentalAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT3" path="tabla_plano3_subparental.jsp"/>
+			<forward name="errorPaginacionT3" path="tabla_plano3_subparental.jsp"/>
+		</action>				
+	<!--Paginacion SMF05, controlDocu-->
+		<action path="/PaginarT5" type="cl.laaraucana.simat.actions.ControlDocuAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT5" path="tabla_plano5_controldocu.jsp"/>
+			<forward name="errorPaginacionT5" path="tabla_plano5_controldocu.jsp"/>
+		</action>
+	<!--Paginacion SMF06, DocsRevalReem-->
+		<action path="/PaginarT6" type="cl.laaraucana.simat.actions.DocsRevalReemAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT6" path="tabla_plano6_docsrevalreem.jsp"/>
+			<forward name="errorPaginacionT6" path="tabla_plano6_docsrevalreem.jsp"/>
+		</action>
+	<!--Paginacion SMF07, DatosLicCob-->
+		<action path="/PaginarT7" type="cl.laaraucana.simat.actions.DatosLicCobAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT7" path="tabla_plano7_datosliccob.jsp"/>
+			<forward name="errorPaginacionT7" path="tabla_plano7_datosliccob.jsp"/>
+		</action>
+	<!--Paginacion SMF08, DatosLicResol-->
+		<action path="/PaginarT8" type="cl.laaraucana.simat.actions.DatosLicResolAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionT8" path="tabla_plano8_datoslicresol.jsp"/>
+			<forward name="errorPaginacionT8" path="tabla_plano8_datoslicresol.jsp"/>
+		</action>
+	<!--Paginacion SMLPR, LogProcesos-->
+		<action path="/PaginarSMLPR" type="cl.laaraucana.simat.actions.LogProcesoAction" parameter="metodo">
+			<forward name="sucessBuscarPaginacionSMLPR" path="tabla_plano10_log_procesos.jsp"/>
+			<forward name="errorPaginacionSMLPR" path="tabla_plano10_log_procesos.jsp"/>
+		</action>
+	
+	</action-mappings>
+</struts-config>

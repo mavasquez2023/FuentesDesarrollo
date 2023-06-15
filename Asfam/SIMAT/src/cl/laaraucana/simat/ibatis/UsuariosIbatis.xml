@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultUsuariosVO" class="cl.laaraucana.simat.entidades.UsuariosVO">
+	
+		<result property="id" column="SM_ID" />
+		<result property="nombre_usuario" column="SMUSUARIO" />
+		<result property="acceso" column="SMACCESO" />
+		<result property="ultima_coneccion" column="SMULTCON" />
+		
+	</resultMap>
+	
+	
+<!-- Sentencias Select -->
+	<select id="getUsuarios" resultMap="resultUsuariosVO">
+		SELECT * FROM SIMATDTA.SMUSUR
+	</select>
+	
+	<select id="getUsuariosById" resultMap="resultUsuariosVO">
+		SELECT * FROM SIMATDTA.SMUSUR WHERE SM_ID=#id#
+	</select> 
+	
+	<select id="getUsuariosByName" resultMap="resultUsuariosVO">
+		select * from SIMATDTA.SMUSUR WHERE trim(SMUSUARIO)=#nombre_usuario#
+	</select> 
+	
+<!-- Sentencias Insert -->
+	<insert id="insertarUsuarios" parameterClass="cl.laaraucana.simat.entidades.UsuariosVO">
+		INSERT INTO SIMATDTA.SMUSUR	 (SM_ID,SMUSUARIO,SMACCESO,SMULTCON) 
+	   	VALUES ((select IFNULL(max(SM_ID)+1,1) from SIMATDTA.SMUSUR),#nombre_usuario#,#acceso#,#ultima_coneccion#)
+	   	
+		WITH NC
+	</insert>
+	
+	
+<!-- Sentencias Delete -->
+	<delete id="eliminarUsuarios" parameterClass="cl.laaraucana.simat.entidades.UsuariosVO">
+		delete from SIMATDTA.SMUSUR	 where SM_ID=#id#
+		WITH NC
+	</delete>
+	
+	
+<!-- Sentencias Update -->
+	<update id="actualizarUsuarios" parameterClass="cl.laaraucana.simat.entidades.UsuariosVO">
+		UPDATE SIMATDTA.SMUSUR	SET 
+				
+		SMUSUARIO=#nombre_usuario#,
+		SMACCESO=#acceso#
+			
+		WHERE SM_ID=#id#
+		WITH NC
+	</update>
+	
+	<update id="actualizarUsuariosUltimaConeccion" parameterClass="cl.laaraucana.simat.entidades.UsuariosVO">
+		UPDATE SIMATDTA.SMUSUR SET			
+		SMULTCON=#ultima_coneccion#			
+		WHERE SMUSUARIO=#nombre_usuario#
+		WITH NC
+	</update>
+	
+	
+	
+	
+</sqlMap>	

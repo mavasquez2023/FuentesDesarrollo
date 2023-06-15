@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultCountVO" class="cl.laaraucana.simat.entidades.CountVO">
+
+		<result property="resultadoCount" column="total" />				
+	</resultMap>
+		
+	<select id="getCE2_Num_subs_Iniciados_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from simatdta.smf02 where trim(SMCODDIAGN)='650' and trim(SMTIPOEMIS)='N' and SMCAUSAEMI=1 and SMSUBSINIC=1
+	</select>
+
+	<select id="getCE2_Num_subs_Iniciados_Post_natal" resultMap="resultCountVO">
+		select count(*) as total from simatdta.smf02 where trim(SMCODDIAGN)='1650' and trim(SMTIPOEMIS)='N' and SMCAUSAEMI=1 and SMSUBSINIC=1
+	</select>
+		
+	<select id="getCE2_Num_subs_Iniciados_Parental" resultMap="resultCountVO">
+		select count(*) as total from simatdta.smf03 where trim(SMTIPOEMIS)='N' and SMCAUSAEMI=1 and SMSUBSINIC=1 and SMTRASPASO=2
+	</select>
+	
+	<select id="getCE2_Num_subs_Iniciados_Enf_menor" resultMap="resultCountVO">
+		select count(*) as total from simatdta.smf02 where trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650' and trim(SMTIPOEMIS)='N' and SMCAUSAEMI=1 and SMSUBSINIC=1
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="editarCotizacionesSiv">
+
+	<!-- AREA DE CONSULTAS TIPO SELECT -->
+	<select id="obtenerDatosPorRut" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO" >
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,	
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTAD.SIF018
+		WHERE	SIFRUTEMP = #rutSearch#
+	</select>
+
+	<select id="obtenerDatosPorCorrelativo" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTAD.SIF018
+		WHERE	IDSIF018 = #idsif018#	
+	</select>
+	<select id="obtenerIdSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="string">
+		SELECT 	IDSIF018 id_sif018
+		FROM	SVDTAD.SIF018
+		WHERE	SIFRUTEMP = #rutSearch#
+	</select>
+	
+	<update id="updateSif018" parameterClass="cl.araucana.sivegam.vo.LinSif018VO">
+		UPDATE 	SVDTAD.SIF018
+		SET		SIFNOMEMP = #nombre_empleador#,
+				SIFMODPAG = #mod_pago#,
+				SIFMTODOC = #monto_documento#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFFECEMI = #fecha_emision_documento#,
+				SIFCODBCO = #codigo_banco#,
+				SIFFECCOB = #fecha_cobro#
+		WHERE	SIFRUTEMP = #rut_empleador#
+		AND		IDSIF018  = #id_sif018#
+	</update>
+	
+</sqlMap>
