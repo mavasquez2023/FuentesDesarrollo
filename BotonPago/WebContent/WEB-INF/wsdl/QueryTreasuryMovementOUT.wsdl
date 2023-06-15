@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="QueryTreasuryMovementOUT"
+	targetNamespace="http://lautaro.com/xi/BS/Treasury" xmlns:p1="http://lautaro.com/xi/BS/Treasury"
+	xmlns:p2="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsp:UsingPolicy wsdl:required="true" />
+
+	<wsp:Policy wsu:Id="OP_Query" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+			xmlns="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="consultaEstadoMontoResponse" type="consultaEstadoMontoResponse" />
+			<xsd:element name="consultaEstadoMonto" type="consultaEstadoMonto" />
+			<xsd:complexType name="teConsuSapEntrada">
+				<xsd:sequence>
+					<xsd:element name="folio" type="xsd:string" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="consultaEstadoMontoResponse">
+				<xsd:sequence>
+					<xsd:element name="return" type="teConsuSapSalida"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="log">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:string" minOccurs="0" />
+					<xsd:element name="type" type="xsd:string" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="teConsuSapSalida">
+				<xsd:sequence>
+					<xsd:element name="digitoVerificador" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="estado" type="xsd:string" minOccurs="0" />
+					<xsd:element name="fechaRecaudacion" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="folio" type="xsd:string" minOccurs="0" />
+					<xsd:element name="log" type="log" minOccurs="0" />
+					<xsd:element name="monto" type="xsd:string" minOccurs="0" />
+					<xsd:element name="oficinaPago" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="resultCode" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="rut" type="xsd:string" minOccurs="0" />
+					<xsd:element name="tipoMovimiento" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="tipoPago" type="xsd:string"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="consultaEstadoMonto">
+				<xsd:sequence>
+					<xsd:element name="arg0" type="teConsuSapEntrada"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="p2.consultaEstadoMonto">
+		<wsdl:documentation />
+		<wsdl:part name="parameters" element="p2:consultaEstadoMonto" />
+	</wsdl:message>
+	<wsdl:message name="p2.consultaEstadoMontoResponse">
+		<wsdl:documentation />
+		<wsdl:part name="parameters" element="p2:consultaEstadoMontoResponse" />
+	</wsdl:message>
+	<wsdl:portType name="QueryTreasuryMovementOUT">
+		<wsdl:documentation>Query Treasury Movement OUT</wsdl:documentation>
+		<wsdl:operation name="Query">
+			<wsdl:documentation>Query Treasury Movement Request Out
+			</wsdl:documentation>
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_Query" />
+			</wsp:Policy>
+			<wsdl:input message="p1:p2.consultaEstadoMonto" />
+			<wsdl:output message="p1:p2.consultaEstadoMontoResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="QueryTreasuryMovementOUTBinding" type="p1:QueryTreasuryMovementOUT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="Query">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+</wsdl:definitions>

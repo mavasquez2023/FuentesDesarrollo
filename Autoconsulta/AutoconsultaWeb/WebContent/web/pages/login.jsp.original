@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>   
+<%@ page language="java"  %>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Studio">
+
+<title>Autoconsulta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="araucana-internet.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+
+function login() {
+
+	user=document.login.username.value;
+	
+	document.login.j_username.value = user + "-" + document.login.dv.value;
+	
+	document.login.submit();
+}
+
+<!--
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
+</head>
+
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+<%@ include file = "/web/includes/header.jsp"%>
+<%@ include file = "/web/includes/top.jsp"%>
+
+<form name="login" method="post" action="<%= request.getContextPath() %>/web/pages/j_security_check">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height='100%'>
+	<tr>
+		<td valign='top'>
+		 
+		<!-- Begin de la pagina particular -->
+		
+		<div class="texto">
+		<div align="left"><bean:message key="login.text.introduccion.parrafo1"/></div>
+		<br>
+		<div align="left"><bean:message key="login.text.introduccion.parrafo2"/></div>
+		<br>
+		<div align="left">
+			<bean:message key="login.text.introduccion.parrafo31"/>
+			
+			<A href='//www.laaraucana.cl' target="_blank"> <bean:message key="login.text.introduccion.parrafo32"/> </A>
+			
+			<bean:message key="login.text.introduccion.parrafo33"/>
+		</div>
+		<br>
+		<div align="left"><bean:message key="login.text.introduccion.parrafo4"/></div>
+		<br>
+		<br>
+		<div align="center" class="textobold"><bean:message key="login.text"/></div>
+		<br>
+		<div align="center">	
+			<table border="0" cellpadding="2" cellspacing="2" width="50%">
+				<tr>
+					<td class="textobold">
+						<bean:message key="login.user"/>:
+					</td>
+					<td>
+						<input name="j_username" type="hidden" id="j_username">
+						<input name="username" type="text" id="username" maxlength="8" size="8"> -
+						<input name="dv" type="text"  size="1" maxlength="1"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="textobold">
+						<bean:message key="login.password"/>:
+					</td>
+					<td>
+						<input name="j_password" type="password" id="j_password" maxlength="4" size="4">
+					</td>
+				</tr>
+				<tr>
+					<td class="texto" colspan='2' align='center'>
+						<html:link styleClass="subopcion" href="javascript:login()">
+						<html:img src="/AutoconsultaWeb/web/images/aceptar.gif" border="0"/>
+						</html:link>
+					</td>
+				</tr>
+			</table>	
+		</div>
+		<!-- End de la pagina particular -->
+		
+		</td>
+	</tr>
+</table>
+</form>
+
+<%@ include file = "/web/includes/footer.jsp"%>
+
+<script>
+	<%
+	String msg="";
+	if("user".equals(request.getParameter("error")))
+		msg="El Usuario y/o Contraseña no son válidos";
+	if("app".equals(request.getParameter("error")))
+		msg="Usted no está autorizado para ingresar al Sistema";
+	if("sess".equals(request.getParameter("error")))
+		msg="Su sesión ha expirado o usted no está Autentificado";
+	if (!msg.equals("")) {
+	out.print("alert('"+msg+"');");
+	}
+	
+	%>
+</script>
+
+
+

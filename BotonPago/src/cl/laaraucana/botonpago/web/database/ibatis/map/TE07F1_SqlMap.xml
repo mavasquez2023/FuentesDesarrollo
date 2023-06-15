@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<typeAlias alias="tesoreria" type="cl.laaraucana.botonpago.web.database.ibatis.domain.TE07F1"/>
+	
+	<!-- 
+	<resultMap class="tesoreria" id="tesoreriaMapObj">
+		<result column="TE3WA" property="te3wa" />
+		<result column="TE3XA" property="te3xa" />
+		<result column="TE3YA" property="te3ya" />
+		<result column="TE3ZA" property="te3za" />
+		<result column="TE1SA" property="te1sa" />
+		<result column="TE40A" property="te40a" />
+		<result column="TE1TA" property="te1ta" />
+		<result column="TE41A" property="te41a" />
+		<result column="TE42A" property="te42a" />
+		<result column="TE43A" property="te43a" />
+		<result column="TE44A" property="te44a" />
+		<result column="TE45A" property="te45a" />
+		<result column="TE46A" property="te46a" />
+		<result column="TEA7A" property="tea7a" />
+		<result column="TE47A" property="te47a" />
+		<result column="TE7MA" property="te7ma" />
+		<result column="TE4VA" property="te4va" />
+		<result column="TE4XA" property="te4xa" />
+		<result column="TE7NA" property="te7na" />
+		<result column="TE49A" property="te49a" />
+		<result column="TE4AA" property="te4aa" />
+		<result column="TE4BA" property="te4ba" />
+		<result column="TE4CA" property="te4ca" />
+		<result column="TE4DA" property="te4da" />
+		<result column="TE4EA" property="te4ea" />
+		<result column="CMBA" property="cmba" />
+		<result column="TE9CA" property="te9ca" />
+		<result column="TEQA" property="teqa" />
+		<result column="TE1BA" property="te1ba" />
+		<result column="TE1CA" property="te1ca" />
+		<result column="TE10A" property="te10a" />
+		<result column="TE4FA" property="te4fa" />
+		<result column="OBF002" property="obf002" />
+		<result column="OBF003" property="obf003" />
+		<result column="OBF005" property="obf005" />
+		<result column="OBF006" property="obf006" />
+		<result column="SAJKM94" property="sajkm94" />
+		<result column="SAJKM92" property="sajkm92" />	
+	</resultMap>
+	-->
+	
+	<!-- 
+	SELECT TE3WA,TE3XA,TE3YA,TE3ZA,TE1SA,TE40A,TE1TA,TE41A,TE42A,TE43A,TE44A,TE45A,TE46A,TEA7A,TE47A,TE7MA,TE4VA,TE4XA,TE7NA,TE49A,TE4AA,TE4BA,TE4CA,TE4DA,TE4EA,CMBA,TE9CA,TEQA,TE1BA,TE1CA,TE10A,TE4FA,OBF002,OBF003,OBF005,OBF006,SAJKM94,SAJKM92 FROM "TEDTA"."TE07F1";
+ 	-->
+ 	
+ 	<insert id="ingresaTesoreria" parameterClass="tesoreria">
+		insert into TEDTA.TE07F1
+		(TE3WA, TE3XA, TE3YA, TE3ZA, TE1SA, TE40A, TE1TA, TE41A, TE42A, 
+		TE43A, TE44A, TE45A, TE46A, TEA7A, TE47A, TE7MA, TE4VA, TE4XA, 
+		TE7NA, TE49A, TE4AA, TE4BA, TE4CA, TE4DA, TE4EA, CMBA, TE9CA, 
+		TEQA, TE1BA, TE1CA, TE10A, TE4FA, OBF002, OBF003, OBF005, 
+		OBF006, SAJKM94, SAJKM92) 
+		values
+		(#te3wa#, #te3xa#, #te3ya#, current date, current time,#te40a# ,#te1ta#,
+		#te41a#, #te42a#, #te43a#, #te44a#, #te45a#, #te46a#, #tea7a#, 
+		#te47a#, #te7ma#, #te4va#, #te4xa#, #te7na#, #te49a#, #te4aa#, 
+		#te4ba#, #te4ca#, current date, #te4ea#, #cmba#, #te9ca#, #teqa#, 
+		#te1ba#, '1900-01-01', #te10a#, #te4fa#, current date, current time, current date, 
+  		current time, #sajkm94#, #sajkm92#) 
+		with nc
+	</insert>
+ 	
+ 	<update id="cambiaEstTesoDeGenerado" parameterClass="tesoreria">
+	  UPDATE TEDTA.TE07F1 
+	  SET TE3YA = #te3ya#, OBF005 = current date, OBF006 = current time, SAJKM92 = #sajkm92#
+	  WHERE TE3WA = #te3wa# AND TE41A = #te41a# AND TE42A = #te42a# AND  TE43A = #te43a# AND TE3YA = #estadoMovimientoValidacion# 
+	  with nc
+	</update>
+	
+	
+	
+	
+</sqlMap>

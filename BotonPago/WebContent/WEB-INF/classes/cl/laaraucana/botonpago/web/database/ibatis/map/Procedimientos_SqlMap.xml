@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<parameterMap id="MapProFolio" class="java.util.Map">
+		<parameter property="status" mode="INOUT" />
+		<parameter property="codigo" mode="INOUT" />
+		<parameter property="codigo2" mode="INOUT" />
+		<parameter property="folio" mode="INOUT" />
+	</parameterMap>
+
+	<procedure id="CONSULTA_FOLIO" parameterMap="MapProFolio">
+		{call BPAGOBJ.CONSULTA_FOLIO(?,?,?,?)}
+        </procedure>
+
+</sqlMap>

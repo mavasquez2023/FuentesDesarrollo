@@ -1,0 +1,651 @@
+# -- traducciones -- 
+traductor.parentezco.A=Ascendiente
+traductor.parentezco.B=Menor M/Prot
+traductor.parentezco.C=Conyuge
+traductor.parentezco.H=Hijo
+traductor.parentezco.M=Maternal
+traductor.parentezco.N=Nieto
+traductor.condicion.invalidez.I=Si
+traductor.condicion.invalidez.N=No
+traductor.estado.cargaFamiliar.A=Activa
+traductor.estado.cargaFamiliar.I=Inactiva
+traductor.estado.empresa.A=Vigente
+traductor.estado.empresa.C=Cesado
+traductor.estado.empresa.S=Percibiendo Subsidio de Cesant&iacute;a
+traductor.estado.licenciaMedica.0=En Proceso
+traductor.estado.licenciaMedica.1=Autorizada
+traductor.estado.licenciaMedica.2=Pendiente
+traductor.estado.licenciaMedica.3=Sin derecho
+traductor.estado.licenciaMedica.4=Objetada
+traductor.estado.licenciaMedica.5=Rechazada en Compin
+traductor.estado.licenciaMedica.8=Caducada
+traductor.estado.licenciaMedicaCompinOcc.1=Recepcionada
+traductor.estado.licenciaMedicaCompinOcc.2=Recepcionada
+traductor.estado.licenciaMedicaCompinOcc.3=En Comp&iacute;n
+traductor.estado.licenciaMedicaCompinOcc.5=Retenida en Comp&iacute;n
+traductor.estado.licenciaMedicaCompinOcc.6=Rechazada por Comp&iacute;n
+traductor.estado.licenciaMedicaCompinOcc.7=Devuelta por Fonasa
+traductor.estado.licenciaMedicaCompinOcc.8=Caducada
+traductor.estado.obsLicMedComOcc.1.1=Licencia recepcionada en La Caja y enviada a la Comp&iacute;n para ser visada
+traductor.estado.obsLicMedComOcc.2.1=Licencia recepcionada en La Caja y enviada a la Comp&iacute;n para ser visada
+traductor.estado.obsLicMedComOcc.3.1=Licencia recepcionada en La Caja y enviada a la Comp&iacute;n para ser visada
+traductor.estado.obsLicMedComOcc.5=La Compin Occidente le remitir&aacute; comunicaci&oacute;n solicitando antecedentes m&eacute;dicos
+#traductor.estado.obsLicMedComOcc.6=Por reposo prolongado, presentarse en cualquier oficina de la Caja de la Región Metropolitana
+#traductor.estado.obsLicMedComOcc.6=Si usted pertenece a la Región Metropolitana debe dirigirse a Santa Lucia #302, de lo contrario a la oficina más cercana a su domicilio
+traductor.estado.obsLicMedComOcc.6=Para Apelar, ingrese su solicitud a la COMPIN en www.milicenciamedica.cl
+traductor.estado.obsLicMedComOcc.8=Su pago se encuentra vencido. Favor solicitar su revalidaci&oacute;n en cualquier oficina de la Caja
+traductor.estado.obsLicMedComOccSub.4=Retirar licencia, Pertenece a Isapre
+traductor.estado.obsLicMedComOccSub.5=Presentar Certificado de vigencia al sistema Fonasa (ingreso bloqueado.)
+traductor.formaPago.licencia.0=Al Afiliado
+traductor.formaPago.licencia.1=A la Empresa
+traductor.formaPago.licencia.2=A la Empresa
+traductor.formaPago.licencia.3=A la Corporaci&oacute;n
+traductor.formaPago.licencia.4=CANAEMPU
+traductor.formaPago.licencia.5=A la Corporaci&oacute;n
+traductor.formaPago.licencia.6=No Docente
+traductor.tipoOperacion.credito.4=Banco Bhif
+traductor.tipoOperacion.credito.5=CorpBanca
+traductor.tipoOperacion.credito.6=Financiera Condell
+traductor.tipoOperacion.credito.7=Banco Desarrollo
+traductor.tipoOperacion.credito.8=Banco Falabella
+traductor.tipoOperacion.credito.9=Banco Ripley
+traductor.estado.cheque.C=Caducado
+traductor.estado.cheque.I=Emitido
+traductor.estado.cheque.P=Pagado
+traductor.estado.cheque.A=Anulado
+traductor.estado.cheque.R=Retirado
+traductor.estado.cheque.100=Cobrado
+traductor.estado.cheque.101=Enviado
+traductor.forma.pago.C=Por caja
+traductor.forma.pago.G=Por correo
+traductor.forma.pago.R=Recaudaci&oacute;n Electr&oacute;nica
+traductor.forma.pago.E=Cr&eacute;dito
+traductor.forma.pago.101=En Banco
+traductor.estado.credito.0=En Pago
+traductor.estado.credito.1=Vigente
+traductor.estado.credito.2=Moroso
+traductor.estado.credito.3=Judicial
+traductor.estado.credito.4=Quiebra
+traductor.estado.credito.5=Incobrable
+traductor.estado.credito.6=Castigada
+traductor.estado.credito.7=Sin Degravamen
+traductor.estado.credito.8=Anulado
+traductor.estado.credito.9=Cancelado
+traductor.estado.credito.99=Repactado
+traductor.estado.credito.pago.0=En Pago
+traductor.estado.credito.pago.1=Vigente
+traductor.estado.credito.pago.2=Moroso
+traductor.estado.credito.pago.3=Judicial
+traductor.estado.credito.pago.4=Quiebra
+traductor.estado.credito.pago.5=Incobrable
+traductor.estado.credito.pago.6=Castigada
+traductor.estado.credito.pago.7=S. Desgravamen
+traductor.estado.credito.pago.8=Anulado
+traductor.estado.credito.pago.9=Cancelado
+traductor.credito.titularidad.1=Titular
+traductor.credito.titularidad.2=Aval-1
+traductor.credito.titularidad.3=Aval-2
+traductor.credito.tipoSeguro.SC=Seguro Cesantia
+traductor.credito.tipoSeguro.SV=Seguro de Vida
+traductor.credito.tipoSeguro.SD=Seguro Desgravamen
+traductor.credito.tipoSeguro.SA=Seguro A
+traductor.credito.tipoSeguro.SP=Seguro P
+
+# -- login --
+login.text.introduccion.parrafo1=C.C.A.F. La Araucana, mediante su Autoconsulta Internet pone a su disposici&oacute;n Servicios  en L&iacute;nea de Emisi&oacute;n de Certificados y Consultas que le ser&aacute;n de mucha utilidad.
+login.text.introduccion.parrafo2=Si ya obtuvo su clave para uso de los M&oacute;dulos de Autoconsulta ubicados en nuestras oficinas, util&iacute;cela en esta p&aacute;gina.
+login.text.introduccion.parrafo31=Si desea obtener su clave de acceso personal como Afiliado, Pensionado o Ahorrante, o no la recuerda, solic&iacute;tela en el link cont&aacute;ctenos de
+login.text.introduccion.parrafo32=www.laaraucana.cl
+login.text.introduccion.parrafo33= o directamente en nuestras oficinas.
+login.text.introduccion.parrafo4=Si usted desea obtener la clave de acceso de su empresa, deber&aacute; solicitarla por escrito, solicitud que deber&aacute; ser firmada por el Representante Legal, o alguna firma certificada ante la Caja, esta comunicaci&oacute;n puede ser enviada v&iacute;a fax, correo electr&oacute;nico o directamente en nuestras oficinas.
+login.text=Ingrese Rut y Contrase&ntilde;a, por favor
+login.user=Rut
+login.rut=Rut
+login.password=Contrase&ntilde;a
+login.change.clave.actual=Contrase&ntilde;a Actual
+login.change.clave.inicial.text=Ud. ha ingresado al sistema por primera vez, debe cambiar su clave inicial por una clave personal de 4 d&iacute;gitos
+login.change.clave.text=Cambiar Contrase&ntilde;a
+login.change.clave.new=Nueva Contrase&ntilde;a
+login.change.clave.reNew=Confirmar Nueva Contrase&ntilde;a
+login.usuario.empresa.persona=Usted se encuentra registrado como afiliado y como empresa.
+login.usuario.tipo.usuario.pregunta=¿C&oacute;mo desea iniciar su sesi&oacute;n?
+login.usuario.empresa=Empresa
+login.usuario.empresaPublica=Empresa p&uacute;blica
+login.usuario.persona=Afiliado
+
+
+# -- opciones --
+opcion.logoff.text=Cerrar sesi&oacute;n
+opcion.cambio.clave=Cambiar Clave
+opcion.grupo.certificados=Certificados
+opcion.grupo.consultas=Consultas
+opcion.grupo.simulacion=
+# Adicionales por Modulo:
+login.user.just=Ingrese su Rut
+login.password.just=Ingrese su Clave Personal
+login.password.clavePersonal=Clave Personal
+label.araucana=La Araucana CCAF
+
+
+# -- Errores de Login --
+errors.security.nouser=El rut ingresado no existe en nuestros registros
+errors.security.noclave=Dir&iacute;jase a un Ejecutivo de Atenci&oacute;n a afiliados para obtener una clave inicial
+errors.security.clavebloqueada=Su cuenta est&aacute; bloqueada, solicite informaci&oacute;n a un ejecutivo de atenci&oacute;n a Afiliados
+errors.security.clavebloqueada.new=Su cuenta ha sido bloqueada por reintentos err&oacute;neos. Solicite informaci&oacute;n a un ejecutivo de atenci&oacute;n a Afiliados
+errors.security.claveincorrecta=La clave ingresada no es correcta
+errors.security.default=No fue posible validar su clave
+errors.security.formatuserinvalido=Debe ingresar su Rut, sin puntos ni dìgito
+errors.security.formatclaveinvalida=Debe ingresar la clave de 4 d&iacute;gitos
+errors.security.largo.invalido=Debe ingresar una clave de 4 d&iacute;gitos
+errors.security.claves.nuevas.no.coinciden=La contrase&ntilde;a escrita no corresponde. Escriba la misma contrase&ntilde;a en ambos cuadros
+errors.security.empresaacargonovalida=La empresa indicada no presenta registros en La Araucana. Cont&aacute;ctese con un ejecutivo de atenci&oacute;n.
+errors.security.opcionnovalida=La opci&oacute;n no est&aacute; autorizada
+errors.security.formatNewClaveInvalida=Debe ingresar una clave num&eacute;rica de 4 d&iacute;gitos
+
+# -- Errores de Validacion --
+errors.validation.noPertenceSucursalAutorizada=Trabajador no pertenece a sucursal autorizada a Encargado
+errors.validation.noPertenceEmpresa=El Rut ingresado no pertenece a la empresa
+errors.validation.idCertificadoInvalido=El N&uacute;mero del certificado no es correcto
+errors.simulacion.fechaNacimientoInvalida=La fecha de nacimiento no es v&aacute;lida
+errors.simulacion.fechaIngresoEmpresaInvalida=La fecha de ingreso a la empresa no es v&aacute;lida
+errors.simulacion.fechasInvalidas=La fecha de nacimiento y la fecha de ingreso a la empresa son inv&aacute;lidas
+errors.simulacion.trabajaAntesDeNacer=La fecha de nacimiento no puede ser posterior a la fecha de ingreso a la empresa
+errors.simulacion.ingresoLiquidoInvalido=Por favor ingrese Renta/Pensi&oacute;n Liquida entre $15.000 y $10.000.000
+errors.simulacion.montoSolicitadoInvalido=Por favor ingrese Monto a Solicitar mayor o igual a $15.000
+errors.simulacion.cantidadCuotasInvalida=Por favor ingrese cuotas entre 3 y 84
+errors.simulacion.seguroVidaInvalido=Para elegir Seguro de Vida, debe tener como m&aacute;ximo 65 a&ntilde;os.
+errors.simulacion.seguroCesantiaInvalido=Los pensionados no pueden solicitar seguro de cesantia
+errors.validation.empresaSinLiquidaciones=El Rut ingresado no posee liquidaciones
+label.simulacion.credito.errores.solicitar=Resultado: Cr&eacute;dito Rechazado por motivo(s) que se indica(n):
+
+# -- datos Empleado --
+empleado.text=Por favor ingrese el rut del trabajador a consultar
+empresa.text=Por favor ingrese el rut de la empresa a consultar
+empleado.rut=Rut
+
+# -- messages --
+message.sistema=AutoConsulta Internet
+message.sistema.modulo=M&oacute;dulo de Autoconsulta
+message.sistema.web=M&oacute;dulo de Autoconsulta
+#message.welcome=Bienvenido a la <b>Autoconsulta Internet</b>.<br/><br/>Estos servicios le permiten, desde la comodidad de su computador, acceder a los servicios en l&iacute;nea de La Araucana<br><br>
+# (Nuevos textos. REQ4369, gpavez@hotmail.com. 16/11/2007).
+message.welcome.intro.persona=Estimado(a)
+message.welcome.intro.empresa=Se&ntilde;ores
+message.welcome=Bienvenido(a) a la Emisi&oacute;n de Certificados, Consultas y Simulaci&oacute;n de Cr&eacute;dito.
+message.success=La operaci&oacute;n ha sido realizada exitosamente
+message.success.title=Operaci&oacute;n Realizada
+message.welcome.intro.msgEncargado1=Se&ntilde;or Encargado de Empresas:
+message.welcome.intro.msgEncargado2=Navegando por el sistema, usted podr&aacute; realizar estas operaciones, solo digitando el Rut del trabajador, con prescidencia del Rut de las empresas asociadas al Holding
+
+# -- headers --
+header.app.title=Sistema de Autoconsulta Internet
+
+# -- buttoms --
+
+label.validador.titulo.respuesta=Informaci&oacute;n del Certificado Consultado
+label.validador.titulo.consulta=Validaci&oacute;n de Certificados
+label.validador.id.consulta=Por favor ingrese el N&uacute;mero del Certificado a consultar
+label.validador.id=N&uacute;mero Certificado
+label.validador.mensaje=Valide este certificado en Servicios en L&iacute;nea de www.laaraucana.cl
+label.validador.id.consultado=N&uacute;mero de Certificado Consultado
+label.validador.certificado.tipo=Tipo de Certificado
+label.validador.certificado.tipo.0=Asignacion Familiar
+label.validador.certificado.tipo.1=Licencias M&eacute;dicas
+label.validador.certificado.tipo.2=Deuda Vigente
+label.validador.certificado.tipo.3=Créditos Vigentes
+label.validador.certificado.tipo.4=Créditos Cancelados
+label.validador.certificado.tipo.5=Certificado de Afiliación
+label.validador.certificado.tipo.6=Certificado de Finiquito
+label.validador.certificado.tipo.7=Certificado de Prepago
+label.validador.certificado.tipo.8=Certificado Cuotas Vigentes
+label.validador.certificado.tipo.9=Certificado Cuotas Canceladas
+label.validador.certificado.tipo.10=Liquidaci&oacute;n Deuda Ley 20.720
+
+label.validador.certificado.fecha=Fecha de Emisi&oacute;n
+label.validador.certificado.nombre=Nombre Afiliado
+label.validador.certificado.rut=Rut Afiliado
+
+label.credito.vigente.empleador.nombre=Empleador
+label.credito.vigente.empleador.rut=Rut Empleador
+
+label.licencias.rut=Rut
+label.licencias.dv=Digito Verificador Rut
+label.licencia.rut.sin.licencias=El Rut Consultado no registra Licencias M&eacute;dicas
+label.licencia.en.compin=En COMPIN para su resoluci&oacute;n
+label.licencia=Consulta Estado Licencias M&eacute;dicas
+label.licencia.fecha.desde=Desde
+label.licencia.fecha.hasta=Hasta
+label.licencia.dias=D&iacute;as Licencia
+label.licencia.estado=Estado
+label.licencia.fecha.pago=Fecha Pago
+label.licencia.oficina.pago=Oficina Pago
+label.licencia.dias.pago=D&iacute;as Pago
+label.licencia.monto.pagar= Monto a Pagar
+label.licencia.forma.pago=Forma de Pago
+
+#REQ8540
+label.licencia.fecha.ingreso=Fecha De Ingreso
+label.licencia.fecha.envio.compin=Fecha Envío COMPIN
+label.licencia.fecha.resolucion=Fecha de Resolución COMPIN
+
+label.licencia.certificado.titulo=CERTIFICADO DE SUBSIDIO POR INCAPACIDAD LABORAL
+label.licencia.certificado.sin.licencias=La caja de Compensaci&oacute;n la Araucana certifica que el(la) afiliado no ha percibido subsidio por Incapacidad Laboral.
+label.licencia.certificado.segunDetalle=La caja de Compensaci&oacute;n la Araucana certifica que el(la) afiliado percibi&oacute; subsidio por Incapacidad Laboral, seg&uacute;n el siguiente detalle.
+label.licencia.certificado.desde.hasta=Desde<BR/>Hasta
+label.licencia.certificado.dias=N<BR/>D&iacute;as
+label.licencia.certificado.remuneracion.imponible=Remuneraci&oacute;n<BR/>Imponible
+label.licencia.certificado.subsidio.pagado=Subsidio<BR/>Pagado
+label.licencia.certificado.cotizacion=Cotizaci&oacute;n
+label.licencia.certificado.cotizacion.mes=Mes
+label.licencia.certificado.cotizacion.salud=Salud
+label.licencia.certificado.cotizacion.cesantia=Seguro<BR/>Cesant&iacute;a
+label.licencia.certificado.cotizacion.pension=Fondo<BR/>Pensi&oacute;n
+label.licencia.certificado.cotizacion.afp=Cotizaci&oacute;n de Pensi&oacute;n<BR/>enterada en
+label.licencia.certificado.total.subsidio.pagado=Total Subsidio Pagado
+label.licencia.certificado.total.cotizacion.pension=Total Cotizaci&oacute;n Pensi&oacute;n
+label.licencia.certificado.total.cotizacion.salud=Total Cotizaci&oacute;n Salud
+label.licencia.certificado.total.cotizacion.seguro.cesantia=Total Cotizaci&oacute;n Seguro Cesant&iacute;a
+label.licencia.certificado.total.linea=_______________
+label.licencia.certificado.total=Total
+label.licencia.certificado.extiende=Se extiende este certificado para los fines que estime necesario, siendo v&aacute;lido por 30 d&iacute;as a contar de la fecha de emisi&oacute;n.
+label.licencia.observacion.compin=Observaci&oacute;n realizada por COMPIN:
+
+label.deuda.vigente.certificado.titulo=CERTIFICADO DE DEUDA VIGENTE DE CREDITO
+label.deuda.vigente.certificado.no.credito=No registra deuda vigente  por  concepto de cr&eacute;dito.
+label.deuda.vigente.certificado.deudor.titular=Deudor Titular
+label.deuda.vigente.certificado.deudor.avalista=Deudor Avalista
+label.deuda.vigente.certificado.indirecta.rut=Rut
+label.deuda.vigente.certificado.indirecta.nombre=Nombre
+label.deuda.vigente.certificado.folio=Folio
+label.deuda.vigente.certificado.vence=Vence
+label.deuda.vigente.certificado.cuotas=Cuotas
+label.deuda.vigente.certificado.cuotas.impagas=Impagas
+label.deuda.vigente.certificado.cuotas.vigentes=Vigentes
+label.deuda.vigente.certificado.saldos=Saldos
+label.deuda.vigente.certificado.saldos.impagos=Impagos
+label.deuda.vigente.certificado.saldos.vigentes=Vigentes
+label.deuda.vigente.certificado.saldos.total=Total
+label.deuda.vigente.certificado.observaciones=Observaciones
+label.deuda.vigente.certificado.saldo.total.titular=Total Deuda como Titular
+label.deuda.vigente.certificado.saldo.total.aval=Total Deuda como Aval
+label.deuda.vigente.certificado.extiende=Se extiende el presente certificado a petici&oacute;n del interesado para los fines que estime conveniente, sin ulterior responsabilidad de la CCAF La Araucana, siendo v&aacute;lido por 30 d&iacute;as a contar de la fecha de emisi&oacute;n.
+label.deuda.vigente.certificado.segunDetalle=Se certifica que a esta fecha registra deuda por concepto de cr&eacute;dito, incluidas todas aquellas cuotas que hasta la fecha figuran no canceladas en la Caja de acuerdo al siguiente detalle.
+label.deuda.vigente.certificado.gravamenes=Al saldo informado debe agregarse grav&aacute;menes en caso de registrarse cuotas impagas, los que ser&aacute;n calculados a la fecha efectiva del pago.
+label.deuda.vigente.certificado.pago.anticipado=En caso de pago anticipado de la deuda, por descuento de finiquito del deudor, no se aplica el cobro de comisi&oacute;n por prepago establecido en la Ley 18.010. Cuando el pago anticipado es voluntario por parte del beneficiario, entonces la comisi&oacute;n por prepago corresponder&aacute; a uno o dos meses de inter&eacute;s calculado sobre el capital que se prepaga seg&uacute;n lo establecido en dicha ley.
+label.deuda.vigente.certificado.desde=Cuota vigente desde
+label.deuda.vigente.certificado.deuda.nominal=Deuda Nominal.
+label.deuda.vigente.certificado.intermediado.con=Cr&eacute;dito intermediado con
+
+label.asignacion.familiar.certificado.titulo=CERTIFICADO DE ASIGNACI&Oacute;N FAMILIAR
+label.asignacion.familiar.certificado.no.cargas=Y que a la fecha no registra asignaciones familiares autorizadas por esta instituci&oacute;n.
+label.asignacion.familiar.certificado.sin.autorizacion=Sin autorizaci&oacute;n de Asignaci&oacute;n Familiar desde
+label.asignacion.familiar.certificado.extiende=Se extiende este certificado para los fines que se estime necesario, siendo v&aacute;lido por 30 d&iacute;as a contar de la fecha de emisi&oacute;n.
+label.asignacion.familiar.certificado.se.encuentra=La Caja de Compensaci&oacute;n la Araucana certifica que el(la) afiliado(a) se encuentra
+label.asignacion.familiar.certificado.acontar=a contar del
+label.asignacion.familiar.certificado.empresa=por la empresa
+label.asignacion.familiar.certificado.registrando=Registrando
+label.asignacion.familiar.certificado.asignaciones.autorizadas=asignaci&oacute;n(es) autorizada(s) de acuerdo al siguiente detalle:
+label.asignacion.familiar.certificado.asignaciones.suspendidas=asignaci&oacute;n(es) suspendida(s) de acuerdo al siguiente detalle:
+label.asignacion.familiar.certificado.tramo.vigente=Tramo vigente:
+label.asignacion.familiar.certificado.valor.carga=Valor por carga vigente
+label.asignacion.familiar.certificado.rut.causante=Rut Causante
+label.asignacion.familiar.certificado.nombre.causante=Nombre Causante
+label.asignacion.familiar.certificado.parentesco=Parentesco
+label.asignacion.familiar.certificado.fecha.nacimiento=Fecha<BR/>Nacimiento
+label.asignacion.familiar.certificado.fecha.vencimiento=Fecha<BR/>Vencimiento
+label.asignacion.familiar.certificado.asignacion.invalidez=Asignaci&oacute;n<BR/>Invalidez
+label.asignacion.familiar.certificado.fecha.autorizada.desde=Autorizada<BR/>desde
+label.asignacion.familiar.certificado.fecha.suspendida.desde=Suspendida<BR/>desde
+label.asignacion.familiar.consulta.leyenda=Usted actualmente registra cargas familiares activas e inactivas. Seleccione el tipo de certificado que desea imprimir
+label.asignacion.familiar.consulta.activas=Cargas Activas
+label.asignacion.familiar.consulta.inactivas=Cargas Inactivas
+
+
+label.afiliacion.certificado.titulo=CERTIFICADO AFILIACI&oacute;N
+label.afiliacion.certificado.subtitulo=CAJA DE COMPENSACI&oacute;N LA ARAUCANA certifica que
+label.afiliacion.certificado.afiliado=se mantiene como 
+label.afiliacion.certificado.afiliado.activo=Activo desde el
+label.afiliacion.certificado.pensionado=se mantiene como Pensionado Activo desde el
+label.afiliacion.certificado.rut=RUT Nro
+label.afiliacion.certificado.certificado=Se extiende el presente certificado a petici&oacute;n del interesado, para los fines que se estimen convenientes.
+label.cartola.titulo=INFORME DE MOVIMIENTOS Y SALDOS EN CUENTA DE AHORRO
+label.cartola.numero.cuenta=Nº Cuenta
+label.cartola.direccion=Direcci&oacute;n
+label.cartola.comuna=Comuna
+label.cartola.ciudad=Ciudad
+label.cartola.anteror=CARTOLA ANTERIOR
+label.cartola.fecha=Fecha
+label.cartola.saldo.cuotas=Saldo en Cuotas
+label.cartola.valor.cuota=Valor Cuota
+label.cartola.saldo.pesos=Saldo en Pesos
+label.cartola.movimientos.periodo=MOVIMIENTOS DEL PERIODO
+label.cartola.detalle=Detalle
+label.cartola.cuotas=Cuotas
+label.cartola.depositos=Dep&oacute;sitos
+label.cartola.cargos=Cargos
+label.cartola.subtotal.periodo=Subtotal del Periodo
+label.cartola.rentabilidad.periodo=RENTABILIDAD DEL PERIODO
+label.cartola.resumen.movimientos.saldos=RESUMEN DE MOVIMIENTOS Y SALDOS
+label.cartola.movimientos.valorizar=MOVIMIENTOS POR VALORIZAR
+label.cartola.giros=Cargos
+label.cartola.total.saldo.contable=TOTAL SALDO CONTABLE AL
+label.cartola.saldo.maximo.giro=SALDO MAXIMO DE GIRO
+label.cartola.seleccion=Seleccione Cuenta de Ahorro
+label.cartola.sin.cuentas=Ud. no tiene cuenta de ahorro
+label.cartola.sin.cuentas.activas=Ud. no posee cuentas de ahorro activas
+
+label.empleador.seleccion=Seleccione Empleador
+label.empleador=Nombre Empresa
+label.empleador.nombre=Nombre Empresa
+label.empleador.rut=Rut Empresa
+
+label.empresaacargo.seleccion=Seleccione modalidad de Consulta:
+label.empresaacargo.seleccion.personal=Informaci&oacute;n Personal
+label.empresaacargo.seleccion.empresas=Informaci&oacute;n de su(s) Empresa(s)
+label.empresaacargo.me=No actuar como encargado
+
+
+label.certificado.mas.info=Si requiere m&aacute;s informaci&oacute;n ll&aacute;menos al 4228100
+label.nombre=Nombre
+label.rut=Rut
+label.punto=.
+
+label.consulta.cheques.titulo=CHEQUES DE EMPRESA
+label.consulta.cheques.no.cheques=La Empresa no registra cheques en los &uacute;ltimos tres meses.
+label.consulta.cheques.nota=La Informaci&oacute;n desplegada corresponde a los &uacute;ltimos tres meses.
+label.consulta.cheques.concepto=Concepto
+label.consulta.cheques.monto=Monto
+label.consulta.cheques.periodo=Per&iacute;odo
+label.consulta.cheques.estado.cheque=Estado Cheque
+label.consulta.cheques.forma.pago=Forma de Pago
+label.consulta.cheques.fecha.pago=Fecha de Pago
+label.consulta.cheques.sucursal=Sucursal
+
+label.consulta.creditos.titulo=CR&eacute;DITOS VIGENTES
+label.consulta.creditos.noCreditosVigentes=El Rut consultado no tiene Cr&eacute;ditos Vigentes
+label.consulta.creditos.noCreditosDetallePago=No hay detalle pagos 
+label.consulta.creditos.calidadDeudor=Calidad Deudor
+label.consulta.creditos.otorgado=Otorgado
+label.consulta.creditos.montoDescontar=Monto a Descontar
+label.consulta.creditos.numeroCuotas=N&uacute;mero de Cuotas
+label.consulta.creditos.primerDescuento=Primer Descuento
+label.consulta.creditos.ultimoDescuento=&uacute;ltimo Descuento
+label.consulta.creditos.cuotasPagadas=Cuotas Pagadas
+label.consulta.creditos.cuotasVigentes=Cuotas Vigentes
+label.consulta.creditos.estado=Estado
+
+label.consulta.creditos.tituloConsultaEmpresa=Consulta Cr&eacute;ditos Empleados
+label.consulta.creditos.tituloConsultaAfiliado=Consulta Cr&eacute;ditos
+label.consulta.creditos.ingreseRut=Favor de ingresar rut del afiliado
+label.consulta.creditos.noPertenece=Rut afiliado no pertenece a empresa
+label.consulta.creditos.noHayCreditos=No tiene Cr&eacute;ditos Vigentes
+label.consulta.creditos.ingreseAcceso=Por favor, ingrese su Rut y clave de acceso
+label.consulta.creditos.noAcceso=No tiene acceso al servicio
+label.consulta.creditos.noAccesoInfo=Consulte en administraci&oacute;n de servicios
+label.consulta.creditos.noAutorizado=Usuario no autorizado para consultar el rut.
+label.consulta.creditos.detPagos=Detalle de pagos
+label.consulta.creditos.detCuotas=Detalle de cuotas
+
+
+# -- Texto agregado para identificar al simulante de credito en el resultado --
+label.simulacion.credito.mensaje84Cuotas=Sr(a) afiliado(a), para solicitar un cr&eacute;dito de 84 cuotas este primero debe pasar por una etapa de evaluaci&oacute;n
+label.simulacion.credito.identificacion=Datos del solicitante
+label.simulacion.credito.identificacion.nombre=Nombre
+label.simulacion.credito.identificacion.rut=Rut
+label.simulacion.credito.identificacion.tipo=Tipo
+label.simulacion.credito.identificacion.rutempresa=Rut Empresa
+label.simulacion.credito.identificacion.nombreempresa=Nombre Empresa
+
+label.simulacion.credito.titulo=SIMULACION DE CREDITO
+label.simulacion.credito.credito.creditosVigentes=Cr&eacute;ditos Vigentes
+label.simulacion.credito.credito.texto=Si desea repactar su cr&eacute;dito, seleccione el(los) cr&eacute;dito(s) vigente(s) a repactar.
+label.simulacion.credito.credito.estadoCredito=Estado Cr&eacute;dito
+label.simulacion.credito.credito.folio=Folio
+label.simulacion.credito.credito.vencimiento=Vencimiento
+label.simulacion.credito.credito.montoVigente=Monto Vigente
+label.simulacion.credito.credito.cuota=Cuota
+label.simulacion.credito.credito.estado=Estado
+label.simulacion.credito.credito.montoDescontar=Monto a Descontar
+label.simulacion.credito.credito.descuentaCredito=Descuenta Cr&eacute;dito
+label.simulacion.credito.credito.sinCreditosVigentes=Sin Cr&eacute;ditos Vigentes
+label.simulacion.credito.ingreso.remuneracionLiquida=Remuneraci&oacute;n L&iacute;quida
+label.simulacion.credito.ingreso.pensionLiquida=Pensi&oacute;n L&iacute;quida
+label.simulacion.credito.ingreso.montoSolicitado=Monto Solicitado
+label.simulacion.credito.ingreso.numeroCuotas=N° de Cuotas
+label.simulacion.credito.ingreso.avisoIngresos.afiliado=Si percibe remuneraci&oacute;n variable, deber&aacute; anotar el promedio de remuneraciones l&iacute;quidas mensuales de los &uacute;ltimos tres meses en el recuadro de Remuneraci&oacute;n L&iacute;quida.
+label.simulacion.credito.ingreso.fechaNacimiento=Fecha de Nacimiento
+label.simulacion.credito.ingreso.fechaIngresoEmpresa=Fecha Ingreso Empresa
+label.simulacion.credito.ingreso.seguro.texto=Seleccione los seguros que desea incorporar
+label.simulacion.credito.ingreso.seguro.desgravamen=Seguro de Desgravamen
+label.simulacion.credito.ingreso.seguro.vida=Seguro de Vida
+label.simulacion.credito.ingreso.seguro.cesantia=Seguro de Cesant&iacute;a
+label.simulacion.credito.ingreso.seguro.si=Si
+label.simulacion.credito.ingreso.seguro.no=No
+label.simulacion.credito.resultado=Resultado Simulaci&oacute;n
+label.simulacion.credito.resultado.otrasOpciones=Otras Opciones de Cuotas
+label.simulacion.credito.resultado.montoOtorgado=Monto Cr&eacute;dito
+label.simulacion.credito.resultado.valorCuota=Valor cuota a descuento
+label.simulacion.credito.resultado.numeroCuotas=N&uacute;mero de Cuotas
+label.simulacion.credito.resultado.tasa=Tasa Inter&eacute;s
+label.simulacion.credito.resultado.descuentoCreditosAnteriores=Descuento Cr&eacute;dito(s)<br/>&nbsp;Repactado(s)
+label.simulacion.credito.resultado.liquidoPago=Monto L&iacute;quido a Pago
+label.simulacion.credito.resultado.servicioTeleasistencia=Servicio Teleasistencia
+label.simulacion.credito.resultado.gastosNotariales=Gastos Notariales
+label.simulacion.credito.resultado.montoSolicitadoMenorSaldoAdeudado=Monto Solicitado Menor a Saldo Adeudado
+label.simulacion.credito.resultado.detalleMontoOtorgado=Detalle Monto Otorgado
+label.simulacion.credito.resultado.montoSolicitado=Monto Solicitado
+label.simulacion.credito.resultado.impuesto=Impuesto Timbres y<br/>&nbsp;Estampillas
+label.simulacion.credito.resultado.seguroDesgravamen=Seguro Desgravamen
+label.simulacion.credito.resultado.seguroVida=Seguro de Vida
+label.simulacion.credito.resultado.seguroCesantia=Seguro de Cesant&iacute;a
+label.simulacion.credito.resultado.cuota=Cuota
+label.simulacion.credito.resultado.inicio=Inicio
+label.simulacion.credito.resultado.termino=T&eacute;rmino
+label.simulacion.credito.resultado.cuotaExcede=Cuota excede
+label.simulacion.credito.resultado.sinOpcionesCuotas=Sin opciones de cuotas
+label.simulacion.credito.resultado.opcionesEndeudamiento=Opciones de Endeudamiento
+label.simulacion.credito.resultado.endeudamientoMaximo=Endeudamiento m&aacute;ximo a que puede optar, considerando los cr&eacute;ditos vigentes
+label.simulacion.credito.resultado.sinAval=Sin Aval
+label.simulacion.credito.resultado.con1Aval=Con 1 Aval
+label.simulacion.credito.resultado.con2Avales=Con 2 Avales
+label.simulacion.credito.resultado.capacidadMaximaEndeudamiento=Capacidad m&aacute;xima de endeudamiento
+label.simulacion.credito.resultado.noRequiere=No requiere
+label.simulacion.credito.resultado.endeudamientoDisponible=Endeudamiento Disponible
+label.simulacion.credito.resultado.deudaVigente=Endeudamiento Vigente
+label.simulacion.credito.resultado.cuotaMaxima.comprometer=Monto cuota m&aacute;xima a Comprometer
+label.simulacion.credito.resultado.cuotaMaxima.remuneracionLiquida=remuneraci&oacute;n l&iacute;quida
+label.simulacion.credito.resultado.cuota.comprometidaCreditosVigentes=Cuota Comprometida por Cr&eacute;ditos vigentes
+label.simulacion.credito.resultado.cuota.cuotaDisponible=Cuota Disponible
+label.simulacion.credito.resultado.pie.pagina=El resultado de la Simulaci&oacute;n es referencial. Para solicitar su cr&eacute;dito dirigirse a nuestras oficinas o cont&aacute;ctenos al tel&eacute;fono 600-4228100.
+label.simulacion.credito.ingreso.formatofecha=(ddmmaaaa)
+label.simulacion.credito.mensaje.deudaIntercaja.1=Usted registra una deuda pendiente en la CCAF&nbsp;
+label.simulacion.credito.mensaje.deudaIntercaja.2=&nbsp;Por un monto de $
+label.simulacion.credito.mensaje.deudaIntercaja.3=<br/>Para simular su nuevo cr&eacute;dito, debe considerar el valor antes se&ntilde;alado.<br/>Si ya se encuentra cancelado, deber&aacute; acreditar su pago, presentando el certificado correspondiente<br/> al momento de solicitar su cr&eacute;dito en La Araucana
+label.liquidacion.liquidaciones=Liquidaciones Disponibles
+label.liquidacion.reembolsos.titulo=LIQUIDACION DE REEMBOLSOS
+label.liquidacion.reembolsos.fecha.liquidacion=Fecha de Liquidaci&oacute;n
+label.liquidacion.reembolsos.nro.liquidacion=Nro Liquidaci&oacute;n
+label.liquidacion.reembolsos.total.saldo.bonificado=Total Bonificado
+label.liquidacion.reembolsos.ver.detalle=Ver Detalle
+label.liquidacion.seleccion=Selecciones Fecha de Liquidaci&oacute;n
+label.liquidacion.convenio=Convenio :
+label.simulacion.credito.resultado.tasaAnual=Tasa Anual:
+label.simulacion.credito.resultado.valorPagar=Valor a Pagar
+label.simulacion.credito.resultado.valorCuotaDescuento=Valor Cuota Descuento
+#labels de consulta
+label.liquidacion.titulo.linea1=Sistema Complementario de Salud
+label.liquidacion.titulo.linea2=Liquidaci&oacute;n de Reembolsos <br/>R&eacute;gimen Prestaciones Complementarias
+label.liquidacion.titulo.linea3=Fondo General de Bonificaci&oacute;n
+label.liquidacion.titulo.linea4=Conceptos de Reembolso.
+label.liquidacion.titulo.linea5=Seleccione Liquidaci&oacute;n de Reembolso.
+label.liquidacion.sin.lquidacion=No Tiene Liquidaciones.
+label.liquidacion.nombre.funcionario=Nombre Funcionario :
+label.liquidacion.rut.funcionario=Rut Funcionario :
+label.liquidacion.banco.ctacte=Banco/Cta. Corriente :
+label.liquidacion.email=Direcci&oacute;n EMail :
+label.liquidacion.empresa=Empresa :
+label.liquidacion.rut.empresa=Rut Empresa :
+label.liquidacion.fecha.liquidacion=Fecha Liquidaci&oacute;n :
+label.liquidacion.numero.liquidacion=Nro. de Liquidacion :
+
+label.liquidacion.saldo.disponible=Saldo Disponible al Inicio del Periodo :
+label.liquidacion.saldo.disponible.despues.de.liquidacion=Saldo Disponible Despu&eacute;s de la Liquidaci&oacute;n
+label.liquidacion.comision=Comisi&oacute;n :
+label.liquidacion.reajuste=Reajuste (a la fecha de pago) :
+label.liquidacion.valor.total.solicitado=Valor Total Solicitado :
+label.liquidacion.valor.pendiente.de.bonificar=Valor Pendiente de Bonificar :
+label.liquidacion.valor.rechazado.por.tope=Valor Rechazado por Tope :
+label.liquidacion.rebaja.solitada.empresa=Devoluci&oacute;n Solicitada por Empresa :
+label.liquidacion.monto.a.rebajar.fondo=Monto a Rebajar del Fondo :
+
+#movimientos
+label.liquidacion.solicitud=Solicitud
+label.liquidacion.item=Item
+label.liquidacion.numero.carga=Carga
+label.liquidacion.concepto=Concepto
+label.liquidacion.solicitado=Solicitado$
+label.liquidacion.bonificado=Bonificado$
+label.liquidacion.pendiente=Pendiente$
+label.liquidacion.rechazado=Rechazado$
+label.liquidacion.monto.a.depositar=Monto a Depositar
+label.liquidacion.totales=Totales
+label.liquidacion.documentos=Total Documentos
+label.liquidacion.sin.liquidaciones=Usuario no tiene liquidaciones para consultar.
+
+#RESUMEN MENSUAL lIQUIDACIONES EMPRESA
+
+label.liquidacion.empresa.titulo1=RESUMEN MENSUAL DE TRABAJADORES POR EMPRESA <br/> REGIMEN DE PRESTACIONES COMPLEMENTARIAS
+label.liquidacion.empresa.periodo.informado=Periodo Informado
+label.liquidacion.empresa.fondo.prestacion=Fondo de Prestaci&oacute;n
+label.liquidacion.empresa.TIP.anual=TIP Anual
+label.liquidacion.empresa.TIP.mensual=TIP Mensual
+label.liquidacion.empresa.nombre.empresa=Nombre de Empresa
+label.liquidacion.empresa.rut.empresa=Rut de Empresa
+label.liquidacion.selec.periodo=Por favor seleccione el periodo a consultar
+label.liquidacion.empresa.periodo=Periodo
+
+#titulos columnas
+label.liquidacion.periodo.informado=Periodo Informado
+label.liquidacion.fondo=Fondo de Prestacion
+label.liquidacion.TIP.anual=TIP Anual
+label.liquidacion.TIP.mensual=TIP Mensual
+label.liquidacion.empresa=Nombre de Empresa
+label.liquidacion.rut=Rut de Empresa
+label.liquidacion.titulo.trabajador=Trabajador
+label.liquidacion.titulo.1=Fondo $ Inicial al
+label.liquidacion.titulo.2=Fecha Aumento de Fondo
+label.liquidacion.titulo.3=Aumento de fondos $
+
+label.liquidacion.titulo.4=Fecha Comisi&oacute;n
+label.liquidacion.titulo.5=Comisi&oacute;n $
+label.liquidacion.titulo.6=Fecha Valor Pagado
+label.liquidacion.titulo.7=Valor Pagado $
+
+label.liquidacion.titulo.8=Fecha Actualizaci&oacute;n
+label.liquidacion.titulo.9=Fondo Actualizado $
+
+label.liquidacion.titulo.10=Intereses Fondo $
+label.liquidacion.titulo.11=Reajuste $
+label.liquidacion.titulo.12=Fondo Final $
+label.liquidacion.titulo.13=Retiro Sol. Empresa $
+label.liquidacion.titulo.total.empresa=Total Empresa
+label.liquidacion.sin.movimientos=Empresa no registra movimientos para el periodo.
+
+label.obligatorio=<font color="red">(*)</font>
+
+message.title=Mensaje
+
+# -- standard errors --
+errors.header=<p><font color="red" size='3'>Errores de validaci&oacute;n:
+errors.prefix=<LI>
+errors.suffix=</LI>
+errors.footer=</font></p>
+
+# -- validator --
+errors.invalid={0} es inv&aacute;lido
+errors.maxlength={0} no puede superar los {1} caracteres
+errors.minlength={0} no puede tener menos de {1} caracteres
+errors.range={0} no est&aacute; en el rango v&aacute;lido ( de {1} a {2} )
+errors.required={0} es obligatorio
+errors.byte={0} debe ser un byte
+errors.date={0} no es una fecha
+errors.double={0} debe ser un n&uacute;mero v&aacute;lido
+errors.float={0} debe ser un n&uacute;mero v&aacute;lido
+errors.integer={0} debe ser un n&uacute;mero v&aacute;lido
+errors.long={0} debe ser un n&uacute;mero v&aacute;lido
+errors.short={0} debe ser un n&uacute;mero v&aacute;lido
+errors.creditcard={0} no es un n&uacute;mero de tarjeta v&aacute;lido
+errors.email={0} no es un email v&aacute;lido
+errors.opcionDetalle={0} es obligatorio para Agregar o Modificar un Detalle
+errors.rango={1} no puede ser mayor que {0}
+errors.talonario={1} no puede ser mayor que {0}
+errors.detalle=El detalle ingresado no es v&aacute;lido, {0} mas {1} debe ser menor a {2}
+errors.fecha={0} no debe ser posterior a la fecha actual
+errors.mayor={0} debe ser mayor a {1}
+errors.rut=El RUT ingresado es incorrecto
+
+# -- other --
+errors.title=Error
+errors.message=No ha sido posible completar su requerimiento, debido a un Error de Sistema
+errors.cancel=Operaci&oacute;n Cancelada
+errors.detail={0}
+errors.general=El Requerimiento no pudo ser completado
+errors.token=El Requerimiento es inv&aacute;lido<br/>(no puede hacer doble click, refrescar o 'atr&aacute;s' en el browser)
+errors.system=Hubo error de Sistema. Inf&oacute;rmelo a Soporte o int&eacute;ntelo m&aacute;s tarde.
+errors.parameters=Parametros Invalidos
+
+# -- formats --
+format.date=dd/MM/yyyy
+format.date.periodo=MMMM yyyy
+format.date.corta=MM/yyyy
+format.date.periodo2=yyyy MMMM
+format.int=#.###
+format.float=#.###,#
+format.float2=#.########
+format.float3=#.###,###
+format.float5=#.###,#####
+format.float6=#.###,#####
+#format.float6=#########
+format.money=$#.###
+format.dinero=$ #.##0
+format.fullDate=dd 'de' MMMM 'de' yyyy
+format.rut=#.###.###-#
+
+# -- titulos consultas --
+consulta.getAsignacionFamiliar=Asignacion Familiar
+consulta.getCertificadoLicenciasMedicas=Subsidio por Incapacidad Laboral
+consulta.getDeudaVigente=Deuda Vigente de Credito
+consulta.getCertificadoSaldoFiniquito=Certificado Saldo Capital por Finiquito
+consulta.getCertificadoAfiliacion=Certificado Afiliaci&oacute;n
+consulta.getListaLicenciasMedicas=Estado de Licencias Medicas
+consulta.getCreditosVigentes=Creditos Vigentes
+consulta.getCargaFinanciera=Carga Financiera
+consulta.prepareSimulacionCreditoWeb=Simulacion de Credito
+consulta.prepareSimulacionCredito=Simulacion de Credito
+consulta.prestacionescomplementarias=Prestaciones Complementarias
+consulta.liquidacionreembolsos=Liquidacion de Reembolsos
+# -- Web Service Certificados --
+ws.certificado.afiliacion=http://10.10.10.120/WSCertificado/services/Certificado
+#QA
+#ws.consulta.pagoenexceso=http://146.83.1.35:9080/PagoEnExcesoService/ConsultaPagoEnExcesoService
+#DES
+#ws.consulta.pagoenexceso=http://localhost:9083/PagoEnExcesoService/ConsultaPagoEnExcesoService
+#PRD
+ws.consulta.pagoenexceso=http://rasz.laaraucana.cl/PagoEnExcesoService/ConsultaPagoEnExcesoService
+#QA
+#ws.consulta.estadosolcred=http://araqacipit.laaraucana.local:50000/sap/xi/engine?type=entry&amp;version=3.0&amp;Sender.Service=WEB_Mobile&amp;Interface=http%3A%2F%2Flautaro.com%2Fxi%2FCRM%2FWEB-Mobile%5EEstadoCreditosOUT
+#PRD
+ws.consulta.estadosolcred=http://ARAPRCIPIP.laaraucana.local:50000/sap/xi/engine?type=entry&amp;version=3.0&amp;Sender.Service=WEB_Mobile&amp;Interface=http%3A%2F%2Flautaro.com%2Fxi%2FCRM%2FWEB-Mobile%5EEstadoCreditosOUT
+
+##Usuario y pass servicios SAP
+sap.services.user=u_integrador
+sap.services.pass=Soporte2012
+ 
+# -- Motor de Credito Scoring SC. --
+#as400.servidor=146.83.1.2
+as400.servidor=146.83.1.3
+as400.usuario=AUTOCONSUL
+as400.clave=AUTOCONSUL
+welcome.title=titulo
+welcome.heading=Bienvenido
+welcome.message=hola

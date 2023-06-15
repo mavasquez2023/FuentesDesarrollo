@@ -1,0 +1,25 @@
+package cl.laaraucana.botonpago.web.webservices.clientes.querycontractcashflow.vo;
+
+import cl.laaraucana.botonpago.web.webservices.model.AbstractEntradaVO;
+
+public class EntradaContractCashFlowVO extends AbstractEntradaVO {
+	private String folioCredito;
+	private String tipoCredito;
+
+	public String getFolioCredito() {
+		return folioCredito;
+	}
+
+	public void setFolioCredito(String folioCredito) {
+		this.folioCredito = folioCredito;
+	}
+
+	public String getTipoCredito() {
+		return tipoCredito;
+	}
+
+	public void setTipoCredito(String tipoCredito) {
+		this.tipoCredito = tipoCredito;
+	}
+
+}

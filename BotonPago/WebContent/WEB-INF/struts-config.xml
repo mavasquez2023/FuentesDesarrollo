@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="solicitaClaveForm"
+			type="cl.laaraucana.botonpago.def.forms.SolicitaClaveForm">
+		</form-bean>
+		<form-bean name="olvidoClaveForm"
+			type="cl.laaraucana.botonpago.def.forms.OlvidoClaveForm">
+		</form-bean>
+		<form-bean name="notiForm" type="cl.laaraucana.botonpago.def.forms.NotiForm">
+		</form-bean>
+		<form-bean name="reguForm" type="cl.laaraucana.botonpago.def.forms.NotiForm">
+		</form-bean>
+		<form-bean name="CambioClaveForm" type="cl.laaraucana.botonpago.def.forms.CambioClaveForm">
+		</form-bean>
+	</form-beans>
+	<global-exceptions>
+	</global-exceptions>
+	<global-forwards>
+		<forward name="error" path="/error.jsp"></forward>
+	</global-forwards>
+	<action-mappings>
+		<action 
+			path="/cambiarClave" 
+			type="cl.laaraucana.botonpago.def.actions.CambiarClaveAction"
+			name="CambioClaveForm"
+			input="/cambioClave.jsp">
+			<forward name="success" path="/exito.jsp"></forward>
+			<forward name="error" path="/error.jsp"></forward>
+		</action>
+		<action path="/logout"
+			type="cl.laaraucana.botonpago.def.actions.RedirectAction">
+			<forward name="success" path="/login.jsp"></forward>
+		</action>
+		<action path="/actualizarDatos"
+			type="cl.laaraucana.botonpago.web.actions.ActualizarDatosAction">
+		</action>
+		<action path="/notifica" name="notiForm"
+			type="cl.laaraucana.botonpago.def.actions.NotificaAction">
+		</action>
+		<action path="/regulariza" name="reguForm"
+			type="cl.laaraucana.botonpago.def.actions.RegularizaAction">
+		</action>
+		<action path="/retorno" name="notiForm"
+			type="cl.laaraucana.botonpago.def.actions.RetornoAction">
+			<forward name="success" path="web/retorno.jsp" />
+		</action>
+		<action path="/holasoypepitovengoarecargarlosparametros" type="cl.laaraucana.botonpago.def.actions.RecargaParametrosAction">
+			<forward name="resp" path="web/soloMensaje.jsp" />
+		</action>
+	</action-mappings>
+	<message-resources parameter="resources.application" />
+</struts-config>

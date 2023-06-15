@@ -1,0 +1,293 @@
+.headerGrilla {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #8484FF;
+}
+.certificado {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+}
+
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+}
+
+.textobold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #006666;
+	font-weight: bold;
+}
+
+.titulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #FFFFFF;
+	background-color: #003360;
+	font-weight: bold;
+	text-decoration:  none;
+}
+
+.subtitulo {
+	     font-family: Verdana, Arial, Helvetica, sans-serif;
+	     font-size: 8pt;
+	     color: #000066;
+	     font-weight: bold;
+             background-color: #003360;
+             text-decoration:  none;
+}
+
+.seccion {
+	     font-family: Verdana, Arial, Helvetica, sans-serif;
+	     font-size: 8pt;
+	     color: #000066;
+	     background-color: #003380;
+}
+
+.combo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal
+}
+
+.field {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+.bigfield {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16pt;
+	font-weight: normal;
+}
+
+.lineaimpar {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	background-color: #003450;
+}
+
+.lineapar {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	background-color: #ffffff;
+}
+
+.opcion {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7pt;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration:  none;
+}
+
+.grupoopcion {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: white;
+	font-weight: bold;
+	text-decoration:  none;
+}
+.subopcion {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7pt;
+	color: 99cc99;
+	font-weight: normal;
+	text-decoration:  none;
+}
+
+.boton {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	/* background-image: url(../images/fondobot.jpg); */
+	color: #FFFFFF;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: repeat-x;
+	background-position: left top;
+	/* background-color: #0079B2; */
+	background-color: #003399;
+	
+}
+
+
+.botonOver {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(../images/btn_bg3_1.gif); */
+	color: #FFFFFF;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+
+.botongrisOver {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(img/fondo_boton_gris2.jpg);
+	color: #818181;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #EAEAEA;
+	float: right;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: 1px solid #D5D5D5;
+}
+.botongris {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(../images/v2/fondo_boton_gris.jpg);
+	color: #2D2D2D;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	float: right;
+	background-color: #EAEAEA;
+	border: 1px solid #D5D5D5;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.sello_agua {
+	font-size: 1px;
+	width:934px;
+	height:100%;
+}
+
+.menu {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #003360;
+	width: 190px;
+	background-color: #003360;
+	height:100%;
+}
+.superior {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	border: 1px solid;
+	border-color:#fff;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	width:928px;
+}
+
+h1 {
+	font-size: 25px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	color: #999999;
+	padding: 0px;
+	margin: 0px;
+}
+.celeste {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	background-image: url(../images/fondo_top_ahorro.jpg);
+	height: 24px;
+	color: #333;
+}
+.c12azul {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.table3 {
+	width: 99%;
+	margin-right: 0px;
+	margin-left: 0px;
+	border: 1px solid #cccccc;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.paginacion {
+	height: auto;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+	width: 99%;
+}
+.caja {
+	margin-left: 10px;
+}
+
+.table3 td {
+	height: 22px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.table2 {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+.tableDetalle tr {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	height: 5px;
+}
+.tableDetalle td {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	height: 20px;
+}
+.tableDetalle th {
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	background-image: url(../images/fondo_top_ahorro.jpg);
+	height: 24px;
+	color: #333;
+	font-weight: bold;
+}
+
+.c11azul {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}

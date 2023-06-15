@@ -1,0 +1,215 @@
+<%@ include file = "/web/includes/env.jsp"%>
+<%@ include file = "/web/includes/headerCalendario.jsp"%>
+<%@ include file = "/web/includes/top.jsp"%>
+<%  // Captura el Mensaje de Error 
+    String message=(String)session.getAttribute("validation.message");
+   // Captura a que action debe reenviar
+	String volverA= (String)session.getAttribute("volverA");
+	String flag="";
+    if(session.getAttribute("flag")!=null){    
+    	flag=(String)session.getAttribute("flag");
+    }
+    	
+     
+	String rutEmpleado = "";
+	String rutDVEmpleado = "";
+	String rutEncargado = (String)session.getAttribute("RutEncargado");
+	String rutEmpresa = (String)session.getAttribute("RutEmpresa");
+	if(session.getAttribute("rutDelEmpleado")!=null){
+		rutEmpleado = (String)session.getAttribute("rutDelEmpleado");		
+	}
+	if(session.getAttribute("rutDVDelEmpleado")!=null){
+		rutDVEmpleado = (String)session.getAttribute("rutDVDelEmpleado");
+	}
+ 
+%>
+<%if(flag.equals("1")){%> 
+
+
+<%
+cl.araucana.core.util.AbsoluteDate abso = (cl.araucana.core.util.AbsoluteDate)session.getAttribute("fechahoy");
+int ano = abso.getYear();
+int mes = abso.getMonth()-1;
+int dia = abso.getDay();
+int diaDelMes = abso.getDaysOfMonth();
+%>
+ <script>
+
+  var fechahoy= new Date();
+  var diasdelmes=30;
+  var today = new Date(<%=ano%>,<%=mes%>,<%=dia%>);
+  var maxday= new Date(today.getYear(),today.getMonth(),<%=diaDelMes%>);
+  $(document).ready(function(){
+    /* Datepicker */
+        $('#fecha').datepicker($.extend({
+            showOn: 'both',
+            minDate: today,
+            maxDate: maxday,
+            buttonImageOnly: true,
+            buttonImage: '/AutoconsultaWeb/web/images/calendar.gif'
+        }, $.datepicker.regional['es'], {firstDay: 1}));
+  });
+  
+function validaForm(){ 
+	if(document.form1.receptor.value==""){
+		alert("Debe ingresar el rut del Empleado")
+		return false;
+	}
+	if(document.form1.dv.value==""){
+		alert("Debe ingresar el digito del Empleado")
+		return false;
+	}
+	if(document.form1.fecha.value==""){
+		alert("Debe ingresar la fecha de finiquito")
+		return false;
+	}
+	openWindow("_blank", "POPUP", screen.availWidth, screen.availHeight);
+	return true	;
+}
+
+function limpiaRut(){	
+	document.getElementById("receptor").value="";
+	document.getElementById("dv").value="";
+}
+</script>
+<% } else { %>
+
+<script>  
+function validaForm(){ 
+	if(document.forms[1].rut.value==""){
+		alert("Debe ingresar el rut del Empleado")
+		return false;
+	}
+	if(document.forms[1].dv.value==""){
+		alert("Debe ingresar el digito del Empleado")
+		return false;
+	}
+	return true	;
+}
+
+function limpiaRut(){	
+	document.getElementById("rut").value="";
+	document.getElementById("dv").value="";
+}
+</script>
+<% } %>
+
+<div id="spiffycalendar" class="text">&nbsp;</div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="sello_agua">
+<tr>
+<td width='160' valign='top'>
+
+<%@ include file = "/web/includes/opciones.jsp"%>
+
+</td> <!-- menu de opciones -->
+<td width='1%'>&nbsp;</td> 
+<td valign='top'>
+<!-- Begin de la pagina particular -->
+ 
+<div align='center'>
+<br>
+<div class="textobold"><font color=red>
+<% if (message!=null) { %>
+<bean:message key='<%= message %>'/>
+<% } %>
+<html:errors/>
+</font></div>
+<br>
+<div class="texto">
+<br>
+<div class="tituloconsultas"><bean:message key='<%="consulta."+volverA%>'/></div>
+<br>
+<div class="textobold"><bean:message key="empleado.text"/></div>
+<br>
+
+<%if(flag.equals("1")){%> 
+
+<form name="form1" method="get" action="http://app.laaraucana.cl/CertificadosCredito/SaldoDeudaCapital.do" target="POPUP">
+<input type="hidden" name="validar" value="true"/>
+<input type="hidden" name="emisor" value='<%= rutEncargado %>'/>
+<input type="hidden" name="empresa" value='<%= rutEmpresa %>'/>
+
+<table border="0" cellpadding="2" cellspacing="2" width="50%">
+	<tr>
+		<td class="textobold"><bean:message key="empleado.rut"/>:</td>
+		<td class="texto">
+			<input type="text" name="receptor" class="field" size='8' maxlength='8' onkeypress="return acceptNum(event);" value='<%= rutEmpleado%>' /> - 
+			<input type="text" name="dv" class="field"  size='1' maxlength='1' onchange="javascript:validaRut(document.form1.receptor,this);" value='<%= rutDVEmpleado%>'/>			
+		</td>
+	</tr>
+
+
+
+
+	<tr>
+	 	<td class="textobold" >
+         	 	Fecha Finiquito:
+	 	</td>	 	
+	 	<td>
+<!--
+<span class="datepicker_wrap"><input type="text" size="15" class="texto hasDatepicker" readonly="true" value="" id="fecha" name="fecha"><img class="datepicker_trigger" src="/AutoconsultaWeb/web/images/calendar.gif" alt="fecha" title="fecha" ></span>
+-->
+<input type="text" size="15" class="texto hasDatepicker" readonly="true" value="" id="fecha" name="fecha"><img class="datepicker_trigger" src="/AutoconsultaWeb/web/images/calendar.gif" alt="fecha" title="fecha" >
+
+	 	</td>
+	</tr>	
+	
+<% session.setAttribute("flag","0");	%>
+
+	<tr>
+		<td class="texto" colspan='2' align='center'>
+                  <input type="button"  class="boton" name="dummyProperty" value="Limpiar Rut" onclick="limpiaRut();" onMouseOver="this.className='botonOver'" onMouseOut="this.className='boton'" />	
+                  &nbsp; &nbsp;
+			
+			<html:image page='/images/aceptar.gif' onclick="javascript:return validaForm();"  />
+		</td>
+	</tr>
+
+</table>
+</form>
+
+<% } else { %>
+
+<html:form action='<%= "/" + volverA %>' >
+
+<html:hidden property="validar" value="true"/>
+<table border="0" cellpadding="2" cellspacing="2" width="50%">
+	<tr>
+		<td class="textobold"><bean:message key="empleado.rut"/>:</td>
+		<td class="texto">
+			<input type="text" name="rut" id="rut" class="field" size='8' maxlength='8' onkeypress="return acceptNum(event);" value='<%= rutEmpleado%>' /> - 
+
+                       <input type="text" name="dv" id="dv" class="field" size='1' maxlength='1' onkeypress="return acceptNum(event);" value='<%= rutDVEmpleado%>' onchange="javascript:validaRut(document.forms[1].rut,this);"/>
+			
+		</td>
+	</tr>
+	<tr>
+		<td class="texto" colspan='2' align='center'>
+
+
+                  <input type="button"  class="boton" name="dummyProperty" value="Limpiar Rut" onclick="limpiaRut();" onMouseOver="this.className='botonOver'" onMouseOut="this.className='boton'" />	
+                  &nbsp; &nbsp;
+                  <input type="submit"  class="boton" name="dummyProperty" value="Aceptar" onclick="return validaForm();" onMouseOver="this.className='botonOver'" onMouseOut="this.className='boton'" />	
+                    
+
+
+		</td>
+	</tr>
+</table>
+</html:form>
+
+<% }%>
+
+
+</div>
+</div>
+
+<!-- End de la pagina particular -->
+
+</td>
+</tr>
+</table>
+
+
+<%@ include file = "/web/includes/footer.jsp"%>

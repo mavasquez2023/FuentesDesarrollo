@@ -1,0 +1,23 @@
+#Configuración de enrutamiento mediante paso de credenciales
+
+#Desarrollo
+##Cuando apreta boton cancelar, redirecciona SV
+#CC=http://localhost:9083/CambioClave/j_security_check?forwardPage=http://146.83.1.35:9080/BotonPago/j_security_check
+#CV=http://localhost:9083/CertificadosCredito2/certificados/creditosvigentes/listarCreditosVigentes.do
+#SV=http://localhost:9083/sv/logout.do
+
+
+#QAS
+#CC=http://146.83.1.217:9080/CambioClave/j_security_check?forwardPage=http://146.83.1.35:9080/BotonPago/j_security_check
+#CV=http://146.83.1.187:9080/CertificadosCredito2/satelites/creditosvigentes/listarCreditosVigentes.do
+#SV=http://146.83.1.217:9080/sv/logout.do
+#DEFAULT=146.83.1.217:9080/CambioClave
+
+#No se utiliza en PRD
+#CV=http://146.83.1.187:9080/Satelites/certificados/creditosvigentes/listarCreditosVigentes.do
+
+##PRODUCCION
+CC=http://rasw.laaraucana.cl/CambioClave/j_security_check?forwardPage=http://rasp.laaraucana.cl/BotonPago/j_security_check
+CV=https://rasz.laaraucana.cl/CertificadosCredito2/satelites/creditosvigentes/listarCreditosVigentes.do
+SV=http://rasw.laaraucana.cl/sv/logout.do
+DEFAULT=http://rasw.laaraucana.cl/CambioClave

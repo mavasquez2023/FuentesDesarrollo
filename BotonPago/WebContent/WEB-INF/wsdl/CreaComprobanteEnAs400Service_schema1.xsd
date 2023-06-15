@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="creaComprobante" type="tns:creaComprobante"/>
+
+  <xs:element name="creaComprobanteResponse" type="tns:creaComprobanteResponse"/>
+
+  <xs:complexType name="creaComprobante">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:tes0106Entrada"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tes0106Entrada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadLineas" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoAreaNegocio" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoBarra" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoOficina" type="xs:string"/>
+      <xs:element minOccurs="0" name="cursa001" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="detalle" nillable="true" type="tns:detalleCreaComprobanteEntradaVO"/>
+      <xs:element minOccurs="0" name="digitoVerificadorProveedor" type="xs:string"/>
+      <xs:element minOccurs="0" name="emiteFactura" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaDisponibilidadEgreso" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaEmision" type="xs:string"/>
+      <xs:element minOccurs="0" name="formaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="horaEmision" type="xs:string"/>
+      <xs:element minOccurs="0" name="monto" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreProveedor" type="xs:string"/>
+      <xs:element minOccurs="0" name="observacionMovimientoCaja" type="xs:string"/>
+      <xs:element minOccurs="0" name="pagadoPor" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutProveedor" type="xs:string"/>
+      <xs:element minOccurs="0" name="sucursalEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipSer001" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuarioCreador" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleCreaComprobanteEntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoConcepto" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoDetalle" type="xs:string"/>
+      <xs:element minOccurs="0" name="observacionDetalle" type="xs:string"/>
+      <xs:element minOccurs="0" name="signoValor" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creaComprobanteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:tes0106Salida"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tes0106Salida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BPAGDTA_BPAGF001">
+	<resultMap id="bpagf001Result"
+		class="cl.laaraucana.botonpago.web.database.ibatis.domain.Bpagf001">
+
+		<result column="RUTDEU" property="rutdeu" jdbcType="CHAR" />
+		<result column="DVDEU" property="dvdeu" jdbcType="CHAR" />
+		<result column="NOMDEU" property="nomdeu" jdbcType="CHAR" />
+		<result column="APPDEU" property="appdeu" jdbcType="CHAR" />
+		<result column="APPMDEU" property="appmdeu" jdbcType="CHAR" />
+		<result column="SEXODEU" property="sexodeu" jdbcType="CHAR" />
+		<result column="FECNAC" property="fecnac" jdbcType="CHAR" />
+		<result column="ESTCIVIL" property="estcivil" jdbcType="CHAR" />
+		<result column="FONO1" property="fono1" jdbcType="CHAR" />
+		<result column="FONO2" property="fono2" jdbcType="CHAR" />
+		<result column="FONO3" property="fono3" jdbcType="CHAR" />
+		<result column="EMAIL" property="email" jdbcType="CHAR" />
+		<result column="DIRDEU" property="dirdeu" jdbcType="CHAR" />
+		<result column="COMUDEU" property="comudeu" jdbcType="CHAR" />
+		<result column="PROVDEU" property="provdeu" jdbcType="CHAR" />
+		<result column="REGDEU" property="regdeu" jdbcType="CHAR" />
+		<result column="ENVECTA" property="envecta" jdbcType="CHAR" />
+		<result column="FECING" property="fecing" jdbcType="CHAR" />
+		<result column="FECMOD" property="fecmod" jdbcType="CHAR" />
+		<result column="ESTDEU" property="estdeu" jdbcType="CHAR" />
+		<result column="ESTINF" property="estinf" jdbcType="CHAR" />
+		<result column="EMAILVAL" property="emailval" jdbcType="CHAR" />
+	</resultMap>
+
+	<select id="selectIsDeudor" resultClass="java.lang.Integer">
+		select count(*)
+		from BPAGDTA.BPAGF001
+		where RUTDEU=#rut#     
+  	</select>
+  
+  	<select id="selectDeudor" resultMap="bpagf001Result"
+		parameterClass="java.util.Map">
+		select *
+		from BPAGDTA.BPAGF001
+		where RUTDEU=#rut# and
+		DVDEU=#dv#
+    
+  	</select>
+  
+	<insert id="insert"	parameterClass="cl.laaraucana.botonpago.web.database.ibatis.domain.Bpagf001">
+		insert into
+		BPAGDTA.BPAGF001
+		(RUTDEU,DVDEU,NOMDEU,APPDEU,APPMDEU,SEXODEU,FECNAC,ESTCIVIL,FONO1,FONO2,FONO3,
+		EMAIL,DIRDEU,COMUDEU,PROVDEU,REGDEU,ENVECTA,FECING,ESTDEU,ESTINF,EMAILVAL)
+		values(#rutdeu#,#dvdeu#,#nomdeu#,#appdeu#,#appmdeu#,#sexodeu#,#fecnac#,#estcivil#,#fono1#,
+		#fono2#,#fono3#,#email#,#dirdeu#,#comudeu#,#provdeu#,#regdeu#,#envecta#,#fecing#,#estdeu#,
+		#estinf#,#emailval#) with nc
+  </insert>
+</sqlMap>

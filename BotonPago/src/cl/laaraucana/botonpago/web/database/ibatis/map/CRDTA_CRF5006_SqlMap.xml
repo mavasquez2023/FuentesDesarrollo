@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CRDTA_CRF5006" >
+  <resultMap id="Crf5006Result" class="cl.laaraucana.botonpago.web.database.ibatis.domain.Crf5006" >
+    <result column="RUT" property="rut" jdbcType="DECIMAL" />
+    <result column="DV" property="dv" jdbcType="CHAR" />
+  </resultMap>
+  
+  <select id="selectMigrado" resultMap="Crf5006Result" parameterClass="java.util.Map" >
+    select RUT, DV
+    from CRDTA.CRF5006 c
+    where  c.RUT = #rut# and  c.DV = #dv#
+  </select>
+
+</sqlMap>

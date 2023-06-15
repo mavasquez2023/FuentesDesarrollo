@@ -1,0 +1,16 @@
+# LogManager class properties file.
+
+#
+# LogManager properties.
+#
+
+# stdout, stderr or null.
+logManager.output=null
+#logManager.baseDirName=/ac/logs
+logManager.baseDirName=C:\\Tempo
+logManager.limit=10485760
+logManager.count=3
+logManager.defaultLoggingLevel=FINEST
+
+# Default logging level for other classes.
+cl.araucana.core.business.ServiceLocator.loggingLevel=FINEST

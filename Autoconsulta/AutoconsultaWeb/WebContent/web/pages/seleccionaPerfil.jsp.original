@@ -1,0 +1,59 @@
+<%@ page import = "java.io.*" %>
+     
+<%@ include file = "/web/includes/env.jsp"%>
+<%@ include file = "/web/includes/header.jsp"%>
+<%@ include file = "/web/includes/top.jsp"%>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height='100%'>
+<tr>
+<td valign='top'>
+
+<!-- Begin de la pagina particular -->
+<div align='center'>
+<br>
+<div class="texto">
+<br>
+<div class="textobold"><bean:message key="login.usuario.empresa.persona"/></div>
+<br>
+<div class="textobold"><bean:message key="login.usuario.tipo.usuario.pregunta"/></div>
+<br>
+<html:form action='/Welcome'>
+<html:hidden property="accion" value="1"/>
+<table border="0" cellpadding="2" cellspacing="2" width="50%">
+	<tr>
+		<td class="texto">
+        	<bean:message key="login.usuario.empresa"/>
+        </td>
+        <td class="texto">
+        	<html:radio property="tipoUsuario" value="1"/>
+		</td>
+    </tr>
+    <tr>
+		<td class="texto">
+        	<bean:message key="login.usuario.persona"/>
+        </td>
+        <td class="texto">
+        	<html:radio property="tipoUsuario" value="2"/>
+        </td>
+	</tr>
+	<tr>
+		<td class="texto" colspan='2' align='center'>
+			<html:image page='/images/aceptar.gif'/>
+		</td>
+	</tr>
+</table>
+</html:form>
+
+</div>
+</div>
+</div>
+
+
+<!-- End de la pagina particular -->
+
+</td>
+</tr>
+</table>
+
+
+<%@ include file = "/web/includes/footer.jsp"%>

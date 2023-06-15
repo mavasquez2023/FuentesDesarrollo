@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<transactionManager type="JDBC">
+		<dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/pago_noafiliado" />
+		</dataSource>
+	</transactionManager>
+	<!--
+	<property name="DataSource" value="jdbc/testdesa3" />
+			<property name="DataSource" value="jdbc/pago_noafiliado" />		
+		
+	<transactionManager type="JDBC"> <dataSource type="SIMPLE"> <property 
+		name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" /> <property 
+		name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.2" /> <property name="JDBC.Username" 
+		value="usrsist" /> <property name="JDBC.Password" value="usrsist" /> </dataSource> 
+	</transactionManager>
+	 -->
+	<sqlMap resource="cl/laaraucana/botonpago/web/database/ibatis/map/SPLDTA_DETPAGO_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/botonpago/web/database/ibatis/map/SPLDTA_PAGO_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/botonpago/web/database/ibatis/map/SPLDTA_CONVENIO_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/botonpago/web/database/ibatis/map/SPLDTA_MEDIOPAGO_SqlMap.xml" />
+</sqlMapConfig>

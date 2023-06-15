@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AFDTA_AFP51F1">
+	<resultMap id="afp51f1Result" class="cl.laaraucana.botonpago.web.database.ibatis.domain.Afp51f1">
+		<result column="AFSICORE" property="codReg" jdbcType="NUMERIC" />
+		<result column="AFSINORE" property="nomReg" jdbcType="CHAR" />
+		<result column="AFSICOPR" property="codPro" jdbcType="NUMERIC" />
+		<result column="AFSINOPR" property="nomPro" jdbcType="CHAR" />
+		<result column="AFSICOCO" property="codCom" jdbcType="NUMERIC" />
+		<result column="AFSINOCO" property="nomCom" jdbcType="CHAR" />
+		<result column="BCCODCOM" property="bcodcom" jdbcType="DECIMAL" />
+	</resultMap>
+	<select id="selectAll" resultMap="afp51f1Result" parameterClass="java.util.Map">
+		select AFSICORE, AFSINORE, AFSICOPR, AFSINOPR, AFSICOCO, AFSINOCO, BCCODCOM 
+				from AFDTA.AFP51F1
+		
+
+	</select>
+</sqlMap>

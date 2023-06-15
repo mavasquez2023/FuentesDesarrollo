@@ -1,0 +1,10 @@
+#Fri Jan 27 13:19:03 CLST 2023
+remoteHelpICEnabled=true,false
+remoteHelpOn=true
+remoteHelpHost=publib.boulder.ibm.com,127.0.0.1
+remoteHelpPath=/infocenter/rsahelp/v8r5,/help
+remoteHelpName=Rational Software Architect,Local
+remoteHelpPort=80,63650
+remoteHelpProtocol=http,http
+remoteHelpPreferred=true
+eclipse.preferences.version=1

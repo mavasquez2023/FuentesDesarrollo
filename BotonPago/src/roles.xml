@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<rolesXML>
+	<rol>
+		<nombre>deudor</nombre>
+		<opcion>gestionPago</opcion>
+		<opcion>actualizaDatos</opcion>
+		<opcion>historialPagos</opcion>
+		<opcion>cartolaCredito</opcion>
+		<!--<opcion>pagoEnCaja</opcion>-->
+		<opcion>pagoEnLinea</opcion>
+		
+	</rol>
+	<rol>
+		<nombre>admin</nombre>
+		<opcion>ingresarUsuario</opcion>
+		<opcion>asignaRol</opcion>
+		<opcion>pagoAnticipado</opcion>
+		<!--<opcion>sinat03</opcion>-->
+		<!--<opcion>sinat04</opcion>-->
+	</rol>
+	<rol>
+		<nombre>ejecutivo</nombre>
+		<opcion>simulaDeudor</opcion>
+		<opcion>gestionPago</opcion>
+		<opcion>actualizaDatos</opcion>
+		<opcion>historialPagos</opcion>
+		<opcion>cartolaCredito</opcion>
+		<!--<opcion>pagoEnCaja</opcion>-->
+		<opcion>pagoEnLinea</opcion>
+	</rol>
+</rolesXML>
