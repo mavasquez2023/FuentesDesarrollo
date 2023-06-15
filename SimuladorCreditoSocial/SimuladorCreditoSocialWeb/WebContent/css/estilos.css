@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/*!
+* ¡ATENCIÓN! Hoja de estilos generada con GULP-SASS, no modificar.
+*/
+body {
+  background: #fff;
+}
+
+.respuesta__item {
+  padding: 5vw;
+  text-align: center;
+}
+
+.respuesta__item--exito {
+  color: #71c341;
+}
+
+.respuesta__item--error {
+  color: #ea4537;
+}
+
+.respuesta__icono {
+  font-size: 5rem;
+  color: inherit;
+  line-height: .75;
+  display: inline-block;
+}
+
+.respuesta__titulo {
+  color: inherit;
+}
+
+.simulador {
+  padding: 1.5rem 0;
+  max-width: 1150px;
+  margin: auto;
+}
+
+.simulador__header {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .simulador__header__icon {
+    display: none;
+  }
+}
+
+.simulador__header svg {
+  fill: #f48948;
+  width: 100%;
+  max-width: 150px;
+}
+
+.simulador__nav {
+  margin-bottom: 1.5rem;
+  width: calc(100% - 250px);
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .simulador__nav {
+    width: 100%;
+  }
+}
+
+.simulador__nav__item {
+  display: -moz-box;
+  display: flex;
+  -moz-box-align: center;
+       align-items: center;
+  color: #ddd;
+  transition: all ease 200ms;
+  font-size: 1.7rem;
+  margin: 1.5rem;
+}
+
+.simulador__nav__item svg {
+  fill: #ddd;
+  transition: all ease 200ms;
+  height: 100%;
+  max-height: 55px;
+}
+
+.simulador__nav__item.activo {
+  color: #f48948;
+}
+
+.simulador__nav__item.activo svg {
+  fill: #f48948;
+}
+
+@media (max-width: 543px) {
+  .simulador__nav__item {
+    display: none;
+  }
+  .simulador__nav__item.activo {
+    display: -moz-box;
+    display: flex;
+  }
+}
+
+.simulador__nav__icon {
+  margin-right: 10px;
+  max-width: 50px;
+}
+
+.simulador__nav__paso {
+  font-weight: 600;
+  line-height: 1;
+}
+
+.simulador__nav__name {
+  text-transform: uppercase;
+}
+
+.simulador__notas {
+  padding: 30px;
+  background: #eee;
+  border-radius: 1rem;
+}
+
+.simulador__notas ul {
+  margin-bottom: 0;
+}
+
+.simulador__fecha {
+  margin-bottom: 30px;
+}
+
+.simulador__fecha__top {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.simulador__fecha__data {
+  color: #2072bc;
+  font-size: 1.7rem;
+}
+
+.simulador__resumen {
+  margin-bottom: 30px;
+}
+
+.simulador__resumen__item {
+  text-align: center;
+  padding: 30px;
+}
+
+.simulador__resumen__texto {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.simulador__resumen__valor {
+  font-size: 2rem;
+  color: #2072bc;
+  font-weight: 600;
+}
+
+.simulador__respuesta__item {
+  padding: 50px;
+}
+
+.simulador__respuesta h3 {
+  color: #2072bc;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.captcha {
+  display: inline-block;
+}
+
+.captcha.invalido {
+  border: 1px solid #ea4537;
+  border-radius: 3px;
+}
