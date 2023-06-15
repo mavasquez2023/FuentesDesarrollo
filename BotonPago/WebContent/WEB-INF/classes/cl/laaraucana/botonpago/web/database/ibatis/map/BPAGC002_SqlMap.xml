@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	<parameterMap id="myParamMap" class="java.util.Map">
+		<parameter property="PARAM" jdbcType="CHAR" mode="INOUT" />
+	</parameterMap>
+	<procedure id="callProcedDeudor" parameterMap="myParamMap"> 
+	{CALL BPAGOBJ.CONSULTA_DEUDOR( ? )}</procedure>
+</sqlMap>

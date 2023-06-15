@@ -1,0 +1,115 @@
+/* Elementos genericos */
+a{
+	color: #005D8B;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #005D8B;
+	text-decoration: underline;
+}
+
+hr{
+	border: 0; 
+	border-top: 2px solid #CCCCCC;
+}
+
+label{
+	float: left;
+	width: 150px;
+}
+
+.linea-puntos {
+  clear: both;
+  height: 2px;
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+  border: none !important;
+  padding: 0px;
+  margin: 5px 0px;
+  background-image: url(../img/linea_puntos.gif);
+}
+
+/* Maqueta */
+#contenedor{
+	text-align:center;
+}
+
+#banner{
+	margin: 0px;
+	height: 85px;
+	width: 100%;
+	border-bottom: 5px solid #005D8B;	
+	border-top: 10px solid #005D8B;
+}
+.content{
+	width: 984px;
+	margin-left:auto;margin-right:auto;text-align:left
+}
+.caja{
+	border: 1px solid #CCC;
+	height: 100%;
+	padding: 10px 10px;
+}
+
+.field{
+	margin-bottom: 5px;
+}
+
+#content-header{
+	height: 150px;
+	width: 100%;
+}
+
+#content-principal{
+	width: 100%;
+	height: 265px;
+}
+
+#content-left{
+	width: 68%;
+	height: 265px;
+	float: left;
+}
+
+#content-right{
+	width: 30%;
+	height: 265px;
+	float: right;
+}
+
+#content-footer{
+}
+/* Elementos de la pagina */
+
+#caja-left{
+	width: 58%;
+	height: 100%;
+	float: left;
+}
+
+#caja-right{
+	width: 40%;
+	height: 100%;
+	/*border-left: 1px solid #015E8A;*/
+	float: left;
+}
+
+.mensaje-gris{
+	background-color:#EFEFEF;
+	background-image: url("../img/mensaje.gif");
+    background-position: 5px;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 55px; 
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#imgContacto{
+	align: left;
+	padding: 5px 15px 15px 0px;
+	border: 0px;
+}

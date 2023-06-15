@@ -1,0 +1,108 @@
+@CHARSET "ISO-8859-1";
+
+table{
+font-size: 9pt;
+}
+
+.tableInfo {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: solid 1px;
+	border-color: gray;
+	color: #333333;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.tableInfo caption {
+	text-align: left;
+	font-weight: bold;
+}
+
+.tableInfo tr {
+	border: solid 1px;
+	border-color: gray;
+}
+
+.tableInfo th {
+	text-align: center;
+	background-color: #E9E9FF;
+	color: #333333;
+	padding: 8px;
+}
+
+.tableInfo td {
+	padding: 5px;
+	text-align: center;
+	background-color: white;
+	border-color: #FEF7E7;
+	height: 12px;
+}
+.tableInfo tfoot {
+	border: none !important;
+	padding: 5px;
+	background-color: black;
+	height: 12px;
+}
+
+.sumario {
+	text-align: right !important;
+}
+
+.headerTable {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	color: #333333;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.headerTable td {
+	padding: 5px;
+	text-align: left;
+	background-color: white;
+	height: 12px;
+}
+
+/*--------------------------  */
+#rounded-corner
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	
+}
+#rounded-corner th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: #F8F8F8;
+	background: #034a98;
+}
+#rounded-corner td
+{
+	padding: 3px;
+	background: none;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #c4c4c4;
+	color: #4E4E4E;
+}
+#rounded-corner tbody tr:hover td
+{
+	background: #E7ECFF;
+}
+#rounded-corner caption {
+	text-align: left;
+	font-weight: bold;
+}
+.formH tr td {
+	padding: 10px
+}
+.formV tr td {
+	text-align:right;
+}

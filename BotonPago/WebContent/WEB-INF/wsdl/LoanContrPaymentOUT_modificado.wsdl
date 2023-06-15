@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="LoanContrPaymentOUT" targetNamespace="http://lautaro.com/xi/BS/WEB-Mobile" xmlns:p1="http://lautaro.com/xi/BS/WEB-Mobile" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation />
+	<wsp:UsingPolicy wsdl:required="true" />
+	<wsp:Policy wsu:Id="OP_ExecLoanContrPayment" />
+	<wsp:Policy wsu:Id="OP_ReverLoanContrPayment" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/BS/WEB-Mobile" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lautaro.com/xi/BS/WEB-Mobile">
+			<xsd:element name="LoanContrPaymentResponseOut" type="LoanContrPaymentResponse" />
+			<xsd:element name="ReverLoanContractRequestOut" type="ReverLoanContractRequest" />
+			<xsd:element name="LoanContrPaymentRequestOut" type="LoanContrPaymentRequest" />
+			<xsd:element name="ReverLoanContractResponseOut" type="ReverLoanContractResponse" />
+			<xsd:simpleType name="MESSAGE_V4">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">0134b7ede7fb11e2a5ec000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="50" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="LOG_NO">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">cf57d34ee7f911e29722000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="20" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="HOST">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">b4dfae8de59511e2967f000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="20" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Row">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">a67c857de7fb11e2cfe8000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Numeric</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:maxInclusive value="10" />
+					<xsd:minInclusive value="0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="ResultCode">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Resultado de la operación</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">68e40a08e7f211e2c322000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="MESSAGE_V2">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">7b837e24e7fa11e29b72000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="50" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="DATECREATION">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">97b9f9e8e59011e2a197000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Date</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:date">
+					<xsd:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="SYSTEM">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">2125f52fe80711e2b217000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Numeric</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:maxInclusive value="10" />
+					<xsd:minInclusive value="0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="INTERNALORGANIZATION">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">fff06c46e59011e291cc000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="5" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="FIELD">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">fcdb5b1de80611e289b4000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Numeric</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:maxInclusive value="10" />
+					<xsd:minInclusive value="0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="TYPE">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">1dcc70dfe7f911e2bc0a000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:length value="1" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="NUMBER">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">97898a6ae7f911e28cbb000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Numeric</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:maxInclusive value="10" />
+					<xsd:minInclusive value="0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="MESSAGE">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">b39d42e2e7f911e292f6000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="ID">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">3c68635de7f911e2c524000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="20" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="USER">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">0701ac6de59611e2840c000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="12" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="LOG_MSG_NO">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">f1c62d80e7f911e2a96b000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Numeric</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:maxInclusive value="10" />
+					<xsd:minInclusive value="0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="MESSAGE_V3">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">cb1e4b32e7fa11e28e5e000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="50" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="MESSAGE_V1">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">0ac0413de7fa11e2a4cb000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="50" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="PARAMETER">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">549dfc0ce7fb11e2848c000000362a9a</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/RepresentationTerm">Text</xsd:appinfo>
+					<xsd:appinfo source="http://sap.com/esi/FixedValues">false</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="32" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Rut">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">4a49eb69fa0011e2cdff000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0" />
+					<xsd:maxLength value="20" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="LoanContrPaymentResponse">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">ac49aff78e9c11e39327000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" />
+					<xsd:element name="LoanContract" type="LoanContract" minOccurs="0" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">a870c5058e9b11e3adee02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ArrearsInfo" type="LoanArrearsInfo" minOccurs="0" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">aac54c988e9c11e3a9e402004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ResultCode" type="xsd:string" />
+					<xsd:element name="Log" type="Log" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="LoanContract">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">1bdbaa6875ae11e4a9cb0000002327ce</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="ITEMNUMBER" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78dc75ae11e4b74942689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="PITYPE" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78dd75ae11e4c6ee42689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FOLIOTESORERIA" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78de75ae11e4a08e42689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="COMPEXTERNO" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="ID" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78df75ae11e4c07c42689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="INSTALLMENT" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e075ae11e498d842689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="AMOUNT" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e175ae11e4af6042689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="CURRENCY" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e275ae11e4b34e42689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="POSTINGDATE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e375ae11e4918042689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="VALUEDATE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e475ae11e4a02042689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="OFICINAPAGO" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">19ab78e575ae11e4b2c342689d14cd01</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ReverseLoanContract">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">0fa9110575b311e493b20000002327ce</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="PITYPE" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1ed8ea011e3cd5202004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FOLIOTESORERIA" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1ee8ea011e392f602004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ID" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1ef8ea011e3950402004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="AMOUNT" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1f08ea011e3807902004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="CURRENCY" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1f18ea011e3940502004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="POSTINGDATE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1f28ea011e3c6e502004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="VALUEDATE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1f38ea011e39b0202004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MOTIVOREVERSO" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ccb919aa8eef11e38f7002004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="OFICINAPAGO" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">857fa1f48ea011e3829d02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ReverLoanContractResponse">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">9e4bd4758ef111e38a0b000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" minOccurs="0" />
+					<xsd:element name="ReverLoanContract" type="ReverseLoanContract" minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="ResultCode" type="xsd:string" />
+					<xsd:element name="Log" type="Log" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ReverLoanContractRequest">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">df5db7918fa711e3cb60000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">177b4cf28ef211e39d8d02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ReverLoanContract" type="LoanContrPayment">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">177b4cf38ef211e3bc9002004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LtReverLoanContract" type="ReverseLoanContract" minOccurs="0" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7c065fd88fa811e3c38402004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Log">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Log Entries</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">8c1723f0e7f211e2c608000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="TYPE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a5f7bb7f411e2b03242689d1519c2</xsd:appinfo>
+							<xsd:documentation>Tipo Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ID" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fecb7f411e2bdca42689d1519c2</xsd:appinfo>
+							<xsd:documentation>Clase Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="NUMBER" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fedb7f411e2a31c42689d1519c2</xsd:appinfo>
+							<xsd:documentation>Numero de Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8feeb7f411e2b24c42689d1519c2</xsd:appinfo>
+							<xsd:documentation>Texto Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LOG_NO" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fefb7f411e2813642689d1519c2</xsd:appinfo>
+							<xsd:documentation>Numero de Log</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LOG_MSG_NO" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8ff0b7f411e2c96942689d1519c2</xsd:appinfo>
+							<xsd:documentation>Numero consecutivo interno de mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V1" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce414447dd0011e2c78002004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V2" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce414448dd0011e2aef102004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V3" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce414449dd0011e2a83602004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V4" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce41444add0011e2892c02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="PARAMETER" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce41444bdd0011e2c09802004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ROW" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce41444cdd0011e281c902004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FIELD" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce414c53dd0011e28b5a02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="SYSTEM" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">ce414c54dd0011e2a0bf02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MessageHeader">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Header Entries</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">273b1656e59011e29c27000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="DATECREATION" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">b1b7d1a1b7f811e2990442689d1519c2</xsd:appinfo>
+							<xsd:documentation>Fecha Creacion</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="INTERNALORGANIZATION" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">b1b7d1a2b7f811e283ec42689d1519c2</xsd:appinfo>
+							<xsd:documentation>Sistema Generador</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="HOST" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">b1b800eeb7f811e2913e42689d1519c2</xsd:appinfo>
+							<xsd:documentation>Host Generador</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="USER" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">b1b800efb7f811e2a8c742689d1519c2</xsd:appinfo>
+							<xsd:documentation>Usuario Generador</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="LoanContrPayment">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">9a39b58a8e8c11e38a80000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="PVI_RUT" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="LoanArrearsInfo">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">ccab19908e9411e3bb92000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="CONTABTYPE" type="xsd:string" minOccurs="0" />
+					<xsd:element name="ID" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="AMOUNTSOURCE" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="CURRENCYSOURCE" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="AMOUNT" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="CURRENCY" minOccurs="0" type="xsd:string"></xsd:element>
+					<xsd:element name="ISCRED" minOccurs="0" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="LoanContrPaymentRequest">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">fdc5ed328fa611e3ae20000000362a9a</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">de1ba3a48e9c11e3b34f02004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LoanContrPayment" type="LoanContrPayment">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">de1ba3a58e9c11e3b57902004e435049</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LoanContract" type="LoanContract" minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="ArrearsInfo" type="LoanArrearsInfo" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="LoanContrPaymentRequestOut">
+		<wsdl:documentation />
+		<wsdl:part name="LoanContrPaymentRequestOut" element="p1:LoanContrPaymentRequestOut" />
+	</wsdl:message>
+	<wsdl:message name="LoanContrPaymentResponseOut">
+		<wsdl:documentation />
+		<wsdl:part name="LoanContrPaymentResponseOut" element="p1:LoanContrPaymentResponseOut" />
+	</wsdl:message>
+	<wsdl:message name="ReverLoanContractRequestOut">
+		<wsdl:documentation />
+		<wsdl:part name="ReverLoanContractRequestOut" element="p1:ReverLoanContractRequestOut" />
+	</wsdl:message>
+	<wsdl:message name="ReverLoanContractResponseOut">
+		<wsdl:documentation />
+		<wsdl:part name="ReverLoanContractResponseOut" element="p1:ReverLoanContractResponseOut" />
+	</wsdl:message>
+	<wsdl:portType name="LoanContrPaymentOUT">
+		<wsdl:documentation />
+		<wsdl:operation name="ExecLoanContrPayment">
+			<wsdl:documentation />
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_ExecLoanContrPayment" />
+			</wsp:Policy>
+			<wsdl:input message="p1:LoanContrPaymentRequestOut" />
+			<wsdl:output message="p1:LoanContrPaymentResponseOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ReverLoanContrPayment">
+			<wsdl:documentation />
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_ReverLoanContrPayment" />
+			</wsp:Policy>
+			<wsdl:input message="p1:ReverLoanContractRequestOut" />
+			<wsdl:output message="p1:ReverLoanContractResponseOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="LoanContrPaymentOUTBinding" type="p1:LoanContrPaymentOUT">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="ExecLoanContrPayment">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReverLoanContrPayment">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="LoanContrPaymentOUTService">
+		<wsdl:port name="LoanContrPaymentOUTPort" binding="p1:LoanContrPaymentOUTBinding">
+			<soap:address
+				location="http://ARAMACIPIT.sap.novis.cl:50000/sap/xi/engine?type=entry&amp;version=3.0&amp;Sender.Service=WEB_Mobile&amp;Interface=http%3A%2F%2Flautaro.com%2Fxi%2FBS%2FWEB-Mobile%5ELoanContrPaymentOUT"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

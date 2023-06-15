@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="parametrosMap" class="java.util.HashMap" >
+     <result column="PAR_NOMBRE" property="key"/>
+     <result column="PAR_VALOR" property="value"/>
+  </resultMap>
+
+	<resultMap class="cl.laaraucana.botonpago.web.database.vo.ParametrosVO" id="parametrosMapObj">
+		<result column="PAR_ID" property="par_id" />
+		<result column="PAR_NOMBRE" property="par_nombre" />
+		<result column="PAR_DESCRIP" property="par_descrip" />
+		<result column="PAR_TIPO_PARAMETRO" property="par_tipo_parametro" />
+		<result column="PAR_VALOR" property="par_valor" />
+	</resultMap>
+  
+  <!-- lista de parametros -->
+ 	<select id="getParametros" resultMap="parametrosMap">		
+		SELECT * FROM BPAGDTA.T_PARAMETRO
+	</select>
+
+</sqlMap>
