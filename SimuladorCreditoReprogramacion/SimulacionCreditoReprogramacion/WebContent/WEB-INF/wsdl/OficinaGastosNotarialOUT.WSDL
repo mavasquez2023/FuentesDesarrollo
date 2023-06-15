@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OficinaGastosNotarialOUT"
+	targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile" xmlns:p1="http://lautaro.com/xi/CRM/WEB-Mobile"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation />
+	<wsp:UsingPolicy wsdl:required="true" />
+	<wsp:Policy wsu:Id="OP_OficinaGastosNotarialOUT" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lautaro.com/xi/CRM/WEB-Mobile">
+			<xsd:element name="OficinaGastosNotarialRequest" type="OficinaGastosNotarialRequest" />
+			<xsd:element name="OficinaGastosNotarialResponse" type="OficinaGastosNotarialResponse" />
+			<xsd:complexType name="OficinaGastosNotarialResponse">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">363db572ab9311e3888b0000002327ce
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="OFICINAOUTPUT">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="item" minOccurs="0" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="CODIGO" type="xsd:string"
+												minOccurs="0" />
+											<xsd:element name="DESCRIPCION" type="xsd:string"
+												minOccurs="0" />
+											<xsd:element name="GASTO_NOTARIAL" type="xsd:string"
+												minOccurs="0" />
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="OficinaGastosNotarialRequest">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">fae8bb7cab9211e3cf280000002327ce
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="OFICINAOUTPUT" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="OficinaGastosNotarialRequest">
+		<wsdl:documentation />
+		<wsdl:part name="OficinaGastosNotarialRequest" element="p1:OficinaGastosNotarialRequest" />
+	</wsdl:message>
+	<wsdl:message name="OficinaGastosNotarialResponse">
+		<wsdl:documentation />
+		<wsdl:part name="OficinaGastosNotarialResponse" element="p1:OficinaGastosNotarialResponse" />
+	</wsdl:message>
+	<wsdl:portType name="OficinaGastosNotarialOUT">
+		<wsdl:documentation />
+		<wsdl:operation name="OficinaGastosNotarialOUT">
+			<wsdl:documentation />
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_OficinaGastosNotarialOUT" />
+			</wsp:Policy>
+			<wsdl:input message="p1:OficinaGastosNotarialRequest" />
+			<wsdl:output message="p1:OficinaGastosNotarialResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="OficinaGastosNotarialOUTBinding" type="p1:OficinaGastosNotarialOUT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="OficinaGastosNotarialOUT">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="OficinaGastosNotarialOUTService">
+		<wsdl:port name="OficinaGastosNotarialOUTPort" binding="p1:OficinaGastosNotarialOUTBinding">
+			<soap:address
+				location="http://ARADWCIPID.sap.novis.cl:50000/sap/xi/engine?type=entry&amp;version=3.0&amp;Sender.Service=WEB_Mobile&amp;Interface=http%3A%2F%2Flautaro.com%2Fxi%2FCRM%2FWEB-Mobile%5EOficinaGastosNotarialOUT"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
