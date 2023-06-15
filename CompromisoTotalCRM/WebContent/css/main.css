@@ -1,0 +1,227 @@
+@CHARSET "ISO-8859-1";
+
+HTML {
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	COLOR: #000;
+	/*background: -moz-linear-gradient(top, #DEEDF7 , #FFFFFF);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#DEEDF7),  to(#FFFFFF));
+    overflow-y: scroll;*/
+}
+
+BODY {
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	COLOR: #000;
+	font-size: 12px;
+}
+
+.ui-datepicker-trigger {
+	vertical-align: middle;
+	margin-bottom: 4px;
+	margin-left: 2px;
+	cursor: pointer;
+}
+
+.tablaCent {
+	
+}
+
+.tablaCent th {
+	text-align: center;
+	background-color: #FAD172;
+	border: 1px;
+	border-color: #4FFFCF;
+	border-style: solid;
+	color: #5E4B3A;
+}
+
+.tablaCent td {
+	text-align: center;
+	background-color: #FEF7E7;
+	border: 1px;
+	border-color: #FEF7E7;
+	border-style: solid;
+	height: 16px;
+}
+
+.tablaIzq {
+	
+}
+
+.tablaIzq th {
+	text-align: left;
+	padding-left: 5px;
+	background-color: #4FFFCF;
+	border: 1px;
+	border-color: #4FFFCF;
+	border-style: solid;
+}
+
+.tablaIzq td {
+	text-align: left;
+	padding-left: 5px;
+	background-color: #FFFFFF;
+	border: 1px;
+	border-color: #4FFFCF;
+	border-style: solid;
+}
+
+th.thArriba {
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 5px;
+}
+
+th.thCentrado {
+	text-align: center;
+	padding: 0px;
+}
+
+.datePicker {
+	width: 80px;
+}
+
+.inputMini {
+	width: 40px;
+}
+
+.inputChico {
+	width: 80px;
+}
+
+.inputMediano {
+	width: 100px;
+}
+
+.inputGrande {
+	width: 150px;
+}
+
+.link {
+	cursor: pointer;
+	text-decoration: underline;
+	color: blue;
+}
+
+.linkNormal {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.disabledClass {
+	background-color: #E0DFE3;
+	color: #A39F9F;
+}
+
+.alignTop {
+	vertical-align: top;
+}
+/*Estilos listadoContratos  */
+Iframe {
+	width: 900px;
+	height: 600px;
+}
+
+.titulo,.subTitulo {
+	text-align: center;
+}
+
+.contenedor {
+	width: 100%;
+	/* margin: 0px auto 10px auto; */
+}
+
+.containerTablas { /* 	 padding: 5px; 
+ */
+	width: 100%;
+}
+
+.containerTablas table {
+	width: 100%;
+	/*margin: 0px auto;*/
+	margin-bottom: 10px;
+	border: 1px #94c4d9 solid !important;
+}
+
+.containerTablas table caption {
+	padding: 5px;
+	background-image: url('../img/barra.png');
+	font-weight: bold;
+	font-size: 16px;
+	text-align: left;
+}
+
+.containerTablas table th {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #ECF2FF  !important;
+	border: 1px #94c4d9 solid;
+}
+
+.containerTablas table tr td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 1px;
+	padding-right: 1px;
+	border: 1px #94c4d9 solid !important;
+	background-color: #FAFAFA;
+	text-align: center;
+}
+
+.pullLeft {
+	text-align: left;;
+}
+
+.containerTablas .pullRight {
+	text-align: right;
+}
+
+.containerTablas .pullRight input {
+	width: 10%;
+	display: inline;
+}
+
+.margenBottom {
+	margin-bottom: 20px;
+}
+
+.loading {
+	height: 80px;
+}
+
+b {
+	font-weight: bold;
+}
+
+.fechaEmision {
+	text-align: right;
+}
+
+.logo {
+	display: none;
+	width: 210px;
+}
+
+@media print {
+	.loading {
+		display: none;
+	}
+	.ui-widget {
+		display: none;
+	}
+	/* 	.error{ display: none;} */
+	.logo {
+		display: block;
+	}
+	.pullRight {
+		display: none;
+	}
+	.aDetalle {
+		display: none
+	}
+	table {
+		width: 90%;
+		margin: 0px auto;
+	}
+}
+

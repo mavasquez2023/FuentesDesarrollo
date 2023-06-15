@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Compromiso Total</display-name>
+	<!-- Pagina de inicio de Autoconsulta -->
+	<context-param id="ContextParam_1284642156017">
+		<param-name>ACHomePage</param-name>
+		<param-value>http://146.83.1.217:9080/AutoconsultaWeb/web/Welcome.do</param-value>
+	</context-param>
+
+<!-- 	<filter>
+		<filter-name>FiltroMain</filter-name>
+		<display-name>FiltroMain</display-name>
+		<description></description>
+		<filter-class>cl.laaraucana.compromisototal.utils.FiltroMain</filter-class>
+	</filter>
+ -->
+	
+<!--  Filtro de inicio de sesion. 
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>cl.laaraucana.compromisototal.filters.LoginFilter</filter-class>
+	</filter>
+Filtro de perfiles 
+	<filter>
+		<filter-name>ProfileFilter</filter-name>
+		<filter-class>cl.laaraucana.compromisototal.filters.ProfileFilter</filter-class>
+	</filter>
+	 Rutas a las cuales se aplicara filtro de sesion 
+
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/compTotal/listadoContratos.do</url-pattern>
+	</filter-mapping>
+	 Rutas a las cuales se aplicara filtro de perfil
+	<filter-mapping>
+		<filter-name>ProfileFilter</filter-name>
+		<url-pattern>/compTotal/listadoContratos.do</url-pattern>
+	</filter-mapping>
+ 	<filter-mapping>
+		<filter-name>FiltroMain</filter-name>
+		<url-pattern>/compTotal/*</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<!-- Standard Action Servlet Configuration -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/main</param-name>
+			<param-value>/WEB-INF/struts-main.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/compTotal</param-name>
+			<param-value>/WEB-INF/struts-compTotal.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+	
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>compTotal/ingresarRut.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaCreditosPorRutEnAs400" type="tns:consultaCreditosPorRutEnAs400"/>
+
+  <xs:element name="consultaCreditosPorRutEnAs400Response" type="tns:consultaCreditosPorRutEnAs400Response"/>
+
+  <xs:complexType name="consultaCreditosPorRutEnAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaCreditosPorRutEntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosPorRutEntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosPorRutEnAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditosPorRutSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosPorRutSalidaVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="detalle" nillable="true" type="tns:detalleConsultaCreditosPorRutSalidaVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="numeroCreditos" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleConsultaCreditosPorRutSalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="indicadorRepactacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="indicadorReprogramacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoAdaudado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoImpuestos" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSolicitado" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaOriginadora" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="rolAsociado" type="xs:string"/>
+      <xs:element minOccurs="0" name="rolPagador" type="xs:string"/>
+      <xs:element minOccurs="0" name="sumaCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="sumaGCob" type="xs:string"/>
+      <xs:element minOccurs="0" name="tasaInteres" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoProducto" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

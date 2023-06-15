@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. -->
+<xs:schema xmlns:tns="http://server.laaraucana.ws.asicom/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://server.laaraucana.ws.asicom/">
+
+<xs:element name="getDatosCredito" type="tns:getDatosCredito"/>
+
+<xs:element name="getDatosCreditoResponse" type="tns:getDatosCreditoResponse"/>
+
+<xs:element name="getDetalleCredito" type="tns:getDetalleCredito"/>
+
+<xs:element name="getDetalleCreditoResponse" type="tns:getDetalleCreditoResponse"/>
+
+<xs:complexType name="getDatosCredito">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatosCreditoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDetalleCredito">
+<xs:sequence>
+<xs:element name="operacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDetalleCreditoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
