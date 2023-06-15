@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+	<typeAlias alias="Parametro"
+		type="cl.laaraucana.simulacion.ibatis.vo.ParametroVO" />
+
+	<resultMap id="ParametroResult" class="Parametro">
+		<result column="ID_SIMULADOR" property="codigoSimulador" jdbcType="INTEGER" />
+		<result column="ID_PARAMETRO" property="codigoParametro" jdbcType="INTEGER" />
+		<result column="VALOR" property="valor" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="consultaParametro" resultMap="ParametroResult" parameterClass="Parametro">
+		select ID_SIMULADOR, ID_PARAMETRO, VALOR from
+		SWDTA.PARAMETROS_SIMULACION WHERE ID_SIMULADOR = 1 and
+		ID_PARAMETRO = 3
+	</select>
+	
+	<update id="grabaParametro" parameterClass="cl.laaraucana.simulacion.ibatis.vo.ParametroVO">
+		update
+		SWDTA.PARAMETROS_SIMULACION set valor =#valor#
+		where ID_SIMULADOR =
+		1 and ID_PARAMETRO =
+		3
+	</update>
+	
+</sqlMap>
