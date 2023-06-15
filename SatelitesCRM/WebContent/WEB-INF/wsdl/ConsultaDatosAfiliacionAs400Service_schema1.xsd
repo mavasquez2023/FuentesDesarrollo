@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaDatosAfiliacionAs400" type="tns:consultaDatosAfiliacionAs400"/>
+
+  <xs:element name="consultaDatosAfiliacionAs400Response" type="tns:consultaDatosAfiliacionAs400Response"/>
+
+  <xs:complexType name="consultaDatosAfiliacionAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaDatosAfiliacionAs400EntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosAfiliacionAs400EntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="flag1" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag2" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag3" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosAfiliacionAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaDatosAfiliacionAs400SalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosAfiliacionAs400SalidaVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="detalleEmpresa" nillable="true" type="tns:detalleConsultaDatosAfiliacionAs400SalidaVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleConsultaDatosAfiliacionAs400SalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaAfiliacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficina" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="sucursal" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

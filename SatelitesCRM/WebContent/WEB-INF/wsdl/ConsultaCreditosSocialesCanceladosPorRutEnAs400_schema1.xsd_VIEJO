@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.araucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.araucana.cl/">
+
+  <xs:element name="consultaCreditosSocialesCanceladosPorRutEnAs400" type="tns:consultaCreditosSocialesCanceladosPorRutEnAs400"/>
+
+  <xs:element name="consultaCreditosSocialesCanceladosPorRutEnAs400Response" type="tns:consultaCreditosSocialesCanceladosPorRutEnAs400Response"/>
+
+  <xs:element name="main" type="tns:main"/>
+
+  <xs:element name="mainResponse" type="tns:mainResponse"/>
+
+  <xs:complexType name="main">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mainResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosSocialesCanceladosPorRutEnAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaCreditosSocialesCanceladosPorRutEntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosSocialesCanceladosPorRutEntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosSocialesCanceladosPorRutEnAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditosSocialesCanceladosPorRutSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosSocialesCanceladosPorRutSalidaVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="detalle" nillable="true" type="tns:detalleCreditosSocialesCanceladosPorRutSalidaVO"/>
+      <xs:element minOccurs="0" name="totalCreditosCancelados" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleCreditosSocialesCanceladosPorRutSalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaCancelacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoNominal" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="observacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaProceso" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

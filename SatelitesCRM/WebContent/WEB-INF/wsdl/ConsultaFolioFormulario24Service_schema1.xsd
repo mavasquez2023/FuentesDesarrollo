@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaFolioFormulario24" type="tns:consultaFolioFormulario24"/>
+
+  <xs:element name="consultaFolioFormulario24Response" type="tns:consultaFolioFormulario24Response"/>
+
+  <xs:complexType name="consultaFolioFormulario24">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaFolioFormulario24EntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaFolioFormulario24EntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaOriginacionDeCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="flag1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaFolioFormulario24Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaFolioFormulario24SalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaFolioFormulario24SalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaOriginacionDeCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="folioFormulario24" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

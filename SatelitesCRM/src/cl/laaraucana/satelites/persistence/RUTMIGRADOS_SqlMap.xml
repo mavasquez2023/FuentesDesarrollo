@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="rutMigradosResult" class="cl.laaraucana.satelites.dao.VO.RutMigradosVO" >
+    <result column="RUT" property="rut" jdbcType="NUMBER" />
+    <result column="DV" property="dv" jdbcType="CHAR" />
+    <result column="RAZSOC" property="razsoc" jdbcType="CHAR" />
+    <result column="FECMIG" property="fecmig" jdbcType="NUMBER" />
+    <result column="ORIGEN" property="origen" jdbcType="NUMBER" />
+    <result column="OFICIN" property="oficin" jdbcType="NUMBER" />
+    <result column="RUTEMP" property="rutemp" jdbcType="NUMBER" />
+    <result column="SUCEMP" property="sucemp" jdbcType="NUMBER" />
+    <result column="ANEEMP" property="aneemp" jdbcType="NUMBER" />
+    <result column="ROLRUT" property="rolrut" jdbcType="CHAR" />
+<!--     <result column="FEC_MIG" property="fechaMigracion" jdbcType="NUMBER" /> -->
+<!--     <result column="ORIGEN_BP" property="origenBP" jdbcType="CHAR" /> -->
+    
+    
+  </resultMap>
+  
+ 	<select id="consultaRutMigrado" resultClass="cl.laaraucana.satelites.dao.VO.RutMigradosVO" resultMap="rutMigradosResult" >
+		select * from CRDTA.CRF5006 where RUT=#rut#
+	</select>
+
+</sqlMap>

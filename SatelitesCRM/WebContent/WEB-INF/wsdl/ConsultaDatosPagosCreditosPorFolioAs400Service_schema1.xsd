@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaDatosPagosCreditosPorFolioAs400" type="tns:consultaDatosPagosCreditosPorFolioAs400"/>
+
+  <xs:element name="consultaDatosPagosCreditosPorFolioAs400Response" type="tns:consultaDatosPagosCreditosPorFolioAs400Response"/>
+
+  <xs:complexType name="consultaDatosPagosCreditosPorFolioAs400">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:consultaDatosPagosCreditosPorFolioAs400EntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosPagosCreditosPorFolioAs400EntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaProceso" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosPagosCreditosPorFolioAs400Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaDatosPagosCreditosPorFolioAs400ListaSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosPagosCreditosPorFolioAs400ListaSalidaVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listaCuotas" nillable="true" type="tns:detalleConsultaDatosPagosCreditosPorFolioAs400SalidaVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="nTotalCuotas" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleConsultaDatosPagosCreditosPorFolioAs400SalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estadoAlPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaUltimoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosaEstadoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoTotalAbonadoACuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroCuota" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroDocUltimoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaUltimoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoDocUltimoPago" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

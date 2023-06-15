@@ -1,0 +1,125 @@
+/* line 1, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+body {
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  margin: 0;
+  position: absolute; }
+
+/* line 9, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+h1 {
+  font-size: 1.2em;
+  text-transform: uppercase; }
+
+/* line 13, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+p {
+  text-indent: 1.5cm;
+  text-align: justify; }
+
+/* line 19, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+table {
+  width: 100%;
+  border: 1px;
+  border-style: solid;
+  border-color: #CECECE;
+  padding-top: 5px;
+  border-collapse: collapse;
+  font-size: 0.8em;
+  box-sizing: border-box; }
+  /* line 28, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  table th {
+    box-sizing: border-box;
+    border: 1px;
+    text-align: center;
+    background-color: #EAEAEA;
+    border-right: 1px solid #CECECE; }
+  /* line 35, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  table td {
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: #CECECE;
+    border-right: 1px solid #CECECE;
+    text-align: center; }
+  /* line 44, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  table caption {
+    padding: 0.3em 0;
+    font-family: sans-serif;
+    font-weight: bold; }
+
+/* line 51, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.pagina {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%; }
+  /* line 57, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .pagina .header {
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 0px; }
+  /* line 62, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .pagina .content {
+    box-sizing: border-box; }
+  /* line 65, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .pagina .footer {
+    margin-top: 0px;
+    box-sizing: border-box; }
+
+/* line 70, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.right {
+  text-align: right; }
+
+/* line 73, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.center {
+  text-align: center; }
+
+/* line 76, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.left {
+  text-align: left; }
+
+/* line 81, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.finiquito td {
+  text-align: left !important;
+  min-width: 3em; }
+
+/* line 87, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+.prepago-grid {
+  overflow: auto; }
+  /* line 89, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .prepago-grid .table-wid {
+    height: 100%;
+    width: 40%; }
+    /* line 92, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+    .prepago-grid .table-wid__left {
+      float: left; }
+    /* line 93, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+    .prepago-grid .table-wid__right {
+      float: right; }
+
+@page {
+  size: 216mm 279mm;
+  margin: 20mm; }
+
+@media print {
+  /* line 103, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  body {
+    background-color: #FFFFFF;
+    background-image: none; }
+
+  /* line 108, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .footer {
+    page-break-inside: avoid; }
+
+  /* line 109, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .prepago-grid {
+    page-break-inside: avoid; }
+
+  /* line 110, C:/Users/usist54/Desktop/css sass project/css/certificado.scss */
+  .table-wid {
+    page-break-inside: avoid; }
+ }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="PRIMA">
+  
+<resultMap id="consultaPrimaResult" class="cl.laaraucana.satelites.dao.VO.RespPrimaVO">
+	<result column="PRIMA"   property="prima" jdbcType="DECIMAL" />
+</resultMap>
+ 
+<select id="consultaPrima" 
+parameterClass="cl.laaraucana.satelites.dao.VO.ConsultaPrimaVO" 
+resultMap="consultaPrimaResult">
+	SELECT SUM(PRIMA) AS PRIMA 
+	FROM CRDTA.CRF1860 
+	WHERE OFIPRO = #ofipro# AND CREFOL = #crefol# AND (CUONUM BETWEEN #cuonumDesde# AND #cuonumHasta#) AND (TIPOSEG='SD' OR TIPOSEG='SC')
+</select>
+
+</sqlMap>
