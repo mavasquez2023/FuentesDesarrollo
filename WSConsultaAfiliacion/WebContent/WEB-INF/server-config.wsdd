@@ -1,0 +1,91 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\RSA8.5\workspace\Credito\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\WSConsultaAfiliacion\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:service name="ConsultaAfiliacionImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getStatus" qname="ns1:getStatus" returnQName="ns1:getStatusReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://mgr.wsafiliado.araucana.cl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:token" type="xsd:string"/>
+   <ns3:fault class="com.ibm.trl.soap.SOAPException" qname="ns1:fault" type="ns2:SOAPException" xmlns:ns2="http://soap.trl.ibm.com" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  </ns2:operation>
+  <ns1:operation name="autenticacionWS" qname="ns3:autenticacionWS" returnQName="ns3:autenticacionWSReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://mgr.wsafiliado.araucana.cl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:param" type="ns4:CredentialWS" xmlns:ns4="http://vo.wsafiliado.araucana.cl"/>
+   <ns1:fault class="com.ibm.trl.soap.SOAPException" qname="ns3:fault" type="ns5:SOAPException" xmlns:ns5="http://soap.trl.ibm.com"/>
+  </ns1:operation>
+  <ns1:operation name="getEstadoAfiliacion" qname="ns6:getEstadoAfiliacion" returnQName="ns6:getEstadoAfiliacionReturn" returnType="ns7:ResponseWS" soapAction="" xmlns:ns6="http://mgr.wsafiliado.araucana.cl" xmlns:ns7="http://vo.wsafiliado.araucana.cl">
+   <ns1:parameter qname="ns6:token" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:req" type="ns7:RequestWS"/>
+   <ns1:fault class="com.ibm.trl.soap.SOAPException" qname="ns6:fault" type="ns8:SOAPException" xmlns:ns8="http://soap.trl.ibm.com"/>
+  </ns1:operation>
+  <ns1:operation name="isAfiliadoTitular" qname="ns9:isAfiliadoTitular" returnQName="ns9:isAfiliadoTitularReturn" returnType="ns10:ResponseWS" soapAction="" xmlns:ns10="http://vo.wsafiliado.araucana.cl" xmlns:ns9="http://mgr.wsafiliado.araucana.cl">
+   <ns1:parameter qname="ns9:token" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns9:req" type="ns10:RequestWS"/>
+   <ns1:fault class="com.ibm.trl.soap.SOAPException" qname="ns9:fault" type="ns11:SOAPException" xmlns:ns11="http://soap.trl.ibm.com"/>
+  </ns1:operation>
+  <ns1:operation name="getDatosAfiliacion" qname="ns12:getDatosAfiliacion" returnQName="ns12:getDatosAfiliacionReturn" returnType="ns13:ResponseDataWS" soapAction="" xmlns:ns12="http://mgr.wsafiliado.araucana.cl" xmlns:ns13="http://vo.wsafiliado.araucana.cl">
+   <ns1:parameter qname="ns12:token" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns12:req" type="ns13:RequestWS"/>
+   <ns1:fault class="com.ibm.trl.soap.SOAPException" qname="ns12:fault" type="ns14:SOAPException" xmlns:ns14="http://soap.trl.ibm.com"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getEstadoAfiliacion isAfiliadoTitular getStatus getDatosAfiliacion autenticacionWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ConsultaAfiliacionImpl"/>
+  <ns1:parameter name="className" value="cl.araucana.wsafiliado.mgr.ConsultaAfiliacionImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="ConsultaAfiliacionImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://mgr.wsafiliado.araucana.cl,http://soap.trl.ibm.com,http://vo.wsafiliado.araucana.cl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://mgr.wsafiliado.araucana.cl"/>
+  <ns1:parameter name="wsdlServiceElement" value="ConsultaAfiliacionImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:SegmentoVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.wsafiliado.vo.SegmentoVO" xmlns:ns15="http://vo.wsafiliado.araucana.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:SOAPException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.ibm.trl.soap.SOAPException" xmlns:ns16="http://soap.trl.ibm.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:RequestWS" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.wsafiliado.vo.RequestWS" xmlns:ns17="http://vo.wsafiliado.araucana.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:CredentialWS" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.wsafiliado.vo.CredentialWS" xmlns:ns18="http://vo.wsafiliado.araucana.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns19:ResponseDataWS" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.wsafiliado.vo.ResponseDataWS" xmlns:ns19="http://vo.wsafiliado.araucana.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:ResponseWS" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.wsafiliado.vo.ResponseWS" xmlns:ns20="http://vo.wsafiliado.araucana.cl"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

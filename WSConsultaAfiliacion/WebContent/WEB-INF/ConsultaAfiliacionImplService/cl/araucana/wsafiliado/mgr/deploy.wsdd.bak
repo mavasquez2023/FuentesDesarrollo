@@ -1,0 +1,97 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ConsultaAfiliacionImplService WSDL service -->
+
+  <service name="ConsultaAfiliacionImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://mgr.wsafiliado.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="ConsultaAfiliacionImplService"/>
+      <parameter name="schemaQualified" value="http://mgr.wsafiliado.araucana.cl,http://soap.trl.ibm.com,http://vo.wsafiliado.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="ConsultaAfiliacionImpl"/>
+      <parameter name="className" value="cl.araucana.wsafiliado.mgr.ConsultaAfiliacionImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ConsultaAfiliacionImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getStatus" qname="operNS:getStatus" xmlns:operNS="http://mgr.wsafiliado.araucana.cl" returnQName="retNS:getStatusReturn" xmlns:retNS="http://mgr.wsafiliado.araucana.cl" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:token" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <fault name="SOAPException" qname="fns:fault" xmlns:fns="http://mgr.wsafiliado.araucana.cl" class="com.ibm.trl.soap.SOAPException" type="tns:SOAPException" xmlns:tns="http://soap.trl.ibm.com"/>
+      </operation>
+      <operation name="autenticacionWS" qname="operNS:autenticacionWS" xmlns:operNS="http://mgr.wsafiliado.araucana.cl" returnQName="retNS:autenticacionWSReturn" xmlns:retNS="http://mgr.wsafiliado.araucana.cl" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:param" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:CredentialWS" xmlns:tns="http://vo.wsafiliado.araucana.cl"/>
+        <fault name="SOAPException" qname="fns:fault" xmlns:fns="http://mgr.wsafiliado.araucana.cl" class="com.ibm.trl.soap.SOAPException" type="tns:SOAPException" xmlns:tns="http://soap.trl.ibm.com"/>
+      </operation>
+      <operation name="getEstadoAfiliacion" qname="operNS:getEstadoAfiliacion" xmlns:operNS="http://mgr.wsafiliado.araucana.cl" returnQName="retNS:getEstadoAfiliacionReturn" xmlns:retNS="http://mgr.wsafiliado.araucana.cl" returnType="rtns:ResponseWS" xmlns:rtns="http://vo.wsafiliado.araucana.cl" soapAction="" >
+        <parameter qname="pns:token" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:req" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:RequestWS" xmlns:tns="http://vo.wsafiliado.araucana.cl"/>
+        <fault name="SOAPException" qname="fns:fault" xmlns:fns="http://mgr.wsafiliado.araucana.cl" class="com.ibm.trl.soap.SOAPException" type="tns:SOAPException" xmlns:tns="http://soap.trl.ibm.com"/>
+      </operation>
+      <operation name="isAfiliadoTitular" qname="operNS:isAfiliadoTitular" xmlns:operNS="http://mgr.wsafiliado.araucana.cl" returnQName="retNS:isAfiliadoTitularReturn" xmlns:retNS="http://mgr.wsafiliado.araucana.cl" returnType="rtns:ResponseWS" xmlns:rtns="http://vo.wsafiliado.araucana.cl" soapAction="" >
+        <parameter qname="pns:token" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:req" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:RequestWS" xmlns:tns="http://vo.wsafiliado.araucana.cl"/>
+        <fault name="SOAPException" qname="fns:fault" xmlns:fns="http://mgr.wsafiliado.araucana.cl" class="com.ibm.trl.soap.SOAPException" type="tns:SOAPException" xmlns:tns="http://soap.trl.ibm.com"/>
+      </operation>
+      <operation name="getDatosAfiliacion" qname="operNS:getDatosAfiliacion" xmlns:operNS="http://mgr.wsafiliado.araucana.cl" returnQName="retNS:getDatosAfiliacionReturn" xmlns:retNS="http://mgr.wsafiliado.araucana.cl" returnType="rtns:ResponseDataWS" xmlns:rtns="http://vo.wsafiliado.araucana.cl" soapAction="" >
+        <parameter qname="pns:token" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:req" xmlns:pns="http://mgr.wsafiliado.araucana.cl" type="tns:RequestWS" xmlns:tns="http://vo.wsafiliado.araucana.cl"/>
+        <fault name="SOAPException" qname="fns:fault" xmlns:fns="http://mgr.wsafiliado.araucana.cl" class="com.ibm.trl.soap.SOAPException" type="tns:SOAPException" xmlns:tns="http://soap.trl.ibm.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="getEstadoAfiliacion isAfiliadoTitular getStatus getDatosAfiliacion autenticacionWS"/>
+
+      <typeMapping
+        xmlns:ns="http://vo.wsafiliado.araucana.cl"
+        qname="ns:SegmentoVO"
+        type="java:cl.araucana.wsafiliado.vo.SegmentoVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://soap.trl.ibm.com"
+        qname="ns:SOAPException"
+        type="java:com.ibm.trl.soap.SOAPException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.wsafiliado.araucana.cl"
+        qname="ns:RequestWS"
+        type="java:cl.araucana.wsafiliado.vo.RequestWS"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.wsafiliado.araucana.cl"
+        qname="ns:CredentialWS"
+        type="java:cl.araucana.wsafiliado.vo.CredentialWS"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.wsafiliado.araucana.cl"
+        qname="ns:ResponseDataWS"
+        type="java:cl.araucana.wsafiliado.vo.ResponseDataWS"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.wsafiliado.araucana.cl"
+        qname="ns:ResponseWS"
+        type="java:cl.araucana.wsafiliado.vo.ResponseWS"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

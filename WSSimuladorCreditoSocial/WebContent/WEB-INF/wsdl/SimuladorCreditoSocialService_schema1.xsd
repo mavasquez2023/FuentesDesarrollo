@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/simuladorCreditoSocial" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/simuladorCreditoSocial">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="getSimuladorCreditoSocial" type="tns:getSimuladorCreditoSocial"/>
+
+  <xs:element name="getSimuladorCreditoSocialResponse" type="tns:getSimuladorCreditoSocialResponse"/>
+
+  <xs:complexType name="getSimuladorCreditoSocial">
+    <xs:sequence>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWS">
+    <xs:sequence>
+      <xs:element name="MONTO" type="xs:int"/>
+      <xs:element name="CUOTAS" type="xs:int"/>
+      <xs:element name="SUCURSAL" type="xs:string"/>
+      <xs:element name="TIPO_AFILIADO" type="xs:string"/>
+      <xs:element name="SEGURO_CESANTIA" type="xs:string"/>
+      <xs:element name="SEGURO_DESGRAVAMEN" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSimuladorCreditoSocialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:creditoVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditoVO">
+    <xs:sequence>
+      <xs:element name="LOG_RESPUESTA" type="xs:string"/>
+      <xs:element name="MONTO_CUOTA" type="xs:int"/>
+      <xs:element name="TASA_INT_MENSUAL" type="xs:double"/>
+      <xs:element name="TASA_INT_ANUAL" type="xs:double"/>
+      <xs:element name="CAE" type="xs:double"/>
+      <xs:element name="IMPUESTO" type="xs:int"/>
+      <xs:element name="GASTO_NOTARIAL" type="xs:int"/>
+      <xs:element name="CTC" type="xs:int"/>
+      <xs:element name="COSTO_MENSUAL_DESGRAVAMEN" type="xs:int"/>
+      <xs:element name="COSTO_TOTAL_DESGRAVAMEN" type="xs:int"/>
+      <xs:element name="COSTO_MENSUAL_CESANTIA" type="xs:int"/>
+      <xs:element name="COSTOS_TOTAL_CESANTIA" type="xs:int"/>
+      <xs:element name="FECHA_PRIMER_VENCIMIENTO" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DETALLE_CUOTA" type="tns:detalleVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleVO">
+    <xs:sequence>
+      <xs:element name="NUM_CUOTA" type="xs:int"/>
+      <xs:element name="FECHA_VENCIMIENTO" type="xs:int"/>
+      <xs:element name="MONTO_CUOTA" type="xs:int"/>
+      <xs:element name="MONTO_INTERES" type="xs:int"/>
+      <xs:element name="SEGURO_DESGRAVAMEN" type="xs:int"/>
+      <xs:element name="SEGURO_CESANTIA" type="xs:int"/>
+      <xs:element name="SALDO_CAPITAL" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

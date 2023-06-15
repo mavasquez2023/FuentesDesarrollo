@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<services>
+    <webservice name="{http://servicios.laaraucana.cl/simuladorCreditoSocial}SimuladorCreditoSocialService" type="JAX-WS">
+        <endpoint name="SimuladorCreditoSocialPort">
+            <operation name="getSimuladorCreditoSocial"/>
+        </endpoint>
+    </webservice>
+</services>

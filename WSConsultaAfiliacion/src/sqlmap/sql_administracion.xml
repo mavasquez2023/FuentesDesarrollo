@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="administracion">
+	
+	
+	<select id="validaUsuario" resultClass="java.util.HashMap" parameterClass="java.lang.String">
+	
+		SELECT password, base from USUWSCAFCA
+		where usuario= #usuario#
+	
+	</select>
+	
+	<select id="obtenerAutorizacionUsuario" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+	
+		SELECT count(1) from AUTWSCAFCA
+		where usuario= #usuario#
+		and metodo= #metodo#
+	
+	</select>
+
+</sqlMap> 

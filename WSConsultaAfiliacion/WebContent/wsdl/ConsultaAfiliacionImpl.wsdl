@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://mgr.wsafiliado.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://mgr.wsafiliado.araucana.cl" xmlns:intf="http://mgr.wsafiliado.araucana.cl" xmlns:tns1="http://soap.trl.ibm.com" xmlns:tns2="http://vo.wsafiliado.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://mgr.wsafiliado.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.wsafiliado.araucana.cl"/>
+   <import namespace="http://soap.trl.ibm.com"/>
+   <element name="getStatus">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getStatusResponse">
+    <complexType>
+     <sequence>
+      <element name="getStatusReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns1:SOAPException"/>
+   <element name="autenticacionWS">
+    <complexType>
+     <sequence>
+      <element name="param" type="tns2:CredentialWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="autenticacionWSResponse">
+    <complexType>
+     <sequence>
+      <element name="autenticacionWSReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEstadoAfiliacion">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="req" type="tns2:RequestWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEstadoAfiliacionResponse">
+    <complexType>
+     <sequence>
+      <element name="getEstadoAfiliacionReturn" type="tns2:ResponseWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isAfiliadoTitular">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="req" type="tns2:RequestWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isAfiliadoTitularResponse">
+    <complexType>
+     <sequence>
+      <element name="isAfiliadoTitularReturn" type="tns2:ResponseWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDatosAfiliacion">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="req" type="tns2:RequestWS"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDatosAfiliacionResponse">
+    <complexType>
+     <sequence>
+      <element name="getDatosAfiliacionReturn" type="tns2:ResponseDataWS"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.trl.ibm.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.wsafiliado.araucana.cl"/>
+   <complexType name="SOAPException">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo.wsafiliado.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.trl.ibm.com"/>
+   <complexType name="CredentialWS">
+    <sequence>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="user" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RequestWS">
+    <sequence>
+     <element name="rut_trabajador" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResponseWS">
+    <sequence>
+     <element name="afiliado" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="SegmentoVO">
+    <sequence>
+     <element name="pensionado" nillable="true" type="xsd:string"/>
+     <element name="trabajador" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResponseDataWS">
+    <sequence>
+     <element name="codigo_respuesta" type="xsd:int"/>
+     <element name="estado" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="observacion" nillable="true" type="xsd:string"/>
+     <element name="segmento" nillable="true" type="tns2:SegmentoVO"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="autenticacionWSRequest">
+
+      <wsdl:part element="impl:autenticacionWS" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatusRequest">
+
+      <wsdl:part element="impl:getStatus" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isAfiliadoTitularRequest">
+
+      <wsdl:part element="impl:isAfiliadoTitular" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDatosAfiliacionRequest">
+
+      <wsdl:part element="impl:getDatosAfiliacion" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatusResponse">
+
+      <wsdl:part element="impl:getStatusResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadoAfiliacionResponse">
+
+      <wsdl:part element="impl:getEstadoAfiliacionResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="SOAPException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="isAfiliadoTitularResponse">
+
+      <wsdl:part element="impl:isAfiliadoTitularResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadoAfiliacionRequest">
+
+      <wsdl:part element="impl:getEstadoAfiliacion" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="autenticacionWSResponse">
+
+      <wsdl:part element="impl:autenticacionWSResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDatosAfiliacionResponse">
+
+      <wsdl:part element="impl:getDatosAfiliacionResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ConsultaAfiliacionImpl">
+
+      <wsdl:operation name="getStatus">
+
+         <wsdl:input message="impl:getStatusRequest" name="getStatusRequest"/>
+
+         <wsdl:output message="impl:getStatusResponse" name="getStatusResponse"/>
+
+         <wsdl:fault message="impl:SOAPException" name="SOAPException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="autenticacionWS">
+
+         <wsdl:input message="impl:autenticacionWSRequest" name="autenticacionWSRequest"/>
+
+         <wsdl:output message="impl:autenticacionWSResponse" name="autenticacionWSResponse"/>
+
+         <wsdl:fault message="impl:SOAPException" name="SOAPException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstadoAfiliacion">
+
+         <wsdl:input message="impl:getEstadoAfiliacionRequest" name="getEstadoAfiliacionRequest"/>
+
+         <wsdl:output message="impl:getEstadoAfiliacionResponse" name="getEstadoAfiliacionResponse"/>
+
+         <wsdl:fault message="impl:SOAPException" name="SOAPException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isAfiliadoTitular">
+
+         <wsdl:input message="impl:isAfiliadoTitularRequest" name="isAfiliadoTitularRequest"/>
+
+         <wsdl:output message="impl:isAfiliadoTitularResponse" name="isAfiliadoTitularResponse"/>
+
+         <wsdl:fault message="impl:SOAPException" name="SOAPException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDatosAfiliacion">
+
+         <wsdl:input message="impl:getDatosAfiliacionRequest" name="getDatosAfiliacionRequest"/>
+
+         <wsdl:output message="impl:getDatosAfiliacionResponse" name="getDatosAfiliacionResponse"/>
+
+         <wsdl:fault message="impl:SOAPException" name="SOAPException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ConsultaAfiliacionImplSoapBinding" type="impl:ConsultaAfiliacionImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="SOAPException">
+
+            <wsdlsoap:fault name="SOAPException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="autenticacionWS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="autenticacionWSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="autenticacionWSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="SOAPException">
+
+            <wsdlsoap:fault name="SOAPException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstadoAfiliacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEstadoAfiliacionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEstadoAfiliacionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="SOAPException">
+
+            <wsdlsoap:fault name="SOAPException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isAfiliadoTitular">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isAfiliadoTitularRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isAfiliadoTitularResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="SOAPException">
+
+            <wsdlsoap:fault name="SOAPException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDatosAfiliacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDatosAfiliacionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDatosAfiliacionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="SOAPException">
+
+            <wsdlsoap:fault name="SOAPException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ConsultaAfiliacionImplService">
+
+      <wsdl:port binding="impl:ConsultaAfiliacionImplSoapBinding" name="ConsultaAfiliacionImpl">
+
+         <wsdlsoap:address location="http://localhost:9083/WSConsultaAfiliado/services/ConsultaAfiliacionImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
