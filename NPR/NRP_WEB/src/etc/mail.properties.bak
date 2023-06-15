@@ -1,0 +1,18 @@
+mail.smtp.server=146.83.1.63
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.user=nominas.pago
+mail.smtp.password=Enero2019
+mail.smtp.port=580
+mail.smtp.from=nominas.pago@laaraucana.cl
+mail.smtp.from.title=Nómina - La Araucana
+
+
+
+mail.smtp.firma.footer=
+
+
+mail.config.envio.nomina.subject=Descuento Créditos y Productos sys.YearMonth
+
+mail.config.envio.nomina=<html>Estimados:<br/><br/>Se adjunta n&oacute;mina de cr&eacute;ditos La Araucana para el mes de #mes_vencimiento_nomina# de sys.year4.<br/><br/><br/><table><tr><td>Total de registros en N&oacute;mina</td><td>:</td> <td align='right'>#total_registros#</td></tr><tr><td>Monto total de N&oacute;mina           </td><td>:</td> <td align='right'>#monto_total_nomina# </td></tr></table><br/><br/>Se solicita, acusar recibo y enviar reporte de rechazados.<br/><br/>Saludos cordiales<br/><br/><br/>Atte,<br/><br/>Web N&oacute;minas<br/>Oficina Central<br/>Merced 472, Santiago<br/>www.laaraucana.cl<br/></html>
+

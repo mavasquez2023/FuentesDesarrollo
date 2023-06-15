@@ -1,0 +1,3 @@
+config.variables.sistema=;PERIODO:sys.YearMonth;PERIODO_ANTERIOR:sys.month2.anterior;PERIODO_ACTUAL:sys.month2;YEAR_ACTUAL:sys.year4;
+config.campos.bd.disponibles=;PERIODO:PERIODO;OFICINA PAGO:OFICINA_PAGO;RUT EMPRESA:RUT_EMPRESA;
+

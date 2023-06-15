@@ -1,0 +1,10 @@
+http://146.83.1.35:9080/NRP/Planillas?req=descargar_configuracion&reporte=NOMINA_CAFF_TRABAJADORES
+
+76265736
+
+http://localhost:8080/NRP/configurador.jsp?r=NOM_76265736_Provida&ce=76265736
+
+
+	
+		<columna nombre="cantidad_registros_aux" header="COUNT AUX" data_ej="Columna que suma la columna edad (Uso Interno)" largo="1" relleno="" alineamiento="derecha" no_incluir="true" metodo="_SUM_" data="edad"/>
+		<columna nombre="suma_total_aux"  header="SUM AUX"	data_ej="Columna que cuenta los registros en el archivo (Uso Interno)" 	largo="1" relleno="" alineamiento="derecha" no_incluir="true" metodo="_COUNT_"/>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="error" path="/error.do" />
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/error" type="cl.laaraucana.resultadonrp.actions.ErrorAction">
+			<forward name="go" path="/error.jsp" />
+		</action>
+		<action path="/consolidacion" type="cl.laaraucana.resultadonrp.actions.ResumenConsolidacionAction">
+			<forward name="success" path="/main/ejecucion.jsp" />
+		</action>
+		<action path="/resultConsolidacion" type="cl.laaraucana.resultadonrp.actions.EstadisticaConsolidacionAction">
+			<forward name="success" path="/canvasConsolidacion.jsp" />
+		</action>
+		<action path="/generacion" type="cl.laaraucana.resultadonrp.actions.ResumenGeneracionAction">
+			<forward name="success" path="/main/ejecucion.jsp" />
+		</action>
+		<action path="/resultGeneracion" type="cl.laaraucana.resultadonrp.actions.EstadisticaGeneracionAction">
+			<forward name="success" path="/canvasGeneracion.jsp" />
+		</action>
+		<action path="/disponibilizacion" type="cl.laaraucana.resultadonrp.actions.ResumenDisponibilizacionAction">
+			<forward name="success" path="/main/ejecucion.jsp" />
+		</action>
+		<action path="/resultDisponibilizacion" type="cl.laaraucana.resultadonrp.actions.EstadisticaDisponibilizacionAction">
+			<forward name="success" path="/canvasDisponibilizacion.jsp" />
+		</action>
+		<action path="/init" type="cl.laaraucana.resultadonrp.actions.InitAction">
+			<forward name="success" path="/main/inicio.jsp" />
+		</action>
+		<action path="/confirm" type="cl.laaraucana.resultadonrp.actions.ConfirmAction">
+			<forward name="success" path="/main/confirm.jsp" />
+		</action>
+		<action path="/correos" type="cl.laaraucana.resultadonrp.actions.GestionCorreosAction">
+			<forward name="success" path="/main/nuevo_correo.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="etc.config"/>
+</struts-config>

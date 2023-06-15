@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ips">
+
+	<!-- REQ CARGA DATOS IPS  -->
+	<delete id="borrarTablaIPSa">
+		drop table nrpdta.nrp15f1_ia
+	</delete>
+	<delete id="borrarTablaIPSb">
+		drop table nrpdta.nrp15f1_ib
+	</delete>
+
+	<insert id="crearTablaIPSa" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		create table nrpdta.nrp15f1_ia
+		as
+		(
+			select * from nrpdta.nrp15f1 where periodo =$PERIODO$ and rut_empresa = '61533000' 
+		)
+		with data
+	</insert>
+	
+	<insert id="crearTablaIPSb" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		create table nrpdta.nrp15f1_ib
+		as
+		(
+			select * from nrpdta.nrp15hf1 where periodo =$PERIODO_ANTERIOR$ and rut_empresa = '61533000' 
+		)
+		with data
+	</insert>
+	
+	<select id="countDatos15IPS"  parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select count(1) from nrpdta.nrp15ips
+	</select>
+	<delete id="limpiarDatos15IPS">
+		delete from nrpdta.nrp15ips
+	</delete>	
+	
+	<!-- Contratos Terminados -->
+	<insert id="cargarDatosIPSCondicion1" parameterClass="cl.liv.comun.utiles.MiHashMap">	
+		insert into nrpdta.nrp15ips
+		 select 
+		        PERIODO
+		        ,TIPO_NOMINA
+		        ,OFICINA_PAGO
+		        ,OFICINA_CREDITO
+		        ,NUMERO_CONTRATO
+		        ,FECHA_VCTO_CUOTA
+		        ,NRO_CUOTA
+		        ,CANTIDAD_CUOTAS
+		        ,IMPORTE_CUOTA_MONEDA_TX
+		        ,IMPORTE_CUOTA_MONEDA_LOCAL
+		        ,IMPORTE_GRAVE_MONEDA_LOCAL
+		        ,CODIGO_MONEDA_LOCAL
+		        ,CODIGO_MONEDA_TX
+		        ,COTIZACION_MONEDA_TX
+		        ,RUT_PAGADOR
+		        ,DV_PAGADOR
+		        ,RUT_EMPRESA
+		        ,DV_EMPRESA
+		        ,ID_BP_SAP
+		        ,NRO_INSCRIPCION
+		        ,CAJA_PREVISION
+		        ,GRUPO_PAGO
+		        ,NUMERO_BENEFICIARIO
+		        ,ANEXO_NOMINA
+		        ,SUCURSAL_CCLA
+		        ,PRODUCTO
+		        ,CCAF
+		        ,NRO_CONTRATO_EXTERNO
+		        ,TIPO_OPERACION
+		        ,LINEA_CREDITO
+		        ,TIPO_PAGADOR
+		        ,NRO_MESES_MOROSOS
+		        ,FECHA_COLOCACION
+		        ,NOMBRE_DEUDOR
+		        ,APELLIDO_PATERNO
+		        ,APELLIDO_MATERNO
+		        ,NOMBRE_EMPRESA
+		        ,3 EMPLANILLADO_SN
+		        ,RENTAS
+		        ,MONTO_TOTAL_NOMINA
+		        ,FOLIO_NOMINA
+		        ,CODIGO_CAJA_ORIGEN
+		        ,NUMERO_PAGARE
+		        ,CODIGO_HOLDING
+		        ,ORIGEN
+		        ,CUOTON
+		        ,ID_DATA_ARCHIVO
+		        ,FECHA_VCTO_NOMINA
+		        ,CODIGO_NOMINA
+		        ,ACTUALIZA
+		from nrpdta.nrp15f1_ib th15 
+		where 
+		        th15.nro_cuota = cantidad_cuotas
+		        
+		and th15.numero_contrato not in ( 
+		        select numero_contrato
+		        from nrpdta.nrp15f1_ia t15 
+		        where 
+		            t15.nro_cuota = th15.nro_cuota
+		 )
+	
+	</insert>
+	
+	<!-- Contratos nuevos  -->
+	<insert id="cargarDatosIPSCondicion2" parameterClass="cl.liv.comun.utiles.MiHashMap">
+		insert into nrpdta.nrp15ips
+		select 
+		PERIODO
+		,TIPO_NOMINA
+		,OFICINA_PAGO
+		,OFICINA_CREDITO
+		,NUMERO_CONTRATO
+		,FECHA_VCTO_CUOTA
+		,NRO_CUOTA
+		,CANTIDAD_CUOTAS
+		,IMPORTE_CUOTA_MONEDA_TX
+		,IMPORTE_CUOTA_MONEDA_LOCAL
+		,IMPORTE_GRAVE_MONEDA_LOCAL
+		,CODIGO_MONEDA_LOCAL
+		,CODIGO_MONEDA_TX
+		,COTIZACION_MONEDA_TX
+		,RUT_PAGADOR
+		,DV_PAGADOR
+		,RUT_EMPRESA
+		,DV_EMPRESA
+		,ID_BP_SAP
+		,NRO_INSCRIPCION
+		,CAJA_PREVISION
+		,GRUPO_PAGO
+		,NUMERO_BENEFICIARIO
+		,ANEXO_NOMINA
+		,SUCURSAL_CCLA
+		,PRODUCTO
+		,CCAF
+		,NRO_CONTRATO_EXTERNO
+		,TIPO_OPERACION
+		,LINEA_CREDITO
+		,TIPO_PAGADOR
+		,NRO_MESES_MOROSOS
+		,FECHA_COLOCACION
+		,NOMBRE_DEUDOR
+		,APELLIDO_PATERNO
+		,APELLIDO_MATERNO
+		,NOMBRE_EMPRESA
+		,1 EMPLANILLADO_SN
+		,RENTAS
+		,MONTO_TOTAL_NOMINA
+		,FOLIO_NOMINA
+		,CODIGO_CAJA_ORIGEN
+		,NUMERO_PAGARE
+		,CODIGO_HOLDING
+		,ORIGEN
+		,CUOTON
+		,ID_DATA_ARCHIVO
+		,FECHA_VCTO_NOMINA
+		,CODIGO_NOMINA
+		,ACTUALIZA
+		from nrpdta.nrp15f1_ia t15 
+		where 
+		        t15.nro_cuota = 1 
+		        and t15.fecha_vcto_cuota = t15.fecha_vcto_nomina
+		        and t15.ID_DATA_ARCHIVO not in ( select ID_DATA_ARCHIVO from nrpdta.nrp15ips  )
+		
+		        
+		       
+	
+	
+	</insert>
+	
+	<!-- Contratos con mora -->
+	<insert id="cargarDatosIPSCondicion3" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+		insert into nrpdta.nrp15ips
+		select 
+		PERIODO
+		,TIPO_NOMINA
+		,OFICINA_PAGO
+		,OFICINA_CREDITO
+		,NUMERO_CONTRATO
+		,FECHA_VCTO_CUOTA
+		,NRO_CUOTA
+		,CANTIDAD_CUOTAS
+		,IMPORTE_CUOTA_MONEDA_TX
+		,IMPORTE_CUOTA_MONEDA_LOCAL
+		,IMPORTE_GRAVE_MONEDA_LOCAL
+		,CODIGO_MONEDA_LOCAL
+		,CODIGO_MONEDA_TX
+		,COTIZACION_MONEDA_TX
+		,RUT_PAGADOR
+		,DV_PAGADOR
+		,RUT_EMPRESA
+		,DV_EMPRESA
+		,ID_BP_SAP
+		,NRO_INSCRIPCION
+		,CAJA_PREVISION
+		,GRUPO_PAGO
+		,NUMERO_BENEFICIARIO
+		,ANEXO_NOMINA
+		,SUCURSAL_CCLA
+		,PRODUCTO
+		,CCAF
+		,NRO_CONTRATO_EXTERNO
+		,TIPO_OPERACION
+		,LINEA_CREDITO
+		,TIPO_PAGADOR
+		,NRO_MESES_MOROSOS
+		,FECHA_COLOCACION
+		,NOMBRE_DEUDOR
+		,APELLIDO_PATERNO
+		,APELLIDO_MATERNO
+		,NOMBRE_EMPRESA
+		,2 EMPLANILLADO_SN
+		,RENTAS
+		,MONTO_TOTAL_NOMINA
+		,FOLIO_NOMINA
+		,CODIGO_CAJA_ORIGEN
+		,NUMERO_PAGARE
+		,CODIGO_HOLDING
+		,ORIGEN
+		,CUOTON
+		,ID_DATA_ARCHIVO
+		,FECHA_VCTO_NOMINA
+		,CODIGO_NOMINA
+		,ACTUALIZA
+		from nrpdta.nrp15f1_ia t15 
+		where 
+		        t15.rut_empresa = '61533000' 
+		        and t15.fecha_vcto_cuota != t15.fecha_vcto_nomina
+		        and t15.ID_DATA_ARCHIVO not in ( select ID_DATA_ARCHIVO from nrpdta.nrp15ips  )
+		     
+	
+	</insert>
+	
+	<!-- Contratos modificados -->
+	<insert id="cargarDatosIPSCondicion4" parameterClass="cl.liv.comun.utiles.MiHashMap">
+	
+	insert into nrpdta.nrp15ips
+	select 
+		PERIODO
+		,TIPO_NOMINA
+		,OFICINA_PAGO
+		,OFICINA_CREDITO
+		,NUMERO_CONTRATO
+		,FECHA_VCTO_CUOTA
+		,NRO_CUOTA
+		,CANTIDAD_CUOTAS
+		,IMPORTE_CUOTA_MONEDA_TX
+		,IMPORTE_CUOTA_MONEDA_LOCAL
+		,IMPORTE_GRAVE_MONEDA_LOCAL
+		,CODIGO_MONEDA_LOCAL
+		,CODIGO_MONEDA_TX
+		,COTIZACION_MONEDA_TX
+		,ia.RUT_PAGADOR
+		,DV_PAGADOR
+		,RUT_EMPRESA
+		,DV_EMPRESA
+		,ID_BP_SAP
+		,ia.NRO_INSCRIPCION
+		,CAJA_PREVISION
+		,GRUPO_PAGO
+		,NUMERO_BENEFICIARIO
+		,ANEXO_NOMINA
+		,SUCURSAL_CCLA
+		,PRODUCTO
+		,CCAF
+		,NRO_CONTRATO_EXTERNO
+		,TIPO_OPERACION
+		,LINEA_CREDITO
+		,TIPO_PAGADOR
+		,NRO_MESES_MOROSOS
+		,FECHA_COLOCACION
+		,NOMBRE_DEUDOR
+		,APELLIDO_PATERNO
+		,APELLIDO_MATERNO
+		,NOMBRE_EMPRESA
+		,2 EMPLANILLADO_SN
+		,RENTAS
+		,MONTO_TOTAL_NOMINA
+		,FOLIO_NOMINA
+		,CODIGO_CAJA_ORIGEN
+		,NUMERO_PAGARE
+		,CODIGO_HOLDING
+		,ORIGEN
+		,CUOTON
+		,ID_DATA_ARCHIVO
+		,FECHA_VCTO_NOMINA
+		,CODIGO_NOMINA
+		,ACTUALIZA
+		 from (
+		        select actual.rut_pagador, actual.nro_inscripcion, actual.total_cuotas from (
+		                select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ia group by rut_pagador,nro_inscripcion 
+		                ) actual,
+		                (
+		                select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ib group by rut_pagador,nro_inscripcion 
+		                ) anterior
+		        where
+		        actual.rut_pagador = anterior.rut_pagador
+		        and actual.nro_inscripcion = anterior.nro_inscripcion
+		and actual.total_cuotas != anterior.total_cuotas
+		) cont_modif,
+		nrpdta.nrp15f1_ia ia
+		where
+		        ia.rut_pagador = cont_modif.rut_pagador
+		        and ia.nro_inscripcion = cont_modif.nro_inscripcion
+		        and ia.ID_DATA_ARCHIVO not in ( select ID_DATA_ARCHIVO from nrpdta.nrp15ips  )
+	
+	</insert>
+	
+	
+	
+	
+	
+	<!-- Cuadratura -->
+	
+	<!-- Nomina Mes anterior sin agrupar -->
+	<select id="row_mes_anterior_sin_agrupar" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select count(1) r_mes_anterior_sin_agrupar,sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_mes_anterior_sin_agrupar  from nrpdta.hips$PERIODO_ANTERIOR$
+	</select>
+	<!-- Nomina Mes anterior agrupadar -->
+	<select id="row_mes_anterior_agrupada" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select count(1) r_mes_anterior_agrupada, sum(agrupada.m_mes_anterior_agrupada) m_mes_anterior_agrupada from (
+			select count(1) r_mes_anterior_agrupada,sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_mes_anterior_agrupada 
+			from nrpdta.hips$PERIODO_ANTERIOR$ 
+			group by nro_inscripcion
+			) agrupada
+	</select>
+<!-- 	<select id="row_mes_anterior_agrupada" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap"> -->
+<!-- 		select count(1) r_mes_anterior_agrupada, sum(agrupada.m_mes_anterior_agrupada) m_mes_anterior_agrupada from ( -->
+<!-- 			select count(1) r_mes_anterior_agrupada,sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_mes_anterior_agrupada  -->
+<!-- 			from nrpdta.hips$PERIODO_ANTERIOR$  -->
+<!-- 			group by nro_inscripcion, rut_pagador -->
+<!-- 			) agrupada -->
+<!-- 	</select> -->
+	<!-- Total SAP -->
+	<select id="row_totales_sap" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select count(1) r_cantidad_registros_sap_mes, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_cantidad_registros_sap_mes 
+		from nrpdta.nrp15f1_ia 
+	</select>
+	
+	
+	
+	<!-- 1.-Terminados Normal -->
+	<select id="row_terminados_normal" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		select count(1) r_terminados_normal, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_terminados_normal 
+		from nrpdta.nrp15f1_ia where nro_cuota=cantidad_cuotas and fecha_vcto_cuota=fecha_vcto_nomina
+	</select>
+	<!-- 2.-Terminados Anticipados-->
+	<select id="row_terminados_anticipados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		 select count(1) r_terminados_anticipados, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_terminados_anticipados
+		from nrpdta.nrp15f1_ib ipsb where nro_cuota!=cantidad_cuotas and fecha_vcto_cuota=fecha_vcto_nomina
+		and 1 not in (  select 1
+		                from nrpdta.nrp15f1_ia ipsa
+		                where
+		                        ipsa.numero_contrato = ipsb.numero_contrato
+		 )
+	</select>
+<!-- 	<select id="row_terminados_anticipados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap"> -->
+<!-- 		select count(1) r_terminados_anticipados, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_terminados_anticipados -->
+<!-- 		from nrpdta.nrp15f1_ib ipsb where nro_cuota!=cantidad_cuotas and fecha_vcto_cuota=fecha_vcto_nomina -->
+<!-- 		and 1 not in (  select 1 -->
+<!-- 		                from nrpdta.nrp15f1_ia ipsa -->
+<!-- 		                where -->
+<!-- 		                        ipsa.rut_pagador = ipsb.rut_pagador -->
+<!-- 		                        and ipsa.nro_inscripcion = ipsb.nro_inscripcion  -->
+<!-- 		 ) -->
+<!-- 	</select> -->
+	<!-- 3.- Modificados-->
+	<select id="row_modificados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	
+		select count(1) r_modificados, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_modificados
+			from (
+			       select actual.rut_pagador, actual.nro_inscripcion, actual.total_cuotas from (
+			               select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ia group by rut_pagador,nro_inscripcion
+			               ) actual,
+			               (
+			               select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ib group by rut_pagador,nro_inscripcion
+			               ) anterior
+			       where
+			       actual.rut_pagador = anterior.rut_pagador
+			       and actual.nro_inscripcion = anterior.nro_inscripcion
+			and actual.total_cuotas != anterior.total_cuotas
+			) cont_modif,
+			nrpdta.nrp15f1_ia ia
+			where
+			       ia.rut_pagador = cont_modif.rut_pagador
+			       and ia.nro_inscripcion = cont_modif.nro_inscripcion
+	</select>
+	
+<!-- 	<select id="row_modificados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	 -->
+<!-- 		select count(1) r_modificados, sum(ipsa.IMPORTE_CUOTA_MONEDA_LOCAL) m_modificados -->
+<!-- 		from  -->
+		
+<!-- 		        nrpdta.nrp15f1_ia ipsa, -->
+<!-- 		        nrpdta.nrp15f1_ib ipsb -->
+<!-- 		where -->
+<!-- 		        ipsa.rut_pagador = ipsb.rut_pagador -->
+<!-- 		        and ipsa.nro_inscripcion = ipsb.nro_inscripcion  -->
+<!-- 		        and ipsa.total_cuotas != ipsb.total_cuotas -->
+<!-- 		        and ipsa.IMPORTE_CUOTA_MONEDA_LOCAL != ipsb.IMPORTE_CUOTA_MONEDA_LOCAL -->
+<!-- 	</select> -->
+	
+	<!-- 4.- Iguales-->
+	<select id="row_iguales" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	
+		
+		select count(1) r_iguales, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_iguales
+		from (
+		       select actual.rut_pagador, actual.nro_inscripcion, actual.total_cuotas from (
+		               select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ia group by rut_pagador,nro_inscripcion
+		               ) actual,
+		               (
+		               select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ib group by rut_pagador,nro_inscripcion
+		               ) anterior
+		       where
+		       actual.rut_pagador = anterior.rut_pagador
+		       and actual.nro_inscripcion = anterior.nro_inscripcion
+		and actual.total_cuotas = anterior.total_cuotas
+		) cont_modif,
+		nrpdta.nrp15f1_ia ia
+		where
+		        ia.rut_pagador = cont_modif.rut_pagador
+		       and ia.nro_inscripcion = cont_modif.nro_inscripcion
+	</select>
+<!-- 	<select id="row_iguales" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	 -->
+<!-- 		select count(1) r_iguales, sum(IMPORTE_CUOTA_MONEDA_LOCAL) m_iguales -->
+<!-- 		from  -->
+		
+<!-- 		        nrpdta.nrp15f1_ia ipsa, -->
+<!-- 		        nrpdta.nrp15f1_ib ipsb -->
+<!-- 		where -->
+<!-- 		        ipsa.rut_pagador = ipsb.rut_pagador -->
+<!-- 		        and ipsa.nro_inscripcion = ipsb.nro_inscripcion  -->
+<!-- 		        and ipsa.IMPORTE_CUOTA_MONEDA_LOCAL = ipsb.IMPORTE_CUOTA_MONEDA_LOCAL -->
+<!-- 		        and ipsa.nro_cuota != ipsb.nro_cuota -->
+<!-- 	</select> -->
+	<!-- 5.- Creados-->
+	
+	<select id="row_creados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	
+		 select count(1) r_creados, sum(ipsa.IMPORTE_CUOTA_MONEDA_LOCAL) m_creados
+			from 
+			        nrpdta.nrp15f1_ia ipsa
+			where
+			        ipsa.nro_cuota = 1
+			        and ipsa.fecha_vcto_cuota = ipsa.fecha_vcto_nomina
+			        and 1 not in (      
+			                select 1 
+			                from 
+			                        nrpdta.nrp15f1_ib ipsb
+			                where
+			                        ipsa.numero_contrato =ipsb.numero_contrato
+			                )
+	</select>
+<!-- 	<select id="row_creados" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">	 -->
+<!-- 		select count(1) r_creados, sum(ipsa.IMPORTE_CUOTA_MONEDA_LOCAL) m_creados -->
+<!-- 		from  -->
+<!-- 		        nrpdta.nrp15f1_ia ipsa -->
+<!-- 		where -->
+<!-- 		        ipsa.nro_cuota = 1 -->
+<!-- 		        and ipsa.fecha_vcto_cuota = ipsa.fecha_vcto_nomina -->
+<!-- 		        and 1 not in (       -->
+<!-- 		                select 1  -->
+<!-- 		                from  -->
+<!-- 		                        nrpdta.nrp15f1_ib ipsb -->
+<!-- 		                where -->
+<!-- 		                        ipsa.rut_pagador =ipsb.rut_pagador -->
+<!-- 		                        and ipsa.nro_inscripcion = ipsb.nro_inscripcion -->
+<!-- 		                      ) -->
+<!-- 	</select> -->
+	
+	
+	<!-- Novedades -->
+	<select id="row_novedades" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select * from nrpdta.NRP15IPS
+		 
+		 
+		 
+		
+	</select>
+	
+	<delete id="dropTableTotalNovedades" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		drop table nrpdta.ipstmpnov
+	</delete>
+	
+	<insert id="createTableTotalNovedades" parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		
+ 
+		create table nrpdta.ipstmpnov
+		as
+		(
+ 
+			select count(1) contador, sum(cuota) cuota from (
+			 
+			select IMPORTE_CUOTA_MONEDA_LOCAL as cuota, nro_inscripcion as inscripcion, rut_pagador as pagador, 'anticipados' as tipo
+					from nrpdta.nrp15f1_ib ipsb where nro_cuota!=cantidad_cuotas and fecha_vcto_cuota=fecha_vcto_nomina
+					and 1 not in (  select 1
+					                from nrpdta.nrp15f1_ia ipsa
+					                where
+					                        ipsa.numero_contrato = ipsb.numero_contrato
+					 )
+			union		 
+			
+			select IMPORTE_CUOTA_MONEDA_LOCAL as cuota, nro_inscripcion as inscripcion, rut_pagador as pagador, 'creados' as tipo
+			from 
+			nrpdta.nrp15f1_ia ipsa
+			where
+			ipsa.nro_cuota = 1
+			and ipsa.fecha_vcto_cuota = ipsa.fecha_vcto_nomina
+			and 1 not in (      
+			        select 1 
+			        from 
+			                nrpdta.nrp15f1_ib ipsb
+			        where
+			                ipsa.numero_contrato =ipsb.numero_contrato
+			        )
+			        
+			union
+			
+			select IMPORTE_CUOTA_MONEDA_LOCAL as cuota, ia.nro_inscripcion as inscripcion, ia.rut_pagador as pagador, 'modificados' as tipo
+			        from (
+			               select actual.rut_pagador, actual.nro_inscripcion, actual.total_cuotas from (
+			                       select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ia group by rut_pagador,nro_inscripcion
+			                       ) actual,
+			                       (
+			                       select rut_pagador,nro_inscripcion, sum(IMPORTE_CUOTA_MONEDA_LOCAL) total_cuotas from nrpdta.nrp15f1_ib group by rut_pagador,nro_inscripcion
+			                       ) anterior
+			               where
+			               actual.rut_pagador = anterior.rut_pagador
+			               and actual.nro_inscripcion = anterior.nro_inscripcion
+			        and actual.total_cuotas != anterior.total_cuotas
+			        ) cont_modif,
+			        nrpdta.nrp15f1_ia ia
+			        where
+			               ia.rut_pagador = cont_modif.rut_pagador
+			               and ia.nro_inscripcion = cont_modif.nro_inscripcion        
+			        
+			        
+			) data 
+			
+			group by data.pagador,data.inscripcion
+			
+			) with data
+	</insert>
+	
+	
+	<!-- Agrupada -->
+	<select id="row_agrupadas" parameterClass="cl.liv.comun.utiles.MiHashMap" resultClass="cl.liv.comun.utiles.MiHashMap">
+		
+		select count(1) r_agrupadas, sum(cuota) m_agrupadas from nrpdta.ipstmpnov
+		
+	</select>
+	
+
+	
+	<insert id="agregarDataHistoricaIPSh"  parameterClass="cl.liv.comun.utiles.MiHashMap" >
+		
+		create table  NRPDTA.hips$PERIODO$ as
+		( select * from NRPDTA.nrp15ips ) with data
+		
+	</insert>
+	
+	
+</sqlMap> 

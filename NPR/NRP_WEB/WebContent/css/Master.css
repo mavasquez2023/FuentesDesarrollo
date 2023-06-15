@@ -1,0 +1,111 @@
+HTML {
+	height: 100%;
+}
+
+BODY {
+	BACKGROUND-COLOR: #FFFFFF;
+	COLOR: #333366;
+	FONT-FAMILY: 'Times New Roman' height :   100%;
+}
+
+H1 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+H2 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+H3 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+H4 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+H5 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+H6 {
+	COLOR: #6666CC;
+	FONT-FAMILY: 'Times New Roman';
+	TEXT-TRANSFORM: capitalize
+}
+
+TH {
+	color: #6060cc
+}
+
+.mensaje {
+	background-color: #F0F0F0;
+	background-image: url(../images/ico_mensaje.gif);
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	padding: 15px 15px 15px 45px;
+	text-align: left;
+}
+
+.confirmacion {
+	background-color: #F0F0F0;
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	padding: 15px 15px 15px 45px;
+	text-align: left;
+}
+
+.bg_gris_ {
+	background-color: #F2F2F2;
+	padding-top: 20px;
+	height: 50px;
+}
+
+#footer {
+	position: relative;
+	margin-top: -7.5em;
+}
+
+.boton_intranet {
+    PADDING-BOTTOM: 10px;
+    PADDING-LEFT: 30px;
+    PADDING-RIGHT: 30px;
+    BACKGROUND: #034a98;
+    COLOR: #fff !important;
+    FONT-SIZE: 1.2em;
+    CURSOR: pointer;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+    PADDING-TOP: 10px;
+    border-width: 0px;
+}
+
+.boton_intranet:hover {
+    BACKGROUND: #666;
+    COLOR: #fff;
+    TEXT-DECORATION: none !important;
+}
+
+.busqueda_titulo {
+    text-align: center;
+    color: #005E99;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
