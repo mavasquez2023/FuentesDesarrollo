@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultEliminarPeriodo" class="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		<result property="mes_informacion" column="SMMESINFO" />				
+	</resultMap>
+		
+	<delete id="delPeriodoSMF01H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF01H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF02H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF02H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF03H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF03H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF05H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF05H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF06H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF06H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF07H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF07H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+	
+	<delete id="delPeriodoSMF08H" parameterClass="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		DELETE FROM SIMATDTA.SMF08H where SMMESINFO=#mes_informacion#
+		WITH NC 
+	</delete>
+		
+	
+</sqlMap>

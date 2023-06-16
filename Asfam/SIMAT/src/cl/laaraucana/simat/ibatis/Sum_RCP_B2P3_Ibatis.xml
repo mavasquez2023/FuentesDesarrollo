@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultSumVO" class="cl.laaraucana.simat.entidades.SumVO">
+		<result property="resultadoSum" column="resultadoSum" />				
+	</resultMap>
+
+<!-- para bloque 2 parte 3 -->	
+	<select id="getSumB2P3_AFP_CUPRUM_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40103 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB2P3_AFP_HABITAT_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40105 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB2P3_AFP_PLANVITAL_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40107 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB2P3_AFP_PROVIDA_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40109 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB2P3_AFP_CAPITAL_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40113 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getSumB2P3_AFP_MODELO_prenatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40114 and trim(SMCODDIAGN)='650'
+	</select>
+	
+	<select id="getSumB2P3_AFP_CUPRUM_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40103 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB2P3_AFP_HABITAT_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40105 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB2P3_AFP_PLANVITAL_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40107 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB2P3_AFP_PROVIDA_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40109 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB2P3_AFP_CAPITAL_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40113 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getSumB2P3_AFP_MODELO_postNatal" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40114 and trim(SMCODDIAGN)='1650'
+	</select>
+	
+	<select id="getSumB2P3_AFP_CUPRUM_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40103 
+	</select>
+	<select id="getSumB2P3_AFP_HABITAT_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40105 
+	</select>
+	<select id="getSumB2P3_AFP_PLANVITAL_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40107 
+	</select>
+	<select id="getSumB2P3_AFP_PROVIDA_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40109 
+	</select>
+	<select id="getSumB2P3_AFP_CAPITAL_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40113 
+	</select>
+	<select id="getSumB2P3_AFP_MODELO_Parental" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf03 where SMENTPREVI=40114 
+	</select>
+	
+	<select id="getSumB2P3_AFP_CUPRUM_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40103 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB2P3_AFP_HABITAT_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40105 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB2P3_AFP_PLANVITAL_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40107 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB2P3_AFP_PROVIDA_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40109 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB2P3_AFP_CAPITAL_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40113 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	<select id="getSumB2P3_AFP_MODELO_EnfGraveNM" resultMap="resultSumVO">
+		select IFNULL(sum(SMMONCOTSC),0) as resultadoSum from simatdta.smf02 where SMENTPREVI=40114 and (trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650')
+	</select>
+	
+
+	
+	
+</sqlMap>

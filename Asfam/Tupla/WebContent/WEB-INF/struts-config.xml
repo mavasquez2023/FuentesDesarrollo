@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<!-- Orígenes de datos -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Beans de formulario -->
+	<form-beans>
+	<form-bean name="webservice" type="cl.araucana.tupla2.struts.bussiness.TO.WebserviceTO" ></form-bean>
+	<form-bean name="bienvenida" type="cl.araucana.tupla2.struts.bussiness.TO.BienvenidaTO"></form-bean>
+	<form-bean name="extincion" type="cl.araucana.tupla2.struts.bussiness.TO.ExtinsionTO"></form-bean>
+	<form-bean name="validacion" type="cl.araucana.tupla2.struts.bussiness.TO.ValidacionTO"></form-bean>
+	<form-bean name="actualizacion" type="cl.araucana.tupla2.struts.bussiness.TO.ActualizacionTO"></form-bean>
+	<form-bean name="marcacion" type="cl.araucana.tupla2.struts.bussiness.TO.MarcacionTO"></form-bean>
+	</form-beans>
+
+	<!-- Excepciones globales -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Reenvíos globales -->
+	<global-forwards>
+	</global-forwards>
+
+	<!-- Correlaciones de acción -->
+	<action-mappings>
+	<action name="bienvenida" path="/bienvenida" type="cl.araucana.tupla2.struts.action.BienvenidaAction">
+		<forward name="onSuccess" path="/jsp/consultar.jsp"></forward>
+	</action>
+	<action name="webservice" path="/webservice" type="cl.araucana.tupla2.struts.action.WebserviceAction">
+		<forward name="onSuccess" path="/jsp/exito.jsp"></forward>
+		<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	<action name="actualizacion" path="/envio" type="cl.araucana.tupla2.struts.action.EnvioXmlAction">
+	<forward name="onSuccess" path="/jsp/pagina3.jsp"></forward>
+	<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	<action name="bienvenida" path="/prepareenvio" type="cl.araucana.tupla2.struts.action.PrepareEnvioAction">
+	<forward name="onSuccess" path="/jsp/enviar.jsp"></forward>
+	<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	<action name="extincion" path="/prepareextincion" type="cl.araucana.tupla2.struts.action.PrepareExtincionAction">
+	<forward name="onSuccess" path="/jsp/pagina5.jsp"></forward>
+	<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	<action name="extincion" path="/extincion" type="cl.araucana.tupla2.struts.action.ExtincionAction">
+		<forward name="showForm" path="/jsp/pagina5.jsp"></forward>
+		<forward name="onSuccess" path="/jsp/exito.jsp"></forward>
+		<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	
+	<action name="validacion" path="/preparevalidacion" type="cl.araucana.tupla2.struts.action.PrepareValidacionAction">
+	<forward name="onSuccess" path="/jsp/pagina7.jsp"></forward>
+	<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	
+	<action name="validacion" path="/validacion" type="cl.araucana.tupla2.struts.action.ValidacionAction">
+	<forward name="onSuccess" path="/jsp/pagina8.jsp"></forward>
+	<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	
+	<action name="actualizacion" path="/actualizacion" type="cl.araucana.tupla2.struts.action.ActualizacionAction">
+		<forward name="showForm" path="/jsp/actualiza.jsp"></forward>
+		<forward name="onSuccess" path="/jsp/exito.jsp"></forward>
+		<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	
+	<action name="marcacion" path="/marcacion" type="cl.araucana.tupla2.struts.action.MarcacionAction">
+		<forward name="showForm" path="/jsp/marca.jsp"></forward>
+		<forward name="onSuccess" path="/jsp/exito.jsp"></forward>
+		<forward name="onError" path="/jsp/error.jsp"></forward>
+	</action>
+	</action-mappings>
+
+	<!-- Recursos de mensaje -->
+	<message-resources parameter="local.laaraucana.tupla2.resources.ApplicationResources"/>
+
+</struts-config>

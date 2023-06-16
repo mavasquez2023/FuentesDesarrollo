@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Resumen SIF014" language="groovy" pageWidth="595" pageHeight="595" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b29dd697-06cf-4c7f-8567-7f26af77a72b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Prdo" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT T1.IDTIPOORIGEN,T1.DESCTPOORIGEN,coalesce(T2.TOTAL,0) AS TOTAL,coalesce(T2.MTOREINTEG,0) AS MTOREINTEG, coalesce(T2.MTOREINTEGT,0) AS MTOREINTEGT
+FROM
+(SELECT IDTIPOORIGEN , DESCTPOORIGEN
+FROM SVDTAD.SVTPOORG
+ORDER BY IDTIPOORIGEN) T1
+LEFT JOIN
+(SELECT SIFORIGEN , COUNT(SIFORIGEN) AS TOTAL, coalesce(SUM(SIFMOREME),0) AS MTOREINTEG, coalesce(SUM(SIFTOMORE),0) AS MTOREINTEGT
+FROM SVDTAD.SIF014TOAP F
+WHERE F.SIFFECPRO = $P{Prdo} AND F.FLGDLT = 0
+GROUP BY F.SIFORIGEN
+ORDER BY F.SIFORIGEN) T2
+ON T1.IDTIPOORIGEN = T2.SIFORIGEN]]>
+	</queryString>
+	<field name="IDTIPOORIGEN" class="java.math.BigDecimal"/>
+	<field name="DESCTPOORIGEN" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.Integer"/>
+	<field name="MTOREINTEG" class="java.math.BigDecimal"/>
+	<field name="MTOREINTEGT" class="java.math.BigDecimal"/>
+	<variable name="SUMA_TOT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="SUMA_MTO" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{MTOREINTEG}+$F{MTOREINTEGT}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3a405b68-e3a8-4646-ad58-f54d8322dc70" x="0" y="34" width="555" height="51" forecolor="#0000F4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen SIF014]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="277676a1-eb3a-484e-99f4-221a7fab14f0" x="0" y="0" width="555" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  SIVEGAM - SIF014]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1c1a5866-51be-4e54-b4d3-f4490c02707e" mode="Opaque" x="0" y="25" width="184" height="21" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen de Registros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ed543535-a4e4-4ab8-a0ca-6b80c003db12" mode="Opaque" x="184" y="25" width="184" height="21" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de Registros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6b1f4149-91ad-4aa9-a215-ead7105480d4" mode="Opaque" x="368" y="25" width="187" height="21" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montos Reintegros]]></text>
+			</staticText>
+			<textField pattern="MMM-yy" isBlankWhenNull="false">
+				<reportElement uuid="1660b973-c7cb-40f5-93a1-b295d95c89e1" x="100" y="0" width="455" height="25" forecolor="#006699"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $P{Prdo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="94d955fe-17cd-4726-b25b-c04612ee0996" x="0" y="0" width="100" height="25" forecolor="#006699"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Periodo:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bf6c2bb8-2dfd-4d72-94ce-145e668375de" x="0" y="0" width="184" height="25"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCTPOORIGEN}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="f8f60767-dfd5-4365-ac3d-ff8ef7f6f4df" x="184" y="0" width="184" height="25"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$#,##0">
+				<reportElement uuid="b2ad60f3-4aa5-4fb2-82dc-538a3a3d68a6" x="368" y="0" width="187" height="25"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{IDTIPOORIGEN} == 2 ? $F{MTOREINTEGT} : $F{MTOREINTEG} )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="25">
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement uuid="d6a0ba43-cb62-4cd5-9834-c21cd0a9e384" x="184" y="0" width="184" height="25"/>
+				<box>
+					<pen lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Garamond" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUMA_TOT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$#,##0" isBlankWhenNull="false">
+				<reportElement uuid="675b9c78-3d1b-472a-b86a-051d153cf3b4" x="368" y="0" width="187" height="25"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Garamond" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUMA_MTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6d488d09-670d-46a4-b1d6-a6928e630df0" x="0" y="0" width="184" height="25"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL ARCHIVO 14"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

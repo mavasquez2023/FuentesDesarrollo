@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultPeriodoVO" class="cl.laaraucana.simat.entidades.PeriodoVO">
+	
+		<result property="id" column="SM_ID"  jdbcType="int"/>
+		<result property="estado" column="SMESTADO"  jdbcType="String"/>
+		<result property="periodo" column="SMPERIODO"  jdbcType="String"/>
+		<result property="fecha_hora" column="SMFEC_HORA"  jdbcType="Timestamp"/>
+		
+	</resultMap>
+	
+	<!-- Sentencias Select -->
+	<select id="getTodoPeriodo" resultMap="resultPeriodoVO">
+		SELECT * FROM SIMATDTA.SMEPE
+	</select>
+	
+	<select id="getPeriodoById" resultMap="resultPeriodoVO">
+		select * from SIMATDTA.SMEPE WHERE SM_ID=#id#
+	</select> 
+	
+	<select id="getPeriodoByMes" resultMap="resultPeriodoVO">
+		select * from SIMATDTA.SMEPE WHERE SMPERIODO=#periodo#
+	</select> 
+	
+	<!-- Sentencias Insert -->
+	<insert id="insertarPeriodoValidado" parameterClass="cl.laaraucana.simat.entidades.PeriodoVO">
+		INSERT INTO SIMATDTA.SMEPE (SM_ID,SMESTADO,SMPERIODO,SMFEC_HORA)
+		VALUES ((select IFNULL(max(SM_ID)+1,0) from SIMATDTA.SMEPE),#estado#,#periodo#,#fecha_hora#)
+		WITH NC
+	</insert>	
+	<!-- 
+	VALUES ((select IFNULL(max(SM_ID)+1,0) from SIMATDTA.SMEPE),#estado#,#periodo#,#fecha_hora#) 
+	VALUES (0 /*not nullable*/,'s','s',{ts '2013-09-12 16:13:41.253000'});
+	-->
+	
+	
+	<!-- Sentencias Delete -->
+	<delete id="eliminarPeriodo" parameterClass="cl.laaraucana.simat.entidades.PeriodoVO">
+		delete from SIMATDTA.SMEPE WHERE SM_ID=#id#
+		WITH NC
+	</delete>
+	
+	<!-- Sentencias Update -->
+	<update id="actualizarPeriodo" parameterClass="cl.laaraucana.simat.entidades.PeriodoVO">
+		UPDATE SIMATDTA.SMEPE  SET 
+		
+		SMESTADO=#estado#,
+		SMPERIODO=#periodo#,
+		SMFEC_HORA=#fecha_hora#
+			
+		WHERE SM_ID=#id#
+		WITH NC
+	</update>
+	
+</sqlMap>	

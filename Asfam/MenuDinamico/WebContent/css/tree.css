@@ -1,0 +1,66 @@
+.tree{
+padding-left: 20px;
+}
+
+ul.tree, ul.tree ul, ul.tree li {
+  margin: 0;
+  
+  list-style-type: none;
+}
+ul.tree ul { padding-left: 0.3em; }
+ul.tree li {
+  padding: 0px 0px 0px 15px;
+  border-left: solid 1px  #ccc;
+  background: url(../img/dotted.png) scroll no-repeat 0px 1em;
+}
+ul.tree li:last-child{
+  border-left-width: 0px;
+  padding-left: 14px;
+  background: url(../img/dottedangle.png) scroll no-repeat left top;
+}
+/* -------------------------------------------------------- */
+
+
+.tree li a{
+    display: inline-block;
+	padding: 2px 5px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+}
+
+.collapsibleList li{
+/*   list-style-image:url('button.png') ; */
+  cursor:auto;
+}
+
+li.collapsibleListOpen{
+ /*  list-style-image:url('../img/button-closed.png'); */
+  background :url('../img/button-closed.png') no-repeat 0px 0.5em !important; 
+  cursor:pointer;
+
+}
+
+li.collapsibleListClosed{
+/*   list-style-image:url('../img/button-open.png'); */
+	background :url('../img/button-open.png') no-repeat 0px 0.5em !important; 
+  cursor:pointer;
+
+}
+
+ul.checktree-root, ul#tree ul {
+list-style: none;
+}
+
+ul.checktree-root label {
+font-weight: normal;
+position: relative;
+}
+
+ul.checktree-root label input {
+position: relative;
+top: 2px;
+left: -5px;
+}
+  

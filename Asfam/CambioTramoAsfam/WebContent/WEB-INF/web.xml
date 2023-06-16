@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<listener>
+  		<listener-class>cl.araucana.ctasfam.listener.WebSessionListener</listener-class> 
+  	</listener>
+	<session-config>
+  		<session-timeout>20</session-timeout> 
+  	</session-config>
+	<context-param>
+		<param-name>environmentPropertiesLocation</param-name>
+		<param-value>environment.properties</param-value>
+	</context-param>
+	<context-param>
+		<description>Organization name.</description>
+		<param-name>organizationName</param-name>
+		<param-value>La Araucana C.C.A.F.</param-value>
+	</context-param>
+	<context-param>
+		<description>Cambio de Tramo Asignacion Familiar.</description>
+		<param-name>name</param-name>
+		<param-value>CambioTramoAsfam</param-value>
+	</context-param>
+	<context-param>
+		<description>Application version.</description>
+		<param-name>version</param-name>
+		<param-value>1.0</param-value>
+	</context-param>
+	<context-param>
+		<param-name>copyright</param-name>
+		<param-value>
+			(c) Copyright La Araucana C.C.A.F. 2000-2012. Reservados
+			todos los derechos.
+		</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>cl.araucana.ctasfam.presentation.servlet.filter.LoginFilter</filter-class>
+		<init-param>
+			<param-name>securityMode</param-name>
+			<param-value>j2ee</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>dump</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>useRedirector</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/j_security_check</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>logout</servlet-name>
+		<servlet-class>
+			cl.araucana.ctasfam.presentation.servlet.LogoutServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	      <servlet-name>log4j-init</servlet-name>
+	      <servlet-class>cl.araucana.ctasfam.servlet.Log4jInit</servlet-class>
+	   		<init-param>
+	      		<param-name>log4j-init-file</param-name>
+	      		<param-value>WEB-INF/log4j.properties</param-value>
+	    	</init-param>
+	    	<load-on-startup>1</load-on-startup>
+   	  </servlet>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/logonfail.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/logonfail.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/logonfail.jsp</location>
+	</error-page>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/struts-nested.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<security-constraint>
+		<display-name>Recursos generales protegidos</display-name>
+		<web-resource-collection>
+			<web-resource-name>encargados_emp</web-resource-name>
+			<url-pattern>/HomePage.do</url-pattern>
+			<url-pattern>/PropuestasZipPage.do</url-pattern>
+			<url-pattern>/ValidaTerminosPage.do</url-pattern>
+			<url-pattern>/archivoempresa.do</url-pattern>
+			<url-pattern>/ProcesaEstadoBash.do</url-pattern>
+			<url-pattern>/CargaArchivo.do</url-pattern>
+			
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>NCI_USERS</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>
+			Recursos division previsional protegidos
+		</display-name>
+		<web-resource-collection>
+			<web-resource-name>encargados_dp</web-resource-name>
+			<url-pattern>/DivisionPrevisionalPage.do</url-pattern>
+			<url-pattern>/archivoholding.do</url-pattern>
+			<url-pattern>/holding.do</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+				FormLogin JSP Security:+:All Authenticated users for
+				FormLogin Welcome JSP.
+			</description>
+			<role-name>NCI_USERS</role-name>
+
+		</auth-constraint>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/logon.jsp</form-login-page>
+			<form-error-page>/logonerror.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description>All Authenticated User Role</description>
+		<role-name>NCI_USERS</role-name>
+	</security-role>
+
+</web-app>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultQueryIdVO" class="cl.laaraucana.simat.entidades.QueryIdVO">	
+		<result property="minId" column="MIN_ID" />
+		<result property="maxId" column="MAX_ID" />		
+	</resultMap>
+		
+	<select id="getMinMaxSMF01" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF01
+	</select>
+	
+	<select id="getMinMaxSMF02" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF02
+	</select>
+	
+	<select id="getMinMaxSMF03" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF03
+	</select>
+	
+	<select id="getMinMaxSMF05" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF05
+	</select>
+	
+	<select id="getMinMaxSMF06" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF06
+	</select>
+	
+	<select id="getMinMaxSMF07" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF07
+	</select>
+	
+	<select id="getMinMaxSMF08" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF08
+	</select>
+	
+	<select id="getMinMaxSMF09" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF09
+	</select>
+	
+<!-- para tablas de historicos -->
+	<select id="getMinMaxSMF01H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF01
+	</select>
+	
+	<select id="getMinMaxSMF02H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF02
+	</select>
+	
+	<select id="getMinMaxSMF03H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF03
+	</select>
+	
+	<select id="getMinMaxSMF05H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF05H
+	</select>
+	
+	<select id="getMinMaxSMF06H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF06H
+	</select>
+	
+	<select id="getMinMaxSMF07H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF07H
+	</select>
+	
+	<select id="getMinMaxSMF08H" resultMap="resultQueryIdVO">
+		select min(SM_ID) as MIN_ID,max(SM_ID) as MAX_ID from SIMATDTA.SMF08H
+	</select>
+
+</sqlMap>	

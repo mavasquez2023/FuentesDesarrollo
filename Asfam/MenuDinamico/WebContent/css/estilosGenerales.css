@@ -1,0 +1,445 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{ font: "Trebuchet MS", sans-serif; margin: 20px;}
+
+.selEstructuraEducacional {
+width:320px;
+}
+
+.selPeriodo {
+width:100px;
+}
+
+.selPeriodo2 {
+width:200px;
+}
+
+.selEspacioFisico {
+width:280px;
+}
+
+.selCalidadAcademica {
+width:160px;
+}
+
+.selSituacionAcademica {
+width:400px;
+}
+
+.selTipoSituAcad {
+width:30px;
+}
+
+.btnFormulario{
+width:100px;
+}
+
+.btnMenu{
+width:200px;
+height:50px;
+}
+
+.btnFormularioConfirmar{
+width:40px;
+}
+
+.RellenoBordeRedondo{
+padding:8px 8px 8px 8px;
+}
+
+
+.msjError {
+text-align:center;
+margin-left: .3em;
+border: 1px solid red; 
+background-color:#FDE6D7;
+color: red;
+}
+
+.msjAlerta {
+text-align:center;
+margin-left: 48px; /*.3em;*/
+border: 1px solid #FF6600;
+background-color:#FFFFCC;
+color: #FF6600;
+}
+
+.msjCorrecto {
+text-align:center;
+margin-left: 48px; /*.3em;*/
+border: 1px solid #3182FB;
+background-color:#E7F1CF;
+color: #3182FB;
+}
+
+.tiluloUCEN{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:36px;
+    font-style: italic;
+	font-weight: bold;
+    color: #FFFFFF;
+    background:black;
+    text-align:center;
+}
+
+.tiluloUCEN1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:22px;
+    font-style: italic;
+	font-weight: bold;
+    color: #FFFFFF;
+    background:black;
+    text-align:center;
+}
+
+table.tablaSinBordes{
+    border-width: 0px;
+	border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.tablaPropia{
+	border-radius: 3px;
+	border-size: 1px;
+	
+}
+
+.marcoInstruccion{
+    border: #000 1px solid ;
+    background-color:#FFFFE1 ;
+    margin: 10px 0px 0px 10px ;
+    padding: 10px 20px 10px 20px ;
+}
+
+.bordeNegro {
+border: 1px solid black;
+}
+
+.txtMayuscula { text-transform: uppercase; }
+.txtMinuscula { text-transform: lowercase; }
+
+.marcoUsuario {
+        BACKGROUND-COLOR:#CFE0E9 ;
+        BORDER: #000 1px solid ;
+        MARGIN: 2px 0px 2px 0px ;
+        PADDING: 2px 2px 2px 2px ;
+}
+
+.marcoNegro {
+        BORDER: #000 1px solid ;
+        MARGIN: 2px 0px 2px 0px ;
+        PADDING: 2px 2px 2px 2px ;
+}
+
+.colorNegro {
+    color:#000000;    
+}
+
+
+.colorBlanco {
+    color:#ffffff;
+}
+
+.text9{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:9px;
+}
+
+.text10{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:10px;
+}
+
+.text11{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+
+.text12{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.text13{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:13px;
+}
+
+.text14{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+}
+
+.text15{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+}
+
+.text16{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+}
+
+.text17{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:17px;
+}
+
+.text18{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:18px;
+}
+
+/*-----negrita-----------*/
+.text9n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:9px;
+    font-weight:bold;  
+}
+
+.text10n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:10px;
+    font-weight:bold;  
+}
+
+.text11n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:11px;
+    font-weight:bold;  
+}
+
+.text12n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;  
+}
+
+.text13n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:13px;
+    font-weight:bold;  
+}
+
+.text14n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight:bold;  
+}
+
+.text15n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+    font-weight:bold;  
+}
+
+.text16n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    font-weight:bold;  
+}
+
+.text17n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:17px;
+    font-weight:bold;  
+}
+
+.text18n{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;  
+}
+
+.cabecera_tabla{
+    background: #CFE0E9;
+    color:#00000F;
+    text-align:center;
+    font-weight: bold;
+}
+
+.borde_tabla{
+    border-color:#CCCCCC;
+
+ }
+
+.MarcoFormulario{ width: 98%; padding: 0.4em; position: relative; }
+.MarcoFormulario h2 { margin: 0; padding: 0.4em; text-align: center; }
+
+
+.MarcoFormularioDos{ width: 98%; position: relative; }
+.MarcoFormularioDos h2 { margin: 0; text-align: center; }
+
+ .salirUsuario A:link, .salirUsuario A:visited, .salirUsuario A:active {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#AAD000;
+    text-decoration:none;
+}
+
+.salirUsuario A:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    color:#AAF000;
+    font-weight: bold;
+    text-decoration:none;
+    PADDING: 2px 2px 20px 6px ;
+}
+
+.volverMenuPrincipal A:link, .volverMenuPrincipal A:visited, .volverMenuPrincipal A:active {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:13px;
+    color:#0033CC;
+    text-decoration:none;
+}
+
+.volverMenuPrincipal A:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#0033CC;
+    font-weight: bold;
+    text-decoration:none;
+    PADDING: 2px 2px 20px 6px;
+}
+
+table.marcaFilaSeleccionada { text-decoration:none; }
+
+table.marcaFilaSeleccionada tr.fila { margin:5px; cursor:pointer; }
+
+table.marcaFilaSeleccionada tr.filaIluminada {color:red; background-color:yellow; }
+
+table.marcaFilaSeleccionada tr.filaSeleccionada {font-weight: bold; background-color:#F4EAC6; }
+
+table.marcaFilaSeleccionada td.celda { margin:5px; cursor:pointer; }
+
+table.marcaFilaSeleccionada td.celdaIluminada {color:red; background:yellow; font-weight: bold;}
+
+
+.boton{
+	border: 0px;
+	color: #FFFFFF;
+	font-family: arial,helvetica,sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background-image:  url("../img/boton.jpg");
+	height:20px;
+}
+
+.boton:hover{
+	background-image:  url("../img/boton_on.jpg");
+}
+li .boton{
+	border: 0px;
+	color: #C76E6E;
+	font-family: arial,helvetica,sans-serif;
+	text-decoration: underline;
+	font-size: 11px;
+	font-weight: bold;
+	background: none;
+	height:20px;
+}
+li .boton:hover{
+	background: none;
+color: #A32E2E;
+}
+
+
+/* CSS para tabla de Procesos */
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } 
+	.datagrid {	font: normal  Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; 
+				-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+	.datagrid table td, .datagrid table th { padding: 3px 10px;}
+	.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
+				background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; 
+				color:#FFFFFF; font-size: 10px; font-weight: bold; border-left: 1px solid #0070A8;line-height: 10px;  } 
+	.datagrid table thead th:first-child { border: none; }
+	.datagrid table tbody td { color: #00557F; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }
+	.datagrid table tbody .alt td { background: #E1EEf4; color: #00557F; }.datagrid table tbody td:first-child { border-left: none; }
+	.datagrid table tbody tr:last-child td { border-bottom: none;}
+	.datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEf4;} 
+	.datagrid table tfoot td { padding: 0; font-size: 12px } 
+	.datagrid table tfoot td div{ padding: 2px; }
+	.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }
+	.datagrid table tfoot  li { display: inline; }
+	.datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;
+				border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; 
+				background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
+				background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }
+	.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #00557F; color: #FFFFFF; background: none; 
+				background-color:#006699;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }			
+
+.error-red{
+	color: red;
+}
+
+
+/* Paddings */
+.padding-xs{
+  padding: 5px;
+}
+.padding-s{
+  padding: 8px;
+}
+.padding-m{
+  padding: 10px;
+}
+
+/* FIN PADDINGS */
+
+/**formularios**/
+
+.field{
+  height: 25px;
+  /* width: 100%; 
+   float: left; */
+  clear: both;
+}
+
+
+.field label{
+	float: left;
+	text-align: left;
+	font-weight: bold;
+	width: 40%;
+}
+
+
+.field input.text, .field input[type='text'].text, .field input[type='password'].text, .field select{
+	width: 100px;
+	float: left;
+}
+
+input, select
+{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+label{
+	padding-top: 3px !important;
+	margin-right: 10px;
+	/* float: right; */
+}
+
+
+label.error {
+  	width: auto;
+  	max-width: 35%;
+  	float: left;
+  	color: red;
+ 	font-family: arial, helvetica, sans-serif;
+  	font-size: 12px;
+	/* margin-left: 5px; */
+}
+
+input.error, select.error {
+  color: #000000;
+  text-align: left;
+}
+
+/**FIN formularios**/
+				

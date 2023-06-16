@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<!-- ReintegrosIbatis -->
+	
+	
+	<resultMap id="resultReintegrosVO" class="cl.laaraucana.simat.entidades.ReintegrosVO">
+	
+		<result property="id" column="SM_ID" />
+		<result property="mes_informacion" column="SMMESINFO" />
+		<result property="codigo_entidad" column="SMCODENTID" />
+		<result property="mes_nomina" column="SMMESNOMIN" />
+		<result property="run_beneficiario" column="SMRUNBENEF" />
+		<result property="nombre_beneficiario" column="SMNOMBENEF" />
+		<result property="tipo_subsidio" column="SMTIPOSUBS" />
+		<result property="nro_licencia" column="SMNROLICEN" />
+		<result property="rut_empleador" column="SMRUTEMPLE" />
+		<result property="nombre_empleador" column="SMNOMEMPLE" />
+		<result property="origen_reintegro" column="SMORIREINT" />
+		<result property="monto_total_a_reintegrar" column="SMTOTREINT" />
+		<result property="monto_recuperado" column="SMMONTRECU" />
+		<result property="monto_recuperado_acum" column="SMRECUACUM" />
+		<result property="total_saldo_a_reintegrar" column="SMSALREINT" />
+		
+	</resultMap>
+<!-- Ejemplo de sentencia SQL -->
+
+	<select id="getTodoReintegrosIbatis" resultMap="resultReintegrosVO">
+		SELECT 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT 
+		FROM SIMATDTA.SMF01
+	</select>
+	
+	
+	<select id="getReintegrosIbatisById" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  		
+		from SIMATDTA.SMF01 WHERE SM_ID=#id#
+	</select>
+	
+	<select id="getReintegrosIbatisByMes" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  
+		from SIMATDTA.SMF01 WHERE SMMESINFO=#mes_informacion#
+	</select>
+	
+	<select id="getReintegrosByRutBenef" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  
+		from SIMATDTA.SMF01 
+		WHERE TRIM(SMRUNBENEF) = #run_beneficiario#
+	</select>
+	
+	<select id="getReintegrosIbatisByRunBeneficiario" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  
+		from SIMATDTA.SMF01 WHERE TRIM(SMRUNBENEF)=#run_beneficiario#
+	</select>
+	
+	<select id="getList_avanzar_SMF01" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  
+		from SIMATDTA.SMF01 where SM_ID &gt;= #keyFin# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<select id="getList_retroceder_SMF01" resultMap="resultReintegrosVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMMESNOMIN,'')) as SMMESNOMIN,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMNROLICEN,'')) as SMNROLICEN,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMORIREINT,0)) as SMORIREINT,
+			TRIM(IFNULL(SMTOTREINT,0)) as SMTOTREINT,
+			TRIM(IFNULL(SMMONTRECU,0)) as SMMONTRECU,
+			TRIM(IFNULL(SMRECUACUM,0)) as SMRECUACUM,
+			TRIM(IFNULL(SMSALREINT,0)) as SMSALREINT  
+		from SIMATDTA.SMF01 where SM_ID &gt;= #keyInicio# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<insert id="setReintegrosIbatis" parameterClass="cl.laaraucana.simat.entidades.ReintegrosVO">
+		INSERT INTO SIMATDTA.SMF01 (SM_ID,SMMESINFO,SMCODENTID,SMMESNOMIN,SMRUNBENEF,SMNOMBENEF,SMTIPOSUBS,SMNROLICEN,SMRUTEMPLE,SMNOMEMPLE,SMORIREINT,SMTOTREINT,SMMONTRECU,SMRECUACUM,SMSALREINT)
+	   	VALUES (IFNULL((select max(SM_ID)+1 from SIMATDTA.SMF01),0),#mes_informacion#,#codigo_entidad#,#mes_nomina#,#run_beneficiario#,#nombre_beneficiario#,#tipo_subsidio#,#nro_licencia#,#rut_empleador#,#nombre_empleador#,#origen_reintegro#,#monto_total_a_reintegrar#,#monto_recuperado#,#monto_recuperado_acum#,#total_saldo_a_reintegrar#)
+	   	WITH NC
+	</insert>
+		
+<!-- para respaldar en historico -->
+
+	
+	<update id="updateUnoReintegrosIbatis" parameterClass="cl.laaraucana.simat.entidades.ReintegrosVO">
+		 UPDATE SIMATDTA.SMF01 SET 
+		   SMMESINFO=#mes_informacion#,
+		   SMCODENTID=#codigo_entidad#,
+		   SMMESNOMIN=#mes_nomina#,
+		   SMRUNBENEF=#run_beneficiario#,
+		   SMNOMBENEF=#nombre_beneficiario#,
+		   SMTIPOSUBS=#tipo_subsidio#,
+		   SMNROLICEN=#nro_licencia#,
+		   SMRUTEMPLE=#rut_empleador#,
+		   SMNOMEMPLE=#nombre_empleador#,
+		   SMORIREINT=#origen_reintegro#,
+		   SMTOTREINT=#monto_total_a_reintegrar#,
+		   SMMONTRECU=#monto_recuperado#,
+		   SMRECUACUM=#monto_recuperado_acum#,
+		   SMSALREINT=#total_saldo_a_reintegrar#		   
+		   WHERE SM_ID=#id#
+		 WITH NC
+	</update>
+	
+	<delete id="delReintegrosIbatis" parameterClass="cl.laaraucana.simat.entidades.ReintegrosVO">
+		DELETE FROM SIMATDTA.SMF01 WHERE SM_ID=#id#
+		WITH NC 
+	</delete>
+	
+</sqlMap>

@@ -1,0 +1,1660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informe_financiero" language="groovy" pageWidth="550" pageHeight="1300" columnWidth="510" leftMargin="20" rightMargin="20" topMargin="5" bottomMargin="20">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="816"/>
+	<property name="ireport.y" value="3228"/>
+	<style name="table" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF" lineSpacing="Single"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4" lineSpacing="Single">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF" lineSpacing="Single">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<subDataset name="Table Dataset 2"/>
+	<subDataset name="Table Dataset 3"/>
+	<subDataset name="Table Dataset 4"/>
+	<subDataset name="Table Dataset 5"/>
+	<field name="periodo" class="java.lang.String"/>
+	<field name="nombre_entidad" class="java.lang.String"/>
+	<field name="a" class="java.lang.String"/>
+	<field name="a_1" class="java.lang.String"/>
+	<field name="a_2" class="java.lang.String"/>
+	<field name="a_3" class="java.lang.String"/>
+	<field name="a_3_1" class="java.lang.String"/>
+	<field name="a_3_2" class="java.lang.String"/>
+	<field name="a_4" class="java.lang.String"/>
+	<field name="a_4_1" class="java.lang.String"/>
+	<field name="a_4_2" class="java.lang.String"/>
+	<field name="b" class="java.lang.String"/>
+	<field name="c" class="java.lang.String"/>
+	<field name="c_1" class="java.lang.String"/>
+	<field name="c_2" class="java.lang.String"/>
+	<field name="c_3" class="java.lang.String"/>
+	<field name="c_4" class="java.lang.String"/>
+	<field name="c_5" class="java.lang.String"/>
+	<field name="c_6" class="java.lang.String"/>
+	<field name="c_6_1" class="java.lang.String"/>
+	<field name="c_6_2" class="java.lang.String"/>
+	<field name="c_6_3" class="java.lang.String"/>
+	<field name="c_6_4" class="java.lang.String"/>
+	<field name="c_6_5" class="java.lang.String"/>
+	<field name="c_7" class="java.lang.String"/>
+	<field name="c_7_1" class="java.lang.String"/>
+	<field name="c_7_2" class="java.lang.String"/>
+	<field name="c_7_3" class="java.lang.String"/>
+	<field name="c_7_4" class="java.lang.String"/>
+	<field name="c_7_5" class="java.lang.String"/>
+	<field name="c_8" class="java.lang.String"/>
+	<field name="c_8_1" class="java.lang.String"/>
+	<field name="c_8_2" class="java.lang.String"/>
+	<field name="c_8_3" class="java.lang.String"/>
+	<field name="c_8_4" class="java.lang.String"/>
+	<field name="c_8_5" class="java.lang.String"/>
+	<field name="c_9" class="java.lang.String"/>
+	<field name="c_9_1" class="java.lang.String"/>
+	<field name="c_9_2" class="java.lang.String"/>
+	<field name="c_9_3" class="java.lang.String"/>
+	<field name="c_9_4" class="java.lang.String"/>
+	<field name="c_9_5" class="java.lang.String"/>
+	<field name="d" class="java.lang.String"/>
+	<field name="e" class="java.lang.String"/>
+	<field name="e_1" class="java.lang.String"/>
+	<field name="e_2" class="java.lang.String"/>
+	<field name="e_3" class="java.lang.String"/>
+	<field name="e_4" class="java.lang.String"/>
+	<field name="e_5" class="java.lang.String"/>
+	<field name="f" class="java.lang.String"/>
+	<field name="f_1" class="java.lang.String"/>
+	<field name="f_2" class="java.lang.String"/>
+	<field name="f_3" class="java.lang.String"/>
+	<field name="f_4" class="java.lang.String"/>
+	<field name="f_5" class="java.lang.String"/>
+	<field name="g" class="java.lang.String"/>
+	<field name="g_1" class="java.lang.String"/>
+	<field name="g_2" class="java.lang.String"/>
+	<field name="g_3" class="java.lang.String"/>
+	<field name="g_4" class="java.lang.String"/>
+	<field name="h" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="81">
+			<staticText>
+				<reportElement x="0" y="15" width="506" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[SISTEMA DE SUBSIDIOS MATERNALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="506" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="10" isBold="true" isItalic="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[INFORME FINANCIERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="30" width="26" height="48"/>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="377" y="30" width="129" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="377" y="63" width="129" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MES Y AÑO INFORME ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="351" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRE INSTITUCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="45" width="351" height="18"/>
+				<textElement verticalAlignment="Top" lineSpacing="Single">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="45" width="129" height="18"/>
+				<textElement verticalAlignment="Top" lineSpacing="Single">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[_________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="30" width="351" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_entidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="1275">
+			<staticText>
+				<reportElement style="table" x="0" y="11" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A. INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="26" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.1 Provisión de subsidios líquidos del mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.2 Provisioón de cotizaciones de subsidios del mes, enterada en el mes siguiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.3 Provisión complementaria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="71" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.3.1)  Subsidios líquidos del mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="506" height="11"/>
+				<textElement lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="86" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.3.2) Cotizaciones Previsionales de subsidios del mes, enterada en el mes siguiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="101" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.4 Reintegro por cobro indebido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="116" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.4.1)  Producto de fiscalización SUSESO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="131" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A.4.2) otros reintegros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="161" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[B. EGRESOS (C+D)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="191" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C. SUBTOTAL GASTO EN SUBSIDIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="176" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="206" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.1 Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="221" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.2 Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="236" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.3 Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="251" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.4 Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="266" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.5 Subsidios a mujeres no cubiertas en regimen SIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="296" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6 Documentos Caducados (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="281" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="146" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="401" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7 Documentos Anulados (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="506" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8 Documentos Reemitidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="611" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9 Documentos Revalidados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="311" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6.1)  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="326" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6.2) Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="341" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6.3)  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="356" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6.4) Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="386" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="491" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="596" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="371" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.6.5) Subsidios a mujeres no cubiertas en regimen SIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="461" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7.4) Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="446" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7.3)  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="416" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7.1)  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="431" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7.2) Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="476" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.7.5) Subsidios a mujeres no cubiertas en regimen SIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="566" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8.4) Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="551" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8.3)  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="521" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8.1)  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="536" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8.2) Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="581" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.8.5) Subsidios a mujeres no cubiertas en regimen SIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="686" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9.5) Subsidios a mujeres no cubiertas en regimen SIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="641" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9.2) Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="671" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9.4) Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="626" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9.1)  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="656" width="360" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C.9.3)  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="716" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[D. SUBTOTAL GASTO EN COTIZACIONES (E+F+G)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="701" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="746" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E. COTIZACIONES A FONDOS DE PENSIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="806" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E.4 Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="791" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E.3  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="761" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E.1  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="821" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E.5 Subsidios a mujeres sin contrato vigente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="776" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[E.2 Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="926" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F.5 Subsidios a mujeres sin contrato vigente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="881" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F.2 Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="851" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F. COTIZACIONES DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="866" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F.1  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="911" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F.4 Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="896" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[F.3  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="836" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="971" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[G.1  Subsidios por reposo Prenatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1001" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[G.3  Subsidios por reposo Postnatal Parental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="956" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[G. COTIZACIONES DESAHUCIO E INDEMNIZACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1016" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[G.4 Subsidios por permiso por enfermedad grave del niño menor de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="986" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[G.2 Subsidios por reposo Postnatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="941" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="1046" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[H. EXCEDENTE O DÉFICIT (A-B)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1031" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="0" y="1076" width="377" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1061" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="1199" width="145" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[NOMBRE Y FIRMA DEL GERENTE DE FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="1229" width="145" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TIMBRE DE LA ENTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="26" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="41" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="56" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="86" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="71" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="101" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="131" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="116" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="251" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="221" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="206" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="236" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="266" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="161" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="191" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="11" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="326" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="371" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="341" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="296" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="356" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="311" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="431" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="476" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="446" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="401" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="461" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="416" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="536" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="581" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="551" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="506" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="566" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="521" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="671" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="686" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="611" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="641" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="656" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="626" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="806" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="821" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="746" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="776" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="791" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="761" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="866" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="881" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="851" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="926" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="896" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="911" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="971" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="986" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="956" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="1001" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="1016" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="1046" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="716" width="26" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="403" y="11" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="26" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="41" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="56" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="71" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_3_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="86" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_3_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="101" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="116" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_4_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="131" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_4_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="161" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{b}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="191" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="206" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="221" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="236" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="251" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="266" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="296" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="311" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="326" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="341" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="356" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="371" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_6_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="401" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="416" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="431" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="446" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="461" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="476" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_7_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="506" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="521" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="536" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="551" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="566" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="581" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_8_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="611" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="626" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="641" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="656" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="671" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="686" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_9_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="716" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="746" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="761" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="776" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="791" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="806" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="821" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="851" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="866" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="881" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="896" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="911" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="926" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{f_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="956" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{g}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="971" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{g_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="986" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{g_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="1001" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{g_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="1016" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{g_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="1046" width="103" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{h}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="361" y="1151" width="145" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PATRICIO COFRÉ CERESOLI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1151" width="361" height="93"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" lineSpacing="Single">
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1091" width="39" height="60"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" lineSpacing="Single">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="1091" width="467" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="1106" width="467" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="1121" width="467" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="1136" width="467" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="1184" width="145" height="15"/>
+				<textElement verticalAlignment="Top" lineSpacing="Single">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[______________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="1076" width="129" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="731" width="506" height="10"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

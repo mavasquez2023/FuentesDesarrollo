@@ -1,0 +1,102 @@
+#left-nav {
+	BORDER-BOTTOM: #ccc 1px solid; COLOR: #000; TEXT-DECORATION: none
+}
+#left-nav A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#left-nav A:hover {
+	BACKGROUND: #eee; COLOR: #000; TEXT-DECORATION: underline
+}
+#left-nav A.active:hover {
+	BACKGROUND: #fff; COLOR: #000; TEXT-DECORATION: none
+}
+.top-level A {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP: #fff 1px solid; PADDING-TOP: 5px
+}
+.second-level A {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP: #fff 1px solid; PADDING-TOP: 5px
+}
+.third-level A {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP: #fff 1px solid; PADDING-TOP: 5px
+}
+.top-level A {
+	PADDING-LEFT: 5px
+}
+.second-level A {
+	PADDING-LEFT: 24px
+}
+.third-level A {
+	PADDING-LEFT: 36px
+}
+.top-level A {
+	BACKGROUND: #9cf; COLOR: #000
+}
+.top-level A#site-home {
+	FONT-SIZE: 1.1em
+}
+.second-level A {
+	BACKGROUND: #cce5ff; COLOR: #000
+}
+.third-level A {
+	BACKGROUND: #cce5ff; COLOR: #000
+}
+A.open {
+	BACKGROUND: #cce5ff; COLOR: #000
+}
+A.active {
+	BACKGROUND: #fff; COLOR: #000; font-weight: bold;
+}
+#fourth-level {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; MARGIN: 0.5em 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#fourth-level TABLE {
+	WIDTH: 100%
+}
+#fourth-level P {
+	WIDTH: 80%; COLOR: #666
+}
+#fourth-level .page-tabs .empty {
+	WIDTH: 30%
+}
+#fourth-level .page-tabs {
+	MARGIN-TOP: 0.5em
+}
+#fourth-level .lists {
+	BACKGROUND: url(/ui/v8/images/rule-h-gray-dots.gif) #fff repeat-x left bottom
+}
+#fourth-level TD.col01 {
+	PADDING-LEFT: 1em; WIDTH: 22%; VERTICAL-ALIGN: top
+}
+#fourth-level TD.col02 {
+	WIDTH: 78%; VERTICAL-ALIGN: top
+}
+#fourth-level .text-tabs {
+	PADDING-BOTTOM: 1em; MARGIN: 1em 0px 0px; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0px; BACKGROUND: url(/ui/v8/images/rule-h-gray-dots.gif) repeat-x left bottom; PADDING-TOP: 0px
+}
+#fourth-level .text-tabs LI {
+	PADDING-LEFT: 0.5em; DISPLAY: inline; COLOR: #666
+}
+#fourth-level .text-tabs LI A {
+	PADDING-RIGHT: 0.5em
+}
+#fourth-level .lists LI A {
+	COLOR: blue; TEXT-DECORATION: none
+}
+#fourth-level .text-tabs A {
+	COLOR: blue; TEXT-DECORATION: none
+}
+#fourth-level .lists A.active {
+	COLOR: #000; CURSOR: text; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+#fourth-level .text-tabs A.active {
+	COLOR: #000; CURSOR: text; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+#fourth-level .lists LI A:hover {
+	COLOR: #69c; TEXT-DECORATION: underline
+}
+#fourth-level .text-tabs LI A:hover {
+	COLOR: #69c; TEXT-DECORATION: underline
+}
+#navigation {
+	POSITION: absolute; PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 5px; WIDTH: 130px; PADDING-RIGHT: 0px; BACKGROUND: #fff; COLOR: #000; TOP: 55px; PADDING-TOP: 5px; LEFT: 0px
+}

@@ -1,0 +1,112 @@
+#Definicion de propiedades
+#Permite generar pre balance 
+# |--------------|---------------------|-------------|
+# |Nombre cuenta |Res. balance general | Info planos | 
+
+#[nro de cuenta(s) separadas por ','];[val abs 0,1];[orig datos XLS,SQL];[val abs 0,1];[orig datos XLS,SQL]
+
+#Leyenda
+#XLS=Origen de datos desde planilla de balance general
+#SQL=Desde vista en base de datos
+#Los nros de cuenta deben existir en la planilla excel y estar incorporados los SQL en la vista de la BD
+#Si el nro de cuenta no se encuentra, se setea por defecto el valor en 0
+
+#C. SUBTOTAL GASTO EN SUBSIDIOS - 8006000003
+8006000022,8006000023,8006000024,8006000025-0;XLS;0;SQL=C.6 Documentos Caducados (-)
+
+##C.9 Documentos Revalidados - 8006000004
+8006000034,8006000035,8006000036,8006000037-0;XLS;0;SQL=C.9 Documentos Revalidados
+
+8006000009-0;XLS;0;SQL=C.1 Subsidios por reposo Prenatal
+8006000010,8006000021-0;XLS;0;SQL=Subsidios Maternal Postnatal
+8006000011-0;XLS;0;SQL=C.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+
+#E. COTIZACIONES A FONDOS DE PENSIONES
+8006000012-0;XLS;0;SQL=E.1 Cotizaciones a fondo Prenatal
+8006000013,8006000038-0;XLS;0;SQL=Cotizaciones a fondo Postnatal
+8006000014-0;XLS;0;SQL=E.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+
+#F. COTIZACIONES DE SALUD
+8006000015-0;XLS;0;SQL=F.1 Subsidios por reposo Prenatal
+8006000016,8006000039-0;XLS;0;SQL=Cotizaciones salud Postnatal
+8006000017-0;XLS;0;SQL=F.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+
+#A. INGRESOS
+#A.1 y A.2 se obtienen del XLS
+7002000002-1;XLS;1;XLS=A.1 Provisión de subsidios líquidos del mes				
+7002000005-1;XLS;1;XLS=A.2 Provisión de cotizaciones de subsidios del mes, enterada en el mes siguiente
+
+#Equivale a A4.1= nro de cta? + A4.2=7002000003
+A.4.1,7002000003-1;XLS;1;SQL=A.4 Reintegro por cobro indebido
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##Definiciones de desarrollo
+
+##Definicion de propiedades
+##Permite generar pre balance 
+## |--------------|---------------------|-------------|
+## |Nombre cuenta |Res. balance general | Info planos | 
+#
+##[nro de cuenta(s) separadas por ','];[val abs 0,1];[orig datos XLS,SQL];[val abs 0,1];[orig datos XLS,SQL]
+#
+##Leyenda
+##XLS=Origen de datos desde planilla de balance general
+##SQL=Desde vista en base de datos
+##Los nros de cuenta deben existir en la planilla excel y estar incorporados los SQL en la vista de la BD
+#
+##C. SUBTOTAL GASTO EN SUBSIDIOS - 8006000003
+#8006000022,8006000023,8006000024,8006000025-0;XLS;0;SQL=C.6 Documentos Caducados (-)
+##8006000022-0;XLS;0;SQL=C.6.1) Subsidios por reposo Prenatal
+##8006000023-0;XLS;0;SQL=C.6.2) Subsidios por reposo Postnatal
+##8006000024-0;XLS;0;SQL=C.6.3) Subsidios por reposo Postnatal Parental
+##8006000025-0;XLS;0;SQL=C.6.4) Subsidios por permiso por enfermedad grave del niño menor de un año
+#
+###C.9 Documentos Revalidados - 8006000004
+#8006000034,8006000035,8006000036,8006000037-0;XLS;0;SQL=C.9 Documentos Revalidados
+##8006000034-0;XLS;0;SQL=C.9.1) Subsidios por reposo Prenatal
+##8006000035-0;XLS;0;SQL=C.9.2) Subsidios por reposo Postnatal
+##8006000036-0;XLS;0;SQL=C.9.3) Subsidios por reposo Postnatal Parental
+##8006000037-0;XLS;0;SQL=C.9.4) Subsidios por permiso por enfermedad grave del niño menor de un año
+#
+#8006000009-0;XLS;0;SQL=C.1 Subsidios por reposo Prenatal
+##8006000010=C.2 Subsidios por reposo Postnatal
+##8006000021=C.3 Subsidios por reposo Postnatal Parental
+#8006000010,8006000021-0;XLS;0;SQL=Subsidios Maternal Postnatal
+#8006000011-0;XLS;0;SQL=C.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+#
+##E. COTIZACIONES A FONDOS DE PENSIONES
+#8006000012-0;XLS;0;SQL=E.1 Cotizaciones a fondo Prenatal
+##8006000013=E.2 Subsidios por reposo Postnatal
+##8006000038=E.3 Subsidios por reposo Postnatal Parental
+#8006000013,8006000038-0;XLS;0;SQL=Cotizaciones a fondo Postnatal
+#8006000014-0;XLS;0;SQL=E.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+#
+##F. COTIZACIONES DE SALUD
+#8006000015-0;XLS;0;SQL=F.1 Subsidios por reposo Prenatal
+##8006000016=F.2 Subsidios por reposo Postnatal
+##8006000039=F.3 Subsidios por reposo Postnatal Parental
+#8006000016,8006000039-0;XLS;0;SQL=Cotizaciones salud Postnatal
+#8006000017-0;XLS;0;SQL=F.4 Subsidios por permiso por enfermedad grave del niño menor de un año
+#
+##A. INGRESOS
+##A.1 y A.2 se obtienen del XLS
+#7002000002-1;XLS;1;XLS=A.1 Provisión de subsidios líquidos del mes				
+#7002000005-1;XLS;1;XLS=A.2 Provisión de cotizaciones de subsidios del mes, enterada en el mes siguiente
+#
+##Equivale a A4.1= nro de cta? + A4.2=7002000003
+#A.4.1,7002000003-1;XLS;1;SQL=A.4 Reintegro por cobro indebido
+##A.4.1=A.4.1) Producto de fiscalización SUSESO
+##7002000003=A.4.2) otros reintegros

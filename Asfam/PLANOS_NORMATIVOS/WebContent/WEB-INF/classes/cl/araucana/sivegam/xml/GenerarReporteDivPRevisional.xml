@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="DivPrevSiv">
+
+	<!-- AREA DE CONSULTAS TIPO SELECT -->
+	<select id="selectIdMSivegam" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDMAESVG_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdDetReporte" resultClass="string">
+		SELECT nextval FOR SVDTA.IDDETRPT_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- AREA DE INSERT -->
+	<insert id="insertMaestroSivegam" parameterClass="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		INSERT INTO SVDTA.SVMTRSVG
+		( 
+			IDMAESTROSIVEGAM,
+			FECHAPROCESO,
+			IDPERIODOPROCESO,
+			STATUSPROCESO,
+			IDTIPOARCHIVO,
+			IDUSUARIOSIVEGAM 
+		)
+		VALUES(
+			#maestro_sivegam#,
+			#fechaProcesoDate#,
+			#periodo_proceso#,
+			#status_proceso#,
+			#tipo_archivo#,
+			#usuario_sivegam# 
+		)
+	</insert>
+	
+</sqlMap>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="resultLogProcesosVO" class="cl.laaraucana.simat.entidades.LogProcesosVO">
+	
+		<result property="id_registro" column="SM_ID" />
+		<result property="tipo_log" column="SMTIPOLOG" />
+		<result property="fecha_hora" column="SMFEC_HORA" />
+		<result property="periodo" column="SMPERIODO" />
+		<result property="id_usuario" column="SMUSUARIO" />
+		<result property="proceso_afectado" column="SMPROCAFEC" />	
+		<result property="tabla" column="SMTABLA" />
+		<result property="registro_id" column="SMREG_ID" />		
+		<result property="descripcion" column="SMDESCRIP" />
+		
+	</resultMap>
+	
+<!-- Sentencias Select -->
+	<select id="getLogProcesos" resultMap="resultLogProcesosVO">
+		select * from SIMATDTA.SMLPR	
+	</select>
+	
+	<select id="getLogProcesosByIdRegistro" resultMap="resultLogProcesosVO">
+		select * from SIMATDTA.SMLPR WHERE SM_ID=#id_registro#
+	</select>
+	
+	<select id="getLogProcesosByTabla" resultMap="resultLogProcesosVO">
+		SELECT * FROM SIMATDTA.SMLPR WHERE SMTABLA=#tabla#
+	</select>
+	
+	<select id="getList_avanzar_SMLPR" resultMap="resultLogProcesosVO">
+		select * from SIMATDTA.SMLPR where SM_ID &gt;= #keyFin# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+	<select id="getList_retroceder_SMLPR" resultMap="resultLogProcesosVO">
+		select * from SIMATDTA.SMLPR where SM_ID &gt;= #keyInicio# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	
+<!-- Sentencias Insert -->
+	<insert id="insertarLogProcesos" parameterClass="cl.laaraucana.simat.entidades.LogProcesosVO">
+		INSERT INTO SIMATDTA.SMLPR (SM_ID,SMTIPOLOG,SMFEC_HORA,SMPERIODO,SMUSUARIO,SMPROCAFEC,SMTABLA,SMREG_ID,SMDESCRIP)
+	   	VALUES ((select max(SM_ID)+1 from SIMATDTA.SMLPR),#tipo_log#,#fecha_hora#,#periodo#,#id_usuario#,#proceso_afectado#,#tabla#,#registro_id#,#descripcion#)
+	   	WITH NC
+	</insert>
+	
+	
+<!-- Sentencias Delete -->
+	<delete id="eliminarLogProcesos" parameterClass="cl.laaraucana.simat.entidades.LogProcesosVO">
+		delete from SIMATDTA.SMLPR where SM_ID=#id_registro#
+		WITH NC
+	</delete>
+
+	<delete id="delALLLogProcesos" parameterClass="cl.laaraucana.simat.entidades.LogProcesosVO">
+		DELETE FROM SIMATDTA.SMLPR
+		WITH NC
+	</delete>
+	
+<!-- Sentencias Update -->
+	<update id="actualizarLogProcesos" parameterClass="cl.laaraucana.simat.entidades.LogProcesosVO">
+		UPDATE SIMATDTA.SMLPR SET 		
+		SM_ID=#id_registro#,
+		SMTIPOLOG=#tipo_log#,
+		SMFEC_HORA=#fecha_hora#,
+		SMPERIODO=#periodo#,
+		SMUSUARIO=#id_usuario#,
+		SMPROCAFEC=#proceso_afectado#,
+		SMTABLA=#tabla#,
+		SMREG_ID=#registro_id#,
+		SMDESCRIP=#descripcion# 
+		WHERE SM_ID=#id_registro#
+		WITH NC
+	</update>
+	
+	
+</sqlMap>	

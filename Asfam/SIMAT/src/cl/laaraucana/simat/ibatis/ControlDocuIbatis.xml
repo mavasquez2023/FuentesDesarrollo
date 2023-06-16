@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+	<resultMap id="resultControlDocuVO" class="cl.laaraucana.simat.entidades.ControlDocuVO">
+	
+		<result property="idControlDocu" column="SM_ID" />	
+		<result property="mes_informacion" column="SMMESINFO" />
+		<result property="codigo_entidad" column="SMCODENTID" />
+		<result property="tipo_subsidio" column="SMTIPOSUBS" />
+		<result property="rut_empleador" column="SMRUTEMPLE" />
+		<result property="nombre_empleador" column="SMNOMEMPLE" />
+		<result property="run_beneficiario" column="SMRUNBENEF" />
+		<result property="nombre_beneficiario" column="SMNOMBENEF" />
+		<result property="mod_pago" column="SMMODPAGO" />
+		<result property="serie_documento" column="SMSERIEDOC" />
+		<result property="num_documento" column="SMNUMDOC" />
+		
+		<result property="fecha_emision_documento" column="SMFECEMDOC" />
+		<result property="fecha_emision_documento_Char" column="SMFECEMDOC_C" />
+		
+		<result property="monto_documento" column="SMMONTODOC" />
+		<result property="codigo_banco" column="SMCODBANCO" />
+		<result property="estado_documento" column="SMESTADDOC" />
+		
+		<result property="fecha_cambio_estado" column="SMFECCAMES" />
+		<result property="fecha_cambio_estado_Char" column="SMFECCAMES_C" />
+	</resultMap>
+	
+	<!-- Sección sentencias SQL -->
+	
+	<select id="getTodoControlDocu" resultMap="resultControlDocuVO">
+		SELECT 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES 
+		from SIMATDTA.SMF05
+	</select>
+	
+	<select id="getUnoControlDocuIbatis" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 where SM_ID=#idControlDocu#
+	</select>
+	
+	<select id="getControlDocuByEstadoDoc" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES			
+		FROM SIMATDTA.SMF05 WHERE SMESTADDOC=#estado_documento# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>	
+	<select id="getControlDocuByNumDoc" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 WHERE TRIM(SMNUMDOC)=#num_documento#	 
+	</select>
+	
+	<select id="getControlDocuByMesInformacion" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 where SMMESINFO=#mes_informacion#
+	</select>
+
+	<select id="BuscarListaAvanzarEstadoDoc_SMF05" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES 
+		from SIMATDTA.SMF05 where SM_ID &gt;= #keyFin# and SMESTADDOC=#estado_documento# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+	<select id="BuscarListaRetrocederEstadoDoc_SMF05" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 where SM_ID &gt;= #keyInicio# and SMESTADDOC=#estado_documento# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+
+	<select id="getList_avanzar_SMF05" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 where SM_ID &gt;= #keyFin# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>	
+	<select id="getList_retroceder_SMF05" resultMap="resultControlDocuVO">
+		select 
+			SM_ID,
+			TRIM(IFNULL(SMMESINFO,'')) as SMMESINFO,
+			TRIM(IFNULL(SMCODENTID,0)) as SMCODENTID,
+			TRIM(IFNULL(SMTIPOSUBS,0)) as SMTIPOSUBS,
+			TRIM(IFNULL(SMRUTEMPLE,'')) as SMRUTEMPLE,
+			TRIM(IFNULL(SMNOMEMPLE,'')) as SMNOMEMPLE,
+			TRIM(IFNULL(SMRUNBENEF,'')) as SMRUNBENEF,
+			TRIM(IFNULL(SMNOMBENEF,'')) as SMNOMBENEF,
+			TRIM(IFNULL(SMMODPAGO,0)) as SMMODPAGO,
+			TRIM(IFNULL(SMSERIEDOC,'')) as SMSERIEDOC,
+			TRIM(IFNULL(SMNUMDOC,'')) as SMNUMDOC,
+			CASE  
+				WHEN SMFECEMDOC IS NULL THEN ''
+				WHEN SMFECEMDOC = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECEMDOC,ISO)
+			END AS SMFECEMDOC_C,
+			SMFECEMDOC,
+			TRIM(IFNULL(SMMONTODOC,0)) as SMMONTODOC,
+			TRIM(IFNULL(SMCODBANCO,'')) as SMCODBANCO,
+			TRIM(IFNULL(SMESTADDOC,0)) as SMESTADDOC,
+			CASE  
+				WHEN SMFECCAMES IS NULL THEN ''
+				WHEN SMFECCAMES = DATE ('0001-01-01') THEN ''
+				ELSE CHAR(SMFECCAMES,ISO)
+			END AS SMFECCAMES_C,
+			SMFECCAMES
+		from SIMATDTA.SMF05 where SM_ID &gt;= #keyInicio# order by SM_ID FETCH FIRST $paginacion$ ROWS ONLY
+	</select>
+
+	<!-- Sección insertar tabla n°5 -->
+	
+	<insert id="insertarControlDocu" parameterClass="cl.laaraucana.simat.entidades.ControlDocuVO">
+		INSERT INTO SIMATDTA.SMF05 (SM_ID,SMMESINFO,SMCODENTID,SMTIPOSUBS,SMRUTEMPLE,SMNOMEMPLE,SMRUNBENEF,SMNOMBENEF,SMMODPAGO,SMSERIEDOC,SMNUMDOC,SMFECEMDOC,SMMONTODOC,SMCODBANCO,SMESTADDOC,SMFECCAMES)
+		VALUES (IFNULL((select max(SM_ID)+1 from SIMATDTA.SMF05),0),#mes_informacion#,#codigo_entidad#,#tipo_subsidio#,#rut_empleador#,#nombre_empleador#,#run_beneficiario#,#nombre_beneficiario#,#mod_pago#,#serie_documento#,#num_documento#,#fecha_emision_documento#,#monto_documento#,#codigo_banco#,#estado_documento#,#fecha_cambio_estado#)
+		WITH NC
+
+	</insert>
+
+	<!-- Sección actualizar tabla n°5 -->
+	<update id="actualizarControlDocu" parameterClass="cl.laaraucana.simat.entidades.ControlDocuVO">
+		UPDATE SIMATDTA.SMF05 SET 
+		SMMESINFO=#mes_informacion#,
+		SMCODENTID=#codigo_entidad#,
+		SMTIPOSUBS=#tipo_subsidio#,
+		SMRUTEMPLE=#rut_empleador#,
+		SMNOMEMPLE=#nombre_empleador#,
+		SMRUNBENEF=#run_beneficiario#,
+		SMNOMBENEF=#nombre_beneficiario#,
+		SMMODPAGO=#mod_pago#,
+		SMSERIEDOC=#serie_documento#,
+		SMNUMDOC=#num_documento#,
+		SMFECEMDOC=#fecha_emision_documento#,
+		SMMONTODOC=#monto_documento#,
+		SMCODBANCO=#codigo_banco#,
+		SMESTADDOC=#estado_documento#,
+		SMFECCAMES=#fecha_cambio_estado# 		
+		WHERE SM_ID=#idControlDocu# 
+		WITH NC 
+	</update>
+	
+	
+	<!-- Sección borrar tabla n° 5 -->
+	<delete id="delControlDocuIbatis" parameterClass="cl.laaraucana.simat.entidades.ControlDocuVO">
+		DELETE FROM SIMATDTA.SMF05 WHERE SM_ID=#idControlDocu#
+		WITH NC 
+	</delete>
+	
+</sqlMap>

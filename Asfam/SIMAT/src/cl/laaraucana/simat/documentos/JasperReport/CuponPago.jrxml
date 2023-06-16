@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CuponPago" language="groovy" pageWidth="792" pageHeight="1500" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df9cb41-1227-46cd-b283-15e68d13aec6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="capital" class="java.lang.String"/>
+	<field name="seguros" class="java.lang.String"/>
+	<field name="interes" class="java.lang.String"/>
+	<field name="gastos_cobranza" class="java.lang.String"/>
+	<field name="descuentos" class="java.lang.String"/>
+	<field name="total_pagar" class="java.lang.String"/>
+	<field name="rut" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="fecha_emision" class="java.lang.String"/>
+	<field name="region" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="codeBar" class="java.lang.String"/>
+	<field name="firma" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<detail>
+		<band height="543">
+			<rectangle>
+				<reportElement uuid="1f5cb9e3-200f-4c72-aa6a-df9987404c38" x="0" y="120" width="728" height="106"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b9f86dae-8789-401d-83f8-e84e7f0ed98a" x="255" y="120" width="159" height="26"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Datos Personales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc104f4f-9edb-41e4-9514-e7ee83c03361" x="3" y="161" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Rut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="972f083a-20e6-4ca6-ae98-7869a42cf483" x="3" y="194" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a23f9672-20a2-424b-9123-c6c33216cd5b" x="229" y="161" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="424ab1aa-7cf7-4db8-acaa-fd9a83277c41" x="229" y="194" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Región]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fcd09b61-fe77-4298-8857-93d088836271" x="514" y="161" width="77" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Fecha Emisión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1d99543-e690-4425-8c64-de4cb01f43ca" x="514" y="194" width="77" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="abbeb133-c02d-4dc4-a613-77b2b923f088" x="0" y="0" width="727" height="106"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="5e2231c4-3239-4b1a-83ee-819cb5978764" x="229" y="34" width="234" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Comprobante de Pago]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="546fea4e-f4e4-4fe8-b1a3-8ae6cb619cff" x="0" y="239" width="725" height="286"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="7fb1a1a6-5c13-4f59-b8d3-cb3b4d36c5e5" x="514" y="239" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5218f9e4-220d-4ffd-889f-ee24af1ea0e4" x="414" y="239" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Capital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="560c747f-8dc4-4b26-b019-3262199ca125" x="414" y="271" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Seguros]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="182eb76d-1f03-4e37-8c58-b594ecc295d9" x="514" y="271" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{seguros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="918e92ab-a3d3-4df7-8a19-bb4df98eb8b6" x="414" y="303" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Interes]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="809d7e71-238e-44b2-92ca-bb5e1c9990b4" x="514" y="303" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="583b3fd7-d16c-40d4-bd1d-3f5e9ef0ebe6" x="414" y="335" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Gastos Cobranza]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ce822491-3006-426f-aa06-a7800c7c7b38" x="514" y="335" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gastos_cobranza}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1d2c01fa-cc88-4869-995f-5e53f49bb504" x="414" y="367" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Descuentos]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fddcab39-4126-415b-af42-96f706806769" x="514" y="367" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descuentos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ed111bd7-dd88-4a31-973f-14690cd6e656" x="1" y="398" width="713" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="3df0470a-91d0-4db3-9a59-b5e291666c19" x="414" y="409" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Total Pagar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1d67a58f-8fd2-4b1a-b801-63fbbf022008" x="514" y="409" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_pagar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3d95a77c-8b25-45b3-a6d8-7cc83e9b1ccb" x="3" y="409" width="319" height="20"/>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Este comprobante es válido hasta las 23:59 HH del día de emisión.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4ed2ee1-2cbb-4ff2-82ec-56db7d812b74" x="3" y="478" width="160" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single" leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[José Araya Araya ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0e9b014-a1c9-4d86-8b6b-1c7a68b4edf1" x="3" y="498" width="160" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single" leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[Representante Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ceaedf74-5f87-471e-8a78-a6f23f895dca" x="414" y="470" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Fecha - Hora :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ed5436b9-c596-49c5-856a-a878b6525d77" x="48" y="161" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="651a1aff-f7db-412f-b69e-c13a436546e1" x="48" y="194" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="304a0922-172d-41a0-8395-e2b5f7c3c36f" x="278" y="161" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f20d5df-5531-434b-a7bf-8a179339ad0e" x="591" y="161" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_emision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0cf68d03-9eca-476e-9042-f9ce638f6547" x="278" y="194" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{region}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="447d5eeb-b00f-4048-b673-3f2423504a1f" x="591" y="194" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a891bd7-692d-411b-b156-cbc17b557315" x="614" y="470" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8313558f-8d46-4347-b908-a51b4e6beeeb" x="514" y="470" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_emision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="94481a8c-d447-4850-841d-24143c424e01" x="3" y="442" width="160" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{firma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="697df158-ea15-4b4a-8614-b6fcb5baea1f" x="3" y="462" width="160" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<paragraph tabStopWidth="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[_________________________]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32e09aa5-02fc-4200-acf7-e969df8be7ce" x="498" y="14" width="223" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codeBar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

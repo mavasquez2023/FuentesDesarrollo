@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<!-- para cuadro estadistico 1(ce1) -->
+<sqlMap>
+	
+	<resultMap id="resultCountVO" class="cl.laaraucana.simat.entidades.CountVO">
+		<result property="resultadoCount" column="total" />				
+	</resultMap>
+	
+	<select id="getCE1_Num_Lic_Aut_SinModificar_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=1 and trim(SMCODDIAGN)='650'
+	</select>	
+	<select id="getCE1_Num_Lic_Aut_Modificadas_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=2 and trim(SMCODDIAGN)='650'
+	</select>	
+	<select id="getCE1_Num_Lic_Aut_Reconsideradas_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)='650'
+	</select>	
+	<select id="getCE1_Num_Lic_Rechazadas_Pre_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)='650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Autorizados_Pre_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2) and trim(SMCODDIAGN)='650'
+	</select>	
+	<select id="getCE1_Num_Dias_Lic_Reconsiderados_Pre_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)='650'
+	</select>	
+	<select id="getCE1_Num_Dias_Lic_Rechazados_Pre_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNDIALIRE),0) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)='650'
+	</select>
+	
+	
+	<select id="getCE1_Num_Lic_Aut_SinModificar_Post_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=1 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Aut_Modificadas_Post_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=2 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Aut_Reconsideradas_Post_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Rechazadas_Post_natal" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Autorizados_Post_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2) and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Reconsiderados_Post_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Rechazados_Post_natal" resultMap="resultCountVO">
+		select IFNULL(sum(SMNDIALIRE),0) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)='1650'
+	</select>
+	
+	
+	<select id="getCE1_Num_Lic_Aut_SinModificar_Enf_menor" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=1 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Aut_Modificadas_Enf_menor" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=2 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Reconsideradas_Enf_menor" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Lic_Rechazadas_Enf_menor" resultMap="resultCountVO">
+		select count(*) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Autorizados_Enf_menor" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where (SMESTATRAM=1 or SMESTATRAM=2) and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Reconsiderados_Enf_menor" resultMap="resultCountVO">
+		select IFNULL(sum(SMNUMDIAU),0) as total from SIMATDTA.SMF08 where SMRECONSID=1 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	<select id="getCE1_Num_Dias_Lic_Rechazados_Enf_menor" resultMap="resultCountVO">
+		select IFNULL(sum(SMNDIALIRE),0) as total from SIMATDTA.SMF08 where SMESTATRAM=3 and trim(SMCODDIAGN)!='650' and trim(SMCODDIAGN)!='1650'
+	</select>
+	
+	
+</sqlMap>

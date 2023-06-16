@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<resultMap id="resultMenorFecha" class="cl.laaraucana.simat.entidades.Control_Historico_VO">
+		<result property="mes_informacion" column="MENOR_FECHA" />				
+	</resultMap>
+			
+	<select id="getMenorPeriodoSMF01H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF01H
+	</select>
+	
+	<select id="getMenorPeriodoSMF02H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF02H
+	</select>
+	
+	<select id="getMenorPeriodoSMF03H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF03H
+	</select>
+	
+	<select id="getMenorPeriodoSMF05H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF05H
+	</select>
+	
+	<select id="getMenorPeriodoSMF06H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF06H
+	</select>
+	
+	<select id="getMenorPeriodoSMF07H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF07H
+	</select>
+	
+	<select id="getMenorPeriodoSMF08H" resultMap="resultMenorFecha">
+		select  min(SMMESINFO) as MENOR_FECHA from SIMATDTA.SMF08H
+	</select>
+	
+</sqlMap>

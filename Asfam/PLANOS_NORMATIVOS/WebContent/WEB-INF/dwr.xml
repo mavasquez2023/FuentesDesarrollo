@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd"> -->
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://directwebremoting.org/schema/dwr20.dtd"> -->
+
+<!-- mapeo de los campos de cada clase para ser usados por funciones del tipo DWR -->
+<dwr>
+  <allow>
+  	<create creator="new" javascript="GeneraRepDivPrevDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GeneraRepDivPrevDWR"/>
+    </create>
+    <create creator="new" javascript="GeneraReporteCotizacionesDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GeneraReporteCotizacionesDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarReporteCesantiaDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarReporteCesantiaDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarReporteAFCDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarReporteAFCDWR"/>
+    </create>
+    <create creator="new" javascript="EditarReporteCotizacionesDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.EditarReporteCotizacionesDWR"/>
+    </create>
+    <create creator="new" javascript="EditarReporteDivisionPrevisionalDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.EditarReporteDivisionPrevisionalDWR"/>
+    </create>
+    <create creator="new" javascript="AgregarRegistroCotizacionesDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.AgregarRegistroCotizacionesDWR"/>
+    </create>
+    <create creator="new" javascript="AgregarRegistroDivisionPrevisionalDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.AgregarRegistroDivisionPrevisionalDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarPlanosDivisionPrevisionalDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarPlanosDivisionPrevisionalDWR"/>	
+    </create>
+    <create creator="new" javascript="GenerarPlanosCotizacionesDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarPlanosCotizacionesDWR"/>	 
+    </create>
+    <create creator="new" javascript="GenerarListadoErroresDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarListadoErroresDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarInformeFinancieroDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarInformeFinancieroDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarCuadroComparativoDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarCuadroComparativoDWR"/>
+    </create>
+    <create creator="new" javascript="GenerarPlanosCesantiaDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarPlanosCesantiaDWR"/>	 
+    </create>
+    <create creator="new" javascript="GenerarPlanosAFCDWR">
+      <param name="class" value="cl.araucana.sivegam.struts.dwr.actions.GenerarPlanosAFCDWR"/>
+    </create>
+    
+    <convert converter="bean" match="cl.araucana.sivegam.vo.param.Parametro">
+    	<param name="include" value="codigo,glosa"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.sivegam.vo.RespuestaVO">
+		<param name="include" value="codRespuesta,msgRespuesta,rutaArchivo,periodoProceso,idTipoReporte,maxId,mesConsultado,status"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.MaestroSivegamVO">
+		<param name="include" value="maestro_sivegam,fecha_proceso,fechaProcesoDate,periodo_proceso,status_proceso,tipo_archivo,usuario_sivegam,glosaPeriodoProcesoMes,glosaStatusProceso"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.GenerarReportesVO">
+		<param name="include" value="codResultado,resultado,idMaestroSivegam"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.StatusProcesoVO">
+		<param name="include" value="status_proceso,descripcion_status_proceso"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif011VO">
+		<param name="include" value="resultado,codResultado,listSif011,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch,tipoArchivo,periodoArchivo,tipoArchivoGlosa,periodoArchivoGlosa,montoBeneficioMiles"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif012VO">
+		<param name="include" value="resultado,codResultado,listSif012,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif014VO">
+		<param name="include" value="resultado,codResultado,listSif014,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch,tipoArchivo,periodoArchivo,tipoArchivoGlosa,periodoArchivoGlosa"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif016VO">
+		<param name="include" value="resultado,codResultado,listSif016,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif017VO">
+		<param name="include" value="resultado,codResultado,listSif017,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif018VO">
+		<param name="include" value="resultado,codResultado,listSif018,archivoInforme,rutaArchivo,nombreArchivo,tipoArchivoGlosa,periodoArchivoGlosa,idsif018,statusProceso"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.Sif019VO">
+		<param name="include" value="resultado,codResultado,listSif019,archivoInforme,rutaArchivoTxt,nombreArchivoTxt,rutaArchivoExcel,nombreArchivoExcel,rutSearch"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif011VO">
+		<param name="include" value="id_sif011,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,mes_cotizaciones,mes_remuneracion,tipo_declaracion,codigo_barra,rut_empresa,dv_empresa,nombre_empresa,rut_afiliado,dv_afiliado,nombre_afiliado,cod_tipo_beneficio,tipo_beneficiario,rut_causante,dv_causante,nombre_causante,cod_tipo_causante,fecha_inicio_benef,fecha_termino_benef,dias_asfam,codigo_tramo,monto_beneficio,tipo_emision,cod_tipo_egreso,modalidad_pago,monto_documento,numero_serie,numero_documento,fecha_emision_documento,codigo_banco,fuente_origen,fechaInicioBeneficioDate,fechaTerminoBeneficioDate,fechaEmisionDocumentoDate,montoBeneficioMiles"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif012VO">
+		<param name="include" value="id_sif012,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,mes_recaudacion,mes_remuneracion,tipo_declaracion,numero_declaracion,rut_empresa,dv_empresa,nombre_empresa,rut_afiliado,dv_afiliado,nombre_afiliado,cod_tipo_beneficio,tipo_beneficiario,rut_causante,dv_causante,nombre_causante,cod_tipo_causante,fecha_inicio_benef,fecha_termino_benef,dias_asfam,codigo_tramo,monto_beneficio,causal_reliquidacion,tipo_emision,cod_tipo_egreso,monto_documento,modalidad_pago,fech_emision_doc,numero_serie,numero_documento,codigo_banco,referncia_origen,fuente_origen,fechaInicioBeneficioDate,fechaTerminoBeneficioDate,fechaEmisionDocumentoDate"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif014VO">
+		<param name="include" value="id_sif014,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,rut_empresa,dv_empresa,nombre_empresa,rut_beneficiario,dv_beneficiario,nombre_beneficiario,tipo_beneficio,tipo_beneficiario,rut_causante,dv_causante,nombre_causante,tipo_causante,inicio_period_reinte,final_period_reinte,tipo_reintegro,monto_total_reintegro,monto_reintegro_mes,monto_total_deuda,referencia_origen,fuente_origen,inicioPeriodoReintegroDate,finalPeriodoReintegro,montoTotalReintegro,montoReintegroMes,montoTotalDeuda"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif016VO">
+		<param name="include" value="id_sif016,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,mes_recaudacion,mes_remuneracion,cod_tipo_declaracion,numero_declaracion,fech_declaracion,rut_empresa,dv_empresa,nombre_empresa,num_total_trabajador,num_total_cargas,cargas_retroactivas,mto_asfam_mes,mto_asfam_mes_retro,mto_reintegros_mes,total_pago_asigfam,total_de_cotizacion,otros_descuentos,resultado_neto,tipo_de_saldo,modalidad_pago,monto_documento,numero_serie,numero_documento,fech_emision_doc,codigo_banco,saldo_caja_planilla,campo_contingencia,fuente_de_origen,montoAsfamMesMiles,montoAsfamMesRetroMiles,montoReintegroMesMiles,totalPagoAsigFamMiles,totalCotizacionesMiles,otrosDescuentosMiles,resultadoNetoMiles,numero_declaracion,fech_declaracion,fechaEmision,fechaDeclaracion"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif017VO">
+		<param name="include" value="id_sif017,fecha_proceso,codigo_entidad,codigo_archivo,rut_empresa,dv_empresa,nombre_empresa,cod_tipo_egreso,modalidad_de_pago,monto_documento,numero_serie,numero_documento,fech_emision_doc,codigo_banco,numero_cartola,estado_documento,fecha_rendicion,fechaProcesoDate,fechaEmisionDocumentoDate,fechaRendicionDate,montoDocumentoEnMiles,fechaEmisionDocumentoDate"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif018VO">
+		<param name="include" value="id_sif018,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,rut_empleador,dv_empleador,nombre_empleador,mod_pago,monto_documento,numero_serie,numero_documento,fecha_emision_documento,codigo_banco,fecha_cobro,rut_modificado,fechaEmisionDocumentoDate,fechaRendicionDate,montoDocumentoMiles,codRespuesta"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.LinSif019VO">
+		<param name="include" value="fechaEmisionOrigenDate,fechaEmisionNuevoDate,id_sif019,id_maestro_sivegam,flag_reg_modificado,flag_reg_eliminado,fecha_proceso,codigo_entidad,codigo_archivo,rut_empresa,dv_empresa,nombre_empresa,mes_origen_gasto,estado_doc_orig,modo_pago_orig,num_serie_orig,num_docum_orig,monto_docum_orig,fecha_emision_orig,codigo_banco_orig,modo_pago_nuevo,num_serie_nuevo,num_docum_nuevo,monto_docum_nuevo,fecha_emision_nuevo,codigo_banco_nuevo,mesOrigenGastoDate"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoBeneficiarioVO">
+		<param name="include" value="id_tipo_beneficiario,desc_tipo_beneficiario"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoCausanteVO">
+		<param name="include" value="id_tipo_causante,desc_tipo_causante"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoBeneficioVO">
+		<param name="include" value="id_tipo_beneficio,desc_tipo_beneficio"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CodigoArchivoVO">
+		<param name="include" value="id_codigo_archivo,desc_codigo_archivo"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoEmisionVO">
+		<param name="include" value="id_tipo_emision,desc_tipo_emision"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoDeclaracionVO">
+		<param name="include" value="id_tipo_declaracion,desc_tipo_declaracion"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoReintegroVO">
+		<param name="include" value="id_tipo_reintegro,desc_tipo_reintegro"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoSaldoVO">
+		<param name="include" value="id_tipo_saldo,desc_tipo_saldo"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CausalReliquidacionVO">
+		<param name="include" value="id_causal_reliquidacion,desc_causal_reliquidacion"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoEgresoVO">
+		<param name="include" value="id_tipo_Egreso,desc_tipo_egreso"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.ModalidadDePagoVO">
+		<param name="include" value="id_modalidad_pago,desc_modalidad_pago"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CodigoBancoVO">
+		<param name="include" value="cod_banco_normativa,desc_cod_banco_normativa"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.EstadoDelDocumentoVO">
+		<param name="include" value="id_estado_documento,desc_estado_documento"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.PeriodoProcesoVO">
+		<param name="include" value="periodo_proceso,descripcion_periodo_proceso"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoArchivoVO">
+		<param name="include" value="id_tipo_archivo,desc_tipo_archivo"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.TipoProcesosVO">
+		<param name="include" value="id_tipo_proceso,codigo_tipo_proceso,descripcion_tipo_proceso,desc_estruct_carpetas_as400,desc_estruct_carpetas_reporte,desc_carpeta_xls,desc_carpeta_txt,desc_nombre_archivo_xls,id_tipo_archivo,id_tipo_reporte"/>
+	</convert>
+	
+	<convert converter="bean" match="cl.araucana.sivegam.vo.InformeFinancieroVO">
+		<param name="include" value="resultado,codResultado,ingresoVO,pagoDelMesVO,egresosVO,pagosRetroVO,devolucionSaldosVO,informacionInformeFinancieroVO,devolucionesVO"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.InfoInformeFinancieroVO">
+		<param name="include" value="idInformeFinanciero,periodo,codigoEntidad,nombreEntidad,fecDepositoExcedente,fecDepositoExcedenteDate,totalSuperAvitDeficit,totalSuperAvitDeficitFinal"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.IngresosVO">
+		<param name="include" value="idIngresos,idInformeFinanciero,provision,reintegro,totalIngresos"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.PagoDelMesVO">
+		<param name="include" value="idPagoMes,idEgresos,asigFamTrabActivos,asigFamPensionados,asigFamTrabCesantes,asigFamInstituciones,totalPagoDelMes"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.PagosRetroactivosVO">
+		<param name="include" value="idPagosRetroactivos,idEgresos,asigFamTrabActiv,asifFamTrabPens,asigFamTrabCes,asigFamTrabInst,totalPagosRetroactivos"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.EgresosVO">
+		<param name="include" value="idEgresos,idInformeFinanciero,docRevalidados,comisionAdministracion,totalEgresos"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.DevolucionesVO">
+		<param name="include" value="idDevoluciones,idInformeFinanciero,documentosCaducados,documentosAnulados,totalDevoluciones"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.DevolucionDeSaldosVO">
+		<param name="include" value="idDevolucionDeSaldos,idInformeFinanciero,saldoFavorEmpleador,devolucionDocSAFEMCaducados,devolucionDocSAFEMAnulados,documentosSAFEMRevalidados,totalDevolucionesE"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CuadroComparativoVO">
+		<param name="include" value="codResultado,montoBeneficioSif011AT,montoBeneficioSif011CES,montoBeneficioSif012AT,montoBeneficioSif012PD,montoBeneficioSif012CES,montoDocumentoSif016,montoDocumentoSif017,eee4,ccu"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CesantiaVO">
+		<param name="include" value="resultado,codResultado,listCesantia041VO,listCesantia042VO,listCesantia043VO,listCesantia044VO,rutaExcelCesantia,rutaTxtCesantia,rutaErroresExcelCesantia,glosaTipoArchivoCesantia,nombreArchivoCesantia,flagReporteCesantia,statusProcesoCesantia,codError,descripcionError"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.AfcVO">
+		<param name="include" value="resultado,codResultado,listAfcAFF01VO,listLinAfcAFF01EVO,rutaExcel,rutaTxt,rutaErroresExcel,glosaTipoArchivo,nombreArchivo,flagReporteAfc,statusProcesoAfc,tipoArchivoAFC,codError,descripcionError"/>
+	</convert>
+	<convert converter="bean" match="cl.araucana.sivegam.vo.CodigoTramoVO">
+		<param name="include" value="id_codigo_tramo,desc_codigo_tramo"/>
+	</convert>
+	
+  </allow>
+</dwr>

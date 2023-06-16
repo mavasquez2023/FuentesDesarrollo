@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+	<definition name="main.emptyLayout" path="/WEB-INF/tiles/layouts/emptyLayout.jsp">
+		<put name="body" value="/WEB-INF/tiles/common/body.jsp"></put>
+	</definition>
+	<definition name="main.contentLayout" path="/WEB-INF/tiles/layouts/contentLayout.jsp">
+		<put name="title" value="La Araucana C.C.A.F. - Ingresos de Trabajadores"></put>
+		<put name="header" value="/WEB-INF/tiles/common/header.jsp"></put>
+		<put name="header.layout" value="/WEB-INF/tiles/common/header.layout.jsp"></put>
+		<!-- <put name="left.menu" value="/WEB-INF/tiles/common/left.menu.jsp"></put>-->
+		<put name="body" value="/WEB-INF/tiles/common/body.jsp"></put>
+		<put name="footer.layout" value="/WEB-INF/tiles/common/footer.layout.jsp"></put>
+	</definition>
+	<definition name="generic.error.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/error.jsp"></put>
+	</definition>
+	<definition name="home.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/index.jsp"></put>
+	</definition>
+	<definition name="page.error" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/error/error.jsp"></put>
+	</definition>
+	<definition name="page.error.division" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/error/errordivision.jsp"></put>
+	</definition>
+	<definition name="propuesta.descarga.home" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/descarga/rentas.jsp"></put>
+	</definition>
+	<definition name="propuesta.aprobacion.form.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/form.jsp"></put>
+	</definition>
+	<definition name="propuesta.aprobacion.success.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/success.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.home.page" extends="main.contentLayout">
+		<put name="left.menu" value="/WEB-INF/tiles/pages/propuesta/consultas/menu.jsp"></put>
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/consultas/home.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.consulta1.page" extends="main.contentLayout">
+		<put name="left.menu" value="/WEB-INF/tiles/pages/propuesta/consultas/menu.jsp"></put>
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/consultas/consulta1.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.consulta2.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/consultas/consulta2.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.termino.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/terminodeclaracion.jsp"></put>
+	</definition>
+	<!-- Integration -->
+	<definition name="propuesta.subida.carga.holding" extends="main.contentLayout">
+		<put name="left.menu" value="/WEB-INF/tiles/pages/propuesta/consultas/menu.jsp"></put>
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/subida/cargaHolding.jsp"></put>
+	</definition>
+	<definition name="propuesta.subida.carga.archivo" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/subida/cargaArchivos.jsp"></put>
+	</definition>
+	<definition name="propuesta.subida.menu" extends="main.emptyLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/subida/menu.jsp"></put>
+	</definition>
+	<definition name="propuesta.subida.informe.carga" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/subida/informeCarga.jsp"></put>
+	</definition>
+	<definition name="propuesta.subida.informe.aceptapropuesta" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/aceptapropuesta.jsp"></put>
+	</definition>
+	<definition name="propuesta.subida.informe.holding" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/subida/informeholding.jsp"></put>
+	</definition>
+	<definition name="Cambio.fecha.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/cambioFecha/cambioFecha.jsp"></put>
+	</definition>
+	<definition name="Estado.Procesamiento.page" extends="main.emptyLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/descarga/estadoprocesamiento.jsp"></put>
+	</definition>
+		 <definition name="propuesta.comprobante.ver" extends="main.contentLayout">
+	    <put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/comprobante.jsp"></put>
+	</definition>
+	<!-- End Integration -->
+	
+	<definition name="propuesta.consultas.estadoprocesamiento" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/estadoprocesamiento.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.errornewcomprobante" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/errornewcomprobante.jsp"></put>
+	</definition>
+	<definition name="propuesta.consultas.pretermino.page" extends="main.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/propuesta/aprobacion/preterminodeclaracion.jsp"></put>
+	</definition>
+</tiles-definitions>
