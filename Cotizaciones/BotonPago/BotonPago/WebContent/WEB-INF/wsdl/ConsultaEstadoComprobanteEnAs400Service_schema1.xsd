@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.toAS.legados.integracion.laaraucana.cl/">
+
+  <xs:element name="consultaEstadoMonto" type="tns:consultaEstadoMonto"/>
+
+  <xs:element name="consultaEstadoMontoResponse" type="tns:consultaEstadoMontoResponse"/>
+
+  <xs:complexType name="consultaEstadoMonto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:teConsuSapEntrada"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="teConsuSapEntrada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaEstadoMontoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:teConsuSapSalida"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="teConsuSapSalida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="digitoVerificador" type="xs:string"/>
+      <xs:element minOccurs="0" name="estado" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRecaudacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="monto" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoMovimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoPago" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

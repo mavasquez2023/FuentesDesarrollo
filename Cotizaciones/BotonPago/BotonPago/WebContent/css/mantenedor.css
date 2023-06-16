@@ -1,0 +1,135 @@
+/*  body{
+	text-align:center
+}
+ */
+#contenedorMantenedor{
+	width:800px;
+	margin: 0 auto;
+	text-align:left;
+}
+
+
+#buscador {
+	float: left;
+	width: 450px;
+}
+
+#buscador #entrada{
+	width: 250px;
+}
+
+#ingreso {
+	float: right;
+	width: 200px;
+	text-align: right;
+}
+
+#contenedor-tabla{
+	float: left;
+	width: 100%;
+	margin-top: 15px;
+}
+
+.contenedorNormal{
+	margin-top: 20px;
+	float: left;
+	width: 100%;
+}
+
+#contenedor-tabla .tabla-principal{
+	float: left;
+	width: 100%;
+	width: 100%;
+	border: 1px;
+	border-style: solid;
+	border-color: #CECECE;
+	margin-top: 5px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+#contenedor-tabla .tabla-principal th{
+	margin-top: 20px;
+	text-align: left;
+	background: #EAEAEA;
+	font-size: 12px;
+	padding: 2px;
+}
+
+#contenedor-tabla .tabla-principal td{
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	margin-left: 10px;
+	font-size: 12px;
+	padding: 0 5px 0 5px;
+}
+
+
+/* Paddings */
+.padding-xs{
+  padding: 5px;
+}
+.padding-s{
+  padding: 8px;
+}
+.padding-m{
+  padding: 10px;
+}
+
+/* FIN PADDINGS */
+
+/**formularios**/
+
+.field{
+  height: 25px;
+  /* width: 100%; 
+   float: left; */
+  clear: both;
+}
+
+
+.field label{
+	float: left;
+	text-align: left;
+}
+
+
+.field input.text, .field input[type='text'].text, .field input[type='password'].text, .field select{
+	width: 130px;
+	float: left;
+}
+
+input, select
+{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+label{
+	padding-top: 3px !important;
+	margin-right: 10px;
+	/* float: right; */
+}
+
+
+label.error {
+  	width: auto;
+  	max-width: 35%;
+  	float: left;
+  	color: red;
+ 	font-family: arial, helvetica, sans-serif;
+  	font-size: 12px;
+	/* margin-left: 5px; */
+}
+
+input.error, select.error {
+  color: #000000;
+  text-align: left;
+}
+
+.span2-8{
+	width: 100px;
+}
+/**FIN formularios**/

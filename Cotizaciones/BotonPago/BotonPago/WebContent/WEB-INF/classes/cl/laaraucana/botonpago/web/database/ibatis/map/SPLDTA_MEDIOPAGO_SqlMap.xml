@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SPLDTA_MEDIOPAGO" >
+
+<typeAlias alias="Mediopago" type="cl.laaraucana.botonpago.web.database.ibatis.domain.Mediopago"/>
+
+
+  <resultMap id="MediopagoResult" class="Mediopago" >
+    <result column="ID_MEDIOPAGO" property="idMediopago" />
+    <result column="CODIGO" property="codigo" />
+    <result column="DESCRIPCION" property="descripcion" />
+    <result column="IMAGEN" property="imagen" />
+    <result column="URL_INICIO_PAGO" property="urlInicioPago" />
+    <result column="ACTIVO" property="activo" />
+    <result column="CODBANCO" property="codbanco" />
+  </resultMap>
+  
+  <select id="getMedioPagoById" resultMap="MediopagoResult" parameterClass="string" >
+    select ID_MEDIOPAGO, CODIGO, DESCRIPCION, IMAGEN, URL_INICIO_PAGO, ACTIVO, CODBANCO
+    from SPLDTA.MEDIOPAGO
+    where ID_MEDIOPAGO = #value#
+  </select>
+  
+</sqlMap>

@@ -1,0 +1,7 @@
+estadoAutenticacion.
+
+data.data =data.DATA;
+
+obtenerRecursos
+
+ToUpper

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SPLDTA_CONVENIO" >
+
+<typeAlias alias="Convenio" type="cl.laaraucana.botonpago.web.database.ibatis.domain.Convenio"/>
+
+  <resultMap id="ConvenioResult" class="Convenio" >
+    <result column="ID_CONVENIO" property="idConvenio" />
+    <result column="ID_MEDIOPAGO" property="idMediopago" />
+    <result column="CODIGO" property="codigo" />
+    <result column="URL_CGI" property="urlCgi" />
+    <result column="CTACTE" property="ctacte" />
+    <result column="SRVREC" property="srvrec" />
+  </resultMap>
+  
+  <select id="getConvenioById" resultMap="ConvenioResult" parameterClass="string" >
+    select ID_CONVENIO, ID_MEDIOPAGO, CODIGO, URL_CGI, CTACTE, SRVREC
+    from SPLDTA.CONVENIO
+    where ID_CONVENIO = #value#
+  </select>
+  
+</sqlMap>

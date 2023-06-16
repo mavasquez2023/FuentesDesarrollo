@@ -1,0 +1,390 @@
+body {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	margin: 0px;
+}
+
+.left{
+	float:left;
+}
+.right{
+	float: right;
+}
+
+.centrado {
+	text-align: center;
+}
+
+.negrita{
+	font-weight: bold;
+}
+
+.contenedorCentro {
+	text-align: center;
+}
+
+.headerGrilla {
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #8484FF;
+}
+
+label {
+	font-size: 9pt;
+	font-weight: bold;
+	color: #004c66;
+}
+
+.texto {
+	font-size: 9pt;
+	color: #004c66;
+	font-weight: normal;
+}
+
+.textofino {
+	font-size: 8pt;
+	color: #616161;
+	font-weight: normal;
+}
+
+.textobold {
+	font-size: 8pt;
+	color: #004c66;
+	font-weight: bold;
+}
+
+.titulo {
+	font-size: 10pt;
+	color: #FFFFFF;
+	background-color: #003360;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.subtitulo {
+	font-size: 8pt;
+	color: #000066;
+	font-weight: bold;
+	background-color: #003360;
+	text-decoration: none;
+}
+
+.seccion {
+	font-size: 8pt;
+	color: #000066;
+	background-color: #003380;
+}
+
+.combo {
+	font-size: 8pt;
+	font-style: normal
+}
+
+.field {
+	font-size: 8pt;
+	font-weight: normal;
+  	clear: both;
+}
+
+.bigfield {
+	font-size: 16pt;
+	font-weight: normal;
+}
+
+.lineaimpar {
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	background-color: #003450;
+}
+
+.lineapar {
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	background-color: #ffffff;
+}
+
+.opcion {
+	font-size: 7pt;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.grupoopcion {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 8pt;
+}
+
+.subopcion {
+	font-size: 7pt;
+	color: 99cc99;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.botonmenu {
+	width: 100%;
+	color: #034a98;;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 4px 10px 4px 10px;
+	text-align: center;
+	border: 0px;
+	margin-top: 1px;
+	background-color: #eeeeee;
+}
+
+.botonmenu:hover {
+	color: white;
+	background-color: #034a98;
+}
+
+.boton {
+	border: 0px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+	background-image: url("../img/boton.jpg");
+	padding: 4px 10px 4px 10px;
+	text-align: center;
+}
+
+.boton:hover {
+	background-image: url("../img/boton_on.jpg");
+}
+.boton:disabled{
+	background-image: url("../img/boton_des.jpg");
+}
+/* 
+.botongrisOver {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	background-image: url(../img/fondo_boton_gris2.jpg);
+	color: #818181;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #EAEAEA;
+	float: right;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: 1px solid #D5D5D5;
+}
+
+.botongris {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	background-image: url(../images/v2/fondo_boton_gris.jpg);
+	color: #2D2D2D;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	float: right;
+	background-color: #EAEAEA;
+	border: 1px solid #D5D5D5;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+ */
+.sello_agua {
+	font-size: 1px;
+	width: 934px;
+	height: 100%;
+}
+
+
+.foot {
+	float:none;
+	width: 100%;
+}
+
+.line-thick {
+	height: 20px;
+	background: #015D8C;
+}
+
+.line-thin {
+	height: 5px;
+	background-color: #015D8C;
+}
+
+.contenedor {
+	width: 100%;
+}
+
+.menu {
+	padding: 2% 0% 2% 0%;
+	width: 18%;
+	min-height: 400px;
+	background-color: #fefefe;
+	float: left;
+	text-align: center;
+	border-right: solid 1px;
+	border-color: #eeeeee;
+}
+.footer {
+	text-align: left;
+	color: #999999;
+	width: 100%;
+	height: 32px;
+	padding: 10px 2% 10px 2%;
+	background-color: #eeeeee;
+}
+
+.centraTabla {
+	text-align: center;
+}
+
+.centraTabla table {
+	margin: 0 auto;
+	text-align: left;
+}
+
+.opcionmenu {
+	padding: 2%;
+	background-color: #fefefe;
+	min-height: 50%;
+	width: 77%;
+	float: left;
+}
+
+.top {
+	text-align: right;
+	width: 96%;
+	height: 32px;
+	padding: 10px 2% 10px 2%;
+	background-color: #eeeeee;
+}
+
+.contenido {
+	margin: 2% 5% 2% 5%;
+	width: 90%;
+	float: left;
+	
+}
+
+.superior {
+	font-size: 8pt;
+	color: #006666;
+	font-weight: normal;
+	border: 1px solid;
+	border-color: #fff;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+input[type='text'],input[type='password'] {
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+h1 {
+	text-align: center;
+	color: #A9A9A9;
+	padding: 0px;
+	margin: 0px;
+	font-size: 20px;
+}
+
+img {
+	border: none;
+}
+
+/* actualiza datos */
+
+.inputCorto {
+	width: 200px;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+.inputMenu {
+	width: 120px;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+
+.inputMedio {
+	width: 300px;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+.inputLargo {
+	width: 420px;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+.form-fieldset{
+	border: solid 1px #CCCCCC;
+	width: 75%;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.span2-8{width: 150px;}
+
+.field label{
+	float: left;
+	height: 35px;
+	margin-right: 10px;
+}
+
+label.error{
+	float: none;
+	color: red;
+  	float: left;
+  	width: auto;
+}
+
+#errorPagoMinino label.error{
+	float: none;
+	text-align: inherit;
+}
+
+
+input.error, select.error {
+  color: #000000;
+  text-align: left;
+}
+
+.right{
+	clear:both;
+	float: right;
+}
+
+.centrar{
+	text-align: center;
+}
+
+.field .inputCorto {
+	float: left;
+}
+
+.padding-m{
+  padding: 10px;
+}
+
+#mensajesError label.error{
+	display: block;
+	float: none;
+}
+#mensajesErrorAct label.error{
+	display: block;
+	float: none;
+}
+
+#solicitar-clave-form{
+	border:0px;
+	width: 400px;
+	text-align: left;
+	margin: 0 auto;
+	height: auto;
+}

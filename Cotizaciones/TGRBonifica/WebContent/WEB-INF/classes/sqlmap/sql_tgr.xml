@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="publicacion">
+	
+	
+	<resultMap id="CotizacionesMap" class="cl.araucana.tgr.vo.CotizacionVO">
+	  	<result property="rutEmpresa" column="RUT_EMPRESA" />
+	  	<result property="dvRutEmpresa" column="DVRUT_EMPRESA" />
+	  	<result property="razonSocial" column="RAZON_SOCIAL" />
+	  	<result property="region" column="REGION" />
+	  	<result property="codAFP" column="COD_AFP" />
+	  	<result property="rutTrabajador" column="RUT_TRABAJADOR" />
+	  	<result property="dvRutTrabajador" column="DVRUT_TRABAJADOR" />
+	  	<result property="apellidos" column="APELLIDOS" />
+	  	<result property="nombres" column="NOMBRES" />
+	  	<result property="periodo" column="PERIODO" />
+	  	<result property="rentaImponible" column="RENTA_IMPONIBLE" />
+	  	<result property="montoPagado" column="MONTO_PAGADO" />
+	  	<result property="fechaPago" column="FECHA_PAGO" />
+	  	<result property="tipoProceso" column="TIPO_PROCESO" />
+	  	<result property="codMovPer" column="COD_MOVPER" />
+	  	<result property="diasTrabajados" column="DIAS_TRABAJADOS" />
+	  	<result property="montoSalud" column="MONTO_SALUD" />
+	  	
+	  	
+	</resultMap> 
+	
+	<select id="obtenerRemuneraciones" resultMap="CotizacionesMap" parameterClass="cl.araucana.tgr.vo.DatoEntradaVO">
+	
+		SELECT	'R' AS TIPO_PROCESO 
+						, A . PWDCRUTEM AS RUT_EMPRESA 
+						, A . PWDCDIGEM AS DVRUT_EMPRESA 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS RAZON_SOCIAL 
+						, ( 
+							SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS REGION 
+						, A . PWDCRUTAF AS RUT_TRABAJADOR 
+						, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS APELLIDOS 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 
+						) AS NOMBRES 
+						, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+						, A . PWDCFECPA AS FECHA_PAGO 
+						, A . PWDCREMIM AS RENTA_IMPONIBLE 
+						, A . PWDCMONCO AS MONTO_PAGADO 
+						, B . PWFCODTGR AS COD_AFP 
+						, CAST ( RIGHT ( COALESCE ( E . CODMOV , '0' ) , 1 ) AS DECIMAL ( 12 , 0 ) ) AS COD_MOVPER 
+						, ( 
+			 
+							SELECT COALESCE ( MIN ( Z . PWDCMONCO ) , 30 ) 
+							FROM PWDTAD . PWF6100 Z 
+							WHERE Z . PWDCRUTEM = A . PWDCRUTEM 
+							AND Z . PWDCRUTAF = A . PWDCRUTAF 
+							AND Z . PWDCANORE = A . PWDCANORE 
+							AND Z . PWDCMESRE = A . PWDCMESRE 
+							AND Z . PWDCCONVE = A . PWDCCONVE 
+							AND Z . PWDCCDHOL = A . PWDCCDHOL 
+							AND Z . PWDCTIPEN = 'H' 
+						) AS DIAS_TRABAJADOS 
+					FROM PWDTAD . PWF6100 A JOIN PWDTAD . PWFMAPAFP B 
+					ON A . PWDCENTID = B . PWFNOMENT 
+					LEFT JOIN 
+					( SELECT RUTEM , RUTAF , MAX ( CAST ( FEC || MOV AS DECIMAL ( 12 , 0 ) ) )	AS CODMOV 
+						FROM ( 
+							SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECINI AS FEC , PWDCMOVPE AS MOV 
+							FROM PWDTAD . PWF6104 Z 
+							WHERE Z . PWDCRUTEM = #rutemp# 
+							AND Z . PWDCANORE = #anio# 
+							AND Z . PWDCMESRE = #mes# 
+							AND Z . PWDCRUTAF = #ruttra#
+							UNION 
+							SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECTER AS FEC , PWDCMOVPE AS MOV 
+							FROM PWDTAD . PWF6104 Z 
+							WHERE Z . PWDCRUTEM = #rutemp# 
+							AND Z . PWDCANORE = #anio# 
+							AND Z . PWDCMESRE = #mes# 
+							AND Z . PWDCRUTAF = #ruttra#
+						) AS D 
+						WHERE FEC IS NOT NULL 
+						GROUP BY RUTEM , RUTAF 
+						) E			 
+					ON E . RUTEM = A . PWDCRUTEM 
+					AND E . RUTAF = A . PWDCRUTAF 
+					WHERE A . PWDCRUTEM	= #rutemp# 
+					AND A . PWDCTIPEN	= 'P' 
+					AND A . PWDCENTID IS NOT NULL		 
+					AND A . PWDCMESRE	= #mes# 
+					AND A . PWDCANORE	= #anio# 
+					AND A . PWDCRUTAF	= #ruttra# 
+ 				UNION 
+					SELECT	'G' AS TIPO_PROCESO 
+						, A . PWDCRUTEM AS RUT_EMPRESA 
+						, A . PWDCDIGEM AS DVRUT_EMPRESA 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS RAZON_SOCIAL 
+						, ( 
+							SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS REGION 
+						, A . PWDCRUTAF AS RUT_TRABAJADOR 
+						, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS APELLIDOS 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 
+						) AS NOMBRES 
+						, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+						, A . PWDCFECPA AS FECHA_PAGO 
+						, A . PWDCREMIM AS RENTA_IMPONIBLE 
+						, A . PWDCMONCO AS MONTO_PAGADO 
+						, B . PWFCODTGR AS COD_AFP 
+						, 0 AS COD_MOVPER 
+						, 0 AS DIAS_TRABAJADOS 
+					FROM PWDTAD . PWF6101 A JOIN PWDTAD . PWFMAPAFP B 
+					ON A . PWDCENTID = B . PWFNOMENT 
+					WHERE A . PWDCRUTEM	= #rutemp# 
+					AND A . PWDCTIPEN	= 'P' 
+					AND A . PWDCENTID IS NOT NULL		 
+					AND A . PWDCMESRE	= #mes# 
+					AND A . PWDCANORE	= #anio# 
+					AND A . PWDCRUTAF	= #ruttra# 
+				ORDER BY COD_AFP , RUT_TRABAJADOR
+	
+	</select>
+	
+	<select id="obtenerRemuneracionesPlus" resultMap="CotizacionesMap" parameterClass="cl.araucana.tgr.vo.DatoEntradaVO">
+	
+           SELECT r.TIPO_PROCESO AS TIPO_PROCESO 
+                , r.RUT_EMPRESA  AS RUT_EMPRESA
+                , r.DVRUT_EMPRESA AS DVRUT_EMPRESA 
+                , r.RAZON_SOCIAL AS RAZON_SOCIAL 
+                , r.REGION AS REGION
+                , r.RUT_TRABAJADOR AS RUT_TRABAJADOR
+                , r.DVRUT_TRABAJADOR AS DVRUT_TRABAJADOR
+                , r.APELLIDOS AS APELLIDOS
+                , r.NOMBRES AS NOMBRES
+                , r.PERIODO AS PERIODO
+                , r.FECHA_PAGO AS FECHA_PAGO
+                , r.RENTA_IMPONIBLE AS RENTA_IMPONIBLE
+                , max(r.MONTO_PAGADO) AS MONTO_PAGADO
+                , max(r.COD_AFP) AS COD_AFP
+                , max(r.COD_MOVPER) AS COD_MOVPER
+                , max(r.DIAS_TRABAJADOS) AS DIAS_TRABAJADOS
+                , max(r.MONTO_SALUD) AS MONTO_SALUD 
+           FROM (	
+		SELECT	'R' AS TIPO_PROCESO 
+					, A . PWDCRUTEM AS RUT_EMPRESA 
+					, A . PWDCDIGEM AS DVRUT_EMPRESA 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS RAZON_SOCIAL 
+					, ( 
+						SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS REGION 
+					, A . PWDCRUTAF AS RUT_TRABAJADOR 
+					, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS APELLIDOS 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 						) AS NOMBRES 
+					, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+					, A . PWDCFECPA AS FECHA_PAGO 
+					, A . PWDCREMIM AS RENTA_IMPONIBLE 
+					,(  
+					        SELECT COALESCE ( max ( j . PWDCMONCO ) , 0 ) 
+	                                        FROM PWDTAD . PWF6100 j 
+						WHERE j . PWDCRUTEM = A . PWDCRUTEM
+						AND j . PWDCRUTAF = A . PWDCRUTAF 
+						AND j . PWDCANORE = A . PWDCANORE 
+						AND j . PWDCMESRE = A . PWDCMESRE 
+						AND j . PWDCCONVE = A . PWDCCONVE 
+						AND j . PWDCCDHOL = A . PWDCCDHOL 
+						AND j . PWDCTIPEN = 'P' 
+	 				) AS MONTO_PAGADO
+					, COALESCE (B.PWFCODTGR, 0) AS COD_AFP 
+					, CAST ( RIGHT ( COALESCE ( E . CODMOV , '0' ) , 1 ) AS DECIMAL ( 12 , 0 ) ) AS COD_MOVPER 
+					, ( 
+			 			SELECT COALESCE ( MIN ( Z . PWDCMONCO ) , 30 ) 
+						FROM PWDTAD . PWF6100 Z 
+						WHERE Z . PWDCRUTEM = A . PWDCRUTEM 
+						AND Z . PWDCRUTAF = A . PWDCRUTAF 
+						AND Z . PWDCANORE = A . PWDCANORE 
+						AND Z . PWDCMESRE = A . PWDCMESRE 
+						AND Z . PWDCCONVE = A . PWDCCONVE 
+						AND Z . PWDCCDHOL = A . PWDCCDHOL 
+						AND Z . PWDCTIPEN = 'H' 
+					) AS DIAS_TRABAJADOS 
+				        , 
+                                          (     SELECT COALESCE ( max ( s1 . PWDCMONCO ) , 0 ) 
+                                                FROM PWDTAD . PWF6100 s1 
+	                                        WHERE s1. PWDCRUTEM = A . PWDCRUTEM
+	                                        AND s1 . PWDCRUTAF = A . PWDCRUTAF 
+	                                        AND s1 . PWDCANORE = A . PWDCANORE 
+	                                        AND s1. PWDCMESRE = A . PWDCMESRE 
+	                                        AND s1. PWDCCONVE = A . PWDCCONVE 
+	                                        AND s1. PWDCCDHOL = A . PWDCCDHOL 
+	                                        AND s1. PWDCTIPEN = 'S' 
+	                              ) AS MONTO_SALUD 	
+						
+			FROM PWDTAD . PWF6100 A LEFT JOIN PWDTAD . PWFMAPAFP B 
+			ON A . PWDCENTID = B . PWFNOMENT 
+			LEFT JOIN 
+			( SELECT RUTEM , RUTAF , MAX ( CAST ( FEC || MOV AS DECIMAL ( 12 , 0 ) ) )	AS CODMOV 
+			  FROM ( 
+				 SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECINI AS FEC , PWDCMOVPE AS MOV 
+				 FROM PWDTAD . PWF6104 Z 
+				 WHERE Z . PWDCRUTEM = #rutemp#  
+				 AND Z . PWDCANORE = #anio# 
+				 AND Z . PWDCMESRE = #mes# 
+				 AND Z . PWDCRUTAF = #ruttra# 
+				UNION 
+				SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECTER AS FEC , PWDCMOVPE AS MOV 
+				FROM PWDTAD . PWF6104 Z 
+				WHERE Z . PWDCRUTEM = #rutemp#  
+				AND Z . PWDCANORE = #anio# 
+				AND Z . PWDCMESRE = #mes# 
+				AND Z . PWDCRUTAF = #ruttra# 
+				) AS D 
+			WHERE FEC IS NOT NULL 
+			GROUP BY RUTEM , RUTAF  ) E			 
+			ON E . RUTEM = A . PWDCRUTEM 
+		        AND E . RUTAF = A . PWDCRUTAF 
+			WHERE A . PWDCRUTEM	= #rutemp#  
+			AND A . PWDCTIPEN in ('P','S')
+			AND A . PWDCENTID IS NOT NULL		 
+			AND A . PWDCMESRE	= #mes# 
+			AND A . PWDCANORE	= #anio# 
+			AND A . PWDCRUTAF = #ruttra# 
+			) as R
+			group by r.TIPO_PROCESO, r.RUT_EMPRESA, r.DVRUT_EMPRESA,r.RAZON_SOCIAL,	
+                                 r.REGION, r.RUT_TRABAJADOR, r.DVRUT_TRABAJADOR,r.APELLIDOS, 
+                                 r.NOMBRES, r.PERIODO, r.FECHA_PAGO, r.RENTA_IMPONIBLE	
+					
+ 	UNION 
+ 	SELECT    g.TIPO_PROCESO AS TIPO_PROCESO 
+                , g.RUT_EMPRESA  AS RUT_EMPRESA
+                , g.DVRUT_EMPRESA AS DVRUT_EMPRESA 
+                , g.RAZON_SOCIAL AS RAZON_SOCIAL 
+                , g.REGION AS REGION
+                , g.RUT_TRABAJADOR AS RUT_TRABAJADOR
+                , g.DVRUT_TRABAJADOR AS DVRUT_TRABAJADOR
+                , g.APELLIDOS AS APELLIDOS
+                , g.NOMBRES AS NOMBRES
+                , g.PERIODO AS PERIODO
+                , g.FECHA_PAGO AS FECHA_PAGO
+                , g.RENTA_IMPONIBLE AS RENTA_IMPONIBLE
+                , max(g.MONTO_PAGADO) AS MONTO_PAGADO
+                , max(g.COD_AFP) AS COD_AFP
+                , max(g.COD_MOVPER) AS COD_MOVPER
+                , max(g.DIAS_TRABAJADOS) AS DIAS_TRABAJADOS
+                , max(g.MONTO_SALUD) AS MONTO_SALUD 
+
+           FROM (	
+		SELECT	'G' AS TIPO_PROCESO 
+			, A . PWDCRUTEM AS RUT_EMPRESA 
+			, A . PWDCDIGEM AS DVRUT_EMPRESA 
+			, ( 
+			     SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+			     FROM PWDTAD . PWF6001 Z 
+			     WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			     AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			     AND Z . PWCCCONVE = A . PWDCCONVE 
+			     AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS RAZON_SOCIAL 
+			, ( 
+			   SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+			   FROM PWDTAD . PWF6001 Z 
+			   WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			   AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			   AND Z . PWCCCONVE = A . PWDCCONVE 
+			   AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS REGION 
+			, A . PWDCRUTAF AS RUT_TRABAJADOR 
+                        , A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+			, ( 
+			    SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+			    FROM PWDTAD . PWF6001 Z 
+			    WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			    AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			    AND Z . PWCCCONVE = A . PWDCCONVE 
+			    AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS APELLIDOS 
+			, ( 
+			    SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+			    FROM PWDTAD . PWF6001 Z 
+			    WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+		            AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			    AND Z . PWCCCONVE = A . PWDCCONVE 
+			    AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		        ) AS NOMBRES 
+			, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+			, A . PWDCFECPA AS FECHA_PAGO 
+			, A . PWDCREMIM AS RENTA_IMPONIBLE 
+			,(		
+			   SELECT COALESCE ( max ( j2 . PWDCMONCO ) , 0 ) 
+			   FROM PWDTAD . PWF6101 j2 
+			   WHERE j2 . PWDCRUTEM = A . PWDCRUTEM
+			   AND j2 . PWDCRUTAF = A . PWDCRUTAF 
+	                   AND j2 . PWDCANORE = A . PWDCANORE 
+	                   AND j2 . PWDCMESRE = A . PWDCMESRE 
+	                   AND j2 . PWDCCONVE = A . PWDCCONVE 
+	                   AND j2 . PWDCCDHOL = A . PWDCCDHOL 
+	                   AND j2 . PWDCTIPEN = 'P' 
+	                 ) AS	MONTO_PAGADO 
+			, COALESCE (B.PWFCODTGR, 0) AS COD_AFP 
+			, 0 AS COD_MOVPER 
+			, 0 AS DIAS_TRABAJADOS 
+			, (		
+	                    SELECT COALESCE ( max ( s2 . PWDCMONCO ) , 0 ) 
+			    FROM PWDTAD . PWF6101 s2 
+			    WHERE s2. PWDCRUTEM = A . PWDCRUTEM
+	                    AND s2 . PWDCRUTAF = A . PWDCRUTAF 
+	                    AND s2 . PWDCANORE = A . PWDCANORE 
+	                    AND s2. PWDCMESRE = A . PWDCMESRE 
+	                    AND s2. PWDCCONVE = A . PWDCCONVE 
+	                    AND s2. PWDCCDHOL = A . PWDCCDHOL 
+	                    AND s2. PWDCTIPEN = 'S' 
+	               ) AS MONTO_SALUD 	
+	   FROM PWDTAD . PWF6101 A LEFT JOIN PWDTAD . PWFMAPAFP B 
+	      ON A . PWDCENTID = B . PWFNOMENT 
+	      WHERE A . PWDCRUTEM	= #rutemp#  
+	      AND A . PWDCTIPEN	= 'P' 
+	      AND A . PWDCENTID IS NOT NULL		 
+	      AND A . PWDCMESRE	= #mes# 
+	      AND A . PWDCANORE	= #anio# 
+	      AND A . PWDCRUTAF = #ruttra# 
+	    ) as g
+	    group by g.TIPO_PROCESO, g.RUT_EMPRESA, g.DVRUT_EMPRESA,g.RAZON_SOCIAL,	
+                     g.REGION, g.RUT_TRABAJADOR, g.DVRUT_TRABAJADOR, g.APELLIDOS, 
+                     g.NOMBRES, g.PERIODO, g.FECHA_PAGO, g.RENTA_IMPONIBLE						
+		
+	   order by COD_AFP, RUT_TRABAJADOR
+			
+	</select>
+	
+	<select id="obtenerListaRemuneraciones" resultMap="CotizacionesMap" parameterClass="cl.araucana.tgr.vo.DatosEntradaVO">
+		
+		
+		SELECT	'R' AS TIPO_PROCESO 
+						, A . PWDCRUTEM AS RUT_EMPRESA 
+						, A . PWDCDIGEM AS DVRUT_EMPRESA 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS RAZON_SOCIAL 
+						, ( 
+							SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS REGION 
+						, A . PWDCRUTAF AS RUT_TRABAJADOR 
+						, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS APELLIDOS 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+							FROM PWDTAD . PWF6000 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 
+						) AS NOMBRES 
+						, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+						, A . PWDCFECPA AS FECHA_PAGO 
+						, A . PWDCREMIM AS RENTA_IMPONIBLE 
+						, A . PWDCMONCO AS MONTO_PAGADO 
+						, B . PWFCODTGR AS COD_AFP 
+						, CAST ( RIGHT ( COALESCE ( E . CODMOV , '0' ) , 1 ) AS DECIMAL ( 12 , 0 ) ) AS COD_MOVPER 
+						, ( 
+			 
+							SELECT COALESCE ( MIN ( Z . PWDCMONCO ) , 30 ) 
+							FROM PWDTAD . PWF6100 Z 
+							WHERE Z . PWDCRUTEM = A . PWDCRUTEM 
+							AND Z . PWDCRUTAF = A . PWDCRUTAF 
+							AND Z . PWDCANORE = A . PWDCANORE 
+							AND Z . PWDCMESRE = A . PWDCMESRE 
+							AND Z . PWDCCONVE = A . PWDCCONVE 
+							AND Z . PWDCCDHOL = A . PWDCCDHOL 
+							AND Z . PWDCTIPEN = 'H' 
+						) AS DIAS_TRABAJADOS 
+					FROM PWDTAD . PWF6100 A JOIN PWDTAD . PWFMAPAFP B 
+					ON A . PWDCENTID = B . PWFNOMENT 
+					LEFT JOIN 
+					( SELECT RUTEM , RUTAF , MAX ( CAST ( FEC || MOV AS DECIMAL ( 12 , 0 ) ) )	AS CODMOV 
+						FROM ( 
+							SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECINI AS FEC , PWDCMOVPE AS MOV 
+							FROM PWDTAD . PWF6104 Z 
+							WHERE Z . PWDCRUTEM = #rutemp# 
+							AND Z . PWDCANORE = #anio# 
+							AND Z . PWDCMESRE = #mes# 
+							AND Z . PWDCRUTAF in 
+							<iterate property="ruttra" open="(" close=")" conjunction=",">
+   							#ruttra[]#
+ 							</iterate>
+							UNION 
+							SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECTER AS FEC , PWDCMOVPE AS MOV 
+							FROM PWDTAD . PWF6104 Z 
+							WHERE Z . PWDCRUTEM = #rutemp# 
+							AND Z . PWDCANORE = #anio# 
+							AND Z . PWDCMESRE = #mes# 
+							AND Z . PWDCRUTAF in
+							<iterate property="ruttra" open="(" close=")" conjunction=",">
+   							#ruttra[]#
+ 							</iterate>
+						) AS D 
+						WHERE FEC IS NOT NULL 
+						GROUP BY RUTEM , RUTAF 
+						) E			 
+					ON E . RUTEM = A . PWDCRUTEM 
+					AND E . RUTAF = A . PWDCRUTAF 
+					WHERE A . PWDCRUTEM	= #rutemp# 
+					AND A . PWDCTIPEN	= 'P' 
+					AND A . PWDCENTID IS NOT NULL		 
+					AND A . PWDCMESRE	= #mes# 
+					AND A . PWDCANORE	= #anio# 
+					AND A . PWDCRUTAF	in 
+					<iterate property="ruttra" open="(" close=")" conjunction=",">
+   					#ruttra[]#
+ 					</iterate>
+ 				UNION 
+					SELECT	'G' AS TIPO_PROCESO 
+						, A . PWDCRUTEM AS RUT_EMPRESA 
+						, A . PWDCDIGEM AS DVRUT_EMPRESA 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS RAZON_SOCIAL 
+						, ( 
+							SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS REGION 
+						, A . PWDCRUTAF AS RUT_TRABAJADOR 
+						, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+						) AS APELLIDOS 
+						, ( 
+							SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+							FROM PWDTAD . PWF6001 Z 
+							WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+							AND Z . PWCCRUTAF = A . PWDCRUTAF 
+							AND Z . PWCCCONVE = A . PWDCCONVE 
+							AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 
+						) AS NOMBRES 
+						, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+						, A . PWDCFECPA AS FECHA_PAGO 
+						, A . PWDCREMIM AS RENTA_IMPONIBLE 
+						, A . PWDCMONCO AS MONTO_PAGADO 
+						, B . PWFCODTGR AS COD_AFP 
+						, 0 AS COD_MOVPER 
+						, 0 AS DIAS_TRABAJADOS 
+					FROM PWDTAD . PWF6101 A JOIN PWDTAD . PWFMAPAFP B 
+					ON A . PWDCENTID = B . PWFNOMENT 
+					WHERE A . PWDCRUTEM	= #rutemp# 
+					AND A . PWDCTIPEN	= 'P' 
+					AND A . PWDCENTID IS NOT NULL		 
+					AND A . PWDCMESRE	= #mes# 
+					AND A . PWDCANORE	= #anio# 
+					AND A . PWDCRUTAF	in 
+					<iterate property="ruttra" open="(" close=")" conjunction=",">
+   					#ruttra[]#
+ 					</iterate>
+				ORDER BY COD_AFP , RUT_TRABAJADOR
+	</select>
+	
+	<select id="obtenerListaRemuneracionesPlus" resultMap="CotizacionesMap" parameterClass="cl.araucana.tgr.vo.DatosEntradaVO">
+	
+           SELECT r.TIPO_PROCESO AS TIPO_PROCESO 
+                , r.RUT_EMPRESA  AS RUT_EMPRESA
+                , r.DVRUT_EMPRESA AS DVRUT_EMPRESA 
+                , r.RAZON_SOCIAL AS RAZON_SOCIAL 
+                , r.REGION AS REGION
+                , r.RUT_TRABAJADOR AS RUT_TRABAJADOR
+                , r.DVRUT_TRABAJADOR AS DVRUT_TRABAJADOR
+                , r.APELLIDOS AS APELLIDOS
+                , r.NOMBRES AS NOMBRES
+                , r.PERIODO AS PERIODO
+                , r.FECHA_PAGO AS FECHA_PAGO
+                , r.RENTA_IMPONIBLE AS RENTA_IMPONIBLE
+                , max(r.MONTO_PAGADO) AS MONTO_PAGADO
+                , max(r.COD_AFP) AS COD_AFP
+                , max(r.COD_MOVPER) AS COD_MOVPER
+                , max(r.DIAS_TRABAJADOS) AS DIAS_TRABAJADOS
+                , max(r.MONTO_SALUD) AS MONTO_SALUD 
+           FROM (	
+		SELECT	'R' AS TIPO_PROCESO 
+					, A . PWDCRUTEM AS RUT_EMPRESA 
+					, A . PWDCDIGEM AS DVRUT_EMPRESA 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS RAZON_SOCIAL 
+					, ( 
+						SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS REGION 
+					, A . PWDCRUTAF AS RUT_TRABAJADOR 
+					, A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+					) AS APELLIDOS 
+					, ( 
+						SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+						FROM PWDTAD . PWF6000 Z 
+						WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+						AND Z . PWCCRUTAF = A . PWDCRUTAF 
+						AND Z . PWCCCONVE = A . PWDCCONVE 
+						AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		 						) AS NOMBRES 
+					, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+					, A . PWDCFECPA AS FECHA_PAGO 
+					, A . PWDCREMIM AS RENTA_IMPONIBLE 
+					,(  
+					        SELECT COALESCE ( max ( j . PWDCMONCO ) , 0 ) 
+	                                        FROM PWDTAD . PWF6100 j 
+						WHERE j . PWDCRUTEM = A . PWDCRUTEM
+						AND j . PWDCRUTAF = A . PWDCRUTAF 
+						AND j . PWDCANORE = A . PWDCANORE 
+						AND j . PWDCMESRE = A . PWDCMESRE 
+						AND j . PWDCCONVE = A . PWDCCONVE 
+						AND j . PWDCCDHOL = A . PWDCCDHOL 
+						AND j . PWDCTIPEN = 'P' 
+	 				) AS MONTO_PAGADO
+					, COALESCE (B.PWFCODTGR, 0) AS COD_AFP 
+					, CAST ( RIGHT ( COALESCE ( E . CODMOV , '0' ) , 1 ) AS DECIMAL ( 12 , 0 ) ) AS COD_MOVPER 
+					, ( 
+			 			SELECT COALESCE ( MIN ( Z . PWDCMONCO ) , 30 ) 
+						FROM PWDTAD . PWF6100 Z 
+						WHERE Z . PWDCRUTEM = A . PWDCRUTEM 
+						AND Z . PWDCRUTAF = A . PWDCRUTAF 
+						AND Z . PWDCANORE = A . PWDCANORE 
+						AND Z . PWDCMESRE = A . PWDCMESRE 
+						AND Z . PWDCCONVE = A . PWDCCONVE 
+						AND Z . PWDCCDHOL = A . PWDCCDHOL 
+						AND Z . PWDCTIPEN = 'H' 
+					) AS DIAS_TRABAJADOS 
+				        , 
+                                          (     SELECT COALESCE ( max ( s1 . PWDCMONCO ) , 0 ) 
+                                                FROM PWDTAD . PWF6100 s1 
+	                                        WHERE s1. PWDCRUTEM = A . PWDCRUTEM
+	                                        AND s1 . PWDCRUTAF = A . PWDCRUTAF 
+	                                        AND s1 . PWDCANORE = A . PWDCANORE 
+	                                        AND s1. PWDCMESRE = A . PWDCMESRE 
+	                                        AND s1. PWDCCONVE = A . PWDCCONVE 
+	                                        AND s1. PWDCCDHOL = A . PWDCCDHOL 
+	                                        AND s1. PWDCTIPEN = 'S' 
+	                              ) AS MONTO_SALUD 	
+						
+			FROM PWDTAD . PWF6100 A LEFT JOIN PWDTAD . PWFMAPAFP B 
+			ON A . PWDCENTID = B . PWFNOMENT 
+			LEFT JOIN 
+			( SELECT RUTEM , RUTAF , MAX ( CAST ( FEC || MOV AS DECIMAL ( 12 , 0 ) ) )	AS CODMOV 
+			  FROM ( 
+				 SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECINI AS FEC , PWDCMOVPE AS MOV 
+				 FROM PWDTAD . PWF6104 Z 
+				 WHERE Z . PWDCRUTEM = #rutemp# 
+				 AND Z . PWDCANORE = #anio# 
+				 AND Z . PWDCMESRE = #mes# 
+				 AND Z . PWDCRUTAF in 
+				 <iterate property="ruttra" open="(" close=")" conjunction=",">
+   					#ruttra[]#
+ 				</iterate> 
+				 
+				UNION 
+				SELECT Z . PWDCRUTEM AS RUTEM , Z . PWDCRUTAF AS RUTAF , Z . PWDCFECTER AS FEC , PWDCMOVPE AS MOV 
+				FROM PWDTAD . PWF6104 Z 
+				WHERE Z . PWDCRUTEM = #rutemp# 
+				AND Z . PWDCANORE = #anio# 
+				AND Z . PWDCMESRE = #mes# 
+				AND Z . PWDCRUTAF in 
+				<iterate property="ruttra" open="(" close=")" conjunction=",">
+   					#ruttra[]#
+ 				</iterate> 
+ 					
+				) AS D 
+			WHERE FEC IS NOT NULL 
+			GROUP BY RUTEM , RUTAF  ) E			 
+			ON E . RUTEM = A . PWDCRUTEM 
+		        AND E . RUTAF = A . PWDCRUTAF 
+			WHERE A . PWDCRUTEM	= #rutemp# 
+			AND A . PWDCTIPEN in ('P','S')
+			AND A . PWDCENTID IS NOT NULL		 
+			AND A . PWDCMESRE	= #mes# 
+			AND A . PWDCANORE	= #anio# 
+			AND A . PWDCRUTAF in 
+			<iterate property="ruttra" open="(" close=")" conjunction=",">
+   				#ruttra[]#
+ 			</iterate> 
+			) as R
+			group by r.TIPO_PROCESO, r.RUT_EMPRESA, r.DVRUT_EMPRESA,r.RAZON_SOCIAL,	
+                                 r.REGION, r.RUT_TRABAJADOR, r.DVRUT_TRABAJADOR,r.APELLIDOS, 
+                                 r.NOMBRES, r.PERIODO, r.FECHA_PAGO, r.RENTA_IMPONIBLE	
+					
+ 	UNION 
+ 	SELECT    g.TIPO_PROCESO AS TIPO_PROCESO 
+                , g.RUT_EMPRESA  AS RUT_EMPRESA
+                , g.DVRUT_EMPRESA AS DVRUT_EMPRESA 
+                , g.RAZON_SOCIAL AS RAZON_SOCIAL 
+                , g.REGION AS REGION
+                , g.RUT_TRABAJADOR AS RUT_TRABAJADOR
+                , g.DVRUT_TRABAJADOR AS DVRUT_TRABAJADOR
+                , g.APELLIDOS AS APELLIDOS
+                , g.NOMBRES AS NOMBRES
+                , g.PERIODO AS PERIODO
+                , g.FECHA_PAGO AS FECHA_PAGO
+                , g.RENTA_IMPONIBLE AS RENTA_IMPONIBLE
+                , max(g.MONTO_PAGADO) AS MONTO_PAGADO
+                , max(g.COD_AFP) AS COD_AFP
+                , max(g.COD_MOVPER) AS COD_MOVPER
+                , max(g.DIAS_TRABAJADOS) AS DIAS_TRABAJADOS
+                , max(g.MONTO_SALUD) AS MONTO_SALUD 
+           FROM (	
+		SELECT	'G' AS TIPO_PROCESO 
+			, A . PWDCRUTEM AS RUT_EMPRESA 
+			, A . PWDCDIGEM AS DVRUT_EMPRESA 
+			, ( 
+			     SELECT MIN ( TRIM ( Z . PWCCRAZSO ) ) 
+			     FROM PWDTAD . PWF6001 Z 
+			     WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			     AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			     AND Z . PWCCCONVE = A . PWDCCONVE 
+			     AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS RAZON_SOCIAL 
+			, ( 
+			   SELECT COALESCE ( MIN ( TRIM ( Z . PWCCADIC3 ) ) , '13' ) 
+			   FROM PWDTAD . PWF6001 Z 
+			   WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			   AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			   AND Z . PWCCCONVE = A . PWDCCONVE 
+			   AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS REGION 
+			, A . PWDCRUTAF AS RUT_TRABAJADOR 
+                        , A . PWDCDIGAF AS DVRUT_TRABAJADOR 
+			, ( 
+			    SELECT MIN ( TRIM ( Z . PWCCAPEAF ) ) 
+			    FROM PWDTAD . PWF6001 Z 
+			    WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+			    AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			    AND Z . PWCCCONVE = A . PWDCCONVE 
+			    AND Z . PWCCCDHOL = A . PWDCCDHOL 
+			) AS APELLIDOS 
+			, ( 
+			    SELECT MIN ( TRIM ( Z . PWCCNOMAF ) ) 
+			    FROM PWDTAD . PWF6001 Z 
+			    WHERE Z . PWCCRUTEM = A . PWDCRUTEM 
+		            AND Z . PWCCRUTAF = A . PWDCRUTAF 
+			    AND Z . PWCCCONVE = A . PWDCCONVE 
+			    AND Z . PWCCCDHOL = A . PWDCCDHOL 
+		        ) AS NOMBRES 
+			, CAST ( A . PWDCANORE AS CHAR ( 4 ) ) || '' || A . PWDCMESRE AS PERIODO 
+			, A . PWDCFECPA AS FECHA_PAGO 
+			, A . PWDCREMIM AS RENTA_IMPONIBLE 
+			,(		
+			   SELECT COALESCE ( max ( j2 . PWDCMONCO ) , 0 ) 
+			   FROM PWDTAD . PWF6101 j2 
+			   WHERE j2 . PWDCRUTEM = A . PWDCRUTEM
+			   AND j2 . PWDCRUTAF = A . PWDCRUTAF 
+	                   AND j2 . PWDCANORE = A . PWDCANORE 
+	                   AND j2 . PWDCMESRE = A . PWDCMESRE 
+	                   AND j2 . PWDCCONVE = A . PWDCCONVE 
+	                   AND j2 . PWDCCDHOL = A . PWDCCDHOL 
+	                   AND j2 . PWDCTIPEN = 'P' 
+	                 ) AS	MONTO_PAGADO 
+			, COALESCE (B.PWFCODTGR, 0) AS COD_AFP 
+			, 0 AS COD_MOVPER 
+			, 0 AS DIAS_TRABAJADOS 
+			, (		
+	                    SELECT COALESCE ( max ( s2 . PWDCMONCO ) , 0 ) 
+			    FROM PWDTAD . PWF6101 s2 
+			    WHERE s2. PWDCRUTEM = A . PWDCRUTEM
+	                    AND s2 . PWDCRUTAF = A . PWDCRUTAF 
+	                    AND s2 . PWDCANORE = A . PWDCANORE 
+	                    AND s2. PWDCMESRE = A . PWDCMESRE 
+	                    AND s2. PWDCCONVE = A . PWDCCONVE 
+	                    AND s2. PWDCCDHOL = A . PWDCCDHOL 
+	                    AND s2. PWDCTIPEN = 'S' 
+	               ) AS MONTO_SALUD 	
+	   FROM PWDTAD . PWF6101 A LEFT JOIN PWDTAD . PWFMAPAFP B 
+	      ON A . PWDCENTID = B . PWFNOMENT 
+	      WHERE A . PWDCRUTEM	= #rutemp# 
+	      AND A . PWDCTIPEN	= 'P' 
+	      AND A . PWDCENTID IS NOT NULL		 
+	      AND A . PWDCMESRE	= #mes# 
+	      AND A . PWDCANORE	= #anio# 
+	      AND A . PWDCRUTAF in 
+	      <iterate property="ruttra" open="(" close=")" conjunction=",">
+   			#ruttra[]#
+ 	       </iterate> 
+            ) as g
+	    group by g.TIPO_PROCESO, g.RUT_EMPRESA, g.DVRUT_EMPRESA,g.RAZON_SOCIAL,	
+                     g.REGION, g.RUT_TRABAJADOR, g.DVRUT_TRABAJADOR, g.APELLIDOS, 
+                     g.NOMBRES, g.PERIODO, g.FECHA_PAGO, g.RENTA_IMPONIBLE						
+		
+	   order by COD_AFP, RUT_TRABAJADOR
+
+	</select>
+	
+	<select id="obtenerStatus" resultClass="java.lang.Integer">
+	
+		{call PWDTAD.PRC_STSWSTGR ()}
+	
+	</select>
+	
+</sqlMap> 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="TE07F2" >
+
+<typeAlias alias="Te07f2" type="cl.laaraucana.botonpago.web.database.ibatis.domain.TE07F2"/>
+
+  <resultMap id="Te07f2Result" class="Te07f2" >
+    <result column="TE4QA" property="te4qa" />
+    <result column="TE4RA" property="te4ra" />
+    <result column="TE4SA" property="te4sa" />
+    <result column="TE4TA" property="te4ta" />
+    <result column="TE2ZA" property="te2za" />
+    <result column="TE4UA" property="te4ua" />
+    <result column="TE2XA" property="te2xa" />
+    <result column="TE2YA" property="te2ya" />
+    <result column="TE4YA" property="te4ya" />
+    <result column="TE1YA" property="te1ya" />
+    <result column="TE3WA" property="te3wa" />
+    <result column="OBF002" property="obf002" />
+    <result column="OBF003" property="obf003" />
+    <result column="OBF005" property="obf005" />
+    <result column="OBF006" property="obf006" />
+    <result column="SAJKM94" property="sajkm94" />
+    <result column="SAJKM92" property="sajkm92" />
+  </resultMap>
+  
+  <select id="obtenerListaTe07f2" resultMap="Te07f2Result" >
+    select TE4QA, TE4RA, TE4SA, TE4TA, TE2ZA, TE4UA, TE2XA, TE2YA, TE4YA, TE1YA, TE3WA, OBF002,
+      OBF003, OBF005, OBF006, SAJKM94, SAJKM92
+    from TEDTA.TE07F2
+  </select>
+  
+  <insert id="ingresaDetalleTesoreria" parameterClass="Te07f2" >
+    insert into TEDTA.TE07F2 (TE4QA, TE4RA, TE4SA, TE4TA, TE2ZA, TE4UA, TE2XA, TE2YA, TE4YA, TE1YA,
+      TE3WA, OBF002, OBF003, OBF005, OBF006, SAJKM94, SAJKM92)
+    values (#te4qa#, #te4ra#, #te4sa#, #te4ta#, #te2za#,
+      #te4ua#, #te2xa#, #te2ya#, #te4ya#, #te1ya#,
+      #te3wa#, CURRENT DATE, CURRENT TIME, '1900-01-01', '00.00.00', #sajkm94#,
+      #sajkm92#)
+      with nc
+  </insert>
+</sqlMap>

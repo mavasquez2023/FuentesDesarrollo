@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<html lang="en">
+
+<head>
+<!-- Le styles -->
+<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href="css/estilo.css" rel="stylesheet">
+<link href="css/redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.corner.js"></script>
+<script type="text/javascript" src="js/ie.js"></script>
+<script type="text/javascript" src="js/comun.js"></script>
+<script type="text/javascript" src="js/iconos.js"></script>
+<script type="text/javascript" src="js/validaciones.js"></script>
+<script type="text/javascript" src="js/previpass.js"></script>
+<script type="text/javascript" src="js/cargardatos.js"></script>
+<script type="text/javascript" src="js/inputs.js"></script>
+<script type="text/javascript" src="js/ayuda.js"></script>
+</head>
+<body>
+
+	<style>
+label {
+	display: inline-block;
+	width: 5em;
+}
+
+fieldset div {
+	margin-bottom: 2em;
+}
+
+fieldset .help {
+	display: inline-block;
+}
+
+.ui-tooltip {
+	width: 210px;
+}
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+</style>
+
+
+
+	<script type="text/javascript">
+		function preventBack() {
+			window.history.forward();
+		}
+
+		setTimeout("preventBack()", 0);
+
+		window.onunload = function() {
+			null
+		};
+	</script>
+
+	<script>
+		$.datepicker.regional['es'] = {
+			closeText : 'Cerrar',
+			prevText : 'Previo',
+			nextText : 'Próximo',
+			changeYear : true,
+			maxDate : '31/12/2030',
+			minDate : '31/05/2017',
+			monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+					'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+					'Noviembre', 'Diciembre' ],
+			monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+					'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+			monthStatus : 'Ver otro mes',
+			yearStatus : 'Ver otro año',
+			dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+					'Viernes', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb' ],
+			dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa' ],
+			dateFormat : 'dd/mm/yy',
+			firstDay : 1
+		};
+		$.datepicker.setDefaults($.datepicker.regional['es']);
+
+		/*
+		 $(".datepicker").datepicker({
+		 changeMonth: true,
+		 changeYear: true,
+		 showButtonPanel: true
+		 });
+		 */
+		window.history.forward();
+
+		$(document).ready(function() {
+			//cargarValores("empresa");
+
+			$("td").corner("8px");
+			$("input").corner("4px");
+			$(".borde_redondeado").corner("6px");
+			$(".informacion").corner("6px");
+			$(".informacion_error").corner("6px");
+			$(".informacion_warning").corner("6px");
+			$("#_rut_empresa").val("");
+			$("#_email_empresa").val("");
+			$("#jcaptcha").val("");
+
+			$("#vigencia_representante_legal_empresa").datepicker();
+			$('#refresh').click(function() {
+       			src = $('#captcha_img').attr('src');
+   				// check for existing ? and remove if found
+       			queryPos = src.indexOf('?');
+       			if(queryPos != -1) {
+         			 src = src.substring(0, queryPos);
+       			}    
+       			$('#captcha_img').attr('src', src + '?' + Math.random());
+       			return false;
+    		});
+			ajustarIE();
+
+		});
+
+		function mostrarInfo(texto, tiempo) {
+			var img = "<img width='20px' src='"+icon_informacion_ok+"'></img> &nbsp;";
+
+			$("#informacion").hide()
+			$("#informacion_error").hide()
+			$("#informacion_warning").hide()
+			var fade_out = 5000;
+			if (tiempo != null)
+				fade_out = tiempo
+			$("#informacion").html(img + texto);
+			$("#informacion").fadeIn(500);
+			$("#informacion").fadeOut(fade_out);
+		}
+
+		function mostrarInfoError(texto, tiempo) {
+			var img = "<img width='20px' src='"+icon_informacion_error+"'></img> &nbsp;";
+			$("#informacion").hide()
+			$("#informacion_error").hide()
+			$("#informacion_warning").hide()
+			var fade_out = 5000;
+			if (tiempo != null)
+				fade_out = tiempo
+			$("#informacion_error").html(img + texto);
+			$("#informacion_error").fadeIn(500);
+			$("#informacion_error").fadeOut(fade_out);
+		}
+		function mostrarInfoWarning(texto, tiempo) {
+			var img = "<img width='20px' src='"+icon_informacion_warning+"'></img> &nbsp;";
+			$("#informacion").hide()
+			$("#informacion_error").hide()
+			$("#informacion_warning").hide()
+			var fade_out = 5000;
+			if (tiempo != null)
+				fade_out = tiempo
+			$("#informacion_warning").html(img + texto);
+			$("#informacion_warning").fadeIn(500);
+			$("#informacion_warning").fadeOut(fade_out);
+		}
+
+		function login() {
+			$("#seleccionTipo").val("I");
+			autenticar();
+		}
+		
+		
+		function validarMail() {
+			if ($("#_email_empresa").val().length == 0)
+				return;
+			var estructuraEmail = /^[a-zA-Z.0-9_\-]+@[a-zA-Z._\-]+?\.[a-zA-Z]{2,3}$/;
+			valor = $("#_email_empresa").val();
+			if (valor.match(estructuraEmail) == null) {
+
+				mostrarInfoError("El Email ingresado no es v&aacute;lido.");
+				marcarCampoError("_email_empresa");
+			}
+		}
+
+		function validarRut() {
+			if ($("#_rut_empresa").val().length == 0)
+				return;
+			var estructuraRut = /^0*(\d{1,3}(\.?\d{3})*)\-([\dkK])$/;
+			valor = $("#_rut_empresa").val();
+			if (valor.match(estructuraRut) == null) {
+				mostrarInfoError("El Rut ingresado no es v&aacute;lido.");
+				marcarCampoError("_rut_empresa");
+				return;
+			} else if ($("#_rut_empresa").val().length < 6) {
+				mostrarInfoError("El Largo del Rut no es v&aacute;lido");
+				marcarCampoError("_rut_empresa");
+				return;
+			}
+
+			var tmp = $("#_rut_empresa").val().split('-');
+			var digv = tmp[1];
+			var rut = tmp[0];
+			if (digv == 'K') {
+				digv = 'k';
+			}
+			var digesto = dv(rut);
+			if (digesto == digv) {
+				return true;
+			} else {
+				mostrarInfoError("El Rut ingresado no es v&aacute;lido.");
+				marcarCampoError("_rut_empresa");
+				return;
+
+			}
+		}
+
+		function validarRutIngresado(campo, rut) {
+			var partes = rut.split("-");
+			var digv = partes[1];
+			var rut = partes[0];
+			if (digv == 'K') {
+				digv = 'k';
+			}
+
+			var digesto = dv(rut);
+			if (digesto == digv) {
+				return true;
+			} else {
+				$("#" + campo).val("");
+				validaCampo(campo, $("#" + campo).val(), "");
+				obtenerItemValidacion(campo).error = "El rut Ingresado no es v&aacute;lido.";
+				mostrarInformacionValidacion(campo);
+				return;
+
+			}
+		}
+
+		function dv(T) {
+			var M = 0, S = 1;
+			for (; T; T = Math.floor(T / 10)) {
+				S = (S + T % 10 * (9 - M++ % 6)) % 11;
+			}
+			return S ? S - 1 : 'k';
+		}
+		function validarRequeridos(validacion) {
+			$("#_rut_empresa").attr("class", "");
+			$("#_email_empresa").attr("class", "");
+			$("#jcaptcha").attr("class", "");
+			var estadoValidacion = true;
+
+			var estructuraRut = /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/;
+			var estructuraEmail = /^[a-zA-Z.0-9_\-]+@[a-zA-Z._\-]+?\.[a-zA-Z]{2,3}$/;
+			valor = $("#_rut_empresa").val();
+			if (valor.match(estructuraRut) == null) {
+				estadoValidacion = false;
+				marcarCampoError("_rut_empresa");
+
+			} else if ($("#_rut_empresa").val().length < 6) {
+				estadoValidacion = false;
+				marcarCampoError("_rut_empresa");
+
+			}
+			valor = $("#_email_empresa").val();
+			if (valor.match(estructuraEmail) == null) {
+				estadoValidacion = false;
+				marcarCampoError("_email_empresa");
+
+			}
+			if (validacion == "login") {
+				valor = $("#jcaptcha").val();
+				if (valor.length == 0) {
+					estadoValidacion = false;
+					marcarCampoError("jcaptcha");
+				}
+			} else {
+				$("#jcaptcha").val("");
+
+			}
+			if (estadoValidacion) {
+				var rut = replaceAll($("#_rut_empresa").val(), ".", "");
+				$("#_rut_empresa").val(rut);
+			} else {
+				mostrarInfoError(texto_autenticacion_error_datos_invalidos);
+			}
+			return estadoValidacion;
+		}
+
+		function marcarCampoError(id) {
+			$("#" + id).attr("class", "hint");
+			$("#" + id).val("");
+			$("#" + id).click(function() {
+				$(this).attr("class", "");
+			});
+		}
+
+		function replaceAll(text, busca, reemplaza) {
+			while (text.toString().indexOf(busca) != -1)
+				text = text.toString().replace(busca, reemplaza);
+			return text;
+		}
+
+		function mostrarAyuda(key, id, width, height) {
+			$("body").append('<div id="ayuda" class="ayuda"></div>');
+			$("#ayuda").html(ayuda[key]);
+			$("#ayuda").fadeIn(500);
+			$("#ayuda").css("width", width);
+			$("#ayuda").css("height", height);
+			$("#ayuda").css("left", $("#" + id).offset().left + 40)
+			$("#ayuda").css("top", $("#" + id).offset().top)
+		}
+
+		function ocultarAyuda() {
+			$("#ayuda").fadeOut(500);
+			setTimeout(function() {
+				$("#ayuda").remove();
+			}, 500);
+		}
+		
+		function validacodacteco(){
+			if($("#seleccionTipo").val()=="I" && $("#codigo_acividad_economica_empresa").val()==""){
+				$("#codigo_acividad_economica_empresa").val("852029");
+			}
+		}
+		
+	</script>
+
+
+	<div class="container">
+
+
+		<div id="header">
+			<div id="logo"></div>
+			<div id="bottom_header"></div>
+
+			<div id="informacion" class="informacion"></div>
+			<div id="informacion_error" class="informacion"></div>
+			<div id="informacion_warning" class="informacion"></div>
+		</div>
+		
+		<div id="div_login">
+			<h1>Autenticaci&oacute;n Usuario</h1>
+			<table class="tabla_formulario" cellspacing="2">
+				<tr class="tr_formulario">
+					<td class="titulo_campo_login">Rut Independiente</td>
+					<td class="data_campo_login"><input type="text"
+						id="_rut_empresa" name="_rut_empresa" placeholder="Ej: 12312312-3"
+						maxlength="12" value="" onchange="validarRut()"></td>
+					<td class="titulo_campo_login">Email</td>
+					<td class="data_campo_login"><input type="text"
+						id="_email_empresa" name="_email_empresa"
+						placeholder="Ej: j.perez@laaraucana.cl" maxlength="100" value=""
+						onblur="validarMail()"></td>
+
+				</tr>
+				<tr class="tr_formulario">
+					<td class="titulo_campo_login">Ingrese el C&oacute;digo de la Imagen</td>
+					<td class="data_campo_login" ><input type="text" name="jcaptcha" id="jcaptcha" value="" />
+					</td>
+					<td>
+						<img src="jcaptcha.jpg" id="captcha_img" /> <img src="img/actualizar.png" name="refresh" id="refresh" title="Cambiar Código Imagen" /> 
+					</td>
+				</tr>
+				<tr class="tr_separador">
+					<td></td>
+				</tr>
+
+				<tr class="tr_formulario">
+					<td colspan="5" align="center" width="100%">
+						<button type="button" class="btn btn-default btn"
+							onclick="javascript:window.location='index.jsp';">
+							<span class="glyphicon glyphicon-step-backward"></span> Volver
+						</button>
+						<button type="button" class="btn btn-default btn"
+							onclick="if(validarRequeridos('login')) {javascript:login();}">
+							<span class="glyphicon glyphicon-log-in"></span> Ingresar
+						</button>
+					</td>
+				</tr>
+				<tr class="tr_separador">
+					<td height="50"><input type="hidden" id="seleccionTipo" name="seleccionTipo" value="I"></td>
+				</tr>
+				<tr class="tr_formulario">
+					<td colspan="5" align="left" class="texto_info">* Si Ud. es
+						nuevo en el sistema ingrese Rut Independiente y Email, y luego ingrese el C&oacute;digo de la Imagen.</td>
+				</tr>
+				<tr class="tr_formulario">
+					<td colspan="5" align="left" class="texto_info">* Puede cambiar el C&oacute;digo de la Imagen presionando el s&iacute;mbolo de actualizar.</td>
+				</tr>
+				<tr class="tr_formulario">
+					<td colspan="5" align="left" class="texto_info">* Si Ud. tiene
+						cualquier duda puede contactarse con un ejecutivo al telefono : <strong>600-4228100</strong>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="div_ingreso" style="display: none">
+
+			<table style="margin-left: 30px;">
+				<tr>
+					<td width="140px" class="mi_tab" id="tab_empresa"
+						onclick="cargarValores('empresa')">Independiente <img
+						id="img_datos_empresa" src="" class="img_info"></img></td>
+					<td width="130px" class="mi_tab" id="tab_casa_matriz"
+						onclick="cargarValores('casa_matriz')">Direcci&oacute;n <img
+						id="img_datos_casa_matriz" src="" class="img_info"></img></td>
+					<td width="190px" class="mi_tab" id="tab_previsionales"
+						onclick="cargarValores('previsionales')">Caja Compensación
+						<img id="img_datos_previsionales" class="img_info"></img>
+					</td>
+					<!-- td width="160px" class="mi_tab" id="tab_admin"
+						onclick="cargarValores('admin')">Administrador <img
+						id="img_datos_admin" src="" class="img_info"></img></td-->
+					<!--  td width="170px" class="mi_tab" id="tab_formato_nomina"
+						onclick="cargarValores('formato_nomina')">Formato
+						N&oacute;mina <img id="img_datos_formato_nomina" class="img_info"></img>
+					</td-->
+					<td width="100px" class="mi_tab" id="tab_guardar"
+						onclick="cargarValores('guardar');">Guardar</td>
+				</tr>
+			</table>
+
+			<div id="my-tab-content" class="tab-content"
+				style="padding-left: 30px;">
+
+				<div class="tab-pane active" id="empresa">
+					<br>
+					<table class="tabla_formulario" cellspacing="2">
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Rut Independiente *</td>
+							<td class="data_campo"><input type="text" id="rut_empresa"
+								name="rut_empresa" readonly></td>
+							<td class="titulo_campo">Email Independiente *</td>
+							<td class="data_campo"><input type="text" id="email_empresa"
+								name="email_empresa" readonly></td>
+
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Nombre *</td>
+							<td class="data_campo"><input type="text"
+								id="nombre_representante_legal_empresa"
+								name="nombre_representante_legal_empresa" maxlength="30"
+								onkeyPress="return soloLetras(event,this)"></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Apellido Paterno *</td>
+							<td class="data_campo"><input type="text"
+								id="apellido_paterno_representante_legal_empresa"
+								name="apellido_paterno_representante_legal_empresa"
+								maxlength="30" onkeyPress="return soloLetras(event,this)"></td>
+							<td class="titulo_campo">Apellido Materno *</td>
+							<td class="data_campo"><input type="text"
+								id="apellido_materno_representante_legal_empresa"
+								name="apellido_materno_representante_legal_empresa"
+								maxlength="30" onkeyPress="return soloLetras(event,this)"></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Raz&oacute;n Social *</td>
+							<td class="data_campo"><input type="text"
+								id="razon_social_empresa" name="razon_social_empresa"
+								maxlength="100" onkeyPress="return soloLetras(event,this)">
+							</td>
+							<td class="titulo_campo">Rut Rep. Legal *</td>
+							<td class="data_campo"><input type="text"
+								id="rut_representante_legal_empresa"
+								name="rut_representante_legal_empresa" readonly ></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td colspan="4" class="titulo_seccion">Actividad
+								Econ&oacute;mica</td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">C&oacute;digo / Descripci&oacute;n*</td>
+							<td class="data_campo"><input type="text"
+								id="codigo_acividad_economica_empresa"
+								name="codigo_acividad_economica_empresa" maxlength="8" 
+								onkeyPress="return soloNumeros(event,this)" onclick="validacodacteco();"></td>
+							<td class="data_campo" colspan="2"><select
+								id="nombre_acividad_economica_empresa"
+								name="nombre_acividad_economica_empresa" class="select_grande"></select></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="data_campo">
+								<input type="hidden" id="tipo_empresa" name="tipo_empresa" value="2"/>
+								<input type="hidden" id="numero_trabajadores" name="numero_trabajadores" value="1"/>
+								<input type="hidden" id="nombre_holding_empresa" name="nombre_holding_empresa" value=""/>
+								<input type="hidden" id="vigencia_representante_legal_empresa" name="vigencia_representante_legal_empresa" value="31/12/2020" />
+							</td>
+						</tr>
+
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr>
+							<td align="left" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormularioSalir('empresa');">
+									<span class="glyphicon glyphicon-step-backward"></span>
+									Guardar y Salir
+								</button>
+							</td>
+							<td align="right" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormulario('empresa');cargarValores('casa_matriz')">
+									<span class="glyphicon glyphicon-step-forward"></span> Guardar
+									y Seguir
+								</button>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="tab-pane" id="admin">
+					<br>
+					<table class="tabla_formulario" cellspacing="2">
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Rut *</td>
+							<td class="data_campo"><input type="text" id="rut_admin"
+								name="rut_admin" maxlength="12"
+								onchange="validarRutIngresado(this.id,this.value)"></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Nombre *</td>
+							<td class="data_campo"><input type="text" id="nombre_admin"
+								name="nombre_admin" maxlength="30"
+								onkeyPress="return soloLetras(event,this)"></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Apellido Paterno *</td>
+							<td class="data_campo"><input type="text"
+								id="apellido_paterno_admin" name="apellido_paterno_admin"
+								maxlength="30" onkeyPress="return soloLetras(event,this)"></td>
+							<td class="titulo_campo">Apellido Materno *</td>
+							<td class="data_campo"><input type="text"
+								id="apellido_materno_admin" name="apellido_materno_admin"
+								maxlength="30" onkeyPress="return soloLetras(event,this)"></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Tel&eacute;fono Fijo *</td>
+							<td class="data_campo"><input type="text"
+								id="codigo_telefono_fijo_admin"
+								name="codigo_telefono_fijo_admin" size="2" maxlength="2" onkeyPress="return soloNumeros(event,this)">
+								- <input type="text" id="telefono_fijo_admin"
+								name="telefono_fijo_admin" size="14" maxlength="8" onkeyPress="return soloNumeros(event,this)"></td>
+							<td class="titulo_campo">Celular</td>
+							<td class="data_campo"><input type="text" id="celular_admin"
+								name="celular_admin" maxlength="8"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Fax</td>
+							<td class="data_campo"><input type="text"
+								id="codigo_fax_admin" name="codigo_fax_admin" size="2"
+								maxlength="2" onkeyPress="return soloNumeros(event,this)"> - <input type="text" id="fax_admin"
+								name="fax_admin" maxlength="8" size="14" onkeyPress="return soloNumeros(event,this)"></td>
+							<td class="titulo_campo">Email *</td>
+							<td class="data_campo"><input type="text" id="email_admin"
+								name="email_admin" maxlength="100"></td>
+						</tr>
+
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Direcci&oacute;n *</td>
+							<td class="data_campo"><input type="text"
+								id="direccion_admin" name="direccion_admin" maxlength="80"
+								onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+							<td></td>
+							<td></td>
+
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">N&uacute;mero *</td>
+							<td class="data_campo"><input type="text"
+								id="direccion_numero_admin" name="direccion_numero_admin"
+								maxlength="6" onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+							<td class="titulo_campo">Departamento</td>
+							<td class="data_campo"><input type="text"
+								id="departamento_numero_admin" name="departamento_numero_admin"
+								maxlength="6" onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Regi&oacute;n *</td>
+							<td class="data_campo"><select id="region_admin"
+								name="region_admin"
+								onchange="cargarCiudadesPorRegion(this.id,'ciudad_admin','comuna_admin','')"><select></td>
+
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Ciudad *</td>
+							<td class="data_campo"><select id="ciudad_admin"
+								name="ciudad_admin"
+								onchange="cargarComunasPorCiudad(this.id,'comuna_admin','')"><select></td>
+							<td class="titulo_campo">Comuna *</td>
+							<td class="data_campo"><select id="comuna_admin"
+								name="comuna_admin"><select></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr>
+							<td align="left" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormularioSalir('admin');">
+									<span class="glyphicon glyphicon-step-backward"></span>
+									Guardar y Salir
+								</button>
+							</td>
+							<td align="right" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormulario('admin');cargarValores('formato_nomina')">
+									<span class="glyphicon glyphicon-step-forward"></span> Guardar
+									y Seguir
+								</button>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+				<div class="tab-pane" id="casa_matriz">
+					<br>
+					<table class="tabla_formulario" cellspacing="2">
+						
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Direcci&oacute;n *</td>
+							<td class="data_campo"><input type="text"
+								id="direccion_casa_matriz" name="direccion_casa_matriz"
+								maxlength="80"
+								onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+							<td><input type="hidden" id="codigo_casa_matriz" name="codigo_casa_matriz" value="CASMAT">
+								<input type="hidden" id="nombre_casa_matriz" name="nombre_casa_matriz" value="Casa Matriz">
+							</td>
+							<td></td>
+
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">N&uacute;mero *</td>
+							<td class="data_campo"><input type="text"
+								id="direccion_numero_casa_matriz"
+								name="direccion_numero_casa_matriz" maxlength="6"
+								onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+							<td class="titulo_campo">Departamento</td>
+							<td class="data_campo"><input type="text"
+								id="depto_numero_casa_matriz" name="depto_numero_casa_matriz"
+								maxlength="6" onkeyPress="return soloLetrasYNumeros(event,this)"></td>
+						</tr>
+
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Regi&oacute;n *</td>
+							<td class="data_campo"><select id="region_casa_matriz"
+								name="region_casa_matriz"
+								onchange="cargarCiudadesPorRegion(this.id,'ciudad_casa_matriz','comuna_casa_matriz','')"><select></td>
+
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Ciudad *</td>
+							<td class="data_campo"><select id="ciudad_casa_matriz"
+								name="ciudad_casa_matriz"
+								onchange="cargarComunasPorCiudad(this.id,'comuna_casa_matriz','')"><select></td>
+							<td class="titulo_campo">Comuna *</td>
+							<td class="data_campo"><select id="comuna_casa_matriz"
+								name="comuna_casa_matriz"><select></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Tel&eacute;fono Fijo *</td>
+							<td class="data_campo"><input type="text"
+								id="codigo_telefono_casa_matriz"
+								name="codigo_telefono_casa_matriz" size="2" maxlength="2">
+								- <input type="text" id="telefono_fijo_casa_matriz"
+								name="telefono_fijo_casa_matriz" size="14" maxlength="8"></td>
+							<td class="titulo_campo">Celular</td>
+							<td class="data_campo"><input type="text"
+								id="celular_casa_matriz" name="celular_casa_matriz"
+								maxlength="8"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Fax</td>
+							<td class="data_campo"><input type="text"
+								id="codigo_fax_casa_matriz" name="codigo_fax_casa_matriz"
+								size="2" maxlength="2" onkeyPress="return soloNumeros(event,this)"> - <input type="text"
+								id="fax_casa_matriz" name="fax_casa_matriz" size="14"
+								maxlength="8" onkeyPress="return soloNumeros(event,this)"></td>
+							<td class="titulo_campo">Email *</td>
+							<td class="data_campo"><input type="text"
+								id="email_casa_matriz" name="email_casa_matriz" maxlength="100"></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr>
+							<td align="left" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormularioSalir('casa_matriz');">
+									<span class="glyphicon glyphicon-step-backward"></span>
+									Guardar y Salir
+								</button>
+							</td>
+							<td align="right" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormulario('casa_matriz');cargarValores('previsionales')">
+									<span class="glyphicon glyphicon-step-forward"></span> Guardar
+									y Seguir
+								</button>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+
+
+				<div class="tab-pane" id="previsionales">
+					<br>
+					<table class="tabla_formulario" cellspacing="2">
+						<!-- tr class="tr_formulario">
+							<td class="titulo_campo">Mutual *</td>
+							<td class="data_campo_left" colspan="3"><select
+								id="nombre_mutual" name="nombre_mutual" class="select_grande"></select></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">N&uacute;mero Adherente</td>
+							<td class="data_campo_left" width="200px" colspan="3"><input
+								type="text" id="numero_adherentes_mutual"
+								name="numero_adherentes_mutual" style="width: 60px" onclick="return soloNumeros(event,this)" maxlength="6"></td>
+						</tr>
+						<tr style="display:none">
+							<td class="titulo_campo">C&aacute;lculo Individual</td>
+							<td class="data_campo_left" colspan="3"><select
+								id="calculo_individual_mutual" name="calculo_individual_mutual"
+								style="width: 60px"></select> &nbsp; <img id="ayuda_mutual"
+								src="img/ayuda.png" class="imagen_boton"
+								onmouseover="mostrarAyuda('mutual','ayuda_mutual',300,100)"
+								onmouseout="ocultarAyuda()"></img></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Tasa Adicional</td>
+							<td class="data_campo_left" colspan="3"><input type="text"
+								id="tasa_adicional_mutual" name="tasa_adicional_mutual"
+								style="width: 60px" maxlength="5" /></td>
+						</tr-->
+						<tr class="tr_formulario">
+							<td class="titulo_campo">Caja de Compensac&iacute;on *</td>
+							<td class="data_campo_left" colspan="3"><select
+								id="caja_compensacion" name="caja_compensacion"></select></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+
+						<tr>
+							<td align="left" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormularioSalir('previsionales');">
+									<span class="glyphicon glyphicon-step-backward"></span>
+									Guardar y Salir
+								</button>
+							</td>
+							<td align="right" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormulario('previsionales');cargarValores('guardar')">
+									<span class="glyphicon glyphicon-step-forward"></span> Guardar
+									y Seguir
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="tab-pane" id="formato_nomina">
+					<br>
+					<table class="tabla_formulario" cellspacing="2">
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Generar Planillas INP Por
+								Sucursal ? *</td>
+							<td class="data_campo_short"><select
+								id="generar_planilla_inp_sucursal"
+								name="generar_planilla_inp_sucursal"></td>
+							<td class="titulo_campo_long">Calcular Monto Total CCAF? *</td>
+							<td class="data_campo_short"><select
+								id="calcular_monto_total_ccaf" name="calcular_monto_total_ccaf"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Generar Planillas Mutual Por
+								Sucursal? *</td>
+							<td class="data_campo_short"><select
+								id="generar_planilla_mutual_sucursal"
+								name="generar_planilla_mutual_sucursal"></td>
+							<td class="titulo_campo_long">Calcular Monto Total Salud? *</td>
+							<td class="data_campo_short"><select
+								id="calcular_monto_total_salud"
+								name="calcular_monto_total_salud"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Generar Planillas CCAF Por
+								Sucursal? *</td>
+							<td class="data_campo_short"><select
+								id="generar_planilla_ccaf_sucursal"
+								name="generar_planilla_ccaf_sucursal"></td>
+							<td class="titulo_campo_long">Calcular Monto Total
+								Previsi&oacute;n? *</td>
+							<td class="data_campo_short"><select
+								id="calcular_monto_total_prevision"
+								name="calcular_monto_total_prevision"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Calcular Monto FONASA? *</td>
+							<td class="data_campo_short"><select
+								id="calcular_monto_total_fonasa"
+								name="calcular_monto_total_fonasa"></td>
+							<td class="titulo_campo_long">Imprimir Planillas? *</td>
+							<td class="data_campo_short"><select id="imprimir_planillas"
+								name="imprimir_planillas"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Calcular Monto Total Mutual? *</td>
+							<td class="data_campo_short"><select
+								id="calcular_monto_total_mutual"
+								name="calcular_monto_total_mutual"></td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="titulo_campo_long">Calcular Movimiento Personal?
+								*</td>
+							<td class="data_campo_short"><select
+								id="calcular_movimiento_personal"
+								name="calcular_movimiento_personal"></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr class="tr_formulario">
+
+							<td colspan="4" class="titulo_seccion">Seleccionar Formato
+								N&oacute;mina * &nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="ayuda_formato"
+								src="img/ayuda.png" class="imagen_boton"
+								onmouseover="mostrarAyuda('formato','ayuda_formato',250,90)"
+								onmouseout="ocultarAyuda()"></img>
+							</td>
+						</tr>
+						<tr class="tr_formulario">
+							<td class="data_data" colspan="4" valign="top"><input
+								type="checkbox" id="formato_nomina_sel"
+								class="formato_nomina_sel" name="formato_nomina_sel" value="F1"
+								style="margin-left: 100px;" />&nbsp;<span
+								id="descripcion_formato_F1"> </span><br /> <input
+								type="checkbox" id="formato_nomina_sel"
+								class="formato_nomina_sel" name="formato_nomina_sel" value="F2"
+								style="margin-left: 100px;" />&nbsp;<span
+								id="descripcion_formato_F2"> </span><br /> <input
+								type="checkbox" id="formato_nomina_sel"
+								class="formato_nomina_sel" name="formato_nomina_sel" value="F3"
+								style="margin-left: 100px;" />&nbsp;<span
+								id="descripcion_formato_F3"> </span><br /> <input
+								type="checkbox" id="formato_nomina_sel"
+								class="formato_nomina_sel" name="formato_nomina_sel" value="F4"
+								style="margin-left: 100px;" />&nbsp;<span
+								id="descripcion_formato_F4"> </span><br /> <input
+								type="checkbox" id="formato_nomina_sel"
+								class="formato_nomina_sel" name="formato_nomina_sel" value="F5"
+								style="margin-left: 100px;" />&nbsp;<span
+								id="descripcion_formato_F5"> </span><br /></td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr>
+							<td align="left" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormularioSalir('formato_nomina');">
+									<span class="glyphicon glyphicon-step-backward"></span>
+									Guardar y Salir
+								</button>
+							</td>
+							<td align="right" colspan="2">
+								<button type="button" class="btn btn-default btn"
+									onclick="guardarCambiosFormulario('formato_nomina');cargarValores('guardar')">
+									<span class="glyphicon glyphicon-step-forward"></span> Guardar
+									y Seguir
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="tab-pane" id="guardar">
+					<br>
+					<table class="tabla_formulario" width="500px">
+						<tr class="tr_formulario" id="texto_datos_faltantes">
+							<td class="titulo_seccion">Datos Ingresados insuficientes.</td>
+						</tr>
+						<tr class="tr_separador">
+							<td></td>
+						</tr>
+						<tr id="boton_grabar">
+							<td align="center">
+								<button type="button" class="btn btn-default btn"
+									onclick="javascript:crearEmpresa()">
+									<span class="glyphicon glyphicon-step-forward"></span> Grabar
+									Datos
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				// $('#tabs').tab();
+			});
+		</script>
+
+		<div id="footer" class="texto_footer">
+			Una innovaci&oacute;n tecnol&oacute;gica de Caja De
+			Compensaci&oacute;n
+			<div id="logo_araucana"></div>
+		</div>
+	</div>
+	<!-- container -->
+
+
+	<script type="text/javascript" src="dist/js/bootstrap.js"></script>
+	<div id="cargando">
+
+
+		<div id="imagen">
+			<img src="img/cargando_big.gif" width="100px"></img>
+		</div>
+		<div id="texto_cargando"></div>
+
+	</div>
+
+	<div id="confirmacion_cambio_tab" style="display: none"
+		class="texto_confirmacion" title="Guardar Cambios"></div>
+
+	<div id="confirmacion_salir_app" style="display: none"
+		class="texto_confirmacion" title="Confirmaci&oacute;n Salir">
+		Los cambios se han Guardado correctamente.<br />
+		<br /> Una vez fuera de la aplicación Ud. podrá ingresar en cualquier
+		momento para continuar con el registro de independiente, la aplicación ya ha
+		guardado los datos ingresados en esta sesi&oacute;n.
+
+	</div>
+
+	<div class="info_validacion">Error en validacion</div>
+
+</body>
+</html>

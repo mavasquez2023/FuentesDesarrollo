@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="tmp">
+
+	<insert id="insertConvenio" parameterClass="java.util.HashMap">
+		insert into CONVENIO 
+		(
+		
+		ID_EMPRESA, 
+	ID_CONVENIO, 
+	ID_GRUPO_CONVENIOS, 
+	ID_MAPANOM_REM , 
+	ID_MAPANOM_GRA, 
+	ID_MAPANOM_DEP, 
+	ID_MAPANOM_REL, 
+	ID_MAPACOD, 
+	ID_OPCION, 
+	ID_CCAF, 
+	ID_MUTUAL, 
+	ID_ACTIVIDAD, 
+	CALCULO_MOV_PERSONAL, 
+	HABILITADO, 
+	 
+	
+	MUTUAL_NUMERO_ADHERENTE, 
+	MUTUAL_TASA_ADICIONAL, 
+	MUTUAL_CALCULO_INDIVIDUAL, 
+	N_NOMINAS , 
+	N_NOMINAS_OK, 
+	N_NOMINAS_CORREGIDAS, 
+	N_COTIZACIONES, 
+	N_COTIZACIONES_OK, 
+	N_COTIZACIONES_CORREGIDAS, 
+	N_BLOQUEOS , 
+	DESCRIPCION  
+		)
+		VALUES
+		(#0#,#1#,#2#,#3#,#4#,#5#,#6#,#7#,#8#,#9#,#10#,#11#,#12#,#13#,#16#,#17#,#18#,#19#,#20#,#21#,#22#,#23#,#24#,#25#,#26#)
+	</insert>
+
+	<insert id="insertParametro" parameterClass="java.util.HashMap">
+		insert into PARAMETRO VALUES
+		(#0#,#1#,#2#,#3#,#4#,#5#)
+	</insert>
+	<insert id="insertMapeoConce" parameterClass="java.util.HashMap">
+		insert into MAPEOCONCE VALUES
+		(#0#,#1#,#2#,#3#,#4#,#5#,#6#)
+	</insert>
+	<insert id="insertGrupoConv" parameterClass="java.util.HashMap">
+		insert into GRUPOCONV 
+		(	
+	ID_GRUPO_CONVENIOS , 
+	ID_EMPRESA  , 
+	ID_MAPANOM_REM, 
+	ID_MAPANOM_GRA, 
+	ID_MAPANOM_DEP, 
+	ID_MAPANOM_REL, 
+	ID_MAPACOD, 
+	ID_OPCION, 
+	NOMBRE, 
+	
+	HABILITADO, 
+	N_BLOQUEOS, 
+	PREVIRED, 
+	CONFIG_BASE)
+		
+		VALUES
+		(#0#,#1#,#2#,#3#,#4#,#5#,#6#,#7#,#8#,#10#,#11#,#12#,#13#)
+	</insert>
+
+  <insert id="insertMapaNom" parameterClass="java.util.HashMap">
+		insert into MAPANOM VALUES
+		(#0#,#1#,#2#,#3#,#4#)
+	</insert>
+	
+	<insert id="insertMapaCod" parameterClass="java.util.HashMap">
+		insert into MAPACOD VALUES
+		(#0#,#1#,#2#)
+	</insert>
+ 
+  <insert id="insertOpcionProc" parameterClass="java.util.HashMap">
+		insert into OPCIONPROC VALUES
+		(#0#,#1#,#2#,#3#,#4#,#5#,#6#,#7#,#8#,#9#,#10#,#11#)
+	</insert>
+	
+	<insert id="insertMapeoAPV" parameterClass="java.util.HashMap">
+		insert into MAPEOAPV VALUES
+		(#0#,#1#,#2#)
+	</insert>
+	<insert id="insertMapeoAsfam" parameterClass="java.util.HashMap">
+		insert into MAPEOASFAM VALUES
+		(#0#,#1#,#2#)
+	</insert>
+	<insert id="insertMapeoPens" parameterClass="java.util.HashMap">
+		insert into MAPEOPENS VALUES
+		(#0#,#1#,#2#)
+	</insert>
+	<insert id="insertMapeoGen" parameterClass="java.util.HashMap">
+		insert into MAPEOGEN VALUES
+		(#0#,#1#,#2#)
+	</insert>
+	<insert id="insertMapeoSalud" parameterClass="java.util.HashMap">
+		insert into MAPEOSALUD VALUES
+		(#0#,#1#,#2#)
+	</insert>
+	<insert id="insertMapeoTipmp" parameterClass="java.util.HashMap">
+		insert into MAPEOTIPMP VALUES
+		(#0#,#1#,#2#)
+	</insert>
+
+</sqlMap> 

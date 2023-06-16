@@ -1,0 +1,142 @@
+package cl.laaraucana.botonpago.web.webservices.clientes.querycontractcashflow;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.transport.http.HttpTransportProperties;
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.botonpago.web.utils.Configuraciones;
+import cl.laaraucana.botonpago.web.utils.Constantes;
+import cl.laaraucana.botonpago.web.utils.Util;
+import cl.laaraucana.botonpago.web.webservices.WSInterface;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.treasury.MessageHeader;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.web_mobile.DetalleCuotasCF;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.web_mobile.QueryContractCashFlowOUTServiceStub;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.web_mobile.QueryContractCashFlowRequest;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.web_mobile.QueryContractCashFlowRequestOut;
+import cl.laaraucana.botonpago.web.webservices.autogenerado.querycontractcashflow.web_mobile.QueryContractCashFlowResponseOut;
+import cl.laaraucana.botonpago.web.webservices.clientes.querycontractcashflow.vo.EntradaContractCashFlowVO;
+import cl.laaraucana.botonpago.web.webservices.clientes.querycontractcashflow.vo.SalidaContractCashFlowVO;
+import cl.laaraucana.botonpago.web.webservices.clientes.querycontractcashflow.vo.SalidaListaContractCashFlowVO;
+import cl.laaraucana.botonpago.web.webservices.model.AbstractEntradaVO;
+import cl.laaraucana.botonpago.web.webservices.model.AbstractSalidaVO;
+
+public class ClienteQueryContractCashFlow implements WSInterface {
+
+	protected Logger logger = Logger.getLogger(this.getClass());
+
+	@Override
+	public AbstractSalidaVO call(AbstractEntradaVO entrada) throws Exception {
+
+		EntradaContractCashFlowVO entradaVO = (EntradaContractCashFlowVO) entrada;
+		String ep = Configuraciones.getConfig("ep.QueryContractCashFlow");
+
+		SalidaListaContractCashFlowVO salidaVO = new SalidaListaContractCashFlowVO();
+
+		QueryContractCashFlowOUTServiceStub stub = new QueryContractCashFlowOUTServiceStub();
+		stub._getServiceClient().setTargetEPR(new EndpointReference(ep));
+
+		HttpTransportProperties.Authenticator auth = new HttpTransportProperties.Authenticator();
+		auth.setUsername(Constantes.getInstancia().SAP_USERNAME);
+		auth.setPassword(Constantes.getInstancia().SAP_PASSWORD);
+		auth.setPreemptiveAuthentication(true);
+		stub._getServiceClient().getOptions().setProperty(HTTPConstants.AUTHENTICATE, auth);
+
+		QueryContractCashFlowRequest query = new QueryContractCashFlowRequest();
+
+		MessageHeader messageHeader = new MessageHeader();
+		messageHeader.setDATECREATION(Util.getFechaSAP());
+		messageHeader.setHOST(Constantes.getInstancia().SAP_HOST);
+		messageHeader.setINTERNALORGANIZATION(Constantes.getInstancia().SAP_INTERNALORG);
+		messageHeader.setUSER(Constantes.getInstancia().SAP_USER);
+
+		query.setNroCuenta(entradaVO.getFolioCredito());
+		query.setMessageHeader(messageHeader);
+
+		QueryContractCashFlowRequestOut requestOut = new QueryContractCashFlowRequestOut();
+		requestOut.setQueryContractCashFlowRequestOut(query);
+
+		QueryContractCashFlowResponseOut respuesta = new QueryContractCashFlowResponseOut();
+
+		try {
+			respuesta = stub.queryContractCashFlow(requestOut);
+		} catch (Exception e) {
+			salidaVO.setCodigoError(Constantes.getInstancia().APP_COD_ERROR);
+			salidaVO.setMensaje("Error en servicio QueryContractCashflow: compruebe el servicio");
+			logger.debug(salidaVO.getMensaje() + e);
+			return salidaVO;
+		}
+
+		if (respuesta.getQueryContractCashFlowResponseOut().getResultCode().equals(Constantes.getInstancia().WS_COD_SUCCESS)) {
+			salidaVO = mapear(respuesta);
+			salidaVO.setCodigoError(Constantes.getInstancia().APP_COD_SUCCESS);
+			salidaVO.setMensaje("Servicio QueryContractCashflow OK.");
+			logger.debug(salidaVO.getMensaje());
+		} else {
+			salidaVO.setCodigoError(Constantes.getInstancia().APP_COD_ERROR);
+			String msg = respuesta.getQueryContractCashFlowResponseOut().getLog().getMESSAGE() + " (" + respuesta.getQueryContractCashFlowResponseOut().getLog().getSYSTEM() + ")";
+			salidaVO.setMensaje("Error en servicio QueryContractCashflow: " + msg);
+			logger.debug(salidaVO.getMensaje());
+		}
+		return salidaVO;
+	}
+
+	private SalidaListaContractCashFlowVO mapear(QueryContractCashFlowResponseOut entrada) {
+		SalidaListaContractCashFlowVO salidaVO = new SalidaListaContractCashFlowVO();
+		SalidaContractCashFlowVO cuotas = null;
+		List<SalidaContractCashFlowVO> listaCuotas = new ArrayList<SalidaContractCashFlowVO>();
+
+		if (entrada.getQueryContractCashFlowResponseOut().getLineaComercial() != null) {
+			salidaVO.setLineaComercial(entrada.getQueryContractCashFlowResponseOut().getLineaComercial());
+		} else {
+			salidaVO.setLineaComercial("");
+		}
+
+		if (entrada.getQueryContractCashFlowResponseOut().getNroCuenta() != null) {
+			salidaVO.setNroCuenta(entrada.getQueryContractCashFlowResponseOut().getNroCuenta());
+		} else {
+			salidaVO.setNroCuenta("");
+		}
+
+		if (entrada.getQueryContractCashFlowResponseOut().getE_TOTAL_CUOTAS() != null) {
+			salidaVO.setCantidadTotalCuotas(entrada.getQueryContractCashFlowResponseOut().getE_TOTAL_CUOTAS());
+		} else {
+			salidaVO.setCantidadTotalCuotas("");
+		}
+
+		if (entrada.getQueryContractCashFlowResponseOut().getDetalleCuotas() == null) {
+			return salidaVO;
+		}
+
+		for (DetalleCuotasCF detalle : entrada.getQueryContractCashFlowResponseOut().getDetalleCuotas()) {
+			cuotas = new SalidaContractCashFlowVO();
+			cuotas.setEstadoCuota(detalle.getEstadoCuota());
+			cuotas.setEstadoPago(detalle.getEstadoPago());
+			cuotas.setFechaVencCuota(detalle.getFechaVencCuota());
+			cuotas.setFolioPago(detalle.getFolioPago());
+			cuotas.setMoneda(detalle.getMoneda());
+			cuotas.setMontoAbono(Util.formatNumeroStringSap(detalle.getMontoAbono()));
+			cuotas.setMontoCapital(Util.formatNumeroStringSap(detalle.getMontoCapital()));
+			//clillo 25-07-2017 se deja en cero gravamenes
+			//cuotas.setMontoGravamenes(Util.formatNumeroStringSap(detalle.getMontoGravamenes()));
+			cuotas.setMontoGravamenes(Util.formatNumeroStringSap("0"));
+			cuotas.setMontoInteres(Util.formatNumeroStringSap(detalle.getMontoInteres()));
+			cuotas.setMontoServAdic(Util.formatNumeroStringSap(detalle.getMontoServAdic()));
+			cuotas.setNroCuota(Util.formatNumeroStringSap(detalle.getNroCuota()));
+			cuotas.setOficinaPago(detalle.getOficinaPago());
+			cuotas.setTotalCuota(Util.formatNumeroStringSap(detalle.getTotalCuota()));
+			cuotas.setTransactionType(detalle.getTransactionType());
+			cuotas.setUltFechaPago(detalle.getUltFechaPago());
+			cuotas.setCapitalRestante(detalle.getCapitalRestante());
+
+			listaCuotas.add(cuotas);
+		}
+		salidaVO.setListaCuotas(listaCuotas);
+
+		return salidaVO;
+	}
+
+}

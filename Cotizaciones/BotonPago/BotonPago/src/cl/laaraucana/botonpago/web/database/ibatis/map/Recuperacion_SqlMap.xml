@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<parameterMap id="mapTest" class="java.util.Map"> 
+        <parameter property="OFIPRO" jdbcType="CHAR" mode="INOUT" />
+        <parameter property="CREFOL" jdbcType="CHAR" mode="INOUT" />
+        <parameter property="MONPAG" jdbcType="CHAR" mode="INOUT" />
+        <parameter property="TIPOCR" jdbcType="CHAR" mode="INOUT" />
+        <parameter property="FOLTES" jdbcType="CHAR" mode="INOUT" />
+        <parameter property="CODERR" jdbcType="CHAR" mode="INOUT" />
+    </parameterMap>
+    
+	<procedure id="procTest"  parameterMap="mapTest"> 
+        {CALL BPAGOBJ.RECUPERA_CREDITO(?,?,?,?,?,?)} 
+    </procedure>
+</sqlMap>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+
+<typeAlias alias="tesoreria" type="cl.laaraucana.botonpago.web.database.ibatis.domain.TE07F1"/>
+<typeAlias alias="BpagF002" type="cl.laaraucana.botonpago.web.database.ibatis.domain.BpagF002"/>
+<typeAlias alias="EntradaTesoCuponVO" type="cl.laaraucana.botonpago.web.database.vo.EntradaTesoCuponVO"/>
+
+<resultMap class="tesoreria" id="tesoreriaMapObj">
+		<result column="TE3WA" property="te3wa" />
+		<result column="TE3XA" property="te3xa" />
+		<result column="TE3YA" property="te3ya" />
+		<result column="TE3ZA" property="te3za" />
+		<result column="TE1SA" property="te1sa" />
+		<result column="TE40A" property="te40a" />
+		<result column="TE1TA" property="te1ta" />
+		<result column="TE41A" property="te41a" />
+		<result column="TE42A" property="te42a" />
+		<result column="TE43A" property="te43a" />
+		<result column="TE44A" property="te44a" />
+		<result column="TE45A" property="te45a" />
+		<result column="TE46A" property="te46a" />
+		<result column="TEA7A" property="tea7a" />
+		<result column="TE47A" property="te47a" />
+		<result column="TE7MA" property="te7ma" />
+		<result column="TE4VA" property="te4va" />
+		<result column="TE4XA" property="te4xa" />
+		<result column="TE7NA" property="te7na" />
+		<result column="TE49A" property="te49a" />
+		<result column="TE4AA" property="te4aa" />
+		<result column="TE4BA" property="te4ba" />
+		<result column="TE4CA" property="te4ca" />
+		<result column="TE4DA" property="te4da" />
+		<result column="TE4EA" property="te4ea" />
+		<result column="CMBA" property="cmba" />
+		<result column="TE9CA" property="te9ca" />
+		<result column="TEQA" property="teqa" />
+		<result column="TE1BA" property="te1ba" />
+		<result column="TE1CA" property="te1ca" />
+		<result column="TE10A" property="te10a" />
+		<result column="TE4FA" property="te4fa" />
+		<result column="OBF002" property="obf002" />
+		<result column="OBF003" property="obf003" />
+		<result column="OBF005" property="obf005" />
+		<result column="OBF006" property="obf006" />
+		<result column="SAJKM94" property="sajkm94" />
+		<result column="SAJKM92" property="sajkm92" />	
+	</resultMap>
+	
+	<resultMap class="BpagF002" id="cuponDePagoResult">
+		<result column="TESFOL" property="tesFol" />
+		<result column="TESOFI" property="tesOfi" />
+		<result column="CODBARRA" property="codBarra" />
+		<result column="CREFOL" property="creFol" />
+		<result column="OFIPRO" property="ofiPro" />
+		<result column="AFIRUT" property="afiRut" />
+		<result column="AFIRUTDV" property="afiRutDv" />
+		<result column="FECHAGEN" property="fechaGen" />
+		<result column="HORAGEN" property="horaGen" />
+		<result column="VALGRAVA" property="valGrava" />
+		<result column="VALGASTOS" property="valGastos" />
+		<result column="MTOPAGAR" property="mtoPagar" />
+		<result column="TIPOPAGO" property="tipoPago" />
+		<result column="ESTPROCE" property="estProce" />
+		<result column="FECHAPAGO" property="fechaPago" />
+		<result column="HORAPAGO" property="horaPago" />
+		<result column="PORCONDGRA" property="porCondGra" />
+		<result column="PORCONDGAS" property="porCondGas" />
+		<result column="VALCONDGRA" property="valCondGra" />
+		<result column="VALCONDGAS" property="valCondGas" />
+		<result column="CODBARRANT" property="codBarrAnt" />
+		<result column="ORIGENCRED" property="origenCred" />
+		<result column="GLOSAANULA" property="glosaAnula" />
+		<result column="PREFIJO" property="prefijo" />
+	</resultMap>
+
+<!-- DEMONIO A FIN DE MES -->
+
+
+<!-- obtiene los datos de tesoreria generados contra los cupones que se encuentran en la
+tabla de cupon de pago -->
+<select id="getTesoreriaGeneradoEnCupones" resultMap="tesoreriaMapObj" parameterClass="EntradaTesoCuponVO">		
+	SELECT * FROM TEDTA.TE07F1 AS TESO
+  	JOIN BPAGDTA.BPAGF002 AS CUPON
+  	ON TESO.TEA7A = CONCAT(CUPON.PREFIJO, CUPON.CODBARRA) and TESO.TE3WA = CUPON.TESFOL
+  	WHERE TESO.TE3YA = #estadoProceso# AND CUPON.ESTPROCE = #estadoProceso#
+</select>
+
+<!-- actualizar tesoreria a fin de mes con los cupones que se 
+encuentran en las tablas de boton de pago srgun los estados enviados-->
+
+<update id="cambiaEstadoTesoreriaSegunEstadoEnCupones" parameterClass="EntradaTesoCuponVO">
+  <!-- UPDATE TESO
+  SET TESO.TE3YA = #estadoProcesoDos#,
+  TESO.OBF005 = CURRENT DATE,
+  TESO.OBF006 = CURRENT TIME
+  FROM TEDTA.TE07F1 AS TESO
+  JOIN FROM BPAGDTA.BPAGF002 AS CUPON
+  ON CUPON.CODBARRA = TESO.TEA7A
+  WHERE TESO.TE3YA = #estadoProceso# AND CUPON.ESTPROCE = #estadoProceso# 
+  with nc -->
+  UPDATE TEDTA.TE07F1
+  SET TE3YA = #estadoProcesoDos#,
+  OBF005 = CURRENT DATE,
+  OBF006 = CURRENT TIME
+  WHERE EXISTS (
+  	SELECT * FROM TEDTA.TE07F1 AS TESO
+  	JOIN BPAGDTA.BPAGF002 AS CUPON
+  	ON TESO.TEA7A = CONCAT(CUPON.PREFIJO, CUPON.CODBARRA) and TESO.TE3WA = CUPON.TESFOL
+  	WHERE TESO.TE3YA = #estadoProceso# 
+  	<!-- AND CUPON.ESTPROCE = #estadoProceso# -->
+  )
+  with nc
+</update>
+
+<update id="anulaTesoreriaPorDemonio" parameterClass="EntradaTesoCuponVO">
+  UPDATE TEDTA.TE07F1
+  SET TE3YA = #estadoProcesoDos#,
+  OBF005 = CURRENT DATE,
+  OBF006 = CURRENT TIME,
+  SAJKM92 = #usuarioApp#,
+  TE49A = #glosaAnula#
+  WHERE SAJKM94 = #usuarioApp# and  TE3YA = #estadoProceso# 
+  with nc
+</update>
+
+
+
+
+
+
+
+<!-- actualizar cupones para los cupones en un estado especifico  -->
+<update id="cambiaEstadoCuponSegunEstado" parameterClass="EntradaTesoCuponVO">
+  UPDATE BPAGDTA.BPAGF002
+  SET ESTPROCE = #estadoProcesoDos#,
+  GLOSAANULA = #glosaAnula#
+  WHERE ESTPROCE = #estadoProceso#
+  with nc
+</update>
+
+<!-- FIN DEMONIO A FIN DE MES -->
+
+<!-- DEMONIO A CADA UNA HORA  -->
+
+<!-- busca los cupones cursados en tesoreria que hayan sido generados para pago por caja -->
+<select id="getCuponesGeneradosPorCajaVsTesoreria" resultMap="cuponDePagoResult" parameterClass="EntradaTesoCuponVO">		
+	SELECT * FROM BPAGDTA.BPAGF002 AS CUPON
+	JOIN TEDTA.TE07F1 AS TESO 
+	ON TESO.TEA7A = CONCAT(CUPON.PREFIJO, CUPON.CODBARRA) and TESO.TE3WA = CUPON.TESFOL
+	WHERE TESO.TE3YA = #estadoProcesoDos# AND CUPON.ESTPROCE = #estadoProceso# AND CUPON.TIPOPAGO = #tipoPago#
+</select>
+
+<!-- cursa los cupones que fueron cursados desde caja en tesorería -->
+<update id="cursaCuponesPorCajaDesdeTesoreria" parameterClass="EntradaTesoCuponVO">
+  <!-- UPDATE CUPON
+  SET CUPON.ESTPROCE = #estadoProcesoDos#
+  FROM BPAGDTA.BPAGF002 AS CUPON
+  JOIN FROM TEDTA.TE07F1 AS TESO
+  ON TESO.TEA7A = CUPON.CODBARRA
+  WHERE TESO.TE3YA = #estadoProcesoDos# AND CUPON.ESTPROCE = #estadoProceso# AND CUPON.TIPOPAGO = #tipoPago#
+  with nc -->
+  UPDATE BPAGDTA.BPAGF002
+  SET ESTPROCE = #estadoProcesoDos#
+  WHERE EXISTS (
+  SELECT * FROM BPAGDTA.BPAGF002 AS CUPON
+	JOIN TEDTA.TE07F1 AS TESO 
+	ON TESO.TEA7A = CONCAT(CUPON.PREFIJO, CUPON.CODBARRA) and TESO.TE3WA = CUPON.TESFOL
+	WHERE TESO.TE3YA = #estadoProcesoDos# 
+	AND CUPON.ESTPROCE = #estadoProceso# 
+	AND CUPON.TIPOPAGO = #tipoPago#
+	)
+  with nc
+</update>
+<!-- DEMONIO A CADA UNA HORA -->
+
+
+</sqlMap>

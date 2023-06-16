@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	
+	<transactionManager type="JDBC">
+		<property name="DefaultAutoCommit" value="false"/>
+    	<property name="SetAutoCommitAllowed" value="false"/>
+        <dataSource type="JNDI">
+               <property name="DataSource" value="jdbc/registro_empresa"/>
+        </dataSource>     
+   </transactionManager>   
+	<!-- SQL Map XML files should be listed here -->
+	<sqlMap resource="sqlmap/araucana/custom_SqlMap.xml" />
+	<sqlMap resource="sqlmap/araucana/tmp_SqlMap.xml" />
+	<sqlMap resource="sqlmap/araucana/mapeo_SqlMap.xml" />
+</sqlMapConfig>

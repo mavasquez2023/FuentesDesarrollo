@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SPLDTA_DETPAGO">
+	<resultMap id="detPago"
+		class="cl.laaraucana.botonpago.web.database.ibatis.domain.Detpago">
+		<result column="ID_DETALLE_PAGO" property="idDetallePago" />
+		<result column="ID_PAGO" property="idPago" />
+		<result column="FOLIO" property="folio" />
+		<result column="DESCRIPCION" property="descripcion" />
+		<result column="MONTO" property="monto" />
+	</resultMap>
+
+	<select id="selectDetalleByIdPago" resultMap="detPago" parameterClass="string">
+		select ID_DETALLE_PAGO, ID_PAGO, FOLIO, DESCRIPCION, MONTO
+		from SPLDTA.DETPAGO	
+		where ID_PAGO =	#value#
+ 	</select>
+</sqlMap>
