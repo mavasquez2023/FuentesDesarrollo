@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cotFonasa">
+
+    <parameterMap id="paramMap" class="map">	
+   		<parameter property="RET_VAL" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="REG_ARAUCANA" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT"></parameter>
+   		<parameter property="REG_NOT_ARAUCANA" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT"></parameter>
+   		<parameter property="REG_CON_DATOS_ARAU" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT"></parameter>
+   		
+	</parameterMap>
+
+	
+	<procedure id="SP_PROCESO" parameterMap="paramMap" resultClass="cl.araucana.cotfonasa.vo.RetornoVO">
+		{ call $CTDTA$.SP_COTFONASA(?,?,?,?)}   
+	</procedure>
+
+    <select id="getCountLog" resultClass="string" parameterClass="java.util.HashMap">
+		select 1 from $CTDTA$.ct20f1 where CT1AA =#input#
+	</select>
+	
+	<select id="getCountParam" resultClass="string" parameterClass="java.util.HashMap">
+		select 1 from ctdta.ct23f1 where TE6WA=#input#
+	</select>
+	
+	<select id="consultaProceso" resultClass="string" parameterClass="java.util.HashMap">
+		select distinct 1 from CTDTA.CT20F1 where ctf42a =2
+	</select>
+	
+	
+	<select id="cargaAnos" resultClass="cl.araucana.cotfonasa.vo.ParamVO" parameterClass="java.util.HashMap">
+		
+		     select distinct substr(ct1aa,0,5) AS valorStr from $CTDTA$.ct20F1 order by valorStr
+
+	</select>
+	<select id="consultaLogAno" resultClass="cl.araucana.cotfonasa.vo.LogVO" parameterClass="java.util.HashMap">
+		
+		<!-- seleccionamos los estados que no esten en proceso (2) -->
+		SELECT CT1AA as periodo,
+		REPLACE(CHAR(OBF002,EUR),'.','/')|| ' ' || char (OBF003) as fechaInicioProceso,
+		CTF41A as archivoSalida,
+		REPLACE(CHAR(OBF005,EUR),'.','/')|| ' ' || char (OBF006) AS fechaTerminoProceso, 
+		CTF40A as archivoEntrada ,
+		CTF43A as archivoErrores,
+		CTF42A as ESTADO 
+        from $CTDTA$.CT20F1 a WHERE a.CT1AA like '%$ANOPROCESO$%' order by CT1AA 
+
+	</select>
+	
+	<select id="getParametros" resultClass="cl.araucana.cotfonasa.vo.ParametrosVO" parameterClass="java.util.HashMap">
+		
+		SELECT  TE6WA as idParametro, S1Z141VQ as correoUsuario , S1Z141VO as correoAdmin , S1Z141VM as directorioEntrada , S1Z141VK as directorioSalida
+		FROM $CTDTA$.CT23F1
+		
+
+	</select>
+	
+	
+	<select id="getDatosOutput" resultClass="cl.araucana.cotfonasa.vo.LogVO" parameterClass="java.util.HashMap">
+		
+		SELECT * FROM GENERAL.OUTPUTFON
+
+	</select>
+	
+	<select id="buscaAfiliado" resultClass="string" parameterClass="java.util.HashMap">
+		
+        SELECT SE5FAJC FROM AFDTA . AF02F1 B WHERE B.SE5FAJC = #input#
+
+	</select>
+	
+	<select id="getRemImponible" resultClass="string" parameterClass="java.util.HashMap">
+		
+        SELECT COALESCE ( SUM ( RPRMA ) , 0 ) FROM RPDTA . RP06F1 A 
+        WHERE A . RPR6A = #RUTCOTIZANTE# AND A . CMNA = #RUTEMPLEADOR# AND A . AF4YA = #PERIODO#
+
+	</select>
+	
+	<select id="getMontoImponible" resultClass="string" parameterClass="java.util.HashMap">
+		
+        SELECT COALESCE ( SUM ( RPVZA ) , 0 ) FROM RPDTA . RP06F1 A 
+        WHERE A . RPR6A = #RUTCOTIZANTE# AND A . CMNA = #RUTEMPLEADOR# AND A . AF4YA = #PERIODO#
+
+	</select>
+	
+	<select id="getLicPagSubMon" resultClass="string" parameterClass="java.util.HashMap">
+		
+        SELECT COALESCE ( SUM ( PAGSUBMON ) , - 100 ) FROM LIEXP . ILF6510 
+        WHERE AFIRUT = #RUTCOTIZANTE# AND EMPRUT = #RUTEMPLEADOR# AND PAGFEC LIKE #PERIODO# 
+
+	</select>
+	
+	<insert id="insertLog" parameterClass="java.util.HashMap">
+		insert into $CTDTA$.ct20f1 (CT1AA,CTF40A,CTF41A,CTF42A,OBF002,OBF003,OBF005,OBF006) 
+		values (#input.periodoInsert#, #input.archivoEntrada#,#input.archivoSalida#,#input.estado#,
+			    #input.fechaInicioProcesoDate#,#input.horaInicioProcesoDate#,#input.fechaTerminoProcesoDate#,#input.horaTerminoProcesoDate#)
+	</insert>
+	
+	<update id="updateLog" parameterClass="java.util.HashMap">
+		update $CTDTA$.ct20f1 set CTF40A = #input.archivoEntrada#,CTF41A=#input.archivoSalida#,
+		CTF42A=#input.estado#,OBF002=#input.fechaInicioProcesoDate#,OBF003=#input.horaInicioProcesoDate#,OBF005=#input.fechaTerminoProcesoDate#,
+		OBF006=#input.horaTerminoProcesoDate# where CT1AA = #input.periodoInsert#
+	</update>
+	
+	<update id="updateEstadoLog" parameterClass="java.util.HashMap">
+		update $CTDTA$.ct20f1 set CTF42A=#input.estado# where CT1AA = #input.periodoInsert#
+	</update>
+	
+	<insert id="insertParam" parameterClass="java.util.HashMap">
+		insert into $CTDTA$.ct23f1 (TE6WA,S1Z141VQ , S1Z141VO, S1Z141VM,S1Z141VK ) 
+		values (0, #input.correoUsuario#,#input.correoAdmin#,
+			    #input.directorioEntrada#,#input.directorioSalida#)
+	</insert>
+	
+	<update id="updateParam" parameterClass="java.util.HashMap">
+		update $CTDTA$.ct23f1 set S1Z141VQ = #input.correoUsuario#,S1Z141VO=#input.correoAdmin#,
+		S1Z141VM=#input.directorioEntrada#,S1Z141VK=#input.directorioSalida# where TE6WA = #input.idParametro#
+	
+	</update>
+	
+	
+	
+	
+	<delete id="deleteTable" parameterClass="java.util.HashMap">
+		
+		delete from $TABLE$
+	</delete>
+
+</sqlMap>

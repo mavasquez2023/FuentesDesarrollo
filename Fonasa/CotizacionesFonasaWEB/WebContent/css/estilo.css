@@ -1,0 +1,26 @@
+body {
+	margin:0px;
+	padding:0px;
+	font-family:Tahoma, Geneva, sans-serif;
+	color:#454545;
+	background-image: url(../img/logo2.jpg); 
+	background-repeat: no-repeat;
+}
+
+input.btn_limp {
+	background:url(../img/btn_grande.jpg) repeat;
+	color:#FFF;
+	font-weight:bold;
+	font-size:11px;
+	border:none;
+	height:20px;
+	width:100px;
+}
+a {
+	color:#1C73A9;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#333;
+}
