@@ -1,0 +1,382 @@
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://WSFonaCajasNM/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://WSFonaCajasNM/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://WSFonaCajasNM/">
+<s:element name="ActEstLicCCAF">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ClaveUsuario" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodigoAsegurador" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoOperador" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ListaEstLCC" type="tns:ArrayOfEntrActEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="ArrayOfEntrActEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="EntrActEstLicCCAF" nillable="true" type="tns:EntrActEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="EntrActEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="FecEvento" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="TipoEvento" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="Comentario" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="ActEstLicCCAFResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ActEstLicCCAFResult" type="tns:RespActEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespActEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ListaResAct" type="tns:ArrayOfLstResAct"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="ArrayOfLstResAct">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="LstResAct" nillable="true" type="tns:LstResAct"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="LstResAct">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="EstAct" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="InfEstLicCCAF">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ClaveUsuario" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodigoAsegurador" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoOperador" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ListaEstLCC" type="tns:ArrayOfEntrInfEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="ArrayOfEntrInfEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="EntrInfEstLicCCAF" nillable="true" type="tns:EntrInfEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="EntrInfEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="FecEvento" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="TipoEvento" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="Comentario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DerechoSil" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="DiasSilPag" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="MtoSilPag" type="s:long"/>
+<s:element minOccurs="1" maxOccurs="1" name="DiasCotPag" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="MtoCotPag" type="s:long"/>
+</s:sequence>
+</s:complexType>
+<s:element name="InfEstLicCCAFResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="InfEstLicCCAFResult" type="tns:RespInfEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespInfEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ListaResAct" type="tns:ArrayOfLstResInf"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="ArrayOfLstResInf">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="LstResInf" nillable="true" type="tns:LstResInf"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="LstResInf">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="EstAct" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="LicCertifTrab">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="RutBeneficiario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="FecCertifica" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="RutInstitucion" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ClaveUsuario" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="LicCertifTrabResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="LicCertifTrabResult" type="tns:RespLicCertifTrab"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespLicCertifTrab">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtApellidoPat" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtApellidoMat" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtNombres" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtSexo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtFechaNacimi" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtCodEstBen" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExtDescEstado" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="VerEstLicCCAF">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ClaveUsuario" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodigoAsegurador" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoOperador" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="VerEstLicCCAFResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="VerEstLicCCAFResult" type="tns:RespVerEstLicCCAF"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespVerEstLicCCAF">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ListaEstados" type="tns:ArrayOfLstEstados"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="ArrayOfLstEstados">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="LstEstados" nillable="true" type="tns:LstEstados"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="LstEstados">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="FecEvento" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodEstado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="Comentario" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="ConFormuLCC">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ClaveUsuario" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodigoAsegurador" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoOperador" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="TipFormulario" type="s:short"/>
+<s:element minOccurs="1" maxOccurs="1" name="NumFormulario" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ConFormuLCCResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ConFormuLCCResult" type="tns:RespConFormLCC"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespConFormLCC">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloEstado" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CodResultado" type="s:short"/>
+<s:element minOccurs="0" maxOccurs="1" name="GloResultado" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="ActEstLicCCAFSoapIn">
+<wsdl:part name="parameters" element="tns:ActEstLicCCAF"/>
+</wsdl:message>
+<wsdl:message name="ActEstLicCCAFSoapOut">
+<wsdl:part name="parameters" element="tns:ActEstLicCCAFResponse"/>
+</wsdl:message>
+<wsdl:message name="InfEstLicCCAFSoapIn">
+<wsdl:part name="parameters" element="tns:InfEstLicCCAF"/>
+</wsdl:message>
+<wsdl:message name="InfEstLicCCAFSoapOut">
+<wsdl:part name="parameters" element="tns:InfEstLicCCAFResponse"/>
+</wsdl:message>
+<wsdl:message name="LicCertifTrabSoapIn">
+<wsdl:part name="parameters" element="tns:LicCertifTrab"/>
+</wsdl:message>
+<wsdl:message name="LicCertifTrabSoapOut">
+<wsdl:part name="parameters" element="tns:LicCertifTrabResponse"/>
+</wsdl:message>
+<wsdl:message name="VerEstLicCCAFSoapIn">
+<wsdl:part name="parameters" element="tns:VerEstLicCCAF"/>
+</wsdl:message>
+<wsdl:message name="VerEstLicCCAFSoapOut">
+<wsdl:part name="parameters" element="tns:VerEstLicCCAFResponse"/>
+</wsdl:message>
+<wsdl:message name="ConFormuLCCSoapIn">
+<wsdl:part name="parameters" element="tns:ConFormuLCC"/>
+</wsdl:message>
+<wsdl:message name="ConFormuLCCSoapOut">
+<wsdl:part name="parameters" element="tns:ConFormuLCCResponse"/>
+</wsdl:message>
+<wsdl:portType name="WSFonaCajasSoap">
+<wsdl:operation name="ActEstLicCCAF">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Actualizar el estado de las Licencias Formulario que se tramitan entre las CCAF y Fonasa.
+</wsdl:documentation>
+<wsdl:input message="tns:ActEstLicCCAFSoapIn"/>
+<wsdl:output message="tns:ActEstLicCCAFSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="InfEstLicCCAF">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Actualizar el estado de las Licencias Formulario que se tramitan entre las CCAF y Fonasa.
+</wsdl:documentation>
+<wsdl:input message="tns:InfEstLicCCAFSoapIn"/>
+<wsdl:output message="tns:InfEstLicCCAFSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="LicCertifTrab">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Certificar si el Trabajador esta acreditado por Fonasa para una fecha de Emision dada.
+</wsdl:documentation>
+<wsdl:input message="tns:LicCertifTrabSoapIn"/>
+<wsdl:output message="tns:LicCertifTrabSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="VerEstLicCCAF">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Entregar los estados asociados a una Licencia Medica Formulario.
+</wsdl:documentation>
+<wsdl:input message="tns:VerEstLicCCAFSoapIn"/>
+<wsdl:output message="tns:VerEstLicCCAFSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="ConFormuLCC">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Entregar los estados asociados a una Licencia Medica Formulario.
+</wsdl:documentation>
+<wsdl:input message="tns:ConFormuLCCSoapIn"/>
+<wsdl:output message="tns:ConFormuLCCSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="WSFonaCajasSoap" type="tns:WSFonaCajasSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="ActEstLicCCAF">
+<soap:operation soapAction="http://WSFonaCajasNM/ActEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InfEstLicCCAF">
+<soap:operation soapAction="http://WSFonaCajasNM/InfEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LicCertifTrab">
+<soap:operation soapAction="http://WSFonaCajasNM/LicCertifTrab" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerEstLicCCAF">
+<soap:operation soapAction="http://WSFonaCajasNM/VerEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConFormuLCC">
+<soap:operation soapAction="http://WSFonaCajasNM/ConFormuLCC" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="WSFonaCajasSoap12" type="tns:WSFonaCajasSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="ActEstLicCCAF">
+<soap12:operation soapAction="http://WSFonaCajasNM/ActEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InfEstLicCCAF">
+<soap12:operation soapAction="http://WSFonaCajasNM/InfEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="LicCertifTrab">
+<soap12:operation soapAction="http://WSFonaCajasNM/LicCertifTrab" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerEstLicCCAF">
+<soap12:operation soapAction="http://WSFonaCajasNM/VerEstLicCCAF" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConFormuLCC">
+<soap12:operation soapAction="http://WSFonaCajasNM/ConFormuLCC" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="WSFonaCajas">
+<wsdl:port name="WSFonaCajasSoap" binding="tns:WSFonaCajasSoap">
+<soap:address location="http://198.41.41.37/WsFonaCajas/WSFonaCajas.asmx"/>
+</wsdl:port>
+<wsdl:port name="WSFonaCajasSoap12" binding="tns:WSFonaCajasSoap12">
+<soap12:address location="http://198.41.41.37/WsFonaCajas/WSFonaCajas.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

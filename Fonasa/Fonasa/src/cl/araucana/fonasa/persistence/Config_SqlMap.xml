@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="fonasaservices">
+
+<resultMap id="bitacora" class="cl.araucana.fonasa.dao.VO.BitacoraVO">
+	<result column="TOTVAL"   property="totalValidados" />
+	<result column="ESTNOT72"   property="estadono72" />
+	<result column="TIMEOUT"   property="timeout" />
+	<result column="OBSVAL"   property="observacion" />
+	<result column="USUARIO"   property="usuario" />
+	<result column="NOMFILE"   property="nombreArchivo" />
+	<result column="FECHA"   property="fecha" />
+	<result column="HORAINI"   property="horaInicio" />
+	<result column="HORAFIN"   property="horaTermino" />
+</resultMap>
+
+<resultMap id="data_formulario" class="cl.araucana.fonasa.dao.VO.FormularioVO">
+	<result column="CODIGO_OFICINA"   property="codigoOficina" />
+	<result column="NOMBRE_OFICINA"   property="nombreOficina" />
+	<result column="FECHA_DESDE"   property="fechaDesde" />
+	<result column="FECHA_HASTA"   property="fechaHasta" />
+	<result column="ESTADO_LICENCIA"   property="estadoLicencia" />
+	<result column="FECHA_PAGO"   property="fechaPago" />
+	<result column="RUT_AFILIADO"   property="rutAfiliado" />
+	<result column="TIPO_FORMULARIO"   property="tipoFormulario" />
+	<result column="NUMERO_FORMULARIO"   property="numeroFormulario" />
+	<result column="NUMERO_LICENCIA"   property="numeroLicencia" />
+	<result column="FOLIO_PAGO"   property="folioPago" />
+	<result column="FOLIO_TESORERIA"   property="folioTesoreria" />
+	<result column="ESTADO_PAGO"   property="estadoPago" />
+</resultMap>
+
+<select id="consultaBitacora" resultMap="bitacora" parameterClass="java.util.Date">
+
+	select * from PUBDTA.BITAFON
+	where fecha>= #fecha#
+
+</select>
+ 
+<select id="consultaFormularios" resultMap="data_formulario" parameterClass="java.lang.Integer">
+	SELECT A.LICDECFEC as CODIGO_OFICINA,
+		c.CMCA as NOMBRE_OFICINA,
+		A.LICDESFEC as FECHA_DESDE, 
+		A.LICHASFEC as FECHA_HASTA, 
+		A.LICEST as ESTADO_LICENCIA, 
+		A.PAGFEC as FECHA_PAGO, 
+		A.AFIRUT || '-' || A.AFIRUTDV as RUT_AFILIADO, 
+		B.TIPOFORM as TIPO_FORMULARIO, 
+		B.LICIMPNUM as NUMERO_FORMULARIO, 
+		B.NUMIMPRE as NUMERO_LICENCIA,
+		COALESCE(D.PAGFOL, 0) as FOLIO_PAGO, 
+		COALESCE(E.FOLIO, 0) as FOLIO_TESORERIA, 
+		COALESCE(F.TE3YA, '') as ESTADO_PAGO
+	from liexp.ilf1000 a 
+	join liexp.ilf1050 b
+		on a.afirut=b.afirut 
+		and a.lichasfec=b.lichasfec 
+		and a.licimpnum=b.licimpnum
+	join cmdta.cm01f1 c
+		on a.licdecfec= c.cmba
+	left join liexp.ILF6500 d
+		on a.pagfol= d.pagfol
+	left join liexp.ILF3500 e
+		on d.pagfol= e.pagfol
+	left join tedta.te07f1 f
+		on e.folio= f.te3wa
+	where a.AFISUBTIP in (1, 7) 
+	and substr(a.pagfec, 1, 6)= #periodo#
+	WITH UR
+</select>
+ <insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into PUBDTA.BITAFON (TOTVAL, ESTNOT72, TIMEOUT, OBSVAL, USUARIO, NOMFILE, HORAINI) 
+		VALUES (#totalValidados#, #estadono72#, #timeout#, #observacion#, #usuario#, #nombreArchivo#, #horaInicio#)
+</insert>
+	
+</sqlMap>

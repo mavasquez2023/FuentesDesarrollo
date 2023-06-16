@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd"> -->
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://localhost:9080/IndependientesWEB/dtd/dwr20.dtd"> -->
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://directwebremoting.org/schema/dwr20.dtd"> -->
+
+<!-- mapeo de los campos de cada clase para ser usados por funciones del tipo DWR -->
+<dwr>
+  <allow>
+    <create creator="new" javascript="AdminProcesosDWR">
+      <param name="class" value="cl.araucana.cotfonasa.dwr.AdminProcesosDWR"/>
+    </create>
+   
+    <create creator="new" javascript="ParametrosDWR">
+      <param name="class" value="cl.araucana.cotfonasa.dwr.ParametrosDWR"/>
+    </create>
+    
+    <create creator="new" javascript="ProcesoFonasaDWR">
+      <param name="class" value="cl.araucana.cotfonasa.dwr.ProcesoFonasaDWR"/>
+    </create>
+    
+	
+    <convert converter="bean" match="cl.araucana.cotfonasa.vo.LogVO">
+    	<param name="include" value="fechaInicioProceso,fechaTerminoProceso,periodo,archivoEntrada,archivoSalida,estado,nombreArchivoEntrada,periodoPrint" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.cotfonasa.vo.ParametrosVO">
+    	<param name="include" value="idParametro,correoUsuario,correoAdmin,directorioEntrada,directorioSalida" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.cotfonasa.vo.ParamVO">
+    	<param name="include" value="id,valorInt, valorStr" />
+    </convert>
+    
+  </allow>
+</dwr>
