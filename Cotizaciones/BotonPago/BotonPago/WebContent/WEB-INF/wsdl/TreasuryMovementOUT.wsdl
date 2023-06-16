@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TreasuryMovementOUT"
+	targetNamespace="http://lautaro.com/xi/BS/Treasury" xmlns:p1="http://lautaro.com/xi/BS/Treasury"
+	xmlns:p2="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsp:UsingPolicy wsdl:required="true" />
+
+	<wsp:Policy wsu:Id="OP_Create" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+			xmlns="http://delegate.toAS.legados.integracion.laaraucana.cl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="creaComprobante" type="creaComprobante" />
+			<xsd:element name="creaComprobanteResponse" type="creaComprobanteResponse" />
+			<xsd:complexType name="creaComprobante">
+				<xsd:sequence>
+					<xsd:element name="arg0" type="tes0106Entrada"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="tes0106Salida">
+				<xsd:sequence>
+					<xsd:element name="folio" type="xsd:string" minOccurs="0" />
+					<xsd:element name="log" type="log" minOccurs="0" />
+					<xsd:element name="resultCode" type="xsd:string"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="detalleCreaComprobanteEntradaVO">
+				<xsd:sequence>
+					<xsd:element name="codigoConcepto" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="montoDetalle" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="observacionDetalle" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="signoValor" type="xsd:string"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="tes0106Entrada">
+				<xsd:sequence>
+					<xsd:element name="cantidadLineas" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="codigoAreaNegocio" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="codigoBarra" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="codigoOficina" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="cursa001" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="detalle" type="detalleCreaComprobanteEntradaVO"
+						minOccurs="0" maxOccurs="unbounded" nillable="true" />
+					<xsd:element name="digitoVerificadorProveedor" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="emiteFactura" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="fechaDisponibilidadEgreso" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="fechaEmision" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="formaPago" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="horaEmision" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="monto" type="xsd:string" minOccurs="0" />
+					<xsd:element name="nombreProveedor" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="observacionMovimientoCaja" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="pagadoPor" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="rutProveedor" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="sucursalEmpresa" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="tipSer001" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="tipoPago" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="usuarioCreador" type="xsd:string"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="log">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:string" minOccurs="0" />
+					<xsd:element name="type" type="xsd:string" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="creaComprobanteResponse">
+				<xsd:sequence>
+					<xsd:element name="return" type="tes0106Salida"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="p2.creaComprobante">
+		<wsdl:documentation />
+		<wsdl:part name="parameters" element="p2:creaComprobante" />
+	</wsdl:message>
+	<wsdl:message name="p2.creaComprobanteResponse">
+		<wsdl:documentation />
+		<wsdl:part name="parameters" element="p2:creaComprobanteResponse" />
+	</wsdl:message>
+	<wsdl:portType name="TreasuryMovementOUT">
+		<wsdl:documentation>Interface Treasury Movement OUT
+		</wsdl:documentation>
+		<wsdl:operation name="Create">
+			<wsdl:documentation>Create Treasury Movement</wsdl:documentation>
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_Create" />
+			</wsp:Policy>
+			<wsdl:input message="p1:p2.creaComprobante" />
+			<wsdl:output message="p1:p2.creaComprobanteResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="TreasuryMovementOUTBinding" type="p1:TreasuryMovementOUT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="Create">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+</wsdl:definitions>

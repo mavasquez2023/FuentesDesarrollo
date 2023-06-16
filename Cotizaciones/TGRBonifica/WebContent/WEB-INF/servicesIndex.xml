@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<services>
+    <webservice name="{http://servicios.laaraucana.cl/bonificaTGR}ConsultaCotizacionesService" type="JAX-WS">
+        <endpoint name="ConsultaCotizacionesPort">
+            <operation name="getStatus"/>
+            <operation name="autenticacionWS"/>
+            <operation name="getCotizacionesByTrabajador"/>
+            <operation name="getCotizacionesByTrabajadores"/>
+        </endpoint>
+    </webservice>
+</services>

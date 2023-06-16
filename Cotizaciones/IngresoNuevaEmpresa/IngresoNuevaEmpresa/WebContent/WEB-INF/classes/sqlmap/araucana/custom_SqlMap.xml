@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="custom">
+
+	<select id="obtenerDataMail" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre = 'mailIngreso'
+
+	</select>
+	
+
+	<insert id="insertarRegistroPrevipassTMP" parameterClass="java.util.HashMap">
+		insert into PREVIPASS_TMP ( emprut,empmail,cmcod,cmnom,cmmail) values ( #rut_empresa#, #email_empresa#, 'CASMAT', 'CASA MATRIZ', #email_empresa#)
+	
+	</insert>
+
+
+	<select id="obtenerDataTMPPrevipass" resultClass="java.util.HashMap"
+		parameterClass="java.util.HashMap">
+		select
+
+		admrut rut_admin ,
+		admnom nombre_admin ,
+		admapepat
+		apellido_paterno_admin ,
+		admapemat apellido_materno_admin ,
+		admcodtel
+		codigo_telefono_fijo_admin ,
+		admtel telefono_fijo_admin ,
+		admcodfax
+		codigo_fax_admin ,
+		admfax fax_admin ,
+		admcel celular_admin ,
+		admmail
+		email_admin ,
+		admdir direccion_admin ,
+		admdirnum direccion_numero_admin
+		,
+		admdpto departamento_numero_admin ,
+		admreg region_admin ,
+		admciu
+		ciudad_admin ,
+		admcmna comuna_admin ,
+
+		emprut rut_empresa ,
+		empmail
+		email_empresa,
+		emprazsoc razon_social_empresa,
+		emptip tipo_empresa,
+		empnumtra numero_trabajadores,
+		emphol nombre_holding_empresa ,
+		emprutrep
+		rut_rep_leg_emp ,
+		empnomrep
+		nombre_rep_leg_emp ,
+		empapepatrep
+		ape_pat_rep_leg_emp ,
+		empapematrep
+		ape_mat_rep_leg_emp ,
+		empestrep
+		est_rep_leg_emp ,
+		empvigrep
+		vig_rep_leg_emp ,
+		empcodacteco
+		cod_act_eco_emp ,
+		empacteco
+		nom_act_eco_emp ,
+		cmcod
+		codigo_casa_matriz ,
+		cmnom nombre_casa_matriz ,
+		cmdir
+		direccion_casa_matriz ,
+		cmdirnro direccion_numero_casa_matriz ,
+		cmdirdpto depto_numero_casa_matriz ,
+		cmreg region_casa_matriz ,
+		cmciu
+		ciudad_casa_matriz ,
+		cmcmna comuna_casa_matriz ,
+		cmcodtel
+		codigo_telefono_casa_matriz ,
+		cmtel telefono_fijo_casa_matriz ,
+		cmcel
+		celular_casa_matriz ,
+		cmcodfax codigo_fax_casa_matriz ,
+		cmfax
+		fax_casa_matriz ,
+		cmmail email_casa_matriz ,
+
+		prenom nombre_mutual ,
+		prenumadh numero_adherentes_mutual ,
+		precalind
+		calculo_individual_mutual ,
+		pretasadi tasa_adicional_mutual ,
+		precajcom
+		caja_compensacion ,
+
+
+		sucgenplainp gen_pla_inp_sucursal ,
+		supcaltotccaf cal_monto_total_ccaf ,
+		sucgenplamut
+		gen_pla_mutual_sucursal ,
+		sucmontotsal
+		cal_monto_total_salud ,
+		sucgenplaccafsuc
+		gen_pla_ccaf_sucursal ,
+		succalmontotpre
+		cal_monto_total_prevision ,
+		succalmontotfonasa
+		cal_monto_total_fonasa ,
+		sucimppla imprimir_planillas ,
+		succalmtomut cal_monto_total_mutual ,
+		succalmovper
+		cal_movimiento_personal ,
+		sucfmtonom formato_nomina_sel,
+		
+		estado_ingreso
+
+
+
+		from
+		PREVIPASS_TMP where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+		
+	</select>
+
+
+	<update id="updatePrevipassTMP" parameterClass="java.util.HashMap">
+		update PREVIPASS_TMP 
+		set 
+			estado_ingreso = 2 
+		where
+			emprut = #RUT_EMPRESA#
+			and empmail = #EMAIL_EMPRESA# 
+	</update>
+	
+	<select id="obtener_data_autenticacion" resultClass="java.util.HashMap"
+		parameterClass="java.util.HashMap">
+		select 'true' as resultado 
+		from PREVIPASS_TMP
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+		and ESTADO_INGRESO != 2
+
+	</select>
+
+	<update id="update_admin" parameterClass="java.util.HashMap">
+		update PREVIPASS_TMP
+		set
+
+		admrut =#rut_admin# ,
+		admnom =#nombre_admin# ,
+		admapepat
+		=#apellido_paterno_admin# ,
+		admapemat =#apellido_materno_admin# ,
+		admcodtel =#codigo_telefono_fijo_admin# ,
+		admtel =#telefono_fijo_admin#
+		,
+		admcodfax =#codigo_fax_admin# ,
+		admfax =#fax_admin# ,
+		admcel
+		=#celular_admin# ,
+		admmail =#email_admin# ,
+		admdir =#direccion_admin# ,
+		admdirnum =#direccion_numero_admin# ,
+		admdpto
+		=#departamento_numero_admin# ,
+		admreg =#region_admin# ,
+		admciu
+		=#ciudad_admin# ,
+		admcmna =#comuna_admin#
+		,estado_ingreso= 1
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+
+	</update>
+	<update id="update_empresa" parameterClass="java.util.HashMap">
+		<![CDATA[
+		update PREVIPASS_TMP
+		set
+
+		emprazsoc =#razon_social_empresa# ,
+		emptip =#tipo_empresa# ,
+		empnumtra = #numero_trabajadores#,
+		emphol =#nombre_holding_empresa# ,
+		emprutrep =#rut_representante_legal_empresa# ,
+		empnomrep =#nombre_representante_legal_empresa# ,
+		empapepatrep =#apellido_paterno_representante_legal_empresa# ,
+		empapematrep =#apellido_materno_representante_legal_empresa# ,
+		empvigrep =#vigencia_representante_legal_empresa# ,
+		empcodacteco =#codigo_acividad_economica_empresa# ,
+		empacteco =#nombre_acividad_economica_empresa#
+		,estado_ingreso= 1
+
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+		]]>
+	</update>
+
+	<update id="update_casa_matriz" parameterClass="java.util.HashMap">
+		update
+		PREVIPASS_TMP
+		set
+
+		cmcod =#codigo_casa_matriz# ,
+		cmnom =#nombre_casa_matriz# ,
+		cmdir =#direccion_casa_matriz# ,
+		cmdirnro =#direccion_numero_casa_matriz# ,
+		cmdirdpto =#depto_numero_casa_matriz# ,
+		cmreg =#region_casa_matriz# ,
+		cmciu =#ciudad_casa_matriz# ,
+		cmcmna =#comuna_casa_matriz# ,
+		cmcodtel =#codigo_telefono_casa_matriz# ,
+		cmtel =#telefono_fijo_casa_matriz# ,
+		cmcel =#celular_casa_matriz# ,
+		cmcodfax =#codigo_fax_casa_matriz# ,
+		cmfax =#fax_casa_matriz# ,
+		cmmail =#email_casa_matriz#
+		,estado_ingreso= 1
+
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+	</update>
+
+	<update id="update_previsionales" parameterClass="java.util.HashMap">
+		update
+		PREVIPASS_TMP
+		set
+
+		prenom =#nombre_mutual# ,
+		prenumadh =#numero_adherentes_mutual# ,
+		precalind =#calculo_individual_mutual# ,
+		pretasadi =#tasa_adicional_mutual# ,
+		precajcom =#caja_compensacion#
+		,estado_ingreso= 1
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+	</update>
+
+	<update id="update_formato_nomina" parameterClass="java.util.HashMap">
+		update
+		PREVIPASS_TMP
+		set
+
+		sucgenplainp =#generar_planilla_inp_sucursal# ,
+		supcaltotccaf =#calcular_monto_total_ccaf# ,
+		sucgenplamut =#generar_planilla_mutual_sucursal# ,
+		sucmontotsal =#calcular_monto_total_salud# ,
+		sucgenplaccafsuc =#generar_planilla_ccaf_sucursal# ,
+		succalmontotpre =#calcular_monto_total_prevision# ,
+		succalmontotfonasa =#calcular_monto_total_fonasa# ,
+		sucimppla =#imprimir_planillas# ,
+		succalmtomut =#calcular_monto_total_mutual# ,
+		succalmovper =#calcular_movimiento_personal# ,
+		sucfmtonom =#formato_nomina_sel#
+		,estado_ingreso= 1
+
+		where
+		emprut = #rut_empresa#
+		and empmail = #email_empresa#
+	</update>
+
+	<insert id="crear_persona" parameterClass="java.util.HashMap">
+
+		insert into PERSONA
+		(
+			ID_PERSONA ,
+			ID_COMUNA,
+			CELULAR,
+			NUMERO,
+			DEPARTAMENTO,
+			TELEFONO,
+			FAX,
+			NOMBRES,
+			APELLIDO_PATERNO,
+			APELLIDO_MATERNO,
+			EMAIL,
+			DIRECCION,
+			ES_ADMIN_CAJA,
+			ES_ADMIN_ARAU
+		)
+		values
+		(
+			#id_persona# ,
+			#COMUNA#,
+			#CELULAR#,
+			#DIRECCION_NUMERO# ,
+			#DEPARTAMENTO_NUMERO# ,
+			#TELEFONO_FIJO# ,
+			#FAX# ,
+			#NOMBRE# ,
+			#APELLIDO_PATERNO# ,
+			#APELLIDO_MATERNO# ,
+			#EMAIL# ,
+			#DIRECCION#,
+			'0',
+			'0'
+		)
+
+	</insert>
+	
+	<insert id="crear_admin" parameterClass="java.util.HashMap">
+		insert into ADMINEMPRE (ID_ADMIN, EMPRESA, INDEPENDIENTE) values (#id_persona#, #is_empresa#, #is_independiente#)
+	</insert>
+	
+	<insert id="crear_rep_legal" parameterClass="java.util.HashMap">
+		insert into REPRELEGAL (ID_REPLEGAL) values (#id_persona#)
+	</insert>
+	
+			
+	
+	<insert id="crear_empresa" parameterClass="java.util.HashMap">
+
+		insert into EMPRESA ( 
+			ID_EMPRESA , 
+			ID_CASA_MATRIZ, 
+			ID_ADMIN , 
+			ID_REP_LEGAL, 
+			RAZON_SOCIAL, 
+			PRIVADA, 
+			INICIACION, 
+			VIGENCIA_REP_LEGAL , 
+			NUM_TRABAJADORES,
+			TIPO   
+		)
+		values
+		(
+			#id_empresa#,
+			#CODIGO_CASA_MATRIZ#,
+			#id_admin#,
+			#id_rep_legal#,
+			#RAZON_SOCIAL_EMPRESA#,
+			#TIPO_EMPRESA#,
+			current_date,
+			#VIGENCIA_REPRESENTANTE_LEGAL_EMPRESA#,
+			#NUMERO_TRABAJADORES#,
+			#TIPO#
+		)
+
+	</insert>
+	
+	
+	 <insert id="crear_sucursal" parameterClass="java.util.HashMap">
+
+		insert into SUCURSAL
+		(
+			ID_EMPRESA , 
+			ID_SUCURSAL, 
+			ID_COMUNA, 
+			NOMBRE, 
+			EMAIL, 
+			TELEFONO , 
+			CELULAR , 
+			FAX , 
+			DIRECCION , 
+			NUMERO  , 
+			DEPARTAMENTO
+		)
+		values
+		(
+		#id_empresa#,
+		#CODIGO_CASA_MATRIZ#,
+		#COMUNA_CASA_MATRIZ#,
+		#NOMBRE_CASA_MATRIZ#,
+		#EMAIL_CASA_MATRIZ#,
+		#TELEFONO_FIJO_CASA_MATRIZ#,
+		#CELULAR_CASA_MATRIZ#,
+		#FAX_CASA_MATRIZ#,	
+		#DIRECCION_CASA_MATRIZ# ,
+		#DIRECCION_NUMERO_CASA_MATRIZ#,
+		#DEPTO_NUMERO_CASA_MATRIZ#
+		)
+
+	</insert>
+	 
+	
+	<select id="obtener_regiones" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT ID_REGION,TRIM(NOMBRE) NOMBRE FROM REGION WHERE ID_REGION>0
+	</select>
+	<select id="obtener_ciudades" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT ID_CIUDAD,TRIM(NOMBRE) NOMBRE,ID_REGION FROM CIUDAD WHERE ID_CIUDAD>1
+	</select>
+	<select id="obtener_comunas" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT ID_COMUNA,TRIM(NOMBRE) NOMBRE,ID_CIUDAD FROM COMUNA
+	</select>
+	<select id="obtener_actividades_economicas" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT * from ACTECONOMI
+	</select>
+	<select id="obtener_mutuales" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT mutual.ID_MUTUAL ,TRIM(NOMBRE) NOMBRE from ENTIDAD_MUTUAL mutual,
+		ENTPAGAD pag
+		where 
+		mutual.ID_ENT_PAGADORA = pag.ID_ENT_PAGADORA
+	</select>
+	<select id="obtener_cajas" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT ccaf.ID_CCAF,TRIM(NOMBRE) NOMBRE from 
+		ENTIDAD_CCAF ccaf,
+		ENTPAGAD pag
+		where 
+		ccaf.ID_ENT_PAGADORA = pag.ID_ENT_PAGADORA
+	</select>
+
+	<select id="obtener_textos_formatos" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		select DESCRIPCION,'F1' CODIGO from PARAMETRO where nombre = 'formatoNomina1'
+		union
+		select DESCRIPCION,'F2' CODIGO from PARAMETRO where nombre = 'formatoNomina2'
+		union
+		select DESCRIPCION,'F3' CODIGO from PARAMETRO where nombre = 'formatoNomina3'
+		union
+		select DESCRIPCION,'F4' CODIGO from PARAMETRO where nombre = 'formatoNomina4'
+		union
+		select DESCRIPCION,'F5' CODIGO from PARAMETRO where nombre = 'formatoNomina5'
+	</select>
+
+
+
+	
+	<select id="validarExistenciaAdmin" parameterClass="java.lang.String"  resultClass="java.util.HashMap">
+		select 'true' as resultado from ADMINEMPRE where ID_ADMIN = #value#
+	</select>
+	
+	<select id="validarExistenciaRepresentante" parameterClass="java.lang.String"  resultClass="java.util.HashMap">
+		select 'true' as resultado from REPRELEGAL where ID_REPLEGAL = #value#
+	</select>
+	
+	<select id="validarExistenciaEmpresa" parameterClass="java.lang.String"  resultClass="java.util.HashMap">
+		select 'true' as resultado from EMPRESA where id_empresa = #value#
+	</select>
+
+	<select id="validarEmpresaEnCreacion" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		select 'true' as resultado from PREVIPASS_TMP where emprut = #rut_empresa# and estado_ingreso > 0 and empmail != #email_empresa# 
+	</select>
+	
+	
+	
+</sqlMap> 

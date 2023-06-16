@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.laaraucana.planillacotizaciones.persistence.Dao">
+
+
+
+	<resultMap id="resultCabe" type="cabecera">
+
+		<result property="tipo" column="TIPO" />
+		<result property="codBar" column="CODBAR" />
+		<result property="codofi" column="CODOFI" />
+		<result property="razonsocial" column="RASOCIA" />
+		<result property="rutEmpresa" column="RUTEMP" />
+		<result property="digEmpresa" column="DIGEMP" />
+		<result property="sucursal" column="SUC" />
+		<result property="periodo" column="PER" />
+		<result property="nomSucursal" column="NOMSUCUR" />
+	</resultMap>
+
+	<resultMap id="resultTramo" type="tramo">
+
+		<result property="inicio" column="INI" />
+		<result property="termino" column="TER" />
+		<result property="years" column="YEARS" />
+		<result property="tramo" column="TRAMO" />
+	</resultMap>
+
+	<resultMap id="resultCargas" type="cargas">
+
+		<result property="codofi" column="CODOFI" />
+		<result property="rutem" column="RUTEM" />
+		<result property="sucursal" column="SUCURSAL" />
+		<result property="periodo" column="PERIODO" />
+		<result property="tramo" column="TRAMO" />
+		<result property="cnormales" column="CNORMALES" />
+		<result property="invalidas" column="INVALIDAS" />
+	</resultMap>
+
+	<resultMap id="resultRetroactivos" type="retroactivo">
+
+		<result property="oficina" column="OFICINA" />
+		<result property="rutem" column="RUTEM" />
+		<result property="sucursal" column="SUCURSAL" />
+		<result property="periodo" column="PERIODO" />
+		<result property="cnormal" column="CNORMAL" />
+		<result property="monto" column="MONTO" />
+	</resultMap>
+	
+	<resultMap id="resultCotizacion" type="cotizacion">
+
+		<result property="porcentaje" column="VALPER" />
+		 
+	</resultMap>
+	
+
+
+	<select id="getCotizacion" parameterType="int"
+	resultMap="resultCotizacion">
+
+	select VALPER from CMDTA.CMF001 where #{periodo} between perini and perfin
+	and codtip = #{tipo}
+
+	</select>
+
+
+	<select id="getAllCabecera" parameterType="int"
+		resultMap="resultCabe">
+
+		select
+		Int(f12.cmba) as CODOFI,
+		TRANSLATE(COALESCE(f31.cmia,''), ' ', ',') as
+		RASOCIA,
+		COALESCE(int(f12.cmna), 0) as RUTEMP,
+		COALESCE(f02.cmoa , ' ')
+		as
+		DIGEMP,
+		COALESCE(f12.cm13a, 0 ) as SUC,
+		COALESCE(f12.ct1aa, 0) as
+		PER,
+		coalesce(f31.cm14a, ' ') as nomsucur
+		FROM ctdta.ct02f1 f12
+		inner
+		join
+		cmdta.cm02f1 f02
+		on f12.cmna = f02.cmna
+		inner join cmdta.cm03f1 f31
+		on
+		f12.cmba = f31.cmba
+		and f12.cmna = f31.cmna
+		and f12.cm13a = f31.cm13a
+		WHERE
+		(f12.ct1aa = #{periodo}
+		and int(f12.cmna) in (${rutEmpresa}) )
+		<if test="codigoOficina!=null">
+			and f12.cmba= #{codigoOficina}
+		</if>
+		<if test="codigoSucursal!=null">
+			and f12.cm13a= #{codigoSucursal}
+		</if>
+		group
+		by
+		f12.ct1aa, f12.cmba, f31.cmia, f12.cmna, f02.cmoa,
+		f12.cm13a, f31.cm14a
+		ORDER BY RUTEMP, codofi, f12.cm13a
+	</select>
+
+	<select id="getAllCabeceraFull" parameterType="int"
+		resultMap="resultCabe">
+
+		Select f12.CT1EA as TIPO, value(f12.CT12A, 0) as CODBAR,
+		Int(f12.cmba) as CODOFI,
+		TRANSLATE(COALESCE(f31.cmia,''), ' ', ',') as
+		RASOCIA,
+		COALESCE(int(f12.cmna), 0) as RUTEMP,
+		COALESCE(f02.cmoa , ' ')
+		as DIGEMP,
+		COALESCE(f12.cm13a, 0 ) as SUC,
+		COALESCE(f12.ct1aa, 0) as
+		PER,
+		coalesce(f31.cm14a, ' ') as nomsucur
+		FROM ctdta.ct02f1 f12
+		inner
+		join cmdta.cm02f1 f02
+		on f12.cmna = f02.cmna
+		inner join cmdta.cm03f1 f31
+		on f12.cmba = f31.cmba
+		and f12.cmna = f31.cmna
+		and f12.cm13a = f31.cm13a
+		WHERE
+		(f12.ct1aa = #{periodo}
+		and int(f12.cmna) in (#{rutEmpresa}) ) and
+		COALESCE(f12.cm13a, 0 ) = #{sucursal} and Int(f12.cmba) =
+		#{codOficina}  and f12.ct9a = 'E'
+		group by
+		f12.ct1aa, f12.cmba, f31.cmia, f12.cmna,f02.cmoa,
+		f12.cm13a,f31.cm14a,f12.CT1EA,f12.CT12A
+		ORDER BY RUTEMP, codofi, f12.cm13a
+
+	</select>
+
+	<select id="getValorTramo" parameterType="int"
+		resultMap="resultTramo">
+
+		SELECT
+		(year(AF2GA) ) || right('0'|| month(AF2GA),2) as ini,
+		(year(AFDA) ) || right('0'|| month(AFDA),2) as ter,
+		YEAR(AF2GA) as
+		years, VALUE(AF2KA, 0) as tramo
+
+		FROM afdta.AF11F1 a
+		WHERE
+		#{periodo}
+		between (year(AF2GA)) || right('0'|| month(AF2GA),2)
+		and (year(AFDA) )
+		|| right('0'|| month(AFDA),2)
+		ORDER BY AF2HA
+
+	</select>
+
+	<select id="getCargas" parameterType="int"
+		resultMap="resultCargas">
+
+		SELECT VALUE(CMBA, 0) as codofi,
+		VALUE(CMNA, 0) rutem,
+		VALUE(CM13A, 0) sucursal,
+		VALUE(AF4YA, 0) periodo,
+
+		VALUE(AF2HA, 0) as
+		tramo ,
+		VALUE(AFCTA, 0) + VALUE(AFCVA, 0) as cnormales,
+		VALUE(AFCUA, 0)
+		as invalidas
+		FROM afdta.AF34F1
+		WHERE CMBA = #{codOficina}
+		AND CMNA =
+		#{rutEmpresa}
+		AND
+		CM13A = #{sucursal}
+		AND AF4YA = #{periodo}
+
+	</select>
+
+	<select id="getRetroactivos" parameterType="int"
+		resultMap="resultRetroactivos">
+
+		SELECT VALUE(CMBA, 0) as oficina, VALUE(CMNA, 0) as rutem,
+		VALUE(CM13A, 0)
+		as sucursal,
+		VALUE(AF4YA, 0) as periodo, VALUE(AF1WA, 0)
+		as cnormal, VALUE(AF18A, 0) as monto
+		FROM afdta.AF33F1
+		WHERE CMBA =
+		#{codOficina}
+		AND CMNA = #{rutEmpresa}
+		AND CM13A = #{sucursal}
+		AND AF4YA
+		= #{periodo}
+	</select>
+
+</mapper>

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="mapeo">
+
+	<select id="obtenerGrupoConvenioDefaultF1" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina1'
+
+	</select>
+	<select id="obtenerGrupoConvenioDefaultF2" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina2'
+
+	</select>
+	<select id="obtenerGrupoConvenioDefaultF3" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina3'
+
+	</select>
+	<select id="obtenerGrupoConvenioDefaultF4" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina4'
+
+	</select>
+
+	<select id="obtenerGrupoConvenioDefaultF5" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina5'
+
+	</select>
+	
+	<select id="obtenerGrupoConvenioDefaultPC" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina6'
+
+	</select>
+	
+	<select id="obtenerGrupoConvenioDefaultC2PC" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'formatoNomina7'
+
+	</select>
+	
+	<select id="obtenerGrupoConvenioDefaultIndep" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre =
+		'idGroConIndep'
+
+	</select>
+
+	<select id="obtenerDatagrupoConvenioDefault" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select * from GRUPOCONV where id_grupo_convenios=
+		#VALOR#
+	</select>
+
+	<select id="obtenerProximoIdDisponibleMapaNom" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select max(id_mapanom)+1 as id_mapanom from MAPANOM
+	</select>
+
+	<select id="obtenerProximoIdDisponibleMapaCod" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select max(id_mapacod)+1 as id_mapacod from MAPACOD
+	</select>
+	<select id="obtenerProximoIdDisponibleOpcionProc"
+		parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		select max(id_opcion)+1
+		as id_opcion from OPCIONPROC
+	</select>
+	<select id="obtenerProximoIdDisponibleGrupoConv" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select NEXTVAL FOR S_GRUPOCONV as id_grupo_convenio
+		from SYSIBM.SYSDUMMY1
+	</select>
+
+	<insert id="duplicarMapaNom" parameterClass="java.util.HashMap">
+		insert into
+		MAPANOM
+		(ID_TIPO_NOMINA,N_BLOQUEOS,ID_MAPANOM,DESCRIPCION,LARGO_REGISTRO)
+		values
+		(#ID_TIPO_NOMINA#,#N_BLOQUEOS#,#ID_MAPANOM#,#DESCRIPCION#,#LARGO_REGISTRO#)
+	</insert>
+
+	<insert id="duplicarMapeoConce" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOCONCE
+		(ID_TIPO_NOMINA, POSICION, TIPO_SEPARADOR, LARGO,
+		ID_CONCEPTO,
+		CARACTER_SEPARADOR,ID_MAPANOM)
+		values
+		(#ID_TIPO_NOMINA#,
+		#POSICION#, #TIPO_SEPARADOR#, #LARGO#, #ID_CONCEPTO#,
+		#CARACTER_SEPARADOR#,#ID_MAPANOM#)
+	</insert>
+
+	<select id="selectMapaNomRem" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, descripcion, largo_registro,
+		n_bloqueos from
+		MAPANOM where id_mapanom= #ID_MAPANOM_REM#
+	</select>
+	<select id="selectMapeoConceRem" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, id_concepto, posicion, largo,
+		caracter_separador,
+		tipo_separador from MAPEOCONCE where
+		id_mapanom=
+		#ID_MAPANOM_REM#
+	</select>
+
+	<select id="selectMapaNomGra" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, descripcion, largo_registro,
+		n_bloqueos from
+		MAPANOM where id_mapanom= #ID_MAPANOM_GRA#
+	</select>
+	<select id="selectMapeoConceGra" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, id_concepto, posicion, largo,
+		caracter_separador,
+		tipo_separador from MAPEOCONCE where
+		id_mapanom=
+		#ID_MAPANOM_GRA#
+	</select>
+
+	<select id="selectMapaNomDep" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, descripcion, largo_registro,
+		n_bloqueos from
+		MAPANOM where id_mapanom= #ID_MAPANOM_DEP#
+	</select>
+	<select id="selectMapeoConceDep" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, id_concepto, posicion, largo,
+		caracter_separador,
+		tipo_separador from MAPEOCONCE where
+		id_mapanom=
+		#ID_MAPANOM_DEP#
+	</select>
+
+	<select id="selectMapaNomRel" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, descripcion, largo_registro,
+		n_bloqueos from
+		MAPANOM where id_mapanom= #ID_MAPANOM_REL#
+	</select>
+	<select id="selectMapeoConceRel" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_nomina, id_concepto, posicion, largo,
+		caracter_separador,
+		tipo_separador from MAPEOCONCE where
+		id_mapanom=
+		#ID_MAPANOM_REL#
+	</select>
+
+	<insert id="duplicarOpcionProc" parameterClass="java.util.HashMap">
+		insert into
+		OPCIONPROC
+		select
+		#id_opcion_proc# ,
+		GENERAR_INP_POR_SUCURSAL,
+		GENERAR_MUTUAL_POR_SUCURSAL,
+		GENERAR_CCAF_POR_SUCURSAL,
+		CALCULAR_MONTO_INP,
+		CALCULAR_MONTO_MUTUAL,
+		CALCULAR_MONTO_CCAF,
+		CALCULAR_MONTO_TOTAL_SALUD,
+		CALCULAR_MONTO_TOTAL_PREVISION,
+		IMPRIMIR_PLANILLAS,
+		N_BLOQUEOS ,
+		CALCULAR_MONTO_FONASA
+		from
+		OPCIONPROC where id_opcion= #ID_OPCION#
+	</insert>
+
+	<insert id="insertMapaCod" parameterClass="java.util.HashMap">
+		insert into
+		MAPACOD (id_mapacod,descripcion,n_bloqueos) values
+		(#ID_MAPACOD#,#DESCRIPCION#,0)
+	</insert>
+
+	<select id="selectMapeoAPV" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_ent_apv,codigo from MAPEOAPV where
+		id_mapacod= #ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoAPV" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOAPV
+		( ID_ENT_APV, ID_MAPACOD,CODIGO)
+		values
+		( #ID_ENT_APV#,
+		#ID_MAPACOD#,#CODIGO#)
+
+	</insert>
+
+	<select id="selectMapeoAsfam" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tramo,codigo from MAPEOASFAM where
+		id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoAsfam" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOASFAM
+		( ID_TRAMO, ID_MAPACOD,CODIGO)
+		values
+		( #ID_TRAMO#,
+		#ID_MAPACOD#,#CODIGO#)
+	</insert>
+
+	<select id="selectMapeoPens" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_ent_fondo_pension,codigo from MAPEOPENS
+		where id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoPens" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOPENS
+		( ID_ENT_FONDO_PENSION, ID_MAPACOD,CODIGO)
+		values
+		(
+		#ID_ENT_FONDO_PENSION#, #ID_MAPACOD#,#CODIGO#)
+	</insert>
+
+	<select id="selectMapeoGen" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_genero,codigo from MAPEOGEN where
+		id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoGen" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOGEN
+		( ID_GENERO, ID_MAPACOD,CODIGO)
+		values
+		( #ID_GENERO#,
+		#ID_MAPACOD#,#CODIGO#)
+	</insert>
+	<select id="selectMapeoSalud" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_ent_salud,codigo from MAPEOSALUD where
+		id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoSalud" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOSALUD
+		( ID_ENT_SALUD, ID_MAPACOD,CODIGO)
+		values
+		(
+		#ID_ENT_SALUD#, #ID_MAPACOD#,#CODIGO#)
+	</insert>
+	<select id="selectMapeoTipmp" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_mvto,CODIGO from MAPEOTIPMP where
+		id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoTipmp" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOTIPMP
+		( ID_TIPO_MVTO, ID_MAPACOD,CODIGO)
+		values
+		(
+		#ID_TIPO_MVTO#, #ID_MAPACOD#,#CODIGO#)
+	</insert>
+
+	<select id="selectMapeoTipmpaf" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select id_tipo_mvto,CODIGO from MAPEOTIPMPAF where
+		id_mapacod=
+		#ID_MAPACOD_TEMPLATE#
+	</select>
+	<insert id="insertMapeoTipmpaf" parameterClass="java.util.HashMap">
+		insert into
+		MAPEOTIPMPAF
+		( ID_TIPO_MVTO, ID_MAPACOD,CODIGO)
+		values
+		(
+		#ID_TIPO_MVTO#, #ID_MAPACOD#,#CODIGO#)
+	</insert>
+
+	<insert id="crear_grupo_convenio" parameterClass="java.util.HashMap">
+		insert into
+		GRUPOCONV
+
+		(
+		ID_GRUPO_CONVENIOS,
+		ID_EMPRESA,
+		ID_MAPANOM_REM,
+		ID_MAPANOM_GRA,
+		ID_MAPANOM_DEP,
+		ID_MAPANOM_REL,
+		ID_MAPACOD,
+		ID_OPCION,
+		NOMBRE,
+		CREADO,
+		PROD_CAJA
+
+		)
+		values
+		(
+		#ID_GRUPO_CONVENIOS#,
+		#ID_EMPRESA#,
+		#ID_MAPANOM_REM#,
+		#ID_MAPANOM_GRA#,
+		#ID_MAPANOM_DEP#,
+		#ID_MAPANOM_REL#,
+		#ID_MAPACOD#,
+		#ID_OPCION#,
+		#NOMBRE#,
+		CURRENT_TIMESTAMP,
+		#PROD_CAJA#
+		)
+	</insert>
+
+	<insert id="crear_opcion_proceso" parameterClass="java.util.HashMap">
+		insert into
+		OPCIONPROC
+		(
+		ID_OPCION,
+		GENERAR_INP_POR_SUCURSAL,
+		GENERAR_MUTUAL_POR_SUCURSAL,
+		GENERAR_CCAF_POR_SUCURSAL,
+		CALCULAR_MONTO_INP,
+		CALCULAR_MONTO_MUTUAL,
+		CALCULAR_MONTO_CCAF,
+		CALCULAR_MONTO_TOTAL_SALUD,
+		CALCULAR_MONTO_TOTAL_PREVISION,
+		IMPRIMIR_PLANILLAS,
+		CALCULAR_MONTO_FONASA
+		)
+		values
+		(
+
+		#ID_OPCION#,
+		#GENERAR_INP_POR_SUCURSAL#,
+		#GENERAR_MUTUAL_POR_SUCURSAL#,
+		#GENERAR_CCAF_POR_SUCURSAL#,
+		#CALCULAR_MONTO_INP#,
+		#CALCULAR_MONTO_MUTUAL#,
+		#CALCULAR_MONTO_CCAF#,
+		#CALCULAR_MONTO_TOTAL_SALUD#,
+		#CALCULAR_MONTO_TOTAL_PREVISION#,
+		#IMPRIMIR_PLANILLAS#,
+		#CALCULAR_MONTO_FONASA#
+		)
+	</insert>
+
+	<insert id="crear_convenio" parameterClass="java.util.HashMap">
+		insert into
+		CONVENIO
+		(
+		ID_EMPRESA ,
+		ID_CONVENIO ,
+		ID_GRUPO_CONVENIOS ,
+		ID_MAPANOM_REM ,
+		ID_MAPANOM_GRA ,
+		ID_MAPANOM_DEP ,
+		ID_MAPANOM_REL ,
+		ID_MAPACOD ,
+		ID_OPCION ,
+		ID_CCAF ,
+		ID_MUTUAL ,
+		ID_ACTIVIDAD ,
+		CALCULO_MOV_PERSONAL ,
+		MUTUAL_NUMERO_ADHERENTE ,
+		MUTUAL_TASA_ADICIONAL ,
+		MUTUAL_CALCULO_INDIVIDUAL ,
+		DESCRIPCION,
+		CREADO,
+		ULTIMO_USO
+		)
+
+		values
+		(
+		#ID_EMPRESA# ,
+		#ID_CONVENIO# ,
+		#ID_GRUPO_CONVENIOS# ,
+		#ID_MAPANOM_REM# ,
+		#ID_MAPANOM_GRA# ,
+		#ID_MAPANOM_DEP# ,
+		#ID_MAPANOM_REL# ,
+		#ID_MAPACOD# ,
+		#ID_OPCION# ,
+		#ID_CCAF# ,
+		#ID_MUTUAL# ,
+		#ID_ACTIVIDAD# ,
+		#CALCULO_MOV_PERSONAL# ,
+		#MUTUAL_NUMERO_ADHERENTE# ,
+		#MUTUAL_TASA_ADICIONAL# ,
+		#MUTUAL_CALCULO_INDIVIDUAL# ,
+		#DESCRIPCION#,
+		CURRENT_TIMESTAMP,
+		CURRENT_TIMESTAMP
+		)
+
+	</insert>
+
+
+</sqlMap> 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Le styles -->
+<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href="css/estilo.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.corner.js"></script>
+<script type="text/javascript" src="js/comun.js"></script>
+<script type="text/javascript" src="js/cargar_datos.js"></script>
+
+</head>
+<body>
+
+ <style>
+label {
+display: inline-block; width: 5em;
+}
+fieldset div {
+margin-bottom: 2em;
+}
+fieldset .help {
+display: inline-block;
+}
+.ui-tooltip {
+width: 210px;
+}
+</style>
+
+<script>
+
+verDetalleIngreso();
+</script>
+
+
+<div class="container">
+
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="bottom_header"></div>
+
+<div id="informacion" class="informacion"></div>
+</div>
+
+
+	<h1>Detalle de Ingreso</h1>
+
+	<table class="tabla_formulario">
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Rut Empresa</td>
+			<td class="data_campo"><div id="rut_empresa" name="rut_empresa"></div></td>
+			
+		</tr>
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Email Empresa</td>
+			<td class="data_campo"><div id="email_empresa" name="email_empresa"></div></td>
+			
+		</tr>
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Estado De Ingreso</td>
+			<td class="data_campo"><div id="estado_ingreso" name="estado_ingreso"></div></td>
+			
+		</tr>
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Nombre Administrador</td>
+			<td class="data_campo"><div id="nombre_administrado" name="nombre_administrado"></div></td>
+			
+		</tr>
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Email Administrador</td>
+			<td class="data_campo"><div id="email_administrado" name="email_administrado"></div></td>
+			
+		</tr>
+		<tr class="tr_formulario">
+			<td  class="titulo_campo">Tel&eacute;fono Administrador</td>
+			<td class="data_campo"><div id="telefono_administrado" name="telefono_administrado"></div></td>
+			
+		</tr>
+		
+</table>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>    
+
+<div id="footer" class="texto_footer">Una innovaci&oacute;n tecnol&oacute;gica de Caja De Compensaci&oacute;n 
+	<div id="logo_araucana"></div>
+</div>
+</div> <!-- container -->
+
+
+<script type="text/javascript" src="dist/js/bootstrap.js"></script>
+<div id="cargando" >
+
+<div id="imagen"></div>
+<div id="texto_cargando"></div>
+
+</div>
+
+
+</body>
+</html>

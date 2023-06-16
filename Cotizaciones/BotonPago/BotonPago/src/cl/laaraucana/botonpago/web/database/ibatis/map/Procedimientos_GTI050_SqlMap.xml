@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<parameterMap id="MapProLibroBanco" class="java.util.Map">
+			<!-- Banco -->
+            <parameter property="DATO1" jdbcType="CHAR" mode="IN" />
+            <!-- N° Cuenta Corriente -->
+            <parameter property="DATO2" jdbcType="CHAR" mode="IN" />
+            <!-- Fecha Movimiento -->
+            <parameter property="DATO3" jdbcType="CHAR" mode="IN" />
+            <!-- Monto (decimal con punto)-->
+            <parameter property="DATO4" jdbcType="CHAR" mode="IN" />
+            <!-- Tipo Abono -->
+            <parameter property="DATO5" jdbcType="CHAR" mode="IN" />
+            <!-- Numero Deposito -->
+            <parameter property="DATO6" jdbcType="CHAR" mode="IN" />
+			<!-- Código Operación Interna -->
+            <parameter property="DATO7" jdbcType="CHAR" mode="IN" />
+            <!-- Descripción -->
+            <parameter property="DATO8" jdbcType="CHAR" mode="IN" />
+            <!-- Indicador error ([0] ok / [1] error, )-->
+            <parameter property="DATO9" jdbcType="CHAR" mode="INOUT" />
+    </parameterMap>
+    
+    <procedure id="ProLibroBanco"  parameterMap="MapProLibroBanco">
+		{call SINAOBJ.PROLIBROBANCO(?,?,?,?,?,?,?,?,?)}
+    </procedure>
+    
+</sqlMap>

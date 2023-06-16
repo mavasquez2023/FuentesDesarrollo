@@ -1,0 +1,5 @@
+CREATE TABLE MAPACOD(
+id_mapacod integer,
+descripcion char(50),
+bloqueo int
+)

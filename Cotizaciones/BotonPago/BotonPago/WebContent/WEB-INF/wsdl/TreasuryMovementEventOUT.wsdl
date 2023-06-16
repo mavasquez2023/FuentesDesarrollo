@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TreasuryMovementEventOUT"
+	targetNamespace="http://lautaro.com/xi/BS/Treasury" xmlns:p1="http://lautaro.com/xi/BS/Treasury"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsp:UsingPolicy wsdl:required="true" />
+
+	<wsp:Policy wsu:Id="OP_UpdTreasMovPaymentReverse" />
+	<wsp:Policy wsu:Id="OP_UpdTreasMovPayment" />
+	<wsp:Policy wsu:Id="OP_UpdTreasMovReplacement" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/BS/Treasury"
+			xmlns="http://lautaro.com/xi/BS/Treasury" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="TreasuryMovementEventReplacementResponseOut"
+				type="TreasuryMovementEventReplacementResponseOut" />
+			<xsd:element name="TreasuryMovementEventResponseOut"
+				type="TreasuryMovementEventResponseOut" />
+			<xsd:element name="TreasuryMovementEventReverseRequestOut"
+				type="TreasuryMovementEventReverseRequestOut" />
+			<xsd:element name="TreasuryMovementEventReplacementRequestOut"
+				type="TreasuryMovementEventReplacementRequestOut" />
+			<xsd:element name="TreasuryMovementEventRequestOut" type="TreasuryMovementEventRequestOut" />
+			<xsd:element name="TreasuryMovementEventReverseResponseOut"
+				type="TreasuryMovementEventReverseResponseOut" />
+			<xsd:simpleType name="Folio">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Folio
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:length value="10" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="ResultCode">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Resultado de la
+						operación</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0" />
+					<xsd:maxLength value="1" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="TreasuryMovementEvent">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="BusinessArea" type="xsd:integer" />
+					<xsd:element name="Rut">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Folio" type="Folio" />
+					<xsd:element name="CreationOffice" type="xsd:integer" />
+					<xsd:element name="PaymentDate" type="xsd:date" />
+					<xsd:element name="PaymentMethod">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:length value="1" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Amount">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:decimal">
+								<xsd:totalDigits value="23" />
+								<xsd:fractionDigits value="2" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReplacementResponseOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Reverse Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader"
+						minOccurs="0" />
+					<xsd:element name="ResultCode" type="ResultCode" />
+					<xsd:element name="Log" type="Log" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventRequestOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" />
+					<xsd:element name="TreasuryMovementEvent" type="TreasuryMovementEvent" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventResponseOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader"
+						minOccurs="0" />
+					<xsd:element name="ResultCode" type="ResultCode" />
+					<xsd:element name="Log" type="Log" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReverseRequestOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" />
+					<xsd:element name="TreasuryMovementEventReverse" type="TreasuryMovementEventReverse" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MessageHeader">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Header Entries
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="DATECREATION" type="xsd:date"
+						minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Fecha Creacion</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="INTERNALORGANIZATION" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Sistema Generador</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="5" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="HOST" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Host Generador</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="USER" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Usuario Generador</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="12" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReverse">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="BusinessArea" type="xsd:integer" />
+					<xsd:element name="Rut">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Folio" type="Folio" />
+					<xsd:element name="CreationOffice" type="xsd:integer" />
+					<xsd:element name="PaymentDate" type="xsd:date" />
+					<xsd:element name="PaymentMethod">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:length value="1" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Amount">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:decimal">
+								<xsd:minInclusive value="0" />
+								<xsd:maxInclusive value="12" />
+								<xsd:totalDigits value="12" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReplacementRequestOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Reverse Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader" />
+					<xsd:element name="TreasuryMovementEventReplacement"
+						type="TreasuryMovementEventReplacement" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Log">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Log Entries
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="TYPE" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Tipo Mensaje</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:length value="1" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="ID" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Clase Mensaje</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="NUMBER" type="xsd:integer"
+						minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Numero de Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Texto Mensaje</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="250" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="LOG_NO" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Numero de Log</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="LOG_MSG_NO" type="xsd:integer"
+						minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Numero consecutivo interno de mensaje
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V1" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="50" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V2" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="50" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V3" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="50" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V4" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="50" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="PARAMETER" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="32" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="ROW" type="xsd:integer" minOccurs="0" />
+					<xsd:element name="FIELD" type="xsd:integer" minOccurs="0" />
+					<xsd:element name="SYSTEM" minOccurs="0">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="10" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReverseResponseOut">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Request</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="MessageHeader" type="MessageHeader"
+						minOccurs="0" />
+					<xsd:element name="ResultCode" type="ResultCode" />
+					<xsd:element name="Log" type="Log" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TreasuryMovementEventReplacement">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Treasury Movement
+						Event Reverse</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="BusinessArea" type="xsd:integer" />
+					<xsd:element name="Rut">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0" />
+								<xsd:maxLength value="20" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="PreviousFolioNumber" type="Folio" />
+					<xsd:element name="NewFolioNumber" type="Folio" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="TreasuryMovementEventReverseRequestOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventReverseRequestOut"
+			element="p1:TreasuryMovementEventReverseRequestOut" />
+	</wsdl:message>
+	<wsdl:message name="TreasuryMovementEventReverseResponseOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventReverseResponseOut"
+			element="p1:TreasuryMovementEventReverseResponseOut" />
+	</wsdl:message>
+	<wsdl:message name="TreasuryMovementEventRequestOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventRequestOut" element="p1:TreasuryMovementEventRequestOut" />
+	</wsdl:message>
+	<wsdl:message name="TreasuryMovementEventResponseOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventResponseOut" element="p1:TreasuryMovementEventResponseOut" />
+	</wsdl:message>
+	<wsdl:message name="TreasuryMovementEventReplacementRequestOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventReplacementRequestOut"
+			element="p1:TreasuryMovementEventReplacementRequestOut" />
+	</wsdl:message>
+	<wsdl:message name="TreasuryMovementEventReplacementResponseOut">
+		<wsdl:documentation />
+		<wsdl:part name="TreasuryMovementEventReplacementResponseOut"
+			element="p1:TreasuryMovementEventReplacementResponseOut" />
+	</wsdl:message>
+	<wsdl:portType name="TreasuryMovementEventOUT">
+		<wsdl:documentation>Treasury Movement Event Out</wsdl:documentation>
+		<wsdl:operation name="UpdTreasMovPaymentReverse">
+			<wsdl:documentation>Update Treasury Movement Payment Reverse
+			</wsdl:documentation>
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_UpdTreasMovPaymentReverse" />
+			</wsp:Policy>
+			<wsdl:input message="p1:TreasuryMovementEventReverseRequestOut" />
+			<wsdl:output message="p1:TreasuryMovementEventReverseResponseOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdTreasMovPayment">
+			<wsdl:documentation>UpdateTreasury Movement Payment
+			</wsdl:documentation>
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_UpdTreasMovPayment" />
+			</wsp:Policy>
+			<wsdl:input message="p1:TreasuryMovementEventRequestOut" />
+			<wsdl:output message="p1:TreasuryMovementEventResponseOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdTreasMovReplacement">
+			<wsdl:documentation>Update Treasury Movement Replacement
+			</wsdl:documentation>
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_UpdTreasMovReplacement" />
+			</wsp:Policy>
+			<wsdl:input message="p1:TreasuryMovementEventReplacementRequestOut" />
+			<wsdl:output message="p1:TreasuryMovementEventReplacementResponseOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="TreasuryMovementEventOUTBinding" type="p1:TreasuryMovementEventOUT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="UpdTreasMovPaymentReverse">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdTreasMovPayment">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdTreasMovReplacement">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+</wsdl:definitions>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BPAGDTA_BPAGF003">
+
+
+	<select id="selectFechaFutura" resultClass="java.lang.String">
+		select MAX(FECHA_FUT)
+		from BPAGDTA.BPAGF003
+		where FOLIO=#folio#     
+		with UR
+  	</select>
+  
+
+	<insert id="insertFechaFutura"	parameterClass="java.util.HashMap">
+		insert into
+		BPAGDTA.BPAGF003
+		(FOLIO, FECHA_FUT)
+		values(#folio#,#fecha#) with nc
+  	</insert>
+  	
+  	<delete id="deleteFechaFutura"	parameterClass="java.util.HashMap">
+		delete from
+		BPAGDTA.BPAGF003
+		where FOLIO= #folio#
+		with nc
+  	</delete>
+  	
+</sqlMap>

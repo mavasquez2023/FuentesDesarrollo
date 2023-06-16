@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	
+	<data-sources>
+	</data-sources>
+	
+	<form-beans>
+		<form-bean name="GenerarPlanillasForm" type="cl.araucana.cierrecpe.empresas.forms.GenerarPlanillasForm">
+		</form-bean>
+		<form-bean name="VerComprobantesForm" type="cl.araucana.cierrecpe.empresas.forms.VerComprobantesForm">
+		</form-bean>
+		<form-bean name="GenerarPropuestaForm" type="cl.araucana.cierrecpe.entidades.forms.GenerarPropuestaForm">
+		</form-bean>
+		<form-bean name="VerPropuestaForm" type="cl.araucana.cierrecpe.entidades.forms.VerPropuestaForm">
+		</form-bean>
+		<form-bean name="VerDetallePropuestaForm" type="cl.araucana.cierrecpe.entidades.forms.VerDetallePropuestaForm">
+		</form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/ActualizarCorreoEncargados" type="cl.araucana.cierrecpe.actions.ActualizarCorreoEncargadosAction" name="VerComprobantesForm" validate="false">
+			<forward name="OK" path="/okmail.jsp" />
+			<forward name="NOTOK" path="/errormail.jsp" />
+		</action>
+		<action path="/Inicio" type="cl.araucana.cierrecpe.actions.InicioAction" name="VerComprobantesForm" validate="false">
+			<forward name="OK" path="/cierre.jsp" />
+			<forward name="NOTOK" path="/loginerror.jsp" />
+			<forward name="NOTAUTH" path="/loginautorizacion.jsp" />
+		</action>
+		<action path="/Logout" type="cl.araucana.cierrecpe.actions.LogoutAction" name="VerComprobantesForm" validate="false">
+			<forward name="OK" path="/cerrar.jsp" />
+		</action>
+		<action path="/GenerarCierreFull" type="cl.araucana.cierrecpe.actions.GenerarCierreFullAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/VerProcesosActivos" type="cl.araucana.cierrecpe.actions.VerProcesosActivosAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/verProcesosActivos.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/VerLogProcesos" type="cl.araucana.cierrecpe.actions.VerLogProcesosAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/verLogProcesos.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/GenerarPlanillas" type="cl.araucana.cierrecpe.empresas.actions.GenerarPlanillasAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/VerComprobantes" type="cl.araucana.cierrecpe.empresas.actions.VerComprobantesAction" name="VerComprobantesForm" validate="false">
+			<forward name="OK" path="/verComprobantes.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/VerResumen" type="cl.araucana.cierrecpe.empresas.actions.VerResumenAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="PARAM" path="/gestionEmpresas.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/DownloadEstadisticas" type="cl.araucana.cierrecpe.empresas.actions.DownloadEstadisticasAction" name="VerComprobantesForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/DownloadInformes" type="cl.araucana.cierrecpe.empresas.actions.DownloadInformesAction" name="VerComprobantesForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/GenerarTesoreriaGeneral" type="cl.araucana.cierrecpe.empresas.actions.GenerarTesoreriaGeneralAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/GenerarArchivosImpresion" type="cl.araucana.cierrecpe.empresas.actions.GenerarArchivosImpresionAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/CentralizacionBibliotecaCierre" type="cl.araucana.cierrecpe.empresas.actions.CentralizacionBibliotecaCierreAction" name="GenerarPlanillasForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/GenerarPropuesta" type="cl.araucana.cierrecpe.entidades.actions.GenerarPropuestaAction" name="GenerarPropuestaForm" validate="false">
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="PARAM" path="/generarPropuesta.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/VerPropuesta" type="cl.araucana.cierrecpe.entidades.actions.VerPropuestaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="PARAM" path="/verPropuesta.jsp" />
+			<forward name="PARAMDEPO" path="/verPropuestabyDeposito.jsp" />
+		</action>
+		<action path="/VerSecciones" type="cl.araucana.cierrecpe.entidades.actions.VerSeccionesAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/verSecciones.jsp" />
+		</action>
+		<action path="/DownloadPropuesta" type="cl.araucana.cierrecpe.entidades.actions.DownloadPropuestaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/ok.jsp" />
+		</action>
+		<action path="/VerDetallePropuesta" type="cl.araucana.cierrecpe.entidades.actions.VerDetallePropuestaAction" name="VerDetallePropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/verDetallePropuesta.jsp" />
+		</action>
+		<action path="/DownloadEstadisticasEnt" type="cl.araucana.cierrecpe.entidades.actions.DownloadEstadisticasAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/GenerarCheques" type="cl.araucana.cierrecpe.entidades.actions.GenerarChequesAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/GenerarInformeContable" type="cl.araucana.cierrecpe.entidades.actions.GenerarInformeContableAction" name="GenerarPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/GenerarArchivosEntidades" type="cl.araucana.cierrecpe.entidades.actions.GenerarArchivosEntidadesAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/ok.jsp" />
+			<forward name="BUSY" path="/ocupado.jsp" />
+		</action>
+		<action path="/VerDescuadraturaFormaPago" type="cl.araucana.cierrecpe.entidades.actions.VerDescuadraturaFormaPagoAction" name="VerDetallePropuestaForm" validate="false">
+			<forward name="NOTOK" path="/close.jsp" />
+			<forward name="OK" path="/verDescuadratura.jsp" />
+		</action>
+		<action path="/VerComprobantesFormaPago" type="cl.araucana.cierrecpe.entidades.actions.VerComprobantesFormaPagoAction" name="VerDetallePropuestaForm" validate="false">
+			<forward name="NOTOK" path="/close.jsp" />
+			<forward name="OK" path="/verDetalleComprobantes.jsp" />
+		</action>
+		<action path="/VerCuadratutaComprobantes" type="cl.araucana.cierrecpe.empresas.actions.VerCuadratutaComprobantesAction" name="VerDetallePropuestaForm" validate="false">
+			<forward name="NOTOK" path="/close.jsp" />
+			<forward name="OK" path="/verCuadraturaComprobantes.jsp" />
+		</action>
+		<action path="/DownloadCuadratura" type="cl.araucana.cierrecpe.empresas.actions.DownloadCuadraturaAction" name="VerComprobantesForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+		</action>
+		<action path="/SQL" type="cl.araucana.cierrecpe.actions.SQLAction" name="VerComprobantesForm" validate="false">
+			<forward name="OK" path="/sql.jsp" />
+		</action>
+		<action path="/EnviarPropuesta" type="cl.araucana.cierrecpe.entidades.actions.EnviarPropuestaxCorreoAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/errormail.jsp" />
+			<forward name="OK" path="/okenvio.jsp" />
+		</action>
+		<action path="/VerBoletas" type="cl.araucana.cierrecpe.empresas.actions.VerBoletasAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/boleta/gestionBoletas.jsp" />
+		</action>
+		<action path="/GenerarBoleta" type="cl.araucana.cierrecpe.empresas.actions.GenerarBoletaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/VerBoletas.do" />
+			<forward name="PARAM" path="/boleta/nuevaBoleta.jsp" />
+		</action>
+		<action path="/EliminarBoleta" type="cl.araucana.cierrecpe.empresas.actions.EliminarBoletaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/VerBoletas.do" />
+		</action>
+		<action path="/VerComprobantesBoleta" type="cl.araucana.cierrecpe.empresas.actions.VerComprobantesBoletaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/boleta/comprobantesBoleta.jsp" />
+		</action>
+		<action path="/CursarComprobantesBoleta" type="cl.araucana.cierrecpe.empresas.actions.CursarComprobantesBoletaAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/VerBoletas.do" />
+		</action>
+		<action path="/VerBancos" type="cl.araucana.cierrecpe.empresas.actions.VerBancosAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/boleta/bancos.jsp" />
+		</action>
+		<action path="/GestionBancos" type="cl.araucana.cierrecpe.empresas.actions.GestionBancosAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="OK" path="/VerBancos.do" />
+			<forward name="NEW" path="/boleta/nuevoBanco.jsp" />
+		</action>
+		<action path="/VerCierres" type="cl.araucana.cierrecpe.entidades.actions.VerCierresAction" name="VerPropuestaForm" validate="false">
+			<forward name="NOTOK" path="/error.jsp" />
+			<forward name="VER" path="/verCierres.jsp" />
+			<forward name="OK" path="/ok.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="cl.araucana.cierrecpe.resources.ApplicationResources"/>
+</struts-config>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<typeAlias alias="sinat03" type="cl.laaraucana.botonpago.web.database.ibatis.domain.Sinat03" />
+	<typeAlias alias="sinat04" type="cl.laaraucana.botonpago.web.database.ibatis.domain.Sinat04" />
+
+<!-- *********************SINAT03************* -->
+
+	<resultMap class="sinat03" id="sinat03Result">
+		<result column="TIPCOD" property="tipcod" />
+		<result column="PORCEN" property="porcen" />
+		<result column="FECSIS" property="fecsis" />
+		<result column="HORSIS" property="horsis" />
+		<result column="IDUSER" property="iduser" />
+	</resultMap>
+  
+  <!-- lista de parametros -->
+ 	<select id="getSinat03" resultMap="sinat03Result">		
+		select * from sinadta.sinat03 order by tipcod
+	</select>
+ 	
+	
+	<insert id="ingresaSinat03" parameterClass="sinat03">
+		insert into sinadta.sinat03 (TIPCOD, PORCEN, FECSIS, HORSIS, IDUSER) 
+		values(#tipcod#, #porcen#, #fecsis#, #horsis#, #iduser#) with nc
+	</insert>
+	
+	<delete id="eliminarSinat03" parameterClass="sinat03" >
+		delete from SINADTA.SINAT03 where TIPCOD = #tipcod# with nc
+	</delete>
+	
+	<select id="buscarSinat03" resultMap="sinat03Result" parameterClass="string">		
+		select * from sinadta.sinat03 where TIPCOD = #value# order by tipcod
+	</select>
+	
+	<select id="buscarEditarSinat03" resultMap="sinat03Result" parameterClass="string">		
+		select * from sinadta.sinat03 where TIPCOD = #value#
+	</select>
+	
+	<update id="editarSinat03" parameterClass="sinat03">
+		UPDATE sinadta.sinat03
+		SET 
+		PORCEN = #porcen#, 
+		FECSIS = #fecsis#, 
+		HORSIS = #horsis#, 
+		IDUSER = #iduser# 
+		where TIPCOD = #tipcod# with nc
+	</update>
+	
+	<!-- *********************FIN SINAT03************* -->
+	
+	<!-- *********************SINAT04************* -->
+	
+	<resultMap class="sinat04" id="sinat04Result">
+		<result column="ANOPRO" property="anopro" />
+		<result column="CODPRO" property="codpro" />
+		<result column="NRODES" property="nrodes" />
+		<result column="NROHAS" property="nrohas" />
+		<result column="PORCEN" property="porcen" />
+		<result column="FECSIS" property="fecsis" />
+		<result column="HORSIS" property="horsis" />
+		<result column="IDUSER" property="iduser" />
+	</resultMap>
+	
+	<select id="getSinat04" resultMap="sinat04Result" parameterClass="string">		
+		select * from sinadta.sinat04 where CODPRO = #value# 
+		order by ANOPRO
+	</select>
+	
+	<insert id="ingresaSinat04" parameterClass="sinat04">
+		insert into sinadta.sinat04 
+		(ANOPRO, CODPRO, NRODES, NROHAS, PORCEN, FECSIS, HORSIS, IDUSER) 
+		values
+		(#anopro#, #codpro#, #nrodes#, #nrohas#, #porcen#, #fecsis#, #horsis#, #iduser#) 
+		with nc
+	</insert>
+	
+	<delete id="eliminarSinat04" parameterClass="sinat04" >
+		delete from SINADTA.SINAT04 
+		where ANOPRO = #anopro# 
+		AND CODPRO = #codpro#
+		AND NRODES = #nrodes#
+		AND NROHAS = #nrohas#
+		with nc
+	</delete>
+	
+	<select id="buscarSinat04" resultMap="sinat04Result" parameterClass="sinat04">		
+		select * from sinadta.sinat04
+		where ANOPRO = #anopro#
+	</select>
+	
+	<select id="buscarEditarSinat04" resultMap="sinat04Result" parameterClass="sinat04">		
+		select * from sinadta.sinat04 
+		where ANOPRO = #anopro# 
+		AND CODPRO = #codpro#
+		AND NRODES = #nrodes#
+		AND NROHAS = #nrohas#
+	</select>
+	
+	<update id="editarSinat04" parameterClass="sinat04">
+		UPDATE sinadta.sinat04
+		SET 
+		ANOPRO = #anopro#,
+		CODPRO = #codpro#,
+		NRODES = #nrodes#,
+		NROHAS = #nrohas#,
+		PORCEN = #porcen#,
+		FECSIS = #fecsis#,
+		HORSIS = #horsis#,
+		IDUSER = #iduser# 
+		where ANOPRO = #anoproEdit# 
+		AND CODPRO = #codproEdit#
+		AND NRODES = #nrodesEdit#
+		AND NROHAS = #nrohasEdit#
+		with nc
+	</update>
+	
+	
+	<!-- *********************SINAT04************* -->
+	
+	<!-- <typeAlias alias="usuarioVO" type="cl.laaraucana.mantenedor.ibatis.vo.DatosUsuario" />
+
+	<resultMap id="usuarioResultMap" class="usuarioVO">
+		<result column="RUT" property="rut" />
+		<result column="DV_RUT" property="dvRut" />
+		<result column="PASSWORD" property="password" />
+		<result column="NOMBRES" property="nombres" />
+		<result column="APELLIDO_PATERNO" property="apellidoPaterno" />
+		<result column="APELLIDO_MATERNO" property="apellidoMaterno" />
+		<result column="FONO" property="fono" />
+		<result column="EMAIL" property="email" />
+	</resultMap>
+	
+	<parameterMap id="ingresaUsuarioResultMap" class="usuarioVO">
+		<parameter property="rut" />
+		<parameter property="dvRut" />
+		<parameter property="password" />
+		<parameter property="nombres" />
+		<parameter property="apellidoPaterno" />
+		<parameter property="apellidoMaterno" />
+		<parameter property="fono" />
+		<parameter property="email" />
+	</parameterMap>
+	
+	<parameterMap id="editaUsuarioResultMap" class="usuarioVO">
+		<parameter property="password" />
+		<parameter property="nombres" />
+		<parameter property="apellidoPaterno" />
+		<parameter property="apellidoMaterno" />
+		<parameter property="fono" />
+		<parameter property="email" />
+	</parameterMap>
+
+	<select id="getUsuarios" resultMap="usuarioResultMap">
+		select * from STLOBJ1.USUARIO
+	</select>
+
+	<select id="buscarUsuario" resultMap="usuarioResultMap" parameterClass="string">
+		select * from STLOBJ1.USUARIO where RUT like '%$value$%' 
+		select * from STLOBJ1.USUARIO where RUT like '%' || $rut$ OR (RUT = #rut# AND DV_RUT = #dvRut#)
+	</select>
+	
+	<insert id="ingresaUsuario" parameterMap="ingresaUsuarioResultMap">
+		insert into STLOBJ1.USUARIO (RUT, DV_RUT, PASSWORD, NOMBRES, APELLIDO_PATERNO, APELLIDO_MATERNO, FONO, EMAIL ) values(?, ?, ?, ?, ?, ?, ?, ?) with nc
+	</insert>
+	
+	<delete id="eliminarUsuario" parameterClass="usuarioVO">
+		delete from STLOBJ1.USUARIO where RUT = #rut# and DV_RUT = #dvRut#
+	</delete>
+	
+	<select id="getUsuarioById" resultMap="usuarioResultMap" parameterClass="usuarioVO">
+		select * from STLOBJ1.USUARIO where RUT = #rut# and DV_RUT = #dvRut#
+	</select>
+	
+	<update id="editarUsuario" parameterClass="usuarioVO">
+	
+		UPDATE STLOBJ1.USUARIO 
+		SET 
+		PASSWORD = #password#, 
+		NOMBRES = #nombres#, 
+		APELLIDO_PATERNO = #apellidoPaterno#, 
+		APELLIDO_MATERNO = #apellidoMaterno#, 
+		FONO = #fono#, 
+		EMAIL = #email#
+		where RUT = #rut#
+		
+	</update> -->
+	
+</sqlMap>

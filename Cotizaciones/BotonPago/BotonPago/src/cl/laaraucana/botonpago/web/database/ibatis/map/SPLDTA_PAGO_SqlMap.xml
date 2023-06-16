@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SPLDTA_PAGO">
+
+	<resultMap id="pagoResult"
+		class="cl.laaraucana.botonpago.web.database.ibatis.domain.Pago">
+		<result column="ID_PAGO" property="idPago" />
+		<result column="PAGADOR" property="pagador" />
+		<result column="ID_ESTADO" property="idEstado" />
+		<result column="ID_SISTEMA" property="idSistema" />
+		<result column="ID_CONVENIO" property="idConvenio" />
+		<result column="FCH_INICIO" property="fchInicio" />
+		<result column="FCH_TRANSACCION" property="fchTransaccion" />
+		<result column="FCH_CONTABLE" property="fchContable" />
+		<result column="MONTO" property="monto" />
+		<result column="MONTO_RENDICION" property="montoRendicion" />
+		<result column="PAGADO" property="pagado" />
+		<result column="GLOSA" property="glosa" />
+		<result column="URL_RETORNO_ORIGEN" property="urlRetornoOrigen" />
+		<result column="URL_NOTIFICACION_ORIGEN" property="urlNotificacionOrigen" />
+	</resultMap>
+	
+<select id="selectPagoById" resultMap="pagoResult"
+		parameterClass="string">
+		select ID_PAGO, PAGADOR, ID_ESTADO, ID_SISTEMA, ID_CONVENIO, FCH_INICIO,
+		FCH_TRANSACCION,
+		char(FCH_CONTABLE,ISO) as FCH_CONTABLE, MONTO, MONTO_RENDICION, PAGADO, GLOSA, URL_RETORNO_ORIGEN,
+		URL_NOTIFICACION_ORIGEN
+		from SPLDTA.PAGO
+		where ID_PAGO = #value#
+  </select>
+
+	
+</sqlMap>

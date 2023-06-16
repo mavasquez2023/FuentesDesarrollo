@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BPAGDTA_BPAGF002">
+
+	<typeAlias alias="BpagF002"
+		type="cl.laaraucana.botonpago.web.database.ibatis.domain.BpagF002" />
+
+	<resultMap class="BpagF002" id="cuponDePagoResult">
+		<result column="TESFOL" property="tesFol" />
+		<result column="TESOFI" property="tesOfi" />
+		<result column="CODBARRA" property="codBarra" />
+		<result column="CREFOL" property="creFol" />
+		<result column="OFIPRO" property="ofiPro" />
+		<result column="AFIRUT" property="afiRut" />
+		<result column="AFIRUTDV" property="afiRutDv" />
+		<result column="FECHAGEN" property="fechaGen" />
+		<result column="HORAGEN" property="horaGen" />
+		<result column="VALGRAVA" property="valGrava" />
+		<result column="VALGASTOS" property="valGastos" />
+		<result column="MTOPAGAR" property="mtoPagar" />
+		<result column="TIPOPAGO" property="tipoPago" />
+		<result column="ESTPROCE" property="estProce" />
+		<result column="FECHAPAGO" property="fechaPago" />
+		<result column="HORAPAGO" property="horaPago" />
+		<result column="PORCONDGRA" property="porCondGra" />
+		<result column="PORCONDGAS" property="porCondGas" />
+		<result column="VALCONDGRA" property="valCondGra" />
+		<result column="VALCONDGAS" property="valCondGas" />
+		<result column="CODBARRANT" property="codBarrAnt" />
+		<result column="ORIGENCRED" property="origenCred" />
+		<result column="GLOSAANULA" property="glosaAnula" />
+		<result column="PREFIJO" property="prefijo" />
+		<result column="IDSPL" property="idspl" />
+		<result column="TIPOCREDITO" property="tipoCredito" />
+	</resultMap>
+
+	<resultMap class="java.lang.String" id="result">
+		<result property="" column="CORRELATIVO" />
+	</resultMap>
+
+	<select id="cuponesByEstadoAndRut" parameterClass="BpagF002"
+		resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE AFIRUT = #afiRut# AND
+		AFIRUTDV = #afiRutDv# AND ESTPROCE = #estProce#
+	</select>
+
+	<select id="cuponByEstadoAndFolioAndRut" parameterClass="BpagF002"
+		resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE AFIRUT = #afiRut# AND
+		AFIRUTDV = #afiRutDv# AND TESFOL = #tesFol# AND ESTPROCE = #estProce#
+	</select>
+
+	<select id="cuponesByEstado" parameterClass="string" resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE ESTPROCE = #value#
+	</select>
+
+	<select id="cuponesGeneradoOfiproCrefol" parameterClass="BpagF002"
+		resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE ESTPROCE = #estProce# AND
+		OFIPRO = #ofiPro#
+		AND CREFOL = #creFol#
+	</select>
+
+	<select id="cuponesEstadoAndTipoPago" parameterClass="BpagF002"
+		resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE ESTPROCE = #estProce#
+		AND TIPOPAGO = #tipoPago#
+	</select>
+
+	<select id="cuponByTesFol" parameterClass="string" resultMap="cuponDePagoResult">
+		SELECT * FROM BPAGDTA.BPAGF002 WHERE TESFOL = #value#
+	</select>
+
+
+	<insert id="ingresaCupon" parameterClass="BpagF002">
+		<selectKey resultClass="string" keyProperty="codBarra">
+			SELECT (NEXTVAL FOR BPAGDTA.SEQ_CODBARRA) FROM SYSIBM.SYSDUMMY1 
+	</selectKey>
+		insert into BPAGDTA.BPAGF002
+		(TESFOL,TESOFI,PREFIJO,CODBARRA,CREFOL,OFIPRO,AFIRUT,AFIRUTDV,FECHAGEN,
+		HORAGEN,VALGRAVA,VALGASTOS,MTOPAGAR,TIPOPAGO,ESTPROCE,
+		FECHAPAGO,HORAPAGO,PORCONDGRA,PORCONDGAS,VALCONDGRA,VALCONDGAS,
+		CODBARRANT,ORIGENCRED,GLOSAANULA,TIPOCREDITO)
+		values
+		(#tesFol#,#tesOfi#,#prefijo#,#codBarra#,#creFol#,#ofiPro#,#afiRut#,#afiRutDv#,
+		CURRENT DATE,CURRENT
+		TIME,#valGrava#,#valGastos#,#mtoPagar#,#tipoPago#,
+		#estProce#,'1900-01-01','00.00.00',#porCondGra#,#porCondGas#,#valCondGra#,#valCondGas#,
+		#codBarrAnt#,#origenCred#,#glosaAnula#,#tipoCredito#)
+		with nc
+	</insert>
+
+	<!-- actualizar cupones como anulado a fin de mes -->
+
+	<update id="cambiaEstadoCuponByRutTesFolEsta" parameterClass="BpagF002">
+		UPDATE BPAGDTA.BPAGF002
+		SET ESTPROCE = #estadoParaActualizar#
+		WHERE AFIRUT = #afiRut# AND AFIRUTDV = #afiRutDv# AND TESFOL = #tesFol# AND
+		ESTPROCE = #estProce#
+		with nc
+	</update>
+
+
+	<update id="cursaCuponByRutTesFolEsta" parameterClass="BpagF002">
+		UPDATE BPAGDTA.BPAGF002
+		SET ESTPROCE = #estadoParaActualizar# , IDSPL = #idspl# , FECHAPAGO =
+		CURRENT DATE , HORAPAGO = CURRENT TIME
+		WHERE AFIRUT = #afiRut# AND AFIRUTDV = #afiRutDv# AND TESFOL = #tesFol# AND
+		ESTPROCE = #estProce# AND CODBARRA = #codBarra#
+		with nc
+	</update>
+
+	<select id="obtenerCorrelativoSPL" parameterClass="string"
+		resultMap="result">
+		SELECT (NEXTVAL FOR BPAGDTA.SEQ_SPL) as CORRELATIVO FROM SYSIBM.SYSDUMMY1
+	</select>
+
+<select id="obtenerPagosDia" parameterClass="string" resultMap="cuponDePagoResult">
+		select * from BPAGDTA.BPAGF002 where afirut = #value# and fechapago = curdate()
+</select>
+
+
+
+</sqlMap>

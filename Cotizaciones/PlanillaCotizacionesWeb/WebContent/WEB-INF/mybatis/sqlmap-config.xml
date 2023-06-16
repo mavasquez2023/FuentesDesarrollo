@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="cl.laaraucana.planillacotizaciones.dto.NormalDto"
+			alias="normal" />
+		<typeAlias type="cl.laaraucana.planillacotizaciones.dto.CabeceraDto"
+			alias="cabecera" />
+		<typeAlias type="cl.laaraucana.planillacotizaciones.dto.TramoDto"
+			alias="tramo" />
+		<typeAlias type="cl.laaraucana.planillacotizaciones.dto.CargasDto"
+			alias="cargas" />
+		<typeAlias
+			type="cl.laaraucana.planillacotizaciones.dto.RetroactivosDto"
+			alias="retroactivo" />
+		<typeAlias
+			type="cl.laaraucana.planillacotizaciones.dto.CotizacionDto"
+			alias="cotizacion" />
+
+	</typeAliases>
+</configuration>
