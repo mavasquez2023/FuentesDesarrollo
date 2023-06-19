@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/tx
+		   http://www.springframework.org/schema/tx/spring-tx.xsd
+		   http://www.springframework.org/schema/jee 
+		   http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<!-- JDNI name for EntityManagerFactory is defined in src/main/resources/META-INF/persistence.xml -->
+
+
+
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+	<tx:annotation-driven
+		transaction-manager="transactionManagerLegacy" />
+		
+		
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	<bean id="transactionManagerLegacy"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactoryLegacy" />
+	</bean>
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation"
+			value="classpath:META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="persistenceUnitw" />
+		<property name="dataSource" ref="datasource2" />
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="entityManagerFactoryLegacy"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation"
+			value="classpath:META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="persistenceUnit" />
+		<property name="dataSource" ref="datasource1" />
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="datasource1"
+		class="org.springframework.jndi.JndiObjectFactoryBean"
+		scope="singleton">
+		<property name="jndiName" value="jdbc/certificadoDiferimiento" />
+		<property name="resourceRef" value="true" />
+	</bean>
+	<bean id="datasource2"
+		class="org.springframework.jndi.JndiObjectFactoryBean"
+		scope="singleton">
+		<property name="jndiName" value="jdbc/bitacoraDiferimiento" />
+		<property name="resourceRef" value="true" />
+	</bean>
+
+<bean id="ReportDao"
+		class="cl.laaraucana.rendicionpagonomina.reportDao.ReportDaoImpl">
+		<property name="dataSource" ref="datasource1" />
+	</bean>
+
+</beans>

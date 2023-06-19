@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AraucanaSMSService" targetNamespace="http://ws.sms.laaraucana.cl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:tns="http://ws.sms.laaraucana.cl/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.sms.laaraucana.cl/" schemaLocation="AraucanaSMSService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="sendSMS">
+    <part name="parameters" element="tns:sendSMS">
+    </part>
+  </message>
+  <message name="sendSMSResponse">
+    <part name="parameters" element="tns:sendSMSResponse">
+    </part>
+  </message>
+  <message name="statusSMS">
+    <part name="parameters" element="tns:statusSMS">
+    </part>
+  </message>
+  <message name="statusSMSResponse">
+    <part name="parameters" element="tns:statusSMSResponse">
+    </part>
+  </message>
+  <portType name="AraucanaSMS">
+    <operation name="sendSMS">
+      <input message="tns:sendSMS" wsam:Action="http://ws.sms.laaraucana.cl/AraucanaSMS/sendSMSRequest">
+    </input>
+      <output message="tns:sendSMSResponse" wsam:Action="http://ws.sms.laaraucana.cl/AraucanaSMS/sendSMSResponse">
+    </output>
+    </operation>
+    <operation name="statusSMS">
+      <input message="tns:statusSMS" wsam:Action="http://ws.sms.laaraucana.cl/AraucanaSMS/statusSMSRequest">
+    </input>
+      <output message="tns:statusSMSResponse" wsam:Action="http://ws.sms.laaraucana.cl/AraucanaSMS/statusSMSResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="AraucanaSMSPortBinding" type="tns:AraucanaSMS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sendSMS">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="statusSMS">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="AraucanaSMSService">
+    <port name="AraucanaSMSPort" binding="tns:AraucanaSMSPortBinding">
+      <soap:address location="http://172.22.6.137:9080/ShortMessageService/AraucanaSMSService"/>
+    </port>
+  </service>
+</definitions>
