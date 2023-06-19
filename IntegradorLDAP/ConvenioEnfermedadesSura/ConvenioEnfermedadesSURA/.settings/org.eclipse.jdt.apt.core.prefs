@@ -1,0 +1,4 @@
+#Wed Dec 30 17:13:22 CLST 2020
+org.eclipse.jdt.apt.processorOptions/com.ibm.ws.ast.jws.annotations.processor.validateWSDL=on
+org.eclipse.jdt.apt.aptEnabled=true
+eclipse.preferences.version=1
