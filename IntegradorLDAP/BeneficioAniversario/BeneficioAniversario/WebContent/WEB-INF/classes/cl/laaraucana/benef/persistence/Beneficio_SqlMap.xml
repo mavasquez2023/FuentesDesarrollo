@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="beneficioService">
+
+	<resultMap id="beneficio"
+		class="cl.laaraucana.benef.vo.BeneficioVO">
+		<result column="COD_UNICO" property="codigoBeneficio" />
+		<result column="AFIRUT" property="rutBeneficiario" />
+		<result column="AFIRUTDV" property="dvBeneficiario" />
+		<result column="AFINOM" property="nombre" />
+		<result column="AFIAPP" property="apellidoPaterno" />
+		<result column="AFIAPM" property="apellidoMaterno" />
+		<result column="EMAIL" property="email" />
+		<result column="CELULAR" property="celular" />
+		<result column="SUCURSAL" property="sucursalBeneficio" />
+		<result column="FECHAGEN" property="fechaGeneracionBeneficio" />
+		<result column="FECHAENVIO" property="fechaEnvioComprobante" />
+		<result column="ESTCODBEN" property="estadoBeneficio" />
+		<result column="FECHACONF" property="fechaConfirmacionBeneficio" />
+	</resultMap>
+	
+	
+ 
+    <select id="selectBeneficio" resultMap="beneficio" >
+    
+     select *
+     from RHDTA.RHF004 
+     where COD_UNICO= #codigoBeneficio#
+    
+    </select>
+	
+	<select id="selectPendientes" resultMap="beneficio" >
+    
+     select *
+     from RHDTA.RHF004 
+     where EST_ENVIO= 'P'
+    
+    </select>
+    
+	<update id="updateBeneficio" parameterClass="cl.laaraucana.benef.vo.BeneficioRequestVO">
+	
+	update RHDTA.RHF004 
+	set ESTCODBEN = 'C', 
+	FECHACONF= current_date ,
+	HOTELC=#hotel#
+	where  
+	COD_UNICO = #codigoBeneficio#
+	 
+	</update>
+	
+	<update id="updatePendiente">
+	
+	update RHDTA.RHF004 
+	set EST_ENVIO = 'E', 
+	FECHAENVIO= current_date
+	where  
+	COD_UNICO = #codigoBeneficio#
+	 
+	</update>
+	
+	
+	
+	
+</sqlMap>
+
+ 

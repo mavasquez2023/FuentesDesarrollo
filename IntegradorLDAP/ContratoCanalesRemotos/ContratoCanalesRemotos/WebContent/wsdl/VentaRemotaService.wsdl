@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.ventaremota.laaraucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.ventaremota.laaraucana.cl" xmlns:intf="http://ws.ventaremota.laaraucana.cl" xmlns:tns1="http://vo.ws.ventaremota.laaraucana.cl" xmlns:tns2="http://model.ventaremota.laaraucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.ventaremota.laaraucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.ws.ventaremota.laaraucana.cl"/>
+   <import namespace="http://model.ventaremota.laaraucana.cl"/>
+   <element name="informarCredito">
+    <complexType>
+     <sequence>
+      <element name="autenticacion" type="tns1:CredencialesVO"/>
+      <element name="credito" type="tns2:CreditoVo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="informarCreditoResponse">
+    <complexType>
+     <sequence>
+      <element name="informarCreditoReturn" type="tns2:VentaServiceVo"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo.ws.ventaremota.laaraucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.ventaremota.laaraucana.cl"/>
+   <complexType name="CredencialesVO">
+    <sequence>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.ventaremota.laaraucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.ws.ventaremota.laaraucana.cl"/>
+   <complexType name="CreditoVo">
+    <sequence>
+     <element name="CAE" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="fechaEnvio" nillable="true" type="xsd:string"/>
+     <element name="fechaOtorgamiento" nillable="true" type="xsd:string"/>
+     <element name="folioCredito" nillable="true" type="xsd:string"/>
+     <element name="formaPago" nillable="true" type="xsd:string"/>
+     <element name="gastoNotarial" type="xsd:long"/>
+     <element name="horaEnvio" nillable="true" type="xsd:string"/>
+     <element name="impuesto" type="xsd:long"/>
+     <element name="montoComision" type="xsd:long"/>
+     <element name="montoCompraCartera" type="xsd:long"/>
+     <element name="montoCuota" type="xsd:long"/>
+     <element name="montoLiquido" type="xsd:long"/>
+     <element name="montoPagoMora" type="xsd:long"/>
+     <element name="montoRenegociado" type="xsd:long"/>
+     <element name="montoTotalSolicitado" type="xsd:long"/>
+     <element name="montosolicitado" type="xsd:long"/>
+     <element name="nombreCliente" nillable="true" type="xsd:string"/>
+     <element name="numeroCuotas" type="xsd:int"/>
+     <element name="numeroDocumento" nillable="true" type="xsd:string"/>
+     <element name="numeroOferta" type="xsd:long"/>
+     <element name="rutCliente" nillable="true" type="xsd:string"/>
+     <element name="seguroCesantia" type="xsd:long"/>
+     <element name="seguroDesgravamen" type="xsd:long"/>
+     <element name="tasaInteresMensual" nillable="true" type="xsd:string"/>
+     <element name="tipoCreditoNormal" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="VentaServiceVo">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="salida" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="informarCreditoResponse">
+
+      <wsdl:part element="impl:informarCreditoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="informarCreditoRequest">
+
+      <wsdl:part element="impl:informarCredito" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="VentaRemotaService">
+
+      <wsdl:operation name="informarCredito">
+
+         <wsdl:input message="impl:informarCreditoRequest" name="informarCreditoRequest"/>
+
+         <wsdl:output message="impl:informarCreditoResponse" name="informarCreditoResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="VentaRemotaServiceSoapBinding" type="impl:VentaRemotaService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="informarCredito">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="informarCreditoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="informarCreditoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="VentaRemotaServiceService">
+
+      <wsdl:port binding="impl:VentaRemotaServiceSoapBinding" name="VentaRemotaService">
+
+         <wsdlsoap:address location="http://localhost:9083/VentaRemotaWeb/services/VentaRemotaService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

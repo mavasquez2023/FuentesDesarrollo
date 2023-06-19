@@ -1,0 +1,263 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="formweb">
+
+	<typeAlias alias="RegistroBitacora"
+		type="cl.laaraucana.muvu.ibatis.vo.BitacoraSuraVo" />
+	<typeAlias alias="RegistroDatosContacto"
+		type="cl.laaraucana.muvu.ibatis.vo.DatosContactoVo" />
+	<resultMap id="bitacora"
+		class="cl.laaraucana.muvu.ibatis.vo.BitacoraSuraVo">
+		<result column="FECHA" property="fecha_creacion" />
+		<result column="RUTAFI" property="rut" />
+		<result column="DVAFI" property="dv" />
+		<result column="NOMAFI" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+
+	</resultMap>
+
+	<insert id="insertBitacora" parameterClass="RegistroBitacora">
+		insert into
+		bitacoraConSura (FECHA, RUTAFI, DVAFI, NOMAFI, CELULAR, TELEFONO,
+		EMAIL) values(#fecha_creacion#, #rut#, #dv#, #nombre#, #celular#,
+		#telefono#, #email#)
+	</insert>
+
+	<insert id="insertDatosContacto"
+		parameterClass="RegistroDatosContacto">
+		insert into DatosContacto (RUTAFI, DVAFI, TIPOBP,
+		TIPODATO, DATO, ESTADO, FECHA_CREACION, FECHA_UPDATE) values(#rut#,
+		#dv#, #tipoBP#, #tipoDato#, #dato#, #estado#, #fechaCreacion#, null)
+	</insert>
+
+	<update id="updateDatosContacto"
+		parameterClass="java.util.HashMap">
+
+		update DatosContacto
+		set ESTADO = '1',
+		fecha_update =
+		getDATE()
+		where RUT = #rut#
+
+	</update>
+
+	<select id="PrefijoTelefono" resultClass="java.lang.String">
+
+		select prefijo from
+		PrefijoTelefono where tipo = #tipo#
+		order by prefijo
+
+	</select>
+	<resultMap id="AfiliadoSuraAltas"
+		class="cl.laaraucana.muvu.ibatis.vo.AfiliadoSuraVo">
+		<result property="fechaIncorporacion"
+			column="fecha_incorporacion" />
+		<result property="rut" column="rut_afiliado" />
+		<result property="dv" column="dv_afiliado" />
+		<result property="nombres" column="nombres" />
+		<result property="apellidoPaterno" column="ApellidoPaterno" />
+		<result property="apellidoMaterno" column="ApellidoMaterno" />
+		<result property="fechaNacimiento" column="fecha_nacimiento" />
+		<result property="correoElectronico"
+			column="correo_electronico" />
+		<result property="fechaAlta" column="fecha_alta" />
+		<result property="sexo" column="sexo" />
+	</resultMap>
+	<resultMap id="AfiliadoSuraBajas"
+		class="cl.laaraucana.muvu.ibatis.vo.AfiliadoSuraVo">
+		<result property="rut" column="rut_afiliado" />
+		<result property="dv" column="dv_afiliado" />
+		<result property="fechaExclusion" column="fecha_baja" />
+	</resultMap>
+
+	<select id="consultaAfiliadosSuraAltas"
+		resultMap="AfiliadoSuraAltas">
+		select
+		distinct
+		muvu_res.fecha_incorporacion,
+		muvu_res.rut_afiliado,
+		muvu_res.dv_afiliado,
+		dwh_af.PrimerNombre + ' ' +
+		dwh_af.SegundoNombre
+		nombres,
+		dwh_af.ApellidoPaterno,
+		dwh_af.ApellidoMaterno,
+		dwh_af.sexo,
+		muvu_res.fecha_nacimiento,
+		muvu_res.correo_electronico,
+		muvu_res.fecha_alta,
+		'' fecha_baja
+		from
+		ProgVidaSana.dbo.ResumenMUVU muvu_res,
+		DWH.dbo.DWH_AFILIADOS dwh_af
+		where muvu_res.estado_final = 'Vigente'
+		and muvu_res.rut_afiliado =
+		dwh_af.rutAfiliado
+		and muvu_res.dv_afiliado
+		= dwh_af.dvAfiliado
+		and
+		muvu_res.fecha_alta between #fechaComienzo# and
+		#fechaTermino#
+	</select>
+
+	<select id="consultaAfiliadosSuraBajas"
+		resultMap="AfiliadoSuraBajas">
+		select
+		distinct
+		muvu_res.fecha_baja,
+		muvu_res.rut_afiliado,
+		muvu_res.dv_afiliado
+		from
+		ProgVidaSana.dbo.ResumenMUVU muvu_res
+		where
+		muvu_res.estado_final = 'No Vigente'
+		and muvu_res.fecha_baja between
+		#fechaComienzo# and
+		#fechaTermino#
+	</select>
+
+	<typeAlias alias="StockMUVU"
+		type="cl.laaraucana.muvu.ibatis.vo.StockMuvuVo" />
+
+	<insert id="insertStockMUVU" parameterClass="StockMUVU">
+		insert into
+		dbo.stockMUVU(
+		PERIODO,
+		RUT_AFILIADO,
+		DV_AFILIADO,
+		CORREO_ELECTRONICO,
+		DIAS_MES,
+		PROMEDIO_MENSUAL,
+		TRIMESTRE,
+		TRIMESTRE_ANT,
+		RESULTADO,
+		DIA_1,
+		DIA_2,
+		DIA_3,
+		DIA_4,
+		DIA_5,
+		DIA_6,
+		DIA_7,
+		DIA_8,
+		DIA_9,
+		DIA_10,
+		DIA_11,
+		DIA_12,
+		DIA_13,
+		DIA_14,
+		DIA_15,
+		DIA_16,
+		DIA_17,
+		DIA_18,
+		DIA_19,
+		DIA_20,
+		DIA_21,
+		DIA_22,
+		DIA_23,
+		DIA_24,
+		DIA_25,
+		DIA_26,
+		DIA_27,
+		DIA_28,
+		DIA_29,
+		DIA_30,
+		DIA_31
+		)
+		values
+		(
+		#periodo#,
+		#rut#,
+		#dv#,
+		#correoElectronico#,
+		#diasMes#,
+		#promedioMensual#,
+		#trimestre#,
+		#trimestreAnt#,
+		#resultado#,
+		#dia1#,
+		#dia2#,
+		#dia3#,
+		#dia4#,
+		#dia5#,
+		#dia6#,
+		#dia7#,
+		#dia8#,
+		#dia9#,
+		#dia10#,
+		#dia11#,
+		#dia12#,
+		#dia13#,
+		#dia14#,
+		#dia15#,
+		#dia16#,
+		#dia17#,
+		#dia18#,
+		#dia19#,
+		#dia20#,
+		#dia21#,
+		#dia22#,
+		#dia23#,
+		#dia24#,
+		#dia25#,
+		#dia26#,
+		#dia27#,
+		#dia28#,
+		#dia29#,
+		#dia30#,
+		#dia31#
+		)
+	</insert>
+
+	<select id="consultaAfiliadosInactivosCaja"
+		resultMap="AfiliadoSuraBajas">
+		select
+		GETDATE() fecha_baja,
+		rut_afiliado,
+		dv_afiliado
+		from
+		ProgVidaSana.dbo.ResumenMUVU
+		muvu_res
+		where
+		muvu_res.estado_final = 'Vigente'
+		and muvu_res.fecha_alta
+		between
+		#fechaComienzo# and #fechaTermino#
+		and not exists (
+		select
+		max(af.idFechaCorte) maxIdFechaCorte,
+		af.rutAfiliado rut_afiliado,
+		af.dvAfiliado dv_afiliado
+		from
+		DWH.dbo.DWH_AFILIADOS af
+		where
+		af.estado = 'V'
+		and muvu_res.rut_afiliado =
+		af.rutAfiliado
+		and muvu_res.dv_afiliado = af.dvAfiliado
+		group by af.rutAfiliado, af.dvAfiliado
+		)
+	</select>
+	
+	<resultMap id="AfiliadosBajaMuvu"
+		class="cl.laaraucana.muvu.ibatis.vo.AfiliadoMuvuVo">
+		<result property="rut" column="rut_afiliado" />
+		<result property="dv" column="dv_afiliado" />
+		<result property="correoElectronico" column="correo_electronico" />
+		<result property="motivo" column="motivo_de_baja" />
+	</resultMap>
+	
+	<select id="consultaAfiliadosBajaMuvu"
+		resultMap="AfiliadosBajaMuvu">
+		select distinct
+		muvu_res.rut_afiliado, 
+		muvu_res.dv_afiliado,
+		muvu_res.correo_electronico,
+		muvu_res.motivo_de_baja
+		from 
+		ProgVidaSana.dbo.ResumenMUVU muvu_res
+		where 
+		muvu_res.estado_final = 'No Vigente'
+		and muvu_res.fecha_baja between #fechaComienzo# and #fechaTermino#
+	</select>
+</sqlMap>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="6" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd">
+ <display-name>ContratoCanalesRemotosEAR</display-name>
+ <module id="Module_1633441671832">
+ 	<web>
+ 		<web-uri>ContratoCanalesRemotos.war</web-uri>
+ 		<context-root>ContratoCanalesRemotos</context-root>
+ 	</web>
+ </module> 
+ </application> 
