@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicio.laaraucana.cl/benef" version="1.0" xmlns:tns="http://servicio.laaraucana.cl/benef">
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="confirmaBeneficio" type="tns:confirmaBeneficio"/>
+
+  <xs:element name="confirmaBeneficioResponse" type="tns:confirmaBeneficioResponse"/>
+
+  <xs:element name="consultaBeneficio" type="tns:consultaBeneficio"/>
+
+  <xs:element name="consultaBeneficioResponse" type="tns:consultaBeneficioResponse"/>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWS">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="PASSWORD" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:tokenVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tokenVO">
+    <xs:sequence>
+      <xs:element name="TOKEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="DESCRIPCION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="confirmaBeneficio">
+    <xs:sequence>
+      <xs:element name="TOKEN" type="xs:string"/>
+      <xs:element name="BENEFICIO" type="tns:CONFIRMA"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CONFIRMA">
+    <xs:sequence>
+      <xs:element name="CODIGO_BENEFICIO" type="xs:string"/>
+      <xs:element name="HOTEL" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="confirmaBeneficioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:BENEFICIO_RESPONSE"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BENEFICIO_RESPONSE">
+    <xs:sequence>
+      <xs:element name="LOG_RESPUESTA " type="tns:LOG_RESPUESTA"/>
+      <xs:element name="BENEFICIO" type="tns:DATOS_BENEFICIO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LOG_RESPUESTA">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:int"/>
+      <xs:element name="DESCRIPCION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DATOS_BENEFICIO">
+    <xs:sequence>
+      <xs:element name="CODIGO_BENEFICIO" type="xs:string"/>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+      <xs:element name="NOMBRE" type="xs:string"/>
+      <xs:element name="AP_PATERNO" type="xs:string"/>
+      <xs:element name="AP_MATERNO" type="xs:string"/>
+      <xs:element name="E_MAIL" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:string"/>
+      <xs:element name="SUCURSAL" type="xs:string"/>
+      <xs:element name="FECHA_GENERACION_BENEFICIO" type="xs:string"/>
+      <xs:element name="FECHA_ENVIO_COMPROBANTE" type="xs:string"/>
+      <xs:element name="ESTADO_CODIGO" type="xs:string"/>
+      <xs:element name="FECHA_CONFIRMACION_CODIGO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaBeneficio">
+    <xs:sequence>
+      <xs:element name="TOKEN" type="xs:string"/>
+      <xs:element name="CODIGO_BENEFICIO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaBeneficioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:BENEFICIO_RESPONSE"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
