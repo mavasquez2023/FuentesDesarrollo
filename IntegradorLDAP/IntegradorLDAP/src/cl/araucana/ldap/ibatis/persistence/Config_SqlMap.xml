@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="custom">
+
+	<select id="obtener_mail_Usuario" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+
+		select * from PARAMETRO where nombre = 'mailIngreso'
+
+	</select>
+	
+	<resultMap id="UsuariosWeb" class="cl.araucana.ldap.api.UsuarioVO">
+	  	<result property="username" column="USERNAME" />
+	  	<result property="clave" column="CLAVE" />
+	  	<result property="nombres" column="NOMBRES" />
+	  	<result property="apellidoPaterno" column="APELLIDO_PATERNO" />
+	  	<result property="apellidoMaterno" column="APELLIDO_MATERNO" />
+	  	<result property="sexo" column="SEXO" />
+	  	<result property="email" column="EMAIL" />
+	  	<result property="telefono" column="TELEFONO" />
+	  	<result property="origen" column="ORIGEN" />
+	  	<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<resultMap id="Empresas" class="cl.araucana.ldap.api.EmpresaVO">
+	  	<result property="rutEmpresa" column="RUTEMPRESA" />
+	  	<result property="razonSocialEmpresa" column="RAZONSOCIAL" />
+	  	<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<resultMap id="Roles_UsuarioEmp" class="cl.araucana.ldap.api.RolUsuarioEmpVO">
+	  	<result property="rutEmpresa" column="RUTEMPRESA" />
+	  	<result property="rutUsuario" column="RUTUSUARIO" />
+	  	<result property="approl" column="APPROL" />
+	  	<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<resultMap id="AppRoles" class="cl.araucana.ldap.api.AppRolesVO">
+		<result property="appID" column="APPID" />
+		<result property="rolID" column="ROLID" />
+	  	<result property="rutUsuario" column="RUTUSUARIO" />
+	  	<result property="appDescripcion" column="APPDESCRIPCION" />
+	  	<result property="rolDescripcion" column="ROLDESCRIPCION" />
+	  	<result property="estado" column="ESTADO" />
+	</resultMap>
+
+	<resultMap id="auditoria" class="cl.araucana.ldap.to.Auditoria">
+		<result property="rutEjecutivo" column="RUTEJE" />
+		<result property="rutUsuario" column="RUTUSR" />
+	  	<result property="rutEmpresa" column="RUTEMP" />
+	  	<result property="accion" column="ACCION" />
+	  	<result property="tipoEjecutivo" column="TIPO" />
+	  	<result property="envioSMS" column="SMS" />
+	  	<result property="envioEMAIL" column="EMAIL" />
+	  	<result property="fechaCreacion" column="FECCRE" />
+	  	<result property="horaCreacion" column="HORCRE" />
+	</resultMap>
+	
+	<resultMap id="oficinas_sucursales" class="cl.araucana.ldap.ibatis.vo.SucursalesVO">
+	  	<result property="oficina" column="codOficina" />
+	  	<result property="nombreOficina" column="oficina" />
+	  	<result property="sucursal" column="codSucursal" />
+	  	<result property="nombreSucursal" column="sucursal" />
+	  	<result property="estado" column="estado" />
+	</resultMap>
+	
+	<select id="obtener_data_LDAP1000" resultMap="UsuariosWeb" parameterClass="java.util.HashMap">
+		
+		select 
+			username as USERNAME,
+			clave as CLAVE, 
+			nombre as NOMBRES, 
+			apepat as APELLIDO_PATERNO, 
+			apemat as APELLIDO_MATERNO, 
+			sexo as SEXO, 
+			email as EMAIL, 
+			fono as TELEFONO, 
+			origen as ORIGEN, 
+			estado as ESTADO
+		from 
+			DUDTA.LDAP1000 
+		where
+			estado in ('N', 'n', 'M', 'm', 'e', 'E')
+		WITH UR	
+	</select>
+	
+	<select id="obtener_data_LDAP2000" resultMap="Empresas">
+		
+		select 
+			rutemp as RUTEMPRESA,
+			razsoc as RAZONSOCIAL,
+			estado as ESTADO
+		from 
+			DUDTA.LDAP2000 
+		where
+			estado in ('N', 'n', 'M', 'm')
+		WITH UR	
+	</select>
+	
+	<select id="obtener_data_LDAP2500" resultMap="Roles_UsuarioEmp">
+		
+		select 
+			rutemp as RUTEMPRESA,
+			rutusr as RUTUSUARIO,
+			dnapprol as APPROL,
+			estado as ESTADO
+		from 
+			DUDTA.LDAP2500 
+		where
+			estado in ('N', 'n', 'e', 'E')
+		WITH UR	
+	</select>
+	
+	<select id="obtener_data_LDAP3500" resultMap="AppRoles">
+		
+		select 
+			appid as APPID,
+			rolid as ROLID,
+			rutusr as RUTUSUARIO,
+			appdesc as APPDESCRIPCION,
+			roldesc as ROLDESCRIPCION,
+			estado as ESTADO
+		from 
+			DUDTA.LDAP3500 
+		where
+			estado in ('n', 'N')
+		order by
+			appid, rolid, rutusuario
+		WITH UR	
+	</select>
+	
+	<select id="obtener_data_eliminar_LDAP3500" resultMap="AppRoles">
+		
+		select 
+			appid as APPID,
+			rolid as ROLID,
+			rutusr as RUTUSUARIO,
+			appdesc as APPDESCRIPCION,
+			roldesc as ROLDESCRIPCION,
+			estado as ESTADO
+		from 
+			DUDTA.LDAP3500 
+		where
+			estado in ('e', 'E')
+		order by
+			appid, rolid desc, rutusuario desc
+		WITH UR	
+	</select>
+	
+	<select id="pendientes_LDAP1000" resultClass="java.util.HashMap">
+		
+		select 
+			'USUARIOS' as tabla, count(*) as cantidad, estado as estado
+		from 
+			DUDTA.LDAP1000 
+		where
+			estado != ''
+		group by
+			estado
+	</select>
+	
+	<select id="pendientes_LDAP2000" resultClass="java.util.HashMap">
+		
+		select 
+			'EMPRESAS' as tabla, count(*) as cantidad, estado as estado
+		from 
+			DUDTA.LDAP2000 
+		where
+			estado != ''
+		group by
+			estado
+	</select>
+	
+	<select id="pendientes_LDAP2500" resultClass="java.util.HashMap">
+		
+		select 
+			'ROLES' as tabla, count(*) as cantidad, estado as estado
+		from 
+			DUDTA.LDAP2500 
+		where
+			estado != ''
+		group by
+			estado
+	</select>
+	
+	<select id="pendientes_LDAP3500" resultClass="java.util.HashMap">
+		
+		select 
+			'APPS' as tabla, count(*) as cantidad, estado as estado
+		from 
+			DUDTA.LDAP3500 
+		where
+			estado != ''
+		group by
+			estado	
+	</select>
+	
+	<select id="ultima_ejecucion_LDAP1000" resultClass="java.util.HashMap">
+		
+		select 
+			char(max(feccam)) as fecha, char(horcam) as hora
+		from 
+			DUDTA.LDAP1000 
+		where
+			usrcam='INTJ2EE'
+		group by
+			horcam
+		order by 
+			max(feccam) desc, horcam desc
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<select id="meses_estadisticas_ldap" resultClass="java.util.HashMap">
+		select 
+			TRIM(CHAR(YEAR(current_date - 12 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 12 MONTH))), 2) as MES12, 
+			TRIM(CHAR(YEAR(current_date - 11 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 11 MONTH))), 2) as MES11,
+			TRIM(CHAR(YEAR(current_date - 10 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 10 MONTH))), 2) as MES10,
+			TRIM(CHAR(YEAR(current_date - 9 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 9 MONTH))), 2) as MES9,
+			TRIM(CHAR(YEAR(current_date - 8 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 8 MONTH))), 2) as MES8,
+			TRIM(CHAR(YEAR(current_date - 7 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 7 MONTH))), 2) as MES7,
+			TRIM(CHAR(YEAR(current_date - 6 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 6 MONTH))), 2) as MES6,
+			TRIM(CHAR(YEAR(current_date - 5 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 5 MONTH))), 2) as MES5,
+			TRIM(CHAR(YEAR(current_date - 4 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 4 MONTH))), 2) as MES4,
+			TRIM(CHAR(YEAR(current_date - 3 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 3 MONTH))), 2) as MES3,
+			TRIM(CHAR(YEAR(current_date - 2 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 2 MONTH))), 2) as MES2,
+			TRIM(CHAR(YEAR(current_date - 1 MONTH))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date - 1 MONTH))), 2) as MES1,
+			TRIM(CHAR(YEAR(current_date))) || RIGHT('0' || TRIM(CHAR(MONTH(current_date))), 2) as MES0
+		from 
+			sysibm.sysdummy1
+	</select>
+	
+	<select id="estadisticas_LDAP1000" resultClass="java.util.HashMap">
+		select 
+			count(*) as CANTIDAD, TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2) as PERIODO
+		from 
+			dudta.ldap1000
+		where 
+			usrcam='INTJ2EE'
+		and 
+			FECCAM>current_date - 12 MONTH
+		and 
+			(estado='' or estado=' ')
+		group by 
+			TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2)
+	</select>
+	
+	<select id="estadisticas_LDAP2000" resultClass="java.util.HashMap">
+		select 
+			count(*) as CANTIDAD, TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2) as PERIODO 
+		from 
+			dudta.ldap2000
+		where 
+			usrcam='INTJ2EE'
+		and 
+			FECCAM>current_date - 12 MONTH
+		and 
+			(estado='' or estado=' ')
+		group by 
+			TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2)
+	</select>
+	
+	<select id="estadisticas_LDAP2500" resultClass="java.util.HashMap">
+		select 
+			count(*) as CANTIDAD, TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2) as PERIODO
+		from 
+			dudta.ldap2500
+		where 
+			usrcam='INTJ2EE'
+		and 
+			FECCAM>current_date - 12 MONTH
+		and 
+			(estado='' or estado=' ')
+		group by 
+			TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2)
+	</select>
+	
+	<select id="estadisticas_LDAP3500" resultClass="java.util.HashMap">
+		select 
+			count(*) as CANTIDAD, TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2) as PERIODO
+		from 
+			dudta.ldap3500
+		where 
+			usrcam='INTJ2EE'
+		and 
+			FECCAM>current_date - 12 MONTH
+		and 
+			(estado='' or estado=' ')
+		group by 
+			TRIM(CHAR(YEAR(FECCAM))) || RIGHT('0' || TRIM(CHAR(MONTH(FECCAM))), 2)
+	</select>
+	
+	<update id="update_estado_LDAP1000" parameterClass="cl.araucana.ldap.api.UsuarioVO">
+		update 
+			DUDTA.LDAP1000 
+		set 
+			estado = #estado#,
+		<isNotEmpty property="clave">
+			clave = #clave#, 
+		</isNotEmpty>
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			username = #username#
+		WITH NC
+	</update>
+	
+	<update id="update_estado_LDAP2000" parameterClass="java.util.HashMap">
+		update 
+			DUDTA.LDAP2000 
+		set 
+			estado = #estado#,
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			rutemp = #rutEmpresa#
+		WITH NC
+	</update>
+	
+	<update id="update_estado_LDAP2500" parameterClass="cl.araucana.ldap.api.RolUsuarioEmpVO">
+		update 
+			DUDTA.LDAP2500 
+		set 
+			estado = #estado#,
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			rutemp = #rutEmpresa#
+		and
+			rutusr = #rutUsuario#
+		and 
+			dnapprol= #approl_original#
+		WITH NC
+	</update>
+	
+	<update id="update_estado_LDAP3500" parameterClass="cl.araucana.ldap.api.AppRolesVO">
+		update 
+			DUDTA.LDAP3500 
+		set 
+			estado = #estado#,
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			appid = #appID#
+		and
+			rolid = #rolID#
+		and 
+			rutusr= #rutUsuario#
+		WITH NC
+	</update>
+	
+	<update id="reinyectar_erroneos_LDAP1000" >
+		update DUDTA.LDAP1000 
+		set 
+			estado = 'N',
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			estado = 'X'
+		WITH NC
+	</update>
+	
+	<update id="reinyectar_erroneos_LDAP2000" >
+		update DUDTA.LDAP2000 
+		set 
+			estado = 'N',
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			estado = 'X'
+		WITH NC
+	</update>
+	
+	<update id="reinyectar_erroneos_LDAP2500" >
+		update DUDTA.LDAP2500 
+		set 
+			estado = 'N',
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			estado = 'X'
+		WITH NC
+	</update>
+	
+	<update id="reinyectar_erroneos_LDAP3500" >
+		update DUDTA.LDAP3500 
+		set 
+			estado = 'N',
+			feccam = current_date, 
+			horcam = current_time, 
+			usrcam = 'INTJ2EE'
+		where
+			estado = 'X'
+		WITH NC
+	</update>
+	<delete id="delete_reg_LDAP1000" parameterClass="cl.araucana.ldap.api.UsuarioVO">
+		delete from 
+			DUDTA.LDAP1000 
+		where
+			username = #username#
+		WITH NC
+	</delete>
+	<delete id="delete_reg_LDAP2500" parameterClass="cl.araucana.ldap.api.RolUsuarioEmpVO">
+		delete from 
+			DUDTA.LDAP2500 
+		where
+			rutemp = #rutEmpresa#
+		and
+			rutusr = #rutUsuario#
+		and 
+			dnapprol= #approl_original#
+		WITH NC
+	</delete>
+	
+	<delete id="delete_reg_LDAP3500" parameterClass="cl.araucana.ldap.api.AppRolesVO">
+		delete from 
+			DUDTA.LDAP3500 
+		where
+			appid = #appID#
+		and
+			rolid = #rolID#
+		and 
+			rutusr= #rutUsuario#
+		WITH NC
+	</delete>
+	<insert id="insertLDAP4500" parameterClass="java.util.HashMap">
+		INSERT INTO DUDTA.LDAP4500 (RUTEJE, RUTUSR, RUTEMP, ACCION, TIPO, SMS, EMAIL, FECCRE, HORCRE ) VALUES
+		(#rutejecutivo#,#username#,#rutempresa#,#accion#,#tipo#,#sms#,#email#,current_date,current_time )
+		WITH NC
+	</insert>
+	
+	<select id="infoAuditoria" resultMap="auditoria">
+		select * from DUDTA.LDAP4500 
+		where feccre>= #fecha#
+	</select>
+	
+	<select id="infoCliente" resultClass="java.util.HashMap">
+		SELECT A.SE5FBIO as NOMBRE, A.SE5FBIM as APELLIDO_P, A.SE5FBIK as APELLIDO_M, C.BCCOCODDO||C.BCCOFONDOS as FONO
+		FROM AFDTA.AF02F1 A 
+            join AFDTA.AF03F1 B
+                on A.SE5FAJC = B.SE5FAJC
+			left join BCDTA.BC13F1 C
+				on A.SE5FAJC = C.BCCLRUT
+		WHERE B.SE5FAR9 = 'A'  
+		AND A.SE5FAJC = #rutafi#
+		UNION
+		SELECT A.SE5FBIO as NOMBRE, A.SE5FBIM as APELLIDO_P, A.SE5FBIK as APELLIDO_M, C.BCCOCODDO||C.BCCOFONDOS as FONO
+		FROM BPAFDTA.AF02F1 A 
+            join BPAFDTA.AF03F1 B
+                on A.SE5FAJC = B.SE5FAJC
+			left join BCDTA.BC13F1 C
+				on A.SE5FAJC = C.BCCLRUT
+		WHERE B.SE5FAR9 = 'A' 
+		AND A.SE5FAJC = #rutafi#
+		UNION
+		SELECT A.AFINOM as NOMBRE, A.AFIAPE as APELLIDO_P, '' as APELLIDO_M, C.BCCOCODDO||C.BCCOFONDOS as FONO
+		FROM PREXP.PEF1500 A
+			left join BCDTA.BC13F1 C
+				on A.AFIRUT = C.BCCLRUT
+		WHERE AFIRUT= #rutafi#
+		fetch first 1 rows only 
+		WITH UR
+	</select>
+	
+	<select id="infoEmpresa" resultClass="java.util.HashMap">
+		select CMPA as NOMBRE from cmdta.cm02f1 where cmqa in ('A', 'D', 'E') and cmna= #rutEmpresa#
+		UNION 
+		select CMPA as NOMBRE from bpafdta.cm02f1 where cmqa in ('A', 'D', 'E') and cmna= #rutEmpresa#
+		fetch first 1 rows only 
+		WITH UR
+	</select>
+	
+	<select id="usuariosAnexo" resultClass="java.util.HashMap">
+		select 	RUTUSR || '-' || SE5FBH3 as RUT, 
+				trim(SE5FBIO) || ' ' || trim(SE5FBIM) || ' ' || trim(SE5FBIK) as NOMBRE,
+				EEALLOFI as ALLOFFICE
+		from 	atdta.at03f1 a
+		join 	afdta.af02f1 b
+				on a.RUTUSR= b.SE5FAJC
+		where 	EERUTEMP= #rutEmpresa#
+		order by RUT
+		WITH UR
+	</select>
+	
+	<select id="oficinasysucursales" parameterClass="java.util.HashMap" resultMap="oficinas_sucursales">
+		
+		select a.cmba codOficina, trim(c.cmca) oficina, a.cm13a codSucursal, trim(a.cm14a) sucursal,
+			case when dosofi is null or dossuc is null then 0 else 1 end as estado
+		from cmdta.cm03f1 a 
+		left join atdta.at04f1 b
+			on a.cmna=b.eerutemp
+			and a.cmba=b.dosofi
+			and a.cm13a=b.dossuc
+			and b.rutusr= #rut#
+		left join cmdta.cm01f1 c
+			on a.cmba= c.cmba
+		where cmna= #rutemp#
+			and cm18a='A'
+		order by oficina, sucursal
+	</select>
+
+	<delete id="delete_usuario_anexo" parameterClass="java.util.HashMap">
+		delete from 
+			atdta.at03f1
+		where
+			RUTUSR = #rut#
+		and
+			EERUTEMP = #rutemp#
+		WITH NC
+	</delete>
+	<delete id="delete_oficinas_anexo" parameterClass="java.util.HashMap">
+		delete from 
+			atdta.at04f1
+		where
+			RUTUSR = #rut#
+		and
+			EERUTEMP = #rutemp#
+		WITH NC
+	</delete>
+	<insert id="insert_usuario_anexo" parameterClass="java.util.HashMap">
+		insert into atdta.at03f1 (RUTUSR, EERUTEMP, EEDVEMP, EEALLOFI, EENOM, EEAPEM, EEAPEP)
+		values(#rut#, #rutemp#, #dvemp#, #allofi#, #nombre#, #apemat#, #apepat#)
+		WITH NC
+	</insert>
+	
+	<insert id="insert_sucursal_anexo" parameterClass="java.util.HashMap">
+		insert into atdta.at04f1 (RUTUSR, EERUTEMP, DOSOFI, DOSSUC)
+		values(#rut#, #rutemp#, #codOficina#, #codSucursal#)
+		WITH NC
+	</insert>
+	
+	<update id="update_alloficina_anexo" parameterClass="java.util.HashMap">
+		update
+			atdta.at03f1
+		set EEALLOFI= #allOffice#
+		where
+			RUTUSR = #rut#
+		and
+			EERUTEMP = #rutemp#
+		WITH NC
+	</update>
+</sqlMap> 
