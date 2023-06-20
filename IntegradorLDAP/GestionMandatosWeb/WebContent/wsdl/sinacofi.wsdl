@@ -1,0 +1,77 @@
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sinacofi.cl/WebServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://sinacofi.cl/WebServices" >
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://sinacofi.cl/WebServices">
+<s:element name="Consulta">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="serie" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="ConsultaResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ConsultaResult" type="tns:RespuestaCEDU0102"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RespuestaCEDU0102">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CodigoRetorno" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ExisteDetalle" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CedulaVigente" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="NumeroRegistros" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Detalles" type="tns:ArrayOfDetalle"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="ArrayOfDetalle">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="Detalle" nillable="true" type="tns:Detalle"/>
+</s:sequence>
+</s:complexType>
+<s:complexType name="Detalle">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="RutConsultado" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DigitoVerificador" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="TipoDocumento" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="NumeroSerie" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Razon" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Fuente" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="ConsultaSoapIn">
+<wsdl:part name="parameters" element="tns:Consulta"/>
+</wsdl:message>
+<wsdl:message name="ConsultaSoapOut">
+<wsdl:part name="parameters" element="tns:ConsultaResponse"/>
+</wsdl:message>
+<wsdl:portType name="CEDU0102Soap">
+<wsdl:operation name="Consulta">
+<wsdl:input message="tns:ConsultaSoapIn"/>
+<wsdl:output message="tns:ConsultaSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="CEDU0102Soap" type="tns:CEDU0102Soap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Consulta">
+<soap:operation soapAction="http://sinacofi.cl/WebServices/Consulta" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="CEDU0102">
+<wsdl:port name="CEDU0102Soap" binding="tns:CEDU0102Soap">
+<soap:address location="https://168.231.200.127/SinacofiWS_CEDU/CEDU0102.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

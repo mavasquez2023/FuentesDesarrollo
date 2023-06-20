@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="mandatos">
+
+	<resultMap id="getbancos"
+		class="cl.laaraucana.mandato.ibatis.vo.BancoVo">
+		<result column="codigo" property="codigo" />
+		<result column="nombre" property="nombre" />
+		<result column="estado" property="estado" />
+	</resultMap>
+
+	<resultMap id="gettipocuenta"
+		class="cl.laaraucana.mandato.ibatis.vo.TipoCuentaVo">
+		<result column="codigo" property="codigo" />
+		<result column="nombre" property="descripcion" />
+	</resultMap>
+	
+	<resultMap id="mandatosas400"
+		class="cl.laaraucana.mandato.ibatis.vo.MandatoAS400Vo">
+
+		<result column="ID_MANDATO" property="idMandato" />
+		<result column="RUTAFI" property="rutafi" />
+		<result column="DVAFI" property="dvafi" />
+		<result column="NOMBRE" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+		<result column="CODBANCO" property="codbanco" />
+		<result column="NUMCUENTA" property="numcuenta" />
+		<result column="ID_TIPCTA" property="idtipcta" />
+		<result column="ID_TIPPRO" property="idtippro" />
+		<result column="FECHAVIG" property="fechavig" />
+		<result column="FECHATER" property="fechater" />
+		<result column="OBF002" property="obf002" />
+		<result column="OBF003" property="obf003" />
+		<result column="SAJKM94" property="sajkm94" />
+		<result column="ESTADO" property="estado" />
+		<result column="OBSERVACIONES" property="observaciones" />
+	</resultMap>
+	
+	<resultMap id="rechazado"
+		class="cl.laaraucana.mandato.ibatis.vo.RechazoVo">
+
+		<result column="RUTAFI" property="rutAfiliado" />
+		<result column="DVAFI" property="dvAfiliado" />
+		<result column="CODBANCO" property="codigoBanco" />
+		<result column="NUMCUENTA" property="numeroCuenta" />
+		<result column="MOTIVO" property="motivoRechazo" />
+		<result column="SISTEMA" property="sistema" />
+		<result column="USUARIO" property="usuario" />
+		<result column="VIA" property="via" />
+		<result column="ESTADO" property="estado" />
+		<result column="FECHA_DESHABILITACION" property="fechaDeshabilitacion" />
+		<result column="FECHA_CREACION" property="fechaCreacion" />
+		<result column="HORA_CREACION" property="horaCreacion" />
+	</resultMap>
+	
+	<select id="consultaBancos" resultMap="getbancos">
+
+		select * from
+		SPLDTA.Banco where
+		estado = 'A'
+		with ur
+	</select>
+
+	<select id="consultaBancosbycodigo" resultMap="getbancos">
+
+		select * from
+		SPLDTA.Banco where
+		estado = 'A' and codigo = #codigo#
+		with ur
+	</select>
+
+	<select id="consultaTipocuentabycodigo"
+		resultMap="gettipocuenta">
+
+		select * from SPLDTA.tipoCuenta where codigo =
+		#codigo#
+		with ur
+	</select>
+
+	<select id="consultaTipocuenta" resultMap="gettipocuenta">
+
+		select * from
+		SPLDTA.tipoCuenta 
+		with ur
+	</select>
+	
+	<select id="gettipocuentabycode" resultMap="gettipocuenta">
+
+		select * from
+		SPLDTA.tipoCuenta where codigo = #codigo#
+		with ur
+	</select>
+
+	<select id="consultaMandatoRevById" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES 
+		from SPLDTA.MANDATOREV 
+		where ID_MANDATO = #idMandato#
+		with ur
+	</select>
+	
+	<select id="consultaMandatoyGetId" resultClass="java.lang.Integer">
+
+		 select max(ID_MANDATO) from SPLDTA.ID_MANDATO
+		with ur
+	</select>
+	
+	<insert id="insertIdMandato" >
+		insert into SPLDTA.ID_MANDATO values(default)
+		with nc
+	</insert>
+	
+	
+	<select id="consultaMandatoById" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES 
+		from SPLDTA.MANDATO 
+		where ID_MANDATO = #idMandato#
+		with ur
+	</select>
+	
+	<select id="consultaMandato" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES 
+		from SPLDTA.MANDATO 
+		where RUTAFI = #rutafi#
+		with ur
+	</select>
+	
+	<select id="consultaMandatosDiaVigentes" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES 
+		from SPLDTA.MANDATO 
+		where OBF002= current_date - 1 DAYS
+		and ID_TIPPRO &lt;&gt; 2
+		order by ID_MANDATO
+		with ur
+	</select>
+	
+	<select id="consultaMandatosDiaRevocados" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where rutafi not in (select rutafi from SPLDTA.mandato)
+		and obf002 = current_date - 1 DAYS
+		order by ID_MANDATO
+		with ur
+	</select>
+	
+	<select id="consultaMandatoRev" resultMap="mandatosas400">
+
+		select
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where RUTAFI = #rutafi#
+		and estado=0
+		order by ID_MANDATO desc
+		with ur
+	</select>
+	
+	<select id="consultaMandatoRechazado" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where RUTAFI = #rutafi#
+		and estado=1
+		order by ID_MANDATO desc
+		with ur
+	</select>
+	
+	<select id="consultaMandatoxRechazo" parameterClass="java.util.HashMap" resultMap="mandatosas400">
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES
+		from SPLDTA.MANDATO
+		where RUTAFI = #rutAfiliado#
+		and CODBANCO=#codigoBanco#
+		and NUMCUENTA= #numeroCuenta#
+		with ur
+	</select>
+	
+	<update id="updateMandatoRechazado">
+		update SPLDTA.MANDATOREV
+		set estado=0
+		where RUTAFI = #rutafi#
+		and estado=1
+		with nc
+	</update>
+	
+	<delete id="deleteByRutCuenta">
+
+		delete from
+		SPLDTA.MANDATO 
+		where RUTAFI = #rutafi#
+		with nc
+	</delete>
+	
+	<delete id="deleteByIdMandato">
+
+		delete from
+		SPLDTA.MANDATO 
+		where ID_MANDATO = #idMandato#
+		with nc
+	</delete>
+
+	<insert id="insertMandato"
+		parameterClass="cl.laaraucana.mandato.ibatis.vo.MandatoAS400Vo">
+
+
+		INSERT INTO SPLDTA.MANDATO (ID_MANDATO, RUTAFI, DVAFI,
+		NOMBRE, CELULAR, TELEFONO, EMAIL, CODBANCO, NUMCUENTA, ID_TIPCTA,
+		ID_TIPPRO, FECHAVIG, OBF002, OBF003, SAJKM94)
+		VALUES
+		(#idMandato# ,#rutafi#, #dvafi#,
+		#nombre#, #celular#, #telefono#,
+		#email#,
+		#codbanco#, #numcuenta#,
+		#idtipcta#, #idtippro#, CURRENT_DATE,
+		CURRENT_DATE, CURRENT_TIME, #sajkm94#)
+		with nc
+	</insert>
+ 
+
+	<insert id="insertMandatoRev"
+		parameterClass="cl.laaraucana.mandato.ibatis.vo.MandatoAS400Vo">
+
+
+		INSERT INTO SPLDTA.MANDATOREV (ID_MANDATO, RUTAFI, DVAFI,
+		NOMBRE, CELULAR, TELEFONO, EMAIL, CODBANCO, NUMCUENTA,
+		ID_TIPCTA, ID_TIPPRO, FECHAVIG,
+		FECHATER, OBF002, OBF003, SAJKM94, 
+		ESTADO, OBSERVACIONES)
+		VALUES
+		(#idMandato# ,#rutafi#, #dvafi#,
+		#nombre#, #celular#, #telefono#,
+		#email#,
+		#codbanco#, #numcuenta#,
+		#idtipcta#, #idtippro#, #fechavig#, 
+		CURRENT_DATE, CURRENT_DATE, CURRENT_TIME, #sajkm94#,
+		#estado#, #observaciones#)
+		with nc
+
+	</insert>
+	<select id="consultaRechazos" resultMap="rechazado">
+		select * 
+		from SPLDTA.MANDATO_RECHAZO
+		where ESTADO= 0
+		with ur
+	</select>
+	
+	<update id="updateRechazoByRut" parameterClass ="java.util.HashMap">
+		update
+		SPLDTA.MANDATO_RECHAZO
+		set FECHA_DESHABILITACION= current_timestamp,
+		estado= #estado#
+		where RUTAFI= #rutAfiliado#	
+		with nc
+	</update>
+	
+	<insert id="insertRechazo"
+		parameterClass="cl.laaraucana.mandato.ibatis.vo.RechazoVo">
+
+
+		INSERT INTO SPLDTA.MANDATOREC (RUTAFI, DVAFI,
+		CODBANCO, NUMCUENTA, MOTIVO, SISTEMA, USUARIO, VIA, ESTADO, FECHA_DESHABILITACION)
+		VALUES
+		(#rutAfiliado#, #dvAfiliado#,
+		#codigoBanco#, #numeroCuenta#, #motivoRechazo#,
+		#sistema#,
+		#usuario#, #via#, #estado#,
+		null)
+		with nc
+	</insert>
+
+</sqlMap>
