@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="mandatos">
+
+	<resultMap id="getbancos"
+		class="cl.laaraucana.transferencias.ibatis.vo.BancoVo">
+		<result column="codigo" property="codigo" />
+		<result column="nombre" property="nombre" />
+		<result column="estado" property="estado" />
+	</resultMap>
+
+	<resultMap id="gettipocuenta"
+		class="cl.laaraucana.transferencias.ibatis.vo.TipoCuentaVo">
+		<result column="codigo" property="codigo" />
+		<result column="nombre" property="descripcion" />
+	</resultMap>
+	
+	<resultMap id="mandatosas400"
+		class="cl.laaraucana.transferencias.ibatis.vo.MandatoAS400Vo">
+
+		<result column="ID_MANDATO" property="idMandato" />
+		<result column="RUTAFI" property="rutafi" />
+		<result column="DVAFI" property="dvafi" />
+		<result column="NOMBRE" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+		<result column="CODBANCO" property="codbanco" />
+		<result column="NUMCUENTA" property="numcuenta" />
+		<result column="ID_TIPCTA" property="idtipcta" />
+		<result column="ID_TIPPRO" property="idtippro" />
+		<result column="FECHAVIG" property="fechavig" />
+		<result column="FECHATER" property="fechater" />
+		<result column="OBF002" property="obf002" />
+		<result column="OBF003" property="obf003" />
+		<result column="SAJKM94" property="sajkm94" />
+		<result column="ESTADO" property="estado" />
+		<result column="OBSERVACIONES" property="observaciones" />
+	</resultMap>
+	
+	<select id="consultaBancos" resultMap="getbancos">
+
+		select * from
+		SPLDTA.Banco where
+		estado = 'A'
+		with ur
+	</select>
+
+	<select id="consultaBancosbycodigo" resultMap="getbancos">
+
+		select * from
+		SPLDTA.Banco where
+		estado = 'A' and codigo = #codigo#
+		with ur
+	</select>
+
+	<select id="consultaTipocuentabycodigo"
+		resultMap="gettipocuenta">
+
+		select * from SPLDTA.tipoCuenta where codigo =
+		#codigo#
+		with ur
+	</select>
+
+	<select id="consultaTipocuenta" resultMap="gettipocuenta">
+
+		select * from
+		SPLDTA.tipoCuenta 
+		with ur
+	</select>
+	
+	<select id="gettipocuentabycode" resultMap="gettipocuenta">
+
+		select * from
+		SPLDTA.tipoCuenta where codigo = #codigo#
+		with ur
+	</select>
+
+	<select id="consultaMandatoRevById" resultMap="mandatosas400">
+		select
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where ID_MANDATO = #idMandato#
+		with ur
+	</select>
+	
+	<select id="consultaMandatoyGetId" resultClass="java.lang.Integer">
+
+		 select max(ID_MANDATO) from SPLDTA.ID_MANDATO
+		with ur
+	</select>
+	
+	<insert id="insertIdMandato" >
+		insert into SPLDTA.ID_MANDATO values(default)
+		with nc
+	</insert>
+	
+	
+	<select id="consultaMandatoById" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES
+		from SPLDTA.MANDATO 
+		where ID_MANDATO = #idMandato#
+		with ur
+	</select>
+	
+	<select id="consultaMandato" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		'0' ESTADO,
+		'' OBSERVACIONES
+		from SPLDTA.MANDATO 
+		where RUTAFI = #rutafi#
+		with ur
+	</select>
+	
+	<select id="consultaMandatoRev" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where RUTAFI = #rutafi#
+		and estado=0
+		order by ID_MANDATO desc
+		with ur
+	</select>
+	
+	<select id="consultaMandatoRechazado" resultMap="mandatosas400">
+
+		select 
+		ID_MANDATO,
+		RUTAFI,
+		DVAFI,
+		NOMBRE,
+		CELULAR,
+		TELEFONO,
+		EMAIL,
+		CODBANCO,
+		NUMCUENTA,
+		ID_TIPCTA,
+		ID_TIPPRO,
+		FECHAVIG,
+		FECHATER,
+		OBF002,
+		OBF003,
+		SAJKM94,
+		ESTADO,
+		OBSERVACIONES
+		from SPLDTA.MANDATOREV 
+		where RUTAFI = #rutafi#
+		and estado=1
+		order by ID_MANDATO desc
+		with ur
+	</select>
+	
+	<update id="updateMandatoRechazado">
+		update SPLDTA.MANDATOREV
+		set estado=0
+		where RUTAFI = #rutafi#
+		and estado=1
+		with nc
+	</update>
+	
+	<delete id="deleteByRutCuenta">
+
+		delete from
+		SPLDTA.MANDATO 
+		where RUTAFI = #rutafi#
+		with nc
+
+	</delete>
+	
+	<delete id="deleteByIdMandato">
+
+		delete from
+		SPLDTA.MANDATO 
+		where ID_MANDATO = #idMandato#
+		with nc
+	</delete>
+
+	<insert id="insertMandato"
+		parameterClass="cl.laaraucana.transferencias.ibatis.vo.MandatoAS400Vo">
+
+
+		INSERT INTO SPLDTA.MANDATO (ID_MANDATO, RUTAFI, DVAFI,
+		NOMBRE, CELULAR, TELEFONO, EMAIL, CODBANCO, NUMCUENTA, ID_TIPCTA,
+		ID_TIPPRO, FECHAVIG, OBF002, OBF003, SAJKM94)
+		VALUES
+		(#idMandato# ,#rutafi#, #dvafi#,
+		#nombre#, #celular#, #telefono#,
+		#email#,
+		#codbanco#, #numcuenta#,
+		#idtipcta#, #idtippro#, CURRENT_DATE,
+		CURRENT_DATE, CURRENT_TIME, #sajkm94#)
+		with nc
+	</insert>
+ 
+
+	<insert id="insertMandatoRev"
+		parameterClass="cl.laaraucana.transferencias.ibatis.vo.MandatoAS400Vo">
+
+
+		INSERT INTO SPLDTA.MANDATOREV (ID_MANDATO, RUTAFI, DVAFI,
+		NOMBRE, CELULAR, TELEFONO, EMAIL, CODBANCO, NUMCUENTA,
+		ID_TIPCTA, ID_TIPPRO, ESTADO, OBSERVACIONES,
+		FECHAVIG, FECHATER, OBF002, OBF003, SAJKM94)
+		VALUES
+		(#idMandato# ,#rutafi#, #dvafi#,
+		#nombre#, #celular#, #telefono#,
+		#email#,
+		#codbanco#, #numcuenta#,
+		#idtipcta#, #idtippro#, #estado#, #observaciones#,
+		#fechavig#, CURRENT_DATE, CURRENT_DATE, CURRENT_TIME, #sajkm94#)
+		with nc
+
+	</insert>
+	
+
+</sqlMap>

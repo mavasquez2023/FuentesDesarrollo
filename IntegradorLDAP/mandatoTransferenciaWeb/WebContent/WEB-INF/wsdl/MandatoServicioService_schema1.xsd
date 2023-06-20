@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicio.laaraucana.cl/mandato" version="1.0" xmlns:tns="http://servicio.laaraucana.cl/mandato">
+
+  <xs:element name="MANDATO" type="tns:cuentaDescripcion"/>
+
+  <xs:element name="consultarMandato" type="tns:consultarMandato"/>
+
+  <xs:element name="consultarMandatoResponse" type="tns:consultarMandatoResponse"/>
+
+  <xs:element name="ingresarMandato" type="tns:ingresarMandato"/>
+
+  <xs:element name="ingresarMandatoResponse" type="tns:ingresarMandatoResponse"/>
+
+  <xs:element name="revocarMandato" type="tns:revocarMandato"/>
+
+  <xs:element name="revocarMandatoResponse" type="tns:revocarMandatoResponse"/>
+
+  <xs:complexType name="ingresarMandato">
+    <xs:sequence>
+      <xs:element name="autenticacion" type="tns:AUTENTICACION"/>
+      <xs:element name="cuenta" type="tns:cuentaBanco"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AUTENTICACION">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="CLAVE" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaBanco">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+      <xs:element name="NOMBRE_AFILIADO" type="xs:string"/>
+      <xs:element name="CELULAR" nillable="true" type="xs:string"/>
+      <xs:element name="TELEFONO" nillable="true" type="xs:string"/>
+      <xs:element name="EMAIL" type="xs:string"/>
+      <xs:element name="COD_BANCO" type="xs:int"/>
+      <xs:element name="NUM_CUENTA" type="xs:string"/>
+      <xs:element name="COD_TIPO_CUENTA" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresarMandatoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:RespuestaInsertMandato"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RespuestaInsertMandato">
+    <xs:sequence>
+      <xs:element name="ID_MANDATO" type="xs:string"/>
+      <xs:element name="LOG_RESPUESTA " type="tns:LOG_RESPUESTA"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LOG_RESPUESTA">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:int"/>
+      <xs:element name="DESCRIPCION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultarMandato">
+    <xs:sequence>
+      <xs:element name="autenticacion" type="tns:AUTENTICACION"/>
+      <xs:element name="cliente" type="tns:CONSULTAR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CONSULTAR">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultarMandatoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cuentaVigente"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaVigente">
+    <xs:sequence>
+      <xs:element name="LOG_RESPUESTA " type="tns:LOG_RESPUESTA"/>
+      <xs:element name="CUENTA" type="tns:cuentaDescripcion"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaDescripcion">
+    <xs:sequence>
+      <xs:element name="ID_MANDATO" type="xs:long"/>
+      <xs:element name="NOMBRE_AFILIADO" type="xs:string"/>
+      <xs:element name="CODIGO_BANCO" type="xs:int"/>
+      <xs:element name="NUM_CUENTA" type="xs:string"/>
+      <xs:element name="TIPO_CUENTA" type="xs:int"/>
+      <xs:element name="TELEFONO" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:string"/>
+      <xs:element name="EMAIL" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revocarMandato">
+    <xs:sequence>
+      <xs:element name="autenticacion" type="tns:AUTENTICACION"/>
+      <xs:element name="cliente" type="tns:REVOCAR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="REVOCAR">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+      <xs:element minOccurs="0" name="NOMBRE" type="xs:string"/>
+      <xs:element minOccurs="0" name="EMAIL" type="xs:string"/>
+      <xs:element minOccurs="0" name="MENSAJE" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revocarMandatoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:RespuestaInsertMandato"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
