@@ -1,0 +1,68 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cuentas">
+
+
+	<resultMap id="getRegistroGestor"
+		class="cl.laaraucana.transferencias.ibatis.vo.RegistroGestorClaveVo">
+
+		<result column="RUT" property="rut" />
+		<result column="DV" property="dv" />
+		<result column="NOMBRE" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+		<result column="FECHA_CREACION" property="fecha_creacion" />
+		<result column="HORA_CREACION" property="hora_creacion" />
+		<result column="FECHA_MODIFICACION"
+			property="fecha_modificacion" />
+		<result column="HORA_MODIFICACION" property="hora_modificacion" />
+		<result column="NUM_MODIFICACION" property="num_modificacion" />
+
+	</resultMap>
+	
+	<resultMap id="autenticacion"
+		class="cl.laaraucana.transferencias.banco.vo.UsuarioVo">
+		<result column="Usuario" property="usuario" />
+		<result column="Password" property="password" />
+		<result column="nombre" property="nombre" />
+		<result column="ApellidoPaterno" property="apellidoPaterno" />
+		<result column="ApellidoMaterno" property="apellidoMaterno" />
+		<result column="idCanal" property="idCanal" />
+		<result column="estado" property="estado" />
+		<result column="fechaRegistro" property="fechaRegistro" />
+	</resultMap>
+
+
+	<select id="consultaCredenciales" resultMap="autenticacion" >
+
+		select * from usuario where usuario = #usuario#  
+
+	</select>
+
+	
+	<select id="getRegistroGestor" resultMap="getRegistroGestor">
+
+		select * from
+		RegistroGestorClaves where RUT = #rut#
+
+	</select>
+
+
+	<update id="getreggestionClaveByRut"
+		parameterClass="java.util.HashMap">
+
+		update RegistroGestorClaves set CELULAR = #celular#,
+		TELEFONO = #telefono#,
+		EMAIL = #email# where RUT = #rut#
+
+	</update>
+	
+	<select id="PrefijoTelefono" resultClass="java.lang.String">
+
+		select prefijo from
+		PrefijoTelefono where tipo = #tipo#
+		order by prefijo
+
+	</select>
+
+</sqlMap>

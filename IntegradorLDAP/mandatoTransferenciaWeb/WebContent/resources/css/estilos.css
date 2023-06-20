@@ -1,0 +1,506 @@
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.3;
+	background-repeat: repeat-x;
+	color: #333;
+	margin: 0px;
+	padding: 0px;
+}
+
+hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border:none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+
+a {
+	color: #005D8B;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:focus {
+	outline: 1px dotted;
+}
+
+img {
+	border: 0px;
+}
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+	font-size: 25px;
+	color: #999;
+	margin-top: 0px;
+}
+
+h2 {
+	font-size: 17px;
+}
+
+h3 {
+	font-size: 21px;
+}
+
+h4 {
+	font-size: 19px;
+}
+
+h5 {
+	font-size: 17px;
+}
+
+h6 {
+	font-size: 15px;
+}
+
+/* `Spacing
+----------------------------------------------------------------------------------------------------*/
+
+ol {
+	list-style: decimal;
+}
+
+ul {
+	list-style: disc;
+	margin: 0px;
+	padding: 0px;
+}
+
+li {
+	margin-left: 20px;
+}
+
+p,
+dl,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+	margin-bottom: 10px;
+}
+
+/* `Layout
+----------------------------------------------------------------------------------------------------*/
+.canvas {
+	margin:0 auto;position:relative;
+}
+
+#header {
+	height: 85px;
+}
+#Menu {
+	height: 40px;
+	margin-bottom: 10px;
+}
+.banner_tipo1 {
+	height: 360px;
+	width: 700px;
+}
+.borde3, .borde3_1, .borde4, .borde7, .borde9, .borde9fondo, .borde12 {
+	background-repeat: repeat-y;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCC;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+
+.titulo_caja {
+	font-weight: bold;
+	font-size: 17px;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	line-height: normal;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+.titulo_caja2 {
+	font-weight: bold;
+	font-size: 12px;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	line-height: normal;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+.pad_caja {
+	padding: 10px;
+        height: 265px;
+}
+form {
+	margin: 0px;
+	padding: 0px;
+}
+#Menu_top {
+	font-size: 11px;
+	text-align: right;
+	margin-top: 18px;
+	color: #666;
+}
+.btn {
+	color: #FFF;
+	font-size: 12px;
+	background-repeat: repeat-x;
+	border-top-color: #03557B;
+	border-right-color: #03557B;
+	border-bottom-color: #007BB7;
+	border-left-color: #007BB7;
+	background-position: 0px 0px;
+	background-color: #007AB9;
+	margin: 0px;
+	padding-right: 5px;
+	padding-left: 5px;
+	height: 25px;
+	text-align: center;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	line-height: 12px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	position: relative;
+}
+button.btn:hover {
+	background-position: 0px -24px;
+}
+#Buscador {
+	text-align: right;
+	margin-top: 5px;
+}
+#Logo {
+	margin-top: 18px;
+	_margin-top: 0px;
+	height: 56px;
+	background-repeat: no-repeat;
+}
+#Logo a {
+	height: 56px;
+	display:block;
+}
+#Logo a span {
+	display: none;
+}
+input {
+	border: 1px solid #BEC7D8;
+	font-size: 12px;
+	line-height: normal;
+}
+.titulo_dest {
+	font-size: 17px;
+	font-weight: bold;
+	margin: 0px;
+	line-height: 1.2em;
+}
+.bullets_links {
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	line-height: normal;
+}
+#Menu_top a {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#content_banner1 {
+	height: 360px;
+	margin-bottom: 10px;
+}
+#content_banner2 {
+	height: 280px;
+	margin-bottom: 10px;
+}
+#footer {
+	margin-top: 20px;
+	border-top: 2px solid #CCCCCC;
+	font-size: 10px;
+	color: #999999;
+	margin-bottom: 20px;
+}
+.foto_destacado {
+	border: 1px solid #CCC;
+}
+.hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+
+/****** *******/
+
+#content2 {
+	margin-top: 10px;
+}
+
+.aleft {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.aright {
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+td {
+	font-size: 11px;
+	padding: 4px;
+}
+th {
+	text-align: left;
+	padding: 4px;
+}
+table {
+
+}
+.bg_none {
+	background-image: none;
+}
+.fono {
+	font-size: 20px;
+}
+.tab_container  ul {
+	margin: 0px;
+	padding: 0px;
+}
+ul.docs {
+	list-style-type: none;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+ul.docs li {
+	margin: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #E2E2E2;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 3px;
+	padding-left: 0px;
+}
+.titulo_caja .link_tit {
+	font-size: 11px;
+	font-weight: normal;
+	float: right;
+}
+.fono1 {
+	font-size: 24px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+select {
+	font-size: 11px;
+	color: #333333;
+}
+label {
+	display: block;
+}
+
+#footer ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+#footer li {
+	margin: 0px;
+	padding: 0px;
+}
+#footer .tit_footer {
+	font-size: 11px;
+	font-weight: bold;
+	color: #666666;
+	margin: 0px 0px 5px;
+	padding: 0px;
+}
+
+#iconos {
+	text-align: right;
+}
+#iconos  img {
+	padding-left: 6px;
+}
+.bg_gris {
+	background-color: #F2F2F2;
+	padding-top: 10px;
+}
+.borde_menu_izq {
+	background-repeat: repeat-y;
+}
+#destacados_n2 {
+	margin-top: 10px;
+}
+.grid_7 #noticias {
+	margin-top: 10px;
+}
+.listado {
+	padding:5px;
+	text-valign:middle;
+	text-align:left;
+	margin:0px;
+	font-size:12px;
+}
+.listado td {
+	border:none;
+}
+.listado table {
+	border-left: none;
+	border-top:none;
+}
+.listado a {
+	font-size:12px;
+}
+#paginacion {
+	text-align: center;
+	margin-top: 30px;
+}
+
+
+
+.acenter {
+	text-align: center;
+}.mensaje {
+	background-repeat: no-repeat;
+	height: 40px;
+	background-position: 5px 5px;
+	padding-left: 20px;
+	font-size: 13px;
+	margin-bottom: 10px;
+}
+
+.corp.sm {
+    padding-top: 11px;
+}
+
+.borde12_fondo {
+}
+.llamado1 {
+    color: #005D8B;
+    font-family: Arial,Helvetica;
+    font-size: 30px;
+    font-weight: bold;
+}
+.bajada {
+    color: #424242;
+    font-family: Arial,Helvetica;
+    font-size: 14px;
+    font-weight: normal;
+}
+.botonsolicitar {
+    background-color: #EAEAEA;
+    background-position: left top;
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    height: 61px;
+    margin: 15px 25px 25px 15px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 193px;
+}
+.botonsolicitarOver {
+    background-color: #EAEAEA;
+    background-position: left top;
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    height: 61px;
+    margin: 15px 25px 25px 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 193px;
+    cursor:hand;
+}
+.botongrisOver {
+    background-color: #EAEAEA;
+    background-position: left top;
+    background-repeat: repeat-x;
+    border: 1px solid #D5D5D5;
+    color: #818181;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.botongris {
+    background-color: #EAEAEA;
+    background-position: left top;
+    background-repeat: repeat-x;
+    border: 1px solid #D5D5D5;
+    color: #2D2D2D;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.sello_agua {
+    background-repeat: no-repeat;
+    font-size: 1px;
+}
+.llamado2 {
+	font-family: Arial, Helvetica;
+	font-size: 24px;
+	color: #005d8b;
+}

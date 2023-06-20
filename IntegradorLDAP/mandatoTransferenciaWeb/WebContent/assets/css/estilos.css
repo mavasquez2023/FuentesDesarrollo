@@ -1,0 +1,352 @@
+@charset "UTF-8";
+/*!
+* ¡ATENCIÓN! Hoja de estilos generada con SASS, no modificar.
+*/
+/* line 1, gulp-files/scss/estilos/base/general.scss */
+.bold {
+  font-weight: 600;
+}
+
+/* line 5, gulp-files/scss/estilos/base/general.scss */
+.bloque {
+  padding: 30px;
+  background: #f3f6f8;
+  border-radius: 10px;
+}
+
+/* line 9, gulp-files/scss/estilos/base/general.scss */
+.bloque > :first-child {
+  margin-top: 0;
+}
+
+/* line 12, gulp-files/scss/estilos/base/general.scss */
+.bloque > :last-child {
+  margin-bottom: 0;
+}
+
+/* line 15, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo {
+  font-size: 2rem;
+}
+
+/* line 18, gulp-files/scss/estilos/base/general.scss */
+.bloque__item {
+  margin-bottom: 3rem;
+}
+
+/* line 21, gulp-files/scss/estilos/base/general.scss */
+.bloque__icono {
+  margin-bottom: 1rem;
+}
+
+/* line 24, gulp-files/scss/estilos/base/general.scss */
+.bloque__texto {
+  font-size: 1.4rem;
+}
+
+/* line 26, gulp-files/scss/estilos/base/general.scss */
+.bloque__texto span {
+  display: block;
+}
+
+/* line 32, gulp-files/scss/estilos/base/general.scss */
+.respuesta {
+  padding: 6rem 10%;
+  margin-bottom: auto;
+}
+
+/* line 35, gulp-files/scss/estilos/base/general.scss */
+.respuesta__titulo {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+/* line 39, gulp-files/scss/estilos/base/general.scss */
+.respuesta__texto {
+  font-size: 1.4rem;
+}
+
+/* line 41, gulp-files/scss/estilos/base/general.scss */
+.respuesta__texto span {
+  white-space: nowrap;
+}
+
+/* line 47, gulp-files/scss/estilos/base/general.scss */
+.grupo-emails {
+  transition: all ease 200ms;
+  border: 1px solid transparent;
+}
+
+/* line 50, gulp-files/scss/estilos/base/general.scss */
+.grupo-emails.invalido {
+  padding: 10px;
+  border-color: rgba(234, 69, 55, 0.5);
+}
+
+/* line 57, gulp-files/scss/estilos/base/general.scss */
+.form__iconos {
+  height: 100%;
+}
+
+/* line 59, gulp-files/scss/estilos/base/general.scss */
+.form__iconos svg {
+  margin-bottom: 1rem;
+}
+
+/* line 65, gulp-files/scss/estilos/base/general.scss */
+.captcha {
+  display: inline-block;
+}
+
+/* line 67, gulp-files/scss/estilos/base/general.scss */
+.captcha.invalido {
+  border: 1px solid #ea4537;
+  border-radius: 3px;
+}
+
+/* line 3, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__icono {
+  margin-right: 10px;
+}
+
+/* line 5, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__icono svg {
+  fill: #ccc;
+}
+
+/* line 9, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__data {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+/* line 13, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__data span {
+  display: block;
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* line 23, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__item.activo .pasos__icono svg {
+  fill: #2072bc;
+}
+
+/* line 27, gulp-files/scss/estilos/componentes/pasos.scss */
+.pasos__item.activo .pasos__data {
+  color: #2072bc;
+}
+
+/* line 1, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda {
+  position: relative;
+  height: 20px;
+  width: 20px;
+}
+
+/* line 6, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda--form {
+  position: absolute;
+  top: 3rem;
+  right: -2.5rem;
+  bottom: 0;
+  z-index: 10;
+}
+
+@media (max-width: 991px) {
+  /* line 6, gulp-files/scss/estilos/componentes/ayuda.scss */
+  .ayuda--form {
+    position: fixed;
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+    left: auto;
+    width: 40px;
+    height: 40px;
+    z-index: 99;
+  }
+}
+
+/* line 16, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda span {
+  background: #f3f6f8;
+  color: #2072bc;
+  width: 100%;
+  height: 100%;
+  display: -moz-box;
+  display: flex;
+  -moz-box-pack: center;
+       justify-content: center;
+  -moz-box-align: center;
+       align-items: center;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: help;
+}
+
+@media (max-width: 991px) {
+  /* line 16, gulp-files/scss/estilos/componentes/ayuda.scss */
+  .ayuda span {
+    font-size: 2rem;
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.1), 0 0 20px rgba(51, 51, 51, 0.1);
+    background: #2072bc;
+    color: #f3f6f8;
+  }
+}
+
+/* line 34, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda__container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 99vw;
+  max-width: 450px;
+  border-radius: 10px;
+  background: #fff;
+  z-index: 99;
+  padding: 20px;
+  transform: translate(-50%, -20px);
+  box-shadow: 0 0 10px rgba(51, 51, 51, 0.15);
+  transition: all ease 200ms;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* line 47, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda__container::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 15px solid transparent;
+  border-top-color: #fff;
+  margin: auto;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+}
+
+@media (max-width: 991px) {
+  /* line 47, gulp-files/scss/estilos/componentes/ayuda.scss */
+  .ayuda__container::after {
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    left: auto;
+  }
+}
+
+/* line 60, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda__container img {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  /* line 34, gulp-files/scss/estilos/componentes/ayuda.scss */
+  .ayuda__container {
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    left: auto;
+    transform: translate(0, -20px);
+  }
+}
+
+/* line 70, gulp-files/scss/estilos/componentes/ayuda.scss */
+.ayuda:hover .ayuda__container {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 991px) {
+  /* line 70, gulp-files/scss/estilos/componentes/ayuda.scss */
+  .ayuda:hover .ayuda__container {
+    position: absolute;
+    bottom: 40px;
+    left: auto;
+    transform: translate(0, 0);
+  }
+ }
+ 
+ /* line 30, gulp-files/scss/estilos/base/general.scss */
+.bloque {
+  padding: 30px;
+  background: #f3f6f8;
+  border-radius: 10px;
+}
+
+/* line 34, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo-principal {
+  font-size: 2rem;
+  color: #2072bc;
+  font-weight: 300;
+}
+
+@media (max-width: 543px) {
+  /* line 34, gulp-files/scss/estilos/base/general.scss */
+  .bloque__titulo-principal {
+    text-align: center;
+  }
+}
+
+/* line 42, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo {
+  flex: 1;
+}
+
+/* line 44, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo p {
+  font-size: 1.7rem;
+  color: #113a60;
+  font-weight: 300;
+}
+
+/* line 49, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo span {
+  color: #2072bc;
+  font-weight: 400;
+}
+
+/* line 54, gulp-files/scss/estilos/base/general.scss */
+.bloque__item {
+  margin-bottom: 1rem;
+  padding: 5px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (max-width: 543px) {
+  /* line 54, gulp-files/scss/estilos/base/general.scss */
+  .bloque__item {
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+/* line 65, gulp-files/scss/estilos/base/general.scss */
+.bloque__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 8%;
+  margin-right: 10px;
+}
+
+@media (max-width: 543px) {
+  /* line 65, gulp-files/scss/estilos/base/general.scss */
+  .bloque__cabecera {
+    margin-bottom: 10px;
+  }
+}
+
+/* line 74, gulp-files/scss/estilos/base/general.scss */
+.bloque__cabecera img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
