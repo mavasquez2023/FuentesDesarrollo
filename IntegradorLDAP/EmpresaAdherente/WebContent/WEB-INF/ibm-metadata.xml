@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ibm-metadata>
+  <annotated-classes name="cl.araucana.core.util.http.LoginFilter"/>
+  <annotated-classes name="com.araucana.controller.PeriodoCotizacion"/>
+  <annotated-classes name="com.araucana.controller.CloseSessionController"/>
+  <annotated-classes name="com.araucana.controller.UnificarArchivosNominas"/>
+  <annotated-classes name="com.araucana.controller.ControladorServlet1"/>
+</ibm-metadata>

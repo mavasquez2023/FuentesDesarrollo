@@ -1,0 +1,67 @@
+
+#accordian {
+position: fixed;
+	background: #0e60b2;
+	width: 280px;
+	margin: 20px 0 0 0;
+	color: #0e60b2;
+	/*Some cool shadow and glow effect*/
+	/*box-shadow: 
+		0 5px 15px 1px rgba(0, 0, 0, 0.6), 
+		0 0 200px 1px rgba(255, 255, 255, 0.5);*/
+}
+/*heading styles*/
+#accordian h3 {
+	font-size: 12px;
+	line-height: 34px;
+	padding: 0 10px;
+	cursor: pointer;
+	/*fallback for browsers not supporting gradients*/
+	background: #0b4987; 
+	background: linear-gradient(#d1daf9, #ffffff);
+}
+/*heading hover effect*/
+#accordian h3:hover {
+	text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+}
+/*iconfont styles*/
+#accordian h3 span {
+	font-size: 16px;
+	margin-right: 10px;
+}
+/*list items*/
+#accordian li {
+	list-style-type: none;
+	margin-top:10px;
+}
+/*list items*/
+#accordian li h3 {
+	list-style-type: none;
+	margin-left:-40px;
+	margin-top:-10px;
+	margin-bottom:-10px;
+}
+/*links*/
+#accordian ul ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 27px;
+	display: block;
+	padding: 0 5px;
+	margin-left:-40px;
+	/*transition for smooth hover animation*/
+	transition: all 0.15s;
+}
+/*hover effect on links*/
+#accordian ul ul li a:hover {
+	background: #0b4987;
+	border-left: 5px solid yellow;
+}
+/*Lets hide the non active LIs by default*/
+#accordian ul ul {
+	display: none;
+}
+#accordian li.active ul {
+	 display: block;
+}
