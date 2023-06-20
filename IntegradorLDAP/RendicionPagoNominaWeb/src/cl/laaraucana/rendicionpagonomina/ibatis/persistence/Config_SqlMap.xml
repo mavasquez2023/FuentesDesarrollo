@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="mandatos">
+	
+	<resultMap id="mandatosas400"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.MandatoAS400Vo">
+
+		<result column="ID_MANDATO" property="idMandato" />
+		<result column="RUTAFI" property="rutafi" />
+		<result column="DVAFI" property="dvafi" />
+		<result column="NOMBRE" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+		<result column="CODBANCO" property="codbanco" />
+		<result column="NUMCUENTA" property="numcuenta" />
+		<result column="ID_TIPCTA" property="idtipcta" />
+		<result column="ID_TIPPRO" property="idtippro" />
+		<result column="FECHAVIG" property="fechavig" />
+		<result column="FECHATER" property="fechater" />
+		<result column="OBF002" property="obf002" />
+		<result column="OBF003" property="obf003" />
+		<result column="SAJKM94" property="sajkm94" />
+		
+	</resultMap>
+
+	<resultMap id="beneficiarios"
+	class="cl.laaraucana.rendicionpagonomina.ibatis.vo.BeneficiarioEntity" >
+		<result column="CODBENE" property="codigoBeneficio" />
+		<result column="IDCODCONV" property="codigoConvenio" />
+		<result column="CODPROD" property="codigoProducto" />
+		<result column="RUTAFI" property="rutBeneficiario" />
+		<result column="DVAFI" property="dvBeneficiario" />
+		<result column="NOMBREAFI" property="nombreAfiliado" />
+		<result column="DESCPAGO" property="descripcionPago" />
+		<result column="MONTO" property="monto" />
+		<result column="ESTADO" property="estado" />
+		<result column="CODBANCO" property="idBanco" />
+		<result column="NUMCUENTA" property="numCuenta" />
+		<result column="ID_TIPCTA" property="idTipoCuenta" />
+		<result column="REFERENCI1" property="referencia1" />
+		<result column="REFERENCI2" property="referencia2" />
+		<result column="EMAIL" property="email" />
+	</resultMap>
+
+	
+	<select id="consultaMandato" resultMap="mandatosas400">
+
+		select * from
+		SPLDTA.MANDATO where RUTAFI = #rutafi#
+		with UR
+	</select>
+	
+	<insert id="insertMandatoRechazado"
+		parameterClass="cl.laaraucana.rendicionpagonomina.ibatis.vo.RechazoVo">
+
+		INSERT INTO SPLDTA.MANDATO_RECHAZO (RUTAFI, DVAFI, CODBANCO, NUMCUENTA,
+		MOTIVO, SISTEMA, USUARIO, VIA, ESTADO)
+		VALUES
+		(#rutAfiliado#, #dvAfiliado#, #codigoBanco#, #numeroCuenta#,
+		#motivoRechazo#, 'TEF', #usuario#, 'A', #estado#)
+		with nc
+
+	</insert>
+	
+	<delete id="deleteMandatoRechazado" >
+		DELETE FROM SPLDTA.MANDATO_RECHAZO
+		where RUTAFI= #rutAfiliado#
+	</delete>
+	
+	<select id="consultaBeneficiariosBES" resultMap="beneficiarios">
+		select IDCODCONV, CODPROD, b.RUTAFI, b.DVAFI, NOMBREAFI, DESCPAGO, 
+			MONTO, ESTADOPAGO as ESTADO, m.CODBANCO, m.NUMCUENTA, m.ID_TIPCTA, CODBENE, 
+			IDPAGOTEF as REFERENCI1, REFERENCI2, EMAIL  
+		from CMDTA.TEFBENFICI b join SPLDTA.MANDATO m
+        on b.rutafi= m.rutafi
+		where b.estadopago in (2, 3)
+        and m.codbanco=12
+		UNION
+		select IDCODCONV, CODPROD, b.RUTAFI, b.DVAFI, NOMBREAFI, DESCPAGO, 
+			MONTO, ESTADOPAGO as ESTADO, 0 as CODBANCO, '' as NUMCUENTA, 99 as ID_TIPCTA, CODBENE, 
+			IDPAGOTEF as REFERENCI1, REFERENCI2, '' as EMAIL
+		from CMDTA.TEFBENFICI b  exception join SPLDTA.MANDATO m
+        on b.rutafi= m.rutafi
+		where b.estadopago in (2, 3)
+        and (current_date -b.fechenvio)>2
+		order by idcodconv, codprod, rutafi
+		with UR
+	</select>
+	
+	<select id="consultaBeneficiariosBCI" resultMap="beneficiarios" >
+
+		select IDCODCONV, CODPROD, b.RUTAFI, b.DVAFI, NOMBREAFI, DESCPAGO, 
+			MONTO, ESTADOPAGO as ESTADO, m.CODBANCO, m.NUMCUENTA, m.ID_TIPCTA, CODBENE, 
+			IDPAGOTEF as REFERENCI1, REFERENCI2, EMAIL  
+		from CMDTA.TEFBENFICI b join SPLDTA.MANDATO m
+        on b.rutafi= m.rutafi
+		where b.estadopago in (2, 3)
+		and m.codbanco!=12
+		order by idcodconv, codprod, rutafi
+		with UR
+	</select>
+	
+	<update id="updateBeneficiario" parameterClass="java.util.HashMap">
+		update CMDTA.TEFBENFICI
+		set estadopago=#estado#, 
+			referenci1=#idCabecera#
+		where IDPAGOTEF= #id#
+		with nc
+	</update>
+	
+	<update id="updateBeneficiarioRendicion" parameterClass="java.util.HashMap">
+		update CMDTA.TEFBENFICI
+		set estadopago=#estado#
+		<isNotNull property="nomnomina">
+			, nomnomina= #nomnomina#
+		</isNotNull>
+		<isNotNull property="fechapago">
+			, fechapago= #fechapago#
+		</isNotNull>
+		<isNotNull property="codrechazo">
+			, codrechazo=#codrechazo#
+			, desrechnom=#desrechazo#
+		</isNotNull>
+		where IDPAGOTEF= #idpago#
+		with nc
+	</update>
+	
+	<update id="updateBeneficiarioById" parameterClass="java.util.HashMap">
+		update CMDTA.TEFBENFICI
+		set estadopago=#estado#,
+		nomnomina= #nomnomina#,
+		folnomiban= #folnomina#,
+		fechapago= #fechapago#,
+		fechenvio= current_date
+		<isNotNull property="codrechazo">
+			, codrechazo=#codrechazo#
+			, desrechnom=#desrechazo#
+		</isNotNull>
+		where IDPAGOTEF= #idpago#
+		with nc
+	</update>
+	
+	<update id="rollbackBeneficiarios" parameterClass="java.lang.Integer">
+		update CMDTA.TEFBENFICI
+		set estadopago=3, referenci1=''
+		where referenci1=#idCabecera#
+		with nc
+	</update>
+	
+</sqlMap>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.laaraucana.pubnominas.persistence.DaoBitacora">
+
+	
+	<insert id="insertBitacora" parameterType="bitacoraVO">
+  		INSERT INTO PUBDTA.BITPUBNOM    (   PERIODO, RUTUSU, DVRUTUSU, ROL, NOMINA, PERCON, RUTEMP, OFICINA, SUCURSAL)
+  		values  (   #{periodo}, #{rutusu}, #{dvrutusu}, #{rol}, #{nomina}, #{periodo_consulta}, #{rutemp}, #{oficina}, #{sucursal}
+  		)
+	</insert>
+
+
+
+
+</mapper>

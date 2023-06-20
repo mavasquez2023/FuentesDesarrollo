@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.laaraucana.pubnominas.persistence.DaoPex">
+
+ 	
+ 	
+ 	<resultMap id="listaOficinas" type="oficinasPEX">
+		<result column="RUTEMP"   property="rutEmpresa" />
+		<result column="RUTDV"   property="dvRutEmpresa" />
+		<result column="RAZSOC"   property="razonSocial" />
+		<result column="OFICINA"   property="oficina" />
+		<result column="NOMOFIC"   property="nombreOficina" />
+		<result column="SUCURSAL"   property="sucursal" />
+	</resultMap>
+ 	
+ 	<resultMap id="cuotasExceso" type="cuotasPEX">
+		<result column="RUTEMP"   property="rutEmpresa" />
+		<result column="RUTDV"   property="dvRutEmpresa" />
+		<result column="RAZSOC"   property="razonSocial" />
+		<result column="OFICINA"   property="oficina" />
+		<result column="NOMOFIC"   property="nombreOficina" />
+		<result column="SUCURSAL"   property="sucursal" />
+		<result column="RUTAFI"   property="rutAfiliado" />
+		<result column="RUTDVAFI"   property="dvRutAfiliado" />
+		<result column="NOMAFI"   property="nombreAfiliado" />
+		<result column="MONTOP"   property="montoCuota" />
+		<result column="FECHA"   property="fechaCreacion" />
+	</resultMap>		
+
+	<select id="getOficinas" resultMap="listaOficinas" parameterType="String">
+	Select distinct CMNA          as RUTEMP,             
+        CMOA          as RUTDV,              
+        TRANSLATE(CMPA, ' ', ',') as RAZSOC, 
+        CMBA          as OFICINA,            
+        CMCA          as NOMOFIC,            
+        CM13A         as SUCURSAL         
+ 	from RCDTA.RC10F1                         
+ 	where 1>0
+ 	 and CMNA in (${rutEmpresa})
+ 	<if test="oficina!=null">
+ 	and CMBA = #{oficina}
+ 	</if>
+ 	<if test="sucursal!=null">
+ 	and CM13A = #{sucursal}
+ 	</if>
+
+</select>
+
+	<select id="getTrabajadores" resultMap="cuotasExceso" parameterType="String">
+	Select 
+		CMNA          as RUTEMP,             
+        CMOA          as RUTDV,              
+        TRANSLATE(CMPA, ' ', ',') as RAZSOC, 
+        CMBA          as OFICINA,            
+        CMCA          as NOMOFIC,            
+        CM13A         as SUCURSAL,           
+        AFIRUT        as RUTAFI,             
+        SE5FBH3       as RUTDVAFI,           
+        AFHCA         as NOMAFI,             
+        CUOMONPAG     as MONTOP,
+        OBF002		  as FECHA              
+ 	from RCDTA.RC10F1                          
+ 	where  CMNA= #{rutEmpresa}
+ 	<if test="oficina!=null">
+ 	and CMBA = #{oficina}
+ 	</if>
+ 	<if test="sucursal!=null">
+ 	and CM13A = #{sucursal}
+ 	</if>  
+ 	ORDER BY RUTEMP, OFICINA, SUCURSAL, RUTAFI 
+</select>
+
+</mapper>

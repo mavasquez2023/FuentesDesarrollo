@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.laaraucana.pubnominas.persistence.DaoEstadisticas">
+	
+	<resultMap id="data_periodos" type="cl.laaraucana.pubnominas.vo.NominasPeriodoVO">
+		<result column="PERIODO"   property="periodo" />
+		<result column="CANTIDAD"   property="cantidad" />
+	</resultMap>
+	
+	<resultMap id="result_nominasxrol" type="cl.laaraucana.pubnominas.vo.DescargasxTipoNomina">
+		<result column="NOMINA"   property="tipoNomina" />
+		<result column="ROL"   property="rol" />
+		<result column="CANTIDAD"   property="cantidad" />
+	</resultMap>
+
+	<select id="getNominasxMes" parameterType="int" resultMap="data_periodos">
+
+		select periodo PERIODO, count(1) CANTIDAD
+		from PUBDTA.BITPUBNOM
+		group by periodo
+		order by 1
+
+	</select>
+	
+	<select id="getNominasxRol" parameterType="int" resultMap="result_nominasxrol">
+	select NOMINA, ROL, count(1) CANTIDAD from PUBDTA.BITPUBNOM
+		where periodo= #{periodo}
+		group by NOMINA, ROL
+		order by 1, 2
+</select>
+
+</mapper>

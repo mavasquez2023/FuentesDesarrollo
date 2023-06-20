@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/*!
+* ¡ATENCIÓN! Hoja de estilos generada con SASS, no modificar.
+*/
+/* line 2, gulp-files/scss/estilos/base/general.scss */
+.home_icon {
+  fill: #f48948;
+}
+
+@media (max-width: 1199px) {
+  /* line 2, gulp-files/scss/estilos/base/general.scss */
+  .home_icon {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* line 10, gulp-files/scss/estilos/base/general.scss */
+.form {
+  padding-top: 30px;
+}
+
+/* line 14, gulp-files/scss/estilos/base/general.scss */
+.form__grupo select.blur {
+  border-color: #ea4537;
+}
+
+/* line 19, gulp-files/scss/estilos/base/general.scss */
+.form__iconos {
+  height: 100%;
+}
+
+/* line 21, gulp-files/scss/estilos/base/general.scss */
+.form__iconos svg {
+  margin-bottom: 1rem;
+}
+
+/* line 25, gulp-files/scss/estilos/base/general.scss */
+.form__subtitulo {
+  font-size: 1.7rem;
+}
+
+/* line 30, gulp-files/scss/estilos/base/general.scss */
+.bloque {
+  padding: 30px;
+  background: #f3f6f8;
+  border-radius: 10px;
+}
+
+/* line 34, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo-principal {
+  font-size: 2rem;
+  color: #2072bc;
+  font-weight: 300;
+}
+
+@media (max-width: 543px) {
+  /* line 34, gulp-files/scss/estilos/base/general.scss */
+  .bloque__titulo-principal {
+    text-align: center;
+  }
+}
+
+/* line 42, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo {
+  flex: 1;
+}
+
+/* line 44, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo p {
+  font-size: 1.7rem;
+  color: #113a60;
+  font-weight: 300;
+}
+
+/* line 49, gulp-files/scss/estilos/base/general.scss */
+.bloque__titulo span {
+  color: #2072bc;
+  font-weight: 400;
+}
+
+/* line 54, gulp-files/scss/estilos/base/general.scss */
+.bloque__item {
+  margin-bottom: 1rem;
+  padding: 10px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (max-width: 543px) {
+  /* line 54, gulp-files/scss/estilos/base/general.scss */
+  .bloque__item {
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+/* line 65, gulp-files/scss/estilos/base/general.scss */
+.bloque__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 8%;
+  margin-right: 10px;
+}
+
+@media (max-width: 543px) {
+  /* line 65, gulp-files/scss/estilos/base/general.scss */
+  .bloque__cabecera {
+    margin-bottom: 10px;
+  }
+}
+
+/* line 74, gulp-files/scss/estilos/base/general.scss */
+.bloque__cabecera img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+/* line 86, gulp-files/scss/estilos/base/general.scss */
+.respuesta {
+  padding: 6rem 2%;
+  margin-bottom: auto;
+}
+
+@media (max-width: 543px) {
+  /* line 86, gulp-files/scss/estilos/base/general.scss */
+  .respuesta {
+    padding: 2rem 10%;
+  }
+}
+
+/* line 92, gulp-files/scss/estilos/base/general.scss */
+.respuesta__titulo {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+/* line 96, gulp-files/scss/estilos/base/general.scss */
+.respuesta__texto {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+/* line 100, gulp-files/scss/estilos/base/general.scss */
+.respuesta__texto span {
+  white-space: nowrap;
+  display: block;
+}
+
+/* line 103, gulp-files/scss/estilos/base/general.scss */
+.respuesta__texto span.destacado {
+  color: #2072bc;
+  font-weight: 400;
+  display: inline-block;
+}
+
+/* line 110, gulp-files/scss/estilos/base/general.scss */
+.respuesta__valor {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2072bc;
+}

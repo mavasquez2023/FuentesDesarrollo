@@ -1,0 +1,67 @@
+#Seg(1), min(1), hrs(1), día del mes(2), mes(1), día de la semana(2) [,año(1)] 
+# operadores soportados(1): , - * /   (2) , - * / ? L W
+
+#Cronta RENDICIONES
+config.cron.bes.rendicion.sil=0 30 23 * * ?
+config.cron.bes.rendicion.credito=0 0 */3 * * ?
+config.cron.bes.rendicion.pex=0 0 7 * 9 ?
+config.cron.bes.rendicion.benef=0 0 */5 * * ? 
+config.cron.bes.rendicion.becas=0 0 3 * * ? 
+config.cron.bci.rendicion=0 */20 * * * ?
+
+#Convenios asociados a Rendiciones
+config.cron.bes.rendicion.sil.convenio=3,4
+config.cron.bes.rendicion.credito.convenio=10
+config.cron.bes.rendicion.benef.convenio=11
+config.cron.bes.rendicion.becas.convenio=12
+config.cron.bes.rendicion.pex.convenio=5
+
+#Cronta CARGAS Desde Origen
+config.cron.quartz.carga=0 */15 * * * ?
+config.cron.quartz.cargaBeneficios= 0 30 6 * * ?
+config.cron.quartz.cargaBecas=0 35 21 * * ?
+
+#LOGGINGL
+logging.level.cl.laaraucana.rendicionpagonomina=DEBUG
+logging.pattern.console= %d{dd-MM-yyyy HH:mm:ss}|%-5level|[%thread] %logger{15} - %msg%n
+
+
+#Path configuracion folder temporal
+path.temporal.folder=E:/tef/BCI/ENVIO/
+#Path configuracion folder tracking envio
+path.tranking.folder=E:/tef/#banco#/ENVIO/
+#Path configuracion folder rendicion
+path.rendicion.bci.folder=E:/tef/BCI/RENDICION/
+
+#Configuracion FTP ERP-Conection
+ftp.config.erp.conection.host=serv-39
+ftp.config.erp.conection.port=21
+ftp.config.erp.conection.user=adminftp
+ftp.config.erp.conection.pass=Arauca.2021
+
+#Configuracion path origen nominas rendicion 24H
+ftp.config.erp.conection.input.24h.path=/SIL_TEFBCI/ERP-Connection/input/24h/
+ftp.config.erp.conection.input.24h.name=regex:^AR*
+ftp.config.historico.rendicion.24h.path=/SIL_TEFBCI/ERP-Connection/input/24h/historico/
+
+#Configuracion path origen nominas rendicion Vale vista
+ftp.config.erp.conection.input.vv.path=/SIL_TEFBCI/ERP-Connection/input/vv/
+ftp.config.erp.conection.input.vv.name=regex:^RV*
+ftp.config.historico.rendicion.vv.path=/SIL_TEFBCI/ERP-Connection/input/vv/historico/
+ftp.config.notificacion.rendicion.vv.path=/SIL_TEFBCI/SIL-RendicionVV/Notificacion/
+
+#Configuracion path origen nominas rendicion PNOL
+ftp.config.erp.conection.input.pnol.path=/SIL_TEFBCI/ERP-Connection/input/pnol/
+ftp.config.erp.conection.input.pnol.name=regex:^RENDICION_PNOL*
+ftp.config.historico.rendicion.pnol.path=/SIL_TEFBCI/ERP-Connection/input/pnol/historico/
+
+
+##Configuracion fTP Historico luego de leer desde Productos
+ftp.config.historico.host=serv-39
+ftp.config.historico.port=21
+ftp.config.historico.user=adminftp
+ftp.config.historico.pass=Arauca.2021
+
+ftp.config.historico.carga.path=/SIL_TEFBCI/historico/carga/
+
+

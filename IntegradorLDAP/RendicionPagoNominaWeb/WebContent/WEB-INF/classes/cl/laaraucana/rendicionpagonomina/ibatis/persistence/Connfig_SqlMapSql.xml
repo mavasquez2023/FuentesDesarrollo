@@ -1,0 +1,1220 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="transferencia">
+
+	<typeAlias alias="paramEntity" type="cl.laaraucana.rendicionpagonomina.ibatis.vo.ArchivoManualVO"/>
+	<typeAlias alias="detalleManual" type="cl.laaraucana.rendicionpagonomina.entities.DetalleManualEntity"/>
+	<typeAlias alias="cabeceraTEF" type="cl.laaraucana.rendicionpagonomina.entities.CabeceraEntity"/>
+	
+	<resultMap id="convenio"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.ConvenioEntity">
+		<result column="IdCodConv" property="codigoConvenio" />
+		<result column="DesConv" property="descripcionConvenio" />
+		<result column="CodBbanco" property="codigoBanco" />
+		<result column="IdConvBan" property="convenioBanco" />
+		<result column="Plantilla" property="plantilla" />
+		<result column="PlantillaEnvio" property="plantillaEnvio" />
+		<result column="CodBancoSuper" property="codigoBancoSuper" />
+		<result column="pathECOutput" property="pathECOutput" />
+		<result column="emailEjecutivo" property="emailEjecutivo" />
+	</resultMap>
+	
+	<resultMap id="producto"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.ProductoEntity">
+		<result column="CodProd" property="codigoProducto" />
+		<result column="IdCodConv" property="codigoConvenio" />
+		<result column="DescProd" property="descripcionProducto" />
+	</resultMap>
+	
+	<resultMap id="estado"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.EstadoEntity">
+		<result column="IdEstado" property="codigo" />
+		<result column="DescEstado" property="descripcion" />
+	</resultMap>
+	
+	<resultMap id="banco"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.BancoEntity">
+		<result column="Codigo" property="codigo" />
+		<result column="Nombre" property="nombre" />
+		<result column="DescBanEstado" property="descripcionBES" />
+		<result column="DescBanBCI" property="descripcionBCI" />
+	</resultMap>
+	
+	<resultMap id="beneficio"
+	class="cl.laaraucana.rendicionpagonomina.ibatis.vo.BeneficioEntity" >
+		<result column="CodBene" property="codigoBeneficio" />
+		<result column="IdCodConv" property="codigoConvenio" />
+		<result column="CodProd" property="codigoProducto" />
+		<result column="DescBene" property="descripcionBeneficio" />
+		<result column="GenrConTeso" property="generaComprobanteTesoreria" />
+		<result column="Concepto" property="concepto" />
+		<result column="AreaNego" property="areaNegocio" />
+		<result column="FechCreacion" property="fechaCreacion" />
+		<result column="UsuCreacion" property="usuarioCreacion" />
+		
+	</resultMap>
+	
+	<resultMap id="archivo"
+		class="cl.laaraucana.rendicionpagonomina.ibatis.vo.ArchivoManualVO">
+		<result column="idBanco" property="idBanco" />
+		<result column="idConvenio" property="idConvenio" />
+		<result column="idProducto" property="idProducto" />
+		<result column="plantilla" property="plantilla" />
+		<result column="idConvBan" property="idConvenioBanco" />
+		<result column="archivo" property="nombreArchivo" />
+	</resultMap>
+	
+	<resultMap id="cabeceraTEF" 
+		class="cl.laaraucana.rendicionpagonomina.entities.CabeceraEntity">
+		<result column="idCabecera" property="idCabecera" />
+		<result column="IdCodConv" property="convenio" />
+		<result column="CodProd" property="producto" />
+		<result column="FechaEnvio" property="fechaEnvio" />
+		<result column="NombreNomina" property="nombreNomina" />
+		<result column="CodigoNomina" property="codigoNomina" />
+		<result column="Monto" property="monto" />
+		<result column="Cantidad" property="cantidad" />
+		<result column="EstadoNomina" property="estadoNomina" />
+		<result column="TotalPagado" property="totalPagado" />
+		<result column="CantPagado" property="cantidadPagado" />
+		<result column="TotalRechazado" property="totalRechazado" />
+		<result column="CantRechazado" property="cantidadRechazado" />
+		<result column="TotalDevuelto" property="totalDevuelto" />
+		<result column="CantDevuelto" property="cantidadDevuelto" />
+		<result column="CodRechazoEnvio" property="codigoRechazoEnvio" />
+		<result column="GlosaRechazoEnvio" property="glosaRechazoEnvio" />
+		<result column="CodRechazoRendicion" property="codigoRechazoRendicion" />
+		<result column="GlosaRechazoRendicion" property="glosaRechazoRendicion" />
+		<result column="FechaRendicion" property="fechaRendicion" />
+		<result column="Plano" property="plano" />
+		<result column="FechaCreacion" property="fechaCreacion" />
+		<result column="CodBbanco" property="codigoBanco" />
+	</resultMap>
+	
+	<resultMap id="detalleTEF"
+		class="cl.laaraucana.rendicionpagonomina.entities.DetalleEntity">
+		<result column="IdDetalle" property="idDetalle" />
+		<result column="IdCabecera" property="idCabecera" />
+		<result column="CodBene" property="codigoBeneficio" />
+		<result column="DescPago" property="descripcionPago" />
+		<result column="RutAfiliado" property="rutAfiliado" />
+		<result column="dvAfiliado" property="dvAfiliado" />
+		<result column="Nombres" property="nombres" />
+		<result column="Codbanco" property="codigoBanco" />
+		<result column="DescBanco" property="descripcionBanco" />
+		<result column="Cuenta" property="numerocuenta" />
+		<result column="TipoCuenta" property="tipoCuenta" />
+		<result column="Correo" property="email" />
+		<result column="CodFormaPago" property="codigoFormaPago" />
+		<result column="DescFormapago" property="descripcionFormaPago" />
+		<result column="Monto" property="monto" />
+		<result column="EstadoPago" property="estadoPago" />
+		<result column="DescEstadoPago" property="descripcionEstadoPago" />
+		<result column="DescRechazo" property="descripcionRechazo" />
+		<result column="Referencia1" property="referencia1" />
+		<result column="Referencia2" property="referencia2" />
+		<result column="FechaCambio" property="fechaCambio" />
+		<result column="idReferencia" property="idReferencia" />
+	</resultMap>
+	
+	<resultMap id="cabeceraManual" 
+		class="cl.laaraucana.rendicionpagonomina.entities.CabeceraManualEntity">
+		<result column="IdCabecera" property="idCabecera" />
+		<result column="FechaCarga" property="fechaCarga" />
+		<result column="IdCodConv" property="convenio" />
+		<result column="CodProd" property="producto" />
+		<result column="TotReg" property="totalRegistros" />
+		<result column="TotMonto" property="totalMonto" />
+		<result column="IdEstado" property="estado" />
+		<result column="TotRegPend" property="totalPendientes" />
+		<result column="TotMonPend" property="montoPendiente" />
+		<result column="FechaPago" property="fechaPago" />
+		<result column="FechaCreacion" property="fechaCreacion" />
+		<result column="UsrCreacion" property="usuarioCreacion" />
+	
+	</resultMap>
+	
+	<resultMap id="detalleManual"
+		class="cl.laaraucana.rendicionpagonomina.entities.DetalleManualEntity">
+		<result column="IdDetalle" property="idDetalle" />
+		<result column="IdCabecera" property="idCabecera" />
+		<result column="rutAfi" property="rutAfiliado" />
+		<result column="dvAfi" property="dvAfiliado" />
+		<result column="NomAfi" property="nombreAfiliado" />
+		<result column="DesPago" property="descripcionPago" />
+		<result column="MontoPago" property="montoPago" />
+		<result column="IdEstado" property="estado" />
+		<result column="BancoAfi" property="bancoAfiliado" />
+		<result column="NUMCUENTA" property="numeroCuenta" />
+		<result column="ID_TIPCTA" property="tipoCuenta" />
+		<result column="Correo" property="email" />
+		<result column="DesRechBan" property="descripcionRechazo" />
+		<result column="FechaTrans" property="fechaTransferencia" />
+		<result column="NomNomina" property="nombreNomina" />
+		<result column="FolNomiBan" property="folioNomina" />
+		<result column="CodBene" property="beneficio" />
+		<result column="Referencia1" property="referencia1" />
+		<result column="Referencia2" property="referencia2" />
+	</resultMap>
+	
+	<resultMap id="becados"
+	class="cl.laaraucana.rendicionpagonomina.ibatis.vo.BecasEntity" >
+		<result column="IDPAGO" property="idPago" />
+		<result column="CODBENE" property="codigoBeneficio" />
+		<result column="IDCODCONV" property="codigoConvenio" />
+		<result column="CODPROD" property="codigoProducto" />
+		<result column="RUTAFILIADO" property="rutAfiliado" />
+		<result column="DVAFILIADO" property="dvAfiliado" />
+		<result column="NOMBRES" property="nombreAfiliado" />
+		<result column="DESCPAGO" property="descripcionPago" />
+		<result column="MONTO" property="monto" />
+		<result column="ESTADOPAGO" property="estadoPago" />
+		<result column="FORMAPAGO" property="formaPago" />
+		<result column="REFERENCIA1" property="referencia1" />
+		<result column="REFERENCIA2" property="referencia2" />
+		<result column="FECHACARGA" property="fechaCarga" />
+		<result column="FECHAENVIO" property="fechaEnvio" />
+		<result column="DIAS_ENVIO" property="diasEnvio" />
+		
+	</resultMap>
+	
+	<select id="usuariosxConvenio" resultClass="java.lang.String" >
+
+		SELECT idUsuario
+  		FROM Usuario
+  		where IdCodConv= #idConvenio#
+  		order by 1
+
+	</select>
+	
+	<insert id="insertUsuarioConvenio" parameterClass="java.util.HashMap">
+
+		insert into
+  		Usuario
+  		values(#idUsuario#, #idConvenio#)
+
+	</insert>
+	
+	<delete id="deleteUsuarioConvenio" parameterClass="java.util.HashMap" >
+
+		delete 
+  		FROM Usuario
+  		where IdCodConv= #idConvenio#
+  		and idUsuario= #idUsuario#
+
+	</delete>
+	
+	<select id="findConvenio" resultMap="convenio" >
+
+		SELECT IdCodConv, DesConv, CodBbanco, IdConvBan, Plantilla, PlantillaEnvio, CodBancoSuper, pathECOutput, emailEjecutivo
+  		FROM Convenio
+  		where IdCodConv=#convenio#
+
+	</select>
+	
+	<select id="consultaConvenios" resultMap="convenio" >
+
+		SELECT IdCodConv, DesConv, CodBbanco, IdConvBan, Plantilla, PlantillaEnvio, CodBancoSuper, pathECOutput, emailEjecutivo
+  		FROM Convenio
+  		order by 1
+
+	</select>
+	
+	<select id="consultaConveniosActivos" parameterClass="java.util.HashMap" resultMap="convenio" >
+
+		SELECT c.IdCodConv, DesConv, CodBbanco, IdConvBan, Plantilla, PlantillaEnvio, CodBancoSuper, pathECOutput, emailEjecutivo
+  		FROM Convenio c 
+  		<isNotNull property="idUsuario">
+			join Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+  		where 1=1
+  		<isNotNull property="idUsuario">
+			and idUsuario= #idUsuario#
+		</isNotNull>
+  		
+
+	</select>
+	
+	<select id="consultaConveniosconPlantilla" parameterClass="java.util.HashMap" resultMap="convenio" >
+
+		SELECT c.IdCodConv, DesConv, CodBbanco, IdConvBan, Plantilla, PlantillaEnvio, CodBancoSuper, pathECOutput, emailEjecutivo
+  		FROM Convenio c 
+  		<isNotNull property="idUsuario">
+			join Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+  		where Plantilla>0
+  		<isNotNull property="convenios">
+      		and  c.idcodconv in
+      		<iterate property= "convenios" conjunction= ", " open= "(" close= ")" >
+				#convenios[]#
+			</iterate>
+		</isNotNull>
+  		<isNotNull property="idUsuario">
+			and idUsuario= #idUsuario#
+		</isNotNull>
+  		
+
+	</select>
+	
+	<select id="consultaConveniosActivosManual" parameterClass="java.util.HashMap" resultMap="convenio" >
+
+		SELECT distinct c.IdCodConv, c.DesConv, c.CodBbanco, c.IdConvBan, c.Plantilla, c.PlantillaEnvio, c.CodBancoSuper, c.pathECOutput, c.emailEjecutivo 
+  		FROM Convenio c join Producto p
+  		on c.idCodConv= p.idCodConv
+  		<isNotNull property="idUsuario">
+			join tefdta.dbo.Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+  		where p.CargManual='S'
+  		<isNotNull property="idUsuario">
+			and idUsuario= #idUsuario#
+		</isNotNull>
+
+	</select>
+
+	<select id="consultaProductos" resultMap="producto">
+
+		select 
+		CodProd
+      	,IdCodConv
+      	,DescProd
+      	,CargManual
+      	,FrecEnvio
+      	,FrecRecu
+      	,FtpServidor
+      	,FtpCarpeta
+      	,FtpUsuario
+      	,FtpClave
+      	,NombNomina
+      	,URLNotific
+      	,FechCreacion
+      	,UsuCreacion
+		from Producto
+		order by idcodconv, descprod
+	</select>
+	
+	<select id="consultaProductosByConvenioCargaManual" resultMap="producto">
+
+		select 
+		CodProd
+      	,IdCodConv
+      	,DescProd
+		from Producto 
+		where IdCodConv= #IdCodConv# 
+		and CargManual='S'
+	</select>
+	
+	<select id="consultaProductosByConvenio" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+
+		select 
+		CodProd
+      	,IdCodConv
+      	,DescProd
+      	,CargManual
+      	,FrecEnvio
+      	,FrecRecu
+      	,FtpServidor
+      	,FtpCarpeta
+      	,FtpUsuario
+      	,FtpClave
+      	,NombNomina
+      	,URLNotific
+      	,FechCreacion
+      	,UsuCreacion
+      	,FormatoNomina
+      	,FtpNotificacion
+		from Producto 
+		where IdCodConv= #IdCodConv# 
+		and Codprod= #idProducto#
+	</select>
+	
+	<select id="consultaProductosByIdConvenio"  resultClass="java.util.HashMap">
+
+		select TOP 1
+		 CodProd
+      	,IdCodConv
+      	,DescProd
+      	,CargManual
+      	,FrecEnvio
+      	,FrecRecu
+      	,FtpServidor
+      	,FtpCarpeta
+      	,FtpUsuario
+      	,FtpClave
+      	,NombNomina
+      	,URLNotific
+      	,FechCreacion
+      	,UsuCreacion
+      	,FormatoNomina
+      	,FtpNotificacion
+		from Producto 
+		where IdCodConv= #IdCodConv# 
+	</select>
+	
+	<select id="consultaProductosByConvenioAndCargaManual" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+
+		select 
+			p.CodProd
+		      	,p.IdCodConv
+		      	,p.DescProd
+		      	,p.CargManual
+		      	,p.FrecEnvio
+		      	,p.FrecRecu
+		      	,p.FtpServidor
+		      	,p.FtpCarpeta
+		      	,p.FtpUsuario
+		      	,p.FtpClave
+		      	,p.NombNomina
+		      	,p.URLNotific
+		      	,p.FechCreacion
+		      	,p.UsuCreacion
+		      	,p.FormatoNomina,
+		      	c.codBbanco
+		from Producto p, Convenio c 
+		where  
+		        p.IdCodConv = c.IdCodConv
+				and CargManual= #cargaManual#
+		
+		<isNotNull property="idConvenio">
+			and IdCodConv= #idConvenio#
+		</isNotNull>
+	</select>
+	
+	<select id="consultaEstadosActivos" resultMap="estado">
+		SELECT distinct e.idEstado, e.DescEstado 
+  		FROM EstadoNomina e join CargaManualCab c
+  		on e.idEstado= c.idestado
+  		order by 1
+	</select>
+	
+	<select id="consultaEstadosNomina" resultMap="estado">
+		SELECT * 
+  		FROM EstadoNomina 
+  		order by 1
+	</select>
+	
+	<select id="consultaEstadosPago" resultMap="estado">
+		SELECT * 
+  		FROM EstadoPago
+  		order by 1
+	</select>
+	
+	<select id="consultaBeneficios" resultMap="beneficio" >
+
+		SELECT 
+		CodBene
+      	,IdCodConv
+      	,CodProd
+      	,DescBene
+      	,GenrConTeso
+      	,Concepto
+      	,AreaNego
+      	,CAST (FechCreacion as datetime) as FechCreacion
+      	,UsuCreacion
+      	,CuentaSAPG
+  		FROM Beneficio
+  		order by idcodconv, codprod, descbene
+
+	</select>
+	
+	<select id="consultaBancosConvenio" resultClass="java.lang.String" >
+
+		SELECT distinct codBbanco as codigo
+  		FROM dbo.convenio
+  		order by 1
+
+	</select>
+	
+	<select id="consultaBeneficiosByParams" resultMap="beneficio" >
+
+		SELECT 
+		CodBene
+      	,IdCodConv
+      	,CodProd
+      	,DescBene
+      	,GenrConTeso
+      	,Concepto
+     	,AreaNego
+      	,CAST (FechCreacion as datetime) as FechCreacion
+      	,UsuCreacion
+      	,CuentaSAPG
+  		FROM Beneficio
+  		where idcodconv=#convenio#
+  		and codprod=#producto#
+  		order by descbene
+
+	</select>
+	
+	<select id="seguimientoNominas" parameterClass="java.util.HashMap" resultMap="cabeceraTEF">
+		select 
+		n.idCabecera
+      ,n.IdCodConv
+      ,n.CodProd
+      ,n.FechaEnvio
+      ,n.NombreNomina
+      ,n.CodigoNomina
+      ,n.Monto
+      ,n.Cantidad
+      ,n.EstadoNomina
+      ,n.TotalPagado
+      ,n.CantPagado
+      ,n.TotalRechazado
+      ,n.CantRechazado
+      ,n.TotalDevuelto
+      ,n.CantDevuelto
+      ,n.CodRechazoEnvio
+      ,n.GlosaRechazoEnvio
+      ,n.CodRechazoRendicion
+      ,n.GlosaRechazoRendicion
+      ,n.FechaRendicion
+      ,n.Plano
+      ,n.FechaCreacion
+      ,c.CodBbanco
+      	FROM NominaTefCab n join Convenio c
+      	on n.idcodconv= c.idcodconv
+      	<isNotNull property="rutAfiliado">
+			join NominaTefDet d
+      		on n.idcabecera= d.idcabecera
+		</isNotNull>
+		<isNotNull property="nombreAfiliado">
+			join NominaTefDet d
+      		on n.idcabecera= d.idcabecera
+		</isNotNull>
+		<isNotNull property="idUsuario">
+			join Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+      	where 1=1
+      	<isNotNull property="estado1">
+			and n.EstadoNomina in (#estado1#, #estado2#)
+		</isNotNull>
+      	<isNotNull property="fechaCarga">
+			and CONVERT(varchar, n.FechaCreacion, 105) = #fechaCarga#
+		</isNotNull>
+		<isNotNull property="estadoNomina">
+			and n.EstadoNomina = #estadoNomina#
+		</isNotNull>
+      	<isNotNull property="codigoNomina">
+			and n.CodigoNomina = #codigoNomina#
+		</isNotNull>
+		<isNotNull property="producto">
+			and n.CodProd = #producto#
+		</isNotNull>
+		<isNotNull property="convenio">
+			and n.IdCodConv = #convenio#
+		</isNotNull>
+		<isNotNull property="banco">
+			and c.CodBbanco = #banco#
+		</isNotNull>
+		<isNotNull property="rutAfiliado">
+			and d.RutAfiliado = #rutAfiliado#
+		</isNotNull>
+		<isNotNull property="nombreAfiliado">
+			and d.Nombres like CONCAT('%', #nombreAfiliado#, '%')
+		</isNotNull>
+		<isNotNull property="idUsuario">
+			and idUsuario = #idUsuario#
+		</isNotNull>
+		order by n.FechaCreacion desc
+	</select>
+	
+	<select id="findNominasRendicion" parameterClass="java.util.HashMap" resultMap="cabeceraTEF">
+		select 
+		idCabecera
+      ,n.IdCodConv
+      ,n.CodProd
+      ,n.FechaEnvio
+      ,n.NombreNomina
+      ,n.CodigoNomina
+      ,n.Monto
+      ,n.Cantidad
+      ,n.EstadoNomina
+      ,n.TotalPagado
+      ,n.CantPagado
+      ,n.TotalRechazado
+      ,n.CantRechazado
+      ,n.TotalDevuelto
+      ,n.CantDevuelto
+      ,n.CodRechazoEnvio
+      ,n.GlosaRechazoEnvio
+      ,n.CodRechazoRendicion
+      ,n.GlosaRechazoRendicion
+      ,n.FechaRendicion
+      ,n.Plano
+      ,n.FechaCreacion
+      ,c.CodBbanco
+      	FROM NominaTefCab n join Convenio c
+      		on n.idcodconv= c.idcodconv
+      	<isNotNull property="idUsuario">
+			join Usuario u
+  			on n.IdCodConv=u.IdCodConv
+		</isNotNull>
+      	where c.codBbanco='BES'
+      	<isNotNull property="convenios">
+      		and  c.idcodconv in
+      		<iterate property= "convenios" conjunction= ", " open= "(" close= ")" >
+				#convenios[]#
+			</iterate>
+		</isNotNull>
+      	<isNotNull property="estadoNomina">
+			and (n.EstadoNomina = #estadoNomina# or n.EstadoNomina = #estadoNomina2#)
+		</isNotNull>
+      	<isNotNull property="codigoNomina">
+			and n.CodigoNomina = #codigoNomina#
+		</isNotNull>
+		<isNotNull property="idUsuario">
+			and idUsuario = #idUsuario#
+		</isNotNull>
+      	order by n.idCabecera
+	</select>
+	
+	<select id="findNominaByIdCodigo" resultMap="cabeceraTEF">
+		select
+		idCabecera
+      ,n.IdCodConv
+      ,n.CodProd
+      ,FechaEnvio
+      ,NombreNomina
+      ,CodigoNomina
+      ,Monto
+      ,Cantidad
+      ,EstadoNomina
+      ,TotalPagado
+      ,CantPagado
+      ,TotalRechazado
+      ,CantRechazado
+      ,TotalDevuelto
+      ,CantDevuelto
+      ,CodRechazoEnvio
+      ,GlosaRechazoEnvio
+      ,CodRechazoRendicion
+      ,GlosaRechazoRendicion
+      ,FechaRendicion
+      ,Plano
+      ,FechaCreacion
+      ,c.CodBbanco
+		 FROM NominaTefCab n join Convenio c
+      	on n.idcodconv= c.idcodconv
+		where 1=1
+		<isNotNull property="codigoNomina">
+			and CodigoNomina = #codigoNomina#
+		</isNotNull>
+		<isNotNull property="idCabecera">
+			and idCabecera= #idCabecera#
+		</isNotNull>
+	</select>
+	
+	<select id="seguimientoAfiliado" parameterClass="java.util.HashMap" resultMap="detalleTEF">
+		select  
+		idDetalle
+      ,d.idCabecera
+      ,CodBene
+      ,DescPago
+      ,RutAfiliado
+      ,dvAfiliado
+      ,Nombres
+      ,CodBanco
+      ,DescBanco
+      ,Cuenta
+      ,TipoCuenta
+      ,Correo
+      ,CodFormaPago
+      ,DescFormapago
+      ,d.Monto
+      ,EstadoPago
+      ,DescEstadoPago
+      ,DescRechazo
+      ,Referencia1
+      ,Referencia2
+      ,FechaCambio
+      ,idReferencia
+		from NominaTefDet d
+		<isNotNull property="idUsuario">
+			join NominaTefCab c
+				on c.idCabecera= d.IdCabecera
+			join Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+		where 1=1
+		<isNotNull property="estadoPago">
+			and EstadoPago = #estadoPago#
+		</isNotNull>
+		<isNotNull property="rutAfiliado">
+			and RutAfiliado = #rutAfiliado#
+		</isNotNull>
+		<isNotNull property="nombreAfiliado">
+			and d.Nombres like CONCAT('%', #nombreAfiliado#, '%')
+		</isNotNull>
+		<isNotNull property="idUsuario">
+			and idUsuario = #idUsuario#
+		</isNotNull>
+		order by FechaCambio
+	</select>
+	
+	<select id="detallesByIdCabecera" resultMap="detalleTEF">
+		select  
+		idDetalle
+      ,idCabecera
+      ,CodBene
+      ,DescPago
+      ,RutAfiliado
+      ,dvAfiliado
+      ,Nombres
+      ,CodBanco
+      ,DescBanco
+      ,Cuenta
+      ,TipoCuenta
+      ,Correo
+      ,CodFormaPago
+      ,DescFormapago
+      ,Monto
+      ,EstadoPago
+      ,DescEstadoPago
+      ,DescRechazo
+      ,Referencia1
+      ,Referencia2
+      ,FechaCambio
+      ,idReferencia
+		from NominaTefDet
+		where idCabecera= #idCabecera#
+		order by RutAfiliado
+	</select>
+	
+	<select id="detalleByIdDetalle" resultMap="detalleTEF">
+		select  
+		idDetalle
+      ,idCabecera
+      ,CodBene
+      ,DescPago
+      ,RutAfiliado
+      ,dvAfiliado
+      ,Nombres
+      ,CodBanco
+      ,DescBanco
+      ,Cuenta
+      ,TipoCuenta
+      ,Correo
+      ,CodFormaPago
+      ,DescFormapago
+      ,Monto
+      ,EstadoPago
+      ,DescEstadoPago
+      ,DescRechazo
+      ,Referencia1
+      ,Referencia2
+      ,FechaCambio
+      ,idReferencia
+		from NominaTefDet
+		where idDetalle= #idDetalle#
+	</select>
+	
+	<select id="detallesByEstado" resultMap="detalleTEF">
+		select  
+		idDetalle
+      ,idCabecera
+      ,CodBene
+      ,DescPago
+      ,RutAfiliado
+      ,dvAfiliado
+      ,Nombres
+      ,CodBanco
+      ,DescBanco
+      ,Cuenta
+      ,TipoCuenta
+      ,Correo
+      ,CodFormaPago
+      ,DescFormapago
+      ,Monto
+      ,EstadoPago
+      ,DescEstadoPago
+      ,DescRechazo
+      ,Referencia1
+      ,Referencia2
+      ,FechaCambio
+      ,idReferencia
+		from NominaTefDet
+		where idCabecera= #idCabecera#
+		and EstadoPago= #estado#
+		order by RutAfiliado
+	</select>
+	
+	<select id="detalleByRut" resultMap="detalleTEF">
+		select  
+		idDetalle
+      ,idCabecera
+      ,CodBene
+      ,DescPago
+      ,RutAfiliado
+      ,dvAfiliado
+      ,Nombres
+      ,CodBanco
+      ,DescBanco
+      ,Cuenta
+      ,TipoCuenta
+      ,Correo
+      ,CodFormaPago
+      ,DescFormapago
+      ,Monto
+      ,EstadoPago
+      ,DescEstadoPago
+      ,DescRechazo
+      ,Referencia1
+      ,Referencia2
+      ,FechaCambio
+      ,idReferencia
+		from NominaTefDet
+		where RutAfiliado=#rutAfiliado#
+		<isNotNull property="idCabecera">
+			and idCabecera= #idCabecera#
+		</isNotNull>
+		<isNotNull property="codigoNomina">
+			and CodigoNomina= #codigoNomina#
+		</isNotNull>
+		<isNotNull property="referencia1">
+			and CAST(Referencia1 AS NUMERIC) = CAST(#referencia1# AS NUMERIC)
+		</isNotNull>
+		<isNotNull property="referencia2">
+			and CAST(Referencia2 AS NUMERIC) = CAST(#referencia2# AS NUMERIC)
+		</isNotNull>
+		<isNotNull property="monto">
+			and Monto = #monto#
+		</isNotNull>
+	</select>
+	
+	
+	<select id="findManualByParams" parameterClass="cl.laaraucana.rendicionpagonomina.vo.NominaManualVo" resultMap="cabeceraManual">
+		select 
+		IdCabecera
+		,FechaCarga
+      	,c.IdCodConv
+      	,CodProd
+      	,TotReg
+      	,TotMonto
+      	,IdEstado
+      	,TotRegPend
+      	,TotMonPend
+      	,FechaPago
+      	,FechaCreacion
+      	,UsrCreacion
+		from CargaManualCab c
+		<isNotNull property="idUsuario">
+			join Usuario u
+  			on c.IdCodConv=u.IdCodConv
+		</isNotNull>
+		where 1 = 1 
+		
+		<isNotEmpty property="estado">
+			and idestado = #estado#
+		</isNotEmpty>
+		
+		<isNotEmpty property="convenio">
+			and c.idcodconv = #convenio#
+		</isNotEmpty>
+		
+		<isNotEmpty property="producto">
+			and codprod = #producto#
+		</isNotEmpty>
+		
+		<isNotEmpty property="fechaCarga">
+			and CONVERT(DATE, fechaCarga) = #fechaCarga#
+		</isNotEmpty>
+		
+		<isNotNull property="idUsuario">
+			and idUsuario = #idUsuario#
+		</isNotNull>
+		order by  fechaCarga
+		
+	</select>	
+	<select id="findManualByIdCabecera" resultMap="cabeceraManual">
+		select
+		IdCabecera
+		,FechaCarga
+      	,IdCodConv
+      	,CodProd
+      	,TotReg
+      	,TotMonto
+      	,IdEstado
+      	,TotRegPend
+      	,TotMonPend
+      	,FechaPago
+      	,FechaCreacion
+      	,UsrCreacion 
+		 from CargaManualCab
+		where idCabecera= #idCabecera#
+	</select>
+	
+	<select id="detallesManualByIdCabecera" resultMap="detalleManual">
+		select 
+		IdDetalle
+       ,IdCabecera
+       ,rutAfi
+       ,dvAfi
+       ,NomAfi
+       ,DesPago
+       ,MontoPago
+       ,IdEstado
+       ,BancoAfi
+       ,NUMCUENTA
+       ,ID_TIPCTA
+       ,Correo
+       ,DesRechBan
+       ,FechaTrans
+       ,NomNomina
+       ,FolNomiBan
+       ,CodBene
+       ,Referencia1
+       ,Referencia2
+		 from CargaManualDet
+		where idCabecera= #idCabecera#
+	</select>
+	
+	<select id="detalleManualByIdDetalle" resultMap="detalleManual">
+		select  
+		IdDetalle
+       ,IdCabecera
+       ,rutAfi
+       ,dvAfi
+       ,NomAfi
+       ,DesPago
+       ,MontoPago
+       ,IdEstado
+       ,BancoAfi
+       ,NUMCUENTA
+       ,ID_TIPCTA
+       ,Correo
+       ,DesRechBan
+       ,FechaTrans
+       ,NomNomina
+       ,FolNomiBan
+       ,CodBene
+       ,Referencia1
+       ,Referencia2
+		from CargaManualDet
+		where idDetalle= #idDetalle#
+	</select>
+	
+	<select id="idCabeceraManualByIdDetalle" resultClass="java.lang.Long">
+		select IdCabecera
+		from CargaManualDet
+		where idDetalle= #idDetalle#
+	</select>
+	
+	<select id="detalleManualByRut" resultMap="detalleManual">
+		select  
+		IdDetalle
+       ,IdCabecera
+       ,rutAfi
+       ,dvAfi
+       ,NomAfi
+       ,DesPago
+       ,MontoPago
+       ,IdEstado
+       ,BancoAfi
+       ,NUMCUENTA
+       ,ID_TIPCTA
+       ,Correo
+       ,DesRechBan
+       ,FechaTrans
+       ,NomNomina
+       ,FolNomiBan
+       ,CodBene
+       ,Referencia1
+       ,Referencia2
+		from CargaManualDet
+		where idCabecera= #idCabecera#
+		and rutAfi=#rutAfiliado#
+	</select>
+	
+	<select id="archivosxconvenio" resultMap="archivo">
+	
+		 select distinct
+		 	substring(c.codprod, 1, 6) as archivo,
+  			cv.codBbanco idBanco, c.idcodconv idConvenio, c.codprod idProducto, cv.plantilla, cv.idConvBan
+  		from dbo.CargaManualDet d join dbo.CargaManualCab c
+  			on d.idCabecera= c.idCabecera
+  		join dbo.Producto p
+  			on c.idcodconv= p.idcodconv
+  			and c.codprod= p.codprod
+ 		join dbo.Convenio cv
+  			on c.idcodconv= cv.idcodconv
+ 		where d.idEstado=2
+  		and numcuenta is null
+	</select>
+	
+	<select id="detallesxconvenio_producto" parameterClass="java.util.Map" resultMap="detalleManual">
+		select 
+		d.IdDetalle
+       ,d.IdCabecera
+       ,d.rutAfi
+       ,d.dvAfi
+       ,d.NomAfi
+       ,d.DesPago
+       ,d.MontoPago
+       ,d.IdEstado
+       ,d.BancoAfi
+       ,d.NUMCUENTA
+       ,d.ID_TIPCTA
+       ,d.Correo
+       ,d.DesRechBan
+       ,d.FechaTrans
+       ,d.NomNomina
+       ,d.FolNomiBan
+       ,d.CodBene
+       ,d.Referencia1
+       ,d.Referencia2
+  		from dbo.CargaManualDet d join dbo.CargaManualCab c
+  			on d.idCabecera= c.idCabecera
+  		join dbo.Producto p
+  			on c.idcodconv= p.idcodconv
+  			and c.codprod= p.codprod
+ 		join dbo.Convenio cv
+  			on c.idcodconv= cv.idcodconv
+ 		where d.idEstado in (2, 4)
+  		and c.idcodconv=#convenio#
+  		and c.codprod=#producto#
+	</select>
+	
+	<select id="validaCRC" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+		select max(idCabecera)
+		from dbo.NominaTefCab
+		where idCodConv= #convenio#
+		and crc= #crc# 
+		
+	</select>
+	
+	<update id="updatePendientes"  parameterClass="paramEntity">
+		update dbo.CargaManualDet
+		set idEstado=3
+		where idEstado=2
+		and numcuenta is not null
+		and IdCabecera in (select idCabecera from dbo.CargaManualCab c 
+							where c.idCabecera= dbo.CargaManualDet.idCabecera 
+				 			and c.idcodconv=#idConvenio# and c.codprod=#idProducto#
+				 		) 
+	</update>
+	
+	<update id="updateMontoPendiente">
+				update dbo.CargaManualCab
+		set TotMonPend= (select coalesce(sum(montopago), 0) from dbo.CargaManualDet d
+							where d.idCabecera=  dbo.CargaManualCab.idCabecera
+							and idEstado=2),
+			TotRegPend= (select count(1) from dbo.CargaManualDet d
+							where d.idCabecera=  dbo.CargaManualCab.idCabecera
+							and idEstado=2)
+		where idCabecera= #idCabecera#
+	</update>
+	
+	<update id="updateDetalleManual" parameterClass="detalleManual">
+		update dbo.CargaManualDet
+		set bancoafi=#bancoAfiliado# , numcuenta=#numeroCuenta#, id_tipcta=#tipoCuenta#
+		where idDetalle= #idDetalle#
+	</update>
+	
+	<update id="updateEstadoDetalleManual" parameterClass="java.util.HashMap">
+		update dbo.CargaManualDet
+		set IdEstado=#estado# , FechaTrans= #fechatrans#
+		where idDetalle= #idDetalle#
+	</update>
+	
+	<update id="rollbackTransferencia"  parameterClass="paramEntity">
+		update dbo.CargaManualDet
+		set numcuenta = null
+		where idEstado=2
+		and IdCabecera in (select idCabecera from dbo.CargaManualCab c 
+							where c.idCabecera= dbo.CargaManualDet.idCabecera 
+				 			and c.idcodconv=#idConvenio# and c.codprod=#idProducto#
+				 		) 
+	</update>
+	
+	<update id="updateCabeceraTEF" parameterClass="cabeceraTEF">
+		update dbo.NominaTefCab
+		set Monto= #monto#
+		,Cantidad= #cantidad#
+		,TotalPagado= #totalPagado#
+		,CantPagado= #cantidadPagado#
+		,TotalRechazado= #totalRechazado#
+		,CantRechazado= #cantidadRechazado#
+		,TotalDevuelto= #totalDevuelto#
+		,CantDevuelto= #cantidadDevuelto#
+		,CodRechazoRendicion= #codigoRechazoRendicion#
+		,GlosaRechazoRendicion= #glosaRechazoRendicion#
+		,EstadoNomina= #estadoNomina#
+		,FechaRendicion= getDate()
+		,crc= #crc#
+		where CodigoNomina= #codigoNomina#
+	
+	</update>
+	
+	<delete id="deleteCabeceraByCodigoNomina">
+		delete from dbo.NominaTefCab
+		where CodigoNomina=#codigo#
+	</delete>
+	
+	<delete id="deleteDetalleByCodigoNomina">
+		delete from dbo.NominaTefDet
+   		where idCabecera in 
+   		(select idCabecera from NominaTefCab where codigoNomina=#codigo#)
+	</delete>
+	
+	<select id="getBancos"  resultMap="banco">
+		select Codigo, Nombre, DescBanEstado, DescBanBCI from dbo.BanEquivalencia
+	</select>
+	
+	<select id="getFormasPago"  resultClass="java.util.HashMap">
+		select concat('BCI_',idformaPago) id, DescForpago valor from dbo.BCI_FormaPago
+		union
+		select concat('BES_',codigoCuentaBanco) id, descripcion valor from dbo.BES_Formapago
+	</select>
+	
+	<select id="getDescripcionRechazo"  resultClass="java.util.HashMap">
+		select idEstaRec id, DescRec valor from dbo.BCIRechazoPNOL
+	</select>
+	
+	<select id="consultaRechazoBCI_PNOL"  resultClass="java.util.HashMap">
+		SELECT AnulaMandato, DescRec as DescripcionRechazo  FROM dbo.BCIRechazoPNOL where idEstaRec = #codigo#
+	</select>
+	
+	<select id="consultaRechazoBCI_24HRS"  resultClass="java.util.HashMap">
+		SELECT AnulaMandato, DescRec as DescripcionRechazo  FROM dbo.BCI_Rechazo24H where idEstaRec = #codigo#
+	</select>
+	
+	<select id="consultaRechazoBES"  resultClass="java.util.HashMap">
+		SELECT AnulaMandato, DescCliente as DescripcionRechazo FROM dbo.BESRechazo where TipoRechazo = #codigo#
+	</select>
+	
+	
+	<select id="getIdCabeceraPorDetalle" resultClass="java.lang.Long" parameterClass="java.util.HashMap">
+	
+		select max(idCabecera) ID_CABECERA 
+		from dbo.NominaTefDet
+		 	where
+	   		RutAfiliado = #rutAfiliado#
+	   		and CAST ( Referencia1 AS NUMERIC ) = CAST ( #referencia1# AS NUMERIC )
+	</select>
+	
+	<select id="getIdCabeceraPorNombreArchivo" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+	
+		select idCabecera ID_CABECERA , IdCodConv ID_COD_CONV, EstadoNomina ESTADO_NOMINA, CodProd CODIGO_PRODUCTO from dbo.NominaTefCab where nombreNomina like CONCAT(#value#, '%') 
+	
+	</select>
+	
+	<select id="getSumTotalesDetallePorEstado" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	
+		select coalesce(sum(Monto),0) MONTO, count(1) REGISTROS from dbo.NominaTefDet where idCabecera = #ID_CABECERA# and EstadoPago=#ESTADO_PAGO#
+	
+	</select>
+	
+	<select id="getSumTotalesPagadosDetalleManual" parameterClass="java.lang.Integer" resultClass="java.util.HashMap">
+	
+		select coalesce(sum(MontoPago),0) MONTO, count(1) REGISTROS from dbo.CargaManualDet where idCabecera = #ID_CABECERA# and IdEstado=1
+	
+	</select>
+	
+	<select id="getSumTotalesPendientesDetalleManual" parameterClass="java.lang.Integer" resultClass="java.util.HashMap">
+	
+		select coalesce(sum(MontoPago),0) MONTO, count(1) REGISTROS from dbo.CargaManualDet where idCabecera = #ID_CABECERA# and IdEstado not in (1, 5)
+	
+	</select>
+	
+	
+	<select id="getCantidadRegistroEnEstadoPago3" parameterClass="java.lang.Long" resultClass="java.lang.Integer">
+	
+		select count(1) cantidad from dbo.NominaTefDet where idCabecera = #value# and EstadoPago=3
+	</select>
+	
+	<select id="getCantidadRegistroManualEnEstadoPago3" parameterClass="java.lang.Long" resultClass="java.lang.Integer">
+	
+		select count(1) cantidad from dbo.CargaManualDet where idCabecera = #value# and IdEstado not in (1, 5)
+	</select>
+	
+	<update id="updateCabeceraTEFRendicionTotales" parameterClass="cl.laaraucana.rendicionpagonomina.entities.CabeceraEntity">
+		update dbo.NominaTefCab
+		set 
+			EstadoNomina = #estadoNomina#,
+			TotalPagado = #totalPagado#,
+			CantPagado = #cantidadPagado#,
+			TotalRechazado = #totalRechazado#,
+			CantRechazado = #cantidadRechazado#,
+			TotalDevuelto = #totalDevuelto#,
+			CantDevuelto = #cantidadDevuelto#,
+			CodigoNomina = #codigoNomina#,
+			FechaRendicion= CURRENT_TIMESTAMP
+	
+		where idCabecera = #idCabecera#
+		
+	</update>
+	
+	<update id="updateCabeceraManualTEFRendicionTotales" parameterClass="cl.laaraucana.rendicionpagonomina.entities.CabeceraManualEntity">
+		update dbo.CargaManualCab
+		set 
+			IdEstado = #estado#,
+			TotMonPend = #montoPendiente#,
+			TotRegPend = #totalPendientes#,
+			FechaPago= CURRENT_TIMESTAMP
+	
+		where idCabecera = #idCabecera#
+		
+	</update>
+	
+	<update id="updateDetallePendientedePago" parameterClass="java.util.HashMap">
+		update dbo.NominaTefDet
+		set EstadoPago=3, CodigoNomina=#codigoNomina#
+   		where idCabecera =  #idCabecera#	
+	</update>
+	
+	<update id="rollbackCabeceraTEF" >
+		update dbo.NominaTefCab
+		set EstadoNomina=2 , crc= null
+		where CodigoNomina= #codigoNomina#
+	</update>
+	
+	<select id="consultaBecadosBES" resultMap="becados">
+		select IDPAGO, IDCODCONV, CODPROD, RUTAFILIADO, DVAFILIADO, NOMBRES, CODBENE, DESCPAGO, 
+			MONTO, ESTADOPAGO, FORMAPAGO, 
+			REFERENCIA1, REFERENCIA2, FECHACARGA, FECHAENVIO, ISNULL (DATEDIFF(DAY, FechaEnvio, getDate()), 0) as DIAS_ENVIO
+		from FORMWEB.dbo.TEFBENEFICIO
+		where estadopago in (2, 4)
+        and IDCODCONV=12
+		
+	</select>
+	
+	<update id="updateBecadoById" parameterClass="java.util.HashMap">
+		update FORMWEB.dbo.TEFBENEFICIO
+		set estadopago=#estado#,
+		formapago=#formapago#,
+		folionomban= #idCabecera#,
+		codbanco= #codbanco#,
+		cuenta= #cuenta#,
+		tipocuenta= #tipocuenta#,
+		fechaenvio= getDate(),
+		fechachange= getDate()
+		where IDPAGO= #idpago#
+	</update>
+	
+	<update id="updateBecadosByIdCab" parameterClass="java.util.HashMap">
+		update FORMWEB.dbo.TEFBENEFICIO
+		set nomnomina=#nomnomina#
+		where folionomban= #idCabecera#
+	</update>
+	
+	<update id="rollbackBecados" parameterClass="java.lang.Integer">
+		update FORMWEB.dbo.TEFBENEFICIO
+		set estadopago=2
+		where folionomban=#idCabecera#
+	</update>
+	
+	<update id="updateBecadoRendicion" parameterClass="java.util.HashMap">
+		update FORMWEB.dbo.TEFBENEFICIO
+		set estadopago=#estado#
+		<isNotNull property="fechapago">
+			, fechapago= #fechapago#
+		</isNotNull>
+		<isNotNull property="codrechazo">
+			, codigorechazo=#codrechazo#
+			, desctrechazo=#desrechazo#
+		</isNotNull>
+		where IDPAGO= #idpago#
+	</update>
+	
+</sqlMap>
