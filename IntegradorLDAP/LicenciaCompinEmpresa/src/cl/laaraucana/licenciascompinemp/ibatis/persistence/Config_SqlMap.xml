@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="mandato">
+
+<resultMap id="data_viaingreso" class="cl.laaraucana.licenciascompinemp.ibatis.vo.ViewLicenciasPendientes">
+	<result column="TipoLiaCRM"   property="tipoLicCRM" />
+	<result column="AFIRUT"   property="rut" />
+	<result column="AFIRUTDV"   property="dvAfi" />	
+	<result column="NRO_LICENCIA"   property="folioLicencia" />
+	<result column="DIAS"   property="diasLicencia" />
+	<result column="LICDESFEC"   property="fechaInicio" />
+	<result column="LICHASFEC"   property="fechaTermino" />	
+	<result column="FOLIO_INTERNO"   property="folioInterno" />	
+	<result column="tipoLicencia"   property="tipoLicencia" />
+	<result column="glosa"   property="observacion" />
+	<result column="EMPRUT"   property="rutemp" />
+	<result column="EMPRUTDV"   property="rutempdv" />
+	
+	
+</resultMap>
+
+<select id="countMandato" resultClass="java.lang.Integer">
+	select count(1) 
+	from  SPLDTA.MANDATO
+	where RUTAFI=#rut#
+</select>
+
+<select id="licenciasPendientes" parameterClass="java.lang.Integer" resultMap="data_viaingreso">
+	<![CDATA[   
+select
+	'01' as TipoLiaCRM,
+ 	a.AFIRUT,
+ 	a.AFIRUTDV,
+ 	c.NUMIMPRE || '' NRO_LICENCIA,
+ 	a.LICDIAS DIAS,	
+ 	(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC, 
+ 	(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC,
+ 	(case WHEN a.afisubtip in (3,4) then 'Maternal' ELSE 'Curativa' END) tipoLicencia,
+ 	coalesce(d.glosa, '') as glosa, 
+ 	a.LICIMPNUM FOLIO_INTERNO,
+ 	c.NUMIMPRE, 
+ 	a.licest,
+	a.emprut,
+  	a.emprutdv
+
+from liexp.ILF1000 a
+join liexp.ILF1010 c on a.LICIMPNUM= c.LICIMPNUM and a.AFIRUT= c.AFIRUT
+left join liexp.ilf1200 d on a.LICIMPNUM= d.LICIMPNUM and a.AFIRUT= d.AFIRUT
+
+WHERE
+	a.AFIRUT = #rut# and  
+	a.LICIMPNUM <> 0 and 
+	a.licest = 2 and 
+	a.LICOBS1 = '91' and 
+	not exists (SELECT * FROM LIEXP.ilfe002R r WHERE a.AFIRUT = r.AFIRUT and a.LICIMPNUM = r.numimprela)
+	
+UNION
+
+select
+	(case WHEN max(tipo.ADSCRITO ) = 1 then '03' else '02' end) as TipoLiaCRM,
+	max(a.AFIRUT) AFIRUT,
+	max(a.AFIRUTDV) AFIRUTDV,
+	((case WHEN min(r.IDEOPE) = 2 then 3 ELSE 4 END) || '-'||
+        min(r.NUMIMPRE) ||'-' || MIN(r.DIVLICEN)) as NRO_LICENCIA,
+    MAX(a.LICDIAS) DIAS,
+	MAX(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC , 
+     MAX(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC ,
+	(case WHEN a.afisubtip in (3,4) then 'Maternal' ELSE 'Curativa' END) tipoLicencia,
+	coalesce(max(d.glosa), '') as glosa, 
+	a.LICIMPNUM FOLIO_INTERNO,
+	max(r.NUMIMPRE) NUMIMPRE,
+	a.licest,
+	a.emprut,
+  	a.emprutdv                       
+
+from liexp.ILF1000 a , LIEXP.ilfe002R r, LIEXP.ilfe008R tipo
+left join liexp.ilf1200 d on a.LICIMPNUM= d.LICIMPNUM and a.AFIRUT= d.AFIRUT
+
+WHERE
+	a.AFIRUT =  #rut# and 
+	a.licest = 2 and 
+	a.LICOBS1 = '91'and 
+	a.AFIRUT = r.AFIRUT and 
+	a.LICIMPNUM = r.numimprela
+	and r.NUMIMPRE = tipo.NUMIMPRE
+   	and r.IDEOPE = tipo.IDEOPE  
+   	and r.AFIRUT = tipo.AFIRUT 
+	group by  a.AFIRUT, a.LICIMPNUM, a.afisubtip, a.licest, a.emprut, a.emprutdv
+	WITH UR
+]]>
+	
+</select>
+
+
+<select id="licenciasPendientesEmpresa" parameterClass="java.lang.Integer" resultMap="data_viaingreso">
+	<![CDATA[   
+select
+	'01' as TipoLiaCRM,
+ 	a.AFIRUT,
+ 	a.AFIRUTDV,
+ 	c.NUMIMPRE || '' NRO_LICENCIA,
+ 	a.LICDIAS DIAS,	
+ 	(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC, 
+ 	(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC,
+ 	(case WHEN a.afisubtip in (3,4) then 'Maternal' ELSE 'Curativa' END) tipoLicencia,
+ 	coalesce(d.glosa, '') as glosa, 
+ 	a.LICIMPNUM FOLIO_INTERNO,
+ 	c.NUMIMPRE, 
+ 	a.licest,
+	a.emprut,
+  	a.emprutdv
+
+from liexp.ILF1000 a
+join liexp.ILF1010 c on a.LICIMPNUM= c.LICIMPNUM and a.AFIRUT= c.AFIRUT
+left join liexp.ilf1200 d on a.LICIMPNUM= d.LICIMPNUM and a.AFIRUT= d.AFIRUT
+
+WHERE
+	a.EMPRUT = #rutemp# and  
+	a.LICIMPNUM <> 0 and 
+	a.licest = 2 and 
+	a.LICOBS1 = '91' and 
+	not exists (SELECT * FROM LIEXP.ilfe002R r WHERE a.AFIRUT = r.AFIRUT and a.LICIMPNUM = r.numimprela)
+	
+UNION
+
+select
+	(case WHEN max(tipo.ADSCRITO ) = 1 then '03' else '02' end) as TipoLiaCRM,
+	max(a.AFIRUT) AFIRUT,
+	max(a.AFIRUTDV) AFIRUTDV,
+	((case WHEN min(r.IDEOPE) = 2 then 3 ELSE 4 END) || '-'||
+        min(r.NUMIMPRE) ||'-' || MIN(r.DIVLICEN)) as NRO_LICENCIA,
+    MAX(a.LICDIAS) DIAS,
+	MAX(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC , 
+     MAX(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC ,
+	(case WHEN a.afisubtip in (3,4) then 'Maternal' ELSE 'Curativa' END) tipoLicencia,
+	coalesce(max(d.glosa), '') as glosa, 
+	a.LICIMPNUM FOLIO_INTERNO,
+	max(r.NUMIMPRE) NUMIMPRE,
+	a.licest,
+	a.emprut,
+  	a.emprutdv                       
+
+from liexp.ILF1000 a , LIEXP.ilfe002R r, LIEXP.ilfe008R tipo
+left join liexp.ilf1200 d on a.LICIMPNUM= d.LICIMPNUM and a.AFIRUT= d.AFIRUT
+
+WHERE
+	a.EMPRUT = #rutemp# and
+	a.licest = 2 and 
+	a.LICOBS1 = '91'and 
+	a.AFIRUT = r.AFIRUT and 
+	a.LICIMPNUM = r.numimprela
+	and r.NUMIMPRE = tipo.NUMIMPRE
+   	and r.IDEOPE = tipo.IDEOPE  
+   	and r.AFIRUT = tipo.AFIRUT 
+	group by  a.AFIRUT, a.LICIMPNUM, a.afisubtip, a.licest, a.emprut, a.emprutdv
+	WITH UR
+]]>
+	
+</select>
+ 
+</sqlMap> 

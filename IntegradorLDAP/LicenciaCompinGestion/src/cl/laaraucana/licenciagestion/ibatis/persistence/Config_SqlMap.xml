@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="licencia">
+
+<resultMap id="data_periodos" class="cl.laaraucana.licenciagestion.vo.LicenciasPeriodoVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="CANTIDAD"   property="cantidad" />
+</resultMap>
+
+<resultMap id="data_oficinas" class="cl.laaraucana.licenciagestion.vo.OficinasLicenciasVO">
+	<result column="PERCENTIL"   property="percentil" />
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="RANGO"   property="rango" />
+	<result column="CANTIDAD"   property="cantidad" />
+</resultMap>
+
+<resultMap id="data_viaingreso" class="cl.laaraucana.licenciagestion.vo.LicenciasViaIngresoVO">
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="VIA_INGRESO"   property="viaIngreso" />
+	<result column="CANTIDAD"   property="cantidad" />
+</resultMap>
+
+<select id="maxRangoLicencias" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	select max(A.cantidad) cantidad from (
+		select sucursal, count(1) cantidad from registroLicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal 
+	) as A
+</select>
+
+<select id="licenciasxMes" resultMap="data_periodos">
+	select CONCAT(year(fecha) , RIGHT(CONCAT('0', month(fecha)), 2)) PERIODO, count(1) CANTIDAD
+from registrolicencias
+group by CONCAT(year(fecha) , RIGHT(CONCAT('0', month(fecha)), 2))
+order by 1
+</select>
+
+<select id="oficinasxRango" parameterClass="java.util.HashMap" resultMap="data_oficinas">
+
+	select 10 as PERCENTIL, SUCURSAL, CONCAT('0', '-', $rango1$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=0 and count(1) &lt; #rango1#  
+	UNION
+	select 20 as PERCENTIL, SUCURSAL, CONCAT($rango1$, '-' , $rango2$)  RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango1# and count(1) &lt; #rango2#
+	UNION
+	select 30 as PERCENTIL, SUCURSAL, CONCAT($rango2$, '-' , $rango3$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango2# and count(1) &lt; #rango3#
+	UNION
+	select 40 as PERCENTIL, SUCURSAL, CONCAT($rango3$, '-' , $rango4$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango3# and count(1) &lt; #rango4#
+	UNION
+	select 50 as PERCENTIL, SUCURSAL, CONCAT($rango4$, '-' , $rango5$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango4# and count(1) &lt; #rango5#
+	UNION
+	select 60 as PERCENTIL, SUCURSAL, CONCAT($rango5$, '-' , $rango6$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango5# and count(1) &lt; #rango6#
+	UNION
+	select 70 as PERCENTIL, SUCURSAL, CONCAT($rango6$, '-' , $rango7$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango6# and count(1) &lt; #rango7#
+	UNION
+	select 80 as PERCENTIL, SUCURSAL, CONCAT($rango7$, '-' , $rango8$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango7# and count(1) &lt; #rango8#
+	UNION
+	select 90 as PERCENTIL, SUCURSAL, CONCAT($rango8$, '-' , $rango9$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango8# and count(1) &lt; #rango9#
+		UNION
+	select 100 as PERCENTIL, SUCURSAL, CONCAT($rango9$, '-' , $rango10$) RANGO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal
+		having count(1) &gt;=#rango9# and count(1) &lt; #rango10#
+		order by 1
+</select>
+
+<select id="licenciasxViaIngreso" parameterClass="java.util.HashMap" resultMap="data_viaingreso">
+	select sucursal SUCURSAL, viaIngreso VIA_INGRESO, count(1) CANTIDAD from registrolicencias
+		where year(fecha)= #year#
+		and month(fecha)= #month#
+		group by sucursal, viaIngreso
+		order by 1, 2
+</select>
+</sqlMap>
