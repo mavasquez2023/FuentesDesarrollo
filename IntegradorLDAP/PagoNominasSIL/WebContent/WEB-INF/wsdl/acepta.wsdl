@@ -1,0 +1,2054 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ca4xml" targetNamespace="http://acepta.com/soap/ca4xml" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://acepta.com/soap/ca4xml" xmlns:typens="http://acepta.com/soap/ca4xml" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://acepta.com/soap/ca4xml">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<simpleType name="DOCType">
+				<annotation>
+					<documentation>
+					Todos los tipos de Documentos Tributarios Electronicos
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							Factura Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							Factura Electronica de Venta de Bienes y Servicios No afectos o Exento de IVA
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="39">
+						<annotation>
+							<documentation>
+								Boleta Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="43"/>
+					<enumeration value="46">
+						<annotation>
+							<documentation>
+							Factura de Compra Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="52">
+						<annotation>
+							<documentation>
+							Guia de Despacho Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="56">
+						<annotation>
+							<documentation>
+							Nota de Debito Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="61">
+						<annotation>
+							<documentation>
+							Nota de Credito Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="110"/>
+					<enumeration value="111"/>
+					<enumeration value="112"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="DTEType">
+				<annotation>
+					<documentation>
+					Tipos de Documentos Tributarios Electronicos
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							Factura Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							Factura Electronica de Venta de Bienes y Servicios No afectos o Exento de IVA
+							</documentation>
+						</annotation>
+					</enumeration>		
+					<enumeration value="39">
+						<annotation>
+							<documentation>
+								Boleta Electrónica 
+							</documentation>
+						</annotation>
+					</enumeration>					
+					<enumeration value="46">
+						<annotation>
+							<documentation>
+							Factura de Compra Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="52">
+						<annotation>
+							<documentation>
+							Guia de Despacho Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="56">
+						<annotation>
+							<documentation>
+							Nota de Debito Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="61">
+						<annotation>
+							<documentation>
+							Nota de Credito Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType name="DTEFacturasType">
+				<annotation>
+					<documentation>
+					Tipos de Documentos Tributarios Electronicos
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							Factura Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							Factura Electronica de Venta de Bienes y Servicios No afectos o Exento de IVA
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="39">
+						<annotation>
+							<documentation>
+								Boleta Electrónica 
+							</documentation>
+						</annotation>
+					</enumeration>							
+					<enumeration value="46">
+						<annotation>
+							<documentation>
+							Factura de Compra Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="43">
+						<annotation>
+							<documentation>
+							Liquidacion actura Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType name="RUTType">
+				<annotation>
+					<documentation>
+					Rol Unico Tributario (99..99-X)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="10"/>
+					<minLength value="3"/>
+					<pattern value="[0-9]+-([0-9]|K)"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="MntImpType">
+				<annotation>
+					<documentation>
+					Monto de Impuesto - 18 digitos
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<totalDigits value="18"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="ValorType">
+				<annotation>
+					<documentation>
+					Monto de 18 digitos - Positivo o Negativo
+					</documentation>
+				</annotation>
+				<restriction base="xs:integer">
+					<totalDigits value="18"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="FolioType">
+				<annotation>
+					<documentation>
+					Folio de DTE - 10 digitos
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<totalDigits value="10"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="FolioRType">
+				<annotation>
+					<documentation>
+					Folio de Referencia - 18 digitos (incluye el cero)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="18"/>
+					<minLength value="1"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec16_2Type">
+				<annotation>
+					<documentation>
+					Monto con 16 Digitos de Cuerpo y 2 Decimales
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="18"/>
+					<fractionDigits value="2"/>
+					<minInclusive value="0.01"/>
+					<maxInclusive value="9999999999999999.99"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec14_4Type">
+				<annotation>
+					<documentation>
+					Monto con 14 Digitos de Cuerpo y 4 Decimales
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="18"/>
+					<fractionDigits value="4"/>
+					<minInclusive value="0.0001"/>
+					<maxInclusive value="99999999999999.9999"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec8_4Type">
+				<annotation>
+					<documentation>
+					Monto con 8 Digitos de Cuerpo y 4 Decimales
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="12"/>
+					<fractionDigits value="4"/>
+					<minInclusive value="0.0001"/>
+					<maxInclusive value="99999999.9999"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec6_4Type">
+				<annotation>
+					<documentation>
+					Monto con 6 Digitos de Cuerpo y 4 Decimales
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="10"/>
+					<fractionDigits value="4"/>
+					<minInclusive value="0.0001"/>
+					<maxInclusive value="999999.9999"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="PctType">
+				<annotation>
+					<documentation>
+					Monto de Porcentaje ( 3 y 2)
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="5"/>
+					<fractionDigits value="2"/>
+					<minInclusive value="0.01"/>
+					<maxInclusive value="999.99"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec12_6Type">
+				<annotation>
+					<documentation>
+					Monto con 12 Digitos de Cuerpo y 6 Decimales
+					</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="18"/>
+					<fractionDigits value="6"/>
+					<minInclusive value="0.000001"/>
+					<maxInclusive value="999999999999.999999"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="ImpAdicType">
+				<annotation>
+					<documentation>
+					Tipo de Impuesto o Retencion Adicional
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="3"/>
+					<enumeration value="14">
+						<annotation>
+							<documentation>
+							IVA Margen Comercializacion (Factura Venta del Contribuyente) [F29 - C039]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="15">
+						<annotation>
+							<documentation>
+							IVA Retenido Total (Factura Compra del Contribuyente) [F29 - C039]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="16">
+						<annotation>
+							<documentation>
+							IVA Retenido Parcial (Factura Compra del Contribuyente) [F29]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="17">
+						<annotation>
+							<documentation>
+							IVA Anticipado Faenamiento Carne [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="18">
+						<annotation>
+							<documentation>
+							IVA Anticipado Carne [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="19">
+						<annotation>
+							<documentation>
+							IVA Anticipado Harina [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="23">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 a) b) c)  Oro, Joyas, Pieles [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="24">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 a) Licores, Pisco, Destilados [F29 - C148]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="25">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 c) Vinos
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="26">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 c) Cervezas y Bebidas Alcoholicas [F29 - C150]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="27">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 d) y e) Bebidas Analcoholicas y Minerales [F29 - C146]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="28">
+						<annotation>
+							<documentation>
+							Impuesto Especifico Diesel [F29 - C127]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="29">
+						<annotation>
+							<documentation>
+							Recuperaci_n Impuesto Espec_fico diesel Transportistas  Para transportistas de carga
+ Art 2_ Ley N_19.764/2001
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="30">
+						<annotation>
+							<documentation>
+							IVA Retenido Legumbres
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="31">
+						<annotation>
+							<documentation>
+							IVA Retenido Silvestres
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="32">
+						<annotation>
+							<documentation>
+							IVA Retenido Ganado
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							IVA Retenido Madera
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							IVA Retenido Trigo
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="35">
+						<annotation>
+							<documentation>
+							Impuesto Especifico Gasolina
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="36">
+						<annotation>
+							<documentation>
+							IVA Retenido Arroz
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="37">
+						<annotation>
+							<documentation>
+							IVA Retenido Hidrobiologicas
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="38">
+						<annotation>
+							<documentation>
+							IVA Retenido Chatarra
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="39">
+						<annotation>
+							<documentation>
+							IVA Retenido PPA
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="40">
+						<annotation>
+							<documentation>
+							IVA Retenido Opcional
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="41">
+						<annotation>
+							<documentation>
+							IVA Retenido Construccion
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="44">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 e) h) i) l)  1ra Venta (Alfombras, C. Rodantes, Caviar, Armas) [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="45">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 j)  1ra Venta (Pirotecnia) [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="46"/>
+					<enumeration value="47"/>
+					<enumeration value="48"/>
+					<enumeration value="49"/>
+					<enumeration value="50"/>
+					<enumeration value="51"/>
+					<enumeration value="52"/>
+					<enumeration value="53"/>
+					<enumeration value="301"/>
+					<enumeration value="321"/>
+					<enumeration value="331"/>
+					<enumeration value="341"/>
+					<enumeration value="361"/>
+					<enumeration value="371"/>
+					<enumeration value="481"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="ImpAdicDTEType">
+				<annotation>
+					<documentation>
+					Tipo de Impuesto o Retencion Adicional de los DTE
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="3"/>
+					<enumeration value="14">
+						<annotation>
+							<documentation>
+							IVA Margen Comercializacion (Factura Venta del Contribuyente) [F29 - C039]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="15">
+						<annotation>
+							<documentation>
+							IVA Retenido Total (Factura Compra del Contribuyente) [F29 - C039]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="16">
+						<annotation>
+							<documentation>
+							IVA Retenido Parcial (Factura Compra del Contribuyente) [F29]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="17">
+						<annotation>
+							<documentation>
+							IVA Anticipado Faenamiento Carne [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="18">
+						<annotation>
+							<documentation>
+							IVA Anticipado Carne [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="19">
+						<annotation>
+							<documentation>
+							IVA Anticipado Harina [F29 - C042]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="23">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 a) b) c)  Oro, Joyas, Pieles [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="24">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 a) Licores, Pisco, Destilados [F29 - C148]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="25">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 c) Vinos
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="26">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 c) Cervezas y Bebidas Alcoholicas [F29 - C150]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="27">
+						<annotation>
+							<documentation>
+							Impuesto Art. 42 d) y e) Bebidas Analcoholicas y Minerales [F29 - C146]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="28">
+						<annotation>
+							<documentation>
+							Impuesto Especifico Diesel [F29 - C127]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="30">
+						<annotation>
+							<documentation>
+							IVA Retenido Legumbres
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="31">
+						<annotation>
+							<documentation>
+							IVA Retenido Silvestres
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="32">
+						<annotation>
+							<documentation>
+							IVA Retenido Ganado
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							IVA Retenido Madera
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							IVA Retenido Trigo
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="35">
+						<annotation>
+							<documentation>
+							Impuesto Especifico Gasolina
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="36">
+						<annotation>
+							<documentation>
+							IVA Retenido Arroz
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="37">
+						<annotation>
+							<documentation>
+							IVA Retenido Hidrobiologicas
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="38">
+						<annotation>
+							<documentation>
+							IVA Retenido Chatarra
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="39">
+						<annotation>
+							<documentation>
+							IVA Retenido PPA
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="40">
+						<annotation>
+							<documentation>
+							IVA Retenido Opcional
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="41">
+						<annotation>
+							<documentation>
+							IVA Retenido Construccion
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="44">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 e) h) i) l)  1ra Venta (Alfombras, C. Rodantes, Caviar, Armas) [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="45">
+						<annotation>
+							<documentation>
+							Impuesto Adicional Productos Art. 37 j)  1ra Venta (Pirotecnia) [F29 - C113]
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="46"/>
+					<enumeration value="47"/>
+					<enumeration value="48"/>
+					<enumeration value="49"/>
+					<enumeration value="50"/>
+					<enumeration value="51"/>
+					<enumeration value="52"/>
+					<enumeration value="53"/>
+					<enumeration value="301"/>
+					<enumeration value="321"/>
+					<enumeration value="331"/>
+					<enumeration value="341"/>
+					<enumeration value="361"/>
+					<enumeration value="371"/>
+					<enumeration value="481"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="MontoType">
+				<annotation>
+					<documentation>
+					Monto de 18 digitos
+					</documentation>
+				</annotation>
+				<restriction base="xs:nonNegativeInteger">
+					<totalDigits value="18"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="DocType">
+				<annotation>
+					<documentation>
+					Tipos de Documento
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="33">
+						<annotation>
+							<documentation>
+							Factura Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="34">
+						<annotation>
+							<documentation>
+							Factura Electronica No Afecta o Exenta
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="46">
+						<annotation>
+							<documentation>
+							Factura de Compra Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="52">
+						<annotation>
+							<documentation>
+							Guia de Despacho Electronica
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="56"/>
+					<enumeration value="61"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="MailType">
+				<annotation>
+					<documentation>
+					Direcci_n email
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="80"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="DineroPorcentajeType">
+				<annotation>
+					<documentation>
+					Unidad en que se expresa el Valor
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<enumeration value="%">
+						<annotation>
+							<documentation>
+							El valor se Expresa como Porcentaje
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="$">
+						<annotation>
+							<documentation>
+							El Valor se Expresa en Pesos
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType name="NroResolType">
+				<annotation>
+					<documentation>
+					N_mero de Resoluci_n
+					</documentation>
+				</annotation>
+				<restriction base="xs:nonNegativeInteger">
+					<totalDigits value="6"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="RznSocLargaType">
+				<annotation>
+					<documentation>
+					Raz_n Social (max 100)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="100"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="RznSocCortaType">
+				<annotation>
+					<documentation>
+					Raz_n Social (max 40)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="40"/>
+					<minLength value="1"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="DireccSoloDTEType">
+				<annotation>
+					<documentation>
+					Direcci_n (maz 60)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="60"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="DireccType">
+				<annotation>
+					<documentation>
+					Direcci_n (max 80)
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="80"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="ComunaType">
+				<annotation>
+					<documentation>
+					Comuna
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="20"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="CiudadType">
+				<annotation>
+					<documentation>
+					Ciudad
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="20"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="FonoType">
+				<annotation>
+					<documentation>
+					Fono
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="40"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="NombreType">
+				<annotation>
+					<documentation>
+					Nombre
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="40"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="LIQType">
+				<annotation>
+					<documentation>
+					Tipos de Liquidaciones
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="43"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="EXPType">
+				<annotation>
+					<documentation>
+					Tipos de Facturas de  Exportacion
+					</documentation>
+				</annotation>
+				<restriction base="xs:positiveInteger">
+					<enumeration value="110"/>
+					<enumeration value="111"/>
+					<enumeration value="112"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="MedioPagoType">
+				<annotation>
+					<documentation>
+					Medios de Pago
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<enumeration value="CH">
+						<annotation>
+							<documentation>
+							Cheque
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="LT">
+						<annotation>
+							<documentation>
+							Letra
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="EF">
+						<annotation>
+							<documentation>
+							Efectivo
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="PE">
+						<annotation>
+							<documentation>
+							Pago a Cuenta Corriente
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="TC">
+						<annotation>
+							<documentation>
+							Tarjeta de Credito
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="CF">
+						<annotation>
+							<documentation>
+							Cheque a Fecha
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="OT">
+						<annotation>
+							<documentation>
+							Otro
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<attribute fixed="1.0" name="version" type="xs:decimal"/>
+			<simpleType name="TipMonType">
+				<annotation>
+					<documentation>
+					Tipos de Moneda de Aduana
+					</documentation>
+				</annotation>
+				<restriction base="xs:string">
+					<maxLength value="15"/>
+					<enumeration value="BOLIVAR"/>
+					<enumeration value="BOLIVIANO"/>
+					<enumeration value="CHELIN"/>
+					<enumeration value="CORONA DIN"/>
+					<enumeration value="CORONA NOR"/>
+					<enumeration value="CORONA SC"/>
+					<enumeration value="CRUZEIRO REAL"/>
+					<enumeration value="DIRHAM"/>
+					<enumeration value="DOLAR AUST"/>
+					<enumeration value="DOLAR CAN"/>
+					<enumeration value="DOLAR HK"/>
+					<enumeration value="DOLAR NZ"/>
+					<enumeration value="DOLAR SIN"/>
+					<enumeration value="DOLAR TAI"/>
+					<enumeration value="DOLAR USA"/>
+					<enumeration value="DRACMA"/>
+					<enumeration value="ESCUDO"/>
+					<enumeration value="EURO"/>
+					<enumeration value="FLORIN"/>
+					<enumeration value="FRANCO BEL"/>
+					<enumeration value="FRANCO FR"/>
+					<enumeration value="FRANCO SZ"/>
+					<enumeration value="GUARANI"/>
+					<enumeration value="LIBRA EST"/>
+					<enumeration value="LIRA"/>
+					<enumeration value="MARCO AL"/>
+					<enumeration value="MARCO FIN"/>
+					<enumeration value="NUEVO SOL"/>
+					<enumeration value="OTRAS MONEDAS"/>
+					<enumeration value="PESETA"/>
+					<enumeration value="PESO"/>
+					<enumeration value="PESO CL"/>
+					<enumeration value="PESO COL"/>
+					<enumeration value="PESO MEX"/>
+					<enumeration value="PESO URUG"/>
+					<enumeration value="RAND"/>
+					<enumeration value="RENMINBI"/>
+					<enumeration value="RUPIA"/>
+					<enumeration value="SUCRE"/>
+					<enumeration value="YEN"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="FechaType">
+				<annotation>
+					<documentation>
+					Fecha entre 2000-01-01 y 2050-12-31
+					</documentation>
+				</annotation>
+				<restriction base="xs:date">
+					<minInclusive value="2000-01-01"/>
+					<maxInclusive value="2050-12-31"/>
+				</restriction>
+			</simpleType>
+			<simpleType final="restriction" name="FechaHoraType">
+				<annotation>
+					<documentation>
+					FechaType + hora entre 00:00 y 23:59;
+					</documentation>
+				</annotation>
+				<restriction base="xs:dateTime">
+					<minInclusive fixed="true" value="2000-01-01T00:00:00"/>
+					<maxInclusive value="2050-12-31T23:59:59"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec5Type">
+				<annotation>
+					<documentation>Monto con 12 Digitos de Cuerpo y 6 Decimales</documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="18"/>
+					<fractionDigits value="6"/>
+					<minExclusive value="0"/>
+				</restriction>
+			</simpleType>
+			<simpleType name="Dec1Type">
+				<annotation>
+					<documentation>Monto con 16 Digitos de Cuerpo y 2 Decimales </documentation>
+				</annotation>
+				<restriction base="xs:decimal">
+					<totalDigits value="18"/>
+					<fractionDigits value="2"/>
+					<minExclusive value="0"/>
+				</restriction>
+			</simpleType>
+			<complexType name="DTEDefType">
+				<annotation>
+					<documentation>
+					Documento Tributario Electronico
+					</documentation>
+				</annotation>
+				<sequence>
+					<choice>
+					<element name="Boleta" type="tns:BOLETADefType"/>
+					</choice>
+				</sequence>
+				<attribute fixed="1.0" name="version" type="xs:decimal" use="required"/>
+			</complexType>
+			<complexType name="BOLETADefType">
+				<annotation>
+					<documentation>Boleta Electronica</documentation>
+				</annotation>
+				<sequence>
+					<element name="Encabezado">
+						<annotation>
+							<documentation>Identificacion y Totales del Documento</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element name="IdDoc">
+									<annotation>
+										<documentation>Identificacion del DTE</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element name="TipoDTE" type="tns:DTEType">
+												<annotation>
+													<documentation>Tipo de Boleta</documentation>
+												</annotation>
+											</element>
+											<element name="Folio" type="tns:FolioType">
+												<annotation>
+													<documentation>Folio del Documento Electronico</documentation>
+												</annotation>
+											</element>
+											<element name="FchEmis" type="xs:date">
+												<annotation>
+													<documentation>Fecha Emision Contable del DTE (AAAA-MM-DD)</documentation>
+												</annotation>
+											</element>
+											<element name="IndServicio">
+												<annotation>
+													<documentation>Indica el Tipo de Transaccion</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:positiveInteger">
+														<enumeration value="1">
+															<annotation>
+																<documentation>Boleta de Servicios Periodicos</documentation>
+															</annotation>
+														</enumeration>
+														<enumeration value="2">
+															<annotation>
+																<documentation>Boleta de Servicios Periodicos Domiciliarios</documentation>
+															</annotation>
+														</enumeration>
+														<enumeration value="3">
+															<annotation>
+																<documentation>Boleta de Ventas y Servicio</documentation>
+															</annotation>
+														</enumeration>
+														<enumeration value="4">
+															<annotation>
+																<documentation>Boleta de Espectáculo emitida por  cuenta de Terceros</documentation>
+															</annotation>
+														</enumeration>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="IndMntNeto">
+												<annotation>
+													<documentation>Indica el Uso de Montos Netos en Detalle</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:integer">
+														<enumeration value="2">
+															<annotation>
+																<documentation>Monto de Lineas de Detalle  Corresponde a Valores Netos</documentation>
+															</annotation>
+														</enumeration>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="PeriodoDesde" type="xs:date">
+												<annotation>
+													<documentation>Periodo de Facturacion - Desde (AAAA-MM-DD)</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="PeriodoHasta" type="xs:date">
+												<annotation>
+													<documentation>Periodo Facturacion - Hasta (AAAA-MM-DD)</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="FchVenc" type="xs:date">
+												<annotation>
+													<documentation>Fecha de Vencimiento del Pago (AAAA-MM-DD)</documentation>
+												</annotation>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+								<element name="Emisor">
+									<annotation>
+										<documentation>Datos del Emisor</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element name="RUTEmisor" type="tns:RUTType">
+												<annotation>
+													<documentation>RUT del Emisor del DTE</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="RznSocEmisor">
+												<annotation>
+													<documentation>Nombre o Razon Social del Emisor</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="100"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="GiroEmisor">
+												<annotation>
+													<documentation>Giro del Emisor que Corresponde a la Transaccion</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="80"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CdgSIISucur">
+												<annotation>
+													<documentation>Codigo de Sucursal Entregado por el SII</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:positiveInteger">
+														<totalDigits value="9"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="DirOrigen">
+												<annotation>
+													<documentation>Direccion de Origen o Emision</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="70"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CmnaOrigen">
+												<annotation>
+													<documentation>Comuna de Origen</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CiudadOrigen">
+												<annotation>
+													<documentation>Ciudad de Origen</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+								<element name="Receptor">
+									<annotation>
+										<documentation>Datos del Receptor</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element name="RUTRecep" type="tns:RUTType">
+												<annotation>
+													<documentation>RUT del Receptor del DTE</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="CdgIntRecep">
+												<annotation>
+													<documentation>Codigo Interno del Receptor</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="RznSocRecep">
+												<annotation>
+													<documentation>Nombre o Razon Social del Receptor</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="100"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="Contacto">
+												<annotation>
+													<documentation>Telefono o E-mail de Contacto del Receptor</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="80"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="DirRecep">
+												<annotation>
+													<documentation>Direccion en la Cual se Envian los Productos o se Prestan los Servicios</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="70"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CmnaRecep">
+												<annotation>
+													<documentation>Comuna de Recepcion</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CiudadRecep">
+												<annotation>
+													<documentation>Ciudad de Recepcion</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="DirPostal">
+												<annotation>
+													<documentation>Direccion Postal</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="70"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CmnaPostal">
+												<annotation>
+													<documentation>Comuna Postal</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="CiudadPostal">
+												<annotation>
+													<documentation>Ciudad Postal</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+								<element name="Totales">
+									<annotation>
+										<documentation>Montos Totales del DTE</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element minOccurs="0" name="MntNeto" type="tns:MontoType">
+												<annotation>
+													<documentation>Monto Neto</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="MntExe" type="tns:MontoType">
+												<annotation>
+													<documentation>Monto Exento</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="IVA" type="tns:MntImpType">
+												<annotation>
+													<documentation>Monto de IVA</documentation>
+												</annotation>
+											</element>
+											<element name="MntTotal" type="tns:MontoType">
+												<annotation>
+													<documentation>Monto Total</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="MontoNF" type="tns:ValorType">
+												<annotation>
+													<documentation>Monto No Facturable - Corresponde a Bienes o Servicios Facturados Previamente</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="TotalPeriodo" type="tns:MontoType">
+												<annotation>
+													<documentation>Total de Ventas o Servicios del Periodo</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="SaldoAnterior" type="tns:ValorType">
+												<annotation>
+													<documentation>Saldo Anterior - Puede ser Negativo o Positivo</documentation>
+												</annotation>
+											</element>
+											<element minOccurs="0" name="VlrPagar" type="tns:ValorType">
+												<annotation>
+													<documentation>Valor a Pagar Total del Documento</documentation>
+												</annotation>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element maxOccurs="1000" name="Detalle">
+						<annotation>
+							<documentation>Detalle de Itemes del Documento</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element name="NroLinDet" type="xs:positiveInteger">
+									<annotation>
+										<documentation>Numero Secuencial de Linea</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="5" minOccurs="0" name="CdgItem">
+									<annotation>
+										<documentation>Codificacion del Item</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element name="TpoCodigo">
+												<annotation>
+													<documentation>Tipo de Codificacion</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="10"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="VlrCodigo">
+												<annotation>
+													<documentation>Valor del Codigo de Item, para la Codificacion Particular</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="35"/>
+													</restriction>
+												</simpleType>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+								<element minOccurs="0" name="IndExe">
+									<annotation>
+										<documentation>Indicador de Exencion/Facturacion</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<enumeration value="1">
+												<annotation>
+													<documentation>Producto o Servicio es Exento o No Afecto</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="2">
+												<annotation>
+													<documentation>El Producto o Servicio NO ES Facturable</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="6"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="ItemEspectaculo">
+									<annotation>
+										<documentation>Indica si el ítem es :
+01: TICKET
+02: VALOR SERVICIO</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="2"/>
+											<totalDigits value="2"/>
+											<enumeration value="01">
+												<annotation>
+													<documentation>Producto o Servicio es Exento o No Afecto</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="02">
+												<annotation>
+													<documentation>El Producto o Servicio NO ES Facturable</documentation>
+												</annotation>
+											</enumeration>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="RUTMandante" type="tns:RUTType">
+									<annotation>
+										<documentation>Rut de la Empresa Mandante de la Boleta</documentation>
+									</annotation>
+								</element>
+								<element name="NmbItem">
+									<annotation>
+										<documentation>Nombre del Item</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="80"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="InfoTicket">
+									<annotation>
+										<documentation>Informacion de la entrada</documentation>
+									</annotation>
+									<complexType>
+										<sequence>
+											<element name="FolioTicket">
+												<annotation>
+													<documentation>Corresponde a la numeración única para el evento.</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:positiveInteger">
+														<totalDigits value="6"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="FchGenera">
+												<annotation>
+													<documentation>Corresponde a la fecha y hora de generación del ticket
+(AAAA-MM-DDThh:mm:ss)</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:dateTime">
+														<minInclusive value="2010-03-10T00:00:00"/>
+														<maxInclusive value="2050-12-31T23:59:59"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="NmbEvento">
+												<annotation>
+													<documentation>Nombre del Espectáculo</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="80"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="TpoTiket">
+												<annotation>
+													<documentation>Tipo de ticket, Por ejemplo: Adulto, Niño, etc</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="10"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="CdgEvento">
+												<annotation>
+													<documentation>Código asociado al Evento</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="5"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="FchEvento">
+												<annotation>
+													<documentation>Fecha y hora de realización del evento AAAA-MM-DDThh:mm:ss)</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:dateTime">
+														<minInclusive value="2010-03-10T00:00:00"/>
+														<maxInclusive value="2050-12-31T23:59:59"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="LugarEvento">
+												<annotation>
+													<documentation>Dirección o identificación del recinto donde se realizará el  Espectáculo</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="80"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element name="UbicEvento">
+												<annotation>
+													<documentation>Sector/Sección de la ubicación en el evento</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="20"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="FilaUbicEvento">
+												<annotation>
+													<documentation>Fila correspondiente a la Ubicación en el evento</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="3"/>
+													</restriction>
+												</simpleType>
+											</element>
+											<element minOccurs="0" name="AsntoUbicEvento">
+												<annotation>
+													<documentation>N° de Asiento correspondiente a la Ubicación en el evento</documentation>
+												</annotation>
+												<simpleType>
+													<restriction base="xs:string">
+														<maxLength value="3"/>
+													</restriction>
+												</simpleType>
+											</element>
+										</sequence>
+									</complexType>
+								</element>
+								<element minOccurs="0" name="DscItem">
+									<annotation>
+										<documentation>Descripcion del Item</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="1000"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="QtyItem" type="tns:Dec5Type">
+									<annotation>
+										<documentation>Cantidad del Item</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="UnmdItem">
+									<annotation>
+										<documentation>Unidad de Medida</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="4"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="PrcItem" type="tns:Dec5Type">
+									<annotation>
+										<documentation>Precio Unitario del Item en Pesos</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="DescuentoPct">
+									<annotation>
+										<documentation>Porcentaje de Descuento</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="tns:PctType">
+											<minInclusive value="0.01"/>
+											<maxInclusive value="100.00"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="DescuentoMonto">
+									<annotation>
+										<documentation>Monto de Descuento</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:nonNegativeInteger">
+											<totalDigits value="18"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="RecargoPct">
+									<annotation>
+										<documentation>Porcentaje de Recargo</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="tns:PctType">
+											<maxInclusive value="100.00"/>
+											<minInclusive value="0.01"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="RecargoMonto">
+									<annotation>
+										<documentation>Monto de Recargo</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:nonNegativeInteger">
+											<totalDigits value="18"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="MontoItem" type="tns:MontoType">
+									<annotation>
+										<documentation>Monto por Linea de Detalle. Corresponde al Monto Bruto, a menos que IndMntNeto Indique lo Contrario </documentation>
+									</annotation>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element maxOccurs="20" minOccurs="0" name="SubTotInfo">
+						<annotation>
+							<documentation>Subtotales Informativos</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element name="NroSTI">
+									<annotation>
+										<documentation>Número de Subtotal </documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="99"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="GlosaSTI">
+									<annotation>
+										<documentation>Glosa</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="80"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="OrdenSTI">
+									<annotation>
+										<documentation>Ubicación para Impresión </documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="99"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="SubTotNetoSTI" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor Neto del Subtotal</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="SubTotIVASTI" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor del IVA del Subtotal</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="SubTotAdicSTI" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor de los Impuestos adicionales o específicos del Subtotal</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="SubTotExeSTI" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor no Afecto o Exento del Subtotal</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="ValSubtotSTI" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor de la línea de subtotal</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="60" minOccurs="0" name="LineasDeta">
+									<annotation>
+										<documentation>TABLA de  Líneas de Detalle que se agrupan en el Subtotal</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="60"/>
+										</restriction>
+									</simpleType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element maxOccurs="20" minOccurs="0" name="DscRcgGlobal">
+						<annotation>
+							<documentation>Descuentos y/o Recargos que afectan al total del Documento</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element name="NroLinDR">
+									<annotation>
+										<documentation>Numero Secuencial de Linea</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="99"/>
+											<minInclusive value="1"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="TpoMov">
+									<annotation>
+										<documentation>Tipo de Movimiento</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<enumeration value="D">
+												<annotation>
+													<documentation>Descuento</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="R">
+												<annotation>
+													<documentation>Recargo</documentation>
+												</annotation>
+											</enumeration>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="GlosaDR">
+									<annotation>
+										<documentation>Descripcion del Descuento o Recargo</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="45"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="TpoValor">
+									<annotation>
+										<documentation>Unidad en que se Expresa el Valor</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<enumeration value="%">
+												<annotation>
+													<documentation>El valor se Expresa como Porcentaje</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="$">
+												<annotation>
+													<documentation>El Valor se Expresa en Pesos</documentation>
+												</annotation>
+											</enumeration>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="ValorDR" type="tns:Dec1Type">
+									<annotation>
+										<documentation>Valor del Descuento o Recargo</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="IndExeDR">
+									<annotation>
+										<documentation>Indica si el Descuento o Recargo Afecta a Itemes Exentos o No Facturables</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<enumeration value="1">
+												<annotation>
+													<documentation>Afecta a Productos Exentos o No Afectos</documentation>
+												</annotation>
+											</enumeration>
+											<enumeration value="2">
+												<annotation>
+													<documentation>Afecta aProductos No Facturables</documentation>
+												</annotation>
+											</enumeration>
+										</restriction>
+									</simpleType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element maxOccurs="40" minOccurs="0" name="Referencia">
+						<annotation>
+							<documentation>Identificacion de otros documentos Referenciados por Documento</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element name="NroLinRef">
+									<annotation>
+										<documentation>Numero Secuencial de Linea de Referencia</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:positiveInteger">
+											<maxInclusive value="40"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="CodRef">
+									<annotation>
+										<documentation>Codigo Interno del Tipo de Referencia</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="18"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="RazonRef">
+									<annotation>
+										<documentation>Razon Explicita por la que se Referencia el Documento</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="90"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="CodVndor">
+									<annotation>
+										<documentation>Código del Vendedor establecido por la Empresa. Puede estar asociado a INTERNET</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="8"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element minOccurs="0" name="CodCaja">
+									<annotation>
+										<documentation>Código de la caja establecido por la Empresa</documentation>
+									</annotation>
+									<simpleType>
+										<restriction base="xs:string">
+											<maxLength value="8"/>
+										</restriction>
+									</simpleType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="TmstFirma" type="tns:FechaHoraType">
+						<annotation>
+							<documentation>Fecha y Hora en que se Firmo Digitalmente el Documento AAAA-MM-DDTHH:MI:SS</documentation>
+						</annotation>
+					</element>
+					<element minOccurs="0" name="Adjuntos">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" name="Adj1"/>
+								<element minOccurs="0" name="Adj2"/>
+								<element minOccurs="0" name="Adj3"/>
+								<element minOccurs="0" name="Adj4"/>
+								<element minOccurs="0" name="Adj5"/>
+								<element minOccurs="0" name="Adj6"/>
+								<element minOccurs="0" name="Adj7"/>
+								<element minOccurs="0" name="Adj8"/>
+								<element minOccurs="0" name="Adj9"/>
+								<element minOccurs="0" name="Adj10"/>
+								<element minOccurs="0" name="Adj11"/>
+								<element minOccurs="0" name="Adj12"/>
+								<element minOccurs="0" name="Adj13"/>
+								<element minOccurs="0" name="Impresora"/>
+								<element minOccurs="0" name="Copias"/>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<element name="ca4xml" type="tns:ca4xml"/>
+			<complexType name="ca4xml">
+				<sequence>
+					<element name="docid" type="xs:string"/>
+					<element name="comando" type="xs:string"/>
+					<element name="parametros" type="xs:string"/>
+					<element name="datos">
+						<complexType>
+							<sequence>
+								<element name="DTE" type="typens:DTEDefType"/>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ca4xmlResponse">
+				<sequence>
+					<element name="retval">
+						<complexType>
+							<sequence>
+								<element name="Estado" type="string">
+									<annotation>
+										<documentation>0=OK| 1|Nok</documentation>
+									</annotation>
+								</element>
+								<element name="CdgIntRecep" type="string">
+									<annotation>
+										<documentation>Numero SAP </documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="TipoDte" type="string">
+									<annotation>
+										<documentation>Identicador del documento de acuerdo a tabla dell SII</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="Folio" type="string">
+									<annotation>
+										<documentation>Folio Legal del DTE</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="Glosa" type="string">
+									<annotation>
+										<documentation>Descripcion en caso de Error</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="UrlDte" type="string">
+									<annotation>
+										<documentation>Url del DTE</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="UrlAdj" type="string">
+									<annotation>
+										<documentation>Url del Adjunto</documentation>
+									</annotation>
+								</element>
+								<element minOccurs="0" name="RutEmis" type="string">
+									<annotation>
+										<documentation>Rut empresa emisora del DTE</documentation>
+									</annotation>
+								</element>
+								<!-- <element name="Soc" type="string" minOccurs="0">
+									<annotation>
+										<documentation>Identificador de la sociedad emisora del DTE</documentation>
+									</annotation>
+								</element> -->
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<element name="ca4xmlResponse" type="tns:ca4xmlResponse"/>
+		</schema>
+	</wsdl:types>
+	<message name="ca4xml">
+		<part element="tns:ca4xml" name="ca4xml"/>
+	</message>
+	<message name="ca4xmlResponse">
+		<part element="tns:ca4xmlResponse" name="ca4xmlResponse"/>
+	</message>
+	<portType name="ca4xml">
+		<operation name="ca4xml" parameterOrder="ca4xml">
+			<input message="tns:ca4xml" name="ca4xml"/>
+			<output message="tns:ca4xmlResponse" name="ca4xmlResponse"/>
+		</operation>
+	</portType>
+	<binding name="ca4xml" type="tns:ca4xml">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="ca4xml">
+			<soap:operation soapAction="ca4xml" style="document"/>
+			<input name="ca4xml">
+				<soap:body use="literal"/>
+			</input>
+			<output name="ca4xmlResponse">
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="ca4xml">
+		<port binding="tns:ca4xml" name="ca4xml">
+			<soap:address location="http://172.22.6.85:5001/ca4xml"/>
+		</port>
+	</service>
+	<plnk:partnerLinkType name="ca4xml">
+		<plnk:role name="ca4xml">
+			<plnk:portType name="tns:ca4xml"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

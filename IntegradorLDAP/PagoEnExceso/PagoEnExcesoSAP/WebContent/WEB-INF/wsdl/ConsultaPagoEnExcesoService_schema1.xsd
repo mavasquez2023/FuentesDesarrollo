@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.pagoenexceso.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.pagoenexceso.laaraucana.cl/">
+
+  <xs:element name="consultarPagoEnExceso" type="tns:consultarPagoEnExceso"/>
+
+  <xs:element name="consultarPagoEnExcesoResponse" type="tns:consultarPagoEnExcesoResponse"/>
+
+  <xs:complexType name="consultarPagoEnExceso">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultarPagoEnExcesoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaPagoEnExcesoOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaPagoEnExcesoOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+      <xs:element minOccurs="0" name="pagoEnExceso" type="tns:pagoEnExcesoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pagoEnExcesoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaCreacion" type="xs:string"/>
+      <xs:element name="monto" type="xs:int"/>
+      <xs:element minOccurs="0" name="nombreCompleto" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+      <xs:element name="tipo" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
