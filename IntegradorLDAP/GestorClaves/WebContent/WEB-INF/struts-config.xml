@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="error" path="/error.do" />
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/error" type="cl.laaraucana.claves.actions.ErrorAction">
+			<forward name="go" path="/error.jsp" />
+		</action>
+		<action path="/validaAfiliado" type="cl.laaraucana.claves.actions.ValidaAfiliadoAction">
+			<forward name="success" path="/activar-clave.jsp" />
+			<forward name="noafiliado" path="/index.jsp" />
+			<forward name="yaregistrado" path="/ya-registrado.jsp" />
+			<forward name="init" path="/index.jsp" />
+			<forward name="error" path="/activar-clave-error.jsp" />
+		</action>
+		<action path="/registraAfiliado" type="cl.laaraucana.claves.actions.RegistrarAfiliadoAction">
+			<forward name="success" path="/activar-clave-exito.jsp" />
+			<forward name="error" path="/activar-clave-error.jsp" />
+			<forward name="init" path="/index.jsp" />
+		</action>
+		<action path="/recuperarClave" type="cl.laaraucana.claves.actions.RecuperarClaveAction">
+			<forward name="success" path="/recuperar-clave-modo.jsp" />
+			<forward name="exito" path="/recuperar-clave-exito.jsp" />
+			<forward name="celular" path="/recuperar-clave-exito-celular.jsp" />
+			<forward name="noafiliado" path="/recuperar-clave.jsp" />
+			<forward name="init" path="/recuperar-clave.jsp" />
+			<forward name="noregistrado" path="/no-registrado.jsp" />
+			<forward name="error" path="/recuperar-clave-error.jsp" />
+		</action>
+		<action path="/actualizaContacto" type="cl.laaraucana.claves.actions.ActualizaContactoAction">
+			<forward name="exito" path="/recuperar-clave-exito.jsp" />
+			<forward name="noregistrado" path="/no-registrado.jsp" />
+			<forward name="error" path="/recuperar-clave-error.jsp" />
+			<forward name="nosinacofi" path="/recuperar-clave-otro-modo.jsp" />
+			<forward name="init" path="/recuperar-clave-otro-modo.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="etc.config"/>
+</struts-config>

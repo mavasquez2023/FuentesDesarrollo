@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="jdbc/transferenciasSql"></property>
+		</dataSource>
+	</transactionManager>
+	<!-- SQL Map XML files should be listed here -->
+	<sqlMap resource="cl/laaraucana/mandato/ibatis/persistence/Connfig_SqlMapSql.xml" />
+</sqlMapConfig>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="gestorclaves">
+
+<typeAlias alias="Registro" type="cl.laaraucana.claves.dao.vo.RegistroVO"/>
+<resultMap id="registroBitacora" class="cl.laaraucana.claves.dao.vo.RegistroVO">
+	<result column="RUT"   property="rut" />
+	<result column="DV"   property="dv" />
+	<result column="NOMBRE"   property="nombre" />
+	<result column="CELULAR"   property="celular" />
+	<result column="TELEFONO"   property="telefono" />
+	<result column="EMAIL"   property="email" />
+</resultMap>
+
+
+<update id="updateBitacora" parameterClass="Registro">
+	update RegistroGestorClaves
+	set NUM_MODIFICACION= NUM_MODIFICACION+1,
+	FECHA_MODIFICACION= getDate(),
+	HORA_MODIFICACION= getDate() 
+	<isNotNull property="celular">
+	, CELULAR= #celular# 
+	</isNotNull>
+	<isNotNull property="email">
+	, EMAIL= #email# 
+	</isNotNull>
+	where RUT= #rut#
+</update>
+
+<insert id="insertRecupera" parameterClass="Registro">
+	insert into RecuperacionClave (RUT, DV, TIPO_ENVIO) values(#rut#, #dv#, #tipoenvio#)
+</insert>
+
+<select id="consultaRegistro" resultMap="registroBitacora">
+	select rut, dv, nombre, celular, telefono, email 
+	from  RegistroGestorClaves
+	where rut= #rut#
+</select>
+
+</sqlMap>

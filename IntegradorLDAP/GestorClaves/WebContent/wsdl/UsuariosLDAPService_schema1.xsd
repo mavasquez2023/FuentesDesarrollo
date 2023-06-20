@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/usuariosLDAP" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/usuariosLDAP">
+
+  <xs:element name="addUsuario" type="tns:addUsuario"/>
+
+  <xs:element name="addUsuarioResponse" type="tns:addUsuarioResponse"/>
+
+  <xs:element name="autenticacionUWS" type="tns:autenticacionUWS"/>
+
+  <xs:element name="autenticacionUWSResponse" type="tns:autenticacionUWSResponse"/>
+
+  <xs:element name="changePassword" type="tns:changePassword"/>
+
+  <xs:element name="changePasswordResponse" type="tns:changePasswordResponse"/>
+
+  <xs:element name="delUsuario" type="tns:delUsuario"/>
+
+  <xs:element name="delUsuarioResponse" type="tns:delUsuarioResponse"/>
+
+  <xs:complexType name="addUsuario">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="datos" type="tns:requestUsuarioWS"/>
+      <xs:element name="notificar" type="tns:requestNotificarWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestUsuarioWS">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:string"/>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="celular" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefono" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestNotificarWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mail" type="xs:string"/>
+      <xs:element minOccurs="0" name="sms" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuariosLDAP"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuariosLDAP">
+    <xs:sequence>
+      <xs:element name="CODIGO_RESPUESTA" type="xs:int"/>
+      <xs:element name="ESTADO" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="changePassword">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestPasswordWS"/>
+      <xs:element name="notificar" type="tns:requestNotificarWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestPasswordWS">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:string"/>
+      <xs:element minOccurs="0" name="celular" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="changePasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuariosLDAP"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delUsuario">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuariosLDAP"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionUWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWS">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionUWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
