@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="nombreAfiliadoMap" class="cl.laaraucana.pagoenexceso.persistencia.vo.AfiliadoVO">
+		<result property="nombre" column="se5fbio" />
+		<result property="apellidoPaterno" column="se5fbim" />
+		<result property="apellidoMaterno" column="se5fbik" />
+	</resultMap>
+	<resultMap id="nombrePensionadoMap" class="cl.laaraucana.pagoenexceso.persistencia.vo.AfiliadoVO">
+		<result property="nombre" column="afinom" />
+		<result property="apellidos" column="afiape" />
+	</resultMap>
+	
+	<resultMap id="pagoEnExcesoMap" class="cl.laaraucana.pagoenexceso.persistencia.vo.PagoEnExceso">
+		<result property="fecha" javaType="java.util.Date" column="fecha" />
+		<result property="monto" column="monto" />
+	</resultMap>
+<!-- Select para tabla ParametrosVO -->
+	
+	<select id="obtenerNombrePensionado" parameterClass="java.lang.String" resultMap="nombrePensionadoMap">
+		SELECT trim(afinom) as afinom, trim(afiape) as afiape FROM prexp.pef1500 where afirut=#rut#
+	</select>
+	
+	<select id="obtenerNombreAfiliado" parameterClass="java.lang.String" resultMap="nombreAfiliadoMap">
+		SELECT trim(se5fbio) as se5fbio, trim(se5fbim) as se5fbim, trim(se5fbik) as se5fbik FROM afdta.af02f1 where se5fajc=#rut#
+	</select>
+	<select id="obtenerNombreEmpresa" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select MERASO from FEEXP.FEF1010 where EMPRUT = #rutEmpresa#
+	</select>
+	<select id="obtenerNombreEmpresaCMDTA" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select CMPA from CMDTA.CM02F1 where CMNA = #rutEmpresa#
+	</select>
+	<select id="obtenerNombreEntidadPagadora" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select MERASO from FEEXP.PEF1010 where EMPRUT =#rutEmpresa#
+	</select>
+	
+	<select id="obtenerPagoEnExcesoAfiPen" parameterClass="java.lang.String" resultMap="pagoEnExcesoMap">
+		select min(OBF002) as fecha, (sum(cuograpag) + sum(cuovalant) + sum(cuomonpag)) as monto 
+		from RCDTA.RC03F1 
+		WHERE RC2CA in ('1', '5') 
+		and cuopagfec >= '20030331' 
+		and AFIRUT = #rut#
+	</select>
+	
+	<select id="obtenerPagoEnExcesoEmpresa" parameterClass="java.lang.String" resultMap="pagoEnExcesoMap">
+		select min(OBF002) as fecha, (sum(cuograpag) + sum(cuovalant) + sum(cuomonpag)) as monto 
+		from RCDTA.RC06F1 
+		WHERE RC1JA in ('1', '5') 
+		and cuopagfec >= '20030331' 
+		and CMNA= #rut#
+	</select>
+	
+	<select id="obtenerPagoEnExcesoEntPag" resultMap="pagoEnExcesoMap">
+		select min(OBF002) as fecha, (sum(cuograpag) + sum(cuovalant) + sum(cuomonpag)) as monto
+		from RCDTA.RC08F1 
+		WHERE RC2PA in ('1', '5') 
+		and cuopagfec >= '20030331' and CMNA=#rut#
+	</select>
+	
+</sqlMap> 
