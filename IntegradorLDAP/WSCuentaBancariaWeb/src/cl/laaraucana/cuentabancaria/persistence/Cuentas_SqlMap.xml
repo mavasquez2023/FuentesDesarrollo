@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cuentasService">
+
+	<resultMap id="cuentas"
+		class="cl.laaraucana.cuentabancaria.vo.CuentaVO">
+		<result column="idMandato" property="idmandato" />
+		<result column="rutafi" property="rutafi" />
+		<result column="dvafi" property="dvafi" />
+		<result column="nomafi" property="nomafi" />
+		<result column="codbanco" property="codbanco" />
+		<result column="numcuenta" property="numcuenta" />
+		<result column="codtipocuenta" property="codtipocuenta" />
+		<result column="telefono" property="telefono" />
+		<result column="celular" property="celular" />
+		<result column="email" property="email" />
+		<result column="tipoprod" property="tipoprod" />
+		<result column="codcanal" property="codcanal" />
+	</resultMap>
+	
+	
+ 
+    <select id="getCuentasByRut" resultMap="cuentas" >
+    
+     select 
+     rutafi, 
+     dvafi, 
+     nomafi, 
+     codbanco, 
+     numcuenta,
+     codtipocuenta,
+     email,
+     tipoprod,
+     codcanal 
+     from Cuenta 
+     where rutafi = #rutafi# and numcuenta = #numcuenta# and estado = 'V'
+    
+    </select>
+    
+    <select id="getCuentasByNumCuenta" resultClass="java.lang.String">
+    
+     select numcuenta
+     from Cuenta 
+     where
+     (rutafi = #rutafi# and
+     dvafi = #dvafi# and
+     codbanco = #codbanco# and
+     numcuenta = #numcuenta# and
+     tipoprod = #tipoprod# and
+     estado in ('T'))
+     <isNotNull property="idmandato">
+     or idmandato= #idmandato#
+     </isNotNull>
+    </select>
+    
+    <select id="getCuentaVigente" resultClass="java.lang.String">
+    
+     select numcuenta
+     from Cuenta 
+     where
+     (rutafi = #rutafi# and
+     dvafi = #dvafi# and
+     codbanco = #codbanco# and
+     numcuenta = #numcuenta# and
+     tipoprod = #tipoprod# and
+     estado in ('V'))
+     <isNotNull property="idmandato">
+     or idmandato= #idmandato#
+     </isNotNull>
+    </select>
+    
+	<insert id="setCuentas" parameterClass="cl.laaraucana.cuentabancaria.vo.CuentaVO" >
+
+	 insert into Cuenta (
+	 idmandato,
+	 rutafi, 
+	 dvafi, 
+	 nomafi, 
+	 codbanco, 
+	 numcuenta, 
+	 codtipocuenta,
+	 telefono,
+	 celular,
+	 email, 
+	 tipoprod, 
+	 codcanal, 
+	 fechaCreacion, 
+	 estado
+	 )
+     values
+     (
+     #idmandato#,
+     #rutafi#, 
+     #dvafi#, 
+     #nomafi#, 
+     #codbanco#, 
+     #numcuenta#, 
+     #codtipocuenta#, 
+     #telefono#,
+     #celular#,
+     #email#,
+     #tipoprod#, 
+     #codcanal#, 
+     GETDATE(), 
+     'T'
+     )
+	</insert>
+	
+	<update id="RevocarCuenta" parameterClass="cl.laaraucana.cuentabancaria.vo.CuentaRevocaVO">
+	
+	update Cuenta set estado = 'R', fechaTermino = GETDATE()  where  
+	rutafi = #rutafi# and  
+	dvafi =  #dvafi# and  
+	codbanco = #codbanco# and 
+	numcuenta = #numcuenta# and 
+	tipoprod = #tipoprod# and 
+	estado = 'V'
+	 
+	</update>
+	
+	<resultMap id="cuentasDesc"
+		class="cl.laaraucana.cuentabancaria.vo.CuentaDescripcionVO">
+		<result column="idMandato" property="idmandato" />
+		<result column="nomafi" property="nomafi" />
+		<result column="nombreBanco" property="nombreBanco" />
+		<result column="numcuenta" property="numcuenta" />
+		<result column="tipoCuenta" property="tipoCuenta" />
+		<result column="email" property="email" />
+		<result column="tipoproddesc" property="tipoproddesc" />
+		<result column="estadodesc" property="estadodesc" />
+	</resultMap>
+	
+	<select id="getConsultaCuenta" resultMap="cuentasDesc" >
+	
+	select
+	idMandato, 
+	nomafi, 
+	b.nombre as nombreBanco, 
+	numcuenta, 
+	tc.descripcion as tipoCuenta,
+	telefono,
+	celular,
+    email,
+    (case c.tipoprod when 1 then 'Licencia médica'
+    when 2 then 'Crédito social'
+    when 3 then 'Pago en exceso' end) as tipoproddesc,
+    (case c.estado when 'V' then 'Vigente'
+    				when 'T' then 'Transitorio'
+    				when 'R' then 'Revocado' end) as estadodesc 
+    from Cuenta c inner join 
+    tipoCuenta tc 
+    on c.codtipocuenta = tc.idtipocuenta
+    inner join Banco b
+    on c.codbanco = b.codigo
+    where c.rutafi = #rutafi# and  
+	c.dvafi =  #dvafi# and b.estado = 'A' 
+	and tc.estado = 'V'   
+	
+	
+	</select>
+	
+	
+	
+</sqlMap>
+
+ 

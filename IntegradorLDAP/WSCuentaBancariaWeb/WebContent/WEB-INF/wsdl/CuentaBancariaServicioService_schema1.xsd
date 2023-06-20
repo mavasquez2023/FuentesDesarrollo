@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicio.laaraucana.cl/cuentabancaria" version="1.0" xmlns:tns="http://servicio.laaraucana.cl/cuentabancaria">
+
+  <xs:element name="CUENTA" type="tns:cuentaDescripcion"/>
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="consultaCuenta" type="tns:consultaCuenta"/>
+
+  <xs:element name="consultaCuentaResponse" type="tns:consultaCuentaResponse"/>
+
+  <xs:element name="ingresarCuenta" type="tns:ingresarCuenta"/>
+
+  <xs:element name="ingresarCuentaResponse" type="tns:ingresarCuentaResponse"/>
+
+  <xs:element name="revocarCuenta" type="tns:revocarCuenta"/>
+
+  <xs:element name="revocarCuentaResponse" type="tns:revocarCuentaResponse"/>
+
+  <xs:complexType name="consultaCuenta">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="cuenta" type="tns:cuentaSearch"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaSearch">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCuentaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cuentasRUT"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentasRUT">
+    <xs:sequence>
+      <xs:element name="LOG_RESPUESTA " type="tns:LOG_RESPUESTA"/>
+      <xs:element minOccurs="0" name="CUENTAS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="tns:CUENTA"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LOG_RESPUESTA">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:int"/>
+      <xs:element name="DESCRIPCION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaDescripcion">
+    <xs:sequence>
+      <xs:element name="ID_MANDATO" type="xs:long"/>
+      <xs:element name="NOMBRE_AFILIADO" type="xs:string"/>
+      <xs:element name="NOMBRE_BANCO" type="xs:string"/>
+      <xs:element name="NUM_CUENTA" type="xs:string"/>
+      <xs:element name="DESCRIPCION_TIPO_CUENTA" type="xs:string"/>
+      <xs:element name="TELEFONO" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:string"/>
+      <xs:element name="EMAIL" type="xs:string"/>
+      <xs:element name="PRODUCTO" type="xs:string"/>
+      <xs:element name="ESTADO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWS">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="PASSWORD" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revocarCuenta">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="cuenta" type="tns:cuentaEdit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaEdit">
+    <xs:sequence>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+      <xs:element name="COD_BANCO" type="xs:int"/>
+      <xs:element name="NUM_CUENTA" type="xs:string"/>
+      <xs:element name="TIPO_PRODUCTO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revocarCuentaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:LOG_RESPUESTA"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresarCuenta">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="cuenta" type="tns:cuentaBanco"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuentaBanco">
+    <xs:sequence>
+      <xs:element name="ID_MANDATO" type="xs:long"/>
+      <xs:element name="RUT" type="xs:int"/>
+      <xs:element name="DV" type="xs:string"/>
+      <xs:element name="NOMBRE_AFILIADO" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:string"/>
+      <xs:element name="TELEFONO" type="xs:string"/>
+      <xs:element name="EMAIL" type="xs:string"/>
+      <xs:element name="COD_BANCO" type="xs:int"/>
+      <xs:element name="NUM_CUENTA" type="xs:string"/>
+      <xs:element name="COD_TIPO_CUENTA" type="xs:int"/>
+      <xs:element name="TIPO_PRODUCTO" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresarCuentaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:LOG_RESPUESTA"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from VentaRemotaServiceService WSDL service -->
+
+  <service name="VentaRemotaService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.ventaremota.laaraucana.cl"/>
+      <parameter name="wsdlServiceElement" value="VentaRemotaServiceService"/>
+      <parameter name="schemaQualified" value="http://model.ventaremota.laaraucana.cl,http://ws.ventaremota.laaraucana.cl,http://vo.ws.ventaremota.laaraucana.cl"/>
+      <parameter name="wsdlServicePort" value="VentaRemotaService"/>
+      <parameter name="className" value="cl.laaraucana.ventaremota.ws.VentaRemotaService"/>
+      <parameter name="wsdlPortType" value="VentaRemotaService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.ventaremota.laaraucana.cl" xmlns:retNS="http://ws.ventaremota.laaraucana.cl" xmlns:rtns="http://model.ventaremota.laaraucana.cl" name="informarCredito" qname="operNS:informarCredito" returnQName="retNS:informarCreditoReturn" returnType="rtns:VentaServiceVo" soapAction="">
+        <parameter xmlns:pns="http://ws.ventaremota.laaraucana.cl" xmlns:tns="http://vo.ws.ventaremota.laaraucana.cl" qname="pns:autenticacion" type="tns:CredencialesVO"/>
+        <parameter xmlns:pns="http://ws.ventaremota.laaraucana.cl" xmlns:tns="http://model.ventaremota.laaraucana.cl" qname="pns:credito" type="tns:CreditoVo"/>
+      </operation>
+      <parameter name="allowedMethods" value="informarCredito"/>
+
+      <typeMapping xmlns:ns="http://vo.ws.ventaremota.laaraucana.cl" qname="ns:CredencialesVO" type="java:cl.laaraucana.ventaremota.ws.vo.CredencialesVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.ventaremota.laaraucana.cl" qname="ns:CreditoVo" type="java:cl.laaraucana.ventaremota.model.CreditoVo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.ventaremota.laaraucana.cl" qname="ns:VentaServiceVo" type="java:cl.laaraucana.ventaremota.model.VentaServiceVo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

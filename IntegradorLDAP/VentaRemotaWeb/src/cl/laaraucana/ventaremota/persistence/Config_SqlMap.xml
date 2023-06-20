@@ -1,0 +1,202 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="credito">
+
+
+
+
+	<resultMap id="creditoResult"
+		class="cl.laaraucana.ventaremota.entities.CreditoEntiti">
+
+		<result column="numeroOferta" property="numeroOferta" />
+		<result column="rutCliente" property="rutCliente" />
+		<result column="dvCliente" property="dvCliente" />
+		<result column="nombreCliente" property="nombreCliente" />
+		<result column="fechaEnvio" property="fechaEnvio" />
+		<result column="horaEnvio" property="horaEnvio" />
+		<result column="numeroDocumento" property="numeroDocumento" />
+		<result column="estado" property="estado" />
+		<result column="tipoCreditoNormal" property="tipoCreditoNormal" />
+		<result column="folioCredito" property="folioCredito" />
+		<result column="montoSolicitado" property="montoSolicitado" />
+		<result column="montoTotalSolicitado" property="montoTotalSolicitado" />
+		<result column="montoComision" property="montoComision" />
+		<result column="montoLiquido" property="montoLiquido" />
+		<result column="formaPago" property="formaPago" />
+		<result column="montoRenegociado" property="montoRenegociado" />
+		<result column="montoPagoMora" property="montoPagoMora" />
+		<result column="fechaOtorgamiento" property="fechaOtorgamiento" />
+		<result column="montoCuota" property="montoCuota" />
+		<result column="numeroCuotas" property="numeroCuotas" />
+		<result column="tasaInteresMensual" property="tasaInteresMensual" />
+		<result column="CAE" property="cae" />
+		<result column="Impuesto" property="impuesto" />
+		<result column="gastoNotarial" property="gastoNotarial" />
+		<result column="seguroCesantia" property="seguroCesantia" />
+		<result column="seguroDesgravamen" property="seguroDesgravamen" />
+		<result column="montoCompraCartera" property="montoCompraCartera" />
+	</resultMap>
+
+	<resultMap id="pregunta"
+		class="cl.laaraucana.ventaremota.ibatis.vo.PreguntaVO">
+
+		<result column="idPregunta" property="idPregunta" />
+		<result column="pregunta" property="pregunta" />
+		<result column="maxRespuestas" property="maxRespuestas" />
+		<result column="tipoAfiliado" property="tipoAfiliado" />
+		<result column="nombreCampo" property="nombreCampo" />
+		<result column="isLista" property="isLista" />
+		<result column="isInfoPersonal" property="isInfoPersonal" />
+	</resultMap>
+	
+	<resultMap id="respuesta"
+		class="cl.laaraucana.ventaremota.ibatis.vo.RespuestaVO">
+
+		<result column="idPregunta" property="idPregunta" />
+		<result column="idRespuesta" property="idRespuesta" />
+		<result column="isRango" property="isRango" />
+		<result column="menorValor" property="menorValor" />
+		<result column="mayorValor" property="mayorValor" />
+		<result column="igualValor" property="igualValor" />
+		<result column="respuesta" property="respuesta" />
+	</resultMap>
+
+	<resultMap id="autenticacion"
+		class="cl.laaraucana.ventaremota.ibatis.vo.AutenticacionVO">
+
+		<result column="sigla" property="codigo" />
+		<result column="orden" property="orden" />
+		<result column="nombre" property="nombre" />
+		<result column="habilitada" property="habilitada" />
+	</resultMap>
+	
+	<insert id="insertCreditos"
+		parameterClass="cl.laaraucana.ventaremota.entities.CreditoEntiti">
+
+		insert into creditoRemoto
+		values(#numeroOferta#,
+		#rutCliente#,
+		#dvCliente#,
+		#nombreCliente#,
+		#fechaEnvio#,
+		#horaEnvio#,
+		#numeroDocumento#,
+		#estado#,
+		#tipoCreditoNormal#,
+		#folioCredito#,
+		#montoSolicitado#,
+		#montoTotalSolicitado#,
+		#montoComision#,
+		#montoLiquido#,
+		#formaPago#,
+		#montoRenegociado#,
+		#montoPagoMora#,
+		#fechaOtorgamiento#,
+		#montoCuota#,
+		#numeroCuotas#,
+		#tasaInteresMensual#,
+		#cae#,
+		#impuesto#,
+		#gastoNotarial#,
+		#seguroCesantia#,
+		#seguroDesgravamen#,
+		#montoCompraCartera#,
+		#idTipoContrato#,
+		#descripcionTipoContrato#,
+		#rentaDepurada#,
+		#numeroDireccion#,
+		#celular#,
+		#codigoComuna#,
+		#codigoTipoCuenta#,
+		#codigoBanco#,
+		#plazoCredito#,
+		#rutEmpresa#,
+		#fechaNacimiento#,
+		#regimenSalud#,
+		#creditosVigentes#,
+		#tipoReprogramacion#,
+		#contratoCR#,
+		#deudorAlimenticio#
+		)
+
+	</insert>
+	
+	<select id="numeroIntentos" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+		select intentos from bitacoraPreguntasCR
+		where RutCliente= #rutCliente#
+		and numeroOferta= #numeroOferta#
+	</select>
+	
+	<insert id="insertResultados" parameterClass="cl.laaraucana.ventaremota.ibatis.vo.ResultadosBitacoraVO">
+		insert into bitacoraPreguntasCR values(
+			#rutCliente#,
+			#dvCliente#,
+			#numeroOferta#,
+			#intentos#,
+			#idPregunta1#,
+			#respuesta1#,
+			#idPregunta2#,
+			#respuesta2#,
+			#idPregunta3#,
+			#respuesta3#,
+			GETDATE()
+		)
+	</insert>
+	
+	<update id="updateIntentosRespuestas" parameterClass="cl.laaraucana.ventaremota.ibatis.vo.ResultadosBitacoraVO">
+		update bitacoraPreguntasCR
+		set intentos= intentos + 1,
+		fecha= GETDATE()
+		<isNotNull property="respuesta1">
+			, idPregunta1= #idPregunta1#
+			, respuesta1= #respuesta1#
+		</isNotNull>
+		<isNotNull property="respuesta2">
+			, idPregunta2= #idPregunta2#
+			, respuesta2= #respuesta2#
+		</isNotNull>
+		<isNotNull property="respuesta3">
+			, idPregunta3= #idPregunta3#
+			, respuesta3= #respuesta3#
+		</isNotNull>
+		where RutCliente= #rutCliente#
+		and numeroOferta= #numeroOferta# 
+	</update> 
+	<select id="getAutenticaciones" resultMap="autenticacion">
+		select * from creditoRemotoAutenticacion
+		where habilitada=1
+		order by orden
+	</select>
+	
+	<delete id="deleteByOferta">
+		delete from creditoRemoto where numeroOferta = #numeroOferta#
+	</delete>
+	
+	<select id="preguntas" resultMap="pregunta">
+		select * from creditoRemotoPreguntas
+		where idPregunta in (#idPregunta1#, #idPregunta2# , #idPregunta3#)
+	</select>
+	
+	<select id="preguntasActivas" resultClass="java.lang.Integer">
+		select idPregunta from creditoRemotoPreguntas
+		where activa=1
+	</select>
+	<select id="preguntasPersonales" resultClass="java.lang.Integer">
+		select idPregunta from creditoRemotoPreguntas
+		where activa=1
+		and isInfoPersonal=1
+	</select>
+	
+	<select id="respuestas" resultMap="respuesta">
+		select * from creditoRemotoRespuestas
+		where idPregunta= #idPregunta#
+	</select>
+	
+	<select id="totalPreguntas" resultClass="java.lang.Integer">
+		select count(1) from creditoRemotoPreguntas
+	</select>
+	
+	<select id="codigosSinacofi" resultClass="java.util.HashMap">
+		select * from creditoRemotoCodigosSinacofi
+	</select>
+
+</sqlMap>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cuentasService">
+
+	<resultMap id="credenciales"
+		class="cl.laaraucana.cuentabancaria.vo.UsuarioVo">
+		<result column="Usuario" property="usuario" />
+		<result column="Password" property="password" />
+		<result column="nombre" property="nombre" />
+		<result column="apellidoPaterno" property="apellidoPaterno" />
+		<result column="apellidoMaterno" property="apellidoMaterno" />
+		<result column="idCanal" property="idCanal" />
+		<result column="estado" property="estado" />
+		<result column="fechaRegistro" property="fechaRegistro" />
+	</resultMap>
+	
+	<resultMap id="autenticacion"
+		class="cl.laaraucana.cuentabancaria.vo.CredencialesVO">
+		<result column="Usuario" property="usuario" />
+		<result column="Password" property="password" />
+	</resultMap>
+	
+	
+
+ 
+	 
+	<select id="consultaCredenciales" resultMap="autenticacion" >
+
+		select * from usuario where usuario = #usuario#  
+
+	</select>
+	
+	 <select id="getCanal" resultClass="java.lang.String" >
+
+		select c.descripcion 
+		from usuario u 
+		inner join canal c
+		on u.idCanal = c.idCanal
+	    where u.usuario = #usuario#  
+
+	</select>
+	
+	 <select id="getCodCanal" resultClass="java.lang.Integer" >
+
+		select c.codigo 
+		from usuario u 
+		inner join canal c
+		on u.idCanal = c.idCanal
+	    where u.usuario = #usuario#  
+
+	</select>
+	
+</sqlMap>
