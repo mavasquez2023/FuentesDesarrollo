@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="cl.laaraucana.pubnominas.dto.asfam.CabeceraAUTDto"
+			alias="cabeceraAUT" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.asfam.CargasAUTDto"
+			alias="cargasAUT" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.asfam.TotalesAUTDto"
+			alias="totalesAUT" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.asfam.CabeceraMODDto"
+			alias="cabeceraMOD" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.asfam.AutorizacionesMODDto"
+			alias="autorizacionesMOD" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.asfam.SuspensionesMODDto"
+			alias="suspensionesMOD" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.asfam.PendientesMODDto"
+			alias="pendientesMOD" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.asfam.PaginasMODDto"
+			alias="paginasMOD" />
+			
+		<typeAlias type="cl.laaraucana.pubnominas.dto.cotizacion.NormalDto"
+			alias="normal" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.cotizacion.CabeceraDto"
+			alias="cabecera" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.cotizacion.TramoDto"
+			alias="tramo" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.cotizacion.CargasDto"
+			alias="cargas" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.cotizacion.RetroactivosDto"
+			alias="retroactivo" />
+		<typeAlias
+			type="cl.laaraucana.pubnominas.dto.cotizacion.CotizacionDto"
+			alias="cotizacion" />
+			
+			
+		<typeAlias type="cl.laaraucana.pubnominas.dto.pex.OficinaDto"
+			alias="oficinasPEX" />
+		<typeAlias type="cl.laaraucana.pubnominas.dto.pex.CuotaPEXDto"
+			alias="cuotasPEX" />
+			
+		<typeAlias type="cl.laaraucana.pubnominas.vo.EmpresasVO"
+			alias="empresa" />
+		
+		<typeAlias type="cl.laaraucana.pubnominas.vo.BitacoraVo"
+			alias="bitacoraVO" />
+		
+	</typeAliases>
+</configuration>

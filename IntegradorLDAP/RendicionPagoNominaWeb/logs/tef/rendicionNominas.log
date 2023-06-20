@@ -1,0 +1,103 @@
+2023-04-03 14:55:30 INFO  Mensajes:36 - Nombre Reporte: FORMATO_BANCO_BCI_BEN
+2023-04-03 14:55:30 INFO  Mensajes:36 - Parametros: idCabecera:26495;; 
+2023-04-03 14:55:30 INFO  Mensajes:36 - KEY, VALUE: idCabecera,26495
+2023-04-03 14:58:07 INFO  Mensajes:36 - Nombre Reporte: FORMATO_BANCO_BCI_BEN
+2023-04-03 14:58:07 INFO  Mensajes:36 - Parametros: idCabecera:26495;; 
+2023-04-03 14:58:07 INFO  Mensajes:36 - KEY, VALUE: idCabecera,26495
+2023-04-03 14:58:08 INFO  Mensajes:36 - query configurada -> select 
+						cvn.CtaCorriente num_cuenta_cargo, 
+						RTRIM(d.cuenta) as num_cuenta_destino, 
+						d.codbanco banco_destino, 
+						d.rutafiliado rut_afiliado, 
+						d.dvafiliado dv_afiliado, 
+						dbo.LimpiarCaracteres(d.nombres) nombre_afiliado, 
+						d.monto monto_transferencia, 
+						d.referencia1 nro_factura, 
+						d.referencia2 as nro_orden_compra, 
+						'OTR' as tipo_pago, 
+						CONCAT('La Araucana ', d.descpago) as mensaje, 
+						substring(
+                                                  correo
+                                                  ,iif(len(correo)-43 > 0 , len(correo)-43 , 0)
+                                                  ,iif(len(correo)> 43 , 44, len(correo)+1)
+                                                   ) as correo_electronico,
+						substring(dbo.LimpiarCaracteres(d.nombres), 1, 24 )  as cuenta_destino
+					from dbo.NominaTefDet d 
+					join dbo.NominaTefCab c
+						on d.idCabecera= c.idCabecera
+					join dbo.Producto p
+						on c.idcodconv= p.idcodconv
+						and c.codprod= p.codprod
+					join dbo.Convenio cvn
+						on c.IdCodConv= cvn.IdCodConv
+					where d.EstadoPago=2
+					and c.idCabecera= #idCabecera#
+2023-04-03 14:58:08 DEBUG querys:9 - 
+
+select 
+						cvn.CtaCorriente num_cuenta_cargo, 
+						RTRIM(d.cuenta) as num_cuenta_destino, 
+						d.codbanco banco_destino, 
+						d.rutafiliado rut_afiliado, 
+						d.dvafiliado dv_afiliado, 
+						dbo.LimpiarCaracteres(d.nombres) nombre_afiliado, 
+						d.monto monto_transferencia, 
+						d.referencia1 nro_factura, 
+						d.referencia2 as nro_orden_compra, 
+						'OTR' as tipo_pago, 
+						CONCAT('La Araucana ', d.descpago) as mensaje, 
+						substring(
+                                                  correo
+                                                  ,iif(len(correo)-43 > 0 , len(correo)-43 , 0)
+                                                  ,iif(len(correo)> 43 , 44, len(correo)+1)
+                                                   ) as correo_electronico,
+						substring(dbo.LimpiarCaracteres(d.nombres), 1, 24 )  as cuenta_destino
+					from dbo.NominaTefDet d 
+					join dbo.NominaTefCab c
+						on d.idCabecera= c.idCabecera
+					join dbo.Producto p
+						on c.idcodconv= p.idcodconv
+						and c.codprod= p.codprod
+					join dbo.Convenio cvn
+						on c.IdCodConv= cvn.IdCodConv
+					where d.EstadoPago=2
+					and c.idCabecera= 26495
+2023-04-03 14:58:08 INFO  Mensajes:36 - ejecutando query: [select 
+						cvn.CtaCorriente num_cuenta_cargo, 
+						RTRIM(d.cuenta) as num_cuenta_destino, 
+						d.codbanco banco_destino, 
+						d.rutafiliado rut_afiliado, 
+						d.dvafiliado dv_afiliado, 
+						dbo.LimpiarCaracteres(d.nombres) nombre_afiliado, 
+						d.monto monto_transferencia, 
+						d.referencia1 nro_factura, 
+						d.referencia2 as nro_orden_compra, 
+						'OTR' as tipo_pago, 
+						CONCAT('La Araucana ', d.descpago) as mensaje, 
+						substring(
+                                                  correo
+                                                  ,iif(len(correo)-43 > 0 , len(correo)-43 , 0)
+                                                  ,iif(len(correo)> 43 , 44, len(correo)+1)
+                                                   ) as correo_electronico,
+						substring(dbo.LimpiarCaracteres(d.nombres), 1, 24 )  as cuenta_destino
+					from dbo.NominaTefDet d 
+					join dbo.NominaTefCab c
+						on d.idCabecera= c.idCabecera
+					join dbo.Producto p
+						on c.idcodconv= p.idcodconv
+						and c.codprod= p.codprod
+					join dbo.Convenio cvn
+						on c.IdCodConv= cvn.IdCodConv
+					where d.EstadoPago=2
+					and c.idCabecera= 26495,comun/datasources/exportDS]
+2023-04-03 14:58:08 INFO  Mensajes:36 - [getConexion] creando conexion para comun/datasources/exportDS
+2023-04-03 14:58:08 INFO  Mensajes:36 - Cargando Properties...
+2023-04-03 14:58:08 INFO  Mensajes:36 - Texto: 6
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [0]: config.jdbc.use.jndi=true
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [1]: config.jdbc.jndi=jdbc/tefsql
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [2]: #config.jdbc.conn.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [3]: #config.jdbc.conn.url=jdbc:sqlserver://172.22.6.121;database::TEFDTA
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [4]: #config.jdbc.conn.user=usr_ServTEF
+2023-04-03 14:58:08 INFO  Mensajes:36 - linea [5]: #config.jdbc.conn.password=Ser_Tef_2020
+2023-04-03 14:58:08 INFO  Mensajes:36 - props: {#config.jdbc.conn.password=Ser_Tef_2020, #config.jdbc.conn.url=jdbc:sqlserver://172.22.6.121;database=TEFDTA, config.jdbc.jndi=jdbc/tefsql, config.jdbc.use.jndi=true, #config.jdbc.conn.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver, #config.jdbc.conn.user=usr_ServTEF}
+2023-04-03 14:58:08 INFO  Mensajes:36 - Agregando properties a session: exportDS

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cl.laaraucana.pubnominas.persistence.DaoEmpresa">
+
+	<resultMap id="resultEmpresas" type="empresa">
+
+		<result property="ID" column="CMNA" />
+		<result property="name" column="CMPA" />
+		<result property="estado" column="CMQA" />
+	</resultMap>
+
+
+	<select id="getListaEmpresas" parameterType="int"
+	resultMap="resultEmpresas">
+	select CMNA, max(CMPA) as CMPA, CMQA from(
+		select CMNA, CMPA, CMQA from cmdta.cm02f1
+			UNION
+		select CMNA, CMPA, CMQA from bpafdta.cm02f1
+	) as A
+	group by CMNA, CMPA, CMQA
+	</select>
+
+
+</mapper>
