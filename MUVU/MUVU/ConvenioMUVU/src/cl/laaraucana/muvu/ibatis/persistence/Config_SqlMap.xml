@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="contacto">
+
+<select id="consultaMail" resultClass="java.lang.String">
+	select Mail from dbo.DWH_MAIL  a where rutbp = #rut#
+	and FechaCorte = (select max(FechaCorte) from dbo.DWH_MAIL b where b.rutbp  = a.rutbp )
+	order by FechaValidacionMail desc, TipoMail
+</select>
+
+<select id="consultaTelefono" resultClass="java.lang.String">
+	select Telefono from dbo.DWH_TELEFONOS a
+	where a.rutbp = #rut# 
+	and a.FechaCorte = (select max(FechaCorte) from dbo.DWH_TELEFONOS b where b.rutbp  = a.rutbp )
+	and idTipoTelefono in (1, 2)
+	order by FechaValidacionCelular desc, idTipoTelefono desc
+</select>
+
+<select id="consultaCelular" resultClass="java.lang.String">
+	select Telefono from dbo.DWH_TELEFONOS a
+	where a.rutbp = #rut# 
+	and a.FechaCorte = (select max(FechaCorte) from dbo.DWH_TELEFONOS b where b.rutbp  = a.rutbp )
+	and idTipoTelefono in (3, 4)
+	order by FechaValidacionCelular desc, idTipoTelefono desc
+</select>
+
+</sqlMap>

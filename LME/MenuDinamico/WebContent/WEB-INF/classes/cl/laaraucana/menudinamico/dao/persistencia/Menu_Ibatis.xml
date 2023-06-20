@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	
+   	<resultMap id="result_Menu" class="cl.laaraucana.menudinamico.vo.MenuVO" >
+		
+		<result property="codMenu" column="CODMENU"/>
+		<result property="nodoPadre" column="NODPADR"/>
+		<result property="flgHoja" column="FLGHOJA"/>
+		<result property="enlace" column="ENLMENU"/>
+		<result property="etiqueta" column="ETQMENU"/>
+		<result property="descripcion" column="DSCMENU"/>
+		<result property="seguridad" column="SEGURIDAD"/>
+		<result property="nivel" column="NIVEL"/>
+		<result property="linkInterno" column="LINKINT"/>
+		
+	</resultMap>
+	
+	<select id="getBuscar_Menu" resultMap="result_Menu">
+		SELECT CODMENU,ETQMENU,DSCMENU,NODPADR,FLGHOJA,ENLMENU,SEGURIDAD,NIVEL,LINKINT
+		FROM LIEXP.ILFJAMEN
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="codMenu">
+				CODMENU = '$codMenu$'
+			</isNotNull>
+			<isNotNull prepend="AND" property="etiqueta">
+				ETQMENU = '$etiqueta$'
+			</isNotNull>		
+		</dynamic> 		
+	</select>
+	
+	<select id="getCodigoMenu" resultClass="java.lang.Long">
+		SELECT MAX(CODMENU)
+		FROM LIEXP.ILFJAMEN
+	</select>
+
+	<select id="getBuscar_MenuSORTED" resultMap="result_Menu">
+	SELECT
+	CODMENU,ETQMENU,DSCMENU,NODPADR,FLGHOJA,ENLMENU,SEGURIDAD,NIVEL,LINKINT
+	FROM LIEXP.ILFJAMEN
+	ORDER BY NODPADR ASC, NIVEL ASC
+	</select>
+	
+	<select id="getBuscar_MenuByEtiqueta" resultMap="result_Menu">
+		SELECT CODMENU,ETQMENU,DSCMENU,NODPADR,FLGHOJA,ENLMENU,SEGURIDAD,NIVEL,LINKINT
+		FROM LIEXP.ILFJAMEN
+		WHERE UPPER(ETQMENU) LIKE '%$etiqueta$%'
+		ORDER BY NODPADR ASC, NIVEL ASC	
+	</select>	
+	
+	<insert id="insertar_Menu" parameterClass="cl.laaraucana.menudinamico.vo.MenuVO">
+		INSERT INTO LIEXP.ILFJAMEN (CODMENU,ETQMENU,DSCMENU,NODPADR,FLGHOJA,ENLMENU,SEGURIDAD,NIVEL,LINKINT) 
+		VALUES (
+				#codMenu#,
+				#etiqueta#,
+				#descripcion#,
+				#nodoPadre#,
+				#flgHoja#,
+				#enlace#,
+				#seguridad#,
+				#nivel#,
+				#linkInterno#
+				)
+		WITH NC
+	</insert>
+	 	<insert id="insertar_MenuCodAuto" parameterClass="cl.laaraucana.menudinamico.vo.MenuVO">
+		INSERT INTO LIEXP.ILFJAMEN (CODMENU,ETQMENU,DSCMENU,NODPADR,FLGHOJA,ENLMENU,SEGURIDAD,NIVEL,LINKINT) 
+		VALUES (
+				(SELECT IFNULL(MAX(CODMENU)+1,0) FROM LIEXP.ILFJAMEN),
+				#etiqueta#,
+				#descripcion#,
+				#nodoPadre#,
+				#flgHoja#,
+				#enlace#,
+				#seguridad#,
+				#nivel#,
+				#linkInterno#
+				)
+		WITH NC
+	</insert>
+	
+	<update id="up_Menu" parameterClass="cl.laaraucana.menudinamico.vo.MenuVO">
+		UPDATE LIEXP.ILFJAMEN
+		SET	
+			ETQMENU = #etiqueta#,
+			DSCMENU = #descripcion#,
+			NODPADR = #nodoPadre#,
+			FLGHOJA = #flgHoja#,
+			ENLMENU = #enlace#,
+			SEGURIDAD = #seguridad#,
+			NIVEL = #nivel#,
+			LINKINT = #linkInterno#
+		WHERE
+			CODMENU = #codMenu#
+		WITH NC
+	</update>
+	
+	<delete id="del_Menu" parameterClass="cl.laaraucana.menudinamico.vo.MenuVO">
+		DELETE FROM LIEXP.ILFJAMEN
+		WHERE
+			CODMENU = #codMenu#
+		WITH NC
+	</delete>
+	
+	<delete id="del_Menus" parameterClass="list">
+		DELETE FROM LIEXP.ILFJAMEN
+		WHERE CODMENU in
+  			<iterate open="(" close=")" conjunction=",">
+  			 #list[].codMenu#
+  			</iterate>
+		WITH NC
+	</delete>
+	
+	<select id="getTodosHijos" resultMap="result_Menu" parameterClass="java.lang.Long">
+		SELECT *
+		FROM LIEXP.ILFJAMEN
+		WHERE NODPADR = #value#
+		ORDER BY NODPADR ASC, NIVEL ASC	
+	</select>	
+</sqlMap>

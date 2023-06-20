@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="LME_TYPES_1.6.3.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_ZONA_D.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra está publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>Definiciones de tipos de datos de la Licencia Medica Electronica</Titulo>
+				<Autor>Luis Andres Baez Arribada</Autor>
+				<Institucion>SuperIntendencia de Seguridad Social - Unidad de Planificacion y Desarrollo</Institucion>
+				<Creacion>2011-05-17</Creacion>
+				<Estado>Activo</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-05-17</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se crea zona completa</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se define tipo a elementos anonimos</modificaciones>
+				</Modificado>
+				<Descripcion>Zona de responsabilidad de la entidad pagadora</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="CT_ZONA_D">
+		<xsd:sequence>
+			<xsd:element name="ZONA_D1" type="CT_ZONA_D1"/>
+			<xsd:element name="ZONA_DF" type="CT_ZONA_F"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_D1">
+		<xsd:sequence>
+			<xsd:element name="remuneraciones" type="CTRemuneracion" maxOccurs="12"/>
+			<xsd:element name="liquidacion" type="CTLiquidacion"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

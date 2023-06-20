@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	
+	<resultMap id="result_SIL" class="cl.laaraucana.silmsil.vo.SIL_GlosaErrores_VO" >
+		<result property="codope" column="CODOPE"/>
+		<result property="tpofor" column="TPOFOR"/>
+		<result property="nrofol" column="NROFOL"/>
+		<result property="ruttrabaj" column="RUTTRABAJ"/>
+		<result property="fecemi" column="FECEMI"/>
+		<result property="diasub" column="DIASUB"/>
+		<result property="mtoliq" column="MTOLIQ"/>
+		<result property="mtocot" column="MTOCOT"/>
+		<result property="codint" column="CODINT"/>
+		<result property="finipa" column="FINIPA"/>
+		
+		<result property="mocope" column="MOCOPE"/>
+		<result property="baseca" column="BASECA"/>
+		<result property="idlice" column="IDLICE"/>
+		<result property="inimes" column="INIMES"/>
+		<result property="tpolic" column="TPOLIC"/>
+		<result property="ndicot" column="NDICOT"/>
+		<result property="ndiinc" column="NDIINC"/>
+		<result property="ndipag" column="NDIPAG"/>
+		<result property="mtsbpa" column="MTSBPA"/>
+		<result property="mtsbdi" column="MTSBDI"/>
+		
+		<result property="mcsegc" column="MCSEGC"/>
+		<result property="motcot" column="MOTCOT"/>
+		<result property="ofipgo" column="OFIPGO"/>
+		<result property="ccopgo" column="CCOPGO"/>
+		<result property="inssal" column="INSSAL"/>
+		<result property="submat" column="SUBMAT"/>
+		<result property="tpoliq" column="TPOLIQ"/>
+		<result property="fecpgo" column="FECPGO"/>
+		<result property="mliqpa" column="MLIQPA"/>
+		<result property="rimpms" column="RIMPMS"/>
+		
+		<result property="correlativ" column="CORRELATIV"/>
+		<result property="correlab" column="CORRELAB"/>
+		<result property="pagfol" column="PAGFOL"/>
+		<result property="perpag" column="PERPAG"/>
+		<result property="lichasfec" column="LICHASFEC"/>
+		<result property="descripcion" column="DESCRI"/>
+		<result property="idcampo" column="NROCMPO"/>	
+	</resultMap>
+	
+	<resultMap id="result_SIL_T" class="cl.laaraucana.silmsil.vo.SIL_GlosaErrores_VO" >
+		<result property="codope" column="CODOPE"/>
+		<result property="tpofor" column="TPOFOR"/>
+		<result property="nrofol" column="NROFOL"/>
+		<result property="ruttrabaj" column="RUTTRABAJ"/>
+		<result property="fecemi" column="FECEMI"/>
+		<result property="diasub" column="DIASUB"/>
+		<result property="mtoliq" column="MTOLIQ"/>
+		<result property="mtocot" column="MTOCOT"/>
+		<result property="codint" column="CODINT"/>
+		<result property="finipa" column="FINIPA"/>
+		
+		<result property="mocope" column="MOCOPE"/>
+		<result property="baseca" column="BASECA"/>
+		<result property="idlice" column="IDLICE"/>
+		<result property="inimes" column="INIMES"/>
+		<result property="tpolic" column="TPOLIC"/>
+		<result property="ndicot" column="NDICOT"/>
+		<result property="ndiinc" column="NDIINC"/>
+		<result property="ndipag" column="NDIPAG"/>
+		<result property="mtsbpa" column="MTSBPA"/>
+		<result property="mtsbdi" column="MTSBDI"/>
+		
+		<result property="mcsegc" column="MCSEGC"/>
+		<result property="motcot" column="MOTCOT"/>
+		<result property="ofipgo" column="OFIPGO"/>
+		<result property="ccopgo" column="CCOPGO"/>
+		<result property="inssal" column="INSSAL"/>
+		<result property="submat" column="SUBMAT"/>
+		<result property="tpoliq" column="TPOLIQ"/>
+		<result property="fecpgo" column="FECPGO"/>
+		<result property="mliqpa" column="MLIQPA"/>
+		<result property="rimpms" column="RIMPMS"/>
+		
+		<result property="correlativ" column="CORRELATIV"/>
+		<result property="pagfol" column="PAGFOL"/>
+		<result property="perpag" column="PERPAG"/>
+		<result property="lichasfec" column="LICHASFEC"/>
+		<result property="descripcion" column="DESCRI"/>
+		<result property="idcampo" column="NROCMPO"/>	
+	</resultMap>
+	
+	<!--START querys para paginación -->
+    <resultMap id="result_Count_LogAgSIL" class="cl.laaraucana.silmsil.vo.CountVO">
+		<result property="resultadoCount" column="TOTAL" />
+    </resultMap>
+	
+	
+	<!-- Conseguir el primer set de datos a mostrar -->	
+	<select id="getListaErrorSIL" resultMap="result_SIL">
+		<!-- SELECT C.* FROM (-->
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+			A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+			A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+			A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+			B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB 
+		FROM LIEXP.ILFSIL050 A
+		INNER JOIN LIEXP.ILFSIL054 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL = B.NROFOL
+			AND RUTTRABAJ=RUTTRAB
+			AND A.PAGFOL=B.PAGFOL
+			AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=$fecha$
+			AND B.TIPOBS='1'
+			ORDER BY CORRELAB FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		<!-- ) C-->
+	</select>	
+	
+	<!-- Conseguir set siguiente de datos a mostrar -->
+	<select id="getPaginaLogSIL_FW" resultMap="result_SIL">
+		SELECT C.* FROM (
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+		A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+		A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+		A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+		B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB  
+		FROM LIEXP.ILFSIL050 A
+		INNER JOIN LIEXP.ILFSIL054 B
+		ON A.PERPAG=B.PERPAG
+		AND A.NROFOL = B.NROFOL
+		AND RUTTRABAJ=RUTTRAB
+		AND A.PAGFOL=B.PAGFOL
+		AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=$fecha$ 
+		AND B.CORRELATIV &gt; $ultimoLista$
+		AND B.TIPOBS='1'
+		ORDER BY A.CORRELATIV, CORRELAB
+		FETCH FIRST $registrosPorPagina$ ROWS ONLY) C
+	</select>
+	
+	<!-- Conseguir set anterior de datos a mostrar -->
+	<select id="getPaginaLogSIL_BK" resultMap="result_SIL">
+		SELECT C.* FROM(
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+		A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+		A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+		A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+		B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB
+		FROM LIEXP.ILFSIL050 A
+		INNER JOIN LIEXP.ILFSIL054 B
+		ON A.PERPAG=B.PERPAG
+		AND A.NROFOL = B.NROFOL 
+		AND RUTTRABAJ=RUTTRAB
+		AND A.PAGFOL=B.PAGFOL
+		AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=$fecha$ 
+		AND B.CORRELATIV &lt; $primeroLista$
+		AND B.TIPOBS='1'
+		ORDER BY A.CORRELATIV DESC , B.CORRELATIV DESC
+		FETCH FIRST $registrosPorPagina$ ROWS ONLY) C 
+		ORDER BY C.CORRELAB
+	</select>
+	
+	<select id="getUltimaPagErrorSIL" resultMap="result_SIL">
+		SELECT C.* FROM (
+			SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+				A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+				A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+				A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+				B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB 
+			FROM LIEXP.ILFSIL050 A
+			INNER JOIN LIEXP.ILFSIL054 B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL = B.NROFOL
+				AND RUTTRABAJ=RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+			WHERE A.PERPAG = $fecha$
+				AND B.TIPOBS='1'
+			ORDER BY CORRELAB DESC FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		) AS C ORDER BY CORRELAB ASC
+	</select>	
+		
+	<!-- Obtiene errores de registro SIl al momento de corregir-->	
+	<select id="getErrorSIL" resultMap="result_SIL">
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+			A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+			A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+			A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+			B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB
+		FROM LIEXP.ILFSIL050 AS A
+			INNER JOIN LIEXP.ILFSIL054 AS B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL = B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=#perpag# 
+		AND B.TIPOBS='1'
+		AND TRIM(A.RUTTRABAJ)=#ruttrabaj#
+		AND TRIM(A.NROFOL)=#nrofol#
+		ORDER BY B.NROFOL
+	</select>	
+	
+	<!-- Obtiene errores de registro SIl al momento de actualizar -->	
+	<select id="getErrorSIL_T" resultMap="result_SIL">
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+			A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+			A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+			A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+			B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB
+		FROM LIEXP.ILFSIL050T AS A
+			INNER JOIN LIEXP.ILFSIL054T AS B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL = B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=#perpag# 
+		AND B.TIPOBS='1'
+		AND TRIM(A.RUTTRABAJ)=#ruttrabaj#
+		AND TRIM(A.NROFOL)=#nrofol#
+		ORDER BY B.NROFOL
+	</select>	
+		
+		
+	<!-- Consulta SQL para buscar dato por n° folio o por rut trabajador -->
+	<select id="getBuscarLog_SIL" resultMap="result_SIL">
+		SELECT C.* FROM (
+		SELECT A.CODOPE, A.TPOFOR, TRIM(A.NROFOL) AS NROFOL, TRIM(A.RUTTRABAJ) AS RUTTRABAJ, A.FECEMI, A.DIASUB,
+		A.MTOLIQ, A.MTOCOT, A.CODINT, A.FINIPA, A.MOCOPE, A.BASECA, A.IDLICE, A.INIMES, A.TPOLIC, A.NDICOT, A.NDIINC,
+		A.NDIPAG, A.MTSBPA, A.MTSBDI, A.MCSEGC, A.MOTCOT, TRIM(A.OFIPGO) AS OFIPGO, A.CCOPGO, TRIM(A.INSSAL) AS INSSAL,
+		A.SUBMAT, A.TPOLIQ, A.FECPGO, A.MLIQPA, A.RIMPMS, A.PERPAG, A.CORRELATIV, A.PAGFOL, A.LICHASFEC, B.NOMARCH, 
+		B.NROCMPO, B.CMPREF, B.DESCRI, B.TIPOBS, B.CORRELATIV AS CORRELAB 
+		FROM LIEXP.ILFSIL050 A
+		INNER JOIN LIEXP.ILFSIL054 B
+		ON A.PERPAG=B.PERPAG
+		AND A.NROFOL = B.NROFOL
+		AND RUTTRABAJ=RUTTRAB
+		AND A.PAGFOL=B.PAGFOL
+		AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=#perpag#
+		AND B.TIPOBS='1'
+		ORDER BY CORRELAB) C
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="nrofol">
+				UPPER(TRIM(C.NROFOL)) like '%$nrofol$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="ruttrabaj">
+				UPPER(TRIM(C.RUTTRABAJ)) like '%$ruttrabaj$%'
+			</isNotNull>
+		</dynamic>
+		fetch FIRST $periodo$ ROWS ONLY
+	</select>
+	
+	<!-- Conteo de páginas para proceso SIL agrupado por número de folio -->
+	<select id="getConteoAgrupadoSIL" resultMap="result_Count_LogAgSIL">	
+		SELECT COUNT(*)AS TOTAL FROM (
+			SELECT A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC 
+				FROM LIEXP.ILFSIL050 A
+			INNER JOIN LIEXP.ILFSIL054 B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL=B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+			WHERE A.PERPAG=$fecha$ 
+				AND B.TIPOBS='1'
+			GROUP BY A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC,A.PAGFOL
+		ORDER BY A.NROFOL) C
+	</select>
+	
+	<!-- Consulta SQL para agrupar datos Log Error -->
+	<select id="getDatosAgrupadosLogSIL" resultMap="result_SIL">
+		SELECT C.CODOPE, C.TPOFOR, TRIM(C.NROFOL) AS NROFOL, TRIM(C.RUTTRABAJ) AS RUTTRABAJ, C.FECEMI, C.DIASUB,
+			C.MTOLIQ, C.MTOCOT, C.CODINT, C.FINIPA, C.MOCOPE, C.BASECA, C.IDLICE, C.INIMES, C.TPOLIC, C.NDICOT, C.NDIINC,
+			C.NDIPAG, C.MTSBPA, C.MTSBDI, C.MCSEGC, C.MOTCOT, TRIM(C.OFIPGO) AS OFIPGO, C.CCOPGO, TRIM(C.INSSAL) AS INSSAL,
+			C.SUBMAT, C.TPOLIQ, C.FECPGO, C.MLIQPA, C.RIMPMS, C.PERPAG, C.CORRELATIV, C.PAGFOL, C.LICHASFEC, D.NOMARCH, 
+			D.NROCMPO, D.CMPREF, D.DESCRI, D.TIPOBS, D.CORRELATIV AS CORRELAB, D.PAGFOL, D.LICHASFEC
+		FROM  (
+			SELECT B.* FROM LIEXP.ILFJAAUX A
+			INNER JOIN LIEXP.ILFSIL050 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL=B.NROFOL
+			AND A.RUTTRABAJ=B.RUTTRABAJ
+			AND A.LICHASFEC=B.LICHASFEC
+			AND A.PAGFOL=B.PAGFOL
+		) C
+		INNER JOIN (
+			SELECT B.* FROM LIEXP.ILFJAAUX A
+			INNER JOIN LIEXP.ILFSIL054 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL=B.NROFOL
+			AND A.RUTTRABAJ=B.RUTTRAB
+			AND A.LICHASFEC=B.LICHASFEC
+			AND A.PAGFOL=B.PAGFOL
+		) D
+			ON C.PERPAG=D.PERPAG
+			AND C.NROFOL=D.NROFOL
+			AND C.RUTTRABAJ=D.RUTTRAB
+			AND C.LICHASFEC=D.LICHASFEC
+			AND C.PAGFOL=D.PAGFOL
+			WHERE C.PERPAG=$fecha$
+			AND D.TIPOBS='1'
+			ORDER BY C.NROFOL
+	</select>
+	
+	<select id="getDatosAgrupadosLogUltimaSIL" resultMap="result_SIL">
+	SELECT * FROM (
+		SELECT C.CODOPE, C.TPOFOR, TRIM(C.NROFOL) AS NROFOL, TRIM(C.RUTTRABAJ) AS RUTTRABAJ, C.FECEMI, C.DIASUB,
+			C.MTOLIQ, C.MTOCOT, C.CODINT, C.FINIPA, C.MOCOPE, C.BASECA, C.IDLICE, C.INIMES, C.TPOLIC, C.NDICOT, C.NDIINC,
+			C.NDIPAG, C.MTSBPA, C.MTSBDI, C.MCSEGC, C.MOTCOT, TRIM(C.OFIPGO) AS OFIPGO, C.CCOPGO, TRIM(C.INSSAL) AS INSSAL,
+			C.SUBMAT, C.TPOLIQ, C.FECPGO, C.MLIQPA, C.RIMPMS, C.PERPAG, C.CORRELATIV, C.PAGFOL, C.LICHASFEC, D.NOMARCH, 
+			D.NROCMPO, D.CMPREF, D.DESCRI, D.TIPOBS, D.CORRELATIV AS CORRELAB, D.PAGFOL, D.LICHASFEC
+		FROM  (
+			SELECT B.* FROM LIEXP.ILFJAAUX A
+			INNER JOIN LIEXP.ILFSIL050 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL=B.NROFOL
+			AND A.RUTTRABAJ=B.RUTTRABAJ
+			AND A.LICHASFEC=B.LICHASFEC
+			AND A.PAGFOL=B.PAGFOL
+		) C
+		INNER JOIN (
+			SELECT B.* FROM LIEXP.ILFJAAUX A
+			INNER JOIN LIEXP.ILFSIL054 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL=B.NROFOL
+			AND A.RUTTRABAJ=B.RUTTRAB
+			AND A.LICHASFEC=B.LICHASFEC
+			AND A.PAGFOL=B.PAGFOL
+		) D
+			ON C.PERPAG=D.PERPAG
+			AND C.NROFOL=D.NROFOL
+			AND C.RUTTRABAJ=D.RUTTRAB
+			AND C.LICHASFEC=D.LICHASFEC
+			AND C.PAGFOL=D.PAGFOL
+			WHERE C.PERPAG=$fecha$
+			AND D.TIPOBS='1'
+			ORDER BY C.NROFOL DESC
+		) AS D ORDER BY D.NROFOL ASC
+	</select>
+	
+	<!-- Insertar datos en tabla de ayuda para Log de Errores -->
+	<insert id="insertAuxTable">
+		INSERT INTO LIEXP.ILFJAAUX ( NROFOL, RUTTRABAJ, PERPAG, LICHASFEC, PAGFOL, TPOPROC, USUARIO)
+			SELECT A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC , A.PAGFOL, '1' TPOPROC, '$usuario$' USUARIO
+				FROM LIEXP.ILFSIL050 A
+			INNER JOIN LIEXP.ILFSIL054 B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL=B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+			WHERE A.PERPAG=$fecha$
+				AND B.TIPOBS='1'
+			GROUP BY A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL
+			ORDER BY A.NROFOL
+			FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		WITH NC
+	</insert>
+	
+	<!-- Insertar la siguiente tanda de datos a procesar -->
+	<insert id="insertAuxTable_FW">
+		INSERT INTO LIEXP.ILFJAAUX ( NROFOL, RUTTRABAJ, PERPAG, LICHASFEC, PAGFOL, TPOPROC, USUARIO)
+			SELECT A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL, '1' TPOPROC, '$usuario$' USUARIO
+				FROM LIEXP.ILFSIL050 A
+			INNER JOIN LIEXP.ILFSIL054 B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL=B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+			WHERE A.PERPAG=$fecha$
+				AND A.NROFOL &gt; '$ultimoNroFolio$'
+				AND B.TIPOBS='1'
+			GROUP BY A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL
+			ORDER BY A.NROFOL
+			FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		WITH NC
+	</insert>
+
+	<!-- Insertar la anterior tanda de datos a procesar -->
+	<insert id="insertAuxTable_BK">
+		INSERT INTO LIEXP.ILFJAAUX ( NROFOL, RUTTRABAJ, PERPAG, LICHASFEC, PAGFOL, TPOPROC, USUARIO)
+			SELECT C.* FROM ( 
+				SELECT A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL, '1' TPOPROC, 
+				'$usuario$' USUARIO
+				FROM LIEXP.ILFSIL050 A
+				INNER JOIN LIEXP.ILFSIL054 B
+				ON A.PERPAG=B.PERPAG
+				AND A.NROFOL=B.NROFOL
+				AND A.RUTTRABAJ=B.RUTTRAB
+				AND A.PAGFOL=B.PAGFOL
+				AND A.LICHASFEC=B.LICHASFEC
+				WHERE A.PERPAG=$fecha$
+				AND A.NROFOL &lt; '$primerNroFolio$'
+				AND B.TIPOBS='1'
+				GROUP BY A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL
+				ORDER BY A.NROFOL DESC
+			FETCH FIRST $registrosPorPagina$ ROWS ONLY) C
+			ORDER BY C.NROFOL
+			WITH NC
+	</insert>
+	
+	<insert id="insertAuxTableUltima">
+		INSERT INTO LIEXP.ILFJAAUX ( NROFOL, RUTTRABAJ, PERPAG, LICHASFEC, PAGFOL, TPOPROC, USUARIO)
+			SELECT A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC , A.PAGFOL, '1' TPOPROC, '$usuario$' USUARIO
+			FROM LIEXP.ILFSIL050 A
+			INNER JOIN LIEXP.ILFSIL054 B
+			ON A.PERPAG=B.PERPAG
+			AND A.NROFOL=B.NROFOL
+			AND A.RUTTRABAJ=B.RUTTRAB
+			AND A.PAGFOL=B.PAGFOL
+			AND A.LICHASFEC=B.LICHASFEC
+			WHERE A.PERPAG=$fecha$
+			AND B.TIPOBS='1'
+			GROUP BY A.NROFOL, A.RUTTRABAJ, A.PERPAG, A.LICHASFEC, A.PAGFOL
+			ORDER BY A.NROFOL DESC
+			FETCH FIRST $registrosPorPagina$ ROWS ONLY
+			WITH NC
+	</insert>
+	
+	<!-- Borrando de datos creados para proceso SIL -->
+	<delete id="delILFJAAUX" parameterClass="cl.laaraucana.silmsil.vo.ILFJAAUXVO">
+		DELETE FROM LIEXP.ILFJAAUX WHERE TPOPROC='1' 
+		AND PERPAG=#perpag# AND USUARIO=#usuario#
+		WITH NC
+	</delete>
+		 
+</sqlMap>

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	
+	<resultMap id="result_LM" class="cl.laaraucana.silmsil.vo.LM_VO" >
+		<result property="operador" column="OPERADOR"/>
+		<result property="tipoform" column="TIPOFORM"/>
+		<result property="folio" column="FOLIO"/>
+		<result property="art77bis" column="ART77BIS"/>
+		<result property="fecinform" column="FECINFORM"/>
+		<result property="ruttrabaj" column="RUTTRABAJ"/>
+		<result property="fecemision" column="FECEMISION"/>
+		<result property="fecinirepo" column="FECINIREPO"/>
+		<result property="fecterrepo" column="FECTERREPO"/>
+		<result property="edadtrabaj" column="EDADTRABAJ"/>
+		
+		<result property="fecnactrab" column="FECNACTRAB"/>
+		<result property="gentrabaj" column="GENTRABAJ"/>
+		<result property="numdiaslic" column="NUMDIASLIC"/>
+		<result property="licmatsupl" column="LICMATSUPL"/>
+		<result property="fecnachijo" column="FECNACHIJO"/>
+		<result property="ruthijo" column="RUTHIJO"/>
+		<result property="tipolic" column="TIPOLIC"/>
+		<result property="recuplabor" column="RECUPLABOR"/>
+		<result property="iniinvalid" column="INIINVALID"/>
+		<result property="fecconcep" column="FECCONCEP"/>
+		
+		<result property="tiporeposo" column="TIPOREPOSO"/>
+		<result property="jorreposo" column="JORREPOSO"/>
+		<result property="lugreposo" column="LUGREPOSO"/>
+		<result property="especialid" column="ESPECIALID"/>
+		<result property="tipoprofes" column="TIPOPROFES"/>
+		<result property="rutprofes" column="RUTPROFES"/>
+		<result property="nomprofes" column="NOMPROFES"/>
+		<result property="licmodific" column="LICMODIFIC"/>
+		<result property="entautoriz" column="ENTAUTORIZ"/>
+		<result property="tipolmresu" column="TIPOLMRESU"/>
+		
+		<result property="ndiasincap" column="NDIASINCAP"/>
+		<result property="diagresuel" column="DIAGRESUEL"/>
+		<result property="periodo" column="PERIODO"/>
+		<result property="ndiasprev" column="NDIASPREV"/>
+		<result property="estadoreso" column="ESTADORESO"/>
+		<result property="tiporesolu" column="TIPORESOLU"/>
+		<result property="redictamen" column="REDICTAMEN"/>
+		<result property="causarecha" column="CAUSARECHA"/>
+		<result property="tiporepoau" column="TIPOREPOAU"/>
+		<result property="jorrepoaut" column="JORREPOAUT"/>
+		
+		<result property="desubsidio" column="DESUBSIDIO"/>
+		<result property="fecreceent" column="FECRECEENT"/>
+		<result property="fecresoent" column="FECRESOENT"/>
+		<result property="rutcontral" column="RUTCONTRAL"/>
+		<result property="rutemplead" column="RUTEMPLEAD"/>
+		<result property="fecreceemp" column="FECRECEEMP"/>
+		<result property="regionempl" column="REGIONEMPL"/>
+		<result property="comunaempl" column="COMUNAEMPL"/>
+		<result property="actlabtrab" column="ACTLABTRAB"/>
+		<result property="ocupactrab" column="OCUPACTRAB"/>
+		
+		<result property="fecrecepag" column="FECRECEPAG"/>
+		<result property="tipregprev" column="TIPREGPREV"/>
+		<result property="calitrabaj" column="CALITRABAJ"/>
+		<result property="tipoentpag" column="TIPOENTPAG"/>
+		<result property="fecpriafil" column="FECPRIAFIL"/>
+		<result property="feccontrab" column="FECCONTRAB"/>
+		
+		<result property="archivo" column="ARCHIVO"/>
+		<result property="licrechaz" column="LICRECHAZ"/>
+		
+		<result property="correlativ" column="CORRELATIV"/>
+		<result property="fecproceso" column="FECPROCESO"/>
+	</resultMap>
+		
+	<resultMap id="result_Count" class="cl.laaraucana.silmsil.vo.CountVO">
+		<result property="resultadoCount" column="total" />
+    </resultMap>	
+		
+	<select id="getBuscar_LM" resultClass="cl.laaraucana.silmsil.vo.LM_VO">
+		SELECT 
+			OPERADOR,
+			TIPOFORM,
+			TRIM(FOLIO) AS FOLIO,
+			ART77BIS,
+			FECINFORM,
+			TRIM(RUTTRABAJ) AS RUTTRABAJ,
+			FECEMISION,
+			FECINIREPO,
+			FECTERREPO,
+			EDADTRABAJ,
+			FECNACTRAB,
+			GENTRABAJ,
+			NUMDIASLIC,
+			LICMATSUPL,
+			FECNACHIJO,
+			TRIM(RUTHIJO) AS RUTHIJO,
+			TIPOLIC,
+			RECUPLABOR,
+			INIINVALID,
+			FECCONCEP,
+			TIPOREPOSO,
+			TRIM(JORREPOSO) AS JORREPOSO,
+			LUGREPOSO,
+			TRIM(ESPECIALID) AS ESPECIALID,
+			TIPOPROFES,
+			TRIM(RUTPROFES) AS RUTPROFES,
+			TRIM(NOMPROFES) AS NOMPROFES,
+			LICMODIFIC,
+			ENTAUTORIZ,
+			TIPOLMRESU,
+			NDIASINCAP,
+			TRIM(DIAGRESUEL) AS DIAGRESUEL,
+			PERIODO,
+			NDIASPREV,
+			ESTADORESO,
+			TIPORESOLU,
+			REDICTAMEN,
+			CAUSARECHA,
+			TIPOREPOAU,
+			TRIM(JORREPOAUT) AS JORREPOAUT,
+			TRIM(DESUBSIDIO) AS DESUBSIDIO,
+			FECRECEENT,
+			FECRESOENT,
+			TRIM(RUTCONTRAL) AS RUTCONTRAL,
+			TRIM(RUTEMPLEAD) AS RUTEMPLEAD,
+			FECRECEEMP,
+			REGIONEMPL,
+			COMUNAEMPL,
+			ACTLABTRAB,
+			OCUPACTRAB,
+			FECRECEPAG,
+			TIPREGPREV,
+			CALITRABAJ,
+			TRIM(TIPOENTPAG) AS TIPOENTPAG,
+			FECPRIAFIL,
+			FECCONTRAB,
+			FECPROCESO,
+			TRIM(ARCHIVO) AS ARCHIVO,
+			TRIM(LICRECHAZ) AS LICRECHAZ,
+			CORRELATIV		
+		FROM LIEXP.ILFLM050
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="fecproceso">
+				FECPROCESO = #fecproceso#
+			</isNotNull>
+			<isNotNull prepend="AND" property="folio">
+				UPPER(TRIM(FOLIO)) like '%$folio$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="ruttrabaj">
+				UPPER(TRIM(RUTTRABAJ)) like '%$ruttrabaj$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="fecterrepo">
+				FECTERREPO=#fecterrepo#
+			</isNotNull>			
+		</dynamic>
+		fetch FIRST $paginacion$ ROWS ONLY
+	</select>
+	<!-- TRIM(RUTTRABAJ)=#ruttrabaj#				 -->
+				
+	<insert id="insertar_LM" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		INSERT INTO LIEXP.ILFLM050 (FECPROCESO,OPERADOR,TIPOFORM,FOLIO,ART77BIS,FECINFORM,RUTTRABAJ,FECEMISION,FECINIREPO,FECTERREPO,
+			EDADTRABAJ,FECNACTRAB,GENTRABAJ,NUMDIASLIC,LICMATSUPL,FECNACHIJO,RUTHIJO,TIPOLIC,RECUPLABOR,INIINVALID,FECCONCEP,TIPOREPOSO,
+			JORREPOSO,LUGREPOSO,ESPECIALID,TIPOPROFES,RUTPROFES,NOMPROFES,LICMODIFIC,ENTAUTORIZ,TIPOLMRESU,NDIASINCAP,DIAGRESUEL,PERIODO,
+			NDIASPREV,ESTADORESO,TIPORESOLU,REDICTAMEN,CAUSARECHA,TIPOREPOAU,JORREPOAUT,DESUBSIDIO,FECRECEENT,FECRESOENT,RUTCONTRAL,RUTEMPLEAD,
+			FECRECEEMP,REGIONEMPL,COMUNAEMPL,ACTLABTRAB,OCUPACTRAB,FECRECEPAG,TIPREGPREV,CALITRABAJ,TIPOENTPAG,FECPRIAFIL,FECCONTRAB,
+			ARCHIVO,LICRECHAZ,CORRELATIV) 
+		VALUES (
+			#fecproceso#,
+			#operador#,
+			#tipoform#,
+			#folio#,
+			#art77bis#,
+			#fecinform#,
+			#ruttrabaj#,
+			#fecemision#,
+			#fecinirepo#,
+			#fecterrepo#,
+			#edadtrabaj#,
+			#fecnactrab#,
+			#gentrabaj#,
+			#numdiaslic#,
+			#licmatsupl#,
+			#fecnachijo#,
+			#ruthijo#,
+			#tipolic#,
+			#recuplabor#,
+			#iniinvalid#,
+			#fecconcep#,
+			#tiporeposo#,
+			#jorreposo#,
+			#lugreposo#,
+			#especialid#,
+			#tipoprofes#,
+			#rutprofes#,
+			#nomprofes#,
+			#licmodific#,
+			#entautoriz#,
+			#tipolmresu#,
+			#ndiasincap#,
+			#diagresuel#,
+			#periodo#,
+			#ndiasprev#,
+			#estadoreso#,
+			#tiporesolu#,
+			#redictamen#,
+			#causarecha#,
+			#tiporepoau#,
+			#jorrepoaut#,
+			#desubsidio#,
+			#fecreceent#,
+			#fecresoent#,
+			#rutcontral#,
+			#rutemplead#,
+			#fecreceemp#,
+			#regionempl#,
+			#comunaempl#,
+			#actlabtrab#,
+			#ocupactrab#,
+			#fecrecepag#,
+			#tipregprev#,
+			#calitrabaj#,
+			#tipoentpag#,
+			#fecpriafil#,
+			#feccontrab#,
+			#archivo#,
+			#licrechaz#,
+			IFNULL((select max(CORRELATIV)+1 from LIEXP.ILFLM050 WHERE FECPROCESO=#fecproceso#),0))		
+		WITH NC
+	</insert>    
+	
+	<!-- insertar sobre lm050 temporal -->
+	<insert id="insertar_LM_T" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		INSERT INTO LIEXP.ILFLM050T (FECPROCESO,OPERADOR,TIPOFORM,FOLIO,ART77BIS,FECINFORM,RUTTRABAJ,FECEMISION,FECINIREPO,FECTERREPO,
+			EDADTRABAJ,FECNACTRAB,GENTRABAJ,NUMDIASLIC,LICMATSUPL,FECNACHIJO,RUTHIJO,TIPOLIC,RECUPLABOR,INIINVALID,FECCONCEP,TIPOREPOSO,
+			JORREPOSO,LUGREPOSO,ESPECIALID,TIPOPROFES,RUTPROFES,NOMPROFES,LICMODIFIC,ENTAUTORIZ,TIPOLMRESU,NDIASINCAP,DIAGRESUEL,PERIODO,
+			NDIASPREV,ESTADORESO,TIPORESOLU,REDICTAMEN,CAUSARECHA,TIPOREPOAU,JORREPOAUT,DESUBSIDIO,FECRECEENT,FECRESOENT,RUTCONTRAL,RUTEMPLEAD,
+			FECRECEEMP,REGIONEMPL,COMUNAEMPL,ACTLABTRAB,OCUPACTRAB,FECRECEPAG,TIPREGPREV,CALITRABAJ,TIPOENTPAG,FECPRIAFIL,FECCONTRAB,
+			ARCHIVO,LICRECHAZ,CORRELATIV) 
+		VALUES (
+			#fecproceso#,
+			#operador#,
+			#tipoform#,
+			#folio#,
+			#art77bis#,
+			#fecinform#,
+			#ruttrabaj#,
+			#fecemision#,
+			#fecinirepo#,
+			#fecterrepo#,
+			#edadtrabaj#,
+			#fecnactrab#,
+			#gentrabaj#,
+			#numdiaslic#,
+			#licmatsupl#,
+			#fecnachijo#,
+			#ruthijo#,
+			#tipolic#,
+			#recuplabor#,
+			#iniinvalid#,
+			#fecconcep#,
+			#tiporeposo#,
+			#jorreposo#,
+			#lugreposo#,
+			#especialid#,
+			#tipoprofes#,
+			#rutprofes#,
+			#nomprofes#,
+			#licmodific#,
+			#entautoriz#,
+			#tipolmresu#,
+			#ndiasincap#,
+			#diagresuel#,
+			#periodo#,
+			#ndiasprev#,
+			#estadoreso#,
+			#tiporesolu#,
+			#redictamen#,
+			#causarecha#,
+			#tiporepoau#,
+			#jorrepoaut#,
+			#desubsidio#,
+			#fecreceent#,
+			#fecresoent#,
+			#rutcontral#,
+			#rutemplead#,
+			#fecreceemp#,
+			#regionempl#,
+			#comunaempl#,
+			#actlabtrab#,
+			#ocupactrab#,
+			#fecrecepag#,
+			#tipregprev#,
+			#calitrabaj#,
+			#tipoentpag#,
+			#fecpriafil#,
+			#feccontrab#,
+			#archivo#,
+			#licrechaz#,
+			IFNULL((select max(CORRELATIV)+1 from LIEXP.ILFLM050T WHERE FECPROCESO=#fecproceso#),0))		
+		WITH NC
+	</insert>
+	
+	<!-- pk: FECTERREPO,FOLIO,RUTTRABAJ,FECPROCESO  -->
+	<update id="up_LM" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		UPDATE LIEXP.ILFLM050 SET 
+			OPERADOR=#operador#,
+			TIPOFORM=#tipoform#,
+			ART77BIS=#art77bis#,
+			FECINFORM=#fecinform#,
+			FECEMISION=#fecemision#,
+			FECINIREPO=#fecinirepo#,
+			EDADTRABAJ=#edadtrabaj#,
+			FECNACTRAB=#fecnactrab#,
+			GENTRABAJ=#gentrabaj#,
+			NUMDIASLIC=#numdiaslic#,
+			LICMATSUPL=#licmatsupl#,
+			FECNACHIJO=#fecnachijo#,
+			RUTHIJO=#ruthijo#,
+			TIPOLIC=#tipolic#,
+			RECUPLABOR=#recuplabor#,
+			INIINVALID=#iniinvalid#,
+			FECCONCEP=#fecconcep#,
+			TIPOREPOSO=#tiporeposo#,
+			JORREPOSO=#jorreposo#,
+			LUGREPOSO=#lugreposo#,
+			ESPECIALID=#especialid#,
+			TIPOPROFES=#tipoprofes#,
+			RUTPROFES=#rutprofes#,
+			NOMPROFES=#nomprofes#,
+			LICMODIFIC=#licmodific#,
+			ENTAUTORIZ=#entautoriz#,
+			TIPOLMRESU=#tipolmresu#,
+			NDIASINCAP=#ndiasincap#,
+			DIAGRESUEL=#diagresuel#,
+			PERIODO=#periodo#,
+			NDIASPREV=#ndiasprev#,
+			ESTADORESO=#estadoreso#,
+			TIPORESOLU=#tiporesolu#,
+			REDICTAMEN=#redictamen#,
+			CAUSARECHA=#causarecha#,
+			TIPOREPOAU=#tiporepoau#,
+			JORREPOAUT=#jorrepoaut#,
+			DESUBSIDIO=#desubsidio#,
+			FECRECEENT=#fecreceent#,
+			FECRESOENT=#fecresoent#,
+			RUTCONTRAL=#rutcontral#,
+			RUTEMPLEAD=#rutemplead#,
+			FECRECEEMP=#fecreceemp#,
+			REGIONEMPL=#regionempl#,
+			COMUNAEMPL=#comunaempl#,
+			ACTLABTRAB=#actlabtrab#,
+			OCUPACTRAB=#ocupactrab#,
+			FECRECEPAG=#fecrecepag#,
+			TIPREGPREV=#tipregprev#,
+			CALITRABAJ=#calitrabaj#,
+			TIPOENTPAG=#tipoentpag#,
+			FECPRIAFIL=#fecpriafil#,
+			FECCONTRAB=#feccontrab#,
+			ARCHIVO=#archivo#,
+			LICRECHAZ=#licrechaz#,
+			FECTERREPO=#fecterrepo#,
+			FOLIO=#folio#,
+			RUTTRABAJ=#ruttrabaj#,
+			FECPROCESO=#fecproceso#
+		WHERE TRIM(FECPROCESO)=#fecproceso# AND TRIM(FOLIO)=#folio# AND TRIM(RUTTRABAJ)=#ruttrabaj# AND TRIM(FECTERREPO)=#fecterrepo#
+		WITH NC
+	</update>
+	
+	<update id="up_LM_PK54" parameterClass="java.util.HashMap">
+		UPDATE LIEXP.ILFLM054 SET 
+			RUTTRAB = '$new_rut$',
+			NROFOL = '$new_folio$',
+			LICHASFEC= $new_fecTerminoLic$
+		WHERE PERPAG=$old_periodo$ AND TRIM(RUTTRAB)='$old_rut$' AND TRIM(NROFOL)='$old_folio$' AND LICHASFEC=$old_fecTerminoLic$
+		WITH NC
+	</update>
+	
+	<delete id="del_LM" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		DELETE FROM LIEXP.ILFLM050
+		WHERE TRIM(FECPROCESO)=#fecproceso# AND TRIM(FOLIO)=#folio#
+		AND TRIM(RUTTRABAJ)=#ruttrabaj# AND TRIM(FECTERREPO)=#fecterrepo#
+		WITH NC
+	</delete>
+	
+
+	<!-- eliminacion de registro LM temporal. -->
+	<delete id="del_LM_T" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		DELETE FROM LIEXP.ILFLM050T
+		WITH NC
+	</delete>
+	
+	<delete id="del_LM_GLOSA_T" parameterClass="cl.laaraucana.silmsil.vo.LM_VO">
+		DELETE FROM LIEXP.ILFLM054T
+		WITH NC
+	</delete>
+	
+<!--START querys para paginación -->
+    <select id="getCount_LM" resultMap="result_Count">
+		select COUNT(*) as total from LIEXP.ILFLM050 where FECPROCESO=$fechaProceso$
+	</select>
+        
+	<select id="getPaginaLM_FW" resultMap="result_LM">
+		select *  
+		from LIEXP.ILFLM050		
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="fecproceso">
+				TRIM(FECPROCESO) = TRIM($fecproceso$)
+			</isNotNull>
+			<isNotNull prepend="AND" property="ultimoLista">
+				CORRELATIV &gt; $ultimoLista$
+			</isNotNull>			
+		</dynamic>
+		order by CORRELATIV FETCH FIRST $registrosPorPagina$ ROWS ONLY		
+	</select>
+	
+	<select id="getPaginaLM_BK" resultMap="result_LM">
+		select * FROM (
+			select *  
+			from LIEXP.ILFLM050		
+			<dynamic prepend="WHERE">
+				<isNotNull prepend="AND" property="fecproceso">
+					TRIM(FECPROCESO) = TRIM($fecproceso$)
+				</isNotNull>
+				<isNotNull prepend="AND" property="primeroLista">
+					CORRELATIV &lt; $primeroLista$
+				</isNotNull>
+			</dynamic>
+			order by CORRELATIV DESC FETCH FIRST $registrosPorPagina$ ROWS ONLY		
+		) AS C order by CORRELATIV
+	</select>
+	
+	<select id="getPaginaLM_Ultima" resultMap="result_LM">
+		SELECT * FROM (
+			SELECT * FROM LIEXP.ILFLM050 AS A
+			<dynamic prepend="WHERE">
+				<isNotNull prepend="AND" property="fecproceso">
+					TRIM(FECPROCESO) = TRIM($fecproceso$)
+				</isNotNull>
+			</dynamic>
+			ORDER BY A.CORRELATIV DESC FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		)AS C ORDER BY C.CORRELATIV ASC
+	</select>
+	
+	<update id="upCorrelativ_LM" parameterClass="java.util.HashMap">
+		UPDATE LIEXP.ILFLM050 SET CORRELATIV=(CORRELATIV-1)
+		WHERE CORRELATIV>#idEliminado# and TRIM(FECPROCESO)=#fechaProceso#
+		WITH NC
+	</update>
+<!--END querys para paginacion -->
+</sqlMap>

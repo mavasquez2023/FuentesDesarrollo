@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	
+	<resultMap id="result_SIL" class="cl.laaraucana.silmsil.vo.SIL_VO" >
+		<result property="codope" column="CODOPE"/>
+		<result property="tpofor" column="TPOFOR"/>
+		<result property="nrofol" column="NROFOL"/>
+		<result property="ruttrabaj" column="RUTTRABAJ"/>
+		<result property="fecemi" column="FECEMI"/>
+		<result property="diasub" column="DIASUB"/>
+		<result property="mtoliq" column="MTOLIQ"/>
+		<result property="mtocot" column="MTOCOT"/>
+		<result property="codint" column="CODINT"/>
+		<result property="finipa" column="FINIPA"/>
+		
+		<result property="mocope" column="MOCOPE"/>
+		<result property="baseca" column="BASECA"/>
+		<result property="idlice" column="IDLICE"/>
+		<result property="inimes" column="INIMES"/>
+		<result property="tpolic" column="TPOLIC"/>
+		<result property="ndicot" column="NDICOT"/>
+		<result property="ndiinc" column="NDIINC"/>
+		<result property="ndipag" column="NDIPAG"/>
+		<result property="mtsbpa" column="MTSBPA"/>
+		<result property="mtsbdi" column="MTSBDI"/>
+		
+		<result property="mcsegc" column="MCSEGC"/>
+		<result property="motcot" column="MOTCOT"/>
+		<result property="ofipgo" column="OFIPGO"/>
+		<result property="ccopgo" column="CCOPGO"/>
+		<result property="inssal" column="INSSAL"/>
+		<result property="submat" column="SUBMAT"/>
+		<result property="tpoliq" column="TPOLIQ"/>
+		<result property="fecpgo" column="FECPGO"/>
+		<result property="mliqpa" column="MLIQPA"/>
+		<result property="rimpms" column="RIMPMS"/>
+		<result property="archiv" column="ARCHIV"/>
+		
+		<result property="correlativ" column="CORRELATIV"/>
+		<result property="pagfol" column="PAGFOL"/>
+		<result property="lichasfec" column="LICHASFEC"/>
+		<result property="perpag" column="PERPAG"/>
+	</resultMap>
+	
+	
+	<!--START querys para paginación -->
+    <resultMap id="result_Count_SIL" class="cl.laaraucana.silmsil.vo.CountVO">
+		<result property="resultadoCount" column="total" />
+    </resultMap>
+		
+	<select id="getBuscar_SIL" resultClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		SELECT 
+			CODOPE,
+			TPOFOR,
+			TRIM(NROFOL) AS NROFOL,
+			TRIM(RUTTRABAJ) AS RUTTRABAJ,
+			FECEMI,
+			DIASUB,
+			MTOLIQ,
+			MTOCOT,
+			CODINT,
+			FINIPA,
+			MOCOPE,
+			BASECA,
+			IDLICE,
+			INIMES,
+			TPOLIC,
+			NDICOT,
+			NDIINC,
+			NDIPAG,
+			MTSBPA,
+			MTSBDI,
+			MCSEGC,
+			MOTCOT,
+			TRIM(OFIPGO) AS OFIPGO,
+			CCOPGO,
+			TRIM(INSSAL) AS INSSAL,
+			SUBMAT,
+			TPOLIQ,
+			FECPGO,
+			MLIQPA,
+			RIMPMS,
+			TRIM(ARCHIV) AS ARCHIV,
+			PERPAG,
+			CORRELATIV,
+			PAGFOL,
+			LICHASFEC 
+		FROM LIEXP.ILFSIL050
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="perpag">
+				PERPAG = #perpag#
+			</isNotNull>
+			<isNotNull prepend="AND" property="nrofol">
+				UPPER(TRIM(NROFOL)) like '%$nrofol$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="ruttrabaj">				
+				UPPER(TRIM(RUTTRABAJ)) like '%$ruttrabaj$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="pagfol">
+				PAGFOL=#pagfol#
+			</isNotNull>
+			<isNotNull prepend="AND" property="lichasfec">
+				LICHASFEC=#lichasfec#
+			</isNotNull>
+		</dynamic>
+		fetch FIRST $paginacion$ ROWS ONLY  		
+	</select>
+	<!-- TRIM(RUTTRABAJ) like '$ruttrabaj$%' -->
+	
+				
+	<insert id="insertar_SIL" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		INSERT INTO LIEXP.ILFSIL050 (PERPAG,CODOPE,TPOFOR,NROFOL,RUTTRABAJ,FECEMI,DIASUB,MTOLIQ,
+		MTOCOT,CODINT,FINIPA,MOCOPE,BASECA,IDLICE,INIMES,TPOLIC,NDICOT,NDIINC,NDIPAG,MTSBPA,MTSBDI,
+		MCSEGC,MOTCOT,OFIPGO,CCOPGO,INSSAL,SUBMAT,TPOLIQ,FECPGO,MLIQPA,RIMPMS,LICHASFEC,PAGFOL,ARCHIV,CORRELATIV)
+		VALUES(
+			#perpag#,
+			#codope#,
+			#tpofor#,
+			#nrofol#,
+			#ruttrabaj#,
+			#fecemi#,
+			#diasub#,
+			#mtoliq#,
+			#mtocot#,
+			#codint#,
+			#finipa#,
+			#mocope#,
+			#baseca#,
+			#idlice#,
+			#inimes#,
+			#tpolic#,
+			#ndicot#,
+			#ndiinc#,
+			#ndipag#,
+			#mtsbpa#,
+			#mtsbdi#,
+			#mcsegc#,
+			#motcot#,
+			#ofipgo#,
+			#ccopgo#,
+			#inssal#,
+			#submat#,
+			#tpoliq#,
+			#fecpgo#,
+			#mliqpa#,
+			#rimpms#,
+			#lichasfec#,
+			#pagfol#,	
+			#archiv#,
+			IFNULL((select max(CORRELATIV)+1 from LIEXP.ILFSIL050 WHERE PERPAG=#perpag#),0))		
+		WITH NC
+	</insert>    
+	
+	<!-- insertar sobre sil050 temporal, para validacion unica -->
+	<insert id="insertar_SIL_T" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		INSERT INTO LIEXP.ILFSIL050T (PERPAG,CODOPE,TPOFOR,NROFOL,RUTTRABAJ,FECEMI,DIASUB,MTOLIQ,
+		MTOCOT,CODINT,FINIPA,MOCOPE,BASECA,IDLICE,INIMES,TPOLIC,NDICOT,NDIINC,NDIPAG,MTSBPA,MTSBDI,
+		MCSEGC,MOTCOT,OFIPGO,CCOPGO,INSSAL,SUBMAT,TPOLIQ,FECPGO,MLIQPA,RIMPMS,LICHASFEC,PAGFOL,ARCHIV,CORRELATIV)
+		VALUES(
+			#perpag#,
+			#codope#,
+			#tpofor#,
+			#nrofol#,
+			#ruttrabaj#,
+			#fecemi#,
+			#diasub#,
+			#mtoliq#,
+			#mtocot#,
+			#codint#,
+			#finipa#,
+			#mocope#,
+			#baseca#,
+			#idlice#,
+			#inimes#,
+			#tpolic#,
+			#ndicot#,
+			#ndiinc#,
+			#ndipag#,
+			#mtsbpa#,
+			#mtsbdi#,
+			#mcsegc#,
+			#motcot#,
+			#ofipgo#,
+			#ccopgo#,
+			#inssal#,
+			#submat#,
+			#tpoliq#,
+			#fecpgo#,
+			#mliqpa#,
+			#rimpms#,
+			#lichasfec#,
+			#pagfol#,
+			#archiv#,	
+			IFNULL((select max(CORRELATIV)+1 from LIEXP.ILFSIL050 WHERE PERPAG=#perpag#),0))		
+		WITH NC
+	</insert> 
+
+	<!-- PK: NROFOLIO,RUTTRABAJ,PERPAG,PAGFOL,LICHASFEC  -->
+	<update id="up_SIL" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		UPDATE LIEXP.ILFSIL050 SET 
+			CODOPE=#codope#,
+			TPOFOR=#tpofor#,
+			FECEMI=#fecemi#,
+			DIASUB=#diasub#,
+			MTOLIQ=#mtoliq#,
+			MTOCOT=#mtocot#,
+			CODINT=#codint#,
+			FINIPA=#finipa#,
+			MOCOPE=#mocope#,
+			BASECA=#baseca#,
+			IDLICE=#idlice#,
+			INIMES=#inimes#,
+			TPOLIC=#tpolic#,
+			NDICOT=#ndicot#,
+			NDIINC=#ndiinc#,
+			NDIPAG=#ndipag#,
+			MTSBPA=#mtsbpa#,
+			MTSBDI=#mtsbdi#,
+			MCSEGC=#mcsegc#,
+			MOTCOT=#motcot#,
+			OFIPGO=#ofipgo#,
+			CCOPGO=#ccopgo#,
+			INSSAL=#inssal#,
+			SUBMAT=#submat#,
+			TPOLIQ=#tpoliq#,
+			FECPGO=#fecpgo#,
+			MLIQPA=#mliqpa#,
+			RIMPMS=#rimpms#,
+			ARCHIV=#archiv#,
+			NROFOL=#nrofol#,
+			RUTTRABAJ=#ruttrabaj#,
+			PERPAG=#perpag#,
+			PAGFOL=#pagfol#,
+			LICHASFEC=#lichasfec#			
+		WHERE TRIM(PERPAG)=#perpag# AND TRIM(NROFOL)=#nrofol# AND TRIM(RUTTRABAJ)=#ruttrabaj# AND PAGFOL=#pagfol# AND LICHASFEC=#lichasfec#
+		WITH NC
+	</update>
+	
+	<update id="up_SIL_PK54" parameterClass="java.util.HashMap">
+		UPDATE LIEXP.ILFSIL054 SET 
+			RUTTRAB = '$new_rut$',
+			NROFOL = '$new_folio$',
+			LICHASFEC= $new_fecTerminoLic$,
+			PAGFOL= $new_pagfol$
+		WHERE PERPAG=$old_periodo$ AND TRIM(RUTTRAB)='$old_rut$' AND TRIM(NROFOL)='$old_folio$' AND LICHASFEC=$old_fecTerminoLic$ AND PAGFOL=$old_pagfol$
+		WITH NC
+	</update>
+	
+	<delete id="del_SIL" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		DELETE FROM LIEXP.ILFSIL050
+		WHERE TRIM(PERPAG)=#perpag# AND TRIM(NROFOL)=#nrofol#
+		AND TRIM(RUTTRABAJ)=#ruttrabaj# AND TRIM(PAGFOL)=#pagfol# AND TRIM(LICHASFEC)=#lichasfec#
+		WITH NC
+	</delete>
+	
+<!-- borrado sobre tabla SIL temporal, -->
+	<delete id="del_SIL_T" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		DELETE FROM LIEXP.ILFSIL050T
+		WITH NC
+	</delete>
+	
+	<delete id="del_SIL_GLOSA_T" parameterClass="cl.laaraucana.silmsil.vo.SIL_VO">
+		DELETE FROM LIEXP.ILFSIL054T
+		WITH NC
+	</delete>
+	
+	
+    
+    <select id="getCount_SIL" resultMap="result_Count_SIL">
+		select COUNT(*) as total from LIEXP.ILFSIL050 WHERE PERPAG=#perpag#
+	</select>
+        
+	<select id="getPaginaSIL_FW" resultMap="result_SIL">
+		select *  
+		from LIEXP.ILFSIL050		
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="perpag">
+				PERPAG=#perpag#
+			</isNotNull>
+			<isNotNull prepend="AND" property="ultimoLista">
+				CORRELATIV &gt; $ultimoLista$
+			</isNotNull>			
+		</dynamic>
+		order by CORRELATIV FETCH FIRST $registrosPorPagina$ ROWS ONLY		
+	</select>
+	
+	<select id="getPaginaSIL_BK" resultMap="result_SIL">
+		SELECT * FROM (
+			SELECT *  
+			FROM LIEXP.ILFSIL050		
+			<dynamic prepend="WHERE">
+				<isNotNull prepend="AND" property="perpag">
+					PERPAG=#perpag#
+				</isNotNull>
+				<isNotNull prepend="AND" property="primeroLista">
+					CORRELATIV &lt; $primeroLista$
+				</isNotNull>
+			</dynamic>
+			order by CORRELATIV DESC FETCH FIRST $registrosPorPagina$ ROWS ONLY		
+		) AS C order by CORRELATIV
+	</select>
+	
+	<select id="getPaginaSIL_Ultima" resultMap="result_SIL">
+		SELECT * FROM (
+			SELECT * FROM LIEXP.ILFSIL050 AS A
+			<dynamic prepend="WHERE">
+				<isNotNull prepend="AND" property="perpag">
+					TRIM(PERPAG) = TRIM($perpag$)
+				</isNotNull>
+			</dynamic>
+			ORDER BY A.CORRELATIV DESC FETCH FIRST $registrosPorPagina$ ROWS ONLY
+		)AS C ORDER BY C.CORRELATIV ASC
+	</select>
+			
+	<update id="upCorrelativ_SIL" parameterClass="java.util.HashMap">
+		UPDATE LIEXP.ILFSIL050 SET CORRELATIV=(CORRELATIV-1)
+		WHERE CORRELATIV>#idEliminado# and PERPAG=#perpag#
+		WITH NC
+	</update>
+	
+	<!-- Obtiene el total de datos a paginar para Log Sil -->
+	<select id="getCount_LogSIL" resultMap="result_Count_SIL">
+		SELECT COUNT(*)AS TOTAL FROM LIEXP.ILFSIL050 A
+		INNER JOIN LIEXP.ILFSIL054 B
+		ON A.PERPAG=B.PERPAG
+		AND A.NROFOL = B.NROFOL
+		AND RUTTRABAJ=RUTTRAB
+		AND A.PAGFOL=B.PAGFOL
+		AND A.LICHASFEC=B.LICHASFEC
+		WHERE A.PERPAG=$fecha$
+		AND B.TIPOBS='1'
+	</select>
+	
+	
+	
+<!--END querys para paginacion -->
+</sqlMap>

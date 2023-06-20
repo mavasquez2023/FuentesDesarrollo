@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/bonomarzo" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/bonomarzo">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="getBonoTrabajador" type="tns:getBonoTrabajador"/>
+
+  <xs:element name="getBonoTrabajadorResponse" type="tns:getBonoTrabajadorResponse"/>
+
+  <xs:complexType name="getBonoTrabajador">
+    <xs:sequence>
+      <xs:element name="request" type="tns:requestWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWSTGR">
+    <xs:sequence>
+      <xs:element name="ws_usuario" type="xs:string"/>
+      <xs:element name="ws_clave" type="xs:string"/>
+      <xs:element name="id_consulta" type="xs:string"/>
+      <xs:element name="rut_cliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBonoTrabajadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_consulta" type="xs:string"/>
+      <xs:element name="respuesta" type="xs:int"/>
+      <xs:element minOccurs="0" name="rut_cliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="trabajador" type="tns:trabajadorVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trabajadorVO">
+    <xs:sequence>
+      <xs:element name="CODIGO_AFP" type="xs:int"/>
+      <xs:element name="PERIODO_PAGO" type="xs:int"/>
+      <xs:element name="FECHA_PAGO" type="xs:string"/>
+      <xs:element name="TIPO_PAGO" type="xs:int"/>
+      <xs:element name="RUT_AFILIADO" type="xs:int"/>
+      <xs:element name="DV_AFILIADO" type="xs:string"/>
+      <xs:element name="APE_PATERNO" type="xs:string"/>
+      <xs:element minOccurs="0" name="APE_MATERNO" type="xs:string"/>
+      <xs:element name="NOMBRE" type="xs:string"/>
+      <xs:element name="MONTO_IMPONIBLE" type="xs:int"/>
+      <xs:element name="MONTO_COTIZACION" type="xs:int"/>
+      <xs:element name="TIPO_NOMINA" type="xs:int"/>
+      <xs:element name="TIPO_CLIENTE" type="xs:int"/>
+      <xs:element name="DIAS_TRABAJADOS" type="xs:int"/>
+      <xs:element name="CODIGO_AUSENCIA" type="xs:int"/>
+      <xs:element name="MONTO_PAGO_SALUD" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

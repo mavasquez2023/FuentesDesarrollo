@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="error" path="/error.do" />
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/error" type="cl.laaraucana.reportesil.actions.ErrorAction">
+			<forward name="go" path="/error.jsp" />
+		</action>
+		<action path="/validaAfiliado" type="cl.laaraucana.reportesil.actions.ValidaAfiliadoAction">
+			<forward name="success" path="/seleccion.jsp" />
+			<forward name="init" path="/index.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/seleccionLicencia" type="cl.laaraucana.reportesil.actions.SeleccionLicenciaAction">
+			<forward name="success" path="/ingreso_informacion.jsp" />
+		</action>
+		<action path="/datosLicencia" type="cl.laaraucana.reportesil.actions.DatosLicenciaAction">
+			<forward name="success" path="/ingreso_rentas.jsp" />
+			<forward name="error" path="/ingreso_informacion.jsp" />
+			<forward name="volver" path="/seleccion.jsp" />
+			<forward name="guardar" path="/guardarLicencia.do" />
+		</action>
+		<action path="/guardarLicencia" type="cl.laaraucana.reportesil.actions.GuardarLicenciaAction">
+			<forward name="success" path="/envio.jsp" />
+		</action>
+		<action path="/generarPDF" type="cl.laaraucana.reportesil.actions.GeneraCertificadoAction">
+			<forward name="sinpagos" path="/sinpagos.jsp" />
+		</action>
+		<action path="/inicio" type="cl.laaraucana.reportesil.actions.IniciarLicenciaAction">
+			<forward name="init" path="/index.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="local.laaraucana.reportesil.resources.ApplicationResources"/>
+</struts-config>

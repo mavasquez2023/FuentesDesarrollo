@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="licencias">
+	<resultMap id="licencia" class="cl.laaraucana.licenciasivr.vo.LicenciaVO">
+		<result column="numeroLicencia" property="numeroLicencia" />
+		<result column="FechaInicio"   	property="fechaInicio" />
+		<result column="FechaTermino"   property="fechaTermino" />	
+		<result column="DIAS"   		property="dias" />
+		<result column="FechaPago"   	property="fechaPago" />
+		<result column="Estado"   		property="estado" />
+		<result column="RutEmpresa"		property="rutEmpresa" />
+		<result column="RazonSocial"	property="razonSocial" />
+		<result column="TipoSubsidio" 	property="tipoSubsidio"/>
+		<result column="MontoSubsidio"	property="montoSubsidio" />
+	</resultMap>
+	
+	<resultMap id="empresa" class="cl.laaraucana.licenciasivr.vo.EmpresaVO">
+		<result column="AFIRUT" property="AFIRUT" />
+		<result column="LICIMPNUM" property="LICIMPNUM" />
+		<result column="LICEST" property="LICEST" />
+		<result column="PAGFOL" property="PAGFOL" />
+		<result column="LICOBS1" property="LICOBS1" />
+	</resultMap>
+	
+	<select id="listaLicencias" resultMap="licencia" parameterClass="cl.laaraucana.licenciasivr.vo.ConsultaVO">
+		select numeroLicencia, FechaInicio, FechaTermino, FechaPago, DIAS, TipoSubsidio, MontoSubsidio, Estado, RutEmpresa, RazonSocial  from(
+			select
+	    		r.NUMIMPRE as numeroLicencia,
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as FechaInicio, 
+	    		DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as FechaTermino,
+	    		substr(a.PAGFEC, 1, 4) ||'-'||  substr(a.PAGFEC, 5, 2) ||'-'||  substr(a.PAGFEC, 7, 2) as FechaPago,
+	            a.LICDIAS as DIAS,
+	            case when a.afisubtip= 1 or  a.afisubtip= 7 then 'CURATIVA'
+	                 when a.afisubtip= 3 or  a.afisubtip= 4 then 'MATERNAL' else '' end as TipoSubsidio, 
+	            a.licmonup as MontoSubsidio,
+	    		'-1' as Estado, 
+	            a.emprut||'-'||a.emprutdv as RutEmpresa, m.cmpa as RazonSocial
+			from liexp.ILF1000 a
+			join liexp.ILFE002R r
+			on a.LICIMPNUM= r.numimprela
+				and a.AFIRUT= r.AFIRUT
+	        join cmdta.cm02f1 m
+	        on a.emprut= m.cmna
+			WHERE 
+	   			a.afirut= #rut# and
+	   			a.licest in (1,2,3) and 
+	   			a.licdesfec &gt;= #fecha#
+	
+	 		UNION 
+			select
+	    		c.NUMIMPRE as numeroLicencia,
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as FechaInicio, 
+	    		DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as FechaTermino,
+	    		substr(a.PAGFEC, 1, 4) ||'-'||  substr(a.PAGFEC, 5, 2) ||'-'||  substr(a.PAGFEC, 7, 2) as FechaPago,
+	    		a.LICDIAS as DIAS,
+	             case when a.afisubtip= 1 or  a.afisubtip= 7 then 'CURATIVA'
+	                 when a.afisubtip= 3 or  a.afisubtip= 4 then 'MATERNAL' else '' end as TipoSubsidio,
+	            a.licmonup as MontoSubsidio,
+	    		( CASE licest
+	       			WHEN 1 THEN '2'
+	       			WHEN 2 THEN '5'
+	       			WHEN 3 THEN '4'
+	     		END ) as Estado, 
+	            a.emprut||'-'||a.emprutdv as RutEmpresa, cmpa as RazonSocial
+			from liexp.ILF1000 a
+			join liexp.ILF1010 c
+				on a.LICIMPNUM= c.LICIMPNUM
+				and a.AFIRUT= c.AFIRUT
+			exception join 
+			liexp.ILFE002R r
+				on a.LICIMPNUM= r.numimprela
+				and a.AFIRUT= r.AFIRUT
+	        join cmdta.cm02f1 m
+	        on a.emprut= m.cmna
+			WHERE 
+	   			a.AFIRUT = #rut# and
+	   			a.licest in (1,2,3) and 
+	   			a.licdesfec &gt;= #fecha#
+	   
+		UNION
+		
+			select
+	    		r.NUMIMPRE  as numeroLicencia,
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as FechaInicio, 
+	    		DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as FechaTermino,
+	    		'' as FechaPago,
+	    		a.DIASMED as DIAS,
+	             case when a.afisubtip= 1 or  a.afisubtip= 7 then 'CURATIVA'
+	                 when a.afisubtip= 3 or  a.afisubtip= 4 then 'MATERNAL' else '' end as TipoSubsidio,
+	            0 as MontoSubsidio,
+	    		( CASE estado
+	       			WHEN 1 THEN '10'
+	       			WHEN 2 THEN '10'
+	       			WHEN 3 THEN '1'
+	       			WHEN 6 THEN '3'
+	       			WHEN 7 THEN '7'
+	     		END ) as Estado, 
+	            a.emprut||'-'||a.emprutdv as RutEmpresa, m.cmpa as RazonSocial
+			from liexp.ILF8600 a
+				join LIEXP.ilfe002R r
+	        		on  a.AFIRUT = r.AFIRUT and 
+	        		a.LICIMPNUM = r.numimprela
+	            join cmdta.cm02f1 m
+	                on a.emprut= m.cmna
+			WHERE 
+	   				a.AFIRUT = #rut# and
+	   				a.estado in (1,2,3,6,7) and 
+	   				a.licdesfec &gt;= #fecha#
+				
+			UNION  
+			select
+	   			a.NUMIMPRE as numeroLicencia,
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as FechaInicio, 
+	    		DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as FechaTermino,
+	    		'' as FechaPago,
+	    		a.DIASMED as DIAS,
+	             case when a.afisubtip= 1 or  a.afisubtip= 7 then 'CURATIVA'
+	                 when a.afisubtip= 3 or  a.afisubtip= 4 then 'MATERNAL' else '' end as TipoSubsidio,
+	            0 as MontoSubsidio,
+	    		( CASE estado
+	       			WHEN 1 THEN '6'
+	       			WHEN 2 THEN '6'
+	       			WHEN 3 THEN '1'
+	       			WHEN 6 THEN '3'
+	       			WHEN 7 THEN '7'
+	     		END ) as Estado, 
+	            a.emprut||'-'||a.emprutdv as RutEmpresa, m.cmpa as RazonSocial
+			from liexp.ILF8600 a
+			exception join LIEXP.ilfe002R r
+	        	on  a.AFIRUT = r.AFIRUT and 
+	        	   a.LICIMPNUM = r.numimprela
+	            join cmdta.cm02f1 m
+	                on a.emprut= m.cmna
+			WHERE 
+	   			a.AFIRUT = #rut# and
+	   			a.estado in (1,2,3,6,7) and 
+	   			a.licdesfec &gt;= #fecha#
+		UNION
+		
+			select
+	    		COALESCE(c.NUMIMPRE, 0) as numeroLicencia,
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as FechaInicio, 
+	    		DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) + (a.LICDIAS-1) day as FechaTermino,
+	    		'' as FechaPago,
+	    		a.LICDIAS as DIAS,
+	            '' as TipoSubsidio,
+	            0 as MontoSubsidio,
+	    		( CASE a.licest
+	       			WHEN 1 THEN '10'
+	       			WHEN 2 THEN '7'
+	       			WHEN 5 THEN '3'
+	     		END ) as Estado, 
+	            '0-0' as RutEmpresa, '' as RazonSocial
+			from liexp.ILF1250 a
+			left join liexp.ILF1010 c
+				on a.LICIMPNUM= c.LICIMPNUM
+				and a.AFIRUT= c.AFIRUT
+			WHERE 
+	   			a.AFIRUT = #rut# and
+	   			a.licest in (1,2,5) and 
+	   			a.licdesfec &gt;= #fecha#
+		) as a
+		where numeroLicencia is not null
+		order by FechaInicio desc, Estado
+		FETCH FIRST 9 ROWS ONLY
+	</select>
+
+
+	<select id="getEmpresa" resultMap="empresa" parameterClass="cl.laaraucana.licenciasivr.vo.EmpresaVO">
+		select a.AFIRUT, a.LICIMPNUM, a.LICEST, a.PAGFOL, a.LICOBS1 
+		from liexp.ILF1000 a 
+		join liexp.ILFE002R r
+		on a.LICIMPNUM= r.numimprela
+		and a.AFIRUT= r.AFIRUT
+		where a.AFIRUT = #AFIRUT#  and r.NUMIMPRE = #LICIMPNUM#
+	</select>
+	
+	<select id="getILF3500" resultClass="java.lang.Integer" parameterClass="java.lang.Integer">
+		select FOLIO from liexp.ILF3500 where PAGFOL = #folioPago#
+	</select>
+	
+	<select id="getILF4500A" resultClass="java.lang.String" parameterClass="java.lang.Integer">
+		select ESTCOB from liexp.ILF4500A where CODEMP = #folioPago#
+	</select>
+	
+	<select id="getTE07F1" resultClass="java.lang.String" parameterClass="java.lang.Integer">
+		select TE3YA from TEDTA.TE07F1 where TE3WA = #folioPago#
+	</select>
+</sqlMap> 

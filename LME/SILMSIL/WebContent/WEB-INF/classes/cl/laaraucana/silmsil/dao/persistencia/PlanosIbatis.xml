@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+	<!-- Result Map para archivo planos LIEXP.ILFSIL052 -->
+	<resultMap id="ilfsil052Map" class="cl.laaraucana.silmsil.vo.ILFSIL052VO">
+		<result property="rsil" column="RSIL" />
+	</resultMap>
+	
+	<!-- Result Map para archivo planos LIEXP.ILFLM052 -->
+	<resultMap id="ilflm052Map" class="cl.laaraucana.silmsil.vo.ILFLM052VO">
+		<result property="rlm" column="RLM" />
+	</resultMap>
+	
+	<!-- Result Map para archivo Estadistico de base intermedia entre: ILFLM050 y ILFSIL050-->
+	<resultMap id="result_Estadistico" class="cl.laaraucana.silmsil.vo.EstadisticoSILMSIL_VO">
+		<result property="clasificacion" column="CLASIFIC" />
+		<result property="tipo" column="TIPO" />
+		<result property="titulo" column="TITULO" />
+		<result property="tipoLic1" column="TIPOLIC1" />
+		<result property="tipoLic2" column="TIPOLIC2" />
+		<result property="tipoLic3" column="TIPOLIC3" />
+		<result property="tipoLic4" column="TIPOLIC4" />
+		<result property="tipoLic5" column="TIPOLIC5" />
+		<result property="tipoLic6" column="TIPOLIC6" />
+		<result property="tipoLic7" column="TIPOLIC7" />
+		<result property="tipoLic8" column="TIPOLIC8" />
+		<result property="tipoLic9" column="TIPOLIC9" />
+	</resultMap>
+	
+	<!-- Obtiene datos para la creación del archivo plano proceso SIL -->
+	<select id="generarPlanoSil" resultMap="ilfsil052Map">
+		SELECT TRIM(RSIL)AS RSIL FROM LIEXP.ILFSIL052
+	</select>
+	
+	<!-- Obtiene datos para la creación del archivo plano proceso LM -->
+	<select id="generarPlanoLm" resultMap="ilflm052Map">
+		SELECT TRIM(RLM)AS RLM FROM LIEXP.ILFLM052
+	</select>
+	
+	<!-- borra todo los datos de la tabla -->
+	<delete id="limpiaIlflm052">
+		DELETE FROM LIEXP.ILFLM052
+		WITH NC
+	</delete>
+
+	<!-- borra todo los datos de la tabla -->
+	<delete id="limpiaIlfsil052">
+		DELETE FROM LIEXP.ILFSIL052
+		WITH NC
+	</delete>
+
+<!--START: generacion de estadistico-->
+	<!-- Obtiene datos para la creación del archivo plano estadístico parte LM-->
+	<select id="generarPlanoEstadistico_LM" resultMap="result_Estadistico" >
+		SELECT C.* FROM (
+			SELECT 
+				CASE WHEN (LICRECHAZ &lt;&gt; 'S') THEN 1 ELSE 2 END AS CLASIFIC,
+				CASE WHEN (LICRECHAZ &lt;&gt; 'S') THEN 'LM' ELSE '' END AS TIPO,
+				CASE WHEN (LICRECHAZ &lt;&gt; 'S') THEN 'Aprobadas' ELSE 'Rechazadas' END AS TITULO,
+				SUM( CASE WHEN (TIPOLIC=1) THEN 1 ELSE 0 END ) AS TIPOLIC1,
+				SUM( CASE WHEN (TIPOLIC=2) THEN 1 ELSE 0 END ) AS TIPOLIC2,
+				SUM( CASE WHEN (TIPOLIC=3) THEN 1 ELSE 0 END ) AS TIPOLIC3, 
+				SUM( CASE WHEN (TIPOLIC=4) THEN 1 ELSE 0 END ) AS TIPOLIC4, 
+				SUM( CASE WHEN (TIPOLIC=5) THEN 1 ELSE 0 END ) AS TIPOLIC5,
+				SUM( CASE WHEN (TIPOLIC=6) THEN 1 ELSE 0 END ) AS TIPOLIC6,
+				SUM( CASE WHEN (TIPOLIC=7) THEN 1 ELSE 0 END ) AS TIPOLIC7,
+				SUM( CASE WHEN (TIPOLIC=8) THEN 1 ELSE 0 END ) AS TIPOLIC8,
+				SUM( CASE WHEN (TIPOLIC=9) THEN 1 ELSE 0 END ) AS TIPOLIC9
+			FROM LIEXP.ILFLM050 
+			WHERE FECPROCESO=#periodo#
+			GROUP BY LICRECHAZ
+		) AS C
+		ORDER BY C.CLASIFIC		
+	</select>
+	
+	<!-- Obtiene datos para la creación del archivo plano estadístico parte SIL-->
+	<select id="generarPlanoEstadistico_SIL" resultMap="result_Estadistico">
+		SELECT C.* FROM (
+			SELECT 
+				3 AS CLASIFIC,
+				'SIL' AS TIPO,
+				'Liquidadas' AS TITULO,
+				SUM( CASE WHEN (TPOLIC=1) THEN 1 ELSE 0 END ) AS TIPOLIC1,
+				SUM( CASE WHEN (TPOLIC=2) THEN 1 ELSE 0 END ) AS TIPOLIC2,
+				SUM( CASE WHEN (TPOLIC=3) THEN 1 ELSE 0 END ) AS TIPOLIC3,
+				SUM( CASE WHEN (TPOLIC=4) THEN 1 ELSE 0 END ) AS TIPOLIC4,
+				SUM( CASE WHEN (TPOLIC=5) THEN 1 ELSE 0 END ) AS TIPOLIC5,
+				SUM( CASE WHEN (TPOLIC=6) THEN 1 ELSE 0 END ) AS TIPOLIC6,
+				SUM( CASE WHEN (TPOLIC=7) THEN 1 ELSE 0 END ) AS TIPOLIC7,
+				SUM( CASE WHEN (TPOLIC=8) THEN 1 ELSE 0 END ) AS TIPOLIC8,
+				SUM( CASE WHEN (TPOLIC=9) THEN 1 ELSE 0 END ) AS TIPOLIC9
+			FROM LIEXP.ILFSIL050 
+			WHERE PERPAG=#periodo#
+			UNION
+			SELECT 4 AS CLASIFIC,
+				'' AS TIPO,
+				'Total Subsidios Liquidados' AS TITULO,
+				SUM( CASE WHEN (TPOLIC=1) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC1,
+				SUM( CASE WHEN (TPOLIC=2) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC2,
+				SUM( CASE WHEN (TPOLIC=3) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC3,
+				SUM( CASE WHEN (TPOLIC=4) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC4,
+				SUM( CASE WHEN (TPOLIC=5) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC5,
+				SUM( CASE WHEN (TPOLIC=6) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC6,
+				SUM( CASE WHEN (TPOLIC=7) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC7,
+				SUM( CASE WHEN (TPOLIC=8) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC8,
+				SUM( CASE WHEN (TPOLIC=9) THEN MTOLIQ ELSE 0 END ) AS TIPOLIC9	
+			FROM LIEXP.ILFSIL050 
+			WHERE PERPAG=#periodo#
+		) AS C
+		ORDER BY C.CLASIFIC				
+	</select>
+<!--END: generacion de estadistico-->
+
+</sqlMap>	

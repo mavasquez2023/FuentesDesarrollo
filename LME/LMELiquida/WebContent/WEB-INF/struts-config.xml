@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	
+	<data-sources>
+	</data-sources>
+	
+	<form-beans>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/lme" type="cl.araucana.lme.liq.web.LmeAction" parameter="event">
+		</action>
+		<action path="/log" type="cl.araucana.lme.liq.web.JobLogAction" parameter="event">
+		</action>
+		<action path="/exe" type="cl.araucana.lme.liq.web.LmeExec" parameter="event">
+		</action>
+	</action-mappings>
+	
+	<!-- Message Resources -->
+	<message-resources parameter="lme.resources.ApplicationResources"/>
+</struts-config>

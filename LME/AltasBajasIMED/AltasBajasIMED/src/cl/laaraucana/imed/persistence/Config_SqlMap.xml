@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="imed">
+
+<typeAlias alias="RegistroBitacora" type="cl.laaraucana.imed.dao.vo.BitacoraVO"/>
+<typeAlias alias="registroAB" type="cl.laaraucana.imed.dao.vo.RegistroAltaBajaVO"/>
+<resultMap id="registroAltaBaja" class="cl.laaraucana.imed.dao.vo.RegistroAltaBajaVO">
+	<result column="CODIGO"   property="codigoEntidad" />
+	<result column="RUTBEN"   property="rutBeneficiario" />
+	<result column="APPPAT"   property="apellidoPaterno" />
+	<result column="APPMAT"   property="apellidoMaterno" />
+	<result column="NOMBRE"   property="nombres" />
+	<result column="DIRECC"   property="direccion" />
+	<result column="COMUNA"   property="comuna" />
+	<result column="FECNAC"   property="fechaNacimiento" />
+	<result column="SEXO"   property="sexo" />
+	<result column="RELAC"   property="relacion" />
+	<result column="FECING"   property="fechaIngreso" />
+	<result column="FECIVI"   property="fechaInicioVigencia" />
+	<result column="FECFVI"   property="fechaFinVigencia" />
+	<result column="PLAN"   property="codigoPlan" />
+	<result column="RUTTIT"   property="rutTitular" />
+	<result column="TIPEVE"   property="tipoEvento" />
+	<result column="ATRB01"   property="atributo1" />
+	<result column="ATRB02"   property="atributo2" />
+	<result column="ATRB03"   property="atributo3" />
+	<result column="ATRB04"   property="atributo4" />
+	<result column="ATRB05"   property="atributo5" />
+	
+</resultMap>
+
+
+<insert id="insertBitacora" parameterClass="RegistroBitacora">
+	insert into AFDTA.AFF023 (RUTBEN, RUTTIT, TIPEVE, ESTADO, MENSAJE) values(#rutBeneficiario#, #rutTitular#, #tipoEvento#, #estado#, #mensaje#)
+	with nc
+</insert>
+
+<insert id="insertErroneo" parameterClass="registroAB">
+	insert into AFDTA.AFF022
+	(CODIGO, RUTBEN, APPPAT, APPMAT, NOMBRE, DIRECC, COMUNA, FECNAC, SEXO, RELAC, FECING, FECIVI, FECFVI, PLAN, RUTTIT, TIPEVE, ATRB01, ATRB02, ATRB03, ATRB04, ATRB05 )
+	values(#codigoEntidad#, #rutBeneficiario#, #apellidoPaterno#, #apellidoMaterno#, #nombres#, #direccion#, #comuna#, #fechaNacimiento#, #sexo#, #relacion#, #fechaIngreso#, #fechaInicioVigencia#, #fechaFinVigencia#, #codigoPlan#, #rutTitular#, #tipoEvento#, #atributo1#, #atributo2#, #atributo3#, #atributo4#, #atributo5#)
+	wihit nc
+</insert> 
+
+<select id="consultaAltas" resultMap="registroAltaBaja">
+	select * 
+	from  AFDTA.AFF020
+	where TIPEVE='A'
+	with ur
+</select>
+
+<select id="consultaBajas" resultMap="registroAltaBaja">
+	select * 
+	from  AFDTA.AFF020
+	where TIPEVE='B'
+	with ur
+</select>
+
+</sqlMap>

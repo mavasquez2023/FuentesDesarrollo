@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.araucana.wsatento.integration.jaxrpc.ws</package-type>
+        <namespaceURI>http://ws.jaxrpc.integration.wsatento.araucana.cl</namespaceURI>
+    </package-mapping>
+    <package-mapping>
+        <package-type>cl.araucana.wsatento.integration.exception</package-type>
+        <namespaceURI>http://exception.integration.wsatento.araucana.cl</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wsatento.integration.exception.WSAtentoException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.integration.wsatento.araucana.cl">rtq:WSAtentoException</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>mensaje</java-variable-name>
+            <xml-element-name>mensaje</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wsatento.integration.exception.WSAtentoException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.integration.wsatento.araucana.cl">rtq:WSAtentoException</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <exception-mapping>
+        <exception-type>cl.araucana.wsatento.integration.exception.WSAtentoException</exception-type>
+        <wsdl-message xmlns:em="http://ws.jaxrpc.integration.wsatento.araucana.cl">em:WSAtentoException</wsdl-message>
+        <constructor-parameter-order>
+            <element-name>codigo</element-name>
+            <element-name>mensaje</element-name>
+        </constructor-parameter-order>
+    </exception-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.araucana.wsatento.integration.jaxrpc.ws.WSCalidadService</service-interface>
+        <wsdl-service-name xmlns:sim="http://ws.jaxrpc.integration.wsatento.araucana.cl">sim:WSCalidadService</wsdl-service-name>
+        <port-mapping>
+            <port-name>WSCalidad</port-name>
+            <java-port-name>WSCalidad</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.araucana.wsatento.integration.jaxrpc.ws.WSCalidad</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://ws.jaxrpc.integration.wsatento.araucana.cl">seimwpt:WSCalidad</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://ws.jaxrpc.integration.wsatento.araucana.cl">seimwb:WSCalidadSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>valCalidad</java-method-name>
+            <wsdl-operation>valCalidad</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://ws.jaxrpc.integration.wsatento.araucana.cl">mppm:valCalidadRequest</wsdl-message>
+                    <wsdl-message-part-name>usuario</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://ws.jaxrpc.integration.wsatento.araucana.cl">mppm:valCalidadRequest</wsdl-message>
+                    <wsdl-message-part-name>clave</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://ws.jaxrpc.integration.wsatento.araucana.cl">mppm:valCalidadRequest</wsdl-message>
+                    <wsdl-message-part-name>rut</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://ws.jaxrpc.integration.wsatento.araucana.cl">mppm:valCalidadRequest</wsdl-message>
+                    <wsdl-message-part-name>calidad</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>int</method-return-value>
+                <wsdl-message xmlns:wrvm="http://ws.jaxrpc.integration.wsatento.araucana.cl">wrvm:valCalidadResponse</wsdl-message>
+                <wsdl-message-part-name>valCalidadReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

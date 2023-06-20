@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="bonomarzo">
+	
+	
+	<resultMap id="TrabajadorMap" class="cl.araucana.bonomarzo.vo.TrabajadorVO">
+	  	<result property="nombres" column="NOMBRES" />
+	  	<result property="apellidoPaterno" column="APELLIDO_P" />
+	  	<result property="apellidoMaterno" column="APELLIDO_M" />
+	  	<result property="codigoMensaje" column="CODMENSAJE" />
+	  	<result property="mensajeCorto" column="MSG_CORTO" />
+	  	<result property="mensajelargo" column="MSG_LARGO" />
+	  	
+	</resultMap> 
+	
+	
+	<select id="consultaBonoMarzo" resultMap="TrabajadorMap" parameterClass="cl.araucana.bonomarzo.vo.DatoEntradaVO">
+		SELECT TRIM(A.SE5FBIO) as NOMBRES, TRIM(A.SE5FBIM) as APELLIDO_P, TRIM(A.SE5FBIK) as APELLIDO_M, c.CODMENSAJE, c.MSG_CORTO, c.MSG_LARGO
+		FROM SWDTA.BONOMARZO C
+		left join AFDTA.AF02F1 A 
+			on A.SE5FAJC = C.RUT
+		WHERE C.RUT = #rutcliente#
+		AND C.ID= #id#
+		UNION
+		SELECT TRIM(A.SE5FBIO) as NOMBRES, TRIM(A.SE5FBIM) as APELLIDO_P, TRIM(A.SE5FBIK) as APELLIDO_M, c.CODMENSAJE, c.MSG_CORTO, c.MSG_LARGO
+		FROM SWDTA.BONOMARZO C 
+		left join BPAFDTA.AF02F1 A 
+			on A.SE5FAJC = C.RUT
+		WHERE C.RUT = #rutcliente#
+		AND C.ID= #id#
+		UNION
+		SELECT TRIM(A.AFINOM) as NOMBRES, TRIM(A.AFIAPE) as APELLIDO_P, '' as APELLIDO_M, c.CODMENSAJE, c.MSG_CORTO, c.MSG_LARGO
+		FROM SWDTA.BONOMARZO C
+		left join PREXP.PEF1500 A
+			on A.AFIRUT = C.RUT
+		WHERE C.RUT= #rutcliente#
+		AND C.ID= #id#
+		fetch first 1 rows only 
+		WITH UR
+	</select>
+	
+	<select id="validaUsuario" resultClass="java.lang.String">
+		SELECT CLAVE from SWDTA.BONOUSERS
+		where USUARIO = #ws_usuario#
+	</select>
+	
+	<insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into SWDTA.BONOBITA (ID_CONSULTA, RUT, USUARIO, ESTADO) 
+		VALUES (#ID#,#RUT#,#USUARIO#,#ESTADO#)
+	</insert>
+	
+</sqlMap> 
