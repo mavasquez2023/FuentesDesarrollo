@@ -1,0 +1,44 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="formweb">
+
+	<typeAlias alias="RegistroBitacora" type="cl.laaraucana.muvu.ibatis.vo.BitacoraSuraVo"/>
+	<typeAlias alias="RegistroDatosContacto" type="cl.laaraucana.muvu.ibatis.vo.DatosContactoVo"/>
+	<resultMap id="bitacora"
+		class="cl.laaraucana.muvu.ibatis.vo.BitacoraSuraVo">
+		<result column="FECHA" property="fecha_creacion" />
+		<result column="RUTAFI" property="rut" />
+		<result column="DVAFI" property="dv" />
+		<result column="NOMAFI" property="nombre" />
+		<result column="CELULAR" property="celular" />
+		<result column="TELEFONO" property="telefono" />
+		<result column="EMAIL" property="email" />
+
+	</resultMap>
+	
+	<insert id="insertBitacora" parameterClass="RegistroBitacora">
+		insert into bitacoraConSura (FECHA, RUTAFI, DVAFI, NOMAFI, CELULAR, TELEFONO, EMAIL) values(#fecha_creacion#, #rut#, #dv#, #nombre#, #celular#, #telefono#, #email#)
+	</insert>
+	
+	<insert id="insertDatosContacto" parameterClass="RegistroDatosContacto">
+		insert into DatosContacto (RUTAFI, DVAFI, TIPOBP, TIPODATO, DATO, ESTADO, FECHA_CREACION, FECHA_UPDATE) values(#rut#, #dv#, #tipoBP#, #tipoDato#, #dato#, #estado#, #fechaCreacion#, null)
+	</insert>
+
+	<update id="updateDatosContacto"
+		parameterClass="java.util.HashMap">
+
+		update DatosContacto 
+		set ESTADO = '1',
+		fecha_update = getDATE()
+		where RUT = #rut#
+
+	</update>
+
+	<select id="PrefijoTelefono" resultClass="java.lang.String">
+
+		select prefijo from
+		PrefijoTelefono where tipo = #tipo#
+		order by prefijo
+
+	</select>
+
+</sqlMap>

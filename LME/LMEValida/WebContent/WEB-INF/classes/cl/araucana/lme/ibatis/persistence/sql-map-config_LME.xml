@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <!--
+    	<property name="commitRequired" value="false"/>
+    	<property name="autoCommit" value="false"/>
+    	<property name="JDBC.Connection.transactionIsolation" value="0" />
+    	<property name="JDBC.DefaultAutoCommit" value="true" />
+    	
+    	<property name="DefaultAutoCommit" value="false"/>
+    	<property name="SetAutoCommitAllowed" value="false"/>
+	
+	PRD
+-->
+  	<transactionManager type="JDBC" >
+        <property name="DefaultAutoCommit" value="false"/>
+    	<property name="SetAutoCommitAllowed" value="false"/>
+        <dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/validalme"/> 
+        </dataSource>
+  	</transactionManager>
+  	 
+  	<!-- transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.2"/>
+		<property name="JDBC.Username" value="usrsist"/>
+		<property name="JDBC.Password" value="usrsist"/>
+		</dataSource>
+	</transactionManager-->
+	
+	<sqlMap	resource="cl/araucana/lme/ibatis/persistence/LME.xml" />
+	
+</sqlMapConfig>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://www.example.org/lme_otorgamiento/" xmlns:intf="http://www.example.org/lme_otorgamiento/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/lme_otorgamiento/">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/lme_otorgamiento/">
+   <complexType name="LMEValEmpCCAF">
+    <sequence>
+     <element name="CodigoOperador" nillable="true" type="xsd:string"/>
+     <element name="ClaveOperador" nillable="true" type="xsd:string"/>
+     <element name="CodigoCCAF" nillable="true" type="xsd:string"/>
+     <element name="RutTrabajadorNum" type="xsd:int"/>
+     <element name="RutTrabajadorDig" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="LMEValEmpCCAFRequest" type="impl:LMEValEmpCCAF"/>
+   <complexType name="EmpleadoresType">
+    <sequence>
+     <element name="RutEmpleador" nillable="true" type="xsd:string"/>
+     <element name="NomRazSoc" nillable="true" type="xsd:string"/>
+     <element name="UltimaCotizacion" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfEmpleadoresType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EmpleadoresType"/>
+    </sequence>
+   </complexType>
+   <complexType name="LMEValEmpCCAFResponse">
+    <sequence>
+     <element name="Estado" type="xsd:int"/>
+     <element name="GloEstado" nillable="true" type="xsd:string"/>
+     <element name="ListaEmpleadores" nillable="true" type="impl:ArrayOfEmpleadoresType"/>
+    </sequence>
+   </complexType>
+   <element name="LMEValEmpCCAFResponse" type="impl:LMEValEmpCCAFResponse"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="LMEValEmpCCAFRequest">
+
+      <wsdl:part element="impl:LMEValEmpCCAFRequest" name="LMEValEmpCCAFRequest"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="LMEValEmpCCAFResponse">
+
+      <wsdl:part element="impl:LMEValEmpCCAFResponse" name="LMEValEmpCCAFResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LMEOtorgamiento">
+
+      <wsdl:operation name="LMEValEmpCCAF" parameterOrder="LMEValEmpCCAFRequest">
+
+         <wsdl:input message="impl:LMEValEmpCCAFRequest" name="LMEValEmpCCAFRequest"/>
+
+         <wsdl:output message="impl:LMEValEmpCCAFResponse" name="LMEValEmpCCAFResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LMEOtorgamientoSOAPSoapBinding" type="impl:LMEOtorgamiento">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="LMEValEmpCCAF">
+
+         <wsdlsoap:operation soapAction="http://www.example.org/lme_otorgamiento/"/>
+
+         <wsdl:input name="LMEValEmpCCAFRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="LMEValEmpCCAFResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LMEOtorgamiento">
+
+      <wsdl:port binding="impl:LMEOtorgamientoSOAPSoapBinding" name="LMEOtorgamientoSOAP">
+
+         <wsdlsoap:address location="http://localhost:9080/ServiciosCCAFWeb/services/LMEOtorgamientoSOAP"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="reportesil">
+
+<typeAlias alias="Resumen" type="cl.laaraucana.reportesil.dao.vo.ResumenLicenciaVO"/>
+<typeAlias alias="Rentas" type="cl.laaraucana.reportesil.dao.vo.RentasVO"/>
+
+<resultMap id="listaLicencias" class="cl.laaraucana.reportesil.dao.vo.ResumenLicenciaVO">
+	<result column="NRO_LICENCIA"   property="licencia" />
+	<result column="AFIRUT"   property="rutAfiliado" />
+	<result column="AFIRUTDV"   property="dvAfiliado" />
+	<result column="ESTADO"   property="estado" />
+	<result column="LICDESFEC"   property="fechaDesde" />
+	<result column="LICHASFEC"   property="fechaHasta" />
+	<result column="DIAS"   property="dias" />
+	<result column="LICIMPNUM"   property="numinterno" />
+	<result column="LIQUIDADA"   property="liquidada" />
+	<result column="TIPOLICENCIA"   property="tipoLicencia" />
+	<result column="PRIMERALICENCIA"   property="primeraLicencia" />
+	<result column="LICNOMENF"   property="diagnostico" />
+	<result column="EMAIL"   property="email" />
+	<result column="CELULAR"   property="celular" />
+	<result column="DIRECCION"   property="direccion" />
+	<result column="OBSERVACION"   property="observacion" />
+</resultMap>
+
+
+<resultMap id="listaRentas" class="cl.laaraucana.reportesil.dao.vo.RentasVO">
+	<result column="LICIMPNUM"   property="numinterno" />
+	<result column="AFIRUT"   property="rutAfiliado" />
+	<result column="FECHAHASTA"   property="fechaHasta" />
+	<result column="PERIODO"   property="periodo" />
+	<result column="MOTIVO"   property="motivo" />
+	<result column="MONTO"   property="monto" />
+	<result column="MATERNAL"   property="maternal" />
+</resultMap>
+
+<resultMap id="porcentajePrevisional" class="cl.laaraucana.reportesil.dao.vo.TasaPrevisionalVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="ENTIDAD"   property="entidad" />
+	<result column="TASA_PREVISION"   property="tasa" />
+</resultMap>
+
+<resultMap id="porcentajeSIS" class="cl.laaraucana.reportesil.dao.vo.TasaSISVO">
+	<result column="PERIODO_INICIAL"   property="periodoInicial" />
+	<result column="PERIODO_FINAL"   property="periodoFinal" />
+	<result column="TASA_SIS"   property="tasa" />
+</resultMap>
+
+<resultMap id="impuestorenta" class="cl.laaraucana.reportesil.dao.vo.ImpuestoVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="TOPE1"   property="tope1" />
+	<result column="TOPE2"   property="tope2" />
+	<result column="TASA1"   property="tasa1" />
+	<result column="TASA2"   property="tasa2" />
+	<result column="REBAJA1"   property="rebaja1" />
+	<result column="REBAJA2"   property="rebaja2" />
+</resultMap>
+
+<select id="nombreAfiliado" resultClass="java.lang.String">
+	select afinom from liexp.ilf1000
+	where afirut= #rutAfiliado#
+	fetch first 1 row only 
+</select>
+
+<delete id="deleteContacto" parameterClass="Resumen">
+	delete from liexp.ilf0020
+	where LICIMPNUM= #numinterno#
+	and AFIRUT= #rutAfiliado#
+	and FECHAHASTA = #fechaHastaInt#
+	WITH NC
+</delete>
+
+<delete id="deleteRentas" parameterClass="Resumen">
+	delete from liexp.ilf0021
+	where LICIMPNUM= #numinterno#
+	and AFIRUT= #rutAfiliado#
+	and FECHAHASTA = #fechaHastaInt#
+	WITH NC
+</delete>
+
+<insert id="insertContactoAfiliado" parameterClass="Resumen">
+	insert into liexp.ilf0020
+	(LICIMPNUM, AFIRUT, FECHAHASTA, EMAIL, CELULAR, DIRECCION, OBSERVACION, USUARIO)
+	values
+	(#numinterno#, #rutAfiliado#, #fechaHastaInt#, #email#, #celular#, #direccion#, #observacion#, #usuario#)
+	WITH NC
+</insert>
+ 
+<insert id="insertOtrasRentasAfiliado" parameterClass="Rentas">
+	insert into liexp.ilf0021
+	(LICIMPNUM, AFIRUT, FECHAHASTA, PERIODO, MOTIVO, MONTO, MATERNAL)
+	values
+	(#numinterno#, #rutAfiliado#, #fechaHasta#, #periodo#, #motivo#, #monto#, #maternal#)
+	WITH NC
+</insert>
+
+<select id="consultaRentas" parameterClass="java.util.HashMap" resultMap="listaRentas">
+	select LICIMPNUM, AFIRUT, FECHAHASTA, PERIODO, trim(MOTIVO) as MOTIVO, MONTO, MATERNAL 
+	from liexp.ilf0021
+	where LICIMPNUM= #licencia#
+		and AFIRUT= #rutAfiliado#
+		and FECHAHASTA = #fechaHasta#
+		and MATERNAL= #tipoLicencia#
+	WITH UR
+</select>
+
+<select id="consultaReliquidada" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+	select case when count(1)> 0 then 'SI' else 'NO' end as Reliquidada
+	from liexp.ILL9004 a
+	where LICIMPNUM = #licencia#
+	and AFIRUT = #rutAfiliado#
+	WITH UR
+</select>
+
+<select id="consultaLicencias" parameterClass="java.util.HashMap" resultMap="listaLicencias">
+
+select 
+  'RECEPCIONADA' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV ,  
+  ((case WHEN r.IDEOPE = 2 then 3 ELSE 4 END) || '-'||
+    r.NUMIMPRE ||'-' || r.DIVLICEN) as NRO_LICENCIA,
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC,
+  DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as LICHASFEC,
+  a.DIASMED as DIAS,
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+  (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) as tipoLicencia,
+  ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+  
+from liexp.ilf8600 a  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+,  LIEXP.ilfe002R r
+WHERE 
+   a.AFIRUT = #rutAfiliado# and 
+   a.LICDESFEC &gt;= #fechaDesde# and
+   a.LICDESFEC &lt;= #fechaHasta# and
+   a.ESTADO IN ('1','2')    and 
+   a.AFIRUT = r.AFIRUT      and 
+   a.LICIMPNUM = r.numimprela and 
+   r.ESTLICEN in(11,51) 
+   
+UNION   
+     
+select 
+  'RECEPCIONADA' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV ,  
+  a.NUMIMPRE || '' as NRO_LICENCIA,
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC,
+  DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as LICHASFEC, 
+  a.DIASMED as DIAS, 
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+  (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) as tipoLicencia,
+  ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+  
+from liexp.ilf8600 a  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+WHERE 
+   a.AFIRUT = #rutAfiliado# and 
+   a.LICDESFEC &gt;=#fechaDesde#  and
+   a.LICDESFEC &lt;=#fechaHasta#  and 
+   a.ESTADO IN ('1','2')    and 
+   not exists (SELECT *   
+   FROM LIEXP.ilfe002R r 
+   WHERE a.AFIRUT = r.AFIRUT and a.LICIMPNUM = r.numimprela)
+
+UNION
+
+SELECT 
+'RECEPCIONADA' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV , 
+  a.LICIMPNUM || '' as NRO_LICENCIA , 
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC, 
+  (DATE(substr(LICDESFEC, 1, 4) ||'-'||  substr(LICDESFEC, 5, 2) ||'-'||  substr(LICDESFEC, 7, 2)) + LICDIAS DAYS ) as LICHASFEC,
+  LICDIAS as DIAS, 
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+  0 as tipoLicencia,
+  ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+  
+FROM LIEXP.ILF1250 A left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+WHERE 
+a.AFIRUT = #rutAfiliado#   and
+a.LICDESFEC &gt;=#fechaDesde#  and
+a.LICDESFEC &lt;=#fechaHasta#  and  
+LICFECING >20180101 and 
+(DATE(substr(LICFECING, 1, 4) ||'-'||  substr(LICFECING, 5, 2) ||'-'||  substr(LICFECING, 7, 2)) ) &gt;= CURRENT_DATE -3 DAYS 
+
+UNION
+
+select 
+  'EN_COMPIM' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV ,  
+  ((case WHEN r.IDEOPE = 2 then 3 ELSE 4 END) || '-'||
+    r.NUMIMPRE ||'-' || r.DIVLICEN) as NRO_LICENCIA,
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC, 
+  DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as LICHASFEC,
+  a.DIASMED as DIAS,
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+ (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) tipoLicencia,
+ ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+ 
+from liexp.ilf8600 a  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+,  LIEXP.ilfe002R r
+WHERE 
+   a.AFIRUT = #rutAfiliado# and 
+   a.LICDESFEC &gt;=#fechaDesde#  and
+   a.LICDESFEC &lt;=#fechaHasta#  and  
+   a.ESTADO ='3'            and 
+   a.AFIRUT = r.AFIRUT      and 
+   a.LICIMPNUM = r.numimprela and 
+   r.ESTLICEN in(52,53) 
+
+UNION
+
+select 
+  'EN_COMPIM' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV ,  
+  a.NUMIMPRE || '' as NRO_LICENCIA,
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC, 
+  DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2)) as LICHASFEC,
+  a.DIASMED as DIAS,
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+  (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) tipoLicencia,
+  ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+ 
+from liexp.ilf8600 a  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+WHERE 
+   a.AFIRUT = #rutAfiliado# and 
+   a.LICDESFEC &gt;=#fechaDesde#  and
+   a.LICDESFEC &lt;=#fechaHasta#  and  
+   a.ESTADO = '3'            and 
+   not exists (SELECT *   
+   FROM LIEXP.ilfe002R r 
+   WHERE a.AFIRUT = r.AFIRUT and a.LICIMPNUM = r.numimprela )
+  
+  UNION
+  
+ SELECT 
+'EN_COMPIM' AS ESTADO,
+  a.AFIRUT, a.AFIRUTDV , 
+  a.LICIMPNUM || '' as NRO_LICENCIA, 
+  DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2)) as LICDESFEC, 
+  (DATE(substr(LICDESFEC, 1, 4) ||'-'||  substr(LICDESFEC, 5, 2) ||'-'||  substr(LICDESFEC, 7, 2)) + LICDIAS DAYS ) as LICHASFEC,
+  LICDIAS as DIAS,
+  a.LICIMPNUM,
+  '' as LICNOMENF,
+  0 as LIQUIDADA,
+  0 as tipoLicencia,
+  ' ' as primeraLicencia,
+  COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  COALESCE(trim(b.CELULAR), '') as CELULAR,
+  COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+  COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+  
+FROM LIEXP.ILF1250 A  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+WHERE 
+ a.AFIRUT = #rutAfiliado#  and
+ a.LICDESFEC &gt;=#fechaDesde#  and
+ a.LICDESFEC &lt;=#fechaHasta#  and  
+LICFECING >20180101 and 
+(DATE(substr(LICFECING, 1, 4) ||'-'||  substr(LICFECING, 5, 2) ||'-'||  substr(LICFECING, 7, 2)) ) &lt; CURRENT_DATE -3 DAYS 
+
+UNION
+
+select
+( CASE max(licest)
+       WHEN 1 THEN 'AUTORIZADA'
+       WHEN 2 THEN 'EN_PROCESO'
+       WHEN 3 THEN 'SIN_DERECHO'
+     END ) as ESTADO,
+     
+     a.AFIRUT, 
+     max(a.AFIRUTDV) as AFIRUTDV,
+     ((case WHEN min(r.IDEOPE) = 2 then 3 ELSE 4 END) || '-'||
+       min(r.NUMIMPRE) ||'-' || MIN(r.DIVLICEN)) as NRO_LICENCIA ,    
+     MAX(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC , 
+     MAX(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC , 
+     MAX(a.LICDIAS) as DIAS,
+     a.LICIMPNUM,
+     a.LICNOMENF,
+  	 1 as LIQUIDADA,
+  	 (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) tipoLicencia,
+  	 (case WHEN a.LICAMPLET = ' ' then 'SI' else 'NO' end) as primeraLicencia, 
+  	 COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  	 COALESCE(trim(b.CELULAR), '') as CELULAR,
+ 	 COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+ 	 COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+             
+from liexp.ILF1000 a  left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+, LIEXP.ilfe002R r
+WHERE 
+   a.AFIRUT =  #rutAfiliado# and 
+   a.LICDESFEC &gt;= #fechaDesde# and 
+   a.LICDESFEC &lt; #fechaHasta# and 
+   a.licest in (1,2,3)   and
+   a.AFIRUT = r.AFIRUT and 
+   a.LICIMPNUM = r.numimprela 
+ group by  a.AFIRUT, a.LICIMPNUM, a.afisubtip, a.LICNOMENF, a.LICAMPLET, b.EMAIL, b.CELULAR, b.DIRECCION, b.OBSERVACION 
+ 
+ UNION
+
+select
+( CASE max(a.licest)
+       WHEN 1 THEN 'AUTORIZADA'
+       WHEN 2 THEN 'EN_PROCESO'
+       WHEN 3 THEN 'SIN_DERECHO'
+     END ) as ESTADO,
+     a.AFIRUT, 
+     min(a.AFIRUTDV) as AFIRUTDV , 
+     c.NUMIMPRE || '' as NRO_LICENCIA, 
+     min(DATE(substr(a.LICDESFEC, 1, 4) ||'-'||  substr(a.LICDESFEC, 5, 2) ||'-'||  substr(a.LICDESFEC, 7, 2))) as LICDESFEC, 
+     min(DATE(substr(a.LICHASFEC, 1, 4) ||'-'||  substr(a.LICHASFEC, 5, 2) ||'-'||  substr(a.LICHASFEC, 7, 2))) as LICHASFEC, 
+     min(a.LICDIAS) as DIAS, 
+     a.LICIMPNUM,
+     a.LICNOMENF,
+  	 1 as LIQUIDADA,
+  	 (case WHEN a.afisubtip in (3,4) then 1 ELSE 0 END) tipoLicencia, 
+  	 (case WHEN a.LICAMPLET = ' ' then 'SI' else 'NO' end) as primeraLicencia,
+  	 COALESCE(trim(b.EMAIL), '') as EMAIL, 
+  	 COALESCE(trim(b.CELULAR), '') as CELULAR,
+  	 COALESCE(trim(b.DIRECCION), '') as DIRECCION, 
+ 	 COALESCE(trim(b.OBSERVACION), '') as OBSERVACION
+  
+from liexp.ILF1000 a left join liexp.ilf0020 b
+on a.LICIMPNUM= b.LICIMPNUM
+and a.AFIRUT= b.AFIRUT
+join liexp.ILF1010 c
+on a.LICIMPNUM= c.LICIMPNUM
+and a.AFIRUT= c.AFIRUT
+WHERE 
+   a.AFIRUT = #rutAfiliado# and 
+   a.LICDESFEC &gt;= #fechaDesde# and 
+   a.LICDESFEC &lt; #fechaHasta# and 
+   a.licest in (1,2,3)   and
+   not exists (SELECT *   
+   FROM LIEXP.ilfe002R r 
+   WHERE a.AFIRUT = r.AFIRUT and a.LICIMPNUM = r.numimprela )
+
+group by a.AFIRUT, a.LICIMPNUM, c.NUMIMPRE, a.afisubtip, a.LICNOMENF, a.LICAMPLET, b.EMAIL, b.CELULAR, b.DIRECCION, b.OBSERVACION
+order by LICDESFEC
+WITH UR	
+</select>
+
+<select id="remuneracionesxperiodo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+    select 
+    	(case WHEN a.PAGAUX3=0 then 'Normal' else 'Reliquidada' end ) as TipoPago,
+    	a.PAGFOL,
+    	a.LICINSPRE,
+    	a.LICDIAMON,
+    	a.PAGRESDIA,
+    	a.PAGLIQDIA,
+    	a.PAGSUBMON, 
+    	c.SEGLIC, 
+    	(a.PAGSUBMON - COALESCE(c.SEGLIC, 0)) as SUBTOTAL, 
+    	a.LICRTAIMP as RENTAIMPANT, 
+    	int(ROUND((a.LICRTAIMP/30), 0)) as BASECOTDIA,
+    	a.PAGCOTMON,
+    	a.PAGCOTPOR,
+    	b.PERIODO1, b.PERIODO2, b.PERIODO3, b.PERIODO4, b.PERIODO5, b.PERIODO6,
+   		b.RENTA1, b.RENTA2, b.RENTA3, b.RENTA4, b.RENTA5, b.RENTA6,
+    	b.INSPRE1, b.INSPRE2, b.INSPRE3, b.INSPRE4, b.INSPRE5, b.INSPRE6, 
+    	b.SIL1, b.SIL2, b.SIL3, b.SIL4, b.SIL5, b.SIL6, 
+    	b.SEGCES, b.MTOIMP60, b.MTOIMP90
+    from liexp.ILL9004 a left join liexp.ILF1120 b
+    	on a.AFIRUT= b.AFIRUT
+    	and a.LICIMPNUM= b.LICIMPNUM
+    	and a.LICHASFEC = b.LICHASFEC
+    	and a.PAGFOL= b.PAGFOL
+    left join liexp.ilf2520 c
+    	on a.AFIRUT= c.AFIRUT
+    	and a.LICIMPNUM= c.LICIMPNUM
+    	and a.PAGFOL= c.PAGFOL
+    where 
+    	a.afirut = #rutAfiliado# 
+    	and  a.LICIMPNUM = #licencia# 
+    	and a.LICHASFEC = #fechaHasta#
+    
+    union
+ 	select    
+    	'Reliquidada' as TipoPago,
+    	a.PAGFOL,
+    	0 AS LICINSPRE,
+    	a.LICDIAMON,
+    	a.PAGRESDIA,
+    	a.PAGLIQDIA,
+    	A.PAGRESMON AS PAGSUBMON ,
+    	0 AS SEGLIC,
+    	0 as SUBTOTAL,
+    	0 as RENTAIMPANT,
+    	0 as BASECOTDIA,
+    	0 AS PAGCOTMON,
+    	0 AS PAGCOTPOR,
+    	b.PERIODO1, b.PERIODO2, b.PERIODO3, b.PERIODO4, b.PERIODO5, b.PERIODO6,
+    	b.RENTA1, b.RENTA2, b.RENTA3, b.RENTA4, b.RENTA5, b.RENTA6,
+    	b.INSPRE1, b.INSPRE2, b.INSPRE3, b.INSPRE4, b.INSPRE5, b.INSPRE6,
+    	b.SIL1, b.SIL2, b.SIL3, b.SIL4, b.SIL5, b.SIL6,
+    	b.SEGCES, b.MTOIMP60, b.MTOIMP90
+	from liexp.ILF2500 a left join liexp.ILF1120 b
+    	on a.AFIRUT   = b.AFIRUT
+    	and a.LICIMPNUM= b.LICIMPNUM
+    	and a.LICHASFEC= b.LICHASFEC
+    	and a.PAGFOL   = b.PAGFOL 
+	where
+		a.PAGTIP = 3 and
+		a.afirut = #rutAfiliado# and a.LICIMPNUM = #licencia#  and a.LICHASFEC = #fechaHasta#
+	order by PAGFOL
+	WITH UR
+</select>
+
+<select id="tasasprevisionales" parameterClass="java.util.HashMap" resultMap="porcentajePrevisional">
+ 	select '20' || right(TCODIGO, 4) as PERIODO,
+    case when  int(substr(TCODIGO, 1, length(trim(TCODIGO))-4)) between 100 and 199 then '10' || substr(TCODIGO, 2, 2)
+    else substr(TCODIGO, 1, length(trim(TCODIGO))-4) end as ENTIDAD,
+    DECIMAL(TVALOR/100, 4, 2) as TASA_PREVISION
+      from general.TAF1000 where tletra = 'IA'
+      and int(right(TCODIGO, 4)) between #periodo_ini# and #periodo_fin#
+      order by 1, int(2)
+     WITH UR
+</select>
+
+<select id="tasasSIS" resultMap="porcentajeSIS">
+	select int(substr(SISFECVID, 1, 6)) as PERIODO_INICIAL,  
+	int(substr(SISFECVIH, 1, 6)) as PERIODO_FINAL, 
+	SISPORSIS as TASA_SIS 
+	from liexp.ILF8750
+	WITH UR
+</select>
+
+<select id="seguroCesantia" parameterClass="java.util.HashMap" resultClass="java.lang.Double">
+	 select case when LICSEGCES='S' then 0.6 else 0 end as tasaCensatia
+	 from liexp.ilf1010 
+	 where AFIRUT = #rutAfiliado# 
+	 and LICIMPNUM = #licencia#
+	 WITH UR
+</select>
+
+<select id="montodiariominimo" resultClass="java.lang.Double">
+	select decimal((tvalor / 100), 8, 2)  as MinimoSil 
+	from general.taf1000 
+	where tletra ='IH' and tcodigo = 1
+</select>
+
+<select id="calculoImpuesto" parameterClass="java.util.HashMap" resultMap="impuestorenta">
+	 select PERIODO,
+	 	MONHASEX as TOPE1, 
+	 	MONHAS1 as TOPE2, 
+	 	TASA1, 
+	 	TASA2, 
+	 	REBAJA1, 
+	 	REBAJA2 
+	 from liexp.ILD034 
+	 where periodo between #periodo_ini# and #periodo_fin#
+	 WITH UR
+</select>
+
+<select id="codigoPagoeIPC" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	select LICCODPAG, LICIPCVAL 
+	from liexp.ilf1300 
+	where afirut = #rutAfiliado#  and LICIMPNUM =  #licencia#
+	WITH UR
+</select>
+
+<select id="isRentasCotizaciones" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	select count(1) from liexp.ilf0009
+		where afirut= #rutAfiliado# 
+		and licimpnum= #licencia#
+</select>
+
+
+</sqlMap>

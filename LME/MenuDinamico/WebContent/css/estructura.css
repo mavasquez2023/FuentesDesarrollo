@@ -1,0 +1,187 @@
+
+/*[START] ajuste dialog mantenedor----------------------------------------------*/
+.bordeLimite{
+	border: solid 1px #CCCCCC;	
+	margin:-1px;
+}
+#info{
+	width: 98%;
+	height: 30px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+  	font-weight: bold;
+}
+#filtro{
+	width: 48%;
+	height: 150px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+#filtroLog{
+	width: 98%;
+	height: 150px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+.campoFiltro{
+	width: 200px;
+	display: block;
+	float: left;
+	margin-bottom: 3px;		
+}
+.campoFiltroDos{
+	display: block;
+	float: left;
+	margin-bottom: 3px;		
+}
+.campoLogs{
+	width: 48%;
+	height: 150px;
+}
+#ingreso{
+	width: 47%;
+	height: 150px;
+    float: left;
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+#paginacion{	
+	width: 100%px;
+	height: 30px;
+    clear: left;
+    display: block;
+    padding-top:5px;     
+}
+#paginacion .btn_direccionLeft{
+	width: 30%;
+    text-align: right;
+    float: left;
+    display: block;    
+}
+#paginacion .txt_center{
+	width: 40%;
+    float: left;
+    display: block;    
+    text-align: center;    
+    font-weight: bold;
+}
+#paginacion .btn_direccionRight{
+	width: 30%;
+	float: left;
+    text-align: left;
+    display: block;        
+}
+
+#data{
+	width: 100%;
+    clear: left;
+    display: block;
+   	min-height: 350px;
+}
+/*[FIN] ajuste dialog mantenedor------------------------------------------------*/
+
+/*[START] ajuste formularios------------------------------------------------*/
+.visorForm{
+	width: 50%;
+	margin-right: 2px auto;
+	padding: 0 auto;
+	float: left;
+}
+
+.campoForm{
+	width: 400px;
+	display: block;
+	margin-bottom: 3px;
+}
+.lbl_numero{
+	width: 5%;
+	display: block;
+	float: left;
+	margin-right: 3px;
+	padding-right: 3px;
+}
+
+.lbl_nombre{
+	width: 20%;	
+	display: block;
+	float: left;
+	margin-right: 3px;	
+}
+.txt_campo{
+	width: 40%;	
+	display: block;
+	float: left;
+	margin: 0 auto;
+}
+.lbl_help{
+	width: 18%;	
+	display: block;
+	float: left;
+	margin: 0 auto;
+	color: gray;
+}
+.lbl_Error{
+	width: 100%;	
+	display: block;
+	clear: left;
+	min-height: 10px;
+}
+
+/*[FIN] ajuste formularios------------------------------------------------*/
+
+/*reglas para cuadro de login-------------------------------------------------------------*/
+#loginBox {
+	padding-top: 20px;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 300px;
+	height: 34px;
+	float: left;
+	
+}
+#loginBox1 {
+	padding: 2px;
+	width: 283px;
+	height: 40px;
+	float: left;
+}
+#loginBox2 {
+	padding: 2px;
+	width: 283px;
+	height: 70px;
+	float: left;
+}
+
+#loginBoxBotones {
+	padding-top: 1px;
+	padding-right: 6px;
+	width: 700px;
+	height: 50px;
+	float:left;
+	text-align: right;
+}
+
+.labelLogin{
+	padding: 4px;
+	width: 10px;
+	display: block;
+	float: left;
+}
+
+#msgLogin{
+	font-size: 12px;
+	font: bold;
+	width: 700px;
+	display: block;	
+	background-color: #fef1ec;
+}
+
+/*fin login-------------------------------------------------------------------------*/
+

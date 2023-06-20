@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="LME_TYPES_1.6.3.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_ZONA_B.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra esta publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>Definiciones de tipos de datos de la Licencia Medica Electronica</Titulo>
+				<Autor>Luis Andres Baez Arribada</Autor>
+				<Institucion>SuperIntendencia de Seguridad Social - Unidad de Licencia Medica Electronica</Institucion>
+				<Creacion>2006-05-01</Creacion>
+				<Estado>Activo</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se define tipo a elementos anonimos</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2014-09-03</fecha>
+					<Colaborador>SUSESO - COMPIN</Colaborador>
+					<modificaciones>Se agrega el atributo "tipo_pendiente" del tipo STTipo_pendiente</modificaciones>
+				</Modificado>
+				<Descripcion>Zona de uso exclusivo del servicio de salud o isapre</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="CT_ZONA_B">
+		<xsd:sequence>
+			<xsd:element name="ZONA_B1" type="CT_ZONA_B1"/>
+			<xsd:element name="ZONA_BF" type="CT_ZONA_F"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_B1">
+		<xsd:sequence>
+			<xsd:element name="resolucion" type="CT_resolucion" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_resolucion">
+		<xsd:sequence>
+			<xsd:element name="entidad" type="xsd:string"/>
+			<xsd:element name="n_resolucion" type="STN_resolucion"/>
+			<xsd:element name="establecimiento" type="xsd:string"/>
+			<xsd:element name="codigo_establecimiento" type="xsd:integer"/>
+			<xsd:element name="codigo_tipo_licencia_entidad" type="STTipo_licencia"/>
+			<xsd:element name="entidad_fecha_desde" type="xsd:dateTime"/>
+			<xsd:element name="entidad_fecha_hasta" type="xsd:dateTime"/>
+			<xsd:element name="entidad_ndias" type="xsd:integer"/>
+			<xsd:element name="codigo_diagnostico" type="xsd:string"/>
+			<xsd:element name="codigo_continuacion" type="STContinuacion"/>
+			<xsd:element name="dias_previos" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="codigo_tipo_resolucion" type="STTipo_resolucion"/>
+			<xsd:element name="entidad_pendiente" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="codigo_redictamen" type="STSiNo" minOccurs="0"/>
+			<xsd:element name="codigo_causa_rechazo" type="STCausa_rechazo" minOccurs="0"/>
+			<xsd:element name="entidad_causa" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="codigo_reposo_autorizado" type="STTipo_reposo"/>
+			<xsd:element name="codigo_jornada_reposo_autorizado" type="STJornada_reposo" minOccurs="0" maxOccurs="2"/>
+			<xsd:element name="codigo_derecho_subsidio" type="STTipo_subsidio"/>
+			<xsd:element name="entidad_fecha_recepcion" type="xsd:dateTime"/>
+			<xsd:element name="fecha_resolucion" type="xsd:dateTime"/>
+			<xsd:element name="fecha_redictamen" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="contralor_nombre" type="xsd:string"/>
+			<xsd:element name="contralor_rut" type="STRut"/>
+			<xsd:element name="contralor_registro_colegio" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="tipo_pronunciamiento" type="STTipo_pronunciamiento" use="required"/>
+		<xsd:attribute name="id" use="optional"/>
+		<xsd:attribute name="tipo_pendiente" type="STTipo_pendiente" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

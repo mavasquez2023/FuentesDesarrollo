@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="LME_TYPES_1.6.3.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_ZONA_C.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra está publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>Definiciones de tipos de datos de la Licencia Medica Electronica</Titulo>
+				<Autor>Luis Andres Baez Arribada</Autor>
+				<Institucion>SuperIntendencia de Seguridad Social - Unidad de Licencia Medica Electronica</Institucion>
+				<Creacion>2006-05-01</Creacion>
+				<Estado>Activo</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-05-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora seccion CC</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora seccion CC</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-01</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora elemento para poner codigos de AFP dentro de un choice</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se nombran elementos anonimos</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-17</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se realiza ajuste a las zona C2 para efectos de la información del régimen previsional venga informada a partir de una lista de dominios utilizando los tipos simples STCodigo_regimen_prevision y STLetra_caja</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-12-05</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se realiza ajuste a la zona CC, incorporando el elemento "run_hijo"</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2014-12-24</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se elimina la obligatoriedad de las zonas C2, C3 Y C4. Dentro de la zona C1 se elimina la obligatoriedad de los elementos emp_fecha_recepcion, codigo_actividad_laboral, codigo_ocupacion </modificaciones>
+				</Modificado>
+				<Descripcion>Zona de responsabilidad exclusiva del empleador</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="CT_ZONA_C">
+		<xsd:sequence>
+			<xsd:element name="ZONA_C1" type="CT_ZONA_C1"/>
+			<xsd:element name="ZONA_C2" type="CT_ZONA_C2" minOccurs="0"/>
+			<xsd:element name="ZONA_C3" type="CT_ZONA_C3" minOccurs="0"/>
+			<xsd:element name="ZONA_C4" type="CT_ZONA_C4" minOccurs="0"/>
+			<xsd:element name="ZONA_CC" type="CT_ZONA_CC" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Información complementaria requerida por FONASA en relación a la CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_CF" type="CT_ZONA_F"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_C1">
+		<xsd:sequence>
+			<xsd:element name="emp_nombre" type="xsd:string"/>
+			<xsd:element name="emp_rut" type="STRut"/>
+			<xsd:element name="emp_telefono" type="CTTelefono" minOccurs="0"/>
+			<xsd:element name="emp_fecha_recepcion" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="emp_direccion" type="CTDireccion"/>
+			<xsd:element name="codigo_comuna_compin" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="codigo_actividad_laboral" type="STActividad_laboral" minOccurs="0"/>
+			<xsd:element name="codigo_ocupacion" type="STOcupacion" minOccurs="0"/>
+			<xsd:element name="emp_otra_ocupacion" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_C2">
+		<xsd:sequence>
+			<xsd:element name="prev_fecha_recepcion_ccaf" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="codigo_tipo_regimen_previsional" type="STRegimen_previsional"/>
+			<xsd:element name="codigo_regimen_previsional" type="STCodigo_regimen_prevision"/>
+			<xsd:element name="codigo_letra_caja" type="STLetra_caja" minOccurs="0"/>
+			<xsd:element name="prev_nombre" type="xsd:string"/>
+			<xsd:element name="codigo_calidad_trabajador" type="STCalidad_trabajador"/>
+			<xsd:element name="codigo_seguro_afc" type="STSiNo"/>
+			<xsd:element name="codigo_seguro_indef" type="STSiNo"/>
+			<xsd:element name="fecha_afiliacion" type="xsd:date"/>
+			<xsd:element name="fecha_contrato" type="xsd:date"/>
+			<xsd:element name="codigo_entidad_pagadora" type="STEntidad_pagadora"/>
+			<xsd:element name="prev_nombre_pagador" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_C3">
+		<xsd:sequence>
+			<xsd:element name="remuneracion" type="CTRemuneracion" maxOccurs="12"/>
+			<xsd:element name="porcen_desahucio" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="monto_imponible_mes_anterior" type="xsd:integer" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_C4">
+		<xsd:sequence>
+			<xsd:element name="lma_licencias_ant" type="STSiNo"/>
+			<xsd:element name="licencia_anterior" type="CTLicencia_anterior" minOccurs="0" maxOccurs="6"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_CC">
+		<xsd:sequence>
+			<xsd:element name="codigo_tramitacion_CCAF" type="STCodigoCCAF"/>
+			<xsd:element name="tiene_mas100" type="STSiNo" minOccurs="0"/>
+			<xsd:element name="haberes" type="CTHaberes"/>
+			<xsd:element name="run_hijo" type="STRut" minOccurs="0" maxOccurs="10"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

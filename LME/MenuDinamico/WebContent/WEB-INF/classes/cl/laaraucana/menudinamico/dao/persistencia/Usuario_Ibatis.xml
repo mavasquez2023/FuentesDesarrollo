@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+   	
+   	<resultMap id="result_User" class="cl.laaraucana.menudinamico.vo.UsuarioVO" >
+		<result property="id_user" column="IDUSR"/>	
+	 	<result property="rut_user" column="RUTUSR"/>	
+		<result property="nombre_user" column="NOMUSR"/>	
+		<result property="ape_paterno" column="APETUSR"/>	
+		<result property="ape_materno" column="MAPEUSR"/>	
+		<result property="email_user" column="MAILUSR"/>	
+	</resultMap>
+		
+	<select id="getBuscar_User" resultMap="result_User">
+		SELECT IDUSR,NOMUSR,MAILUSR,RUTUSR,APETUSR,MAPEUSR 
+		FROM LIEXP.ILFJAUSR
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="id_user">
+				IDUSR = $id_user$
+			</isNotNull>
+			<isNotNull prepend="AND" property="rut_user">
+				TRIM(RUTUSR)= $rut_user$
+			</isNotNull>		
+		</dynamic> 	
+	</select>	
+	
+	<select id="getBuscar_UserById" resultMap="result_User">
+		SELECT IDUSR,NOMUSR,MAILUSR,RUTUSR,APETUSR,MAPEUSR 
+		FROM LIEXP.ILFJAUSR
+		WHERE IDUSR = $id_user$
+	</select>
+	
+	<select id="getBuscar_UserByRut" resultMap="result_User">
+		SELECT IDUSR,NOMUSR,MAILUSR,RUTUSR,APETUSR,MAPEUSR 
+		FROM LIEXP.ILFJAUSR
+		WHERE RUTUSR LIKE '$rut_user$%'
+	</select>
+	
+	<insert id="insertar_User" parameterClass="cl.laaraucana.menudinamico.vo.UsuarioVO">
+		INSERT INTO LIEXP.ILFJAUSR (IDUSR,NOMUSR,MAILUSR,RUTUSR,APETUSR,MAPEUSR) 
+		VALUES (
+				IFNULL((select max(IDUSR)+1 from LIEXP.ILFJAUSR),0),
+				#nombre_user#,
+				#email_user#,
+				#rut_user#,
+				#ape_paterno#,
+				#ape_materno#
+				)
+		WITH NC
+	</insert>
+	
+	<update id="up_User" parameterClass="cl.laaraucana.menudinamico.vo.UsuarioVO">
+		UPDATE LIEXP.ILFJAUSR 
+		SET		
+			NOMUSR = #nombre_user#,
+			MAILUSR = #email_user#,
+			RUTUSR = #rut_user#,
+			APETUSR = #ape_paterno#,
+			MAPEUSR = #ape_materno#
+		WHERE
+			IDUSR = #id_user#
+		WITH NC
+	</update>
+	
+	<delete id="del_User" parameterClass="cl.laaraucana.menudinamico.vo.UsuarioVO">
+		DELETE FROM LIEXP.ILFJAUSR
+		WHERE
+			IDUSR = #id_user#
+		WITH NC
+	</delete>
+	
+</sqlMap>

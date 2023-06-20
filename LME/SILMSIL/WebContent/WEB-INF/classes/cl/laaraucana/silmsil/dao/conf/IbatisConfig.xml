@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<transactionManager type="JDBC">
+		<property name="commitRequired" value="false" />
+		<dataSource type="JNDI">
+			<property name="DataSource" value="jdbc/planillaCaja" />
+		</dataSource>
+	</transactionManager>
+	<!--
+			<property name="DataSource" value="jdbc/testdesa4" />
+			<property name="DataSource" value="jdbc/astfibm_l" />
+		
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.79;prompt=false" />
+			<property name="JDBC.Username" value="LVALENZUEM" />
+			<property name="JDBC.Password" value="IBM7654321" />
+		</dataSource>
+	</transactionManager>	
+			
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.5;prompt=false" />
+			<property name="JDBC.Username" value="sistemas" />
+			<property name="JDBC.Password" value="sistemas" />
+		</dataSource>
+	</transactionManager>	
+		 
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.79;prompt=false" />
+			<property name="JDBC.Username" value="RARAYAV" />
+			<property name="JDBC.Password" value="RARAYAV04" />
+		</dataSource>
+	</transactionManager>
+			
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.2;prompt=false" />
+			<property name="JDBC.Username" value="schema" />
+			<property name="JDBC.Password" value="schema" />
+		</dataSource>
+	</transactionManager>
+		
+	-->
+	
+	<!-- Mapeo -->
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/ILFJA057Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/ILFJA058Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/LM_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/SIL_Ibatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/GlosaErrorSILIbatil.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/GlosaErrorLMIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/PlanosIbatis.xml" />
+	<sqlMap resource="cl/laaraucana/silmsil/dao/persistencia/ProcedureIbatis.xml" />
+</sqlMapConfig>

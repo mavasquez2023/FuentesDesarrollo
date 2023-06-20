@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/licenciasMedicas" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/licenciasMedicas">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="findLicencias" type="tns:findLicencias"/>
+
+  <xs:element name="findLicenciasResponse" type="tns:findLicenciasResponse"/>
+
+  <xs:complexType name="findLicencias">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Consulta"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Consulta">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="CLAVE" type="xs:string"/>
+      <xs:element name="RUT" type="xs:string"/>
+      <xs:element name="FECHADESDE" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findLicenciasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseIVR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseIVR">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="LICENCIA" type="tns:licenciaIVR"/>
+      <xs:element name="CODIGO_RESPUESTA" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licenciaIVR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numeroLicencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaTermino" type="xs:string"/>
+      <xs:element minOccurs="0" name="dias" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="razonSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSubsidio" type="xs:int"/>
+      <xs:element minOccurs="0" name="tipoSubsidio" type="xs:string"/>
+      <xs:element minOccurs="0" name="estado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

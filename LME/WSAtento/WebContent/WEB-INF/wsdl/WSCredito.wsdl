@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:impl="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:intf="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:tns2="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns:tns3="http://exception.integration.wsatento.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns2="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.jaxrpc.integration.wsatento.araucana.cl"/>
+   <element name="getCreditosResponse">
+    <complexType>
+     <sequence>
+      <element name="getCreditosReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Credito"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCreditos">
+    <complexType>
+     <sequence>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+      <element name="clave" nillable="true" type="xsd:string"/>
+      <element name="rut" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_nillable_Credito">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Credito" nillable="true" type="tns2:Credito"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Credito">
+    <sequence>
+     <element name="fechaPago" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://exception.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="WSAtentoException">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="WSAtentoException" nillable="true" type="tns3:WSAtentoException"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCreditosResponse">
+     <wsdl:part element="intf:getCreditosResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="WSAtentoException">
+     <wsdl:part element="tns3:WSAtentoException" name="fault"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getCreditosRequest">
+     <wsdl:part element="intf:getCreditos" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="WSCredito">
+     <wsdl:operation name="getCreditos">
+       <wsdl:input message="intf:getCreditosRequest" name="getCreditosRequest"/>
+
+       <wsdl:output message="intf:getCreditosResponse" name="getCreditosResponse"/>
+
+       <wsdl:fault message="intf:WSAtentoException" name="WSAtentoException"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="WSCreditoSoapBinding" type="intf:WSCredito">
+ <wsaw:UsingAddressing wsdl:required="false" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="getCreditos">
+       <wsdlsoap:operation soapAction="getCreditos"/>
+
+       <wsdl:input name="getCreditosRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="getCreditosResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="WSAtentoException">
+         <wsdlsoap:fault name="WSAtentoException" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="WSCreditoService">
+     <wsdl:port binding="intf:WSCreditoSoapBinding" name="WSCredito">
+       <wsdlsoap:address location="https://localhost:9443/WSAtento/services/WSCredito"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

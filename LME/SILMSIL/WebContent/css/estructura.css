@@ -1,0 +1,141 @@
+
+/*[START] ajuste dialog mantenedor----------------------------------------------*/
+.bordeLimite{
+	border: solid 1px #CCCCCC;	
+	margin:-1px;
+}
+#info{
+	width: 98%;
+	height: 30px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+  	font-weight: bold;
+}
+#filtro{
+	width: 48%;
+	height: 150px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+#filtroLog{
+	width: 98%;
+	height: 150px;
+    float: left;    
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+.campoFiltro{
+	width: 200px;
+	display: block;
+	float: left;
+	margin-bottom: 3px;		
+}
+.campoLogs{
+	width: 48%;
+	height: 150px;
+}
+#ingreso{
+	width: 47%;
+	height: 150px;
+    float: left;
+    display: block;
+    padding-top: 2%;
+  	padding-left: 2%;
+}
+#paginacion{	
+	width: 100%px;
+	height: 30px;
+    clear: left;
+    display: block;
+    padding-top:5px;     
+}
+#paginacion .btn_direccionLeft{
+	width: 30%;
+    text-align: right;
+    float: left;
+    display: block;    
+}
+#paginacion .txt_center{
+	width: 40%;
+    float: left;
+    display: block;    
+    text-align: center;    
+    font-weight: bold;
+}
+#paginacion .btn_direccionRight{
+	width: 30%;
+	float: left;
+    text-align: left;
+    display: block;        
+}
+
+#data{
+	width: 100%;
+    clear: left;
+    display: block;
+   	min-height: 350px;
+}
+/*[FIN] ajuste dialog mantenedor------------------------------------------------*/
+
+/*[START] ajuste formularios------------------------------------------------*/
+.visorForm{
+	width: 50%;
+	margin-right: 2px auto;
+	padding: 0 auto;
+	float: left;
+}
+
+.campoForm{
+	width: 400px;
+	display: block;
+	margin-bottom: 3px;
+}
+.lbl_numero{
+	width: 5%;
+	display: block;
+	float: left;
+	margin-right: 3px;
+	padding-right: 3px;
+}
+
+.lbl_nombre{
+	width: 50%;	
+	display: block;
+	float: left;
+	margin-right: 3px;	
+}
+.txt_campo{
+	width: 40%;	
+	display: block;
+	float: left;
+	margin: 0 auto;
+}
+.lbl_Error{
+	width: 100%;	
+	display: block;
+	clear: left;
+	min-height: 10px;
+}
+
+
+/*[FIN] ajuste formularios------------------------------------------------*/
+
+/*etiqueta error descarga*/
+.loadEtiqueta{
+	color: red; 
+	text-align: right; 
+	width: 100%; 
+	min-width: 100%; 
+	display: inline;
+	padding: 5px;
+	border: solid;
+	border-width: 1px;
+	border-color: red;
+}
+
+

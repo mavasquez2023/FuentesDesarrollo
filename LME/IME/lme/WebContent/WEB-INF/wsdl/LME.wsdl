@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="WsLMEInet" targetNamespace="urn:WsLMEInet" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:WsLMEInet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--TYPES-->
+  <wsdl:types>
+  	<xsd:schema>
+      <xsd:import namespace="urn:WsLMEInet" schemaLocation="RolesLDAPService_schema1.xsd"/>
+    </xsd:schema>
+    <xsd:schema targetNamespace="urn:WsLMEInet">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+      <!--3.1 CONSULTA DE EVENTOS ASOCIADOS A LICENCIA MÉDICA ELECTRONICA-->
+      <xsd:complexType name="LMEEvenLcc">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="FecConsulta" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEEvenLccResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+          <xsd:element name="ListaLicencias" type="tns:ListaLicenciasType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEEvenFec">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="FecDesde" type="xsd:dateTime"/>
+          <xsd:element name="FecHasta" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEEvenFecResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+          <xsd:element name="ListaLicencias" type="tns:ListaLicenciasType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaLicenciasType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:LicenciaType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="LicenciaType">
+        <xsd:sequence>
+          <xsd:element name="NumLicencia" type="xsd:integer"/>
+          <xsd:element name="DigLicencia" type="xsd:string"/>
+          <xsd:element name="estado" type="xsd:integer"/>
+          <xsd:element name="fecha" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.1 CONSULTA DE EVENTOS ASOCIADOS A LICENCIA MÉDICA ELECTRONICA-->
+      <!--3.2 CONSULTA DETALLE LICENCIAS A PRONUNCIAR  O VALIDAR-->
+      <xsd:complexType name="LMEDetLcc">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="NumLicencia" type="xsd:integer"/>
+          <xsd:element name="DigLicencia" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEDetLccResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+          <xsd:element name="DctoLme" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN CONSULTA DETALLE LICENCIAS A PRONUNCIAR  O VALIDAR-->
+      <!--3.3 GRABAR RESOLUCIÓN LME PRONUNCIADA.-->
+      <xsd:complexType name="LMEInfResol">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="CodigoAsegurador" type="xsd:integer"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="FechaInforma" type="xsd:dateTime"/>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="DatosZonaB" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"/>
+          <xsd:element name="EntidadPago" type="xsd:integer" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEInfResolResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.3 GRABAR RESOLUCIÓN LME PRONUNCIADA-->
+      <!--3.4 DEVOLUCIÓN LICENCIA MEDICA ELECTRONICA-->
+      <xsd:complexType name="LMEDevEmp">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="MotivoDevolucion" type="xsd:integer"/>
+          <xsd:element name="FecDevolucion" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEDevEmpResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.4 DEVOLUCIÓN LICENCIA MEDICA ELECTRONICA-->
+      <!--3.5 VALIDACIÓN LICENCIA MEDICA ELECTRONICA.-->
+      <xsd:complexType name="LMEInfValCCAF">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="ListaLicencias" type="tns:ListaLicenciasSimpleType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaLicenciasSimpleType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:LicenciaSimpleType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="LicenciaSimpleType">
+        <xsd:sequence>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="EstadoVal" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEInfValCCAFResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="CodResultado" type="xsd:integer"/>
+          <xsd:element name="ListaResultado" type="tns:ListaResultadoType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaResultadoType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:ResultadoType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoType">
+        <xsd:sequence>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="CodEstado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.5 VALIDACIÓN LICENCIA MEDICA ELECTRONICA.-->
+      <!--3.6 LIQUIDACIÓN LICENCIA MEDICA ELECTRONICA-->
+      <xsd:complexType name="LMEInfLiquid">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="FecProceso" type="xsd:dateTime"/>
+          <xsd:element name="TipoLiquidacion" type="xsd:integer"/>
+          <xsd:element name="DatosLiquidacion" type="xsd:base64Binary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEInfLiquidResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.6 LIQUIDACIÓN LICENCIA MEDICA ELECTRONICA-->
+      <!--3.7 INFORMAR DATOS ZONA C  LICENCIA MÉDICA SEMI-ELECTRONICA-->
+      <xsd:complexType name="LMEInfSeccC">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="TipoInstitucion" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="FecProceso" type="xsd:dateTime"/>
+          <xsd:element name="DatosZonaC" type="xsd:base64Binary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEInfSeccCResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 3.7 INFORMAR DATOS ZONA C  LICENCIA MÉDICA SEMI-ELECTRONICA-->
+      <!--4.1	CONSULTA DE LME A TRAMITAR-->
+      <xsd:complexType name="LMEVerTramEmp">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="RutEmpleador" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="FecConsulta" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEVerTramEmpResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+          <xsd:element name="ListaLicencias" type="tns:ListaLicenciasCompletaType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaLicenciasCompletaType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:LicenciaCompletaType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="LicenciaCompletaType">
+        <xsd:sequence>
+          <xsd:element name="NumLicencia" type="xsd:integer"/>
+          <xsd:element name="DigLicencia" type="xsd:string"/>
+          <xsd:element name="DatosZonaA" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 4.1	CONSULTA DE LME A TRAMITAR-->
+      <!--4.2 RECEPCIÓN  RESULTADO TRAMITACIÓN DESDE  EMPLEADORES.-->
+      <xsd:complexType name="LMEInfTramEmp">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="RutEmpleador" type="xsd:string"/>
+          <xsd:element name="CodUsuario" type="xsd:string"/>
+          <xsd:element name="Clave" type="xsd:string"/>
+          <xsd:element name="FecProceso" type="xsd:dateTime"/>
+          <xsd:element name="NumLicencia" type="xsd:integer"/>
+          <xsd:element name="DigLicencia" type="xsd:string"/>
+          <xsd:element name="DatosZonaC" type="xsd:base64Binary"/>
+          <xsd:element name="MotivoNoRecepcion" type="xsd:integer"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEInfTramEmpResponse">
+        <xsd:sequence>
+          <xsd:element name="Estado" type="xsd:integer"/>
+          <xsd:element name="GloEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 4.2 RECEPCIÓN  RESULTADO TRAMITACIÓN DESDE  EMPLEADORES.-->
+      <!--6.1	CONSULTA DE LME POR TRABAJADOR.-->
+      <xsd:complexType name="LMEVerLccTrab">
+        <xsd:sequence>
+          <xsd:element name="CodigoOperador" type="xsd:string"/>
+          <xsd:element name="RutTrabajadorNum" type="xsd:integer"/>
+          <xsd:element name="RutTrabajadorDig" type="xsd:string"/>
+          <xsd:element name="FecConsulta" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LMEVerLccTrabResponse">
+        <xsd:sequence>
+          <xsd:element name="Resultado" type="xsd:integer"/>
+          <xsd:element name="ListaLmeTrab" type="tns:ListaLmeTrabType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaLmeTrabType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:LmeTrabType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="LmeTrabType">
+        <xsd:sequence>
+          <xsd:element name="IdLicencia" type="xsd:integer"/>
+          <xsd:element name="DvLicencia" type="xsd:string"/>
+          <xsd:element name="LmeEstado" type="xsd:integer"/>
+          <xsd:element name="PaternoTrabajador" type="xsd:string"/>
+          <xsd:element name="MaternoTrabajador" type="xsd:string"/>
+          <xsd:element name="NombreTrabajador" type="xsd:string"/>
+          <xsd:element name="FechaEmision" type="xsd:dateTime"/>
+          <xsd:element name="FechaInicioReposo" type="xsd:dateTime"/>
+          <xsd:element name="DiasLicencia" type="xsd:integer"/>
+          <xsd:element name="TipoLicencia" type="xsd:integer"/>
+          <xsd:element name="Recuperabilidad" type="xsd:integer"/>
+          <xsd:element name="RutProfesional" type="xsd:integer"/>
+          <xsd:element name="DigProfesional" type="xsd:string"/>
+          <xsd:element name="PaternoProfesional" type="xsd:string"/>
+          <xsd:element name="MaternoProfesional" type="xsd:string"/>
+          <xsd:element name="NombreProfesional" type="xsd:string"/>
+          <xsd:element name="TipoLmeResuelta" type="xsd:integer" minOccurs="0"/>
+          <xsd:element name="DiasAutorizados" type="xsd:integer" minOccurs="0"/>
+          <xsd:element name="FecAutDesde" type="xsd:date" minOccurs="0"/>
+          <xsd:element name="FecAutHasta" type="xsd:date" minOccurs="0"/>
+          <xsd:element name="TipResolucion" type="xsd:integer" minOccurs="0"/>
+          <xsd:element name="TipoReposoAutoriz" type="xsd:integer" minOccurs="0"/>
+          <xsd:element name="JornadaRepoAut" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="DerechoSubsidio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="CodCausaRechazo" type="xsd:integer" minOccurs="0"/>
+          <xsd:element name="GloCausaRechazo" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="RutEmpleador" type="xsd:integer"/>
+          <xsd:element name="DigEmpleador" type="xsd:string"/>
+          <xsd:element name="NombreEmpleador" type="xsd:string"/>
+          <xsd:element name="PaternoEmpleador" type="xsd:string"/>
+          <xsd:element name="MaternoEmpleador" type="xsd:string"/>
+          <xsd:element name="ListaLiquid" type="tns:ListaLiquidacionType" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListaLiquidacionType">
+        <xsd:complexContent>
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Liquidacion[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Liquidacion">
+        <xsd:sequence>
+          <xsd:element name="PeriodoRenta" type="xsd:dateTime"/>
+          <xsd:element name="MtoApoPens" type="xsd:integer"/>
+          <xsd:element name="MtoApoSubs" type="xsd:integer"/>
+          <xsd:element name="MtoApoSalud" type="xsd:integer"/>
+          <xsd:element name="MtoSegCesantia" type="xsd:integer"/>
+          <xsd:element name="FecProbPago" type="xsd:dateTime"/>
+          <xsd:element name="FechaDesde" type="xsd:dateTime"/>
+          <xsd:element name="FechaHasta" type="xsd:dateTime"/>
+          <xsd:element name="NumDiasPagSub" type="xsd:integer"/>
+          <xsd:element name="NumDiasPagApo" type="xsd:integer"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <!--FIN 6.1	CONSULTA DE LME POR TRABAJADOR.-->
+    </xsd:schema>
+  </wsdl:types>
+  <!--MESSAGE-->
+  <wsdl:message name="LMEEvenLccRequest">
+    <wsdl:part name="LMEEvenLcc" type="tns:LMEEvenLcc"/>
+  </wsdl:message>
+  <wsdl:message name="LMEEvenLccResponse">
+    <wsdl:part name="LMEEvenLccReturn" type="tns:LMEEvenLccResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEEvenFecRequest">
+    <wsdl:part name="LMEEvenFec" type="tns:LMEEvenFec"/>
+  </wsdl:message>
+  <wsdl:message name="LMEEvenFecResponse">
+    <wsdl:part name="LMEEvenFecReturn" type="tns:LMEEvenFecResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEDetLccRequest">
+    <wsdl:part name="LMEDetLcc" type="tns:LMEDetLcc"/>
+  </wsdl:message>
+  <wsdl:message name="LMEDetLccResponse">
+    <wsdl:part name="LMEDetLccReturn" type="tns:LMEDetLccResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfResolRequest">
+    <wsdl:part name="LMEInfResolRequest" type="tns:LMEInfResol"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfResolResponse">
+    <wsdl:part name="LMEInfResolReturn" type="tns:LMEInfResolResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEDevEmpRequest">
+    <wsdl:part name="LMEDevEmp" type="tns:LMEDevEmp"/>
+  </wsdl:message>
+  <wsdl:message name="LMEDevEmpResponse">
+    <wsdl:part name="LMEDevEmpReturn" type="tns:LMEDevEmpResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfValCCAFRequest">
+    <wsdl:part name="LMEInfValCCAF" type="tns:LMEInfValCCAF"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfValCCAFResponse">
+    <wsdl:part name="LMEInfValCCAFReturn" type="tns:LMEInfValCCAFResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfLiquidRequest">
+    <wsdl:part name="LMEInfLiquid" type="tns:LMEInfLiquid"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfLiquidResponse">
+    <wsdl:part name="LMEInfLiquidReturn" type="tns:LMEInfLiquidResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfSeccCRequest">
+    <wsdl:part name="LMEInfSeccC" type="tns:LMEInfSeccC"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfSeccCResponse">
+    <wsdl:part name="LMEInfSeccCReturn" type="tns:LMEInfSeccCResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEVerTramEmpRequest">
+    <wsdl:part name="LMEVerTramEmp" type="tns:LMEVerTramEmp"/>
+  </wsdl:message>
+  <wsdl:message name="LMEVerTramEmpResponse">
+    <wsdl:part name="LMEVerTramEmpReturn" type="tns:LMEVerTramEmpResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfTramEmpRequest">
+    <wsdl:part name="LMEInfTramEmp" type="tns:LMEInfTramEmp"/>
+  </wsdl:message>
+  <wsdl:message name="LMEInfTramEmpResponse">
+    <wsdl:part name="LMEInfTramEmpReturn" type="tns:LMEInfTramEmpResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LMEVerLccTrabRequest">
+    <wsdl:part name="LMEVerLccTrab" type="tns:LMEVerLccTrab"/>
+  </wsdl:message>
+  <wsdl:message name="LMEVerLccTrabResponse">
+    <wsdl:part name="LMEVerLccTrabReturn" type="tns:LMEVerLccTrabResponse"/>
+  </wsdl:message>
+  <!--PORTTYPE-->
+  <wsdl:portType name="WsLMEInet">
+    <wsdl:operation name="LMEEvenLcc">
+      <wsdl:input message="tns:LMEEvenLccRequest"/>
+      <wsdl:output message="tns:LMEEvenLccResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEEvenFec">
+      <wsdl:input message="tns:LMEEvenFecRequest"/>
+      <wsdl:output message="tns:LMEEvenFecResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEDetLcc">
+      <wsdl:input message="tns:LMEDetLccRequest"/>
+      <wsdl:output message="tns:LMEDetLccResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfResol">
+      <wsdl:input message="tns:LMEInfResolRequest"/>
+      <wsdl:output message="tns:LMEInfResolResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEDevEmp">
+      <wsdl:input message="tns:LMEDevEmpRequest"/>
+      <wsdl:output message="tns:LMEDevEmpResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfValCCAF">
+      <wsdl:input message="tns:LMEInfValCCAFRequest"/>
+      <wsdl:output message="tns:LMEInfValCCAFResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfLiquid">
+      <wsdl:input message="tns:LMEInfLiquidRequest"/>
+      <wsdl:output message="tns:LMEInfLiquidResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfSeccC">
+      <wsdl:input message="tns:LMEInfSeccCRequest"/>
+      <wsdl:output message="tns:LMEInfSeccCResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEVerTramEmp">
+      <wsdl:input message="tns:LMEVerTramEmpRequest"/>
+      <wsdl:output message="tns:LMEVerTramEmpResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfTramEmp">
+      <wsdl:input message="tns:LMEInfTramEmpRequest"/>
+      <wsdl:output message="tns:LMEInfTramEmpResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="LMEVerLccTrab">
+      <wsdl:input message="tns:LMEVerLccTrabRequest"/>
+      <wsdl:output message="tns:LMEVerLccTrabResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!--FIN PORTTYPE-->
+  <!--BINDING-->
+  <wsdl:binding name="WsLMEInetSOAP" type="tns:WsLMEInet">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LMEEvenLcc">
+      <wsdl:documentation>Consulta de eventos asociados a licencia médica electrónica.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEEvenFec">
+      <wsdl:documentation>Consulta de eventos asociados a licencia médica electrónica filtrados por rango de fechas.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEDetLcc">
+      <wsdl:documentation>Consulta detalle licencias a pronunciar o validar.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfResol">
+      <wsdl:documentation>Informa resolución lme pronunciada.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEDevEmp">
+      <wsdl:documentation>Devolución licencia medica electrónica.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfValCCAF">
+      <wsdl:documentation>Validación licencia medica electrónica ccaf.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfLiquid">
+      <wsdl:documentation>Liquidación licencia medica electrónica.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfSeccC">
+      <wsdl:documentation>Informar datos zona c  licencia médica semi-electrónica.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEVerTramEmp">
+      <wsdl:documentation>Consulta de lme a tramitar empleadores.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEInfTramEmp">
+      <wsdl:documentation>Recepción  resultado tramitación desde empleadores.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LMEVerLccTrab">
+      <wsdl:documentation>Consulta de lme por trabajador.</wsdl:documentation>
+      <soap:operation soapAction="urn:WsLMEInet" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:WsLMEInet" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!--FIN BINDING-->
+  <!--SERVICE-->
+  <wsdl:service name="WsLMEInet">
+    <wsdl:port binding="tns:WsLMEInetSOAP" name="WsLMEInetSOAP">
+      <soap:address location="http://192.168.1.111:8080/LME/"/>
+    </wsdl:port>
+  </wsdl:service>
+  <!--FIN SERVICE-->
+</wsdl:definitions>

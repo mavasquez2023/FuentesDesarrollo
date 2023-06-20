@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:impl="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:intf="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:tns2="http://exception.integration.wsatento.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="valCalidadResponse">
+    <complexType>
+     <sequence>
+      <element name="valCalidadReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="valCalidad">
+    <complexType>
+     <sequence>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+      <element name="clave" nillable="true" type="xsd:string"/>
+      <element name="rut" nillable="true" type="xsd:string"/>
+      <element name="calidad" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema targetNamespace="http://exception.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="WSAtentoException">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="WSAtentoException" nillable="true" type="tns2:WSAtentoException"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="valCalidadRequest">
+     <wsdl:part element="intf:valCalidad" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="WSAtentoException">
+     <wsdl:part element="tns2:WSAtentoException" name="fault"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="valCalidadResponse">
+     <wsdl:part element="intf:valCalidadResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="WSCalidad">
+     <wsdl:operation name="valCalidad">
+       <wsdl:input message="intf:valCalidadRequest" name="valCalidadRequest"/>
+
+       <wsdl:output message="intf:valCalidadResponse" name="valCalidadResponse"/>
+
+       <wsdl:fault message="intf:WSAtentoException" name="WSAtentoException"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="WSCalidadSoapBinding" type="intf:WSCalidad">
+ <wsaw:UsingAddressing wsdl:required="false" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="valCalidad">
+       <wsdlsoap:operation soapAction="valCalidad"/>
+
+       <wsdl:input name="valCalidadRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="valCalidadResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="WSAtentoException">
+         <wsdlsoap:fault name="WSAtentoException" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="WSCalidadService">
+     <wsdl:port binding="intf:WSCalidadSoapBinding" name="WSCalidad">
+       <wsdlsoap:address location="https://localhost:9443/WSAtento/services/WSCalidad"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

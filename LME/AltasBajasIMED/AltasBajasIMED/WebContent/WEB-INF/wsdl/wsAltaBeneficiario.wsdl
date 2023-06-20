@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="wmImed_SrvAlta">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Credenciales">
+                <s:complexType>
+                <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1" name="CodigoEntidad" type="s:int" />
+                <s:element minOccurs="1" maxOccurs="1" name="RutUsuario" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="Clave" type="s:int" />
+                </s:sequence>
+                </s:complexType>
+                </s:element>  
+                <s:element name="Beneficiario">
+                <s:complexType>
+                <s:sequence>              
+                <s:element minOccurs="1" maxOccurs="1" name="RutBeneficiario" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="Nombres" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:date" />
+                <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="Direccion" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="Comuna" type="s:string" />                
+                <s:element minOccurs="1" maxOccurs="1" name="Relacion" type="s:int" />
+                <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:date" />
+                <s:element minOccurs="1" maxOccurs="1" name="FechaInicioVigencia" type="s:date" />
+                <s:element minOccurs="1" maxOccurs="1" name="FechaFinVigencia" type="s:date" />
+                <s:element minOccurs="1" maxOccurs="1" name="CodigoPlan" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="RutTitular" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="atr_1" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="atr_2" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="atr_3" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="atr_4" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="atr_5" type="s:string" />
+                </s:sequence>
+                </s:complexType>
+                </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wmImed_SrvAltaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Mensaje" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CodigoTransaccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="wmImed_SrvAltaSoapIn">
+    <wsdl:part name="parameters" element="tns:wmImed_SrvAlta" />
+  </wsdl:message>
+  <wsdl:message name="wmImed_SrvAltaSoapOut">
+    <wsdl:part name="parameters" element="tns:wmImed_SrvAltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="wmImed_SrvAltaHttpGetIn">
+    <wsdl:part name="XML_INPUT" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wmImed_SrvAltaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wmImed_SrvAltaHttpPostIn">
+    <wsdl:part name="XML_INPUT" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wmImed_SrvAltaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="wsAltaSoap">
+    <wsdl:operation name="wmImed_SrvAlta">
+      <wsdl:input message="tns:wmImed_SrvAltaSoapIn" />
+      <wsdl:output message="tns:wmImed_SrvAltaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsAltaHttpGet">
+    <wsdl:operation name="wmImed_SrvAlta">
+      <wsdl:input message="tns:wmImed_SrvAltaHttpGetIn" />
+      <wsdl:output message="tns:wmImed_SrvAltaHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsAltaHttpPost">
+    <wsdl:operation name="wmImed_SrvAlta">
+      <wsdl:input message="tns:wmImed_SrvAltaHttpPostIn" />
+      <wsdl:output message="tns:wmImed_SrvAltaHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsAltaSoap" type="tns:wsAltaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="wmImed_SrvAlta">
+      <soap:operation soapAction="http://tempuri.org/wmImed_SrvAlta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAltaHttpGet" type="tns:wsAltaHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="wmImed_SrvAlta">
+      <http:operation location="/wmImed_SrvAlta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAltaHttpPost" type="tns:wsAltaHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="wmImed_SrvAlta">
+      <http:operation location="/wmImed_SrvAlta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsAlta">
+    <wsdl:port name="wsAltaSoap" binding="tns:wsAltaSoap">
+      <soap:address location="http://liquidador3pre.i-med.cl/wsImed/wsAltaBeneficiario.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAltaHttpGet" binding="tns:wsAltaHttpGet">
+      <http:address location="http://liquidador3pre.i-med.cl/wsImed/wsAltaBeneficiario.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAltaHttpPost" binding="tns:wsAltaHttpPost">
+      <http:address location="http://liquidador3pre.i-med.cl/wsImed/wsAltaBeneficiario.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

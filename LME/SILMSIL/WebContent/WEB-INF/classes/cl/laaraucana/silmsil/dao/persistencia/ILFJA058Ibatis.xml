@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+	<resultMap id="ilfja058Map" class="cl.laaraucana.silmsil.vo.ILFJA058VO">
+		<result property="idproc" column="IDEPROC" />
+		<result property="idesta" column="IDEESTA" />
+		<result property="pepret" column="PERPRET" />
+		<result property="fepret" column="FHPRET" />
+		<result property="hrpret" column="HRPRET" />
+		<result property="nrpret" column="NRPRET" />
+		<result property="nepret" column="NEPRET" />
+		<result property="uspret" column="USUARIO" />
+	</resultMap>
+	
+	<resultMap id="ilfja058Map_dos" class="cl.laaraucana.silmsil.vo.ILFJA058VO">
+		<result property="idproc" column="IDEPROC" />
+		<result property="idesta" column="IDEESTA" />
+		<result property="pepret" column="PERPRET" />
+		<result property="fepret" column="FHPRET" />
+		<result property="hrpret" column="HRPRET" />
+		<result property="nrpret" column="NRPRET" />
+		<result property="nepret" column="NEPRET" />
+		<result property="uspret" column="USUARIO" />
+		<result property="fechaHora" column="FECHAHORA" />
+	</resultMap>
+	
+	<!-- Consulta último estado por proceso -->
+	<select id="porPeriodoActual" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET LIKE  #pepret#
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<select id="porPeriodoActualDos" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET LIKE '$fecha$'
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<!--  -->
+	<select id="porPeriodoProceso" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET=#pepret#
+			AND IDEPROC=#idproc#
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<!-- consulta ultimo estado validado para un proceso sil/lm segun "idproc""-->
+	<select id="porPeriodoProcesoValidado" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET=#pepret#
+			AND IDEPROC=#idproc#
+			AND IDEESTA=6
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<select id="porPeriodoProcesoValidadoCero" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET=#pepret#		
+			AND IDEESTA=6
+			AND NEPRET=0 
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<select id="porPeriodoProcesoValidadoConError" resultMap="ilfja058Map">
+		SELECT A.* FROM LIEXP.ILFJA058 A
+			INNER JOIN
+			(SELECT PERPRET PERIODO,IDEPROC AS PROCESO ,MAX(FHPRET||HRPRET) FECHAHORA
+			FROM LIEXP.ILFJA058
+			WHERE PERPRET LIKE '$fecha$'	
+			AND IDEESTA=6
+			AND NEPRET>0 
+			GROUP BY PERPRET, IDEPROC ) B
+			ON A.PERPRET=B.PERIODO
+			AND A.IDEPROC=B.PROCESO
+			AND A.FHPRET||A.HRPRET=B.FECHAHORA
+			ORDER BY IDEPROC,IDEESTA
+	</select>
+	
+	<!-- Se inserta nuevo estado de iniciado, si proceso no posee estado. -->
+	<!--  VALUES($proceso$, '1', '$fecha$', '$peractual$', SUBSTRING('$hractual$',1,8), '$usuario$')-->
+	<insert id="insertILFJA058">
+		INSERT INTO LIEXP.ILFJA058 (IDEPROC, IDEESTA, PERPRET, FHPRET, HRPRET, USUARIO)		
+		VALUES($proceso$, '1', '$fecha$' , REPLACE(CHAR(CURRENT DATE,ISO),'-',''), REPLACE(SUBSTR(CHAR(CURRENT TIMESTAMP),12, 11),'.',''), 
+		'$usuario$') WITH NC
+	</insert>
+	
+</sqlMap>	

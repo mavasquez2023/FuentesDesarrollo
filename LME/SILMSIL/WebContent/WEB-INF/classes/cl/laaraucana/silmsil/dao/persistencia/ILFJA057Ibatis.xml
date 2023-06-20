@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+	<resultMap id="ilfja057Map" class="cl.laaraucana.silmsil.vo.ILFJA057VO">
+		<result property="idesta" column="IDEESTA" />
+		<result property="etqesta" column="ETQESTA" />
+		<result property="ordesta" column="ORDESTA" />
+		<result property="dcsesta" column="DCSESTA" />
+	</resultMap>
+	
+	<!-- Consulta etiqueta estado por identificador del estado -->
+	<select id="ilfja0571" resultMap="ilfja057Map">
+		SELECT * FROM LIEXP.ILFJA057 WHERE IDEESTA=#idesta#
+	</select>
+	
+</sqlMap>	

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap> 
+    <!-- Mapeo para CL ILCSIL051 y ILCLM051 -->
+    <parameterMap id="ilf051Map" class="java.util.Map"> 
+        <parameter property="PERIODO" jdbcType="CHAR" mode="IN" />
+        <parameter property="USUARIO" jdbcType="CHAR" mode="IN" />
+        <parameter property="GLOSA" jdbcType="CHAR" mode="IN" />
+    </parameterMap>
+    
+    <!-- Mapeo para CL ILCSIL053 y ILCLM053 -->
+    <parameterMap id="ilfsil053Map" class="java.util.Map"> 
+        <parameter property="PERIODO" jdbcType="CHAR" mode="IN" />
+        <parameter property="USUARIO" jdbcType="CHAR" mode="IN" />
+    </parameterMap>
+
+    
+    
+    <!-- Procedimiento de Almacenado para ejecutar CL ILCSIL051 -->
+    <procedure id="procValidarSIL"  parameterMap="ilf051Map">
+        {CALL LIEXP.VALIDASIL(?,?,?)} 
+    </procedure>	
+    
+    <!-- Procedimiento de Almacenado para ejecutar CL ILCLMC051 -->
+    <procedure id="procValidarLM"  parameterMap="ilf051Map">
+        {CALL LIEXP.VALIDALM(?,?,?)} 
+    </procedure>
+    
+    <!-- Procedimiento de Almacenado para ejecutar CL ILCSILC053 -->
+    <procedure id="procCargarYValidarSIL"  parameterMap="ilfsil053Map">
+        {CALL LIEXP.CARGAYVALIDASIL(?,?)} 
+    </procedure>
+    
+    <!-- Procedimiento de Almacenado para ejecutar CL ILCLMC053 -->
+    <procedure id="procCargarYValidarLM"  parameterMap="ilfsil053Map">
+        {CALL LIEXP.CARGAYVALIDALM(?,?)} 
+    </procedure>
+
+	<!-- Procedimientos para validaciones temporales SIL. -->
+	<procedure id="procValidarSIL_T"  parameterMap="ilf051Map">
+        {CALL LIEXP.VALIDASIL_T(?,?,?)} 
+    </procedure>	
+    
+    <!-- Procedimientos para validaciones temporales LM. -->
+    <procedure id="procValidarLM_T"  parameterMap="ilf051Map">
+        {CALL LIEXP.VALIDALM_T(?,?,?)} 
+    </procedure>
+    
+     <!-- Procedimiento de Almacenado para ejecutar CL ILCSILC054 -->
+    <procedure id="procGenerarPlanoSIL"  parameterMap="ilfsil053Map">
+        {CALL LIEXP.GENERARPLANOSIL(?,?)} 
+    </procedure>
+    
+     <!-- Procedimiento de Almacenado para ejecutar CL ILCLMC054 -->
+    <procedure id="procGenerarPlanoLM"  parameterMap="ilfsil053Map">
+        {CALL LIEXP.GENERARPLANOLM(?,?)} 
+    </procedure>
+</sqlMap>
