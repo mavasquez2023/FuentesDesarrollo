@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	
+	<form-beans>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+	</global-forwards>
+	
+	<action-mappings>
+	<action path="/init" type="cl.laaraucana.sinacofi.actions.InitAction">
+			<forward name="success" path="/valida.jsp" />
+		</action>
+	<action path="/validaSinacofi" type="cl.laaraucana.sinacofi.actions.ValidaSinacofiAction">
+			<forward name="success" path="/valida.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="local.laaraucana.sinacofi.resources.ApplicationResources"/>
+</struts-config>

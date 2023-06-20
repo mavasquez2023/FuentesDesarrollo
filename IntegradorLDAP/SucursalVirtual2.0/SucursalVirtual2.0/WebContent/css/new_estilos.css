@@ -1,0 +1,39 @@
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+		
+			.contenedor {
+			    width: auto;
+			    margin: 0 auto;
+			}
+
+			footer {
+			    font-family:Arial;
+			    text-align: center;
+			    background-color: #b3d4f3;
+			    color: #fff;
+			    font-weight: 800;
+			    padding: 10px 0px;
+			}
+			footer .contenedor {
+			    width: 220px;
+			}
+
+			footer h5 {
+			    color: #004c94;
+			}
+
+			footer h5 a {
+			    color: #004c94;
+			    text-decoration: none;
+			}
+			header .contenedor {
+			    padding-left: 30px;
+			}
+			header {
+			    background-color: #fff;
+			    padding: 15px 0px;
+			    box-shadow: 0px 0px 10px 0px;
+			    margin-bottom: 8px;
+			}
+		

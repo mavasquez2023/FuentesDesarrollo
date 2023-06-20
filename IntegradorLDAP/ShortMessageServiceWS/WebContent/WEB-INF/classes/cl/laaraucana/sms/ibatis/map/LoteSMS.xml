@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="loteSMS">
+
+    <select id="selectCountUnprocessedBatchSizeFilteredByEstado"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter"
+            resultClass="int">
+        SELECT COUNT(1) AS A FROM LoteSMS tmp
+        WHERE Estado=#estado#
+        AND NOT EXISTS(SELECT 1 FROM EstadoLoteSMS estado
+        WHERE tmp.Id = estado.Id)
+    </select>
+
+    <select id="selectCountUnprocessedBatchSizeFilteredByEstadoAndSistema"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter"
+            resultClass="int">
+        SELECT COUNT(1) AS A FROM LoteSMS tmp
+        WHERE Estado=#estado# AND Sistema=#sistema#
+        AND NOT EXISTS(SELECT 1 FROM EstadoLoteSMS estado
+        WHERE tmp.Id = estado.Id)
+    </select>
+
+    <select id="selectListLoteSMSWhereEstadoEqualToWithMaxBulkSize"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMS">
+        SELECT TOP #maxBulkSize#
+        Sistema as sistema,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        Mensaje as mensaje,
+        FechaCarga as fechaCarga,
+        Referencia as referencia
+        FROM LoteSMS
+        WHERE Estado=#estado#
+    </select>
+
+    <select id="selectListLoteSMSWhereEstadoEqualTo"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMS">
+        SELECT
+        Sistema as sistema,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        Mensaje as mensaje,
+        FechaCarga as fechaCarga,
+        Referencia as referencia
+        FROM LoteSMS
+        WHERE Estado=#estado#
+    </select>
+
+    <select id="selectListLoteSMSWhereEstadoAndSistemaEqualTo"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMS">
+        SELECT
+        Sistema as sistema,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        Mensaje as mensaje,
+        FechaCarga as fechaCarga,
+        Referencia as referencia
+        FROM LoteSMS
+        WHERE Estado=#estado# and Sistema=#sistema#
+    </select>
+
+    <select id="selectListSistema"
+            resultClass="cl.laaraucana.sms.ibatis.model.Sistema">
+        SELECT DISTINCT (Sistema) FROM LoteSMS
+    </select>
+
+    <update id="updateEstadoWhereIdEqualTo"
+            parameterClass="cl.laaraucana.sms.ibatis.model.LoteSMS">
+        UPDATE LoteSMS SET Estado=#estado# WHERE Id=#id#
+    </update>
+
+    <update id="updateEstado"
+            parameterClass="java.lang.String">
+        UPDATE LoteSMS SET Estado=#estado#
+    </update>
+
+    <delete id="deleteLoteSMSWhereIdEqualTo"
+            parameterClass="int">
+        DELETE FROM LoteSMS WHERE Id=#id#
+    </delete>
+
+    <delete id="deleteLoteSMSWhereEstadoEqualTo"
+            parameterClass="java.lang.String">
+        DELETE FROM LoteSMS WHERE Estado=#estado#
+    </delete>
+
+    <update id="updateLoteSMSWhereEstadoEqualToAndExistsOnEstadoLoteSMS"
+            parameterClass="cl.laaraucana.sms.ibatis.model.filter.LoteSMSFilter">
+        UPDATE LoteSMS SET Estado=#estadoActualizado# WHERE Estado=#estadoActual# AND EXISTS(SELECT 1 FROM EstadoLoteSMS estado WHERE LoteSMS.Id = estado.Id)
+    </update>
+
+    <delete id="deleteLoteSMS"
+            parameterClass="java.lang.String">
+        DELETE FROM LoteSMS WHERE Estado=#estado# AND EXISTS(SELECT 1 FROM EstadoLoteSMS estado WHERE LoteSMS.Id = estado.Id)
+    </delete>
+
+</sqlMap>

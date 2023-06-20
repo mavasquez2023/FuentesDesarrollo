@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Información Cambio de Tramo 2016</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+	input {
+		border: 1px solid #BEC7D8;
+		font-size: 12px;
+		line-height: normal;
+	}
+	.botonOver {
+	    background-color: #0079B2;
+	    background-image: url("../images/fondobot2.jpg");
+	    background-position: left top;
+	    background-repeat: repeat-x;
+	    border-style: none;
+	    color: #FFFFFF;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 15px;
+	    font-style: normal;
+	    font-weight: normal;
+	    height: 26px;
+	}
+	.boton {
+		background-color: #0079B2;
+		background-image: url("../images/fondobot.jpg");
+		background-position: left top;
+		background-repeat: repeat-x;
+		border-style: none;
+		color: #FFFFFF;
+		font-family: Arial,Helvetica,sans-serif;
+		font-size: 15px;
+		font-style: normal;
+		font-weight: normal;
+		height: 26px;
+	}
+	.container {
+		position: relative;
+		height: 180px;
+	}
+	.titulo{
+		position: absolute;
+		top: 6%;
+		left: 2%;
+		font-weight: bold;
+		font-size: 1.5em;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.imagen{
+		position: absolute;
+		top: 0;
+		right: 12px;
+	}
+	.texto{
+		position: absolute;
+		top: 40px;
+		left: 20px;
+		font-size: 16px;
+		padding-right: 16px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.link{
+		position: absolute;
+		bottom: 10px;
+		left: 38%;
+	}
+
+</style>
+</head>
+<body>
+<div id="dialog">
+	<div class="container">
+	  <div class="titulo">Aviso Importante</div>
+	  <div class="imagen"><img src="images/servicio_cliente.jpg"></div>
+	   <div class="texto">
+			<p>
+				Sr. Empleador, descargue o cargue propuesta de ingresos promedio, para realizar este proceso haga click en el siguiente botón
+			</p>
+		</div>
+			  <div class="link"><input onmouseover="this.className='botonOver'" onmouseout="this.className='boton'" type="button" class="boton" onclick="javascript:window.open('http://rasw.laaraucana.cl/sv/router.do?service=RENTAS');" value="Descargar o cargar propuesta Aquí"/></div>
+	</div>
+</div>
+</body>
+</html>

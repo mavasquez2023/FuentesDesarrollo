@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="estadoSMS">
+
+    <insert id="insertEstadoSMS"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        INSERT INTO EstadoSMS (Usuario, Rut, DigitoValidador, Celular, CodigoSMS, CodigoURL, Estado, FechaEnvio)
+        VALUES (#usuario#,#rut#,#digitoValidador#,#celular#,#codigoSMS#,#codigoURL#,#estado#,#fechaEnvio#)
+    </insert>
+
+    <update id="updateEstadoSMS"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        UPDATE EstadoSMS
+        SET Estado=#estado#, FechaEnvio=#fechaEnvio#, FechaRecepcion=#fechaRecepcion#
+        WHERE CodigoSMS=#codigoSMS#
+    </update>
+
+    <update id="updateRetriesEstadoSMS"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        UPDATE EstadoSMS set Reintentos = Reintentos + 1 WHERE CodigoSMS = #codigoSMS#
+    </update>
+
+    <select id="selectEstadoSMS"
+            resultClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        SELECT
+        Usuario as usuario,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        CodigoSMS as codigoSMS,
+        CodigoURL as codigoURL,
+        Estado as estado,
+        FechaEnvio as fechaEnvio,
+        FechaRecepcion as fechaRecepcion
+        FROM EstadoSMS WHERE CodigoSMS=#codigoSMS#
+    </select>
+
+    <select id="selectListEstadoSMSForCheckStatusSMS" resultClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        SELECT
+        Usuario as usuario,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        CodigoSMS as codigoSMS,
+        CodigoURL as codigoURL,
+        Estado as estado,
+        FechaEnvio as fechaEnvio,
+        FechaRecepcion as fechaRecepcion
+        FROM EstadoSMS WHERE Estado='Enviado'
+    </select>
+
+    <select id="selectListEstadoSMSForCheckStatusURL"
+            resultClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        SELECT
+        Usuario as usuario,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        CodigoSMS as codigoSMS,
+        CodigoURL as codigoURL,
+        Estado as estado,
+        FechaEnvio as fechaEnvio,
+        FechaRecepcion as fechaRecepcion
+        FROM EstadoSMS sms
+        WHERE NOT EXISTS (SELECT 1 FROM EstadoURL url WHERE sms.CodigoURL = url.CodigoURL)
+        AND sms.CodigoURL IS NOT NULL AND sms.CodigoURL != ''
+    </select>
+</sqlMap>

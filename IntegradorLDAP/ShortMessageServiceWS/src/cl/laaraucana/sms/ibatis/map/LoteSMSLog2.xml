@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="loteSMSLog">
+
+    <typeAlias alias="loteSMSLog" type="cl.laaraucana.sms.ibatis.model.LoteSMSLog"/>
+
+    <resultMap id="loteSMSLogResultMap" class="loteSMSLog">
+        <result property="id" jdbcType="NUMERIC" javaType="int" column="Id"/>
+        <result property="codigoLoteSMS" jdbcType="VARCHAR" javaType="java.lang.String" column="CodigoLoteSMS"/>
+        <result property="estado" jdbcType="VARCHAR" javaType="java.lang.String" column="Estado"/>
+        <result property="mensajesTotal" jdbcType="NUMERIC" javaType="int" column="MensajesTotal"/>
+        <result property="mensajesEnviados" jdbcType="NUMERIC" javaType="int" column="MensajesEnviados"/>
+        <result property="mensajesInvalidos" jdbcType="NUMERIC" javaType="int" column="MensajesInvalidos"/>
+        <result property="mensajesErroneos" jdbcType="NUMERIC" javaType="int" column="MensajesErroneos"/>
+        <result property="fechaInicio" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" column="FechaInicio"/>
+        <result property="fechaTermino" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" column="FechaTermino"/>
+    </resultMap>
+
+    <select id="selectLoteSMSLogWhereIdEqualTo_withResultMap"
+            resultMap="loteSMSLogResultMap">
+        SELECT
+        Id,
+        CodigoLoteSMS,
+        Estado,
+        MensajesTotal,
+        MensajesEnviados,
+        MensajesInvalidos,
+        MensajesErroneos,
+        FechaInicio,
+        FechaTermino
+        FROM LoteSMSLog WHERE Id=#id#
+    </select>
+
+    <select id="selectLoteSMSLogWhereIdEqualTo"
+            parameterClass="int"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        SELECT
+        Id as id,
+        CodigoLoteSMS as codigoLoteSMS,
+        Estado as estado,
+        MensajesTotal as mensajesTotal,
+        MensajesEnviados as mensajesEnviados,
+        MensajesInvalidos as mensajesInvalidos,
+        MensajesErroneos as mensajesErroneos,
+        FechaInicio as fechaInicio,
+        FechaTermino as fechaTermino
+        FROM LoteSMSLog where Id=#id#
+    </select>
+
+    <select id="selectLoteSMSLogDummy"
+            parameterClass="int"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        SELECT
+        1 as id,
+        '' as codigoLoteSMS,
+        'Iniciando' as estado,
+        3 as mensajesTotal,
+        1 as mensajesEnviados,
+        1 as mensajesInvalidos,
+        1 as mensajesErroneos,
+        GETDATE() as fechaInicio,
+        GETDATE() as fechaTermino
+        FROM LoteSMSLog where Id=90
+    </select>
+
+    <select id="selectListLoteSMSLog"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        SELECT
+        Id as id,
+        CodigoLoteSMS as codigoLoteSMS,
+        Estado as estado,
+        MensajesTotal as mensajesTotal,
+        MensajesEnviados as mensajesEnviados,
+        MensajesInvalidos as mensajesInvalidos,
+        MensajesErroneos as mensajesErroneos,
+        FechaInicio as fechaInicio,
+        FechaTermino as fechaTermino
+        FROM LoteSMSLog
+    </select>
+
+    <insert id="insertLoteSMSLogReturningIdentity"
+            parameterClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        <selectKey resultClass="int">
+            select @@IDENTITY as id
+        </selectKey>
+        INSERT INTO LoteSMSLog (Estado, FechaInicio)
+        VALUES(#estado#,#fechaInicio#)
+    </insert>
+</sqlMap>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<services>
+    <webservice name="{http://ws.sms.laaraucana.cl/}AraucanaSMSService" type="JAX-WS">
+        <endpoint name="AraucanaSMSPort">
+            <operation name="sendSMS"/>
+            <operation name="statusSMS"/>
+        </endpoint>
+    </webservice>
+</services>

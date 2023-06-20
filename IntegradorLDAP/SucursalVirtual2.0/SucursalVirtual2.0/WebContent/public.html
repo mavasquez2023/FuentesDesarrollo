@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+<HEAD>
+<TITLE>La Araucana C.C.A.F.</TITLE>
+
+
+<SCRIPT language="JavaScript1.2" src="http://wwww.misplanillas.cl/sv/js/common.js"></SCRIPT>
+
+<SCRIPT language="JavaScript1.2">
+
+	function checkForm() {
+		var username, password, rc;
+
+		username = trim(document.onlineServicesForm.j_username.value);
+		password = trim(document.onlineServicesForm.j_password.value);
+
+		rc = validateRut(username);
+
+		if (rc != 0) {
+			if (rc < 3)  {
+				alert("Advertencia: Ingrese su rut completo sin puntos, incluyendo guión y dígito verificador!");
+				document.onlineServicesForm.j_username.focus();
+
+				return false;
+			}
+
+			if (rc == 4)  {
+				alert("Advertencia: Rut inválido. Inténtelo nuevamente por favor!");
+				document.onlineServicesForm.j_username.focus();
+
+				return false;
+			}
+		}
+
+		if (password == "") {
+			alert("Advertencia: La clave no puede ser vacía. Ingrésela por favor!");
+			document.onlineServicesForm.j_password.focus();
+
+			return false;
+		}
+
+		return true;
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+	<TABLE WIDTH="40%">
+		<TD>
+			<FORM name="onlineServicesForm" action="http://wwww.misplanillas.cl/sv/j_security_check" method="post">
+				SERVICIOS <BR>
+				EN LÍNEA <BR>
+				<BR>Rut<BR><INPUT id=j_username size=13 maxlength=11 name=j_username> <BR>
+				Clave<BR><INPUT id=j_password type=password size=13 name=j_password> <BR>
+
+				<BR><INPUT id=accept type=submit value=Aceptar name=accept onclick="return checkForm();">
+				<BR><BR>
+				<A href="http://wwww.misplanillas.cl/sv/new_password.html">¿Necesitas Clave?</A><BR>
+				<A href="http://wwww.misplanillas.cl/sv/missed_password.html">¿Olvidó su clave?</A><BR>
+				<BR>
+				<A href="http://www.miscertificados.cl/AutoconsultaWeb/web/validarCertificado.do" target="_blank">Validación de Certificados</A>
+				<BR>
+			</FORM>
+		</TD>
+	</TABLE>
+</BODY>
+</HTML>

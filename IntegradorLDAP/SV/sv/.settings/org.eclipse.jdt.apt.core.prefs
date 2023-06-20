@@ -1,0 +1,4 @@
+#Tue Nov 22 21:13:11 CLST 2022
+org.eclipse.jdt.apt.processorOptions/com.ibm.ws.ast.jws.annotations.processor.validateWSDL=on
+org.eclipse.jdt.apt.aptEnabled=false
+eclipse.preferences.version=1
