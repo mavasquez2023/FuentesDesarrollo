@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicio.laaraucana.cl/ingresarVenta" version="1.0" xmlns:tns="http://servicio.laaraucana.cl/ingresarVenta">
+
+  <xs:element name="informarCredito" type="tns:informarCredito"/>
+
+  <xs:element name="informarCreditoResponse" type="tns:informarCreditoResponse"/>
+
+  <xs:complexType name="informarCredito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="autenticacion" type="tns:AUTENTICACION"/>
+      <xs:element minOccurs="0" name="credito" type="tns:creditoDescripcion"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AUTENTICACION">
+    <xs:sequence>
+      <xs:element name="USUARIO" type="xs:string"/>
+      <xs:element name="CLAVE" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditoDescripcion">
+    <xs:sequence>
+      <xs:element name="NUMERO_OFERTA" type="xs:long"/>
+      <xs:element name="RUT_CLIENTE" type="xs:string"/>
+      <xs:element name="NOMBRE_CLIENTE" type="xs:string"/>
+      <xs:element name="FECHA_ENVIO" type="xs:string"/>
+      <xs:element name="HORA_ENVIO" type="xs:string"/>
+      <xs:element name="NUMERO_DOCUMENTO" type="xs:string"/>
+      <xs:element name="ESTADO" type="xs:string"/>
+      <xs:element name="TIPO_DE_CREDITO" type="xs:string"/>
+      <xs:element name="FOLIO_CREDITO" type="xs:string"/>
+      <xs:element name="MONTO_SOLIICITADO" type="xs:long"/>
+      <xs:element name="MONTO_TOTAL_SOLIICITADO" type="xs:long"/>
+      <xs:element name="MONTO_COMISION" type="xs:long"/>
+      <xs:element name="MONTO_LIQUIDO" type="xs:long"/>
+      <xs:element name="FORMA_PAGO" type="xs:string"/>
+      <xs:element name="MONTO_RENEGOCIADO" type="xs:long"/>
+      <xs:element name="MONTO_PAGO_MORA" type="xs:long"/>
+      <xs:element name="FECHA_OTORGAMIENTO" type="xs:string"/>
+      <xs:element name="MONTO_CUOTA" type="xs:long"/>
+      <xs:element name="NUMERO_CUOTAS" type="xs:int"/>
+      <xs:element name="TASA_INTERES" type="xs:string"/>
+      <xs:element name="CAE" type="xs:string"/>
+      <xs:element name="IMPUESTO" type="xs:long"/>
+      <xs:element name="GASTO_NOTARIAL" type="xs:long"/>
+      <xs:element name="SEGURO_CESANTIA" type="xs:long"/>
+      <xs:element name="SEGURO_DESGRAVAMEN" type="xs:long"/>
+      <xs:element name="MONTO_CARTERA" type="xs:long"/>
+      <xs:element name="ID_TIPO_CONTRATO" type="xs:string"/>
+      <xs:element name="DESCRIPCION_TIPO_CONTRATO" type="xs:string"/>
+      <xs:element name="RENTA_DEPURADA" type="xs:long"/>
+      <xs:element name="NUMERO_DIRECCION" type="xs:string"/>
+      <xs:element name="CELULAR" type="xs:long"/>
+      <xs:element name="CODIGO_COMUNA" type="xs:string"/>
+      <xs:element name="CODIGO_TIPO_CUENTA" type="xs:string"/>
+      <xs:element name="CODIGO_BANCO" type="xs:string"/>
+      <xs:element name="PLAZO_CREDITO" type="xs:int"/>
+      <xs:element name="RUT_EMPRESA" type="xs:string"/>
+      <xs:element name="FECHA_NACIMIENTO" type="xs:string"/>
+      <xs:element name="REGIMEN_SALUD" type="xs:string"/>
+      <xs:element name="CREDITOS_VIGENTES" type="xs:string"/>
+      <xs:element name="TIPO_REPROGRAMACION" type="xs:string"/>
+      <xs:element name="CONTRATO_USO_CANALES" type="xs:string"/>
+      <xs:element name="DEUDOR_ALIMENTICIO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="informarCreditoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ventaServiceVo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ventaServiceVo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+      <xs:element minOccurs="0" name="salida" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

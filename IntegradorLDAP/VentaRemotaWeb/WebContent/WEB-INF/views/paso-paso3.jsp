@@ -1,0 +1,314 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="format-detection" content="telephone=no" />
+<title>Venta remota - La Araucana</title>
+<link rel="stylesheet" href="assets/css/fln.css" />
+<link rel="stylesheet" href="fonts/fln-icons.css" />
+<link rel="stylesheet" href="assets/css/certificado.css" />
+<link rel="stylesheet" href="assets/css/estilos.css" />
+<script>
+	WebFontConfig = {
+		google : {
+			families : [ 'Open Sans:300,400,500,700' ]
+		}
+	};
+	(function() {
+		var wf = document.createElement('script');
+		wf.src = ('https:' == document.location.protocol ? 'https' : 'http')
+				+ '://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	})();
+</script>
+ 
+</head>
+<body>
+	<main>
+	<div class="container">
+	<div align="right">
+		<a href="<c:url value='/exit.do' />"  style="text-decoration:none"><img alt="Salir" src="img/salir.png"  title="Cerrar Sesión" /><span class="pasos__data" style="font-size:1.6rem;color:gray;">&nbsp;Salir</span></a>
+	</div>
+		<div class="row">
+			<div class="col xs12 lg2 text-align-center-xs">
+				<svg class="svg svg--secundario" xmlns="http://www.w3.org/2000/svg"
+					width="155" height="140" viewBox="0 0 155.3 140">
+					<path
+						d="M77.7 85.4c23.6 0 42.7-19.1 42.7-42.7S101.2 0 77.7 0 34.9 19.1 34.9 42.7 54.1 85.4 77.7 85.4zM77.7 7.8c19.3 0 34.9 15.6 34.9 34.9S97 77.7 77.7 77.7 42.7 62 42.7 42.7C42.7 23.4 58.4 7.8 77.7 7.8z" />
+					<path
+						d="M135.6 96.8L135.6 96.8c-37.2-15-78.8-15-116 0l0 0C7.7 101.7 0 112 0 123.4V140h155.3v-16.6C155.3 112 147.6 101.7 135.6 96.8zM147.5 132.2H7.8v-8.9c0-8.1 5.8-15.7 14.8-19.3 35.3-14.2 74.8-14.2 110.2 0 9 3.6 14.8 11.2 14.8 19.3V132.2z" /></svg>
+
+				<div class="separador--big"></div>
+			</div>
+			<div class="col xs12 lg10">
+				<div class="pasos">
+					<div class="row justify-center-xs justify-start-sm">
+						<div class="col xs12 sm12 md4 oculto-xs block-md">
+							<div
+								class="pasos__item flex-xs align-middle-xs justify-center-xs justify-start-md">
+								<div class="pasos__icono">
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" width="60"
+										height="60" viewBox="0 0 60 60">
+										<rect class="svg__fondo" width="60" height="60" />
+										<path
+											d="M53.4 12.3H6.6c-2.3 0-4.1 1.8-4.1 4.1v27.2c0 1.1 0.4 2.1 1.2 2.9 0.8 0.8 1.8 1.2 2.9 1.2h46.8c2.3 0 4.1-1.8 4.1-4.1V16.4C57.5 14.2 55.7 12.3 53.4 12.3zM6.6 14.7h46.8c0.9 0 1.7 0.8 1.7 1.7v27.2c0 0.9-0.8 1.7-1.7 1.7H6.6c-0.9 0-1.7-0.8-1.7-1.7l0-27.2C4.9 15.5 5.6 14.7 6.6 14.7z" />
+										<path
+											d="M29.7 26h20.7c0.6 0 1.2-0.5 1.2-1.2 0-0.6-0.5-1.2-1.2-1.2H29.7c-0.6 0-1.2 0.5-1.2 1.2 0 0.3 0.1 0.6 0.3 0.8C29.1 25.9 29.4 26 29.7 26z" />
+										<path
+											d="M29.7 31.2h20.7c0.6 0 1.2-0.5 1.2-1.2 0-0.6-0.5-1.2-1.2-1.2H29.7c-0.6 0-1.2 0.5-1.2 1.2 0 0.3 0.1 0.6 0.3 0.8C29.1 31 29.4 31.2 29.7 31.2z" />
+										<path
+											d="M29.7 36.3h8.9c0.6 0 1.2-0.5 1.2-1.2 0-0.6-0.5-1.2-1.2-1.2h-8.9c-0.6 0-1.2 0.5-1.2 1.2 0 0.3 0.1 0.6 0.3 0.8C29.1 36.2 29.4 36.3 29.7 36.3z" />
+										<path
+											d="M16.3 31.3c2.6 0 4.7-2.1 4.7-4.7 0-0.2 0-0.3 0-0.5l0 0c0-0.2-0.1-0.5-0.1-0.7 -0.1-0.2-0.1-0.4-0.2-0.7 -0.7-1.7-2.4-2.9-4.3-2.9 -1.9 0-3.6 1.1-4.3 2.9 -0.1 0.2-0.2 0.4-0.2 0.7 -0.1 0.2-0.1 0.5-0.1 0.7 0 0.2 0 0.3 0 0.5C11.6 29.2 13.7 31.3 16.3 31.3zM14.4 24.3c0.1-0.1 0.3-0.2 0.5-0.3 0.1 0 0.2-0.1 0.3-0.1 0.2-0.1 0.4-0.1 0.5-0.2 0.2 0 0.4-0.1 0.6-0.1 1.6 0 2.9 1.3 2.9 2.9 0 0.2 0 0.4-0.1 0.6 0 0.2-0.1 0.4-0.2 0.5 0 0.1-0.1 0.2-0.1 0.3h0c-0.1 0.2-0.2 0.3-0.3 0.5 -0.6 0.7-1.4 1.1-2.3 1.1 -0.2 0-0.4 0-0.6-0.1 -0.2 0-0.4-0.1-0.5-0.2 -0.1 0-0.2-0.1-0.3-0.1 -0.2-0.1-0.3-0.2-0.5-0.3 -0.1-0.1-0.3-0.3-0.4-0.4 -0.1-0.1-0.2-0.3-0.3-0.5 0-0.1-0.1-0.2-0.1-0.3 -0.1-0.2-0.1-0.4-0.2-0.5 0-0.2-0.1-0.4-0.1-0.6C13.4 25.7 13.7 24.9 14.4 24.3z" />
+										<path
+											d="M24.4 35.6c0-0.6-0.2-1.1-0.5-1.6 -0.1-0.2-0.3-0.4-0.5-0.6 -0.1-0.1-0.1-0.1-0.2-0.2 -0.2-0.2-0.4-0.3-0.6-0.4 -0.2-0.1-0.3-0.2-0.5-0.2 -3.8-1.5-8-1.5-11.8 0 -0.2 0.1-0.3 0.1-0.5 0.2 -0.2 0.1-0.4 0.3-0.6 0.4 -0.1 0.1-0.1 0.1-0.2 0.2 -0.2 0.2-0.3 0.4-0.5 0.6 -0.3 0.5-0.5 1.1-0.5 1.6v2.1h16.2V35.6zM11.1 34.2c0.6-0.2 1.3-0.5 1.9-0.6 0.6-0.2 1.3-0.3 2-0.3 0.2 0 0.4 0 0.7 0 1.1-0.1 2.2 0 3.3 0.2 0.9 0.2 1.7 0.4 2.6 0.8 0.1 0 0.2 0.1 0.3 0.1 0.1 0 0.2 0.1 0.2 0.1 0.1 0.1 0.1 0.1 0.2 0.2 0.1 0.1 0.3 0.3 0.3 0.5 0 0 0 0.1 0 0.1 0 0.1 0 0.1 0.1 0.2 0 0.1 0 0.1 0 0.2V36H9.9v-0.4c0-0.1 0-0.1 0-0.2 0-0.1 0-0.1 0.1-0.2 0 0 0-0.1 0-0.1 0.1-0.2 0.2-0.3 0.3-0.5 0.1-0.1 0.1-0.1 0.2-0.2 0.1-0.1 0.1-0.1 0.2-0.1C10.9 34.3 11 34.3 11.1 34.2z" /></svg>
+								</div>
+								<div class="pasos__data">
+									<span>Paso 1</span>VALIDACIÓN IDENTIDAD
+								</div>
+							</div>
+						</div>
+						<div class="col xs12 sm12 md4 oculto-xs block-md">
+							<div
+								class="pasos__item flex-xs align-middle-xs justify-center-xs justify-start-md">
+								<div class="pasos__icono">
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" width="60"
+										height="60" viewBox="0 0 60 60">
+										<rect class="svg__fondo" width="60" height="60" />
+										<path
+											d="M49.4 10.6C44.3 5.4 37.3 2.5 30 2.5c-7.3 0-14.3 2.9-19.4 8.1C5.4 15.7 2.5 22.7 2.5 30s2.9 14.3 8.1 19.4c5.2 5.2 12.1 8.1 19.4 8.1 7.3 0 14.3-2.9 19.4-8.1s8.1-12.1 8.1-19.4S54.6 15.7 49.4 10.6zM30 54.3C16.6 54.3 5.7 43.4 5.7 30S16.6 5.7 30 5.7 54.3 16.6 54.3 30 43.4 54.3 30 54.3z" />
+										<path
+											d="M40.9 21.2L26.6 35.4l-7.5-7.5c-0.6-0.6-1.6-0.6-2.3 0 -0.6 0.6-0.6 1.6 0 2.3l8.6 8.6c0.3 0.3 0.7 0.5 1.1 0.5 0.4 0 0.8-0.2 1.1-0.5l15.4-15.4c0.6-0.6 0.6-1.6 0-2.3C42.5 20.5 41.5 20.5 40.9 21.2z" /></svg>
+								</div>
+								<div class="pasos__data">
+									<span>Paso 2</span>VISUALIZAR DOCUMENTACIÓN
+								</div>
+							</div>
+						</div>
+						<div class="col xs12 sm12 md4">
+							<div
+								class="pasos__item flex-xs align-middle-xs justify-center-xs justify-start-md activo">
+								<div class="pasos__icono">
+									<svg xmlns="http://www.w3.org/2000/svg" class="svg__fondo"
+										width="55" height="60" viewBox="0 0 374.3 315">
+										<defs>
+										<rect width="374.3" height="315" /></defs>
+										<clipPath>
+										<use xlink:href="#SVGID_1_" /></clipPath>
+										<path class="st0"
+											d="M340.8 57h-73.5V30c0-16.5-13.4-30-30-30H137c-16.5 0-30 13.4-30 30v27H33.5C15 57 0 72 0 90.5v191C0 300 15 315 33.5 315h307.3c8.9 0 17.4-3.5 23.7-9.8 6.3-6.3 9.8-14.8 9.8-23.7v-191C374.3 72 359.3 57 340.8 57M245.3 30v27H129V30c0-4.4 3.6-8 8-8h100.3C241.7 22 245.3 25.6 245.3 30M352.4 90.5v25l-165.2 58.9L22 115.6V90.5c0-6.4 5.2-11.6 11.6-11.6h307.3C347.2 78.9 352.4 84.1 352.4 90.5M195.9 204.3h-17.4v-9.7l5.1 1.8c2.4 0.8 5 0.8 7.4 0l5-1.8V204.3zM22 138.9l134.5 47.8v28.5c0 6.1 4.9 11 11 11h39.4c6.1 0 11-4.9 11-11v-28.5l134.5-48v142.7c0 6.4-5.2 11.6-11.6 11.6H33.5c-6.4 0-11.6-5.2-11.6-11.6V138.9z" /></svg>
+								</div>
+								<div class="pasos__data">
+									<span>Paso 3</span>APROBACIÓN
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="separador"></div>
+				<c:if test="${tipoCredito=='Reprogramación' || tipoCredito=='Acuerdo de pago'}">
+				<p>Le solicitamos confirmar si aprueba o rechaza la reprogramación y sus condiciones</p>
+				</c:if>
+				<c:if test="${tipoCredito=='Renegociación' || tipoCredito=='Normal'}">
+				<p>Le solicitamos confirmar si aprueba o rechaza el crédito social y sus condiciones</p>
+				</c:if>
+				<div class="separador"></div>
+				<form class="form" id="paso3" action="paso3.do" method="POST"
+					enctype="multipart/form-data">
+
+
+
+					<div class="row" style="margin-top: -10px">
+					<div class="col xs12 lg5" >
+							<div class="form__grupo" data-animacion="placeholder">
+								<input class="text requerido" type="text" id="nombre"
+									name="nombre" value="${nombre}"
+									style="background-color: #DCDCDC" disabled="disabled" /> <label
+									for="nombre">Nombre</label>
+							</div>
+						</div>
+						<div class="col xs12 lg3">
+							<div class="form__grupo" data-animacion="placeholder"
+								data-comentario="">
+								<input class="text requerido" type="text" id="rut" name="rut"
+									value="${rutUser}" disabled="disabled"
+									style="background-color: #DCDCDC" /> <label for="rut">Rut</label>
+							</div>
+
+						</div>
+					</div>
+					<table align="center" class="tabla-creditos" style="margin-top: -10px">
+						<thead>
+							<tr>
+
+								<th class="certificadoLeft" style="text-align: center;height: 30px"
+									colspan="4">DATOS DEL PRODUCTO SELECCIONADO</th>
+
+
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td class="certificadoLeft" height="22px">Folio de la operación</td>
+								<td class="certificadoLeft">${folio}</td>
+								<td class="certificadoLeft">Monto cuota</td>
+								<td class="certificadoLeft">$${montoCuota}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto solicitado</td>
+								<td class="certificadoLeft">$${montoSolicitado}</td>
+								<td class="certificadoLeft">Número cuotas</td>
+								<td class="certificadoLeft">${numCuotas}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto total solicitado</td>
+								<td class="certificadoLeft">$${montoTotal}</td>
+								<td class="certificadoLeft">Tasa interés mensual</td>
+								<td class="certificadoLeft"><fmt:formatNumber type = "number" pattern = "##0.00" value = "${interes}" />%</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto comisión</td>
+								<td class="certificadoLeft">$${montoComision}</td>
+								<td class="certificadoLeft">CAE</td>
+								<td class="certificadoLeft"><fmt:formatNumber type = "number" pattern = "##0.00" value = "${cae}" />%</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto líquido a pago</td>
+								<td class="certificadoLeft">$${montoLiquido}</td>
+								<td class="certificadoLeft">Impuesto</td>
+								<td class="certificadoLeft">$${impuesto}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Forma de pago</td>
+								<td class="certificadoLeft">${formaPago}</td>
+								<td class="certificadoLeft">Gasto notarial</td>
+								<td class="certificadoLeft">$${gastoNotarial}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto renegociado</td>
+								<td class="certificadoLeft">$${montoRenegociado}</td>
+								<td class="certificadoLeft">Seguro cesantía(*)</td>
+								<td class="certificadoLeft">$${seguroCesantia}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Monto pago mora</td>
+								<td class="certificadoLeft">$${montoMora}</td>
+								<td class="certificadoLeft">Seguro desgravamen(*)</td>
+								<td class="certificadoLeft">$${seguroDesgravamen}</td>
+							</tr>
+							<tr>
+								<td class="certificadoLeft" height="22px">Fecha otorgamiento</td>
+								<td class="certificadoLeft">${fechaOtorgamiento}</td>
+								<td class="certificadoLeft">Monto compra cartera</td>
+								<td class="certificadoLeft">$${montoCartera}</td>
+							</tr>
+
+
+
+						</tbody>
+
+					</table>
+				</form>
+
+
+			<c:if test='${error=="error-files"}'>
+				<div class="alerta alerta--error">${errorMesj}</div>
+			</c:if>
+			
+			<div class="col xs12 lg8">
+							<div class="alerta alerta--aviso confirmar-general" id="aviso" data-tipo="screen"
+								style="display: none;position:absolute; left: 60px; top: -270px;"></div>
+			</div>
+			<div class="alerta alerta--error" id="errores_paso2"
+				style="display: none"></div>
+			
+			<div class="col xs12 lg8" id="botones">
+			<div class="btn__grupo text-align-center-xs">
+				<a class="btn btn--primario" href="#"
+					onClick="volverPaso2(); return false;" >Volver</a>
+
+				&nbsp;&nbsp;&nbsp;<a class="btn btn--primario" id="btn-aprobar" href="#" style="background: #1A9332; border-color:#1A9332"
+					>Aprobar</a>
+					&nbsp;&nbsp;&nbsp;<a class="btn btn--primario" id="btn-rechazar"  href="#" style="background: #E0231A; border-color:#E0231A"
+					>Rechazar</a>
+
+			</div>
+			 
+
+			</div>
+			<div class="col xs12 lg9" style="text-align: justify;margin-left: -28px">
+			<p style="font-size: small;margin-top: 10px">La presente oferta está dirigida exclusivamente para su destinatario, conforme a los datos singularizados en la documentación adjunta, y tiene una vigencia máxima hasta las 20:30 horas del día de hoy. Si usted no acepta las condiciones propuestas dentro de este plazo, deberá realizar la solicitud nuevamente.</p>
+			<p style="font-size: small;margin-top: 10px">Asimismo se hace presente que en caso de querer dejar sin efecto el presente crédito o reprogramación una vez contratado, usted cuenta con un plazo de 10 días desde la contratación del mismo para anular la solicitud, sin ningún tipo de costo asociado.</p>
+			<p style="font-size: small;margin-top: 10px">Mayor información en relación a los seguros asociados al crédito social puede ser consultada en http://www.cmfchile.cl/</p>
+			</div>
+
+			
+			<div class="col xs12 lg7" style="text-align: justify;margin-left: -28px">
+			<p style="font-size: small;margin-top: 10px">(*) Valor referencial en pesos, monto en UF de la prima detallado en el certificado de cobertura. Usted se está incorporando como asegurado a un contrato de seguro colectivo cuyas condiciones han sido convenidas por la Caja de Compensación de Asignación Familiar La Araucana con Seguros de Vida Suramericana S.A. y con Seguros Generales Suramericana S.A., respectivamente</p>
+			</div>
+			<div class="col xs12 lg2" style="text-align: justify;margin-left: -28px;">
+			<p style="font-size: small;margin-top: 10px;margin-left: 20px"><img src="img/logo_sura.png" /> </p>
+			</div>
+
+			<form id="aprobar" action="aprobar.do" method="post" ></form>
+			<form id="rechazar" action="rechazar.do" method="post"></form>
+			<form id="volver" action="volver.do" method="post"></form>
+			<form id="paso" action="paso.do" method="post"></form>
+			
+		 	</div>
+			 
+		</div>
+	</div>
+	<br>
+	</main>
+	<div class="preloader-general" id="preloader-general" data-tipo="screen" style="display:none"></div>
+	<script src="assets/js/polyfill.js"></script>
+	<script src="assets/js/jquery-3.3.1.js"></script>
+	<script src="assets/js/jquery-ui.js"></script>
+	<script src="assets/js/automatizar.js"></script>
+	<script src="assets/js/fln.js"></script>
+	<script src="assets/js/funciones.js"></script>
+	<script>
+		$( "#btn-aprobar" ).click(function() {
+			fln.preloader(1);
+  			$('#paso').submit();
+		});
+		
+		$( "#btn-rechazar" ).click(function() {
+  			avisar('<p align="center" style="margin-top: 30px; margin-bottom: 20px;color:#F9ED5F"><b>¿Está seguro que quiere rechazar la operación?</b><br></p>'
+		+ '<p align="center" style="margin-top: 10px; margin-bottom: 5px">'
+		+ '	<a id="botonAceptar" style="margin-left: 20px;height:18px; color:#ffffff; background: #E0231A; border-color:#E0231A" class="btn btn--terciario" href="#" onClick="javascript:rechazar();" >Rechazar</a>'
+		+ '	&nbsp;&nbsp;<a id="botonCancelar" style="margin-left: 20px;height:18px;" class="btn btn--terciario" href="#" onClick="javascript:cancelar();">Cancelar</a>'
+		+ '</p>'
+	
+		, 10000);
+		$( "#botones" ).hide();
+		setTimeout('$( "#botones" ).fadeIn()', 10000);
+		});
+		
+		function cancelar(){
+			$('#aviso').fadeOut();
+			$( "#botones" ).show();
+		}
+		function aprobar(){
+			validarPaso3();
+		}
+		function rechazar(){
+			validarPaso4();
+		}
+	</script>
+	
+</body>
+</html>
