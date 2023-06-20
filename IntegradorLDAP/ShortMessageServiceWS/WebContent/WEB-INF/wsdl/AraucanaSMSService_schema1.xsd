@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ws.sms.laaraucana.cl/" xmlns:tns="http://ws.sms.laaraucana.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="sendSMS" type="tns:sendSMS"/>
+
+  <xs:element name="sendSMSResponse" type="tns:sendSMSResponse"/>
+
+  <xs:element name="statusSMS" type="tns:statusSMS"/>
+
+  <xs:element name="statusSMSResponse" type="tns:statusSMSResponse"/>
+
+  <xs:complexType name="statusSMS">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:statusSMSInput" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="statusSMSInput">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="statusSMSResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:statusSMSOutput" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="statusSMSOutput">
+    <xs:sequence>
+      <xs:element name="dateReceived" type="xs:string" minOccurs="0"/>
+      <xs:element name="dateSend" type="xs:string" minOccurs="0"/>
+      <xs:element name="dv" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="rut" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+      <xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="statusDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendSMS">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:messageInput" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageInput">
+    <xs:sequence>
+      <xs:element name="dv" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="rut" type="xs:string" minOccurs="0"/>
+      <xs:element name="urlCondition" type="xs:string" minOccurs="0"/>
+      <xs:element name="urlText" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendSMSResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:messageOutput" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageOutput">
+    <xs:sequence>
+      <xs:element name="idSMS" type="xs:string" minOccurs="0"/>
+      <xs:element name="idURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="result" type="xs:string" minOccurs="0"/>
+      <xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="statusDescription" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

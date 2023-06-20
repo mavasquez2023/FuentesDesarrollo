@@ -1,0 +1,36 @@
+#
+# service.properties (PRODUCTION Version)
+#
+
+# Publicación de Nóminas y Aportes. "/PublicacionNominas" (none)
+PUBNOM=https://rast.laaraucana.cl/PubNominas
+
+# Descarga de Nóminas y Anexos (NL, NC, AX, AF). "/ea/edocs/main.do" (j2ee)
+EDOCS=https://rast.laaraucana.cl/EmpresaAdherente/ControladorServlet1
+
+# Autoconsulta "/ea" (j2ee)
+AC=http://rasw.laaraucana.cl/AutoconsultaWeb/web/pages/j_security_check?source=DEFAULT
+
+# Boton Pago Crédito (j2ee)
+BP=https://rasf.laaraucana.cl/BotonPago/j_security_check?source=DEFAULT
+
+# Emisión de Planillas de Cotización. "epc.jsp" (j2ee) (LOCAL SERVICE)
+EPC=/epc.jsp
+
+# Servicios en Línea accesibles por el usuario. "default.jsp" (j2ee) (LOCAL and DEFAULT SERVICE)
+DEFAULT=/default.jsp
+
+# Informe ingreso de trabajadores ASFAM
+RENTAS=http://rasp.laaraucana.cl/CambioTramoAsfam/j_security_check?forwardPage=/Rentas&source=DEFAULT
+
+# Simulador de Crédito Educación Superior 
+CREDES=http://rasw.laaraucana.cl/creditoEducacionalWeb/j_security_check?source=DEFAULT
+
+#LICENCIAS MEDICAS EMPRESAS
+LICEMP=https://rast.laaraucana.cl/LicenciaCompinEmpresa/j_security_check?source=DEFAULT
+
+#RESULTADO ASFAM Y COTIZACIONES
+RESASFAM=https://rasz.laaraucana.cl/CotizacionyCargasServices/j_security_check?source=DEFAULT
+
+#ENVIO FORMULARIOS ASFAM
+ENVASFAM=https://rast.laaraucana.cl/EnvioASFAMEmpresaWeb/j_security_check?source=DEFAULT

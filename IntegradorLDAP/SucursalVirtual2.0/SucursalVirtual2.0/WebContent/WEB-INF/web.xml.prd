@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>SucursalVirtual2.0</display-name>
+      <context-param id="ContextParam_1196987151630">
+         <param-name>organizationName</param-name>
+         <param-value>La Araucana C.C.A.F.</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151631">
+         <param-name>name</param-name>
+         <param-value>SV</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151632">
+         <param-name>title</param-name>
+         <param-value>Sucursal Virtual</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151633">
+         <param-name>version</param-name>
+         <param-value>1.2</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151634">
+         <param-name>releaseDate</param-name>
+         <param-value>05/12/2007</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151635">
+         <param-name>copyright</param-name>
+         <param-value>(c) Copyright La Araucana C.C.A.F. 2000-2022. Reservados todos los derechos.</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151636">
+         <param-name>userPrincipalAttributeName</param-name>
+         <param-value>userPrincipal</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151637">
+         <param-name>localRedirector</param-name>
+         <param-value>https://rast.laaraucana.cl/sv</param-value>
+      </context-param>
+      <context-param id="ContextParam_1196987151638">
+         <param-name>homePage</param-name>
+         <param-value>services_online.html</param-value>
+      </context-param>
+      <filter id="Filter_1196987151641">
+         <filter-name>LoginFilter</filter-name>
+         <filter-class>cl.araucana.core.util.http.LoginFilter</filter-class>
+         <init-param id="InitParam_1196987151905">
+            <param-name>securityMode</param-name>
+            <param-value>j2ee</param-value>
+         </init-param>
+         <init-param id="InitParam_1196987151906">
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+         </init-param>
+         <init-param id="InitParam_1196987151907">
+            <param-name>dump</param-name>
+            <param-value>false</param-value>
+         </init-param>
+         <init-param id="InitParam_1196987151908">
+            <param-name>useRedirector</param-name>
+            <param-value>true</param-value>
+         </init-param>
+      </filter>
+      <filter id="Filter_1196987151906">
+         <filter-name>UserCheckFilter</filter-name>
+         <filter-class>cl.araucana.sv.filters.UserCheckFilter</filter-class>
+      </filter>
+      <filter-mapping id="FilterMapping_1196987151922">
+         <filter-name>LoginFilter</filter-name>
+         <url-pattern>/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1196987151923">
+         <filter-name>UserCheckFilter</filter-name>
+         <url-pattern>/router.do</url-pattern>
+      </filter-mapping>
+      <listener id="Listener_1196987151946">
+         <listener-class>cl.araucana.core.util.http.InjectedHttpSessionListener</listener-class>
+      </listener>
+      <listener id="Listener_1196987151947">
+         <listener-class>cl.araucana.core.util.http.listeners.GeneralServletContextListener</listener-class>
+      </listener>
+      <listener id="Listener_1196987151948">
+         <listener-class>cl.araucana.sv.listeners.SVServletContextListener</listener-class>
+      </listener>
+      <servlet id="Servlet_1196987067804">
+         <servlet-name>Router</servlet-name>
+         <servlet-class>cl.araucana.core.util.http.Router</servlet-class>
+         <load-on-startup>1</load-on-startup>
+      </servlet>
+      <servlet id="Servlet_1196987067805">
+         <servlet-name>ChangePasswordAction</servlet-name>
+         <servlet-class>cl.araucana.sv.servlets.ChangePasswordAction</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1196987067806">
+         <servlet-name>LogoutAction</servlet-name>
+         <servlet-class>cl.araucana.sv.servlets.LogoutAction</servlet-class>
+      </servlet>
+      <servlet-mapping id="ServletMapping_1196987151962">
+         <servlet-name>Router</servlet-name>
+         <url-pattern>/router.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1196987151963">
+         <servlet-name>ChangePasswordAction</servlet-name>
+         <url-pattern>/changePassword.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1196987151964">
+         <servlet-name>LogoutAction</servlet-name>
+         <url-pattern>/logout.do</url-pattern>
+      </servlet-mapping>
+      <welcome-file-list id="WelcomeFileList_1196987151962">
+         <welcome-file>index.jsp</welcome-file>
+      </welcome-file-list>
+      <error-page id="ErrorCodeErrorPage_1196987151972">
+         <error-code>401</error-code>
+         <location>/authorization_error.jsp</location>
+      </error-page>
+      <error-page id="ErrorCodeErrorPage_1196987151988">
+         <error-code>403</error-code>
+         <location>/authorization_error.jsp</location>
+      </error-page>
+      <resource-ref id="ResourceRef_1195071957562">
+         <res-ref-name>jdbc/userRegistry</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <security-constraint id="SecurityConstraint_1196987152005">
+         <web-resource-collection id="WebResourceCollection_1196987152037">
+            <web-resource-name>Global Resources</web-resource-name>
+            <description>Main Page</description>
+            <url-pattern>/router.do</url-pattern>
+            <url-pattern>/changePassword.do</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1196987152054">
+            <description>All Users</description>
+            <role-name>users</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <login-config id="LoginConfig_1196987152063">
+         <auth-method>FORM</auth-method>
+         <form-login-config id="FormLoginConfig_1196987152064">
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login_error.jsp</form-error-page>
+         </form-login-config>
+      </login-config>
+      <security-role id="SecurityRole_1196987152064">
+         <description></description>
+         <role-name>users</role-name>
+      </security-role>
+</web-app>

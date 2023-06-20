@@ -1,0 +1,73 @@
+
+<script language="JavaScript1.2">
+	var docTramosFollowed = false;
+	var docDeclFollowed = false;
+	
+	url = window.location + "";
+	index = url.indexOf("/router.do");
+	
+	var publicDocURL = url.substring(0, index) + "/public";
+	
+	function followLink(name) {
+		if (name == "TRAMOS") {
+			url = publicDocURL + "/Tramos_2007.pdf";
+			docTramosFollowed = true;
+		} else if (name == "DECLARACION") {
+			url = publicDocURL + "/Decl_Jurada_Julio_2007.pdf";
+			docDeclFollowed = true;
+		}
+
+		if (docTramosFollowed && docDeclFollowed) {
+			document.forms[0].action.disabled = false;
+		}
+		
+		openFullNewWindow(url, name);
+	}
+</script>
+
+<br>
+<br>
+
+<p align="center">
+<font size="+1"><b>AVISO IMPORTANTE PARA SU EMPRESA</b></font>
+</p>
+
+<br>
+
+<p>Se&ntilde;or Empleador:</p>
+<br>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recuerde que en <b>JULIO</b>
+de cada año, <b>debe actualizar los montos de Asignaci&oacute;n Familiar</b>
+de sus trabajadores.
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para cumplir con este
+importante proceso, le agradeceremos revisar la
+<a href="javascript:followLink('TRAMOS')">carta explicativa adjunta</a>
+que le entregar&aacute; la informaci&oacute;n y
+el procedimiento a seguir por su empresa, m&aacute;s la respectiva
+<a href="javascript:followLink('DECLARACION')">declaraci&oacute;n jurada</a>
+de acuerdo a lo instruido por la <b>Superintendencia de Seguridad Social</b>.
+</p>
+
+<br>
+
+<center>
+<table border="0" cellpadding="0" cellspacing="5" width="70%" align="center">
+	  <tr>
+	    <td width="15%" align="right" valign="top">
+			<p><font color="#0000FF">
+			<b><u>Nota</u>:</b>
+			</font></p>
+		</td>
+	    <td width="85%">
+			<p><font color="#0000FF">
+			Para continuar tenga la gentileza de
+			<b>leer e imprimir</b> los documentos indicados en el
+			p&aacute;rrafo anterior, en señal de conformidad. Muchas gracias.
+			</font></p>
+		</td>
+	 </tr>
+</table>
+</center>

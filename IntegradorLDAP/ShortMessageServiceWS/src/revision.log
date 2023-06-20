@@ -1,0 +1,65 @@
+version=3.0.0
+revision=20201231
+notes
+- [feature] SOAP protocol enabled for send-sms and status-sms
+
+version=2.0.1
+revision=20201118
+notes
+- [config] QA environment using new username sistema_qa@laaraucana.cl
+
+version 2.0.0
+revision 20201027
+notes
+- [features] bulk-send, batch-report integrations plus its automated services & processes routines.
+
+version 1.0.5
+revision 20200914
+notes 
+- [feature] Web service status-url enabled.
+
+version 1.0.4
+revision 20200904
+notes 
+- [config] Production setup for endpoints, api-key and credentials, required to test status-url service.
+
+version 1.0.3 (release candidate)
+revision 20200903
+notes 
+- [fix] MessagingServiceProvider now uses native Java HttpClient, instead of OkHttpClient, solving another compatibility issue (Unsupported major.minor version 51.0) 
+
+version 1.0.2
+revision 20200901
+notes 
+- [fix] Change implementation for base64 encode/decode operations, new class org.apache.commons.codec.binary.Base64 allows full JDK 1.6+ compatibility
+
+version 1.0.1
+revision 20200831
+notes 
+- [fix] StandardCharsets.UTF_8 removed from util class Encryption, JDK 1.6 compatibility required
+
+
+version 1.0.0
+revision 20200828
+notes 
+- [release] New application, including integrations to sms service provider methods: send-sms, status-sms
+
+
+System: ShortMessageService
+Developer: Assembly Chile
+Contact: rerazo@assembly.cl
+
+
+To-do list for improvements
+revision 1.1.0
+- [ ] Change persistence framework, from iBATIS to Spring.
+- [ ] Handle database connection using only Spring framework.
+- [ ] Spring util for properties, ${foo} notation. 
+- [ ] Automated unit testing with junit -or alternative, JDK 1.6 compatible.
+
+To-do list for second release
+- [x] Service, DAO, scheduler and tests for API component: send-bulk
+- [x] Service, DAO, scheduler and tests for API component: batch-report
+- [x] Web view, list/search normal messages with state: delivered, sent and/or error
+- [x] Web view, list/search bulk messages with state: delivered, sent and/or error
+- [x] Retries settings and iterations for scheduled tasks

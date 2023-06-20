@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="estadoURL">
+
+    <insert id="insertZeroClicksEstadoURL"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        INSERT INTO EstadoURL (Usuario, CodigoURL, Clicks) VALUES (#usuario#,#codigoURL#,#clicks#)
+    </insert>
+
+    <insert id="insertEstadoURL"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        INSERT INTO EstadoURL (Usuario, CodigoURL, Clicks, Navegador, SistemaOperativo, FechaApertura)
+        VALUES (#usuario#,#codigoURL#,#clicks#,#navegador#,#sistemaOperativo#,#fechaApertura#)
+    </insert>
+
+    <update id="updateRetriesEstadoURL"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        UPDATE EstadoURL set Reintentos = Reintentos + 1 where CodigoURL = #codigoURL#
+    </update>
+
+    <select id="selectEstadoURL"
+            resultClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        SELECT Usuario, CodigoURL, Clicks, Navegador, SistemaOperativo, FechaApertura
+        FROM EstadoURL WHERE CodigoURL=#codigoURL#
+    </select>
+
+    <select id="selectUsernameEstadoURL"
+            resultClass="java.lang.String">
+        SELECT Usuario FROM EstadoURL where CodigoURL=#codigoURL#
+    </select>
+
+    <select id="selectEstadoSMS"
+            resultClass="cl.laaraucana.sms.ibatis.model.EstadoSMS">
+        SELECT
+        Usuario as usuario,
+        Rut as rut,
+        DigitoValidador as digitoValidador,
+        Celular as celular,
+        CodigoSMS as codigoSMS,
+        CodigoURL as codigoURL,
+        Estado as estado,
+        FechaEnvio as fechaEnvio,
+        FechaRecepcion as fechaRecepcion
+        FROM EstadoSMS WHERE CodigoURL=#codigoURL#
+    </select>
+
+    <select id="selectCountEstadoURL"
+            resultClass="java.lang.String">
+        SELECT (CASE WHEN COUNT(1) = '1' THEN 1 ELSE '0' END) FROM EstadoSMS WHERE CodigoURL = #codigoURL#
+    </select>
+
+    <select id="selectListEstadoSMSForUpdateStatusURL"
+            parameterClass="int"
+            resultClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        SELECT
+        Usuario as usuario,
+        CodigoURL as codigoURL
+        FROM EstadoURL
+        WHERE Clicks = 0 AND Reintentos <![CDATA[<#maxRetries#]]>
+    </select>
+
+    <update id="updateEstadoURL"
+            parameterClass="cl.laaraucana.sms.ibatis.model.EstadoURL">
+        UPDATE EstadoURL SET
+        Clicks = #clicks#,
+        Navegador = #navegador#,
+        SistemaOperativo = #sistemaOperativo#,
+        FechaApertura = #fechaApertura#
+        WHERE CodigoURL = #codigoURL#
+    </update>
+</sqlMap>

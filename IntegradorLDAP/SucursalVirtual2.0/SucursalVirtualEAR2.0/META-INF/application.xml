@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<display-name>SucursalVirtualEAR2.0</display-name>
+	<module id="WebModule_1659564270418">
+		<web>
+			<web-uri>SucursalVirtual2.0.war</web-uri>
+			<context-root>sv</context-root>
+		</web>
+	</module>
+	<security-role id="SecurityRole_1659565476495">
+		<description>
+		</description>
+		<role-name>users</role-name>
+	</security-role>
+</application>

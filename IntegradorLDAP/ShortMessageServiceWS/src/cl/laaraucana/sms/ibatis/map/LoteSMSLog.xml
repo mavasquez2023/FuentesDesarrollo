@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="loteSMSLog">
+
+    <select id="selectLoteSMSLogWhereIdEqualTo"
+            parameterClass="int"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        SELECT
+        Id as id,
+        Estado as estado,
+        FechaInicio as fechaInicio
+        FROM LoteSMSLog where Id=#id#
+    </select>
+
+    <select id="selectLoteSMSLogWhereEstadoEqualTo"
+            parameterClass="java.lang.String"
+            resultClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        SELECT
+        Id as id,
+        Sistema as sistema,
+        CodigoLoteSMS as codigoLoteSMS,
+        Estado as estado,
+        MensajesTotal as mensajesTotal,
+        MensajesEnviados as mensajesEnviados,
+        MensajesInvalidos as mensajesInvalidos,
+        MensajesErroneos as mensajesErroneos,
+        FechaInicio as fechaInicio,
+        FechaTermino as fechaTermino
+        FROM LoteSMSLog where Estado=#estado#
+    </select>
+
+    <select id="selectCountEstadoLoteSMSWhereCodigoLoteSMSLogEqualTo" parameterClass="int" resultClass="int">
+        SELECT COUNT(1) FROM EstadoLoteSMS WHERE CodigoLoteSMSLog=#id#
+    </select>
+
+    <select id="selectMaxId" resultClass="int">
+        SELECT MAX(Id) from LoteSMSLog
+    </select>
+
+    <insert id="insertLoteSMSLog"
+            parameterClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        INSERT INTO LoteSMSLog (Estado, FechaInicio)
+        VALUES (#estado#,#fechaInicio#)
+    </insert>
+
+    <insert id="insertLoteSMSLogReturningIdentity"
+            parameterClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        <selectKey resultClass="int">
+            select @@IDENTITY as id
+        </selectKey>
+        INSERT INTO LoteSMSLog (Estado, FechaInicio)
+        VALUES(#estado#,#fechaInicio#)
+    </insert>
+
+    <update id="updateLoteSMSLog"
+            parameterClass="cl.laaraucana.sms.ibatis.model.LoteSMSLog">
+        UPDATE LoteSMSLog
+        set
+        Sistema=#sistema#,
+        CodigoLoteSMS=#codigoLoteSMS#,
+        Estado=#estado#,
+        MensajesTotal=#mensajesTotal#,
+        MensajesEnviados=#mensajesEnviados#,
+        MensajesInvalidos=#mensajesInvalidos#,
+        MensajesErroneos=#mensajesErroneos#,
+        FechaTermino=#fechaTermino#
+        WHERE Id=#id#
+    </update>
+
+</sqlMap>

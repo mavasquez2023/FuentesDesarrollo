@@ -1,0 +1,127 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+	    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+    <!-- Web -->
+
+    <context:component-scan
+            base-package="cl.laaraucana.sms.controller"/>
+    <context:component-scan
+            base-package="cl.laaraucana.sms.assembly"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:resources mapping="/resources/**" location="/"/>
+
+    <mvc:default-servlet-handler/>
+
+    <!-- Scheduler -->
+
+    <task:annotation-driven/>
+
+    <!-- Bean Definitions -->
+    <bean id="messageSendBulkTask"
+          class="cl.laaraucana.sms.service.scheduler.MessageBatchProcess"/>
+
+    <bean id="messageStatusUpdateTask"
+          class="cl.laaraucana.sms.service.scheduler.MessageStatusUpdate"/>
+
+    <!-- Tasks Configurations -->
+    <bean id="timerTaskFactoryBeanProcessBatch"
+          class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="messageSendBulkTask"/>
+        <property name="targetMethod" value="processBatch"/>
+    </bean>
+
+    <bean id="timerTaskFactoryBeanUpdateBatch"
+          class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="messageSendBulkTask"/>
+        <property name="targetMethod" value="updateBatch"/>
+    </bean>
+
+    <bean id="timerTaskFactoryBeanCheckStatusSMS"
+          class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="messageStatusUpdateTask"/>
+        <property name="targetMethod" value="checkStatusSMS"/>
+    </bean>
+
+    <bean id="timerTaskFactoryBeanCheckStatusURL"
+          class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="messageStatusUpdateTask"/>
+        <property name="targetMethod" value="checkStatusURL"/>
+    </bean>
+
+    <bean id="timerTaskFactoryBeanUpdateStatusURL"
+          class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="messageStatusUpdateTask"/>
+        <property name="targetMethod" value="updateStatusURL"/>
+    </bean>
+
+    <!-- Timer Configurations -->
+    <bean id="timerTaskProcessBatch"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask"
+                  ref="timerTaskFactoryBeanProcessBatch"/>
+        <property name="period" value="1800000"/>
+    </bean>
+
+    <bean id="timerTaskUpdateBatch"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask"
+                  ref="timerTaskFactoryBeanUpdateBatch"/>
+        <property name="period" value="7200000"/>
+    </bean>
+
+    <bean id="timerTaskCheckStatusSMS"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask"
+                  ref="timerTaskFactoryBeanCheckStatusSMS"/>
+        <property name="period" value="7200000"/>
+        <!--		<property name="period" value="240000" />-->
+    </bean>
+
+    <bean id="timerTaskCheckStatusURL"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask"
+                  ref="timerTaskFactoryBeanCheckStatusURL"/>
+        <property name="period" value="7200000"/>
+        <!--		<property name="period" value="240000" />-->
+    </bean>
+
+    <bean id="timerTaskUpdateStatusURL"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask"
+                  ref="timerTaskFactoryBeanUpdateStatusURL"/>
+        <property name="period" value="43200000"/>
+        <!--		<property name="period" value="240000" />-->
+    </bean>
+
+    <bean
+            class="org.springframework.scheduling.timer.TimerFactoryBean">
+        <property name="scheduledTimerTasks">
+            <list>
+                <ref local="timerTaskProcessBatch"/>
+                <ref local="timerTaskUpdateBatch"/>
+                <ref local="timerTaskCheckStatusSMS"/>
+                <ref local="timerTaskCheckStatusURL"/>
+                <ref local="timerTaskUpdateStatusURL"/>
+            </list>
+        </property>
+    </bean>
+</beans>

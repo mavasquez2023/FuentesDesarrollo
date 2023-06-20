@@ -1,0 +1,498 @@
+LI {
+	PADDING-BOTTOM: 10px; LIST-STYLE-TYPE: square
+}
+.Estilo1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #013445; FONT-FAMILY: Verdana
+}
+.Titulo_portal {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffff00; FONT-FAMILY: Verdana
+}
+.Titulo {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #013445; FONT-FAMILY: Verdana
+}
+.Destacado {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffff00; FONT-FAMILY: Verdana
+}
+.Destacado_azul {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #003399; FONT-FAMILY: Verdana
+}
+.Destacado_blanco {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+.Estilo2 {
+	FONT-SIZE: 12px; COLOR: #013445; FONT-FAMILY: Verdana; TEXT-ALIGN: justify
+}
+.Atencion_cliente {
+	FONT-SIZE: 11px; COLOR: #013445; FONT-FAMILY: Verdana
+}
+.Estilo3 {
+	FONT-SIZE: 10px; COLOR: #ffff00; FONT-FAMILY: Verdana
+}
+.Estilo4 {
+	FONT-SIZE: 10px; COLOR: #ff9933; FONT-FAMILY: Verdana
+}
+.tabla_izq {
+	HEIGHT: 500px
+}
+.sub-cabecera_familia_requisitos {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(img/soporte_derecho.jpg); BACKGROUND-REPEAT: no-repeat
+}
+.Menu1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+.pad {
+	PADDING-LEFT: 10px
+}
+A.Menu1:link {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menu1:visited {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menu1:hover {
+	COLOR: #ff9900
+}
+.Menugran {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+A.Menugran:link {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menugran:visited {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menugran:hover {
+	COLOR: #ff9900
+}
+.Menuazul {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+A.Menuazul:link {
+	COLOR: #045d7f; TEXT-DECORATION: none
+}
+A.Menuazul:visited {
+	COLOR: #045d7f; TEXT-DECORATION: none
+}
+A.Menuazul:hover {
+	COLOR: #ff9900
+}
+.Menu2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ccff00; FONT-FAMILY: Verdana
+}
+A.Menu2:link {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menu2:visited {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.Menu2:hover {
+	COLOR: #ff9900
+}
+.Menu3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ff9900; FONT-FAMILY: Verdana
+}
+A.Menu3:link {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A.Menu3:visited {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A.Menu3:hover {
+	COLOR: #00ffff
+}
+.Estilo5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; VISIBILITY: visible; COLOR: #013445
+}
+.Estilo51 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; VISIBILITY: visible; COLOR: #013445
+}
+.botones {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; BORDER-LEFT: 0px; COLOR: #2a2a2a; PADDING-TOP: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.botonessub {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #015f7e; PADDING-TOP: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.botones:hover {
+	BORDER-RIGHT: #013445 thin solid; PADDING-RIGHT: 0px; BORDER-TOP: #013445 thin solid; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #013445 thin solid; COLOR: #ff9900; PADDING-TOP: 0px; BORDER-BOTTOM: #013445 thin solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.botonesHover {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; COLOR: #ff9900; PADDING-TOP: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlacesmenu {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 2px; MARGIN: 0px; COLOR: #2a2a2a; PADDING-TOP: 2px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlacesmenu:hover {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ff9900; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.subMe {
+	BORDER-RIGHT: #013445 thin solid; PADDING-RIGHT: 0px; BORDER-TOP: #013445 thin solid; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #013445 thin solid; PADDING-TOP: 0px; BORDER-BOTTOM: #013445 thin solid; BACKGROUND-COLOR: #cbdee4
+}
+.espan {
+	WIDTH: 0px; HEIGHT: 0px
+}
+.fondo_contacto {
+	BACKGROUND: url(img/fondo_contacto.jpg) no-repeat
+}
+.quienes-somos_sub-cabecera {
+	BACKGROUND: url(img/quienes-somos_sub-cabecera.jpg) no-repeat
+}
+.dondeestamos_sub-cabecera {
+	BACKGROUND: url(img/dondeestamos_sub-cabecera.jpg) no-repeat
+}
+.empresa_regimenes-legales_asignacion-familiar_sub-cabecera {
+	BACKGROUND: url(img/empresa_regimenes-legales_asignacion-familiar_sub-cabecera.jpg) no-repeat
+}
+.empresas_afiliacion_sub-cabecera {
+	BACKGROUND: url(img/empresas_afiliacion_sub-cabecera.jpg) no-repeat
+}
+.empresas_agencia-movil_sub-cabecera {
+	BACKGROUND: url(img/empresas_agencia-movil_sub-cabecera.jpg) no-repeat
+}
+.empresas_cotizacion_sub-cabecera {
+	BACKGROUND: url(img/empresas_cotizacion_sub-cabecera.jpg) no-repeat
+}
+.empresas_cotizacion_asistencia-sistema_sub-cabecera {
+	BACKGROUND: url(img/empresas_cotizacion_asistencia-sistema_sub-cabecera.jpg) no-repeat
+}
+.empresas_cotizacion_requerimientos_sub-cabecera {
+	BACKGROUND: url(img/empresas_cotizacion_requerimientos_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_nupcialidad_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_nupcialidad_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_habitacional_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_habitacional_sub-cabecera.jpg) no-repeat
+}
+.fondo_familia {
+	BACKGROUND: url(img/sub-cabecera_3.jpg) no-repeat
+}
+.familia_ahorro_ahorro_sub-cabecera {
+	BACKGROUND: url(img/familia_ahorro_ahorro_sub-cabecera.jpg) no-repeat
+}
+.familia_ahorro_vivienda_sub-cabecera {
+	BACKGROUND: url(img/familia_ahorro_vivienda_sub-cabecera_v2.jpg) no-repeat
+}
+.familia_asignaciones_natalidad_sub-cabecera {
+	BACKGROUND: url(img/familia_asignaciones_natalidad_sub-cabecera.jpg) no-repeat
+}
+.familia_asignaciones_universitaria_sub-cabecera {
+	BACKGROUND: url(img/familia_asignaciones_universitaria_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_estimulo-escolar_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_estimulo-escolar_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_estimulo-media_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_estimulo-media_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_valores-2007_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_valores-2007_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_luna-miel_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_luna-miel_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_microempresarios_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_microempresarios_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_vacaciones-escolares_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_vacaciones-escolares_sub-cabecera.jpg) no-repeat
+}
+.familia_asig-dinero_fallecimiento_sub-cabecera {
+	BACKGROUND: url(img/familia_asig-dinero_fallecimiento_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_fiesta-infantil_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_fiesta-infantil_sub-cabecera.jpg) no-repeat
+}
+.familia_beneficios-sociales_aniversarios_sub-cabecera {
+	BACKGROUND: url(img/familia_beneficios-sociales_aniversarios_sub-cabecera.jpg) no-repeat
+}
+.familia_creditos-personales_lineas-credito_consolide-deuda_sub-cabecera {
+	BACKGROUND: url(img/familia_creditos-personales_lineas-credito_consolide-deuda_sub-cabecera.jpg) no-repeat
+}
+.familia_creditos-personales_lineas-credito_especial-araucana_sub-cabecera {
+	BACKGROUND: url(img/familia_creditos-personales_lineas-credito_especial-araucana_sub-cabecera.jpg) no-repeat
+}
+.familia_creditos-personales_requisitos_sub-cabecera {
+	BACKGROUND: url(img/familia_creditos-personales_requisitos_sub-cabecera.jpg) no-repeat
+}
+.familia_creditos-personales_creditos-personales_tasas_sub-cabecera {
+	BACKGROUND: url(img/familia_creditos-personales_creditos-personales_tasas_sub-cabecera.jpg) no-repeat
+}
+.familia_regimenes_cesantia_sub-cabecera {
+	BACKGROUND: url(img/familia_regimenes_cesantia_sub-cabecera.jpg) no-repeat
+}
+.familia_regimenes_incapacidad_sub-cabecera {
+	BACKGROUND: url(img/familia_regimenes_incapacidad_sub-cabecera.jpg) no-repeat
+}
+.familia_serv-prev_ahorro-previsional_sub-cabecera {
+	BACKGROUND: url(img/familia_serv-prev_ahorro-previsional_sub-cabecera.jpg) no-repeat
+}
+.familia_creditos_simulador_sub-cabecera {
+	BACKGROUND: url(img/familia_creditos_simulador_sub-cabecera.jpg) no-repeat
+}
+.familia_regimenes-legales_asignacion-maternal_sub-cabecera {
+	BACKGROUND: url(img/familia_regimenes-legales_asignacion-maternal_sub-cabecera.jpg) no-repeat
+}
+.educacion_colegio-creacion_galeria-de-fotos_sub-cabecera {
+	BACKGROUND: url(img/educacion_colegio-creacion_galeria-de-fotos_sub-cabecera.jpg) no-repeat
+}
+.educacion_colegio-creacion_infraestructura_sub-cabecera {
+	BACKGROUND: url(img/educacion_colegio-creacion_infraestructura._sub-cabecera.jpg) no-repeat
+}
+.educacion_colegio-creacion_mision_sub-cabecera {
+	BACKGROUND: url(img/educacion_colegio-creacion_mision_sub-cabecera.jpg) no-repeat
+}
+.educacion_colegio-creacion_presencia_sub-cabecera {
+	BACKGROUND: url(img/educacion_colegio-creacion_presencia_sub-cabecera.jpg) no-repeat
+}
+.educacion_colegio-creacion_principios_sub-cabecera {
+	BACKGROUND: url(img/educacion_colegio-creacion_principios_sub-cabecera.jpg) no-repeat
+}
+.educacion_nivelacion-estudios_nivelacion-jovenes_sub-cabecera {
+	BACKGROUND: url(img/educacion_nivelacion-estudios_nivelacion-jovenes_sub-cabecera.jpg) no-repeat
+}
+.educacion_nivelacion-estudios_nivelacion-trabajadores_sub-cabecera {
+	BACKGROUND: url(img/educacion_nivelacion-estudios_nivelacion-trabajadores_sub-cabecera.jpg) no-repeat
+}
+.educacion_nivelacion-estudios_sence_sub-cabecera {
+	BACKGROUND: url(img/educacion_nivelacion-estudios_sence_sub-cabecera.jpg) no-repeat
+}
+.educacion_nivelacion-estudios_valores-horarios_sub-cabecera {
+	BACKGROUND: url(img/educacion_nivelacion-estudios_valores-horarios_sub-cabecera.jpg) no-repeat
+}
+.educacion_preuniversitario_cursos-horarios_sub-cabecera {
+	BACKGROUND: url(img/educacion_preuniversitario_cursos-horarios_sub-cabecera.jpg) no-repeat
+}
+.educacion_preuniversitario_informacion_sub-cabecera {
+	BACKGROUND: url(img/educacion_preuniversitario_informacion_sub-cabecera.jpg) no-repeat
+}
+.educacion_preuniversitario_valores_sub-cabecera {
+	BACKGROUND: url(img/educacion_preuniversitario_valores_sub-cabecera.jpg) no-repeat
+}
+.salud_red-medicos_concepcion_sub-cabecera {
+	BACKGROUND: url(img/salud/concepcion/salud_red-medicos_concepcion_sub-cabecera.jpg) no-repeat
+}
+.salud_red-medicos_osorno_sub-cabecera {
+	BACKGROUND: url(img/salud/osorno/salud_red-medicos_osorno_sub-cabecera.jpg) no-repeat
+}
+.salud_red_sub-cabecera {
+	BACKGROUND: url(img/salud_red_sub-cabecera.jpg) no-repeat
+}
+.salud_red-centros-medicos_sub-cabecera {
+	BACKGROUND: url(img/salud_red-centros-medicos_sub-cabecera.jpg) no-repeat
+}
+.salud_red-centros-medicos_sub-cabecera {
+	BACKGROUND: url(img/salud_red-centros-medicos_sub-cabecera.jpg) no-repeat
+}
+.salud_beneficios_pauteyfamilia_sub-cabecera {
+	BACKGROUND: url(img/salud_beneficios_pauteyfamilia_sub-cabecera.jpg) no-repeat
+}
+.salud_seguros_sub-cabecera {
+	BACKGROUND: url(img/salud_seguros_sub-cabecera.jpg) no-repeat
+}
+.pensionados_afiliacion_sub-cabecera {
+	BACKGROUND: url(img/pensionados_afiliacion_sub-cabecera.jpg) no-repeat
+}
+.pensionados_beneficios_sub-cabecera {
+	BACKGROUND: url(img/pensionados_beneficios_sub-cabecera.jpg) no-repeat
+}
+.pensionados_invalidacion_sub-cabecera {
+	BACKGROUND: url(img/pensionados_invalidacion_sub-cabecera.jpg) no-repeat
+}
+.pensionados_oficinas_sub-cabecera {
+	BACKGROUND: url(img/pensionados_oficinas_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_el-quisco_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_el-quisco_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_iquique_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_iquique_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_las-cruces_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_las-cruces_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_la-serena_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_la-serena_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_quillon_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_quillon_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_frutillar_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_frutillar_sub-cabecera.jpg) no-repeat
+}
+.recreacion_centros-vacacionales_torres-paine_sub-cabecera {
+	BACKGROUND: url(img/recreacion_centros-vacacionales_torres-paine_sub-cabecera.jpg) no-repeat
+}
+.recreacion_parque-deportivo_info_sub-cabecera {
+	BACKGROUND: url(img/recreacion_parque-deportivo_info_sub-cabecera.jpg) no-repeat
+}
+.recreacion_parque-deportivo_restaurant_sub-cabecera {
+	BACKGROUND: url(img/recreacion_parque-deportivo_restaurant_sub-cabecera.jpg) no-repeat
+}
+.azulin {
+	COLOR: #013445; FONT-FAMILY: Verdana; HEIGHT: 300px
+}
+.error {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-ALIGN: center
+}
+.leftimage {
+	FLOAT: left; MARGIN-RIGHT: 10px; PADDING-TOP: 5px
+}
+.rightimage {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 5px; MARGIN-LEFT: 10px; PADDING-TOP: 5px
+}
+.Estilo6 {
+	DISPLAY: block; FONT-SIZE: 12px; WIDTH: 450px; COLOR: #013445; FONT-FAMILY: Verdana; TEXT-ALIGN: justify
+}
+.fondo_normal {
+	BACKGROUND-IMAGE: url(img/sub-cabecera.jpg); BACKGROUND-REPEAT: no-repeat
+}
+A.enlace:link {
+	FONT-SIZE: 10px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlace:visited {
+	FONT-SIZE: 10px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlace:active {
+	FONT-SIZE: 10px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlace:hover {
+	FONT-SIZE: 10px; COLOR: #ff9900; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.edit_link:link {
+	DISPLAY: block; FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.edit_link:visited {
+	DISPLAY: block; FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.edit_link:active {
+	DISPLAY: block; FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.edit_link:hover {
+	DISPLAY: block; FONT-SIZE: 12px; COLOR: #66cc00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+INPUT {
+	BORDER-RIGHT: #015f76 1px solid; BORDER-TOP: #015f76 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 12px; BORDER-LEFT: #015f76 1px solid; COLOR: #013445; BORDER-BOTTOM: #015f76 1px solid; FONT-FAMILY: Verdana
+}
+.botoncito {
+	BORDER-RIGHT: #015f76 1px solid; BORDER-TOP: #015f76 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 12px; BORDER-LEFT: #015f76 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #015f76 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #015f76
+}
+.mostrar_error {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-ALIGN: left
+}
+TEXTAREA {
+	BORDER-RIGHT: #015f76 1px solid; BORDER-TOP: #015f76 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 12px; BORDER-LEFT: #015f76 1px solid; COLOR: #013445; BORDER-BOTTOM: #015f76 1px solid; FONT-FAMILY: Verdana
+}
+A.enlace_no:link {
+	FONT-SIZE: 12px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.enlace_no:visited {
+	FONT-SIZE: 12px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.enlace_no:active {
+	FONT-SIZE: 12px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.enlace_no:hover {
+	FONT-SIZE: 12px; COLOR: #ff9900; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlace_ba:link {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 5px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #015f76; TEXT-DECORATION: none
+}
+A.enlace_ba:visited {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 5px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #015f76; TEXT-DECORATION: none
+}
+A.enlace_ba:active {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 5px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #015f76; TEXT-DECORATION: none
+}
+A.enlace_ba:hover {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #015f76; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #f0f5f7; TEXT-DECORATION: none
+}
+.panel_admin {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 15px; BORDER-LEFT: #000000 1px solid; COLOR: #015f76; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+}
+.panel_admin TD {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: 0px; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: 0px
+}
+.cuadro_error {
+	BORDER-RIGHT: #ff0000 1px dotted; PADDING-RIGHT: 8px; BORDER-TOP: #ff0000 1px dotted; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 8px; BORDER-LEFT: #ff0000 1px dotted; COLOR: #ff0000; PADDING-TOP: 8px; BORDER-BOTTOM: #ff0000 1px dotted; TEXT-ALIGN: center
+}
+.cuadro_user {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; WIDTH: 780px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+A.opciones_user {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.opciones_user:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+DIV.mapa_sitio {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; BACKGROUND-COLOR: #f9f9f9
+}
+UL.mapa_sitio {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #013445
+}
+LI.mapa_sitio {
+	FONT-WEIGHT: normal; LIST-STYLE-IMAGE: url(img/list_linea.gif)
+}
+LI.mapa_sitio_sub {
+	FONT-SIZE: 10px; LIST-STYLE-TYPE: square
+}
+A.mapa_sitio {
+	COLOR: #013445; TEXT-DECORATION: none
+}
+A.mapa_sitio:hover {
+	COLOR: #ff9900; TEXT-DECORATION: underline
+}
+A.enlace_down {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #013445; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlace_down:hover {
+	COLOR: #ff0000
+}
+rownegrita {
+	FONT-WEIGHT: bold
+}
+.tabla_verde {
+	FONT-SIZE: 12px; BORDER-LEFT-COLOR: #015f76; BORDER-BOTTOM-COLOR: #015f76; BORDER-TOP-COLOR: #015f76; FONT-FAMILY: Verdana; BORDER-RIGHT-COLOR: #015f76
+}
+.tabla_verde THEAD TD {
+	FONT-WEIGHT: bold; BORDER-LEFT-COLOR: #015f76; BORDER-BOTTOM-COLOR: #015f76; COLOR: #ffffff; BORDER-TOP-COLOR: #015f76; BACKGROUND-COLOR: #015f76; BORDER-RIGHT-COLOR: #015f76
+}
+.tabla_verde THEAD TH {
+	FONT-WEIGHT: bold; BORDER-LEFT-COLOR: #015f76; BORDER-BOTTOM-COLOR: #015f76; COLOR: #ffffff; BORDER-TOP-COLOR: #015f76; BACKGROUND-COLOR: #015f76; BORDER-RIGHT-COLOR: #015f76
+}
+.tabla_verde TBODY TD {
+	BORDER-LEFT-COLOR: #015f76; BORDER-BOTTOM-COLOR: #015f76; COLOR: #015f76; BORDER-TOP-COLOR: #015f76; BACKGROUND-COLOR: #f0f5f7; BORDER-RIGHT-COLOR: #015f76
+}
+.tabla_verde TBODY TH {
+	BORDER-LEFT-COLOR: #015f76; BORDER-BOTTOM-COLOR: #015f76; COLOR: #015f76; BORDER-TOP-COLOR: #015f76; BACKGROUND-COLOR: #f0f5f7; BORDER-RIGHT-COLOR: #015f76
+}
+.tabla_verde TBODY TH {
+	FONT-WEIGHT: bold
+}
+.tabla_verde TFOOT TD {
+	FONT-SIZE: 9px; TEXT-TRANSFORM: uppercase; COLOR: #015f76; BACKGROUND-COLOR: #f0f5f7
+}
+A.enlacesmenu2 {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #2a2a2a; PADDING-TOP: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.enlacesmenu2:hover {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ff9900; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+#servicios_en_linea {
+	BORDER-RIGHT: #013445 1px solid; BORDER-TOP: #013445 1px solid; DISPLAY: none; BACKGROUND: #d7e4ea; LEFT: 135px; BORDER-LEFT: #013445 1px solid; WIDTH: 250px; BORDER-BOTTOM: #013445 1px solid; POSITION: absolute; TOP: 195px
+}
+#alineacion TBODY TR TD {
+	TEXT-ALIGN: center
+}
+#alineacion TBODY TR TH {
+	TEXT-ALIGN: left
+}
+#alineacion THEAD TR TD {
+	TEXT-ALIGN: center
+}
+#alineacion THEAD TR TH {
+	TEXT-ALIGN: center
+}
+#derecha {
+	TEXT-ALIGN: left! important
+}

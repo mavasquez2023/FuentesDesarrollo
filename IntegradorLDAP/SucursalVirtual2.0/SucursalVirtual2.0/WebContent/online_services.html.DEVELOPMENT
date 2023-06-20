@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0032)http://www.xion.cl/araucana2007/ -->
+<HTML><HEAD><TITLE>La Araucana</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ISO-8859-1"><LINK
+href="La%20Araucana_archivos/estilos.css" type=text/css rel=stylesheet><LINK
+href="favicon.ico" type=image/x-icon rel=icon><LINK href="favicon.ico"
+type=image/x-icon rel="shortcut icon">
+
+
+<SCRIPT language="JavaScript1.2">
+
+	var fechactual = "2007/11/27";
+
+</SCRIPT>
+
+<SCRIPT language="JavaScript1.2" src="http://ibmd-usist33:9080/sv/js/common.js"></SCRIPT>
+
+<SCRIPT language="JavaScript1.2">
+
+	function checkForm() {
+		var username, password, rc;
+
+		username = trim(document.onlineServicesForm.j_username.value);
+		password = trim(document.onlineServicesForm.j_password.value);
+
+		rc = validateRut(username);
+
+		if (rc != 0) {
+			if (rc < 3)  {
+				alert("Advertencia: Ingrese su rut completo sin puntos, incluyendo guión y dígito verificador!");
+				document.onlineServicesForm.j_username.focus();
+
+				return false;
+			}
+
+			if (rc == 4)  {
+				alert("Advertencia: Rut inválido. Inténtelo nuevamente por favor!");
+				document.onlineServicesForm.j_username.focus();
+
+				return false;
+			}
+		}
+
+		if (password == "") {
+			alert("Advertencia: La clave no puede ser vacía. Ingrésela por favor!");
+			document.onlineServicesForm.j_password.focus();
+
+			return false;
+		}
+
+		return true;
+	}
+
+</SCRIPT>
+
+<META content="MSHTML 6.00.6000.16544" name=GENERATOR></HEAD>
+<BODY style="MARGIN: 0px; BACKGROUND-COLOR: #ffffff">
+<TABLE height="100%" cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <img src="img/top.jpg">
+    </TD></TR>
+    <TD><!--AQUI EMPIEZA LA SECCION DEL MENU--></TD>
+    <TD rowSpan=3>
+      <TABLE cellSpacing=0 cellPadding=0 width=607 border=0>
+        <TBODY>
+        <TR>
+          <TD><!--EMPIEZA INFORMACION-->
+            <TABLE width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD class=Atencion_cliente
+                style="PADDING-LEFT: 30px; FONT-WEIGHT: bold; FONT-SIZE: 12px"
+                vAlign=center>Atención al Cliente: 600 42 28 100</TD>
+                <TD class=Estilo2 style="PADDING-RIGHT: 20px; FONT-SIZE: 10px"
+                vAlign=center>
+                  <SCRIPT language=javascript
+                  src="La%20Araucana_archivos/fecha.js"></SCRIPT>
+                </TD></TR></TBODY></TABLE><!--TERMINA INFORMACION--></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><!--ESTO LO AGREGE AHORA ULTMIO--></TD></TR>
+  <TR>
+    <TD class=tabla_izq vAlign=top align=left rowSpan=2>
+      <TABLE
+      style="BACKGROUND-IMAGE: url(img/fondo menu prueba.jpg); BACKGROUND-REPEAT: no-repeat"
+      cellSpacing=0 cellPadding=0 width=172 border=0>
+        <TBODY>
+        <TR>
+          <TD class=pad vAlign=top><BR><BR><BR></TD></TR>
+        <TR>
+          <TD class=pad>
+            <FORM name="onlineServicesForm" action=http://ibmd-usist33:9080/sv/j_security_check
+            method=post>
+            <TABLE class=Estilo1 cellSpacing=0 cellPadding=0 width=105
+            align=left border=0>
+              <TBODY>
+              <TR>
+                <TD width=105>
+                  <DIV align=center>SERVICIOS <BR>EN LÍNEA <BR><BR>Rut<BR><INPUT
+                  id=j_username size=13 maxlength=11 name=j_username> <BR>Clave<BR><INPUT
+                  id=j_password type=password size=13 name=j_password> <BR><BR><INPUT class=botoncito id=accept type=submit value=Aceptar name=accept onclick="return checkForm();">
+                  <BR><BR><A class=Menuazul
+                  href="http://ibmd-usist33:9080/sv/new_password.html">¿Necesitas
+                  Clave?</A><BR><A class=Menuazul
+                  href="http://ibmd-usist33:9080/sv/missed_password.html">¿Olvidó
+                  su clave?</A><BR><BR><A class=Menu1
+                  href="http://hpt-prestsist2:9080/AutoconsultaWeb/web/validarCertificado.do"
+                  target=_blank>Validación de Certificados</A>
+              </DIV><BR></TD></TR></TBODY></TABLE></FORM></TD></TR>
+        <TR>
+          <TD class=pad><A class=Menugran
+            href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=16&amp;tipo=0">Noticias
+            Regionales </A></TD></TR><!-- index.php?portal=0&seccion=16&tipo=0 --><!-- <tr>
+          <td height="5" valign="top"></td>
+        </tr>
+        <tr >
+          <td class="pad"><a href="index.php?portal=0&seccion=16&tipo=1" class="Menu1">Promociones</a></td>
+        </tr>
+        <tr> -->
+        <TR>
+          <TD vAlign=top height=5></TD></TR>
+        <TR>
+          <TD class=pad vAlign=top><A class=Menugran
+            href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=3">Quiénes
+            Somos </A></TD></TR><!-- index.php?portal=0&seccion=16&tipo=2 -->
+        <TR>
+          <TD vAlign=top height=5></TD></TR>
+        <TR>
+          <TD class=pad><A class=Menugran
+            href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=5">Dirección
+            Ejecutiva </A></TD></TR>
+        <TR>
+          <TD vAlign=top height=5></TD></TR>
+        <TR>
+          <TD class=pad><A class=Menugran
+            href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=4">Dónde
+            Estamos </A></TD></TR>
+        <TR>
+          <TD vAlign=top height=5></TD></TR>
+        <TR>
+          <TD class=pad><A class=Menugran
+            href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=77">Reclamos</A></TD></TR>
+        <TR>
+          <TD class=pad height=139>&nbsp;</TD></TR></TBODY></TABLE>
+      <TABLE class=Estilo1 cellSpacing=0 cellPadding=0 width=160 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#0066cc height=140>
+            <DIV align=center>CATALOGO</DIV></TD></TR>
+        <TR>
+          <TD height=5></TD></TR>
+        <TR>
+          <TD bgColor=#0066ff height=140>
+            <DIV align=center>INMOBILIARIA</DIV></TD></TR></TBODY></TABLE><!--AQUI TERMINA LA SECCION DEL MENU--></TD></TR>
+  <TR>
+    <TD style="VERTICAL-ALIGN: top">
+      <DIV id=Layer1>
+      <TABLE cellSpacing=0 cellPadding=0 width=607 align=left border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=right>
+            <TABLE cellSpacing=0 cellPadding=0 width=182 border=0>
+              <TBODY>
+              <TR></TR></TBODY></TABLE>
+            <DIV align=left><BR>
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD
+                style="BACKGROUND-IMAGE: url(img/prueba fondo.jpg); BACKGROUND-REPEAT: no-repeat"
+                vAlign=top align=middle width=587>
+                  <TABLE height=25 cellSpacing=0 cellPadding=0 width=550
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=top width=160>
+                        <TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD class=pad vAlign=top><SPAN
+                              class=Estilo1>PERSONAS</SPAN></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV id=me></DIV></TD></TR></TBODY></TABLE></TD>
+                      <TD vAlign=top width=390>
+                        <TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD class=pad vAlign=top><SPAN
+                              class=Estilo1>EMPRESAS</SPAN></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV id=mi></DIV></TD></TR></TBODY></TABLE>
+                        <SCRIPT language=javascript
+                        src="La%20Araucana_archivos/menu_empresaspor.js">
+				  </SCRIPT>
+
+                        <SCRIPT language=javascript
+                        src="La%20Araucana_archivos/menu_familiapor.js"></SCRIPT>
+                      </TD></TR></TBODY></TABLE><BR><!--AQUI EMPIEZ LA CUESTION-->
+                  <TABLE cellSpacing=5 cellPadding=0 width="100%" align=center
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="50%"><!-- PARTE 1 -->
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%"
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A class=enlace
+                              href="http://www.xion.cl/araucana2007/index.php?portal=3"><IMG
+                              height=78 alt="Entrar Portal Educacion"
+                              src="La%20Araucana_archivos/destacados_educacion.gif"
+                              width=78 align=left border=0>
+                              <P align=left><STRONG>Educación<BR><BR></STRONG>El
+                              2007 Estudia en La Araucana Carreras Profesionales
+                              y Técnicas.</P></A></TD></TR></TBODY></TABLE><!-- PARTE 1 END --></TD>
+                      <TD width="50%"><!-- PARTE 2 -->
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%"
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A class=enlace
+                              href="http://www.xion.cl/araucana2007/index.php?portal=4"><IMG
+                              height=78 alt="Entrar Portal Salud"
+                              src="La%20Araucana_archivos/destacados_salud.jpg"
+                              width=78 align=left border=0>
+                              <P align=left><STRONG>Salud<BR><BR></STRONG>Red
+                              Médica La Araucana, su opción en salud
+                              familiar.</P></A></TD></TR></TBODY></TABLE><!-- PARTE 2 END --></TD></TR></TBODY></TABLE><!-- FILA END --><!-- FILA 2 -->
+                  <TABLE cellSpacing=5 cellPadding=0 width="100%" align=center
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="50%"><!-- PARTE 1 -->
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%"
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A class=enlace
+                              href="http://www.xion.cl/araucana2007/index.php?portal=5"><IMG
+                              height=78 alt="Entrar Portal Recreacion"
+                              src="La%20Araucana_archivos/destacados_recreacion.gif"
+                              width=78 align=left border=0>
+                              <P align=left><STRONG>Recreación y
+                              Turismo<BR><BR></STRONG>Conozca Chile y aproveche
+                              los valores que La Araucana tiene para
+                            Ud.</P></A></TD></TR></TBODY></TABLE><!-- PARTE 1 END --></TD>
+                      <TD width="50%"><!-- PARTE 2 -->
+                        <TABLE cellSpacing=5 cellPadding=0 width="100%"
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A class=enlace
+                              href="http://www.xion.cl/araucana2007/index.php?portal=6"><IMG
+                              height=78 alt="Entrar Portal Pensionados"
+                              src="La%20Araucana_archivos/destacados_pensionados.gif"
+                              width=78 align=left border=0>
+                              <P
+                              align=left><STRONG>Pensionados<BR><BR></STRONG>Tiempo
+                              Pleno, un homenaje a la
+                        vida</P></A></TD></TR></TBODY></TABLE><!-- PARTE 2 END --></TD></TR></TBODY></TABLE><!--AQUI TERMINA LA CUESTION-->
+                  <SCRIPT language=javascript
+                  src="La%20Araucana_archivos/granbanner.js"></SCRIPT>
+                  <BR><BR><SPAN id=enlaces>
+                  <TABLE cellSpacing=0 cellPadding=0 width=587 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=294><A class=enlace
+                        href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=74&amp;id=1"><IMG
+                        style="BORDER-RIGHT: rgb(164,209,225) 3px solid; BORDER-TOP: rgb(164,209,225) 3px solid; BORDER-LEFT: rgb(164,209,225) 3px solid; BORDER-BOTTOM: rgb(164,209,225) 3px solid"
+                        height=80 hspace=5
+                        src="La%20Araucana_archivos/temescolar.jpg" width=135
+                        align=left border=0> <STRONG>Atento a las
+                        señales.</STRONG><BR>Crédito Escolar La
+                        Araucana<BR><BR><STRONG>ver más</STRONG> </A></TD>
+                      <TD width=294><A class=enlace
+                        href="http://www.xion.cl/araucana2007/index.php?portal=0&amp;seccion=11"><IMG
+                        style="BORDER-RIGHT: rgb(164,209,225) 3px solid; BORDER-TOP: rgb(164,209,225) 3px solid; BORDER-LEFT: rgb(164,209,225) 3px solid; BORDER-BOTTOM: rgb(164,209,225) 3px solid"
+                        height=80 hspace=5
+                        src="La%20Araucana_archivos/atencion.jpg" width=135
+                        align=left border=0> <STRONG>¡Atención
+                        Pensionados!</STRONG><BR>Nuestras agencias móviles van a
+                        su ciudad ¡INFORMESE!!<BR><BR><STRONG>ver más</STRONG>
+                        </A></TD></TR></TBODY></TABLE><BR>
+                  <TABLE cellSpacing=0 cellPadding=0 width=587 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=294><A class=enlace
+                        href="http://www.iplaaraucana.cl/becas/aranceles.html"><IMG
+                        style="BORDER-RIGHT: rgb(164,209,225) 3px solid; BORDER-TOP: rgb(164,209,225) 3px solid; BORDER-LEFT: rgb(164,209,225) 3px solid; BORDER-BOTTOM: rgb(164,209,225) 3px solid"
+                        height=80 hspace=5 src="La%20Araucana_archivos/3.jpg"
+                        width=135 align=left border=0> <STRONG>Proceso Admisión
+                        2007 IP La Araucana.</STRONG><BR>Estudia con
+                        Nosotros<BR><BR><STRONG>ver más</STRONG> </A></TD>
+                      <TD width=294><A class=enlace
+                        href="http://www.cftlaaraucana.cl/"><IMG
+                        style="BORDER-RIGHT: rgb(164,209,225) 3px solid; BORDER-TOP: rgb(164,209,225) 3px solid; BORDER-LEFT: rgb(164,209,225) 3px solid; BORDER-BOTTOM: rgb(164,209,225) 3px solid"
+                        height=80 hspace=5 src="La%20Araucana_archivos/cft.jpg"
+                        width=135 align=left border=0> <STRONG>Mejor estar
+                        dentro que fuera...</STRONG><BR>Sé parte del CFT La
+                        Araucana. Admisión 2007<BR><BR><STRONG>ver más</STRONG>
+                        </A></TD></TR></TBODY></TABLE><BR><BR></SPAN>
+                  <P></P>
+                  <SCRIPT language=javascript
+                  src="La%20Araucana_archivos/banner_asociacion_gremial.js"></SCRIPT>
+                  <BR><BR><A class=enlace title="Descargar Flash Player"
+                  href="http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player.exe"><STRONG>si
+                  no visualiza las animaciones requiere instalar Flash Player,
+                  haga click para descargar.
+            </STRONG></A></TD></TR></TBODY></TABLE></DIV><BR></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=779 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <SCRIPT language=javascript src="La%20Araucana_archivos/pie.js"></SCRIPT>
+    </TD></TR></TBODY></TABLE></BODY></HTML>
