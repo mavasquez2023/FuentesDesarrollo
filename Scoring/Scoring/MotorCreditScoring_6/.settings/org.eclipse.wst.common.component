@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MotorCreditScoring_6">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="MotorRiesgoCrediticio.war" deploy-path="/" handle="module:/resource/MotorRiesgoCrediticio/MotorRiesgoCrediticio">
+            <dependent-object>WebModule_1335991822765</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MotorRiesgoEJB.jar" deploy-path="/" handle="module:/resource/MotorRiesgoEJB/MotorRiesgoEJB">
+            <dependent-object>EjbModule_1342586665815</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MotorRiesgoCrediticioBase.jar" deploy-path="/" handle="module:/resource/MotorRiesgoCrediticioBase/MotorRiesgoCrediticioBase">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MotorRiesgoEJBClient.jar" deploy-path="/" handle="module:/resource/MotorRiesgoEJBClient/MotorRiesgoEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

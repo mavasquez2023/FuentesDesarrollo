@@ -1,0 +1,61 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-26T15:02:19.561875Z
+3886
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+.classpath
+file
+
+
+
+
+2015-01-27T19:21:36.213905Z
+5d3def8987651a766f0eb3752c0ea9f7
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+.project
+file
+
+
+
+
+2015-01-27T19:21:36.217905Z
+64630a1f9b33e88b33160a2d046d19c0
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+src
+dir
+
+WebContent
+dir
+
+.settings
+dir
+

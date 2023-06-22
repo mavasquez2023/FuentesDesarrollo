@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: jt400Micro.jar jui400.jar dom.jar jt400Native.jar xmlParse
+ rAPIs-2-4-0.jar jt400Proxy.jar log4j.jar commons-logging.jar commons-
+ lang-2.6.jar composer.jar xercesImpl-2-4-0.jar jt400Servlet.jar util4
+ 00.jar sax.jar log4j-core.jar ibatis-sqlmap-2.jar jt400.jar sqljdbc.j
+ ar uitools.jar ibatis-common-2.jar tes.jar reportwriter.jar outputwri
+ ters.jar TWEquifaxClient.jar
+

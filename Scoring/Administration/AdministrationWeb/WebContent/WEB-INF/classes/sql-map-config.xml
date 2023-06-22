@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings useStatementNamespaces="true" cacheModelsEnabled="true"
+		lazyLoadingEnabled="false" enhancementEnabled="true" maxSessions="64"
+		maxTransactions="8" maxRequests="128" />
+
+<!-- 	<transactionManager type="JDBC" commitRequired="false"> -->
+<!-- 		<dataSource type="SIMPLE"> -->
+<!-- 			<property name="JDBC.Driver" -->
+<!-- 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /> -->
+<!-- 			<property name="JDBC.ConnectionURL" -->
+<!-- 				value="jdbc:sqlserver://METRIC-LAPTOP-2:1433;databaseName=MotorCreditScoring" /> -->
+<!-- 			<property name="JDBC.Username" value="pepito" /> -->
+<!-- 			<property name="JDBC.Password" value="pepito" /> -->
+<!-- 		</dataSource> -->
+<!-- 	</transactionManager> -->
+	
+	<transactionManager type="JDBC">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:comp/env/MotorCreditScoring" />
+		</dataSource>
+	</transactionManager>
+
+	<sqlMap
+		resource="view/data/access/mappings/dbo_MatrizCondicionOtorgamiento.xml" />
+
+</sqlMapConfig>

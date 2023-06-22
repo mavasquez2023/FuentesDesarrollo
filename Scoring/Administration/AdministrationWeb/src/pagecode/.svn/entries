@@ -1,0 +1,70 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/src/pagecode
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+pages
+dir
+
+utils
+dir
+
+PageCodeBase.java
+file
+
+
+
+
+2015-01-27T19:21:30.679589Z
+79ada3c65224f51e2d3e6e344ec57944
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+TestCE.java
+file
+
+
+
+
+2015-01-27T19:21:30.689589Z
+4a304ee889ed1b2d429a706550799296
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+Template.java
+file
+
+
+
+
+2015-01-27T19:21:30.693589Z
+d3f1519b6bc7c0dfa348d17a2d80e36a
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+

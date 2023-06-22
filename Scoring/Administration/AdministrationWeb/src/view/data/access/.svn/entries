@@ -1,0 +1,55 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/src/view/data/access
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+DataProvider.java
+file
+
+
+
+
+2015-01-27T19:21:30.897601Z
+7907d5a1b411ba3854808fc863f4da41
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+DataAccessException.java
+file
+
+
+
+
+2015-01-27T19:21:30.900601Z
+94254a50dfb2a06ea1773eeec2c6479b
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+mappings
+dir
+

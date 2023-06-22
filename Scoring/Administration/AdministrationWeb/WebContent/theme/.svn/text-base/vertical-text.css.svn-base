@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Vertical Bar Sample
+  Specification file: vertical-text
+ ******************************************/
+
+/*
+ * This style applies to each item in the cell. (e.g., to the <a> tag)
+ */
+.vtext_item_normal {
+	padding : 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #2E67B4;
+	font-weight: normal;
+    font-size: 11px;
+	text-transform: lowercase;
+	text-decoration: none;
+}
+
+/*
+ * This style applies to the item which displays a group name. (e.g., to the <span> tag)
+ */
+.vtext_item_group {
+	padding : 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #2E67B4;
+	font-weight: bold;
+	text-decoration: none;
+    font-size: 11px;
+	text-transform: uppercase;
+}

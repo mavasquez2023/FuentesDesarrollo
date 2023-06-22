@@ -1,0 +1,55 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/WebContent
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-26T15:02:19.561875Z
+3886
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+pages
+dir
+
+META-INF
+dir
+
+theme
+dir
+
+home.jsp
+file
+
+
+
+
+2015-01-27T19:21:36.025894Z
+a84659e4ed4d2249bdfa6cc0c3a3e868
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+images
+dir
+
+WEB-INF
+dir
+

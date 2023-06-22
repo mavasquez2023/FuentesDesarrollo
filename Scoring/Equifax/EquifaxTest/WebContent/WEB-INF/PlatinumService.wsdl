@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	targetNamespace="http://dwww.dicom.cl/gru.wse01.solinforut/services/PlatinumService"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap"
+	xmlns:impl="http://dwww.dicom.cl/gru.wse01.solinforut/services/PlatinumService"
+	xmlns:intf="http://dwww.dicom.cl/gru.wse01.solinforut/services/PlatinumService"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:tns1="http://sub09.output.platinum.gru01.wse.equifax.cl" 
+	xmlns:tns2="http://sub.output.platinum.gru01.wse.equifax.cl"
+	xmlns:tns3="http://output.platinum.gru01.wse.equifax.cl" 
+	xmlns:tns4="http://platinum.gru01.wse.equifax.cl"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:p="http://schemas.xmlsoap.org/wsdl/http/">
+	<wsdl:types>
+		<schema targetNamespace="http://sub09.output.platinum.gru01.wse.equifax.cl"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<complexType name="PLATINUMMorosidadBOLCOM">
+				<sequence>
+					<element name="codigoMoneda" nillable="true" type="xsd:string" />
+					<element name="fechaIngreso" nillable="true" type="xsd:string" />
+					<element name="fechaVencimiento" nillable="true" type="xsd:string" />
+					<element name="justificacionDescripcion" nillable="true"
+						type="xsd:string" />
+					<element name="justificacionFecha" nillable="true" type="xsd:string" />
+					<element name="mercadoCodigo" nillable="true" type="xsd:string" />
+					<element name="mercadoDescripcion" nillable="true" type="xsd:string" />
+					<element name="montoImpago" nillable="true" type="xsd:string" />
+					<element name="nombreLibrador" nillable="true" type="xsd:string" />
+					<element name="nombreLocalidad" nillable="true" type="xsd:string" />
+					<element name="nombreNotario" nillable="true" type="xsd:string" />
+					<element name="nroBoletin" nillable="true" type="xsd:string" />
+					<element name="nroChequeOperacion" nillable="true" type="xsd:string" />
+					<element name="tipoCredito" nillable="true" type="xsd:string" />
+					<element name="tipoDeuda" nillable="true" type="xsd:string" />
+					<element name="tipoDocumento" nillable="true" type="xsd:string" />
+					<element name="tipoMotivo" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMMorosidadBED">
+				<sequence>
+					<element name="codigoMoneda" nillable="true" type="xsd:string" />
+					<element name="fechaIngresoEFX" nillable="true" type="xsd:string" />
+					<element name="fechaVencimiento" nillable="true" type="xsd:string" />
+					<element name="justificacionDescripcion" nillable="true"
+						type="xsd:string" />
+					<element name="justificacionFecha" nillable="true" type="xsd:string" />
+					<element name="mercadoCodigo" nillable="true" type="xsd:string" />
+					<element name="mercadoDescripcion" nillable="true" type="xsd:string" />
+					<element name="montoImpago" nillable="true" type="xsd:string" />
+					<element name="nombreLibrador" nillable="true" type="xsd:string" />
+					<element name="nombreLocalidad" nillable="true" type="xsd:string" />
+					<element name="nroChequeOperacion" nillable="true" type="xsd:string" />
+					<element name="tipoDeuda" nillable="true" type="xsd:string" />
+					<element name="tipoDocumento" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMMorosidadBED">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PLATINUMMorosidadBED[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMMorosidadBOLAB">
+				<sequence>
+					<element name="anoResolucion" nillable="true" type="xsd:string" />
+					<element name="fechaBoletin" nillable="true" type="xsd:string" />
+					<element name="montoDeuda" nillable="true" type="xsd:string" />
+					<element name="motivoInfraccion" nillable="true" type="xsd:string" />
+					<element name="nombreInstitucion" nillable="true" type="xsd:string" />
+					<element name="nroBoletin" nillable="true" type="xsd:string" />
+					<element name="nroCotizacionesAdeudadas" nillable="true"
+						type="xsd:string" />
+					<element name="nroImpeccion" nillable="true" type="xsd:string" />
+					<element name="nroMesesAdeudados" nillable="true" type="xsd:string" />
+					<element name="nroResolucion" nillable="true" type="xsd:string" />
+					<element name="pagBoletin" nillable="true" type="xsd:string" />
+					<element name="regionImpeccion" nillable="true" type="xsd:string" />
+					<element name="tipoInfraccion" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMMorosidadBOLAB">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PLATINUMMorosidadBOLAB[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMMorosidadBOLCOM">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PLATINUMMorosidadBOLCOM[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMMorosidadICOM">
+				<sequence>
+					<element name="codigoMoneda" nillable="true" type="xsd:string" />
+					<element name="fechaVencimiento" nillable="true" type="xsd:string" />
+					<element name="mercadoCodigo" nillable="true" type="xsd:string" />
+					<element name="mercadoDescripcion" nillable="true" type="xsd:string" />
+					<element name="montoImpago" nillable="true" type="xsd:string" />
+					<element name="nombreLibrador" nillable="true" type="xsd:string" />
+					<element name="nombreLocalidad" nillable="true" type="xsd:string" />
+					<element name="nroChequeOperacion" nillable="true" type="xsd:string" />
+					<element name="tipoCredito" nillable="true" type="xsd:string" />
+					<element name="tipoDeuda" nillable="true" type="xsd:string" />
+					<element name="tipoDocumento" nillable="true" type="xsd:string" />
+					<element name="tipoMotivo" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMMorosidadICOM">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PLATINUMMorosidadICOM[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMPorMercado">
+				<sequence>
+					<element name="codigo" nillable="true" type="xsd:string" />
+					<element name="descripcion" nillable="true" type="xsd:string" />
+					<element name="montoImpagos" nillable="true" type="xsd:string" />
+					<element name="nroImpagos" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMPorMercado">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PLATINUMPorMercado[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+		</schema>
+		<schema targetNamespace="http://sub.output.platinum.gru01.wse.equifax.cl"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<complexType name="PLATINUMNombreBanco">
+				<sequence>
+					<element name="nombre" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMDetalleONP">
+				<sequence>
+					<element name="banco" nillable="true" type="xsd:string" />
+					<element name="fechaPublicacion" nillable="true" type="xsd:string" />
+					<element name="fuente" nillable="true" type="xsd:string" />
+					<element name="motivo" nillable="true" type="xsd:string" />
+					<element name="nroCheque" nillable="true" type="xsd:string" />
+					<element name="nroCuenta" nillable="true" type="xsd:string" />
+					<element name="nroSerie" nillable="true" type="xsd:string" />
+					<element name="nroSucursal" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMAspectoRelevante">
+				<sequence>
+					<element name="codigo" nillable="true" type="xsd:string" />
+					<element name="descripcion" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMDetalleConsultaRut">
+				<sequence>
+					<element name="fechaConsulta" nillable="true" type="xsd:string" />
+					<element name="informe" nillable="true" type="xsd:string" />
+					<element name="nombre" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMDetalleConsultaRut">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMDetalleConsultaRut[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMCuentaCorrienteCerrada">
+				<sequence>
+					<element name="banco" nillable="true" type="xsd:string" />
+					<element name="numero" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMEscalaPredictor">
+				<sequence>
+					<element name="claseRiesgo" nillable="true" type="xsd:string" />
+					<element name="porcentaje" nillable="true" type="xsd:string" />
+					<element name="predictorMaximo" nillable="true" type="xsd:string" />
+					<element name="predictorMinimo" nillable="true" type="xsd:string" />
+					<element name="probabilidad" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMAspectoRelevante">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMAspectoRelevante[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMEscalaPredictor">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMEscalaPredictor[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMPredictorHistorico">
+				<sequence>
+					<element name="periodo" nillable="true" type="xsd:string" />
+					<element name="valor" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMPredictorHistorico">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMPredictorHistorico[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMDetalleActividadEconomica">
+				<sequence>
+					<element name="codigo" nillable="true" type="xsd:string" />
+					<element name="descripcion" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMDetalleActividadEconomica">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType"
+							wsdl:arrayType="tns2:PLATINUMDetalleActividadEconomica[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="PLATINUMDetalleEjecutivo">
+				<sequence>
+					<element name="cargo" nillable="true" type="xsd:string" />
+					<element name="nombre" nillable="true" type="xsd:string" />
+					<element name="rutDigito" nillable="true" type="xsd:string" />
+					<element name="rutNumero" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMDetalleEjecutivo">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMDetalleEjecutivo[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMNombreBanco">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMNombreBanco[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMCuentaCorrienteCerrada">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMCuentaCorrienteCerrada[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfPLATINUMDetalleONP">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PLATINUMDetalleONP[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+		</schema>
+		<schema targetNamespace="http://output.platinum.gru01.wse.equifax.cl"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<import namespace="http://sub09.output.platinum.gru01.wse.equifax.cl" />
+			<import namespace="http://sub.output.platinum.gru01.wse.equifax.cl" />
+			<complexType name="PLATINUMRegistroMorosidadesYProtestos">
+				<sequence>
+					<element name="cantidadDocumentosBoletinProtestosEImpagos"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentosICOM" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadImpagosInformados" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadMorososComercio" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadMultasEInfraccionesEnLaboralYPrevisional"
+						nillable="true" type="xsd:string" />
+					<element name="montoTotalImpago" nillable="true" type="xsd:string" />
+					<element name="morosidadesBED" nillable="true"
+						type="tns1:ArrayOfPLATINUMMorosidadBED" />
+					<element name="morosidadesBOLAB" nillable="true"
+						type="tns1:ArrayOfPLATINUMMorosidadBOLAB" />
+					<element name="morosidadesBOLCOM" nillable="true"
+						type="tns1:ArrayOfPLATINUMMorosidadBOLCOM" />
+					<element name="morosidadesICOM" nillable="true"
+						type="tns1:ArrayOfPLATINUMMorosidadICOM" />
+					<element name="porMercados" nillable="true"
+						type="tns1:ArrayOfPLATINUMPorMercado" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMResumen">
+				<sequence>
+					<element name="actualizarNICEnBaseDICOM" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadImpagos" nillable="true" type="xsd:string" />
+					<element name="estadoCedulaIdentidad" nillable="true" type="xsd:string" />
+					<element name="fechaInformeAlmacenado" nillable="true"
+						type="xsd:string" />
+					<element name="fechaMotivoEstadoCedula" nillable="true"
+						type="xsd:string" />
+					<element name="fechaVencimientoCedulaVigenteAportadaPorSRCel"
+						nillable="true" type="xsd:string" />
+					<element name="forzadoBuscarSRCI" nillable="true" type="xsd:string" />
+					<element name="indicadorAcreditaciones" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorConsultaSRCel" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorDiferenciaNombreSuperDicom"
+						nillable="true" type="xsd:string" />
+					<element name="indicadorDifunto" nillable="true" type="xsd:string" />
+					<element name="indicadorErrorConectarseALaCamaraDeComercio"
+						nillable="true" type="xsd:string" />
+					<element name="indicadorNumeroSerieUsado" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorOrigenRespuesta" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorRespuesta" nillable="true" type="xsd:string" />
+					<element name="informacionBloqueosDICOM" nillable="true"
+						type="xsd:string" />
+					<element name="informacionCedulaBloqueadaMenor30DiasDICOM"
+						nillable="true" type="xsd:string" />
+					<element name="montoDeudaVigente" nillable="true" type="xsd:string" />
+					<element name="montoImpagos" nillable="true" type="xsd:string" />
+					<element name="motivoEstadoCedulaIdentidad" nillable="true"
+						type="xsd:string" />
+					<element name="numeroDocumentoConsultado" nillable="true"
+						type="xsd:string" />
+					<element name="numeroSerieCedulaVigente" nillable="true"
+						type="xsd:string" />
+					<element name="numeroSerieConsultado" nillable="true" type="xsd:string" />
+					<element name="numeroSerieVigente" nillable="true" type="xsd:string" />
+					<element name="numeroVersion" nillable="true" type="xsd:string" />
+					<element name="tipoDocumentoConsultado" nillable="true"
+						type="xsd:string" />
+					<element name="tipoInforme" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMAntecedentesLaborales">
+				<sequence>
+					<element name="caargoEmpresa" nillable="true" type="xsd:string" />
+					<element name="ciudadDireccionLaboral" nillable="true"
+						type="xsd:string" />
+					<element name="comunaDireccionLaboral" nillable="true"
+						type="xsd:string" />
+					<element name="direccionLaboral" nillable="true" type="xsd:string" />
+					<element name="fechaVerificacionDatos" nillable="true"
+						type="xsd:string" />
+					<element name="fuenteVerificacion" nillable="true" type="xsd:string" />
+					<element name="nombreEmpleador" nillable="true" type="xsd:string" />
+					<element name="telefono" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMAntecedentesParticulares">
+				<sequence>
+					<element name="cantidadDirecciones" nillable="true" type="xsd:string" />
+					<element name="ciudadDireccionParticular" nillable="true"
+						type="xsd:string" />
+					<element name="codigoPostal" nillable="true" type="xsd:string" />
+					<element name="comunaDireccionParticular" nillable="true"
+						type="xsd:string" />
+					<element name="direccionElectronica" nillable="true" type="xsd:string" />
+					<element name="direccionParticular" nillable="true" type="xsd:string" />
+					<element name="direccionURL" nillable="true" type="xsd:string" />
+					<element name="indicadorGrupoSocioEconomico" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorPaginaWeb" nillable="true" type="xsd:string" />
+					<element name="numeroFax" nillable="true" type="xsd:string" />
+					<element name="telefono1" nillable="true" type="xsd:string" />
+					<element name="telefono2" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMConsultaRut">
+				<sequence>
+					<element name="cantidadConsultasPeriodoDefinido" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadUnidadesTiempo" nillable="true"
+						type="xsd:string" />
+					<element name="detalleConsultasRut" nillable="true"
+						type="tns2:ArrayOfPLATINUMDetalleConsultaRut" />
+					<element name="medidaTiempoUtilizada" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMIndicadorRiesgoCrediticio">
+				<sequence>
+					<element name="aspectosRelevante" nillable="true"
+						type="tns2:ArrayOfPLATINUMAspectoRelevante" />
+					<element name="aspectosRelevantes" nillable="true" type="soapenc:Array" />
+					<element name="clasificadorPersonaJuridica" nillable="true"
+						type="xsd:string" />
+					<element name="escalaPredictores" nillable="true"
+						type="tns2:ArrayOfPLATINUMEscalaPredictor" />
+					<element name="informaPredictorHistorico" nillable="true"
+						type="xsd:string" />
+					<element name="origenUsuario" nillable="true" type="xsd:string" />
+					<element name="porcentajeMenorAlCalculado" nillable="true"
+						type="xsd:string" />
+					<element name="predictorPersonaNatural" nillable="true"
+						type="xsd:string" />
+					<element name="predictoresHistoricos" nillable="true"
+						type="tns2:ArrayOfPLATINUMPredictorHistorico" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMIdentificacionEmpresa">
+				<sequence>
+					<element name="codigoActividadEconomica" nillable="true"
+						type="xsd:string" />
+					<element name="descripcionActividadEconomica" nillable="true"
+						type="xsd:string" />
+					<element name="detalleActividadesEconomicas" nillable="true"
+						type="tns2:ArrayOfPLATINUMDetalleActividadEconomica" />
+					<element name="detalleEjecutivos" nillable="true"
+						type="tns2:ArrayOfPLATINUMDetalleEjecutivo" />
+					<element name="razonSocial" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMIdentificacionPersona">
+				<sequence>
+					<element name="codigoOficio" nillable="true" type="xsd:string" />
+					<element name="codigoProfesion" nillable="true" type="xsd:string" />
+					<element name="descripcionActividadEconomica" nillable="true"
+						type="xsd:string" />
+					<element name="descripcionOficio" nillable="true" type="xsd:string" />
+					<element name="descripcionProfesion" nillable="true" type="xsd:string" />
+					<element name="edad" nillable="true" type="xsd:string" />
+					<element name="estadoCivil" nillable="true" type="xsd:string" />
+					<element name="fechaNacimiento" nillable="true" type="xsd:string" />
+					<element name="nacionalidad" nillable="true" type="xsd:string" />
+					<element name="nombre" nillable="true" type="xsd:string" />
+					<element name="sexo" nillable="true" type="xsd:string" />
+					<element name="tipoNacionalidad" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMResumenMorosidadesYProtestosImpagos">
+				<sequence>
+					<element name="accesoCamaraComercio" nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentos12A24Meses" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadDocumentos6A12Meses" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadDocumentosAcumulados12Meses"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentosAcumulados24Meses"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentosAcumuladosMasDe24Meses"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentosAcumuladosUltimos6Meses"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadDocumentosMasDe24Meses" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadDocumentosUltimos6Meses" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadTotalImpagos" nillable="true" type="xsd:string" />
+					<element name="fechaVencimientoUltimoImpago" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorErrorConectarseAlCSS" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorExistenciaInformacionParaSeccion"
+						nillable="true" type="xsd:string" />
+					<element name="montoDocumentos12A24Meses" nillable="true"
+						type="xsd:string" />
+					<element name="montoDocumentos6A12Meses" nillable="true"
+						type="xsd:string" />
+					<element name="montoDocumentosMasDe24Meses" nillable="true"
+						type="xsd:string" />
+					<element name="montoDocumentosUltimos6Meses" nillable="true"
+						type="xsd:string" />
+					<element name="montoTotalImpagos" nillable="true" type="xsd:string" />
+					<element name="montoUltimoImpago" nillable="true" type="xsd:string" />
+					<element name="tipoDeudaUltimoImpago" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMIndicadorAcreditacion">
+				<sequence>
+					<element name="anioUltimaExportacion" nillable="true" type="xsd:string" />
+					<element name="anioUltimaImportacion" nillable="true" type="xsd:string" />
+					<element name="cantidadBancos" nillable="true" type="xsd:string" />
+					<element name="cantidadOtrosVehiculos" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadPrendasSinDesplazamiento" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadPropiedades" nillable="true" type="xsd:string" />
+					<element name="cantidadRelacionesComoSociedad" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadRelacionesComoSocio" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadVehiculosLivianos" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadVehiculosPesados" nillable="true"
+						type="xsd:string" />
+					<element name="deudaDirectaVigente" nillable="true" type="xsd:string" />
+					<element name="estimacionRenta" nillable="true" type="xsd:string" />
+					<element name="fechaUltimaVerificacionDomicilio" nillable="true"
+						type="xsd:string" />
+					<element name="folioDeclaracionImpuestos" nillable="true"
+						type="xsd:string" />
+					<element name="glosaEstimadorRenta" nillable="true" type="xsd:string" />
+					<element name="lineaCreditoNoUtilizada" nillable="true"
+						type="xsd:string" />
+					<element name="montoTotalAvaluoFiscal" nillable="true"
+						type="xsd:string" />
+					<element name="montoUltimaExportacion" nillable="true"
+						type="xsd:string" />
+					<element name="montoUltimaImportacion" nillable="true"
+						type="xsd:string" />
+					<element name="nombresBancos" nillable="true"
+						type="tns2:ArrayOfPLATINUMNombreBanco" />
+					<element name="periodoDeclaracionImpuestos" nillable="true"
+						type="xsd:string" />
+					<element name="periodoVigente" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMIndicadoresPrevencionFraude">
+				<sequence>
+					<element name="cantidadAnotacionesTributariasVigentes"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadCuentasCorrientesBloqueadas"
+						nillable="true" type="xsd:string" />
+					<element name="cantidadONP" nillable="true" type="xsd:string" />
+					<element name="cantidadOPNUltimosMeses" nillable="true"
+						type="xsd:string" />
+					<element name="cantidadPublicaciones" nillable="true" type="xsd:string" />
+					<element name="cantidadUltimosMesesOPN" nillable="true"
+						type="xsd:string" />
+					<element name="cuentasCorrientesCerradas" nillable="true"
+						type="tns2:ArrayOfPLATINUMCuentaCorrienteCerrada" />
+					<element name="detalleONPs" nillable="true"
+						type="tns2:ArrayOfPLATINUMDetalleONP" />
+					<element name="fechaDefuncion" nillable="true" type="xsd:string" />
+					<element name="fechaInterdicto" nillable="true" type="xsd:string" />
+					<element name="fechaUltimoBoletinLaboral" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorImpedidoAbrirCuentaCorriente"
+						nillable="true" type="xsd:string" />
+					<element name="indicadorPersonaDifunta" nillable="true"
+						type="xsd:string" />
+					<element name="indicadorTieneDeudaMorosaVencidaCastigada"
+						nillable="true" type="xsd:string" />
+					<element name="indicadorVerificacionIdentidad" nillable="true"
+						type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="PLATINUMJustificacion">
+				<sequence>
+					<element name="fechaJustificacion" nillable="true" type="xsd:string" />
+					<element name="textoJustificacion" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+		</schema>
+		<schema targetNamespace="http://platinum.gru01.wse.equifax.cl"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<import namespace="http://output.platinum.gru01.wse.equifax.cl" />
+			<complexType name="PLATINUMOutput">
+				<sequence>
+					<element name="antecedentesLaborales" nillable="true"
+						type="tns3:PLATINUMAntecedentesLaborales" />
+					<element name="antecedentesParticulares" nillable="true"
+						type="tns3:PLATINUMAntecedentesParticulares" />
+					<element name="consultaRut" nillable="true"
+						type="tns3:PLATINUMConsultaRut" />
+					<element name="identificacionEmpresa" nillable="true"
+						type="tns3:PLATINUMIdentificacionEmpresa" />
+					<element name="identificacionPersona" nillable="true"
+						type="tns3:PLATINUMIdentificacionPersona" />
+					<element name="indicadorAcreditacion" nillable="true"
+						type="tns3:PLATINUMIndicadorAcreditacion" />
+					<element name="indicadorRiesgoCrediticio" nillable="true"
+						type="tns3:PLATINUMIndicadorRiesgoCrediticio" />
+					<element name="indicadoresPrevencionFraude" nillable="true"
+						type="tns3:PLATINUMIndicadoresPrevencionFraude" />
+					<element name="justificacion" nillable="true"
+						type="tns3:PLATINUMJustificacion" />
+					<element name="registroMorosidadesYProtestos" nillable="true"
+						type="tns3:PLATINUMRegistroMorosidadesYProtestos" />
+					<element name="resumen" nillable="true" type="tns3:PLATINUMResumen" />
+					<element name="resumenMorosidadesYProtestosImpagos"
+						nillable="true" type="tns3:PLATINUMResumenMorosidadesYProtestosImpagos" />
+				</sequence>
+			</complexType>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="getInformeRequest">
+		<wsdl:part name="RUT" type="xsd:string" />
+		<wsdl:part name="numeroSerie" type="xsd:string" />
+		<wsdl:part name="ICom" type="xsd:string" />
+		<wsdl:part name="usoInternoDicom01" type="xsd:string" />
+		<wsdl:part name="usoInternoDicom02" type="xsd:string" />
+		<wsdl:part name="usoInternoDicom03" type="xsd:string" />
+		<wsdl:part name="usuario" type="xsd:string" />
+		<wsdl:part name="password" type="xsd:string" />
+	</wsdl:message>
+	<wsdl:message name="getInformeResponse">
+		<wsdl:part name="getInformeReturn" type="tns4:PLATINUMOutput" />
+	</wsdl:message>
+	<wsdl:portType name="PlatinumImpl">
+		<wsdl:operation name="getInforme"
+			parameterOrder="RUT numeroSerie ICom usoInternoDicom01 usoInternoDicom02 usoInternoDicom03 usuario password">
+			<wsdl:input message="impl:getInformeRequest" name="getInformeRequest" />
+			<wsdl:output message="impl:getInformeResponse" name="getInformeResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PlatinumServiceSoapBinding" type="impl:PlatinumImpl">
+		<wsdlsoap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getInforme">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getInformeRequest">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="http://app.gru01.wse.equifax.cl" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="getInformeResponse">
+				<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="http://dwww.dicom.cl/gru.wse01.solinforut/services/PlatinumService"
+					use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PlatinumImplService">
+		<wsdl:port binding="impl:PlatinumServiceSoapBinding" name="PlatinumService">
+			<wsdlsoap:address
+				location="http://dwww.dicom.cl/gru.wse01.solinforut/services/PlatinumService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

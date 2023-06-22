@@ -1,0 +1,4 @@
+#Tue Feb 17 20:41:02 ART 2015
+org.eclipse.jdt.apt.processorOptions/com.ibm.ws.ast.jws.annotations.processor.validateWSDL=on
+org.eclipse.jdt.apt.aptEnabled=true
+eclipse.preferences.version=1

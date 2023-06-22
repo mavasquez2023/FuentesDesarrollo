@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1335991823390" virtualHostName="default_host">
+  <webapp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1335902260062" jndiName="jdbc/CreditScoringEmbedded" loginConfigurationName="DefaultPrincipalMapping">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1335902260062"/>
+      </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1338412743515" jndiName="jms/CreditScoringConnFact" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1338412743515"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1338476117015" jndiName="jdbc/CreditScoringEmbedded" loginConfigurationName="DefaultPrincipalMapping">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1338476117015"/>
+    </resRefBindings>
+  <messageDestinationRefBindings xmi:id="MessageDestinationRefBinding_1338412824859" jndiName="jms/CreditScoringCola">
+    <bindingMessageDestinationRef href="WEB-INF/web.xml#MessageDestinationRef_1338412824859"/>
+  </messageDestinationRefBindings>
+</com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding>

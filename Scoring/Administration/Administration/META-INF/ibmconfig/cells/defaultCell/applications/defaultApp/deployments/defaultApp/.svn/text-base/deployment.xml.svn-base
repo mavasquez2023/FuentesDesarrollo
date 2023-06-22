@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1339290388821">
+  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1339290388821" startingWeight="10" binariesURL="$(APP_INSTALL_ROOT)/scoringNode01Cell/Administration.ear" useMetadataFromBinaries="false" enableDistribution="true" createMBeansForResources="true" reloadEnabled="false" appContextIDForSecurity="href:scoringNode01Cell/Administration">
+    <targetMappings xmi:id="DeploymentTargetMapping_1348550580539" enable="true" target="ServerTarget_1348550580539"/>
+    <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebModuleDeployment_1339290388821" startingWeight="10000" uri="AdministrationWeb.war">
+      <targetMappings xmi:id="DeploymentTargetMapping_1348550580540" target="ServerTarget_1348550580539"/>
+    </modules>
+    <classloader xmi:id="Classloader_1339290388821" mode="PARENT_FIRST"/>
+  </deployedObject>
+  <deploymentTargets xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_1348550580539" name="server1" nodeName="scoringNode01"/>
+</appdeployment:Deployment>

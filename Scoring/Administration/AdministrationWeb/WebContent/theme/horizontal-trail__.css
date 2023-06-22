@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Navigation Trail Sample
+  Specification file: horizontal-trail
+ ******************************************/
+
+/*
+ * Each link of the site navigation is organized into rows/colomns using a table.
+ * This style applies to the table.
+ */
+.htrail2_table {
+	border-width: 0px;
+}
+
+/*
+ * This style applies to the body in the table.
+ */
+.htrail2_table_body {
+}
+
+/*
+ * This style applies to the row in the table.
+ */
+.htrail2_table_row {
+}
+
+/*
+ * This style applies to each cell in the table.
+ */
+.htrail2_cell_normal {
+    padding-top :3px;
+	padding-bottom :3px;
+	padding-left:4px;
+	padding-right:4px;
+	border-width:0px;
+}
+
+/*
+ * This style applies to the cell which represents a separator.
+ */
+.htrail2_cell_separator {
+}
+
+/*
+ * This style applies to each item in the cell. (e.g., to the <a> tag)
+ */
+.htrail2_item_normal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #CC6600;
+    font-size: 11px;
+	font-weight: bold;
+	text-transform: lowercase;
+	text-decoration: none
+}
+
+.htrail2_cell_normal a:hover {
+    color:#FF9933;
+    font-size: 11px;
+	font-weight: bold;
+	text-transform: lowercase;
+    text-decoration: underline;
+}
+

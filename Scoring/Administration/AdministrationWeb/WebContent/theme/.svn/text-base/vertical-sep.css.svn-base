@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Vertical Bar Sample
+  Specification file: vertical-sep
+ ******************************************/
+
+/*
+ * Each link of the site navigation is organized into rows/colomns using a table.
+ * This style applies to the table.
+ */
+.vsep_table {
+	border-width: 0px;
+	border-style: none;
+	padding: 1px;
+}
+
+/*
+ * This style applies to the body in the table.
+ */
+.vsep_table_body {
+	border-style: none;
+	padding: 1px;
+}
+
+/*
+ * This style applies to the row in the table.
+ */
+.vsep_table_row {
+	border-style: none;
+	padding: 1px;
+}
+
+/*
+ * This style applies to each cell in the table.
+ */
+.vsep_cell_normal {
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
+/*
+ * This style applies to the cell which represents a group.
+ */
+.vsep_cell_group {
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
+
+/*
+ * This style applies to the cell which represents a separator.
+ */
+.vsep_cell_separator {
+	background-image: url("jb.gif");
+	background-repeat: repeat;
+	height: 3px;
+}
+
+/*
+ * This style applies to each item in the cell. (e.g., to the <a> tag)
+ */
+.vsep_item_normal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #3399CC;
+	font-weight: normal;
+    font-size: 11px;
+	text-transform: lowercase;
+	text-decoration: none;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding : 5px;
+}
+
+/*
+ * This style applies to the item which displays a group name. (e.g., to the <span> tag)
+ */
+.vsep_item_group {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #1C6482;
+	font-weight: bold;
+	text-decoration: none;
+    font-size: 11px;
+    padding-left: 2px;
+	padding-right: 2px;
+	padding : 5px;
+	text-transform: uppercase;
+}
+

@@ -1,0 +1,52 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/WebContent/pages/admin/config/condicionesOtorgamiento
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+CO_Edit.jsp
+file
+
+
+
+
+2015-01-27T19:21:31.609642Z
+bd142665829d7c9f01df8fad74492327
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+CO_List.jsp
+file
+
+
+
+
+2015-01-27T19:21:31.625643Z
+50116a9315b5986ca702eab4d4ad1476
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+

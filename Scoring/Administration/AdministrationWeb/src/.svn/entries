@@ -1,0 +1,109 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/src
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+labels_en.properties
+file
+
+
+
+
+2015-01-27T19:21:31.300624Z
+fdb7d6494440aceb5486c7e2329c722b
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+validationMessages_en.properties
+file
+
+
+
+
+2015-01-27T19:21:31.305624Z
+0da98c17efbee8643a5b16511e4dfa9a
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+labels_es.properties
+file
+
+
+
+
+2015-01-27T19:21:31.313625Z
+60a41996907ad95d0cd37ed5a02b75a2
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+validationMessages_es.properties
+file
+
+
+
+
+2015-01-27T19:21:31.348627Z
+3b6c919b9adf4c7ad9ea31e8c5993ff6
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+pagecode
+dir
+
+view
+dir
+
+sql-map-config.xml
+file
+
+
+
+
+2015-01-27T19:21:31.352627Z
+e875d5e5d310dbe1900133dbbc09f452
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+labels.properties
+file
+
+
+
+
+2015-01-27T19:21:31.356627Z
+fdb7d6494440aceb5486c7e2329c722b
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+com
+dir
+
