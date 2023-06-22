@@ -1,0 +1,12 @@
+# Common AS400 JDBC properties.
+jdbc.DriverName=com.ibm.as400.access.AS400JDBCDriver
+jdbc.userPropertyName=user
+jdbc.passwordPropertyName=password
+
+jdbc.url=jdbc:as400://TESTDESA
+
+# Data source settings.
+ds.properties.user=sistemas
+ds.properties.password=sistemas
+
+ds.properties.trace=false

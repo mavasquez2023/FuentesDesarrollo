@@ -1,0 +1,38 @@
+#
+# Propiedades para configurar el conector WSSIAGF a los web services del sistema SIAGF.
+#
+
+# Entidad administradora que generará los movimientos de cargas.
+entidadAdministradora=10105
+
+# Credencial del usuario que se conectará al sistema SIAGF.
+credential.id=10105
+credential.userName=carga_10105
+credential.password=987342
+
+# Web Services soportados.
+webService.Version=http://64.76.142.242:8081/axis2/services/Version
+webService.Autenticacion=http://64.76.142.242:8081/axis2/services/Autenticacion
+webService.IngresoReconocimiento=http://64.76.142.242:8081/axis2/services/IngresoReconocimiento
+webService.ConsultaCausante=http://64.76.142.242:8081/axis2/services/ConsultaCausante
+webService.ExtincionReconocimiento=http://64.76.142.242:8081/axis2/services/ExtincionReconocimiento
+webService.ActualizarCausante=http://64.76.142.242:8081/axis2/services/ActualizarCausante
+
+# Control de tiempo y reintentos para las llamadas a los web services de SIAGF.
+timeout=15000
+nRetries=2
+
+# Propiedades específicas para acceder a la interfaz DB/2.
+dataSourcePropertiesFile=/app/etc/wssiagf.ds
+requestTableName=CMDTA.CMWSSIAGF
+businessDataTableName=AFDTA.AFP52F1
+sleepTime=2000
+maxParameterLength=128
+maxMessageLength=128
+
+# IDs de los sistemas de origen que requieren apoyo para procesar documentos XML.
+xmlHelpedSystemIDs=700:800
+
+# Activación/desactivación del modo DUMMY para cada una de las operaciones soportadas por SIAGF.
+nOperations=5
+opDummyModes=false:false:false:false:false
