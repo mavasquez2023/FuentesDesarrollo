@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cycservices">
+
+<resultMap id="data_cotizaciones" class="cl.araucana.cotcarserv.dao.VO.CotizacionesVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="RUTEMPRESA"   property="rutEmpresa" />
+	<result column="DVEMPRESA"   property="dvEmpresa" />
+	<result column="OFICINA"   property="oficina" />
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="RUTTRABAJADOR"   property="rutTrabajador" />
+	<result column="DVTRABAJADOR"   property="dvTrabajador" />
+	<result column="NOMBRE_TRABAJADOR"   property="nombre" />
+	<result column="APELLIDOP_TRABAJADOR"   property="apellidoPaterno" />
+	<result column="APELLIDOM_TRABAJADOR"   property="apellidoMaterno" />
+	<result column="FECHA_AFILIACION"   property="fechaAfiliacion" />
+</resultMap>
+
+<resultMap id="data_cargas" class="cl.araucana.cotcarserv.dao.VO.CargasVO">
+	<result column="PERIODO"   property="periodo" />
+	<result column="RUTEMPRESA"   property="rutEmpresa" />
+	<result column="DVEMPRESA"   property="dvEmpresa" />
+	<result column="RUTAFILIADO"   property="rutAfiliado" />
+	<result column="DVAFILIADO"   property="dvAfiliado" />
+	<result column="NOMBRE_AFILIADO"   property="nombreAfiliado" />
+	<result column="APELLIDOP_AFILIADO"   property="apellidoPaternoAfiliado" />
+	<result column="APELLIDOM_AFILIADO"   property="apellidoMaternoAfiliado" />
+	<result column="NUMERO_CARGA"   property="numeroCarga" />
+	<result column="RUTCARGA"   property="rutCarga" />
+	<result column="DVCARGA"   property="dvCarga" />
+	<result column="NOMBRE_CARGA"   property="nombreCarga" />
+	<result column="M_AUTORIZADO_CCAF"   property="autorizado" />
+	<result column="M_INFORMADO_EMPRESA"   property="informado" />
+	<result column="M_LIQUIDADO_CCAF"   property="liquidado" />
+	<result column="PAGO_PEN_TRAB"   property="pendiente" />
+	<result column="MAYO_PAGO_TRAB"   property="mayorpago" />
+	<result column="DIASTRAB"   property="diasTrabajados" />
+	<result column="CON_LICENCIA"   property="licencia" />
+	<result column="TIPOPAGO"   property="tipoPago" />
+
+</resultMap>
+
+<resultMap id="datosTrabajador" class="cl.araucana.cotcarserv.dao.VO.CotizacionesVO">
+	<result column="RUT_TRABAJADOR"   property="rutTrabajador" />
+	<result column="DV_TRABAJADOR"   property="dvTrabajador" />
+	<result column="NOMBRE"   property="nombre" />
+	<result column="APELLIDO_PATERNO"   property="apellidoPaterno" />
+	<result column="APELLIDO_MATERNO"   property="apellidoMaterno" />
+	<result column="FECHA_AFILIACION"   property="fechaAfiliacion" />
+	<result column="FECHA_DESVINCULACION"   property="fechaDesvinculacion" />
+	<result column="ESTADO"   property="estado" />
+</resultMap>
+
+<resultMap id="informeSAP" class="cl.araucana.cotcarserv.dao.VO.InformeSAPVO">
+	<result column="RUT_EMPRESA"   property="rutEmpresa" />
+	<result column="OFICINA"   property="oficina" />
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="ANEXO"   property="anexo" />
+	<result column="RUT_TRABAJADOR"   property="rutTrabajador" />
+	<result column="FECHA_DESVINCULACION"   property="fechaDesvinculacion" />
+	<result column="MOTIVO"   property="motivo" />
+	<result column="CAJA"   property="caja" />
+</resultMap>
+
+<resultMap id="datosCorreo" class="cl.araucana.cotcarserv.dao.VO.CorreoVO">
+	<result column="ID"   property="id" />
+	<result column="CORREO"   property="correo" />
+</resultMap>
+
+<resultMap id="datosCorreoEmpresa" class="cl.araucana.cotcarserv.dao.VO.CorreoVO">
+	<result column="RUT_EMPRESA"   property="rutEmpresa" />
+	<result column="DV_EMPRESA"   property="dvEmpresa" />
+	<result column="CORREO"   property="correo" />
+</resultMap>
+	
+<!-- select id="consultaCotizacionesTrabajador" resultMap="data_cotizaciones" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+	select  A.AF4YA as PERIODO,
+        A.CODIOFIC as OFICINA, 
+        A.CM13A as SUCURSAL,
+        A.RUTEMPRE as RUTEMPRESA, C.CMOA as DVEMPRESA,
+		A.SE5FAJC as RUTTRABAJADOR, B.SE5FBH3 as DVTRABAJADOR,
+		trim(B.SE5FBIO) as NOMBRE_TRABAJADOR,
+        trim(B.SE5FBIM) as APELLIDOP_TRABAJADOR, 
+        trim(B.SE5FBIK) as APELLIDOM_TRABAJADOR, 
+		D.SE5FBU9 as FECHA_AFILIACION
+FROM AFDTA.AFP86F1 A
+join AFDTA.AF02F1 B
+		on A.SE5FAJC= B.SE5FAJC
+join CMDTA.CM02F1 C
+		on A.RUTEMPRE= C.CMNA
+join AFDTA.AF03F1 D
+		on A.SE5FAJC= D.SE5FAJC
+		and A.RUTEMPRE= D.CMNA
+where A.AF4YA  between #periodo# and #periodo2#
+and A.RUTEMPRE= #rutEmpresa#
+and NOT exists( select * from RPDTA.RP06F1 R 
+            where A.AF4YA = R.AF4YA 
+            and A.RUTEMPRE = R.CMNA 
+            and A.se5fajc = R.RPR6A)
+order by A.AF4YA, A.RUTEMPRE, A.SE5FAJC
+WITH UR
+</select-->
+
+<select id="consultaNoCotizadosTrabajador" resultMap="data_cotizaciones" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+	SELECT  A1.PERIODO,
+        A1.OFICINA,
+        A1.SUCURSAL,
+        A1.RUTEMPRESA,
+        C1.CMOA as DVEMPRESA,     
+        A1.RUTTRABAJADOR,        
+        B1.SE5FBH3 as DVTRABAJADOR,
+        trim(B1.SE5FBIO) as NOMBRE_TRABAJADOR,
+        trim(B1.SE5FBIM) as APELLIDOP_TRABAJADOR,
+        trim(B1.SE5FBIK) as APELLIDOM_TRABAJADOR,
+       ( CASE WHEN A1.ESTADOTRAB='A' THEN  A1.FECHAINIEMP
+              ELSE       
+                   (      
+                     SELECT MAX(AF8AA)
+                     FROM AFDTA.AF08L1 Z
+                     WHERE Z.SE5FAJC=A1.RUTTRABAJADOR
+                      AND  Z.CMNA =A1.RUTEMPRESA
+                   )       
+               END                      
+         )AS FECHA_AFILIACION      
+FROM
+       (
+              SELECT  A.AF4YA AS PERIODO,
+                        A.CODIOFIC AS OFICINA,
+                        A.CM13A AS SUCURSAL,
+                        A.RUTEMPRE AS RUTEMPRESA,
+                        A.SE5FAJC AS RUTTRABAJADOR,       
+                        TRIM(B.SE5FAR9) AS ESTADOTRAB,
+                        B.SE5FBU9 AS FECHAINIEMP                        
+                FROM AFDTA.AFP86F1 A 
+                    ,AFDTA.AF03F1 B                                          
+                WHERE A.RUTEMPRE = #rutEmpresa#                                 
+                  AND A.AF4YA=#periodo#
+                  AND B.CMNA = A.RUTEMPRE
+                  AND B.SE5FAJC = A.SE5FAJC
+                  AND (  
+                        B.SE5FAR9 = 'A'  
+                        or (B.SE5FAR9 ='C' and  B.SE5FBU9 > #fecha# )
+                      )
+                  AND NOT exists(
+                                  SELECT 1
+                                  FROM RPDTA.RP06F1 R
+                                  WHERE  R.AF4YA  = A.AF4YA
+                                     AND R.CMNA   = A.RUTEMPRE
+                                    AND R.RPR6A  = A.SE5FAJC
+                                     AND EXISTS (
+                                                    SELECT 1
+                                                    FROM RPDTA.RP05F1 p5
+                                                    WHERE  p5.AF4YA = R.AF4YA
+                                                       AND p5.CMNA  = R.CMNA
+                                                       AND p5.RPPCA = 'R'                          
+                                                       AND p5.RPPBA = R.RPPBA              
+                                                )
+                               ) 
+        ) AS A1
+        , AFDTA.AF02F1 B1      
+        , CMDTA.CM02F1 C1
+ WHERE  A1.RUTTRABAJADOR= B1.SE5FAJC
+    AND A1.RUTEMPRESA= C1.CMNA
+ORDER BY  A1.RUTEMPRESA,A1.RUTTRABAJADOR
+WITH UR
+
+</select>
+
+<select id="consultaPeriodoCargas" resultClass="java.util.List" parameterClass="java.lang.Integer">
+
+	select AF4YA  FROM afdta.afp89f1 A  WHERE AF4YA = #periodo# FETCH FIRST 10 ROW ONLY
+
+</select>
+
+<select id="consultaNombreEmpresa" resultClass="java.util.HashMap" parameterClass="java.lang.Integer">
+
+	select CMPA as RAZON_SOCIAL, 
+case when CMQA='A' then 'Activa'
+     when CMQA='E' then 'Cesada'
+     when CMQA='D' then 'Adherida'
+     else '' end as ESTADO
+from cmdta.cm02f1
+where cmna= #rutEmpresa#
+
+</select>
+
+<!-- select id="consultaCargasAutorizadasTrabajador" resultMap="data_cargas" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+	SELECT X.AF4YA as PERIODO, 
+		X.CMNA as RUTEMPRESA, 
+        C.CMOA as DVEMPRESA, 
+        trim(O.CMCA) as OFICINA, 
+        trim(S.CM14A) as SUCURSAL, 
+        X.SE5FAJC as RUTAFILIADO,                  
+        B.SE5FBH3 as DVAFILIADO, 
+        trim(B.SE5FBIO) as NOMBRE_AFILIADO, 
+        trim(B.SE5FBIM) as APELLIDOP_AFILIADO, 
+        trim(B.SE5FBIK) as APELLIDOM_AFILIADO, 
+        X.AF8DA as NUMERO_CARGA,
+        X.AF8HA as RUTCARGA,
+        D.AF8IA as DVCARGA,
+        trim(D.AF8GA) as NOMBRE_CARGA, 
+        trim(D.AF8EA) as APELLIDOP_CARGA, 
+        trim(D.AF8FA) as APELLIDOM_CARGA, 
+        X.AUTORIZADO as AUTORIZADO, 
+        X.COMPENSADO as COMPENSADO, 
+        X.LIQUIDADO as LIQUIDADO        
+FROM (                                                              
+    SELECT A.AF4YA, A.CMNA,  A.CMBA, A.CM13A, A.SE5FAJC, 
+        a.AF8DA, A.AF8HA , sum(MTOAUT) AUTORIZADO , 
+        sum(MTOINF) COMPENSADO, SUM(AFMTOLIQ) LIQUIDADO 
+    FROM afdta.afp89f1 A 
+    WHERE AF4YA = #periodo#
+        and TIPLIQ in ('M', 'R')
+        and A.CMNA= #rutEmpresa#
+    GROUP BY A.AF4YA, CMNA, CMBA, CM13A, A.SE5FAJC, AF8DA, AF8HA      
+    HAVING sum(mtoaut) &lt;&gt; sum(mtoinf)
+    ORDER BY CMBA, CMNA, CM13A, A.SE5FAJC, AF8DA, AF8HA 
+   ) AS X 
+LEFT JOIN AFDTA.AF02F1 B 
+    ON X.SE5FAJC = B.SE5FAJC 
+LEFT JOIN CMDTA.CM02F1 C 
+    ON X.CMNA = C.CMNA
+LEFT JOIN CMDTA.CM01F1 O 
+    ON X.CMBA = O.CMBA
+LEFT JOIN CMDTA.CM03F1 S
+    ON  X.CMNA = S.CMNA 
+    AND X.CMBA = S.CMBA
+    AND X.CM13A = S.CM13A
+LEFT JOIN AFDTA.AF05F1 D 
+    ON X.SE5FAJC = D.SE5FAJC 
+    AND X.AF8DA = D.AF8DA                                                       
+ORDER BY X.CMBA, X.CMNA, X.CM13A, X.SE5FAJC, X.AF8DA, X.AF8HA
+WITH UR
+</select-->
+
+<select id="consultaCargasNoAutorizadasTrabajador" resultMap="data_cargas" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+	
+select
+    (CASE WHEN cargas.tipliq = 'R' THEN 'RETROACTIVO' ELSE 'MENSUAL' END) AS TIPOPAGO,
+    cargas.AF4YA as PERIODO,
+    cargas.CMNA as RUTEMPRESA,
+    e.CMOA as DVEMPRESA,
+    cargas.SE5FAJC as RUTAFILIADO,
+    af2.SE5FBH3 as DVAFILIADO,
+    
+    trim(af2.SE5FBIO) as NOMBRE_AFILIADO,
+    trim(af2.SE5FBIM) as APELLIDOP_AFILIADO,
+    trim(af2.SE5FBIK) as APELLIDOM_AFILIADO,
+    <!--cargas -->
+    cargas.AF8DA as NUMERO_CARGA,   
+    cargas.AF8HA AS RUTCARGA,
+    '' as DVCARGA,
+    (case WHEN cargas.AF8DA = 0 then 'SIN Carga' else
+          (select (trim(AF5.AF8GA) || ' ' || trim(AF5.AF8EA) || ' ' || trim(AF5.AF8FA) )
+           from AFDTA.AF05F1 AF5
+                where AF5.SE5FAJC = cargas.SE5FAJC
+                 and  AF5.AF8DA   = cargas.AF8DA
+           )
+           END                  
+         ) as NOMBRE_CARGA,
+ 
+     CARGAS.M_AUTORIZADO_CCAF,
+     CARGAS.M_INFORMADO_EMPRESA,
+     CARGAS.M_LIQUIDADO_CCAF,
+     CARGAS.PAGO_PEN_TRAB,
+     CARGAS.MAYO_PAGO_TRAB,
+     COALESCE(CARGAS.DIASTRAB, 0) as DIASTRAB,
+     CARGAS.CON_LICENCIA
+    
+from (
+(select a.TIPLIQ, a.AF4YA, a.CMNA, a.SE5FAJC, a.AF8DA, a.AF8HA, 
+       a.MTOAUT as M_Autorizado_CCAF, a.MTOINF as M_Informado_Empresa, a.AFMTOLIQ as M_liquidado_CCAF,
+      
+       (case WHEN ABS(a.MTOAUT) &gt; ABS(a.AFMTOLIQ)  then (a.MTOAUT) - (a.AFMTOLIQ) else 0 end ) as  Pago_Pen_Trab,
+       (case WHEN ABS(a.MTOINF) &gt; ABS(a.MTOAUT)    then ABS(a.MTOINF) - ABS(a.MTOAUT)   else 0 end ) as Mayo_pago_Trab, 
+ 
+       0 as DiasTrab, 0 as Con_Licencia
+            
+ FROM afdta.afp89f1 A
+   WHERE a.AF4YA between #periodo# and #periodo2#
+        and a.TIPLIQ ='R'
+        and a.CMNA =  #rutEmpresa#
+        and a.MTOAUT &lt;&gt; 0
+        and ((a.AFMTOLIQ + a.MTOREI) &lt;&gt; ABS(a.MTOINF) or (a.MTOINF = 0 and a.AFMTOLIQ = 0))       
+
+)  
+union
+(
+select
+       a.TIPLIQ, a.AF4YA, a.CMNA, a.SE5FAJC, a.AF8DA, a.AF8HA, 
+ 
+       a.MTOAUT as M_Autorizado_CCAF, a.MTOINF as M_Informado_Empresa, a.AFMTOLIQ as M_liquidado_CCAF,
+          
+       (case WHEN ABS(a.MTOAUT) &gt; ABS(a.AFMTOLIQ)  then (a.MTOAUT) - (a.AFMTOLIQ) else 0 end ) as  Pago_Pen_Trab,
+       (case WHEN ABS(a.MTOINF) &gt; ABS(a.MTOAUT)    then ABS(a.MTOINF) - ABS(a.MTOAUT)   else 0 end ) as Mayo_pago_Trab, 
+   
+       <!--dias trabajados -->
+       (select max(p6.RPRLA)
+        from  RPDTA.RP06F1 p6, RPDTA.RP05F1 p5
+        where
+              p6.AF4YA = a.AF4YA
+          and p6.CMNA = a.CMNA
+          and p6.RPR6A = a.SE5FAJC
+          and p5.AF4YA = p6.AF4YA
+          AND p5.CMNA  = p6.CMNA
+          AND p5.RPPCA = 'R'                          
+          AND p5.RPPBA = p6.RPPBA
+          ) as DiasTrab,
+ 
+       <!--movi licencias medicas personal-->
+       ( COALESCE ((select min(p6.RPROA)
+       from  RPDTA.RP06F1 p6, RPDTA.RP05F1 p5
+        where
+           p6.AF4YA = a.AF4YA
+          and p6.CMNA = a.CMNA
+          and p6.RPR6A = a.SE5FAJC
+          and p6.RPROA in ('3', '6')
+          and p5.AF4YA = p6.AF4YA
+          AND p5.CMNA  = p6.CMNA
+          AND p5.RPPCA = 'R'                          
+          AND p5.RPPBA = p6.RPPBA), 0 )
+          ) as Con_Licencia
+ 
+FROM afdta.afp89f1 A
+   WHERE a.AF4YA between #periodo# and #periodo2#
+   and a.TIPLIQ = ('M')
+   and a.CMNA =  #rutEmpresa#
+   and (a.MTOAUT &gt; 0 or a.MTOINF &gt; 0)
+   and (a.MTOAUT &lt;&gt; a.AFMTOLIQ or a.MTOINF &lt;&gt; AFMTOLIQ)
+
+)) as cargas,  CMDTA.CM02F1 E, AFDTA.AF02F1 AF2
+     where E.CMNA = cargas.CMNA
+     and  AF2.SE5FAJC = cargas.SE5FAJC
+     WITH UR
+</select>
+
+ <select id="consultaTrabajador" resultMap="datosTrabajador" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+ 
+ 	select
+		A.SE5FAJC  as RUT_TRABAJADOR,
+		A.SE5FBH3 as DV_TRABAJADOR,
+		TRIM(B.SE5FBIO) as NOMBRE, 
+		TRIm(B.SE5FBIM) as APELLIDO_PATERNO, 
+		TRIM(B.SE5FBIK) as APELLIDO_MATERNO, 
+		A.SE5FBU9 as FECHA_AFILIACION,
+		'' as FECHA_DESVINCULACION,
+		A.SE5FAR9 as ESTADO
+	from afdta.af03f1 A 
+	join afdta.af02f1 B
+	on A.SE5FAJC= B.SE5FAJC
+	where A.cmna= #rutEmpresa#
+		and A.SE5FAJC= #rutTrabajador#
+ 	WITH UR
+ </select>
+ 
+ <select id="consultaListaTrabajadores" resultMap="data_cotizaciones" parameterClass="java.util.Map">
+ 
+ 	select
+ 		A.CMNA as RUTEMPRESA,
+ 		C.CMOA as DVEMPRESA,
+		A.SE5FAJC as RUTTRABAJADOR,
+		A.SE5FBH3 as DVTRABAJADOR,
+		TRIM(B.SE5FBIO) as NOMBRE_TRABAJADOR, 
+		TRIM(B.SE5FBIM) as APELLIDOP_TRABAJADOR, 
+		TRIM(B.SE5FBIK) as APELLIDOM_TRABAJADOR, 
+		A.SE5FBU9 as FECHA_AFILIACION,
+		0 as PERIODO,
+		'' as OFICINA,
+		'' as SUCURSAL
+	from afdta.af03f1 A 
+	join afdta.af02f1 B
+	on A.SE5FAJC= B.SE5FAJC
+	join cmdta.cm02f1 C
+	on A.CMNA= C.CMNA
+	where A.SE5FAJC in
+		<iterate property="rutTrabajador" open="(" close=")" conjunction=",  ">
+            #rutTrabajador[]#
+        </iterate>
+    <isNotNull property="rutEmpresa">
+ 		and A.cmna= #rutEmpresa#
+ 	</isNotNull>
+ 	WITH UR
+ 	
+ </select>
+ 
+ <select id="consultaCorreos" resultMap="datosCorreo" >
+ 
+ 	select 
+		id as ID, correo as CORREO
+	from afdta.bitacorr 
+	where RUTEMP= #rutEmpresa#
+ 
+ </select>
+ 
+  <select id="consultaCorreosCotizaciones" resultMap="datosCorreoEmpresa" parameterClass="java.util.HashMap">
+ 
+ 	select distinct B.CMNA RUT_EMPRESA, B.CMOA DV_EMPRESA, CASE WHEN C.CORREO is not null then C.CORREO else B.RPUXA end CORREO
+	from rpdta.rp07f1 B
+		left join AFDTA.BITACORR C
+			on B.CMNA= C.RUTEMP
+	where B.AF4YA  = #periodo#
+    and B.AF4YA||B.CMNA in (select AF4YA||RUTEMPRE from AFDTA.AFP86F1 where AF4YA= #periodo#)
+	WITH UR
+ </select>
+ 
+  <select id="consultaCorreosCargas" resultMap="datosCorreoEmpresa" parameterClass="java.util.HashMap">
+ 
+ 	select distinct B.CMNA RUT_EMPRESA, B.CMOA DV_EMPRESA, CASE WHEN C.CORREO is not null then C.CORREO else B.RPUXA end CORREO
+	from rpdta.rp07f1 B
+		left join AFDTA.BITACORR C
+			on B.CMNA= C.RUTEMP
+	where B.AF4YA  = #periodo#
+    and B.AF4YA||B.CMNA in (select AF4YA||CMNA from AFDTA.AFP89F1 where AF4YA= #periodo# and TIPLIQ in ('M', 'R'))
+	WITH UR
+ </select>
+ 
+ <delete id="deleteCorreoByID" >
+ 
+ 	delete from afdta.bitacorr 
+	where ID= #id#
+ 
+ </delete>
+ 
+ <delete id="deleteCorreoByRUT" >
+ 
+ 	delete from afdta.bitacorr 
+	where RUTEMP= #rut#
+ 
+ </delete>
+ 
+ <delete id="deleteCorreoVacio" >
+ 
+ 	delete from afdta.bitacorr 
+	where RUTEMP= #rut#
+	and CORREO= ''
+ 
+ </delete>
+ 
+  <insert id="insertCorreo" parameterClass="cl.araucana.cotcarserv.dao.VO.CorreoVO">
+		insert into AFDTA.BITACORR (RUTEMP, DVRUTEMP, CORREO, USUARIO) 
+		VALUES (#rutEmpresa#, #dvEmpresa#, #correo#, #usuario#)
+	</insert>
+ 
+ <select id="consultaCertificadoTrabajador" resultMap="datosTrabajador" parameterClass="cl.araucana.cotcarserv.dao.VO.ParamVO">
+ 
+ 	select
+		A.SE5FAJC  as RUT_TRABAJADOR,
+		A.SE5FBH3 as DV_TRABAJADOR,
+		TRIM(B.SE5FBIO) as NOMBRE, 
+		TRIM(B.SE5FBIM) as APELLIDO_PATERNO, 
+		TRIM(B.SE5FBIK) as APELLIDO_MATERNO, 
+		C.FECHAAFIL as FECHA_AFILIACION,
+        C.FECHADESV as FECHA_DESVINCULACION,
+        'C' as ESTADO
+	from afdta.af03f1 A 
+	join afdta.af02f1 B
+	on A.SE5FAJC= B.SE5FAJC
+    join AFDTA.BITACESA C
+    on A.SE5FAJC= C.RUTTRA
+    and A.CMNA= c.RUTEMP
+	where A.cmna= #rutEmpresa#
+		and A.SE5FAJC= #rutTrabajador#
+        and A.SE5FAR9='C'
+        and C.ORIGEN='E'
+        and C.ACCION='CESACION'
+    order by fecha desc, hora desc
+ 	fetch first 1 rows only
+ 	WITH UR
+ </select>
+ 
+ <select id="archivoSAP" resultMap="informeSAP">
+ 	select distinct A.RUTEMP || '-' || A.DVRUTEMP RUT_EMPRESA,
+		B.CMBA OFICINA,
+		B.CM13A SUCURSAL,
+		B.CM1WA ANEXO,
+		A.RUTTRA || '-' || A.DVRUTTRA RUT_TRABAJADOR,
+		YEAR(A.FECHADESV) || RIGHT('0'||MONTH(A.FECHADESV), 2)|| RIGHT('0'||DAY(A.FECHADESV), 2) FECHA_DESVINCULACION,
+		'07' MOTIVO,
+		'' CAJA
+	from AFDTA.BITACESA A 
+	join AFDTA.AF03F1 B
+    	on A.RUTEMP= B.CMNA
+    	and A.RUTTRA= B.SE5FAJC
+    where A.FECHA= current_date
+    WITH UR
+ </select>
+ 
+ <update id="updateEstadoTrabajador" parameterClass="java.util.HashMap">
+ 		update AFDTA.AF03F1
+ 		set SE5FAR9= 'C',
+ 		SE5FBU9= #fechaDesvinculacion#,
+ 		OBF005= YEAR(current_date)||'-'||RIGHT('0'||MONTH(current_date), 2)||'-'||RIGHT('0'||DAY(current_date), 2),
+ 		OBF006= current_time,
+ 		SAJKM92= 'USRWASSEBU'
+ 		where CMNA= #rutEmpresa#
+ 		and SE5FAJC= #rutTrabajador#
+ </update>
+ 
+  <update id="updateEstadoCargas" parameterClass="java.util.HashMap">
+ 		update AFDTA.AF05F1
+ 		set AF8LA= 'I',
+ 		AF8QA= #fechaDesvinculacion#,
+ 		OBF005= current_date,
+ 		OBF006= current_time,
+ 		SAJKM92= 'USRWASSEBU'
+ 		where SE5FAJC= #rutTrabajador#
+ 		and AF8LA= 'A'
+ </update>
+ 
+ <update id="updateEstadoSIAGF" parameterClass="java.util.HashMap">
+ 		update AFDTA.BITACESA
+ 		set ESTADO= #estado#
+ 		where RUTEMP= #rutEmpresa#
+ 		and RUTTRA= #rutTrabajador#
+ 		and ACCION='CESACION'
+ </update>
+ 
+ 
+<!--   
+  <update id="updateListaTrabajadores" parameterClass="cl.araucana.cotcarserv.dao.VO.ListaVO">
+ 		update AFDTA.AF03F1
+ 		set SE5FAR9= 'C',
+ 		SE5FBU9= #fechaDesvinculacion#
+ 		where CMNA= #rutEmpresa#
+ 		and SE5FAJC in
+ 		<iterate property="rutTrabajador" open="(" close=")" conjunction=",  ">
+            #rutTrabajador[]#
+        </iterate>
+ </update>
+ -->
+ <insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into AFDTA.BITACESA (USUARIO, RUTTRA, DVRUTTRA, RUTEMP, DVRUTEMP, ACCION, ORIGEN, FECHAAFIL, FECHADESV) 
+		VALUES (#usuario#, #rutTrabajador#, #dvTrabajador#, #rutEmpresa#, #dvEmpresa#, #accion#, #origen#, #fechaAfiliacion#, #fechaDesvinculacion#)
+</insert>
+	
+</sqlMap>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="recaudacion">
+
+<resultMap id="oficinasEmpresa" class="cl.araucana.infdeupre.dao.VO.ParamVO">
+	<result column="RUTEMPRESA"   property="rutEmpresa" />
+	<result column="DVEMPRESA"   property="dvEmpresa" />
+	<result column="RAZON_SOCIAL"   property="razonSocial" />
+	<result column="OFICINA"   property="oficina" />
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="NOMBRE_OFICINA"   property="nombreOficina" />
+	<result column="NOMBRE_SUCURSAL"   property="nombreSucursal" />
+</resultMap>
+
+<resultMap id="deudaPrevisional" class="cl.araucana.infdeupre.dao.VO.DeudaVO">
+	<result column="MONTO"   property="monto" />
+	<result column="CODIGO"   property="codigo" />
+	<result column="CONCEPTO"   property="concepto" />
+</resultMap>
+
+<select id="consultaOficinasEmpresa" resultMap="oficinasEmpresa">
+Select 
+        A.CMNA as RUTEMPRESA,
+        C.CMOA as DVEMPRESA,
+        COALESCE(C.CMPA, D.CMPA) as RAZON_SOCIAL,
+        A.CMBA as OFICINA,
+        O.CMCA as NOMBRE_OFICINA,
+        A.CM13A as SUCURSAL,
+        S.CM14A as NOMBRE_SUCURSAL        
+ 	from CCDTA.CC01F1 A 
+ 	left join CMDTA.CM02F1 C
+ 		on A.CMNA= C.CMNA
+	left join BPAFDTA.CM02F1 D
+		on A.CMNA= D.CMNA
+    left join CMDTA.CM01F1 O
+    on A.CMBA= O.CMBA
+    left join CMDTA.CM03F1 S
+    on A.CMNA= S.CMNA
+    and A.CMBA= S.CMBA
+    and A.CM13A= S.CM13A
+	where A.CMNA = #rutEmpresa#
+	group by A.CMNA, C.CMOA, C.CMPA, D.CMPA, A.CMBA, A.CM13A, O.CMCA, S.CM14A  
+</select>
+
+<select id="consultaSucursalEmpresa" resultMap="oficinasEmpresa">
+Select 
+        A.CMNA as RUTEMPRESA,
+        C.CMOA as DVEMPRESA,
+        COALESCE(C.CMPA, D.CMPA) as RAZON_SOCIAL,
+        A.CMBA as OFICINA,
+        O.CMCA as NOMBRE_OFICINA,
+        A.CM13A as SUCURSAL,
+        S.CM14A as NOMBRE_SUCURSAL        
+ 	from CCDTA.CC01F1 A 
+ 	left join CMDTA.CM02F1 C
+ 		on A.CMNA= C.CMNA
+	left join BPAFDTA.CM02F1 D
+		on A.CMNA= D.CMNA
+    left join CMDTA.CM01F1 O
+    on A.CMBA= O.CMBA
+    left join CMDTA.CM03F1 S
+    on A.CMNA= S.CMNA
+    and A.CMBA= S.CMBA
+    and A.CM13A= S.CM13A
+	where A.CMNA = #rutEmpresa#
+		and A.CMBA	= #oficina#
+		and A.CM13A	= #sucursal#
+	group by A.CMNA, C.CMOA, C.CMPA, D.CMPA, A.CMBA, A.CM13A, O.CMCA, S.CM14A  
+</select>
+	
+<select id="consultaDeudaEmpresa" resultMap="deudaPrevisional" parameterClass="cl.araucana.infdeupre.dao.VO.ParamVO">
+	Select sum(CCPA - CCQA) as MONTO,             
+        A.TE1YA as CODIGO,              
+       	CC7CA as CONCEPTO        
+ 	from CCDTA.CC01F1 A join CCDTA.CC15F1 B
+ 		on A.TE1YA= B.TE1YA
+	where A.CMNA	= #rutEmpresa#
+		and A.CMBA	= #oficina#
+		and A.CM13A	= #sucursal#
+	group by A.TE1YA, B.CC7CA
+	having sum(CCPA - CCQA)&gt;0
+
+</select>
+
+<!-- select id="consultaDeudaEmpresa" resultMap="deudaPrevisional" parameterClass="cl.araucana.infdeupre.dao.VO.ParamVO">
+	select CT1AA as PERIODO, 
+		CT23A as COTIZACION, 
+		CT25A as ASFAM, 
+		CT2ZA as SFI, 
+		CT30A as SFE 
+	from CTDTA.CT08F1 
+	where   CMNA = #rutEmpresa#
+		and CMBA = #oficina#
+		and CM13A= #sucursal#
+		and CT1AA> #periodo#
+	order by 1 desc;
+
+</select -->
+ 
+ <insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into RCDTA.BITADEUDA (ID, ACCION, RUTEMP, OFICINA, SUCURSAL) 
+		VALUES (#id#, #accion#, #rutEmpresa#,#oficina#,#sucursal#)
+</insert>
+	
+<select id="getCorrelativo" resultClass="java.lang.Integer">
+		select max(id) from RCDTA.CORRELATIVO
+</select>
+
+<insert id="setCorrelativo">
+		insert into rcdta.correlativo (id) values(default)
+</insert>
+</sqlMap>

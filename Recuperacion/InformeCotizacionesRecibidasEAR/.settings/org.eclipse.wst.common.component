@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="InformeCotizacionesRecibidasEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="InformeCotizacionesRecibidas.war" deploy-path="/" handle="module:/resource/InformeCotizacionesRecibidas/InformeCotizacionesRecibidas">
+            <dependent-object>Module_1542289272126</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
