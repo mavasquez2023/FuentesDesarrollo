@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<properties resource="cl/laaraucana/mediopagosilws/core/database/config/schemaConfig.properties" />
+	
+	
+	<!-- <transactionManager type="JDBC">
+		<property name="commitRequired" value="false" />
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.5;prompt=false" />
+			<property name="JDBC.Username" value="lvalenzuem" />
+			<property name="JDBC.Password" value="luis050505" />
+		</dataSource>
+	</transactionManager> -->
+	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:comp/env/recepcionSILService" />
+		</dataSource>
+	</transactionManager>
+	
+	
+	
+	<sqlMap resource="cl/laaraucana/mediopagosilws/core/database/map/CALLPGM.xml" />
+
+</sqlMapConfig>

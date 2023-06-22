@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="rutHijo">
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="nombreHijo">
+		<valida id="notNull" />
+		<valida id="largo" maximo="30" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="apellidoPaternoHijo">
+		<valida id="notNull" />
+		<valida id="largo" maximo="30" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="apellidoMaternoHijo">
+		<valida id="notNull" />
+		<valida id="largo" maximo="30" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="sexoHijo">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="F;;M"/>
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="fecNacMenorUnAnio">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="hijoNacidoMuerto">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="S;N;null"/>
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="folioDefuncion">
+		<valida id="largo" maximo="15" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno=" " largo="15" />
+	</atributo>
+</clase>

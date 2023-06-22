@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="svInformeFinanciero">
+	
+	<select id="selectIdInformeFinanciero" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDINFOFI_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdIngresos" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDINGRES_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdEgresos" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDEGRESO_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdPagoDelMes" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDPAGMES_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdPagosRetroactivos" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDPAGRET_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdDevoluciones" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDDEVOLU_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="selectIdDevolucionDeSaldos" resultClass="string" >
+		SELECT nextval FOR SVDTA.IDDEVSAL_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<insert id="insertInformeFinanciero" parameterClass="cl.araucana.sivegam.vo.InfoInformeFinancieroVO">
+		INSERT INTO SVDTA.SVINFFIN
+		(
+			IDINFOFIN, 	 
+			PERIODOINF,   
+			CODENTIDAD,   
+			NOMENTIDAD,    
+			FECDEPOSITO,   
+			TOTALSVTDEF,   
+			TOTALSVTDEFFNL
+		)
+		VALUES(
+			#idInformeFinanciero#,
+			#periodo#,
+			#codigoEntidad#,
+			#nombreEntidad#,
+			#fecDepositoExcedenteDate#,
+			#totalSuperAvitDeficit#,
+			#totalSuperAvitDeficitFinal#
+		)
+	</insert>
+	
+		<insert id="insertIngresos" parameterClass="cl.araucana.sivegam.vo.IngresosVO">
+		INSERT INTO SVDTA.SVINGRES
+		(
+			IDINGRESO,
+			IDINFOFIN,
+			PROVISION,
+			REINTEGRO,
+			TOTALINGR
+		)
+		
+		VALUES(
+			#idIngresos#,
+			#idInformeFinanciero#,
+			#provision#,
+			#reintegro#,
+			#totalIngresos#
+		)
+	</insert>
+	
+	<insert id="insertEgresos" parameterClass="cl.araucana.sivegam.vo.EgresosVO">
+		INSERT INTO SVDTA.SVEGRESO
+		(
+			IDEGRESO,
+			IDINFOFIN,
+			DOCREVALD,
+			COMADMINS,
+			TOTEGRESO
+		)
+		
+		VALUES(
+			#idEgresos#,
+			#idInformeFinanciero#,
+			#docRevalidados#,
+			#comisionAdministracion#,
+			#totalEgresos#
+		)
+	</insert>
+	
+	<insert id="insertPagoDelMes" parameterClass="cl.araucana.sivegam.vo.PagoDelMesVO">
+		INSERT INTO SVDTA.SVPAGMES
+		(
+			IDPAGOMES,
+			IDEGRESOS,
+			ASFAMTRACT,
+			ASFAMTRPEN,
+			ASFAMTRCES,
+			ASFAMTRINT,
+			TOTPAGOMES		
+		)
+		
+		VALUES(
+			#idPagoMes#,
+			#idEgresos#,
+			#asigFamTrabActivos#,
+			#asigFamPensionados#,
+			#asigFamTrabCesantes#,
+			#asigFamInstituciones#,
+			#totalPagoDelMes#
+		)
+	</insert>
+	
+	<insert id="insertPagoRetroactivo" parameterClass="cl.araucana.sivegam.vo.PagosRetroactivosVO">
+		INSERT INTO SVDTA.SVPAGRET
+		(
+			IDPAGORET,
+			IDEGRESO,	
+			ASFAMTRACT,
+			ASFAMTRPEN,
+			ASFAMTRCES,
+			ASFAMTRINT,
+			TOTALRETRO		
+		)
+		
+		VALUES(
+			#idPagosRetroactivos#,
+			#idEgresos#,
+			#asigFamTrabActiv#,
+			#asifFamTrabPens#,
+			#asigFamTrabCes#,
+			#asigFamTrabInst#,
+			#totalPagosRetroactivos#
+		)
+	</insert>
+	
+	<insert id="insertDevoluciones" parameterClass="cl.araucana.sivegam.vo.DevolucionesVO">
+		INSERT INTO SVDTA.SVDEVOLU
+		(
+			IDDEVOLUC,
+			IDINFOFIN,
+			DOCCADUCA,
+			DOCANULAD,
+			TOTALDEVO		
+		)
+		
+		VALUES(
+			#idDevoluciones#,
+			#idInformeFinanciero#,
+			#documentosCaducados#,
+			#documentosAnulados#,
+			#totalDevoluciones#
+		)
+	</insert>
+	
+	<insert id="insertDevolucionDeSaldos" parameterClass="cl.araucana.sivegam.vo.DevolucionDeSaldosVO">
+		INSERT INTO SVDTA.SVDEVSAL
+		(
+			IDDEVSALDOS,
+			IDINFOFIN,	
+			SALFAVEMPL,	
+			DEVSAFEMCAD,
+			DEVSAFEMANU,
+			DOCREVALID,	
+			TOTDEVSALDO		
+		)
+		
+		VALUES(
+			#idDevolucionDeSaldos#,
+			#idInformeFinanciero#,
+			#saldoFavorEmpleador#,
+			#devolucionDocSAFEMCaducados#,
+			#devolucionDocSAFEMAnulados#,
+			#documentosSAFEMRevalidados#,
+			#totalDevolucionesE#
+		)
+	</insert>
+	
+	<select id="obtenerContadorPorPeriodoInforme" parameterClass="cl.araucana.sivegam.vo.InfoInformeFinancieroVO" resultClass="string">
+		SELECT 	COUNT(1) contador
+		FROM	SVDTA.SVINFFIN
+		WHERE	PERIODOINF = #periodo#
+	</select>
+
+	<select id="obtenerInformacionFinanciera" parameterClass="cl.araucana.sivegam.vo.InfoInformeFinancieroVO" resultClass="cl.araucana.sivegam.vo.InfoInformeFinancieroVO">
+		SELECT 	IDINFOFIN idInformeFinanciero,	 
+				PERIODOINF periodo,  
+				CODENTIDAD codigoEntidad,    
+				NOMENTIDAD nombreEntidad,   
+				FECDEPOSITO fecDepositoExcedenteDate,   
+				TOTALSVTDEF totalSuperAvitDeficit,  
+				TOTALSVTDEFFNL totalSuperAvitDeficitFinal
+		FROM	SVDTA.SVINFFIN	
+		WHERE	PERIODOINF = #periodo#
+	</select>
+
+	<select id="obtenerIngresos" parameterClass="cl.araucana.sivegam.vo.IngresosVO" resultClass="cl.araucana.sivegam.vo.IngresosVO">
+		SELECT 	IDINGRESO idIngresos,
+				PROVISION provision,
+				REINTEGRO reintegro,
+				TOTALINGR totalIngresos
+		FROM 	SVDTA.SVINGRES
+		WHERE	IDINFOFIN = #idInformeFinanciero#	
+	</select>
+	
+	<select id="obtenerEgreso" parameterClass="cl.araucana.sivegam.vo.EgresosVO" resultClass="cl.araucana.sivegam.vo.EgresosVO">
+		SELECT 	IDEGRESO idEgresos,
+				DOCREVALD docRevalidados,
+				COMADMINS comisionAdministracion,
+				TOTEGRESO totalEgresos
+		FROM	SVDTA.SVEGRESO
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</select>
+
+	<select id="obtenerPagoDelMes" parameterClass="cl.araucana.sivegam.vo.PagoDelMesVO" resultClass="cl.araucana.sivegam.vo.PagoDelMesVO">
+		SELECT 	IDPAGOMES idPagoMes,
+				ASFAMTRACT asigFamTrabActivos,
+				ASFAMTRPEN asigFamPensionados,
+				ASFAMTRCES asigFamTrabCesantes,
+				ASFAMTRINT asigFamInstituciones,
+				TOTPAGOMES totalPagoDelMes
+		FROM	SVDTA.SVPAGMES		
+		WHERE	IDEGRESOS = #idEgresos#
+	</select>
+
+	<select id="obtenerPagosRetroactivos" parameterClass="cl.araucana.sivegam.vo.PagosRetroactivosVO" resultClass="cl.araucana.sivegam.vo.PagosRetroactivosVO">
+		SELECT 	IDPAGORET idPagosRetroactivos,	 
+				ASFAMTRACT asigFamTrabActiv,
+				ASFAMTRPEN asifFamTrabPens,
+				ASFAMTRCES asigFamTrabCes,
+				ASFAMTRINT asigFamTrabInst,
+				TOTALRETRO totalPagosRetroactivos
+		FROM 	SVDTA.SVPAGRET
+		WHERE	IDEGRESO = #idEgresos#
+	</select>
+	
+	<select id="obtenerDevoluciones" parameterClass="cl.araucana.sivegam.vo.DevolucionesVO" resultClass="cl.araucana.sivegam.vo.DevolucionesVO">
+		SELECT 	IDDEVOLUC idDevoluciones,
+				DOCCADUCA documentosCaducados,
+				DOCANULAD documentosAnulados,
+				TOTALDEVO totalDevoluciones
+		FROM	SVDTA.SVDEVOLU
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</select>
+
+	<select id="obtenerDevolucionDeSaldos" parameterClass="cl.araucana.sivegam.vo.DevolucionDeSaldosVO" resultClass="cl.araucana.sivegam.vo.DevolucionDeSaldosVO">
+		SELECT 	IDDEVSALDOS idDevolucionDeSaldos,
+				SALFAVEMPL saldoFavorEmpleador,	
+				DEVSAFEMCAD devolucionDocSAFEMCaducados,
+				DEVSAFEMANU devolucionDocSAFEMAnulados,
+				DOCREVALID	documentosSAFEMRevalidados,
+				TOTDEVSALDO totalDevolucionesE
+		FROM	SVDTA.SVDEVSAL
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</select>
+	
+	
+	<update id="updateInformeFinanciero" parameterClass="cl.araucana.sivegam.vo.InfoInformeFinancieroVO">
+		UPDATE 	SVDTA.SVINFFIN
+		SET		PERIODOINF = #periodo#,
+				CODENTIDAD = #codigoEntidad#,    
+				NOMENTIDAD = #nombreEntidad#,  
+				FECDEPOSITO = #fecDepositoExcedenteDate#,   
+				TOTALSVTDEF = #totalSuperAvitDeficit#,
+				TOTALSVTDEFFNL = #totalSuperAvitDeficitFinal#
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</update>
+	
+	<update id="updateIngresos" parameterClass="cl.araucana.sivegam.vo.IngresosVO">
+		UPDATE 	SVDTA.SVINGRES
+		SET		PROVISION = #provision#,
+				REINTEGRO = #reintegro#,
+				TOTALINGR = #totalIngresos#
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</update>
+	
+	<update id="updateEgresos" parameterClass="cl.araucana.sivegam.vo.EgresosVO">
+		UPDATE 	SVDTA.SVEGRESO
+		SET		DOCREVALD = #docRevalidados#,
+				COMADMINS = #comisionAdministracion#,
+				TOTEGRESO = #totalEgresos#
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</update>
+	
+	<update id="updatePagoDelMes" parameterClass="cl.araucana.sivegam.vo.PagoDelMesVO">
+		UPDATE 	SVDTA.SVPAGMES
+		SET		ASFAMTRACT = #asigFamTrabActivos#,
+				ASFAMTRPEN = #asigFamPensionados#,
+				ASFAMTRCES = #asigFamTrabCesantes#,
+				ASFAMTRINT = #asigFamInstituciones#,
+				TOTPAGOMES = #totalPagoDelMes#
+		WHERE	IDEGRESOS = #idEgresos#
+	</update>
+	
+	<update id="updatePagoRetroactivo" parameterClass="cl.araucana.sivegam.vo.PagosRetroactivosVO">
+		UPDATE 	SVDTA.SVPAGRET
+		SET		ASFAMTRACT = #asigFamTrabActiv#,
+				ASFAMTRPEN = #asifFamTrabPens#,
+				ASFAMTRCES = #asigFamTrabCes#,
+				ASFAMTRINT = #asigFamTrabInst#,
+				TOTALRETRO = #totalPagosRetroactivos#
+		WHERE	IDEGRESO = #idEgresos#
+	</update>
+	
+	<update id="updateDevoluciones" parameterClass="cl.araucana.sivegam.vo.DevolucionesVO">
+		UPDATE 	SVDTA.SVDEVOLU
+		SET		DOCCADUCA = #documentosCaducados#,
+				DOCANULAD = #documentosAnulados#,
+				TOTALDEVO = #totalDevoluciones#
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</update>
+	
+	<update id="updateDevolucionDeSaldos" parameterClass="cl.araucana.sivegam.vo.DevolucionDeSaldosVO">
+		UPDATE 	SVDTA.SVDEVSAL
+		SET		SALFAVEMPL = #saldoFavorEmpleador#,	
+				DEVSAFEMCAD = #devolucionDocSAFEMCaducados#,
+				DEVSAFEMANU = #devolucionDocSAFEMAnulados#,
+				DOCREVALID	= #documentosSAFEMRevalidados#,
+				TOTDEVSALDO = #totalDevolucionesE#
+		WHERE	IDINFOFIN = #idInformeFinanciero#
+	</update>
+	
+</sqlMap>

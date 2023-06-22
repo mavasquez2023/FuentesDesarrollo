@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Sif018Sivegam">
+
+	<select id="obtenerDataTabla018" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTAD.SIF018
+	</select>
+	
+	<select id="selectIdMaestroSivegam" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT nextval FOR SVDTAD.IDMAESVG_SEQ FROM sysibm.sysdummy1
+	</select>
+</sqlMap>	

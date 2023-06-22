@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="parametrosNS">
+
+	<!-- Query para obtener la fecha de sistema. -->
+	<select id="obtenerFechaSistema" resultClass="string">
+		SELECT current date FROM sysibm.sysdummy1
+	</select>
+	
+	<select id="obtenerTipoProcesos" resultClass="cl.araucana.sivegam.vo.TipoProcesosVO">
+		SELECT 	IDTIPOPROCESO id_tipo_proceso,   
+				CODTIPOPROCESO codigo_tipo_proceso,  
+				DESCTIPOPROCESO descripcion_tipo_proceso,
+				DESESTCCARPAS400 desc_estruct_carpetas_as400,
+				DESCESTCARPREPT desc_estruct_carpetas_reporte,
+				DESCCARPTXLS desc_carpeta_xls,
+				DESCCARPTTXT desc_carpeta_txt,
+				DESCNOMARCHXLS desc_nombre_archivo_xls,
+				IDTPOARCH id_tipo_archivo,
+				IDTIPOREPORTE id_tipo_reporte
+		FROM	SVDTA.SVTPOPRO
+	</select>
+	
+	<select id="selectStatusProceso" resultClass="cl.araucana.sivegam.vo.StatusProcesoVO">
+		SELECT 	IDSTATUSPROCESO status_proceso,
+				DESCSTATUSPROCESO descripcion_status_proceso
+		FROM	SVDTA.SVSTAPRO
+	</select>
+	
+	<select id="selectPeriodoProceso" resultClass="cl.araucana.sivegam.vo.PeriodoProcesoVO">
+		SELECT 	IDPERIODOPROCESO periodo_proceso,
+				DESCPERIODPROCESO descripcion_periodo_proceso
+		FROM	SVDTA.SVPRDPRO
+	</select>
+	
+	<select id="selectFormatoReporte" resultClass="cl.araucana.sivegam.vo.FormatoReporteVO">
+		SELECT  IDFORMATREPORTE formato_reporte,
+				DESCFORMATREPORTE descripcion_formato_reporte
+		FROM 	SVDTA.SVFRTRPT		
+	</select>
+	
+	<select id="selectValoresConexion" resultClass="cl.araucana.sivegam.vo.ValoresConexionAS400VO">
+		SELECT 	IDCONEXIONAS400 id_conexion_as400,
+				DESCCONEXIONAS400  descripcion_conexion_as400
+		FROM	SVDTA.SVCNCAS4		
+	</select>
+	
+	<select id="selectUsuariosSivegam" resultClass="cl.araucana.sivegam.vo.UsuariosSivegamVO">
+		SELECT 	IDUSUARIOSIVEGAM usuario_sivegam,
+				IDTIPOPERFIL descripcion_tipo_perfil
+		FROM	SVDTA.SVUSRSVG		
+	</select>
+	
+	<select id="selectTipoPerfil" resultClass="cl.araucana.sivegam.vo.TipoPerfilVO">
+		SELECT 	IDTIPOPERFIL tipo_perfil,
+				DESCPERFIL descripcion_tipo_perfil,
+				FLAGFUNC1 flag_funcionalidad_1,
+				FLAGFUNC2 flag_funcionalidad_2,
+				FLAGFUNC3 flag_funcionalidad_3,
+				FLAGFUNC4 flag_funcionalidad_4
+		FROM 	SVDTA.SVTPOPFL		
+	</select>
+	
+	<select id="selectTipoReporte" resultClass="cl.araucana.sivegam.vo.TipoReporteVO">
+		SELECT 	IDTIPOREPORTE id_tipo_reporte,
+				DESCTIPOREPORTE descripcion_tipo_reporte
+		FROM	SVDTA.SVTPORPT		
+	</select>
+	
+	<select id="selectTipoOrigen" resultClass="cl.araucana.sivegam.vo.TipoOrigenVO">
+		SELECT 	IDTIPOORIGEN id_tipo_origen,
+				DESCTPOORIGEN desc_tipo_origen
+		FROM	SVDTA.SVTPOORG
+	</select>
+	
+	<select id="selectTipoBeneficiario" resultClass="cl.araucana.sivegam.vo.TipoBeneficiarioVO">
+		SELECT	SVIDTPOBE id_tipo_beneficiario,
+				SVDSCTPOBE desc_tipo_beneficiario
+		FROM	SVDTA.SVTPBE		
+	</select>
+	
+	<select id="selectTipoCausante" resultClass="cl.araucana.sivegam.vo.TipoCausanteVO">
+		SELECT 	SVIDTPOCAU id_tipo_causante,
+				SVDSCTPOCAU desc_tipo_causante
+		FROM	SVDTA.SVTPCAU
+	</select>
+	
+	<select id="selectTipoBeneficio" resultClass="cl.araucana.sivegam.vo.TipoBeneficioVO">
+		SELECT 	SVIDTPOBEN id_tipo_beneficio,
+				SVDSCTPOBEN desc_tipo_beneficio
+		FROM	SVDTA.SVTPBEN	
+	</select>
+	
+	<select id="selectCodigoArchivo" resultClass="cl.araucana.sivegam.vo.CodigoArchivoVO">
+		SELECT	SVIDCODARC id_codigo_archivo,
+				SVDSCCODARC desc_codigo_archivo
+		FROM SVDTA.SVCDARC
+	</select>
+	
+	<select id="selectTipoEmision" resultClass="cl.araucana.sivegam.vo.TipoEmisionVO">
+		SELECT	SVIDTPOEMI id_tipo_emision,
+				SVDSCTPOEMI desc_tipo_emision
+		FROM SVDTA.SVTPEMI
+	</select>
+	
+	<select id="selectTipoDeclaracion" resultClass="cl.araucana.sivegam.vo.TipoDeclaracionVO">
+		SELECT	SVIDTPODEC id_tipo_declaracion,
+				SVDSCTPODEC desc_tipo_declaracion
+		FROM SVDTA.SVTPDEC
+	</select>
+	
+	<select id="selectTipoReintegro" resultClass="cl.araucana.sivegam.vo.TipoReintegroVO">
+		SELECT	SVIDTPOREI id_tipo_reintegro,
+				SVDSCTPOREI desc_tipo_reintegro
+		FROM SVDTA.SVTPREI
+	</select>
+	
+	<select id="selectTipoSaldo" resultClass="cl.araucana.sivegam.vo.TipoSaldoVO">
+		SELECT	SVIDTPOSAL id_tipo_saldo,
+				SVDSCTPOSAL desc_tipo_saldo
+		FROM SVDTA.SVTPSAL
+	</select>
+	
+	<select id="selectCausalReliquidacion" resultClass="cl.araucana.sivegam.vo.CausalReliquidacionVO">
+		SELECT	SVIDCAUREL id_causal_reliquidacion,
+				SVDSCCAUREL desc_causal_reliquidacion
+		FROM SVDTA.SVCAREL
+	</select>
+	
+	<select id="selectTipoEgreso" resultClass="cl.araucana.sivegam.vo.TipoEgresoVO">
+		SELECT	SVIDTPOEGR id_tipo_Egreso,
+				SVDSCTPOEGR desc_tipo_egreso
+		FROM SVDTA.SVTPEGR
+	</select>
+	
+	<select id="selectModalidadPago" resultClass="cl.araucana.sivegam.vo.ModalidadDePagoVO">
+		SELECT 	SVIDMDPAG id_modalidad_pago,
+				SVDSCMDPAG desc_modalidad_pago
+		FROM	SVDTA.SVMDPAG			
+	</select>
+	
+	<select id="selectCodigoBanco" resultClass="cl.araucana.sivegam.vo.CodigoBancoVO">
+		SELECT 	SVCODGBNCO cod_banco_normativa,
+				SVGLOSBNCO desc_cod_banco_normativa
+		FROM	SVDTA.SVCDBCO
+	</select>
+	
+	<select id="selectEstadoDocumento" resultClass="cl.araucana.sivegam.vo.EstadoDelDocumentoVO">
+		SELECT 	SVIDESTDOC id_estado_documento,
+				SVDSCESTDOC desc_estado_documento
+		FROM	SVDTA.SVESDOC	
+	</select>
+	
+	<select id="selectTipoArchivo" resultClass="cl.araucana.sivegam.vo.TipoArchivoVO">
+		SELECT 	IDTIPOARCHIVO id_tipo_archivo,
+				DESCTIPOARCHIVO desc_tipo_archivo
+		FROM	SVDTA.SVTPOARC		
+	</select>
+	
+	<select id="selectProcesosAfcCesantia" resultClass="cl.araucana.sivegam.vo.ProcesosAFCCesantiaVO">
+		SELECT	IDPROCEAFSC id_proceso_afc_cesantia,
+				IDTIPOPRO id_tipo_proceso,
+				CODTIPOPRO codigo_tipo_proceso,
+				DESCTPOPRO descripcion_tipo_proceso,
+				RUTACLAS ruta_cl_as400,
+				RUTACLASR ruta_cl_as400_reprocesar,
+				RUTACLASE ruta_cl_as400_entrada,
+				CPTREPORTE descripcion_jasper,
+				CPTREPOERR descripcion_jasper_errores,
+				CPTARCHXLS ruta_xls_servidor,
+				CPTXLSERR ruta_xls_errores_servidor,
+				CPTARCHTXT ruta_txt_servidor,
+				NOMBREXLS nomenclatura_nombre_xls,
+				NOMBREXLSE nomenclatura_nombre_xls_err,
+				NOMBRETXT nomenclatura_nombre_txt
+		FROM	SVDTA.SVPROAFSC
+	</select>
+	
+	<select id="selectCodigoTramo" resultClass="cl.araucana.sivegam.vo.CodigoTramoVO">
+		SELECT 	SVIDCODTRAMO id_codigo_tramo,
+				SVDSCTRAMO desc_codigo_tramo
+		FROM	SVDTA.SVCODTMO		
+	</select>
+	
+	<select id="selectCodigoError" resultClass="cl.araucana.sivegam.vo.CodigoErrorVO">
+		SELECT 	CODERR id_codigo_error,
+				DESERR desc_codigo_error
+        FROM SCDTA.SCFERROR	
+    </select>
+	
+	<select id="selectDominio" resultClass="cl.araucana.sivegam.vo.DominioVO">
+		SELECT IDDOMINIO id_dominio,
+				DESDOMINIO des_dominio,
+				CLAVEDOMINIO clave_dominio
+		FROM SCDTA.SCFDOM    
+	</select>
+
+	<select id="selectStatusProcesoCarga" resultClass="cl.araucana.sivegam.vo.StatusProcesoVO">
+		SELECT 	IDSTATUSPROCESO status_proceso,
+				DESCSTATUSPROCESO descripcion_status_proceso
+		FROM	SVDTA.SVSTAPROCAR
+	</select>
+	
+	<select id="selectCodigoErrorAFC" resultClass="cl.araucana.sivegam.vo.CodigoErrorVO">
+		SELECT 	CODERR id_codigo_error,
+				DESERR desc_codigo_error
+		FROM	AFCDTA.AFCERROR
+	</select>
+	
+</sqlMap>

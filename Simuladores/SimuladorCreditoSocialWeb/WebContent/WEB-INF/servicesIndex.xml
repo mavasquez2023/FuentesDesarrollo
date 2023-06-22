@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<services>
+    <webserviceClient name="{http://delegate.toAS.legados.integracion.laaraucana.cl/}ConsultaDatosAfiliacionAs400Service" type="JAX-WS">
+        <endpoint name="ConsultaDatosAfiliacionAs400Port">
+            <operation name="consultaDatosAfiliacionAs400"/>
+        </endpoint>
+        <endpoint name="ConsultaDatosAfiliacionAs400Port">
+            <operation name="consultaDatosAfiliacionAs400"/>
+        </endpoint>
+    </webserviceClient>
+</services>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+	<metodo id="numerico" nombre="isInteger" mensaje="no es numerico">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="largo" nombre="maxLength" mensaje="excede el largo">
+		<parametro nombre="valor" />
+		<parametro nombre="maximo" />
+	</metodo>
+	<metodo id="notNull" nombre="notNullEmpty">
+		<parametro nombre="valor"></parametro>
+	</metodo>
+	<metodo id="relleno" nombre="rellenar">
+		<parametro nombre="valor" />
+		<parametro nombre="largo" />
+		<parametro nombre="relleno" />
+		<parametro nombre="truncate" />
+	</metodo>
+	<metodo id="replace" nombre="replace">
+		<parametro nombre="valor" />
+		<parametro nombre="oldchar" />
+		<parametro nombre="newchar" />
+	</metodo>
+	<metodo id="changeCase" nombre="changeCase" >
+		<parametro nombre="valor" />
+		<parametro nombre="to" />
+	</metodo>
+</configuracion>
+

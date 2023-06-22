@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.service.mediopagosilws.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.service.mediopagosilws.laaraucana.cl/">
+
+  <xs:element name="consultaMedioPago" type="tns:consultaMedioPago"/>
+
+  <xs:element name="consultaMedioPagoResponse" type="tns:consultaMedioPagoResponse"/>
+
+  <xs:complexType name="consultaMedioPago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:entradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oficinaEmisora" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresaDv" type="xs:string"/>
+      <xs:element minOccurs="0" name="sucursal" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaMedioPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="salidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="datos" type="tns:datosVO"/>
+      <xs:element minOccurs="0" name="glosaRespuesta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="medioPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaPago" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

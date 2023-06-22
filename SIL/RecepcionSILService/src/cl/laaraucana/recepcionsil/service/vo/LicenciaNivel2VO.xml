@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="nroLicencia" >
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10"/>
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10"/>
+	</atributo>
+	<atributo name="rutAfiliado" >
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="mixtaOFormulario" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="1"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<valida id="valoresPermitidos" permitidos="M;F"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+	</atributo>
+</clase>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="telefonoEmpleador">
+		<valida id="largo" maximo="12"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="direccionEmpleador" >
+		<valida id="largo" maximo="100"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100"/>
+	</atributo>
+	<atributo name="numeroEmpleador" >
+		<valida id="largo" maximo="6"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="6"/>
+	</atributo>
+	<atributo name="deptoEmpleador" >
+		<valida id="largo" maximo="10"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="10"/>
+	</atributo>
+	<atributo name="comunaEmpleador" >
+		<valida id="largo" maximo="5"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="5"/>
+	</atributo>
+	<atributo name="ciudadEmpleador" >
+		<valida id="largo" maximo="30"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30"/>
+	</atributo>
+	<atributo name="actividadLaboralTrabajador">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="0;1;2;3;4;5;6;7;8;9"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="ocupacionTrabajador">
+		<valida id="largo" maximo="2" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="11;12;13;14;15;16;17;18;19"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+	<atributo name="ocupacionTrabajadorOtro" >
+		<valida id="largo" maximo="50"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="50"/>
+	</atributo>	
+</clase>

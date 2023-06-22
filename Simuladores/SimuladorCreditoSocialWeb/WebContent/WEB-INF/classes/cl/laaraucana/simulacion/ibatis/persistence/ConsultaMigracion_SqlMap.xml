@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="rutMigradosResult" class="cl.laaraucana.simulacion.ibatis.vo.RutMigradosVO" >
+    <result column="RUT" property="rut" jdbcType="NUMBER" />
+    <result column="DV" property="dv" jdbcType="CHAR" />
+    <result column="FECMIG" property="fechaMigracion" jdbcType="NUMBER" />
+    <result column="ORIGEN" property="origenBP" jdbcType="CHAR" />    
+  </resultMap>
+  <resultMap id="oficinasMigradasResult" class="cl.laaraucana.simulacion.ibatis.vo.OficMigradVO" >
+     <result column="MIGOFIC" property="codigoOficina" jdbcType="DECIMAL" />
+    <result column="MIGFECH" property="fechaMigracion" jdbcType="DECIMAL" />
+  </resultMap>
+  
+ 	<select id="consultaRutMigrado" resultClass="java.lang.Integer" parameterClass="string">
+		select COUNT(*) from CRDTA.CRF5006 where RUT=#value#
+	</select>
+ 	<select id="consultaOficinaMigrada" resultMap="oficinasMigradasResult" parameterClass="string">
+		select * from GENERAL.OFICMIGRAD where MIGOFIC=#value#
+	</select>
+
+</sqlMap>

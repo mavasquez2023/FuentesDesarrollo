@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="GenerarPlanoCotizaciones">
+
+	<select id="selectSif016" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT SIFFECPRO	fecha_proceso,       
+				SIFCODENT	codigo_entidad,       
+				SIFCODARC	codigo_archivo,       
+				SIFMESREC	mes_recaudacion,      
+				SIFMESREM	mes_remuneracion,     
+				SIFCODDEC	cod_tipo_declaracion, 
+				SIFNUMDEC	numero_declaracion,  
+				SIFFECDEC	fech_declaracion,    
+				SIFRUTEMP	rut_empresa,          
+				SIFDVREMP	dv_empresa,           
+				SIFNOMEMP	nombre_empresa,      
+				SIFTOTTRA	num_total_trabajador, 
+				SIFTOTCAR	num_total_cargas,  
+				SIFCARRET	cargas_retroactivas,  
+				SIFMTOASF	mto_asfam_mes,       
+				SIFASFRET	mto_asfam_mes_retro, 
+				SIFRETMES	mto_reintegros_mes,  
+				SIFTOTPAF	total_pago_asigfam,  
+				SIFTOTCOT	total_de_cotizacion, 
+				SIFOTRDES	otros_descuentos,    
+				SIFRESNET	resultado_neto,      
+				SIFTIPSAL	tipo_de_saldo,        
+				SIFMODPAG	modalidad_pago,    
+				SIFMTODOC	monto_documento,     
+				SIFNUMSER	numero_serie,        
+				SIFNUMDOC	numero_documento,    
+				SIFFECEMI	fech_emision_doc,    
+				SIFCODBCO	codigo_banco         
+		FROM	SVDTA.SIF016A2
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+
+	<select id="selectSif017" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT 	SIFFECPRO	fecha_proceso,    
+				SIFCODENT	codigo_entidad,   
+				SIFCODARC	codigo_archivo,   
+				SIFRUTEMP	rut_empresa,      
+				SIFDVREMP	dv_empresa,       
+				SIFNOMEMP	nombre_empresa,  
+				SIFTIPEGR	cod_tipo_egreso,  
+				SIFMODPAG	modalidad_de_pago,
+				SIFMTODOC	monto_documento, 
+				SIFNUMSER	numero_serie,    
+				SIFNUMDOC	numero_documento,
+				SIFFECEMI	fech_emision_doc,
+				SIFCODBCO	codigo_banco,     
+				SIFNUMCAR	numero_cartola,  
+				SIFESTDOC	estado_documento, 
+				SIFFECREN	fecha_rendicion
+		FROM	SVDTA.SIF017
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+	
+	<select id="selectSif018" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTA.SIF018
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+	
+	<select id="selectSif019" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	SIFFECPRO	fecha_proceso,      
+				SIFCODENT	codigo_entidad,     
+				SIFCODARC	codigo_archivo,     
+				SIFRUTEMP	rut_empresa,        
+				SIFDVREMP	dv_empresa,         
+				SIFNOMEMP	nombre_empresa,    
+				SIFMEORGA	mes_origen_gasto,   
+				SIFESDOOR	estado_doc_orig,   
+				SIFMOPAOR	modo_pago_orig,    
+				SIFNUSEOR	num_serie_orig,   
+				SIFNUDOOR	num_docum_orig,   
+				SIFMODOOR	monto_docum_orig, 
+				SIFFEEMOR	fecha_emision_orig,
+				SIFCOBAOR	codigo_banco_orig, 
+				SIFMOPANU	modo_pago_nuevo,   
+				SIFNUSENU	num_serie_nuevo,   
+				SIFNUDONU	num_docum_nuevo,   
+				SIFMODONU	monto_docum_nuevo, 
+				SIFFEEMNU	fecha_emision_nuevo,
+				SIFCOBANU	codigo_banco_nuevo
+		FROM	SVDTA.SIF019N
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+
+</sqlMap>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="apellidoPaternoProfesional" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="60"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="60"/>
+	</atributo>
+	<atributo name="apellidoMaternoProfesional" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="60"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="60"/>
+	</atributo>
+	<atributo name="nombresProfesional" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="60"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="60"/>
+	</atributo>
+	<atributo name="rutProfesional" >
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="tipoProfesional">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;;2;3"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="especialidadProfesional" >
+		<valida id="largo" maximo="80"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="80"/>
+	</atributo>
+	<atributo name="registroColegioProfesional" >
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="correoProfesional" >
+		<valida id="largo" maximo="40"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="40"/>
+	</atributo>
+	<atributo name="direccionProfesional" >
+		<valida id="largo" maximo="100"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100"/>
+	</atributo>
+	<atributo name="telefonoProfesional">
+		<valida id="largo" maximo="20"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="20" />
+	</atributo>
+	<atributo name="faxProfesional">
+		<valida id="largo" maximo="20"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+</clase>

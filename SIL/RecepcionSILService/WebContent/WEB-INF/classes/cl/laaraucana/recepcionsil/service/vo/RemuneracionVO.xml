@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="codigoEntidadPrevisional" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="4"/>
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="4"/>
+	</atributo>
+	<atributo name="mesRemuneracion">
+		<valida id="largo" maximo="2" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2;3;4;5;6;7;8;9;10;11;12"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+	<atributo name="AnioRemuneracion">
+		<valida id="notNull"/>
+		<valida id="largo" maximo="4" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="4"/>
+	</atributo>
+	<atributo name="numeroDiasRemuneracion">
+		<valida id="largo" maximo="2" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+	<atributo name="totalRemuneraciones">
+		<valida id="largo" maximo="9" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="9"/>
+	</atributo>
+	<atributo name="montoSubsidio">
+		<valida id="largo" maximo="9" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="9"/>
+	</atributo>
+	<atributo name="numeroDiasSubsidio">
+		<valida id="largo" maximo="2" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+</clase>

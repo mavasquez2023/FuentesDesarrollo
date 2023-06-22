@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<!-- <atributo name="xmlBase64" >
+		<formato id="relleno" relleno="0" largo="15"/>
+	</atributo> -->
+	<atributo name="codigoRespuesta" >
+		<valida id="largo" maximo="1"/>
+	</atributo>
+	<atributo name="glosa" >
+		<valida id="largo" maximo="250"/>
+	</atributo>
+</clase>

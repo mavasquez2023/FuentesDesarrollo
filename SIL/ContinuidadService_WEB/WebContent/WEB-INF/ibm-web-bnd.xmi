@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1496240923387">
+  <webapp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1496240923387" jndiName="jdbc/continuidadService">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1335902260062"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1496344628405" jndiName="jdbc/continuidadService">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1335902260062"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1496354762851" jndiName="jdbc/ContinuidadServiceDS">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1335902260062"/>
+  </resRefBindings>
+</webappbnd:WebAppBinding>

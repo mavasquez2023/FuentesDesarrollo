@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+
+	<resultMap id="ValorUFResult" class="cl.laaraucana.simulacion.ibatis.vo.ValorUFVO">
+		<result column="UFVAL" property="monto" jdbcType="NUMBER" />
+		<result column="UFFEC" property="fecha" jdbcType="CHAR" />
+	</resultMap>
+
+	<select id="consultaValorUF" resultMap="ValorUFResult"
+		parameterClass="string">
+		select UFVAL, UFFEC from LSGDTA.T0016 where UFFEC=#value#
+	</select>
+
+
+	<typeAlias alias="Parametro" type="cl.laaraucana.simulacion.ibatis.vo.ParametroVO" />
+	
+	<resultMap id="ParametroResult"
+		class="Parametro">
+	    <result column="ID_SIMULADOR" property="codigoSimulador" jdbcType="INTEGER" />
+		<result column="ID_PARAMETRO" property="codigoParametro" jdbcType="INTEGER" />
+		<result column="VALOR" property="valor" jdbcType="CHAR" />
+	</resultMap>
+
+	<select id="consultaParametro" resultMap="ParametroResult" parameterClass="Parametro">
+		select ID_SIMULADOR, ID_PARAMETRO, VALOR from SWDTA.PARAMETROS_SIMULACION WHERE ID_SIMULADOR = #codigoSimulador# and ID_PARAMETRO = #codigoParametro#
+	</select>
+
+
+</sqlMap>

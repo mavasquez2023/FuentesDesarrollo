@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<transactionManager type="JDBC">
+		<property name="commitRequired" value="false" />
+		<property name="JDBC.Connection.transactionIsolation" value="1" />
+		<dataSource type="JNDI">
+			<property name="DataSource" value="jdbc/simulacion" />
+		</dataSource>
+	</transactionManager>
+	<sqlMap resource="cl/laaraucana/simulacion/ibatis/persistence/ConsultaMigracion_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/simulacion/ibatis/persistence/PreAprobado_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/simulacion/ibatis/persistence/SolicitudCotizacion_SqlMap.xml" />
+	<sqlMap resource="cl/laaraucana/simulacion/ibatis/persistence/Utiles_SqlMap.xml" />
+</sqlMapConfig>

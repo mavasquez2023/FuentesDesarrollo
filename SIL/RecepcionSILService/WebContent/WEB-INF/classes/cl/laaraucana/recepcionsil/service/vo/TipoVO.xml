@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="recuperabilidad">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="inicioTramiteInvalidez">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="fechaConcepcion">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+</clase>

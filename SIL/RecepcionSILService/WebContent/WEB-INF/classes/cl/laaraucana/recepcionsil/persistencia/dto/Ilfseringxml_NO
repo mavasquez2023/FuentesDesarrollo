@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="afirut">
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="numimpre">
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="lichasfec">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="fhingjav">
+		<formato id="relleno" relleno="0" largo="14" />
+	</atributo>
+	<atributo name="fhingas4">
+		<formato id="relleno" relleno="0" largo="14" />
+	</atributo>
+</clase>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="tipoReposo">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="jornadaReposo">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="A;;B;C"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+	</atributo>
+	<atributo name="lugarReposo">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="justificarOtro" >
+		<valida id="largo" maximo="128"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="128"/>
+	</atributo>
+	<atributo name="direccionReposo" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="100"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100"/>
+	</atributo>
+	<atributo name="telefonoReposo">
+		<valida id="largo" maximo="15"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="15" />
+	</atributo>
+</clase>
