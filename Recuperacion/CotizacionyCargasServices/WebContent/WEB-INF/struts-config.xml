@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+		
+	<form-beans>
+		<form-bean name="fileUploadForm" type="cl.araucana.cotcarserv.main.forms.FileUploadForm">
+		</form-bean>
+		<form-bean name="params" type="cl.araucana.cotcarserv.main.forms.ConsultaCotizacionForm">
+		</form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="error" path="/error.do" />
+		<forward name="ExportPDF" path="/ExportPDF"></forward>
+		<!-- <forward name="login" path="/login.do"/> <forward name="loginView" path="/loginView.do"/> <forward name="logout" path="/logout.do"></forward> -->
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/hasta" type="cl.araucana.cotcarserv.main.actions.PeriodosHastaAction">
+			<forward name="init" path="/main/inicio.jsp" />
+		</action>
+		<action path="/error" type="cl.araucana.cotcarserv.main.actions.ErrorAction">
+			<forward name="go" path="/error.jsp" />
+		</action>
+		<action path="/changeRut" type="cl.araucana.cotcarserv.main.actions.ChangeRutAction">
+			<forward name="init" path="/main/inicio.jsp" />
+		</action>
+		<action path="/init" type="cl.araucana.cotcarserv.main.actions.InitAction">
+			<forward name="inicio" path="/main/inicio.jsp" />
+		</action>
+		<action path="/logout" type="cl.araucana.cotcarserv.main.actions.LogoutAction">
+			<forward name="salir" path="/index.jsp" />
+		</action>
+		<action path="/cargas" name="params" type="cl.araucana.cotcarserv.main.actions.DescargaCargasAction">
+			<forward name="success" path="/main/seleccionEmpresaCargas.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCargas.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/certificado" name="params" type="cl.araucana.cotcarserv.main.actions.GeneraCertificadoAction">
+			<forward name="success" path="/main/generaInforme.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCertificado.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/comprobanteMP" name="params" type="cl.araucana.cotcarserv.main.actions.ComprobanteCertificadoAction">
+			<forward name="success" path="/main/generaInforme.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCesacionMasiva.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/cotizaciones" name="params" type="cl.araucana.cotcarserv.main.actions.DescargaCotizacionesAction">
+			<forward name="success" path="/main/seleccionEmpresaCotizaciones.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCotizaciones.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/cesacion" name="params" parameter="accion" type="cl.araucana.cotcarserv.main.actions.CesacionTrabajadorAction">
+			<forward name="success" path="/main/seleccionTrabajador.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCesacion.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/cesacionfile" name="fileUploadForm" type="cl.araucana.cotcarserv.main.actions.CesacionMasivaAction" validate="false">
+			<forward name="success" path="/main/seleccionArchivo.jsp" />
+			<forward name="seleccion" path="/main/seleccionEmpresaCesacionMasiva.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/encargados" name="params" parameter="accion" type="cl.araucana.cotcarserv.main.actions.GestionEncargadoAction">
+			<forward name="success" path="/main/gestion_encargados.jsp" />
+			<forward name="agregar" path="/main/nuevo_encargado.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+		<action path="/correos" name="params" type="cl.araucana.cotcarserv.main.actions.GestionCorreosAction">
+			<forward name="success" path="/main/seleccionEmpresaCorreos.jsp" />
+			<forward name="agregar" path="/main/nuevo_correo.jsp" />
+			<forward name="init" path="/init.do" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="cl.laaraucana.cotizacionycargasservices.resources.ApplicationResources"/>
+</struts-config>

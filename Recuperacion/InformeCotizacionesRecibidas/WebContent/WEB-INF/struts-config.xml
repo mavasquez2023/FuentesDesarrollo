@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	
+	<data-sources>
+	</data-sources>
+	
+	<form-beans>
+		<form-bean name="params" type="cl.araucana.infcotrec.main.forms.ConsultaPagosForm">
+		</form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="error" path="/error.do" />
+		<forward name="ExportPDF" path="/ExportPDF"></forward>
+		<!-- <forward name="login" path="/login.do"/> <forward name="loginView" path="/loginView.do"/> <forward name="logout" path="/logout.do"></forward> -->
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/error" type="cl.araucana.infcotrec.main.actions.ErrorAction">
+			<forward name="go" path="/error.jsp" />
+		</action>
+		<action path="/init" type="cl.araucana.infcotrec.main.actions.InitAction">
+			<forward name="success" path="/main/param.jsp" />
+		</action>
+		<action path="/deuda" name="params" type="cl.araucana.infcotrec.main.actions.ConsultaEmpresaAction">
+			<forward name="success" path="/main/generaInforme.jsp" />
+		</action>
+		<action path="/informe" name="params" parameter="accion" type="cl.araucana.infcotrec.main.actions.GeneraInformeAction">
+			<forward name="success" path="/main/generaInforme.jsp" />
+		</action>
+		<action path="/seleccion" name="params" type="cl.araucana.infcotrec.main.actions.SeleccionEmpresaAction">
+			<forward name="success" path="/main/seleccionEmpresa.jsp" />
+		</action>
+	</action-mappings>
+	
+	<!-- message-resources parameter="local.laaraucana.informecotizacionesrecibidas.resources.ApplicationResources"/ -->
+</struts-config>

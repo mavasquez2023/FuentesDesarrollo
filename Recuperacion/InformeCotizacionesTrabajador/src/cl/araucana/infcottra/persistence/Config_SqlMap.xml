@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="recaudacion">
+
+<resultMap id="cotizaPrevisional" class="cl.araucana.infcottra.dao.VO.CotizacionVO">
+	<result column="RUTEMPRESA"   property="rutEmpresa" />
+	<result column="DVEMPRESA"   property="dvEmpresa" />
+	<result column="NOMBRE_EMPRESA"   property="nombreEmpresa" />
+	<result column="RUTTRABAJADOR"   property="rutTrabajador" />
+	<result column="DVTRABAJADOR"   property="dvTrabajador" />
+	<result column="NOMBRE_TRABAJADOR"   property="nombreTrabajador" />
+	<result column="FECHA_DESDE"   property="fechaDesde" />
+	<result column="FECHA_HASTA"   property="fechaHasta" />
+</resultMap>
+
+	
+<select id="consultaCotizacionesTrabajador" resultMap="cotizaPrevisional" parameterClass="cl.araucana.infcottra.dao.VO.ParamVO">
+	select distinct A.CMNA as RUTEMPRESA, C.CMOA as DVEMPRESA,
+		trim(C.CMPA) as NOMBRE_EMPRESA,
+		A.SE5FAJC as RUTTRABAJADOR, B.SE5FBH3 as DVTRABAJADOR,
+		trim(B.SE5FBIO) || ' ' || trim(B.SE5FBIM) || ' ' || trim(B.SE5FBIK) as NOMBRE_TRABAJADOR,
+        min(CM1XA) as FECHA_DESDE,  
+        max(CM1XA) as FECHA_HASTA
+	from CMDTA.CM17F1 A 
+	join AFDTA.AF02F1 B
+		on A.SE5FAJC= B.SE5FAJC
+	join CMDTA.CM02F1 C
+		on A.CMNA= C.CMNA
+	where A.SE5FAJC= #rutTrabajador#
+		and A.CMNA= #rutEmpresa#
+	<isNotNull property="periodo">
+ 		and CM1XA = #periodo#
+ 	</isNotNull>
+   group by A.CMNA, C.CMOA, C.CMPA, A.SE5FAJC, B.SE5FBH3, B.SE5FBIO, B.SE5FBIM, B.SE5FBIK
+
+</select>
+ 
+ <insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into RCDTA.BITACOTIZA (ID, ACCION, RUTEMP, OFICINA, SUCURSAL) 
+		VALUES (#id#, #accion#, #rutEmpresa#,#oficina#,#sucursal#)
+</insert>
+	
+<select id="getCorrelativo" resultClass="java.lang.Integer">
+		select max(id) from RCDTA.CORRELATIVO
+</select>
+
+<insert id="setCorrelativo">
+		insert into rcdta.correlativo (id) values(default)
+</insert>
+</sqlMap>

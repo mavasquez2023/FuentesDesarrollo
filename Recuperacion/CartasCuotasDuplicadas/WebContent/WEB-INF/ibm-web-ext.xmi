@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.extensions.webappext:WebAppExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.extensions.webappext="webappext.xmi" xmi:id="WebAppExtension_1367266976001" reloadInterval="3" reloadingEnabled="true" additionalClassPath="" fileServingEnabled="true" directoryBrowsingEnabled="false">
+  <webApp href="WEB-INF/web.xml#WebApp_1437572432337"/>
+  <jspAttributes xmi:id="JSPAttribute_1437572432352" name="useFullPackageNames" value="true"/>
+  <jspAttributes xmi:id="JSPAttribute_1437572432353" name="jdkSourceLevel" value="13"/>
+  <jspAttributes xmi:id="JSPAttribute_1437572432354" name="disableJspRuntimeCompilation" value="false"/>
+  <jspAttributes xmi:id="JSPAttribute_1437572432355" name="reloadEnabled" value="true"/>
+  <jspAttributes xmi:id="JSPAttribute_1437572432356" name="reloadInterval" value="10"/>
+</com.ibm.ejs.models.base.extensions.webappext:WebAppExtension>

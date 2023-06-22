@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cuotasduplicadas">
+  
+<resultMap id="consultaCuotas" class="cl.laaraucana.cuotasdup.dao.VO.CuotaVO">
+	<result column="RUTEMP"   property="rutEmpresa" />
+	<result column="RUTDV"   property="dvRutEmpresa" />
+	<result column="RAZSOC"   property="razonSocial" />
+	<result column="OFICINA"   property="oficina" />
+	<result column="NOMOFIC"   property="nombreOficina" />
+	<result column="SUCURSAL"   property="sucursal" />
+	<result column="RUTAFI"   property="rutAfiliado" />
+	<result column="RUTDVAFI"   property="dvRutAfiliado" />
+	<result column="NOMAFI"   property="nombreAfiliado" />
+	<result column="MONTOP"   property="montoCuota" />
+	<result column="FECHA"   property="fechaCreacion" />
+</resultMap>
+
+<resultMap id="mapeoCampos" class="cl.laaraucana.cuotasdup.dao.VO.MapeoArchivoVO">
+	<result column="COLUMNA"   property="campo" />
+	<result column="POSICION"   property="posicion" />
+	<result column="LARGO"   property="largo" />
+</resultMap>
+
+<typeAlias alias="cuotaVO" type="cl.laaraucana.cuotasdup.dao.VO.CuotaVO"/>
+
+<select id="consultaMapeo" resultMap="mapeoCampos">
+	select * from RCDTA.RC20SAP
+
+</select>
+
+<select id="consultaTrabajadores" resultMap="consultaCuotas" parameterClass="cl.laaraucana.cuotasdup.dao.VO.ParamVO">
+	Select CMNA          as RUTEMP,             
+        CMOA          as RUTDV,              
+        TRANSLATE(CMPA, ' ', ',') as RAZSOC, 
+        CMBA          as OFICINA,            
+        CMCA          as NOMOFIC,            
+        CM13A         as SUCURSAL,           
+        AFIRUT        as RUTAFI,             
+        SE5FBH3       as RUTDVAFI,           
+        AFHCA         as NOMAFI,             
+        CUOMONPAG     as MONTOP,
+        OBF002		  as FECHA              
+ 	from RCDTA.RC10SAP                           
+ 	where  CMNA= #rutEmpresa#
+ 	<isNotNull property="oficina">
+ 		and CMBA = #oficina#
+ 	</isNotNull>
+ 	<isNotNull property="sucursal">
+ 		and CM13A = #sucursal#
+ 	</isNotNull>   
+ 	ORDER BY RUTEMP, OFICINA, SUCURSAL, RUTAFI 
+</select>
+
+<delete id="deleteCuotas">
+	delete from RCDTA.RC10SAP
+</delete>
+
+<insert id="insertCuotas" parameterClass="cuotaVO">
+	insert into RCDTA.RC10SAP (CMNA, CMOA, CMPA, CMBA, CMCA, CM13A, AFIRUT, SE5FBH3, AFHCA, CUOMONPAG, RCUONUM, CUOPAGFEC, SAJKM94, CORELEC)
+	values(
+	#rutEmpresa#,#dvRutEmpresa#,#razonSocial#,#oficina#,#nombreOficina#,#sucursal#,#rutAfiliado#,#dvRutAfiliado#,#nombreAfiliado#,#montoCuota#,#numeroCuota#,#fechaPagoCuota#,#usuarioCreacion#,#correo#
+	)
+</insert>
+
+<resultMap id="listaEmpresas" class="cl.laaraucana.cuotasdup.dao.VO.ParamVO">
+	<result column="RUTEMP"   property="rutEmpresa" />
+	<result column="RUTDV"   property="dvRutEmpresa" />
+	<result column="RAZSOC"   property="razonSocial" />
+	<result column="OFICINA"   property="oficina" />
+	<result column="NOMOFIC"   property="nombreOficina" />
+	<result column="SUCURSAL"   property="sucursal" />
+</resultMap>
+ 
+<select id="consultaEmpresas" resultMap="listaEmpresas" parameterClass="cl.laaraucana.cuotasdup.dao.VO.ParamVO">
+	Select distinct CMNA          as RUTEMP,             
+        CMOA          as RUTDV,              
+        TRANSLATE(CMPA, ' ', ',') as RAZSOC, 
+        CMBA          as OFICINA,            
+        CMCA          as NOMOFIC,            
+        CM13A         as SUCURSAL         
+ 	from RCDTA.RC10SAP                          
+ 	where 1>0
+ 	
+ 	<isNotNull property="listRutemp">
+ 		and CMNA in
+ 		 <iterate property="listRutemp" open="(" close=")" conjunction=",">
+            #listRutemp[]#
+        </iterate>
+ 	</isNotNull>
+ 	<isNotNull property="razonSocial">
+ 		and CMPA like  #razonSocial#
+ 	</isNotNull>
+ 	<isNotNull property="oficina">
+ 	and CMBA = #oficina#
+ 	</isNotNull>
+ 	<isNotNull property="sucursal">
+ 	and CM13A = #sucursal#
+ 	</isNotNull>
+
+</select>
+ 
+ <insert id="insertBitacora" parameterClass="java.util.HashMap">
+		insert into RCDTA.BITACARTAS (ACCION, RUTEMP, OFICINA, SUCURSAL) 
+		VALUES (#accion#, #rutEmpresa#,#oficina#,#sucursal#)
+</insert>
+	
+</sqlMap>
