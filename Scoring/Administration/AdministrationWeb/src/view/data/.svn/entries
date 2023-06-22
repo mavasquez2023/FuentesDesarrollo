@@ -1,0 +1,55 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/src/view/data
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+access
+dir
+
+CondicionesStruct.java
+file
+
+
+
+
+2015-01-27T19:21:30.931603Z
+40a65992e32db5f5298d75689ab6ef90
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+CondicionMasterKey.java
+file
+
+
+
+
+2015-01-27T19:21:30.934603Z
+197d049d49b2235a6ef6cd8f09bd5535
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+

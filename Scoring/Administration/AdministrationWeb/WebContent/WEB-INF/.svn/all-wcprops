@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/IBM/!svn/ver/3886/Scoring/AdministrationWeb/WebContent/WEB-INF
+END
+ibm-web-bnd.xmi
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/ibm-web-bnd.xmi
+END
+faces-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/faces-config.xml
+END
+website-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/website-config.xml
+END
+ibm-web-ext.xmi
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/ibm-web-ext.xmi
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/web.xml
+END

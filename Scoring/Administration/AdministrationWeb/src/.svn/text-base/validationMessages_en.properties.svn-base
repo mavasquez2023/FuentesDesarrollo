@@ -1,0 +1,48 @@
+#conversion error messages
+javax.faces.component.UIInput.CONVERSION=Tipo de dato incorrecto.
+javax.faces.component.UIInput.CONVERSION_detail=El tipo de dato ingresado no corresponde al esperado.
+
+#validation error messages
+javax.faces.component.UIInput.REQUIRED= Ingresa un valor para todos los campos requeridos (*).
+javax.faces.component.UIInput.REQUIRED_detail= Este campo es requerido.
+
+javax.faces.convert.DoubleConverter.CONVERSION=Conversion Double
+javax.faces.convert.DoubleConverter.CONVERSION_detail=Detalle Conversion Double
+
+javax.faces.converter.IntegerConverter.INTEGER=Conversion Integer.
+javax.faces.converter.IntegerConverter.INTEGER_detail=Detalle Conversion Integer.
+
+javax.faces.validator.NOT_IN_RANGE=Fuera del rango
+javax.faces.validator.NOT_IN_RANGE_detail=Fuera del rango permitido.
+
+javax.faces.validator.LengthValidator.MAXIMUM=Valor por encima del mayor permitido
+javax.faces.validator.LengthValidator.MINIMUM=Valor por debajo del menor permitido
+
+javax.faces.validator.DoubleRangeValidator.LIMIT=Fuera del límite para Double
+javax.faces.validator.DoubleRangeValidator.LIMIT_detail=Fuera del límite para Double
+
+javax.faces.validator.DoubleRangeValidator.TYPE=Tipo de dato inválido para Double
+javax.faces.validator.DoubleRangeValidator.TYPE_detail = No corresponde al tipo de dato Double
+
+javax.faces.validator.DoubleRangeValidator.MAXIMUM=Está por encima de máximo Double
+javax.faces.validator.DoubleRangeValidator.MINIMUM=Está por debajo del mínimo Double
+javax.faces.validator.DoubleRangeValidator.NOT_IN_RANGE=Está fuera del rango de valores válidos Double.
+
+javax.faces.validator.IntegerRangeValidator.LIMIT=Fuera del límite para Integer
+javax.faces.validator.IntegerRangeValidator.LIMIT_detail=Fuera del límite para Integer
+javax.faces.validator.IntegerRangeValidator.TYPE=Tipo de dato inválido para Integer
+javax.faces.validator.IntegerRangeValidator.TYPE_detail =No corresponde al tipo de dato Integer
+javax.faces.validator.IntegerRangeValidator.MAXIMUM=Está por encima de máximo Integer
+javax.faces.validator.IntegerRangeValidator.MINIMUM=Está por debajo del mínimo Integer
+javax.faces.validator.IntegerRangeValidator.NOT_IN_RANGE=Está fuera del rango de valores válidos Integer.
+
+javax.faces.validator.LongRangeValidator.MAXIMUM=SPANIH{1}: My Value is greater than allowable maximum of {0}
+javax.faces.validator.LongRangeValidator.MINIMUM=SPANIH{1}: My Value is less than allowable minimum of {0}
+javax.faces.validator.LongRangeValidator.NOT_IN_RANGE=SPANIH{2}: My Field needs to be between the expected values of {0} and {1} 
+javax.faces.validator.LongRangeValidator.LIMIT=SPANIHMy Validation Limit Double
+javax.faces.validator.LongRangeValidator.LIMIT_detail=SPANIHValidation Limit Double
+javax.faces.validator.LongRangeValidator.TYPE=SPANIHMy Error Type Double
+javax.faces.validator.LongRangeValidator.TYPE_detail =SPANIH Error Type Double
+javax.faces.validator.LongRangeValidator.MAXIMUM=SPANIHMy max
+javax.faces.validator.LongRangeValidator.MINIMUM=SPANIHMy minimum
+javax.faces.validator.LongRangeValidator.NOT_IN_RANGE=SPANIHMy not in range

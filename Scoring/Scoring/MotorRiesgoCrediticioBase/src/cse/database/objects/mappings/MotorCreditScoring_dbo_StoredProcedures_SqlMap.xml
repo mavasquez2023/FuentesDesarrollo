@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<!-- <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "/sql-map-2.dtd"> -->
+
+<sqlMap namespace="MotorCreditScoring_dbo_StoredProcedures">
+
+	<parameterMap id="evaluaCreditScoringPersonasParameters" class="map">
+		<parameter property="returnStatus" jdbcType="INTEGER" javaType="java.lang.Integer"
+			mode="OUT" />
+		<parameter property="idSolicitud" jdbcType="CHAR" javaType="java.lang.String"
+			mode="IN" />
+	</parameterMap>
+	<procedure id="evaluaCreditScoringPersonas" parameterMap="evaluaCreditScoringPersonasParameters">
+		{ ? = call dbo.sproc_EvaluaCreditScoringPersonas(?)}
+	</procedure>
+
+	<parameterMap id="myProcedureParameters" class="map">
+		<parameter property="result" jdbcType="INTEGER" javaType="java.lang.Integer"
+			mode="OUT" />
+		<parameter property="first" jdbcType="INTEGER" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="second" jdbcType="VARCHAR" javaType="java.lang.String"
+			mode="IN" />
+		<parameter property="third" jdbcType="VARCHAR" javaType="java.lang.String"
+			mode="OUT" />
+	</parameterMap>
+	<procedure id="myProcedure" parameterMap="myProcedureParameters">
+		{ ? = call dbo.sp_MyProcedure(?,?,?)}
+	</procedure>
+
+
+</sqlMap>

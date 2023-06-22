@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.websphere.sdo.mediator.jdbc.metadata="http:///com/ibm/websphere/sdo/mediator/jdbc/metadata.ecore" rootTable="//@tables.0">
+  <tables schemaName="dbo" name="CondicionOtorgamiento">
+    <primaryKey columns="//@tables.0/@columns.0"/>
+    <columns name="IdCondicion" type="4"/>
+    <columns name="Nombre" type="4"/>
+    <columns name="Descripcion" type="4"/>
+    <columns name="Vigente"  />
+    <filter predicate="( Vigente = '1' )"/>
+  </tables>
+</com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<!-- <!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "/sql-map-config-2.dtd"> -->
+<!--<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "sql-map-config-2.dtd">-->
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" cacheModelsEnabled="true"
+		lazyLoadingEnabled="false" enhancementEnabled="true" maxSessions="64"
+		maxTransactions="8" maxRequests="128" />
+
+	<transactionManager type="JDBC">
+	<!-- <property name="UserTransaction" value="java:comp/env/UserTransaction" /> comentado --> 
+	<dataSource type="JNDI">
+		<property name="DataSource" value="java:comp/env/MotorCreditScoring" />
+		</dataSource> 
+	</transactionManager>
+	<!--
+		 <transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="JDBC.ConnectionURL"
+				value="jdbc:sqlserver://146.83.1.249:1433;databaseName=ScoringIbm" />
+			<property name="JDBC.Username" value="ibmScoring" />
+			<property name="JDBC.Password" value="sistemas" />
+		</dataSource>
+	</transactionManager> 
+	
+	 <transactionManager type="JDBC">
+	<property name="UserTransaction" value="java:comp/env/UserTransaction" /> comentado 
+	<dataSource type="JNDI">
+	<property name="DataSource" value="java:comp/env/MotorCreditScoring" />
+	</dataSource> 
+	</transactionManager>-->
+
+
+<!-- 	<sqlMap -->
+<!-- 		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_ClasificacionEmpresa_SqlMap.xml" /> -->
+<!-- 	<sqlMap -->
+<!-- 		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_EstadoCivil_SqlMap.xml" /> -->
+<!-- 	<sqlMap -->
+<!-- 		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_Genero_SqlMap.xml" /> -->
+<!-- 	<sqlMap -->
+<!-- 		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_Solicitud_SqlMap.xml" /> -->
+	<sqlMap
+		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_SolicitudCondicionOtorgamiento_SqlMap.xml" />
+	<sqlMap
+		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_CondicionOtorgamiento_SqlMap.xml" />
+<!-- 	<sqlMap -->
+<!-- 		resource="cse/database/objects/mappings/MotorCreditScoring_dbo_StoredProcedures_SqlMap.xml" /> -->
+
+
+</sqlMapConfig>

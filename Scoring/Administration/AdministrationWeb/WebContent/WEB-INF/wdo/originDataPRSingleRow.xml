@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.websphere.sdo.mediator.jdbc.metadata="http:///com/ibm/websphere/sdo/mediator/jdbc/metadata.ecore" rootTable="//@tables.0" uniqueKeyBufferSize="5">
+  <uniqueKeyTable schemaName="dbo" name="KEYVALUE">
+    <primaryKey columns="//@uniqueKeyTable/@columns.0"/>
+    <columns name="APPKEY" type="6"/>
+    <columns name="KEYCOUNTER" type="6"/>
+  </uniqueKeyTable>
+  <tables schemaName="dbo" name="PerfilRiesgo">
+    <primaryKey columns="//@tables.0/@columns.0"/>
+    <columns name="IdPerfilRiesgo"/>
+    <columns name="Nombre" type="4"/>
+    <columns name="Desde" type="5"/>
+    <columns name="Hasta" type="5"/>
+    <columns name="Vigente"/>
+    <filter predicate="( IdPerfilRiesgo = ? )">
+      <filterArguments name="requestScope_param_idPerfilRiesgo"/>
+    </filter>
+  </tables>
+</com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><website version="700">
+    <structure>
+        <page nid="1" servleturl="/AdministrationWeb/home.faces" src="/AdministrationWeb/home.jsp">
+            <title>home</title>
+            <group gid="group" nid="2">
+                <title>Mantenedor Tablas Tipo</title>
+                <page nid="34" servleturl="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_List.faces" src="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_List.jsp">
+                    <title>Antiguedad Laboral</title>
+                    <page navigation="false" nid="33" servleturl="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_New.faces" src="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_New.jsp">
+                        <title>AL_New</title>
+                    </page>
+                    <page navigation="false" nid="32" servleturl="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_Edit.faces" src="/AdministrationWeb/pages/admin/crud/antiguedadLaboral/AL_Edit.jsp">
+                        <title>AL_Edit</title>
+                    </page>
+                </page>
+                <page nid="26" servleturl="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_List.faces" src="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_List.jsp">
+                    <title>Clasificacion Empresa</title>
+                    <page navigation="false" nid="31" servleturl="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_New.faces" src="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_New.jsp">
+                        <title>CE_New</title>
+                    </page>
+                    <page navigation="false" nid="30" servleturl="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_Edit.faces" src="/AdministrationWeb/pages/admin/crud/clasificacionEmpresa/CE_Edit.jsp">
+                        <title>CE_Edit</title>
+                    </page>
+                </page>
+                <page nid="28" servleturl="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_List.faces" src="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_List.jsp">
+                    <title>Perfil Riesgo</title>
+                    <page navigation="false" nid="25" servleturl="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_New.faces" src="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_New.jsp">
+                        <title>PR_New</title>
+                    </page>
+                    <page navigation="false" nid="29" servleturl="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_Edit.faces" src="/AdministrationWeb/pages/admin/crud/perfilRiesgo/PR_Edit.jsp">
+                        <title>PR_Edit</title>
+                    </page>
+                </page>
+                <page nid="27" servleturl="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_List.faces" src="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_List.jsp">
+                    <title>Tipo Renta</title>
+                    <page navigation="false" nid="24" servleturl="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_New.faces" src="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_New.jsp">
+                        <title>TR_New</title>
+                    </page>
+                    <page navigation="false" nid="23" servleturl="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_Edit.faces" src="/AdministrationWeb/pages/admin/crud/tipoRenta/TRT_Edit.jsp">
+                        <title>TR_Edit</title>
+                    </page>
+                </page>
+                <page nid="16" servleturl="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_List.faces" src="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_List.jsp">
+                    <title>Tipo Riesgo</title>
+                    <page navigation="false" nid="18" servleturl="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_New.faces" src="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_New.jsp">
+                        <title>Nuevo Tipo Riesgo</title>
+                    </page>
+                    <page navigation="false" nid="17" servleturl="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_Edit.faces" src="/AdministrationWeb/pages/admin/crud/tipoRiesgo/TRG_Edit.jsp">
+                        <title>Editor Tipo Riesgo</title>
+                    </page>
+                </page>
+            </group>
+            <group gid="group2" nid="3">
+                <title>Configurador</title>
+                <page nid="39" servleturl="/AdministrationWeb/pages/admin/config/sueldosPrestamo/SP_List.faces" src="/AdministrationWeb/pages/admin/config/sueldosPrestamo/SP_List.jsp">
+                    <title>Sueldos-Préstamo</title>
+                </page>
+                <page nid="44" servleturl="/AdministrationWeb/pages/admin/config/condicionesOtorgamiento/CO_List.faces" src="/AdministrationWeb/pages/admin/config/condicionesOtorgamiento/CO_List.jsp">
+                    <title>Condiciones Otorgamiento</title>
+                    <page navigation="false" nid="45" servleturl="/AdministrationWeb/pages/admin/config/condicionesOtorgamiento/CO_Edit.faces" src="/AdministrationWeb/pages/admin/config/condicionesOtorgamiento/CO_Edit.jsp">
+                        <title>Editor Condiciones Otorgamiento</title>
+                    </page>
+                </page>
+            </group>
+        </page>
+    </structure>
+</website>

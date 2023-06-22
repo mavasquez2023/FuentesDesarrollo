@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib
+END
+ibatis-sqlmap-2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/ibatis-sqlmap-2.jar
+END
+log4j-core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/log4j-core.jar
+END
+jsf-ibm.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/jsf-ibm.jar
+END
+xmlParserAPIs-2-4-0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/xmlParserAPIs-2-4-0.jar
+END
+xercesImpl-2-4-0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/xercesImpl-2-4-0.jar
+END
+sax.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/sax.jar
+END
+sitelib.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/sitelib.jar
+END
+sdo_access_beans.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/sdo_access_beans.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/commons-logging.jar
+END
+dom.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/dom.jar
+END
+log4j.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/log4j.jar
+END
+ibatis-common-2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/ibatis-common-2.jar
+END
+sdo_web.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/sdo_web.jar
+END
+icu4j_3_4_1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/WebContent/WEB-INF/lib/icu4j_3_4_1.jar
+END

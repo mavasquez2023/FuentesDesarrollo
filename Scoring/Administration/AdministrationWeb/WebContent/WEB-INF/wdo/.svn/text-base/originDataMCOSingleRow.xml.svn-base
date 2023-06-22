@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.websphere.sdo.mediator.jdbc.metadata="http:///com/ibm/websphere/sdo/mediator/jdbc/metadata.ecore" rootTable="//@tables.0">
+  <tables schemaName="dbo" name="MatrizCondicionOtorgamiento">
+    <primaryKey columns="//@tables.0/@columns.0 //@tables.0/@columns.1 //@tables.0/@columns.2"/>
+    <columns name="IdTipoRiesgoExterno"/>
+    <columns name="IdTipoRentaPermitida"/>
+    <columns name="IdPerfilRiesgo"/>
+    <filter predicate="((( IDPERFILRIESGO = ? ) AND IDTIPORENTAPERMITIDA = ? ) AND IDTIPORIESGOEXTERNO = ? )">
+      <filterArguments name="sessionScope_param_idPR"/>
+      <filterArguments name="sessionScope_param_idTRT"/>
+      <filterArguments name="sessionScope_param_idTRG"/>
+    </filter>
+  </tables>
+</com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata>

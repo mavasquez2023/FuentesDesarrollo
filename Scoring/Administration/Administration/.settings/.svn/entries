@@ -1,0 +1,52 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/Administration/.settings
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:44:43.999171Z
+3883
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+org.eclipse.wst.common.project.facet.core.xml
+file
+
+
+
+
+2015-01-27T19:21:27.510407Z
+2e18c5b602d672d93330a7c9796e2ced
+2015-01-23T14:44:43.999171Z
+3883
+arojas
+
+org.eclipse.wst.common.component
+file
+
+
+
+
+2015-01-27T19:21:27.514408Z
+01d8b5ef05a5dfdbcdcb0085faa467ec
+2015-01-23T14:44:43.999171Z
+3883
+arojas
+

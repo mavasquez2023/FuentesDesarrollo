@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.websphere.sdo.mediator.jdbc.metadata="http:///com/ibm/websphere/sdo/mediator/jdbc/metadata.ecore" rootTable="//@tables.0">
+  <tables schemaName="dbo" name="NumeroSueldosPrestamo">
+    <primaryKey columns="//@tables.0/@columns.1 //@tables.0/@columns.0"/>
+    <columns name="IdClasificacionEmpresa"/>
+    <columns name="IdAntiguedadLaboral"/>
+    <columns name="IdNroSueldos" nullable="true"/>
+    <filter predicate="( IdClasificacionEmpresa = ? AND  IdAntiguedadLaboral = ? )">
+      <filterArguments name="sessionScope_param_idCE"/>
+      <filterArguments name="sessionScope_param_idAL"/>
+    </filter>
+  </tables>
+</com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata>

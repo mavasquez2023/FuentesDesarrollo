@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.websphere.sdo.mediator.jdbc.metadata="http:///com/ibm/websphere/sdo/mediator/jdbc/metadata.ecore" rootTable="//@tables.0">
+  <tables schemaName="dbo" name="NumeroSueldosPrestamo">
+    <primaryKey columns="//@tables.0/@columns.1 //@tables.0/@columns.0"/>
+    <foreignKeys columns="//@tables.0/@columns.0"/>
+    <foreignKeys columns="//@tables.0/@columns.1"/>
+    <columns name="IdClasificacionEmpresa"/>
+    <columns name="IdAntiguedadLaboral"/>
+    <columns name="IdNroSueldos" nullable="true"/>
+  </tables>
+  <tables schemaName="dbo" name="ClasificacionEmpresa">
+    <primaryKey columns="//@tables.1/@columns.0"/>
+    <columns name="IdClasificacionEmpresa"/>
+    <columns name="Nombre" type="4"/>
+    <columns name="Descripcion" type="4" nullable="true"/>
+  </tables>
+  <tables schemaName="dbo" name="AntiguedadLaboral">
+    <primaryKey columns="//@tables.2/@columns.0"/>
+    <columns name="IdAntiguedadLaboral"/>
+    <columns name="Nombre" type="4"/>
+    <columns name="Desde"/>
+    <columns name="Hasta"/>
+    <columns name="Vigente"/>
+  </tables>
+  <relationships childKey="//@tables.0/@foreignKeys.0" parentKey="//@tables.1/@primaryKey" exclusive="false"/>
+  <relationships childKey="//@tables.0/@foreignKeys.1" parentKey="//@tables.2/@primaryKey" exclusive="false"/>
+</com.ibm.websphere.sdo.mediator.jdbc.metadata:Metadata>

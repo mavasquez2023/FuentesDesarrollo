@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="dbo_MatrizCondicionOtorgamiento">
+
+	<resultMap id="condicionMasterResult" class="view.data.CondicionesStruct">
+		<result property="key.tipoRiesgo" column="tipoRiesgo" />
+		<result property="key.tipoRenta" column="tipoRenta" />
+		<result property="key.perfilRiesgo" column="perfilRiesgo" />
+		<result property="strTipoRiesgo" column="strTipoRiesgo" />
+		<result property="strTipoRenta" column="strTipoRenta" />
+		<result property="strPerfilRiesgo" column="strPerfilRiesgo" />
+	</resultMap>
+
+<!-- 	<resultMap id="condicionDetailResult" class="view.data.CondicionDetail"> -->
+<!-- 		<result property="idCondicion" />		 -->
+<!-- 	</resultMap> -->
+	
+	<resultMap id="condicionDetailResult" class="java.lang.String">
+		<result property="idCondicion" />		
+	</resultMap>
+
+	<select id="selectSingleMaster" resultMap="condicionMasterResult" parameterClass="view.data.CondicionMasterKey">
+		SELECT DISTINCT
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno AS tipoRiesgo,
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida AS tipoRenta,
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo AS perfilRiesgo,
+		dbo.TipoRiesgoExterno.Nombre AS strTipoRiesgo,
+		dbo.TipoRentaPermitida.Nombre AS strTipoRenta,
+		dbo.PerfilRiesgo.Nombre
+		AS strPerfilRiesgo
+		FROM
+		dbo.MatrizCondicionOtorgamiento
+		INNER JOIN
+		dbo.PerfilRiesgo
+		ON
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo =
+		dbo.PerfilRiesgo.IdPerfilRiesgo
+		INNER JOIN dbo.TipoRentaPermitida ON
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida =
+		dbo.TipoRentaPermitida.IdTipoRentaPermitida
+		INNER JOIN
+		dbo.TipoRiesgoExterno ON
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno =
+		dbo.TipoRiesgoExterno.IdTipoRiesgoExterno
+		WHERE
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno = #tipoRiesgo#
+		AND
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida = #tipoRenta#
+		AND
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo = #perfilRiesgo#
+	</select>
+
+	<select id="selectDetail" resultMap="condicionDetailResult" parameterClass="view.data.CondicionMasterKey">
+		SELECT 
+		dbo.MatrizCondicionOtorgamiento.IdCondicion AS idCondicion 		
+		FROM
+		dbo.MatrizCondicionOtorgamiento
+		INNER JOIN dbo.CondicionOtorgamiento ON	 dbo.CondicionOtorgamiento.IdCondicion =
+		dbo.MatrizCondicionOtorgamiento.IdCondicion
+		WHERE
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno = #tipoRiesgo#
+		AND
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida = #tipoRenta#
+		AND
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo = #perfilRiesgo#
+	</select>
+
+	<select id="selectAllMaster" resultMap="condicionMasterResult">
+		SELECT DISTINCT
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno AS tipoRiesgo,
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida AS tipoRenta,
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo AS perfilRiesgo,
+		dbo.TipoRiesgoExterno.Nombre AS strTipoRiesgo,
+		dbo.TipoRentaPermitida.Nombre AS strTipoRenta,
+		dbo.PerfilRiesgo.Nombre
+		AS strPerfilRiesgo
+		FROM
+		dbo.MatrizCondicionOtorgamiento
+		INNER JOIN
+		dbo.PerfilRiesgo
+		ON
+		dbo.MatrizCondicionOtorgamiento.IdPerfilRiesgo =
+		dbo.PerfilRiesgo.IdPerfilRiesgo
+		INNER JOIN dbo.TipoRentaPermitida ON
+		dbo.MatrizCondicionOtorgamiento.IdTipoRentaPermitida =
+		dbo.TipoRentaPermitida.IdTipoRentaPermitida
+		INNER JOIN
+		dbo.TipoRiesgoExterno ON
+		dbo.MatrizCondicionOtorgamiento.IdTipoRiesgoExterno =
+		dbo.TipoRiesgoExterno.IdTipoRiesgoExterno
+		
+  </select>
+  <insert id="insertCondicion">
+    insert into dbo.MatrizCondicionOtorgamiento (IdTipoRiesgoExterno,
+      IdTipoRentaPermitida, IdPerfilRiesgo, IdCondicion)
+    values (#idtiporiesgoexterno#, #idtiporentapermitida#, #idperfilriesgo#, #idcondicion#)
+  </insert>
+  
+  <delete id="deleteCondiciones" parameterClass="view.data.CondicionMasterKey" >    
+    delete from dbo.MatrizCondicionOtorgamiento
+    where IdTipoRiesgoExterno = #tipoRiesgo#
+      and IdTipoRentaPermitida = #tipoRenta#
+      and IdPerfilRiesgo = #perfilRiesgo#      
+  </delete>
+  
+</sqlMap>

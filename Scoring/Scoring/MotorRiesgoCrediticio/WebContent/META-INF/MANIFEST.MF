@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: jt400.jar 
+ ibatis-common-2.jar 
+ ibatis-sqlmap-2.jar 
+ MotorRiesgoCrediticioBase.jar
+

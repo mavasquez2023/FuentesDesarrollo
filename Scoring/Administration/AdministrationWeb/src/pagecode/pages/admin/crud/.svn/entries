@@ -1,0 +1,43 @@
+8
+
+dir
+3887
+https://172.16.137.116/svn/IBM/Scoring/AdministrationWeb/src/pagecode/pages/admin/crud
+https://172.16.137.116/svn/IBM
+
+
+
+2015-01-23T14:45:30.373875Z
+3885
+arojas
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+antiguedadLaboral
+dir
+
+clasificacionEmpresa
+dir
+
+tipoRiesgo
+dir
+
+tipoRenta
+dir
+
+perfilRiesgo
+dir
+

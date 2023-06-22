@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src
+END
+labels_en.properties
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/labels_en.properties
+END
+validationMessages_en.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/validationMessages_en.properties
+END
+labels_es.properties
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/labels_es.properties
+END
+validationMessages_es.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/validationMessages_es.properties
+END
+sql-map-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/sql-map-config.xml
+END
+labels.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/IBM/!svn/ver/3885/Scoring/AdministrationWeb/src/labels.properties
+END

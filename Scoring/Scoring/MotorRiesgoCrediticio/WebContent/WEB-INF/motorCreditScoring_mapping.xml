@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?><java-wsdl-mapping version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.araucana.www</package-type>
+        <namespaceURI>http://www.araucana.cl/creditScoring/</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>float</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:float</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;diasMorosidad</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>double</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:double</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;antiguedadLaboral</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;digito</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.Condicion</java-type>
+        <root-type-qname xmlns:rtq="http://www.araucana.cl/creditScoring/">rtq:condicion</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>nombre</java-variable-name>
+            <xml-element-name>nombre</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>descripcion</java-variable-name>
+            <xml-element-name>descripcion</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;genero</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.EvaluarCreditoSyncFault</java-type>
+        <root-type-qname xmlns:rtq="http://www.araucana.cl/creditScoring/">rtq:evaluarCreditoSyncFault</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;fechaNac</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;&gt;evaluarCreditoSyncFull&gt;clasifRiesgoEmpresa</anonymous-type-qname>
+        <qname-scope>simpleType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.EvaluarCreditoSyncFault</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;evaluarCreditoSyncFault</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>mensajeError</java-variable-name>
+            <xml-element-name>mensajeError</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.Condicion[]</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:condicion[1,unbounded]</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.EvaluarCreditoSyncFullFault</java-type>
+        <root-type-qname xmlns:rtq="http://www.araucana.cl/creditScoring/">rtq:evaluarCreditoSyncFullFault</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.EvaluarCreditoSyncFullFault</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;evaluarCreditoSyncFullFault</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>mensajeError</java-variable-name>
+            <xml-element-name>mensajeError</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.Condicion[]</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;evaluarCreditoSyncResponse&gt;condiciones[1,unbounded]</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.www.Condicion[]</java-type>
+        <anonymous-type-qname>http://www.araucana.cl/creditScoring/:&gt;evaluarCreditoSyncFullResponse&gt;condiciones[1,unbounded]</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <exception-mapping>
+        <exception-type>cl.araucana.www.EvaluarCreditoSyncFault</exception-type>
+        <wsdl-message xmlns:em="http://www.araucana.cl/creditScoring/">em:evaluarCreditoSync_faultMsg</wsdl-message>
+        <constructor-parameter-order>
+            <element-name>mensajeError</element-name>
+        </constructor-parameter-order>
+    </exception-mapping>
+    <exception-mapping>
+        <exception-type>cl.araucana.www.EvaluarCreditoSyncFullFault</exception-type>
+        <wsdl-message xmlns:em="http://www.araucana.cl/creditScoring/">em:evaluarCreditoSyncFull_faultMsg</wsdl-message>
+        <constructor-parameter-order>
+            <element-name>mensajeError</element-name>
+        </constructor-parameter-order>
+    </exception-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.araucana.www.CreditScoring_Service</service-interface>
+        <wsdl-service-name xmlns:sim="http://www.araucana.cl/creditScoring/">sim:creditScoring</wsdl-service-name>
+        <port-mapping>
+            <port-name>creditScoringSOAP</port-name>
+            <java-port-name>creditScoringSOAP</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.araucana.www.CreditScoring_PortType</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://www.araucana.cl/creditScoring/">seimwpt:creditScoring</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://www.araucana.cl/creditScoring/">seimwb:motorCreditScoringSOAP</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>evaluarCreditoSyncFull</java-method-name>
+            <wsdl-operation>evaluarCreditoSyncFull</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>rut</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>digito</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>tipoAfiliado</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>genero</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>4</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>fechaNac</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>5</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>estadoCivil</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>6</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>remuneracion</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>7</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>monto</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>8</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>diasMorosidad</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>9</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>numCreditosAnteriores</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>10</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>numDiasLicencia</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>11</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>antiguedadLaboral</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>12</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>rutEmpleador</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>13</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>digitoEmpleador</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>14</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullRequest</wsdl-message>
+                    <wsdl-message-part-name>clasifRiesgoEmpresa</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>15</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>rutCli</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>16</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>dvCli</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>17</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>idSolicitud</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>18</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>perfil</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>19</param-position>
+                <param-type>float</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>score</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>20</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>scoreEquifax</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>21</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>rentas</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>22</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>endeudMax</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>23</param-position>
+                <param-type>cl.araucana.www.Condicion[]</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncFullResponse</wsdl-message>
+                    <wsdl-message-part-name>condiciones</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>void</method-return-value>
+                <wsdl-message xmlns:wrvm="http://www.araucana.cl/creditScoring/">wrvm:evaluarCreditoSyncFullResponse</wsdl-message>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>evaluarCreditoSync</java-method-name>
+            <wsdl-operation>evaluarCreditoSync</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncRequest</wsdl-message>
+                    <wsdl-message-part-name>rut</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncRequest</wsdl-message>
+                    <wsdl-message-part-name>digito</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncRequest</wsdl-message>
+                    <wsdl-message-part-name>monto</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncRequest</wsdl-message>
+                    <wsdl-message-part-name>tipoAfiliado</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>4</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncRequest</wsdl-message>
+                    <wsdl-message-part-name>oficina</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>5</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncResponse</wsdl-message>
+                    <wsdl-message-part-name>idSolicitud</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>6</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncResponse</wsdl-message>
+                    <wsdl-message-part-name>perfil</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>7</param-position>
+                <param-type>double</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncResponse</wsdl-message>
+                    <wsdl-message-part-name>score</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>8</param-position>
+                <param-type>cl.araucana.www.Condicion[]</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://www.araucana.cl/creditScoring/">mppm:evaluarCreditoSyncResponse</wsdl-message>
+                    <wsdl-message-part-name>condiciones</wsdl-message-part-name>
+                    <parameter-mode>OUT</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>void</method-return-value>
+                <wsdl-message xmlns:wrvm="http://www.araucana.cl/creditScoring/">wrvm:evaluarCreditoSyncResponse</wsdl-message>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

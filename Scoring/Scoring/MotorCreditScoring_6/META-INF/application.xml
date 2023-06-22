@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<display-name>ScoringIBM</display-name>
+	<module id="WebModule_1335991822765">
+		<web>
+			<web-uri>MotorRiesgoCrediticio.war</web-uri>
+			<context-root>MotorRiesgoCrediticioTest</context-root>
+		</web>
+	</module>
+	<module id="EjbModule_1342586665815">
+		<ejb>MotorRiesgoEJB.jar</ejb>
+	</module>
+</application>

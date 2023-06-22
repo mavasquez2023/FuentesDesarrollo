@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/IBM/!svn/ver/3883/Scoring/Administration/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp
+END
+deployment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/IBM/!svn/ver/3883/Scoring/Administration/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/deployment.xml
+END
+variables.xml
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/IBM/!svn/ver/3883/Scoring/Administration/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml
+END
+resources.xml
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/IBM/!svn/ver/3883/Scoring/Administration/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml
+END
