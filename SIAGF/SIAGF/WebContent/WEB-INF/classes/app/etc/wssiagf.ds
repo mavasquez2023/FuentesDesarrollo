@@ -1,0 +1,33 @@
+#jdbc.DriverName=org.apache.derby.jdbc.ClientDriver
+#jdbc.url=jdbc:derby://localhost:6755/testDB
+#jdbc.userPropertyName=user
+#jdbc.passwordPropertyName=password
+
+# Common AS400 JDBC properties.
+
+jdbc.DriverName=com.ibm.as400.access.AS400JDBCDriver
+jdbc.userPropertyName=user
+jdbc.passwordPropertyName=password
+
+#(Produccion)
+jdbc.url=jdbc:as400://ARAUCANA
+#(QA)
+#jdbc.url=jdbc:as400://146.83.1.2
+#(Desa)
+#jdbc.url=jdbc:as400://146.83.1.5
+
+
+# Optional data source settings.
+ds.properties.trace=false
+
+#(Produccion)
+ds.properties.user=usrwassebu
+ds.properties.password=usr60sebus
+
+#(QA)
+#ds.properties.user=schema
+#ds.properties.password=schema
+
+#(Desa)
+#ds.properties.user=lriquelmes
+#ds.properties.password=araucana01

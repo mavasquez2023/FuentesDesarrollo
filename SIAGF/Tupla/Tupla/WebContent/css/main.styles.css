@@ -1,0 +1,290 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	padding-top: 0px;
+	margin-top: 0px;
+	font-size: 13px;
+	font-family: Arial, Helvetica;
+}
+
+#mensaje {
+	padding-top: 5px;
+	margin: 0px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	height: auto;
+	background-color: #f1f1f1;
+	font-family: Arial, Helvetica;
+	font-size: 13px;
+}
+
+.text {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.button {
+	FONT-SIZE: 13px;
+	COLOR: #FFFFFF;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial;
+	background-image: url(../img/fondobot.jpg);
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-bottom: 15px;
+	border-top-color: 03557b;
+	border-right-color: 03557b;
+	border-bottom-color: 007bb7;
+	border-left-color: 007bb7;
+	font-weight: bold;
+	height: 25px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.menu {
+	border: 1px solid #ABABAB;
+	width: 238px;
+	 
+}
+
+.menu ul {
+	list-style-type: none;
+	margin: 10px 0;
+	padding: 0 0 0 20px;
+}
+
+h1 {
+	font-family: Arial, Helvetica;
+	font-size: 25px;
+	font-weight: bold;
+	color: #999999;
+	margin-left: 10px;
+}
+
+h2 {
+	font-family: Arial, Helvetica;
+	font-size: 20px;
+	font-weight: bold;
+	color: #999999;
+	margin-left: 10px;
+}
+
+h3 {
+	font-family: Arial, Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+	color: #999999;
+	margin-left: 10px;
+}
+
+#tabla {
+	border: 1px solid #ABABAB;
+	width: 730px;
+}
+
+.blackText {
+	FONT-SIZE: 11px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+#tabla th {
+	background-image: url(../img/fondo_top_tabla.jpg);
+	height: 24px;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+}
+
+#tabla th .text {
+	font-size: 12px;
+	font-weight: bold;;
+}
+
+.blackText14 {
+	FONT-SIZE: 14px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blackText16 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 16px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blueText {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blackTextP6 {
+	FONT-SIZE: 16px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blackTextP4 {
+	FONT-SIZE: 14px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blackTextP2 {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blueText {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blueText2 {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica
+}
+
+.blueTextP4 {
+	FONT-SIZE: 14px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.blueText5 {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.redTextP4 {
+	FONT-SIZE: 14px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.redBackGris {
+	FONT-STYLE: normal;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+
+.optionText {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial
+}
+
+.optionBlueText {
+	FONT-SIZE: 16px;
+	COLOR: #005d8b;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial;
+	margin: 5px;
+	text-align: left;
+	font-weight: bold;
+	padding: 5px;
+	display: block;
+}
+
+.optionBlueTextP2 {
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica
+}
+
+#tabla td {
+	height: 25px;
+	padding-top: 5px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+	font-family: Arial, Helvetica;
+}
+
+A:link, A:visited  {
+	font-family: Arial, Helvetica;
+	font-size: 13px;
+	color: #333;
+}
+
+#tabla th {
+	height: 25px;
+	padding-top: 5px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-family: Arial, Helvetica;
+}
+
+ 
+
+.boton {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(../img/fondobot.jpg);
+	color: #FFFFFF;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #306790;
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+.botonOver {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(../img/fondobot2.jpg);
+	color: #FFFFFF;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #306790;
+	margin-right: 3px;
+	margin-left: 3px;
+}

@@ -1,0 +1,9 @@
+jdbc.DriverName=org.apache.derby.jdbc.ClientDriver
+jdbc.url=jdbc:derby://localhost:6755/testDB
+jdbc.userPropertyName=user
+jdbc.passwordPropertyName=password
+
+# Optional data source settings.
+ds.properties.trace=false
+ds.properties.user=app
+ds.properties.password=app

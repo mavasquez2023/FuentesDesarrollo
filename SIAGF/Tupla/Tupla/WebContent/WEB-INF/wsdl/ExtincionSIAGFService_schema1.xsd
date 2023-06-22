@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://servicios.laaraucana.cl/extincionSIAGF" version="1.0" xmlns:tns="http://servicios.laaraucana.cl/extincionSIAGF">
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="extingueCausantes" type="tns:extingueCausantes"/>
+
+  <xs:element name="extingueCausantesResponse" type="tns:extingueCausantesResponse"/>
+
+  <xs:element name="getStatus" type="tns:getStatus"/>
+
+  <xs:element name="getStatusResponse" type="tns:getStatusResponse"/>
+
+  <xs:complexType name="extingueCausantes">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWS">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="TRABAJADOR" type="tns:dataWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dataWS">
+    <xs:sequence>
+      <xs:element name="RUT_TRABAJADOR" type="xs:string"/>
+      <xs:element name="RUT_EMPRESA" type="xs:string"/>
+      <xs:element name="FECHA_EMISION" type="xs:string"/>
+      <xs:element name="FECHA_EXTINCION" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="extingueCausantesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWS">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:int"/>
+      <xs:element name="DESCRIPCION" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="RESPUESTA" type="tns:dataResponseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dataResponseWS">
+    <xs:sequence>
+      <xs:element name="RUT_TRABAJADOR" type="xs:string"/>
+      <xs:element name="RUT_EMPRESA" type="xs:string"/>
+      <xs:element name="ESTADO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWSTGR">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatus">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
