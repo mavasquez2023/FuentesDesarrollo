@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<services>
+    <webservice name="{http://delegate.continuidad.laaraucana.cl/}ContinuidadService" type="JAX-WS">
+        <endpoint name="ContinuidadPort">
+            <operation name="continuidad"/>
+        </endpoint>
+    </webservice>
+</services>

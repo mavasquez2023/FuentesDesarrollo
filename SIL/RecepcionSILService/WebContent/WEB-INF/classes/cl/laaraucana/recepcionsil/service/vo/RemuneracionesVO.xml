@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="remuneracionImponibleAFC90">
+		<valida id="largo" maximo="9" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="9"/>
+	</atributo>
+	<atributo name="remuneracionImponibleAFP60">
+		<valida id="largo" maximo="9" />
+		<valida id="numerico"/>
+		<formato id="relleno" relleno="0" largo="9"/>
+	</atributo>
+</clase>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="letraCajaPrevisional" >
+		<valida id="largo" maximo="1"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<valida id="valoresPermitidos" permitidos="A;;B;C;D;E;F;G;H;I;J;K"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+	</atributo>
+	<atributo name="fechaPrimeraAfiliacion">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="fechaContratoTrabajo">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+</clase>

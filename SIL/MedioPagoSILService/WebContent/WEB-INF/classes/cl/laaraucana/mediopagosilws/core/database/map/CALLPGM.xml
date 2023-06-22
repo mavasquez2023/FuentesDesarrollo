@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<parameterMap id="MapPro" class="java.util.Map">
+		<parameter property="RUTEMP" mode="INOUT"  jdbcType="CHAR"/>
+		<parameter property="DVEMP" mode="INOUT"  jdbcType="CHAR"/>
+		<parameter property="OFICINA" mode="INOUT" jdbcType="CHAR" />
+		<parameter property="SUCURSAL" mode="INOUT" jdbcType="CHAR" />
+		<parameter property="MEDPAGO" mode="INOUT"  jdbcType="CHAR"/>
+		<parameter property="OFIPAGO" mode="INOUT" jdbcType="CHAR" />
+		<parameter property="RESP" mode="INOUT" jdbcType="CHAR" />
+		<parameter property="GLOSA" mode="INOUT" jdbcType="CHAR" />
+
+	</parameterMap>
+
+	<procedure id="SERVPAGSP" parameterMap="MapPro">
+		{call ${SCHEMA}.SERPAGSP(?,?,?,?,?,?,?,?)}
+        </procedure>
+
+</sqlMap>

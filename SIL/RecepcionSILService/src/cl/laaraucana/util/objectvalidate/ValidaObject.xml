@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+	<metodo id="numerico" nombre="isInteger" mensaje="no es numerico">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="decimal" nombre="isDouble" mensaje="no es decimal">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="mes" nombre="isMesValido" mensaje="no es mes valido">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="anio" nombre="isAnioValido" mensaje="no es año valido">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="periodo" nombre="isPeriodoValido" mensaje="no es periodo valido AAAAMM">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="largo" nombre="maxLength" mensaje="excede el largo">
+		<parametro nombre="valor" />
+		<parametro nombre="maximo" />
+	</metodo>
+	<metodo id="notNull" nombre="notNullEmpty">
+		<parametro nombre="valor"></parametro>
+	</metodo>
+	<metodo id="relleno" nombre="rellenar">
+		<parametro nombre="valor" />
+		<parametro nombre="largo" />
+		<parametro nombre="relleno" />
+		<parametro nombre="truncate" />
+	</metodo>
+	<metodo id="replace" nombre="replace">
+		<parametro nombre="valor" />
+		<parametro nombre="oldchar" />
+		<parametro nombre="newchar" />
+	</metodo>
+	<metodo id="changeCase" nombre="changeCase" >
+		<parametro nombre="valor" />
+		<parametro nombre="to" />
+	</metodo>
+	<metodo id="validaOperador" nombre="validaOperador" mensaje="solo permite los valores (0, 3 y 4)">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="validaFecha" nombre="isFechaValida" mensaje="no es una fecha válida">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="validaHora" nombre="isHoraValida" mensaje="no es una hora válida">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="validaRut" nombre="validarRut" mensaje="no es un rut válido">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="valoresPermitidos" nombre="valoresPermitidos" mensaje="no admite el valor ingresado.">
+		<parametro nombre="valor" />
+		<parametro nombre="permitidos" />
+	</metodo>
+	<metodo id="valoresNoPermitidos" nombre="valoresNoPermitidos" mensaje="no admite el valor ingresado.">
+		<parametro nombre="valor" />
+		<parametro nombre="nopermitidos" />
+	</metodo>
+	<metodo id="mayorACero" nombre="mayorACero" mensaje="debe ser mayor a 0">
+		<parametro nombre="valor" />
+	</metodo>
+	<metodo id="distintoDeCero" nombre="distintoDeCero" mensaje="debe ser distinto de 0">
+		<parametro nombre="valor" />
+	</metodo>
+</configuracion>
+

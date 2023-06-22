@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objectMap>
+	<resultMap class="cl.laaraucana.continuidad.service.vo.SalidaContRentas" nombre="continuidadRentasMap" width="847">
+		<parametro javaProperty="respuesta.codigoRespuesta" javaType="java.lang.String" length="1" />
+		<parametro javaProperty="respuesta.glosa" javaType="java.lang.String" length="60" />
+		<lista class="cl.laaraucana.continuidad.service.vo.Licencia" ocurrencias="5">
+			<parametro javaProperty="licencia.tipo" javaType="java.lang.String" length="2" />
+			<parametro javaProperty="licencia.fechaDesde" javaType="java.lang.String" format="dd-MM-yyyy" length="8" />
+			<parametro javaProperty="licencia.fechaHasta" javaType="java.lang.String" format="dd-MM-yyyy" length="8" />
+			<parametro javaProperty="licencia.tipoLicencia" javaType="java.lang.String" length="1" />
+			<parametro javaProperty="licencia.cantidadDias" javaType="java.lang.String" length="3" />
+			<parametro javaProperty="licencia.rutPadreParental" javaType="java.lang.String" length="10" />
+		</lista>
+		<lista class="cl.laaraucana.continuidad.service.vo.Renta" ocurrencias="36">		
+			<parametro javaProperty="licencia.rutPadreParental" javaType="java.lang.String" length="10" />
+			<parametro javaProperty="licencia.rutPadreParental" javaType="java.lang.String" length="6" />
+		</lista>
+	</resultMap>
+</objectMap>
+

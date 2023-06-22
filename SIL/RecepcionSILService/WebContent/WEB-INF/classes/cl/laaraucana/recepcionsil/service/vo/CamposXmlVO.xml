@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="estadoLicencia">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="apellidoPaternoAfilia">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="apellidoMaternoAfilia">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="nombreAfiliado">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="fechaEmisionLME">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="emailAfiliado">
+		<formato id="relleno" relleno=" " largo="40" />
+	</atributo>
+	<atributo name="rutBeneficiario">
+		<formato id="relleno" relleno="0" largo="9" />
+	</atributo>
+	<atributo name="rutBeneficiarioDV">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="apellidoPaternoBenf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="apellidoMaternoBenf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="nombreBenef">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="fechaNacBenef">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="recuperabilidad">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="inicioTramite">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="fechaAccidente">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="trayecto">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="fechaConcepcion">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="jornadaacuerdo">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="lugardereposo1">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="justifSiesOtro">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="128" />
+	</atributo>
+	<atributo name="direccionReposo1">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100" />
+	</atributo>
+	<atributo name="codigoComuna1">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="5" />
+	</atributo>
+	<atributo name="glosaComuna1">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="telefono1">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="lugarReposo2">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="direccionReposo2">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100" />
+	</atributo>
+	<atributo name="codigoComuna2">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="5" />
+	</atributo>
+	<atributo name="glosaComuna2">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="telefono2">
+		<formato id="relleno" relleno="0" largo="12" />
+	</atributo>
+	<atributo name="rutProfesional">
+		<formato id="relleno" relleno="0" largo="9" />
+	</atributo>
+	<atributo name="rutProfesionalDV">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="apellidoPaternoProf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="apellidoMaternoProf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="nombreProfesional">
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="direccionProf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="100" />
+	</atributo>
+	<atributo name="codigoComunaProf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="5" />
+	</atributo>
+	<atributo name="glosaComunaProf">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30" />
+	</atributo>
+	<atributo name="telefonoProfesional">
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="faxProfesional">
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="emailProfesional">
+		<formato id="relleno" relleno=" " largo="40" />
+	</atributo>
+	<atributo name="glosaEspecialidad">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="80" />
+	</atributo>
+	<atributo name="codigoEspecialidad">
+		<formato id="relleno" relleno="0" largo="4" />
+	</atributo>
+	<atributo name="tipodePrestador">
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="nColegioMedico">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="32" />
+	</atributo>
+	<atributo name="codigoDiagPrincipal">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="512" />
+	</atributo>
+	<atributo name="glosaDiagPrincipal">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="512" />
+	</atributo>
+	<atributo name="codigoDiagSecundario">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="glosaDiagSecundario">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="511" />
+	</atributo>
+	<atributo name="codigoDiagOtro">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12" />
+	</atributo>
+	<atributo name="glosaDiagOtro">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="511" />
+	</atributo>
+	<atributo name="antecedentesClinicos">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="511" />
+	</atributo>
+	<atributo name="examendeapoyo">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="511" />
+	</atributo>
+	<atributo name="codigodeError">
+		<formato id="relleno" relleno="0" largo="3" />
+	</atributo>
+	<atributo name="mensajedeerror">
+		<formato id="relleno" relleno=" " largo="50" />
+	</atributo>
+	<atributo name="fechaEstadoOper">
+		<formato id="relleno" relleno=" " largo="8" />
+	</atributo>
+	<atributo name="horaEstadoOper">
+		<formato id="relleno" relleno=" " largo="6" />
+	</atributo>
+	<atributo name="glosaConsumo">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="250" />
+	</atributo>
+	<atributo name="codigoRespuestaConsumo">
+		<formato id="relleno" relleno="0" largo="1" />
+	</atributo>
+	<atributo name="empleadorAdscrito">
+		<formato id="relleno" relleno="0" largo="1" />
+	</atributo>
+	<atributo name="entidadPagadora">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="3" />
+	</atributo>
+	<atributo name="motivoNoRecepcion">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="2" />
+	</atributo>
+	<atributo name="fechaTerminoRelacion">
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="rutEmpleador">
+		<formato id="relleno" relleno="0" largo="9" />
+	</atributo>
+	<atributo name="rutEmpleadorDV">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="codigoCCAFTramite">
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="motivoDevolucionCCAF">
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="6" />
+	</atributo>
+	<atributo name="tipoLiquidacionCCAF">
+		<formato id="relleno" relleno="0" largo="1" />
+	</atributo>
+</clase>

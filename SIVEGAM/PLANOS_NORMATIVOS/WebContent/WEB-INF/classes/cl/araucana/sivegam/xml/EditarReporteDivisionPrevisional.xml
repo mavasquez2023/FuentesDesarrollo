@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="editarDivisionPrevisionalSiv">
+
+	<!-- AREA DE CONSULTAS TIPO SELECT -->
+	<select id="obtenerDatosPorRutEmpresa" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+
+	<select id="obtenerDatosPorRutEmpresaId" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	SIFRUTEMP = #rutSearch#
+		AND		IDSIF011 = #idsif011#
+		AND		FLGDLT = 0
+	</select>
+		
+	<select id="obtenerDatosPorRutAfiliado" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	SIFRUTAFI = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+
+	<select id="obtenerDatosPorRutAfiliadoId" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	SIFRUTAFI = #rutSearch#
+		AND		IDSIF011 = #idsif011#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDataEstSif011RutEmp" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_cotizaciones,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF011TODO
+		WHERE	SIFRUTEMP = #rutSearch#
+	</select>
+
+	<select id="obtenerDataEstSif011RutAfi" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_cotizaciones,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF011TODO
+		WHERE	SIFRUTAFI = #rutSearch#
+	</select>
+	
+	<select id="selectEstaticaSif011Id" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_cotizaciones,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF011TODO
+		WHERE	IDSIF011 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="selectRangoSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	IDSIF011 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0	
+	</select>	
+
+	<select id="selectCorrelativoSif011Id" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT 	IDSIF011  id_sif011,
+				IDMTRSVG  id_maestro_sivegam,
+				FLGMDF    flag_reg_modificado,
+				FLGDLT    flag_reg_eliminado,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_cotizaciones,
+				SIFMESREM mes_remuneracion,
+				SIFTIPDEC tipo_declaracion,
+				SIFNUMDEC codigo_barra,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFTIPEMI tipo_emision,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMODPAG modalidad_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFORIGEN fuente_origen	
+		FROM 	SVDTA.SIF011TODO
+		WHERE 	IDSIF011 = #idsif011#
+		AND		FLGDLT = 0		
+	</select>	
+	
+	<select id="obtenerDatosSif012PorRutEmpresa" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosPorRutEmpresaSif012Id" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		IDSIF012 = #idsif012#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosSif012PorRutAfiliado" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTAFI = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosSif012PorRutCausante" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTCAU = #rutSearch#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosPorRutAfiliadoSif012Id" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTAFI = #rutSearch#
+		AND		IDSIF012 = #idsif012#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosPorRutCausanteSif012Id" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTCAU = #rutSearch#
+		AND		IDSIF012 = #idsif012#
+		AND		FLGDLT = 0	
+	</select> 
+	
+	<select id="selectCorrelativoSif012Id" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				IDMTRSVG  id_maestro_sivegam,
+				FLGMDF    flag_reg_modificado,
+				FLGDLT    flag_reg_eliminado,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion,
+				SIFTIPDEC tipo_declaracion,
+				SIFNUMDEC numero_declaracion,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion,
+				SIFTIPEMI tipo_emision,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMTODOC monto_documento,
+				SIFMODPAG modalidad_pago,
+				SIFFECEMI fech_emision_doc,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFCODBCO codigo_banco,
+				SIFORIGEN fuente_origen
+		FROM	SVDTA.SIF012TOAP
+		WHERE	IDSIF012 = #idsif012#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosSif012PorCorrelativo" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT	IDSIF012  id_sif012,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTAFI rut_afiliado,
+				SIFDVRAFI dv_afiliado,
+				SIFNOMAFI nombre_afiliado,
+				SIFTIPBEN cod_tipo_beneficio,
+				SIFCODTBE tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU cod_tipo_causante,
+				SIFFECINI fecha_inicio_benef,
+				SIFFECTER fecha_termino_benef,
+				SIFDIASAF dias_asfam,
+				SIFCODTRA codigo_tramo,
+				SIFMTOBEN monto_beneficio,
+				SIFCAUREL causal_reliquidacion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	IDSIF012 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0
+	</select>
+	
+	
+	<select id="obtenerDatosSif012Estatica" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	IDSIF012 = #rangoUno#
+	</select>	
+	
+	<select id="obtenerDatosSif012EstaticaRutEmpresa" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTEMP = #rutSearch#	
+	</select>
+	
+		<select id="obtenerDatosSif012EstaticaRutAfiliado" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTAFI = #rutSearch#	
+	</select>
+	
+		<select id="obtenerDatosSif012EstaticaRutCausante" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT 	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF012TOAP
+		WHERE	SIFRUTCAU = #rutSearch#	
+	</select>
+	
+	
+	<select id="obtenerDatosSif014PorRutEmpresa" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosSif014PorRutBeneficiario" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTBEN =	#rutSearch#
+		AND		FLGDLT = 0
+	</select>
+
+	<select id="obtenerDatosSif014PorRutCausante" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTCAU =	#rutSearch#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosSif014EstaticosRutEmpresa" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTEMP =	#rutSearch#
+	</select>
+	
+	<select id="obtenerDatosSif014EstaticosRutBeneficiario" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTBEN =	#rutSearch#
+	</select>
+	
+	<select id="obtenerDatosSif014EstaticosRutCausante" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTCAU =	#rutSearch#
+	</select>
+	
+	<select id="obtenerDatosPorRutEmpresaSif014Id" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		IDSIF014 = #idsif014#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosPorRutBeneficiarioSif014Id" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTBEN = #rutSearch#
+		AND		IDSIF014 = #idsif014#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosPorRutCausanteSif014Id" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	SIFRUTCAU = #rutSearch#
+		AND		IDSIF014 = #idsif014#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="selectCorrelativoSif014Id" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+			IDMTRSVG  id_maestro_sivegam,
+			FLGMDF    flag_reg_modificado,
+			FLGDLT    flag_reg_eliminado,
+			SIFFECPRO fecha_proceso,
+			SIFCODENT codigo_entidad,
+			SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+			SIFTIPREI tipo_reintegro,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+			SIFTOTDEU monto_total_deuda,
+			SIFREFORI referencia_origen,
+			SIFORIGEN fuente_origen
+		FROM	SVDTA.SIF014TOAP
+		WHERE	IDSIF014 = #idsif014#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosSif014PorCorrelativo" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	IDSIF014  id_sif014,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFRUTBEN rut_beneficiario,
+				SIFDVRBEN dv_beneficiario,
+				SIFNOMBEN nombre_beneficiario,
+				SIFTIPOBE tipo_beneficio,
+				SIFTBENEF tipo_beneficiario,
+				SIFRUTCAU rut_causante,
+				SIFDVRCAU dv_causante,
+				SIFNOMCAU nombre_causante,
+				SIFTIPCAU tipo_causante,
+				SIFINIREI inicio_period_reinte,
+				SIFFINREI final_period_reinte,
+				SIFTOMORE monto_total_reintegro,
+				SIFMOREME monto_reintegro_mes,
+				SIFTOTDEU monto_total_deuda
+		FROM	SVDTA.SIF014TOAP
+		WHERE	IDSIF014 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0		
+	</select>
+	
+	<select id="obtenerDatosSif014EstaticosRutCorrelativo" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF014TOAP
+		WHERE	IDSIF014 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+
+	<select id="verificarRangoUnoDos011" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF011TODO
+		WHERE	IDSIF011 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="verificarSinRango011" parameterClass="cl.araucana.sivegam.vo.Sif011VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF011TODO
+		WHERE	IDSIF011 = #rangoUno#
+	</select>
+	
+	<select id="verificarRangoUnoDos012" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF012TOAP
+		WHERE	IDSIF012 BETWEEN #rangoUno# AND #rangoDos#	
+	</select>
+	
+	<select id="verificarSinRango012" parameterClass="cl.araucana.sivegam.vo.Sif012VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF012TOAP
+		WHERE	IDSIF012 = #rangoUno#
+	</select>
+	
+	<select id="verificarRangoUnoDos014" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF014TOAP
+		WHERE	IDSIF014 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="verificarSinRango014" parameterClass="cl.araucana.sivegam.vo.Sif014VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF014TOAP
+		WHERE	IDSIF014 = #rangoUno#
+	</select>	
+	
+	<update id="deleteAfiliadoSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO">
+		UPDATE 	SVDTA.SIF011TODO
+		SET		FLGDLT = 1
+		WHERE	IDSIF011 = #rangoUno#	
+	</update>
+	
+	<update id="deleteCorrelativoSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO">
+		UPDATE	SVDTA.SIF011TODO
+		SET		FLGDLT = 1
+		WHERE	IDSIF011 = #rangoUno#
+	</update>
+	
+	<update id="deleteRangoSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO">
+		UPDATE 	SVDTA.SIF011TODO
+		SET		FLGDLT = 1
+		WHERE	IDSIF011 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif011" parameterClass="cl.araucana.sivegam.vo.Sif011VO">
+		UPDATE 	SVDTA.SIF011TODO
+		SET		FLGDLT = 1
+		WHERE	IDSIF011 = #rangoUno#
+	</update>
+	
+	<update id="deleteRangoSif012" parameterClass="cl.araucana.sivegam.vo.Sif012VO">
+		UPDATE 	SVDTA.SIF012TOAP
+		SET		FLGDLT = 1
+		WHERE	IDSIF012 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif012" parameterClass="cl.araucana.sivegam.vo.Sif012VO">
+		UPDATE 	SVDTA.SIF012TOAP
+		SET		FLGDLT = 1
+		WHERE	IDSIF012 = #rangoUno#
+	</update>	
+		
+	<update id="deleteRangoSif014" parameterClass="cl.araucana.sivegam.vo.Sif014VO">
+		UPDATE 	SVDTA.SIF014TOAP
+		SET		FLGDLT = 1
+		WHERE	IDSIF014 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif014" parameterClass="cl.araucana.sivegam.vo.Sif014VO">
+		UPDATE 	SVDTA.SIF014TOAP
+		SET		FLGDLT = 1
+		WHERE	IDSIF014 = #rangoUno#
+	</update>
+	
+	<update id="updateSif011" parameterClass="cl.araucana.sivegam.vo.LinSif011VO">
+		UPDATE 	SVDTA.SIF011TODO
+		SET	SIFCODENT = #codigo_entidad#,
+				SIFCODARC = #codigo_archivo#,
+				SIFMESREC = #mes_cotizaciones#,
+				SIFMESREM = #mes_remuneracion#,
+				SIFTIPDEC = #tipo_declaracion#,
+				SIFNUMDEC = #codigo_barra#,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFNOMEMP = #nombre_empresa#,
+				SIFRUTAFI = #rut_afiliado#,
+				SIFDVRAFI = #dv_afiliado#,
+				SIFNOMAFI = #nombre_afiliado#,
+				SIFTIPBEN = #cod_tipo_beneficio#,
+				SIFCODTBE = #tipo_beneficiario#,
+				SIFRUTCAU = #rut_causante#,
+				SIFDVRCAU = #dv_causante#,
+				SIFNOMCAU = #nombre_causante#,
+				SIFTIPCAU = #cod_tipo_causante#,
+				SIFFECINI = #fecha_inicio_benef#,
+				SIFFECTER = #fecha_termino_benef#,
+				SIFDIASAF = #dias_asfam#,
+				SIFCODTRA = #codigo_tramo#,
+				SIFMTOBEN = #monto_beneficio#,
+				SIFTIPEMI = #tipo_emision#,
+				SIFTIPEGR = #cod_tipo_egreso#,
+				SIFMODPAG = #modalidad_pago#,
+				SIFMTODOC = #monto_documento#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFFECEMI = #fecha_emision_documento#,
+				SIFCODBCO = #codigo_banco#,
+				SIFORIGEN = #fuente_origen#,
+				FLGMDF = 1
+		WHERE	IDSIF011 = #id_sif011#					
+	</update>
+	
+	<update id="updateSif012" parameterClass="cl.araucana.sivegam.vo.LinSif012VO">
+		UPDATE 	SVDTA.SIF012TOAP
+		SET		SIFFECPRO = #fecha_proceso#,
+				SIFCODENT = #codigo_entidad#,
+				SIFCODARC = #codigo_archivo#,
+				SIFMESREC = #mes_recaudacion#,
+				SIFMESREM = #mes_remuneracion#,
+				SIFTIPDEC = #tipo_declaracion#,
+				SIFNUMDEC = #numero_declaracion#,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFNOMEMP = #nombre_empresa#,
+				SIFRUTAFI = #rut_afiliado#,
+				SIFDVRAFI = #dv_afiliado#,
+				SIFNOMAFI = #nombre_afiliado#,
+				SIFTIPBEN = #cod_tipo_beneficio#,
+				SIFCODTBE = #tipo_beneficiario#,
+				SIFRUTCAU = #rut_causante#,
+				SIFDVRCAU = #dv_causante#,
+				SIFNOMCAU = #nombre_causante#,
+				SIFTIPCAU = #cod_tipo_causante#,
+				SIFFECINI = #fecha_inicio_benef#,
+				SIFFECTER = #fecha_termino_benef#,
+				SIFDIASAF = #dias_asfam#,
+				SIFCODTRA = #codigo_tramo#,
+				SIFMTOBEN = #monto_beneficio#,
+				SIFCAUREL = #causal_reliquidacion#,
+				SIFTIPEMI = #tipo_emision#,
+				SIFTIPEGR = #cod_tipo_egreso#,
+				SIFMTODOC = #monto_documento#,
+				SIFMODPAG = #modalidad_pago#,
+				SIFFECEMI = #fech_emision_doc#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFCODBCO = #codigo_banco#,
+				SIFORIGEN = #fuente_origen#,
+				FLGMDF = 1
+		WHERE	IDSIF012 = #id_sif012#					
+	</update>
+	
+	<update id="updateSif014" parameterClass="cl.araucana.sivegam.vo.LinSif014VO">
+		UPDATE	SVDTA.SIF014TOAP
+		SET		SIFFECPRO = #fecha_proceso#,
+				SIFCODENT = #codigo_entidad#,
+				SIFCODARC = #codigo_archivo#,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFNOMEMP = #nombre_empresa#,
+				SIFRUTBEN = #rut_beneficiario#,
+				SIFDVRBEN = #dv_beneficiario#,
+				SIFNOMBEN = #nombre_beneficiario#,
+				SIFTIPOBE = #tipo_beneficio#,
+				SIFTBENEF = #tipo_beneficiario#,
+				SIFRUTCAU = #rut_causante#,
+				SIFDVRCAU = #dv_causante#,
+				SIFNOMCAU = #nombre_causante#,
+				SIFTIPCAU = #tipo_causante#,
+				SIFINIREI = #inicio_period_reinte#,
+				SIFFINREI = #final_period_reinte#,
+				SIFTIPREI = #tipo_reintegro#,
+				SIFTOMORE = #monto_total_reintegro#,
+				SIFMOREME = #monto_reintegro_mes#,
+				SIFTOTDEU = #monto_total_deuda#,
+				SIFREFORI = #referencia_origen#,
+				SIFORIGEN = #fuente_origen#,	
+				FLGMDF = 1			
+		WHERE	IDSIF014 = #id_sif014#		
+	</update>
+	
+	
+</sqlMap>
+

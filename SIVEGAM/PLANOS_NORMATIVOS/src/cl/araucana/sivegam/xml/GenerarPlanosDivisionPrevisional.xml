@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="GenerarPlanoDivisionPrevisional">
+
+	<select id="selectSif011" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif011VO">
+		SELECT  SIFFECPRO	fecha_proceso,     
+				SIFCODENT	codigo_entidad,     
+				SIFCODARC	codigo_archivo,
+				SIFMESREC	mes_cotizaciones,
+				SIFMESREM	mes_remuneracion,
+				SIFTIPDEC	tipo_declaracion,  
+				SIFNUMDEC	codigo_barra,   
+				SIFRUTEMP	rut_empresa,
+				SIFDVREMP	dv_empresa,
+				SIFNOMEMP	nombre_empresa,
+				SIFRUTAFI	rut_afiliado,
+				SIFDVRAFI	dv_afiliado,        
+				SIFNOMAFI	nombre_afiliado,   
+				SIFTIPBEN	cod_tipo_beneficio, 
+				SIFCODTBE	tipo_beneficiario,  
+				SIFRUTCAU	rut_causante,       
+				SIFDVRCAU	dv_causante,
+				SIFNOMCAU	nombre_causante,
+				SIFTIPCAU	cod_tipo_causante,  
+				SIFFECINI	fecha_inicio_benef, 
+				SIFFECTER	fecha_termino_benef,
+				SIFDIASAF	dias_asfam,         
+				SIFCODTRA	codigo_tramo,
+				SIFMTOBEN	monto_beneficio,
+				SIFTIPEMI	tipo_emision,       
+				SIFTIPEGR	cod_tipo_egreso,    
+				SIFMODPAG	modalidad_pago,  
+				SIFMTODOC	monto_documento,   
+				SIFNUMSER	numero_serie,      
+				SIFNUMDOC	numero_documento, 
+				SIFFECEMI	fecha_emision_documento,
+				SIFCODBCO	codigo_banco,       
+				SIFORIGEN	fuente_origen
+		FROM	SVDTA.SIF011TODO
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+
+	<select id="selectSif012" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif012VO">
+		SELECT  SIFFECPRO	fecha_proceso,        
+				SIFCODENT	codigo_entidad,       
+				SIFCODARC	codigo_archivo,       
+				SIFMESREC	mes_recaudacion,   
+				SIFMESREM	mes_remuneracion,  
+				SIFTIPDEC	tipo_declaracion,    
+				SIFNUMDEC	numero_declaracion,  
+				SIFRUTEMP	rut_empresa,          
+				SIFDVREMP	dv_empresa,           
+				SIFNOMEMP	nombre_empresa,      
+				SIFRUTAFI	rut_afiliado,         
+				SIFDVRAFI	dv_afiliado,          
+				SIFNOMAFI	nombre_afiliado,     
+				SIFTIPBEN	cod_tipo_beneficio,   
+				SIFCODTBE	tipo_beneficiario,    
+				SIFRUTCAU	rut_causante,         
+				SIFDVRCAU	dv_causante,          
+				SIFNOMCAU	nombre_causante,     
+				SIFTIPCAU	cod_tipo_causante,    
+				SIFFECINI	fecha_inicio_benef,   
+				SIFFECTER	fecha_termino_benef,  
+				SIFDIASAF	dias_asfam,           
+				SIFCODTRA	codigo_tramo,         
+				SIFMTOBEN	monto_beneficio,     
+				SIFCAUREL	causal_reliquidacion, 
+				SIFTIPEMI	tipo_emision,         
+				SIFTIPEGR	cod_tipo_egreso,      
+				SIFMTODOC	monto_documento,     
+				SIFMODPAG	modalidad_pago,    
+				SIFFECEMI	fech_emision_doc,    
+				SIFNUMSER	numero_serie,        
+				SIFNUMDOC	numero_documento,    
+				SIFCODBCO	codigo_banco,    
+				SIFORIGEN	fuente_origen
+		FROM	SVDTA.SIF012TOAP
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+	
+	<select id="selectSif014" parameterClass="cl.araucana.sivegam.vo.PlanoVO" resultClass="cl.araucana.sivegam.vo.LinSif014VO">
+		SELECT  SIFFECPRO	fecha_proceso,
+				SIFCODENT	codigo_entidad,       
+				SIFCODARC	codigo_archivo,       
+				SIFRUTEMP	rut_empresa,          
+				SIFDVREMP	dv_empresa,           
+				SIFNOMEMP	nombre_empresa,      
+				SIFRUTBEN	rut_beneficiario,     
+				SIFDVRBEN	dv_beneficiario,      
+				SIFNOMBEN	nombre_beneficiario, 
+				SIFTIPOBE	tipo_beneficio,       
+				SIFTBENEF	tipo_beneficiario,    
+				SIFRUTCAU	rut_causante,         
+				SIFDVRCAU	dv_causante,          
+				SIFNOMCAU	nombre_causante,     
+				SIFTIPCAU	tipo_causante,        
+				SIFINIREI	inicio_period_reinte, 
+				SIFFINREI	final_period_reinte,  
+				SIFTIPREI	tipo_reintegro,       
+				SIFTOMORE	monto_total_reintegro,
+				SIFMOREME	monto_reintegro_mes, 
+				SIFTOTDEU	monto_total_deuda,   
+				SIFREFORI	referencia_origen,   
+				SIFORIGEN	fuente_origen
+		FROM	SVDTA.SIF014TOAP
+		WHERE	FLGDLT = 0
+		AND     SIFFECPRO = #periodo#
+	</select>
+
+</sqlMap>

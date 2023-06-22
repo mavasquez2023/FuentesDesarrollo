@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.continuidad.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.continuidad.laaraucana.cl/">
+
+  <xs:element name="continuidad" type="tns:continuidad"/>
+
+  <xs:element name="continuidadResponse" type="tns:continuidadResponse"/>
+
+  <xs:complexType name="continuidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:entradaContRentas"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entradaContRentas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadRentas" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="continuidadResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salidaContRentas"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="salidaContRentas">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="licencias" nillable="true" type="tns:licencia"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="rentas" nillable="true" type="tns:renta"/>
+      <xs:element minOccurs="0" name="respuesta" type="tns:respuestaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadDias" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaDesde" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaHasta" type="xs:string"/>
+      <xs:element minOccurs="0" name="licencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutPadreParental" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoLicencia" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="renta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="periodo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

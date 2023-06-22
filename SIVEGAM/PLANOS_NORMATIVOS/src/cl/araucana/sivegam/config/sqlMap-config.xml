@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+<properties resource="cl/araucana/sivegam/resources/SqlMapConfig.properties" />
+	<settings  useStatementNamespaces="true"  />
+		
+	
+	<transactionManager type="JDBC" >
+		<dataSource type="JNDI" >
+			<property name="DataSource" value="${jndi}"></property>
+		</dataSource>
+	</transactionManager>	
+	
+	
+	<!-- 
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.2;prompt=false" />
+			<property name="JDBC.Username" value="usrsist" />
+			<property name="JDBC.Password" value="usrsist" />
+		</dataSource>
+	</transactionManager>
+		
+	 -->
+	 
+	 
+	<sqlMap resource="cl/araucana/sivegam/xml/parametros${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/Sif018${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarReporteCotizaciones${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/EditarReporteCotizaciones${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/EditarReporteDivisionPrevisional${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/AgregarRegistroCotizaciones${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/AgregarRegistroDivisionPrevisional${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarPlanosCotizaciones${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarPlanosDivisionPrevisional${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarInformeFinanciero${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarListadoErrores${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarCuadroComparativo${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarReportesAFC${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarReportesCesantia${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarPlanosCesantia${ambiente}.xml"/>
+	<sqlMap resource="cl/araucana/sivegam/xml/GenerarPlanosAFC${ambiente}.xml"/>		
+</sqlMapConfig>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="planosAFC">
+
+	<select id="selectAfcRetroactivo" resultClass="cl.araucana.sivegam.vo.LinAfcAFF01VO">
+		SELECT	RUTAFI rut_Afiliado,	
+				DGVAFI digito_Verificador_Afiliado,	  
+				NOMAFI nombres_Afiliado,	
+				APEPAFI apellido_Paterno_Afiliado,
+				APEMAFI apellido_Materno_Afiliado,	
+				TRAMO tramo,	
+				RUTCAU rut_Causante,	
+				DGVCAU digito_Verificador_Causante,	  
+				NOMCAU nombres_Causantes,	
+				APECAUP apellido_Paterno_Causante,	
+				APECAUM apellido_Materno_Causante,	
+				FECNAT fecha_de_Nacimeinto,	
+				CODTCAU codigo_Tipo_Causa,	
+				CODNCAU tipo_Causante,	
+				TASFAM tipo_Asignacion_familiar,	
+				NUMSOL numero_Solicitud,	
+				TIPSOL tipo_Solicitud,	
+				SEXO sexo,	
+				MONTO monto,	
+				RENTA renta,	
+				COMUNA comuna,	
+				REGION region,	
+				TBENEF tipo_Beneficiario
+		FROM	AFCDTA.AFF01
+		WHERE	TIPARCH = 'R'
+		AND     FLGDLT = 0
+	</select>
+	
+	<select id="selectAfcMensual" resultClass="cl.araucana.sivegam.vo.LinAfcAFF01VO">
+		SELECT	RUTAFI rut_Afiliado,	
+				DGVAFI digito_Verificador_Afiliado,	  
+				NOMAFI nombres_Afiliado,	
+				APEPAFI apellido_Paterno_Afiliado,
+				APEMAFI apellido_Materno_Afiliado,	
+				TRAMO tramo,	
+				RUTCAU rut_Causante,	
+				DGVCAU digito_Verificador_Causante,	  
+				NOMCAU nombres_Causantes,	
+				APECAUP apellido_Paterno_Causante,	
+				APECAUM apellido_Materno_Causante,	
+				FECNAT fecha_de_Nacimeinto,	
+				CODTCAU codigo_Tipo_Causa,	
+				CODNCAU tipo_Causante,	
+				TASFAM tipo_Asignacion_familiar,	
+				NUMSOL numero_Solicitud,	
+				TIPSOL tipo_Solicitud,	
+				SEXO sexo,	
+				MONTO monto,	
+				RENTA renta,	
+				COMUNA comuna,	
+				REGION region,	
+				TBENEF tipo_Beneficiario
+		FROM	AFCDTA.AFF01
+		WHERE	TIPARCH = 'M'
+		AND     FLGDLT = 0	
+	</select>
+</sqlMap>

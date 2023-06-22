@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ControlError - SIF018" language="groovy" pageWidth="1120" pageHeight="1340" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1100" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="0" uuid="547698c4-af47-42b4-8590-5ef2fb4f0cb9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Prdo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT	IDSIF018 as IDSIF018,
+	PERIODO as PERIODO,
+	SIFNOMCAM as SIFNOMCAM,
+	SIFVALCAM as SIFVALCAM,
+	SIFOBSCAM as SIFOBSCAM
+FROM  SVDTA.SIF018INFO]]>
+	</queryString>
+	<field name="IDSIF018" class="java.math.BigDecimal"/>
+	<field name="PERIODO" class="java.math.BigDecimal"/>
+	<field name="SIFNOMCAM" class="java.lang.String"/>
+	<field name="SIFVALCAM" class="java.lang.String"/>
+	<field name="SIFOBSCAM" class="java.lang.String"/>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ee0f2003-324a-4338-92b9-918822c890a2" x="0" y="0" width="649" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIVEGAM - Control de Errores del archivo SIF018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="428f7d80-2a94-4515-8666-8e461e1e7c1d" x="0" y="34" width="649" height="51" forecolor="#0000F4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Errores en el Documento SAFEM Emitidos en Reemplazo de Documentos Caducados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c852f300-d9f9-4cb9-8e57-a7d808f91df2" mode="Opaque" x="547" y="85" width="553" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f4c3ab1-40c7-421d-acaf-eb4a68746be6" mode="Opaque" x="179" y="85" width="192" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre campo Erroneo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="99ba1775-0841-4208-bbb2-0413f76c1298" mode="Opaque" x="371" y="85" width="176" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor del Campo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc1fcd26-0323-4e14-94e3-6f74204f5d84" x="649" y="0" width="451" height="85"/>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1897fd0-e625-4e92-98a6-3c6c96a48c33" mode="Opaque" x="0" y="85" width="179" height="38" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° de Registro erroneo]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e61120af-8d8e-4f21-9f84-7abe312df861" x="912" y="0" width="188" height="44"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Garamond" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $P{Prdo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ee0f2003-324a-4338-92b9-918822c890a2" x="757" y="0" width="155" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bell MT" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ddb9c179-97a8-4e96-993b-02f260b5224e" x="179" y="0" width="192" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFNOMCAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ceebd4fc-7500-412f-940e-22bc9bd1b899" x="371" y="0" width="176" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIFVALCAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e61120af-8d8e-4f21-9f84-7abe312df861" x="547" y="0" width="553" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $F{SIFOBSCAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="daae1898-72e1-43a2-aaa2-f7a59f1042dd" x="0" y="0" width="179" height="30"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#666666"/>
+					<topPen lineWidth="1.0" lineColor="#666666"/>
+					<leftPen lineWidth="1.0" lineColor="#666666"/>
+					<bottomPen lineWidth="1.0" lineColor="#666666"/>
+					<rightPen lineWidth="1.0" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IDSIF018}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

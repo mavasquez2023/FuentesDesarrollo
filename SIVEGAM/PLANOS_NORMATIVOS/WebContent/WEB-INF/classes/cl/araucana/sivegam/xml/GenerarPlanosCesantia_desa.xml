@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="planosCesantia">
+
+	<select id="selectSCF041" resultClass="cl.araucana.sivegam.vo.LinCesantia041VO">
+		SELECT 	MESINF mes_if,
+				CODENT codigo_entidad,
+				CODARC codigo_archivo,
+				MESEMI mes_emision,
+				TIPEGR tipo_egreso,
+				RUTBEN rut_beneficiario,
+				DVRUTBEN dv_beneficiario,
+				NOMBEN nombre_beneficiario,
+				CODCOM comuna,
+				FECCES fecha_cesantia,
+				FECSOL fecha_solicitud,
+				FECINICUO fecha_inicio_cuota,
+				FECTERCUO fecha_termino_cuota,
+				MONSCES monto_subsidio_cesantia,
+				MODPAG mod_pago,
+				SERDOC serie_documento,
+				NUMDOC numero_documento,
+				MONDOC monto_documento,
+				FECEMIDOC fecha_emision_documento,
+				CODBAN codigo_banco
+		FROM	SCDTA.SCF041
+		WHERE	FLGDLT NOT IN (1)
+	</select>	
+	
+	<select id="selectSCF042" resultClass="cl.araucana.sivegam.vo.LinCesantia042VO">
+		SELECT 	MESINF mes_if,
+				CODENT codigo_entidad,
+				CODARC codigo_archivo,
+				TIPREI tipo_reintegro,
+				RUTBEN rut_beneficiario,
+				DVRUTBEN dv_beneficiario,
+				NOMBEN nombre_beneficiario,
+				CODCOM comuna,
+				MSCESREI monto_sub_cesantia_reintegrado,
+				FECINIREI fecha_inicio_reintegro,
+				FECTERREI fecha_termino_reintegro
+		FROM	SCDTA.SCF042
+		WHERE	FLGDLT NOT IN (1)
+	</select>
+	
+	<select id="selectSCF043" resultClass="cl.araucana.sivegam.vo.LinCesantia043VO">
+		SELECT 	MESINF mes_if,
+				CODENT codigo_entidad,
+				CODARC codigo_archivo,
+				MESEMI mes_emision,
+				RUTBEN rut_beneficiario,
+				DVRUTBEN dv_beneficiario,
+				NOMBEN nombre_beneficiario,
+				TIPEGR tipo_egreso,
+				MODPAG mod_pago,
+				SERDOC serie_documento,
+				NUMDOC numero_documento,
+				MONSCES monto_subsidio_cesantia,
+				MONDOC monto_documento,
+				FECEMIDOC fecha_emision_documento,
+				CODBAN codigo_banco,
+				FECCAMEST fecha_cambio_estado_documento,
+				NUMCAR numero_cartola
+		FROM	SCDTA.SCF043
+		WHERE	FLGDLT NOT IN (1)
+	</select>
+	
+	<select id="selectSCF044" resultClass="cl.araucana.sivegam.vo.LinCesantia044VO">
+		SELECT 	MESINF    mes_if,
+				CODENT    cod_ent,
+				CODARC    cod_arc,
+				RUTBEN    rut_ben,
+				DVRUTBEN  dv_ben,
+				NOMBEN    nom_ben,
+				MESDOCINF mes_doc_inf,
+				MODPAGORI mod_pag_doc_ori,
+				SERDOCORI ser_doc_ori,
+				NUMDOCORI num_doc_ori,
+				MONSORI   mto_sub_ori,
+				MONORI    mto_doc_ori,
+				FECEMIORI fec_emi_doc_ori,
+				CODBANORI cod_bco_doc_ori,
+				MODPAGNVO mod_pag_nvo,
+				SERDOCNVO ser_doc_nvo,
+				NUMDOCNVO num_doc_nvo,
+				MONSNVO   mto_sub_nvo,
+				MONNVO    mto_doc_nvo,
+				FECEMINVO fec_emi_doc_nvo,
+				CODBANNVO cod_bco_doc_nvo
+		FROM	SCDTA.SCF044
+		WHERE	FLGDLT NOT IN (1)
+	</select>
+</sqlMap>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="generacionAFC">
+	
+	<insert id="insertAFF01" parameterClass="cl.araucana.sivegam.vo.LinAfcAFF01VO">
+		INSERT INTO AFCDTA.AFF01 		
+			(
+				IDAFC,	
+				IDMTRSC,	
+				FLGMDF,	
+				FLGDLT,	
+				RUTAFI,	
+				DGVAFI,	  
+				NOMAFI,	
+				APEPAFI,
+				APEMAFI,	
+				TRAMO,	
+				RUTCAU,	
+				DGVCAU,	  
+				NOMCAU,	
+				APECAUP,	
+				APECAUM,	
+				FECNAT,	
+				CODTCAU,	
+				CODNCAU,	
+				TASFAM,	
+				NUMSOL,	
+				TIPSOL,	
+				SEXO,	
+				MONTO,	
+				RENTA,	
+				COMUNA,	
+				REGION,	
+				TBENEF,
+				TIPARCH,
+				AFCPER
+			)
+			VALUES(	
+					#id_archivo#,	
+					#id_maestro_Sivegam#,	
+					#flag_modificacion_registro#,
+					#flag_eliminacion_registro#,	
+				    #rut_Afiliado#,
+				    #digito_Verificador_Afiliado#,
+				    #nombres_Afiliado#,
+				    #apellido_Paterno_Afiliado#,  
+				    #apellido_Materno_Afiliado#, 
+				    #tramo#,
+				    #rut_Causante#,    
+				    #digito_Verificador_Causante#,
+				    #nombres_Causantes#,
+				    #apellido_Paterno_Causante#,
+				    #apellido_Materno_Causante#,
+				    #fecha_de_Nacimeinto#,
+				    #codigo_Tipo_Causa#,
+				    #tipo_Causante#,
+				    #tipo_Asignacion_familiar#,
+				    #numero_Solicitud#,
+				    #tipo_Solicitud#,
+				    #sexo#,
+				    #monto#,            
+				    #renta#,
+				    #comuna#,     
+				    #region#, 
+				    #tipo_Beneficiario#,
+				    #tipo_de_Archivo#,
+				    #afc_Periodo#
+				)		
+	</insert>
+	
+	<update id="deleteRetroactivo">
+		UPDATE 	AFCDTA.AFF01
+		SET		FLGDLT = 1
+		WHERE	TIPARCH = 'R'	
+	</update>
+	
+	<update id="deleteMensual">
+		UPDATE 	AFCDTA.AFF01
+		SET		FLGDLT = 1
+		WHERE	TIPARCH = 'M'
+	</update>
+	
+	<select id="actualizaStatusPerProAfc" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="cl.araucana.sivegam.vo.RespuestaVO">
+		SELECT 	A.IDMAESTROSIVEGAM maxId,
+               	A.STATUSPROCESO status
+		FROM   	SVDTAD.SVMTRSVG A
+		WHERE 	A.IDMAESTROSIVEGAM = (SELECT 	MAX(B.IDMAESTROSIVEGAM) 
+                                      FROM 		SVDTAD.SVMTRSVG B
+                                      WHERE     B.IDPERIODOPROCESO = #mesConsultado#
+                                      AND       B.IDTIPOARCHIVO = #idTipoReporte#
+                                      AND       B.STATUSPROCESO IN (1,2,3,4,5))
+	</select>
+	
+	<select id="obtenerSivegamAFC" parameterClass="cl.araucana.sivegam.vo.AfcVO" resultClass="string">
+		SELECT  A.IDMTRSC
+		FROM	AFCDTA.AFF01 A
+		WHERE	IDAFC IN (	SELECT 	MAX(B.IDAFC)
+							FROM	AFCDTA.AFF01 B
+							WHERE	B.TIPARCH = #flagReporteAfc#)	
+	</select>	
+	
+	<select id="obtenerStatusProcesoCarga" parameterClass="cl.araucana.sivegam.vo.RespuestaVO" resultClass="string">
+		SELECT 	A.ESTADOCRGA statusCarga
+		FROM	AFCDTA.AFENTRAD A
+		WHERE	A.IDESTCARGA = (SELECT MAX(B.IDESTCARGA) 
+							  FROM	AFCDTA.AFENTRAD B
+							  WHERE B.PERIODOCRG = #mesConsultado#
+								AND	B.TIPARCHCRG = #archivoCarga#)
+	</select>
+	
+	<select id="selectIdAFENTRAD" parameterClass="cl.araucana.sivegam.vo.AfentradVO" resultClass="string">
+		SELECT 	MAX(IDESTCARGA)
+		FROM	AFCDTA.AFENTRAD 
+	</select>
+	
+	<insert id="insertAFENTRAD" parameterClass="cl.araucana.sivegam.vo.AfentradVO">
+		INSERT INTO AFCDTA.AFENTRAD
+			(IDESTCARGA, 
+			 FECHACARGA, 
+			 ESTADOCRGA, 
+			 PERIODOCRG, 
+			 TIPARCHCRG, 
+			 USUARIOCRG) 
+			VALUES 
+			(#IDESTCARGA#, 
+			 #FECHACARGA#, 
+			 #ESTADOCRGA#, 
+			 #PERIODOCRG#, 
+			 #TIPARCHCRG#, 
+			 #USUARIOCRG#)
+	</insert>
+	<insert id="insertAFCE" parameterClass="cl.araucana.sivegam.vo.LinAfcAFF01EVO">
+		INSERT INTO AFCDTA.AFF01E
+		(IDAFC,
+		 RUTAFI,
+		 DGVAFI,
+	 	 NOMAFI,
+		 CODERR,
+		 DESERR,
+		 TIPARCH,
+		 AFCPER)
+		VALUES
+		(#ID_Registro_AFC#,
+		#rut_beneficiario#,
+		#dv_beneficiario#,
+		#nombre_beneficiario#,
+		#codigo_error#,
+		#descripcion_error#,
+		#tipArch#,
+		#periodo#)
+	</insert>
+	<update id="updatePrevInsertaAFENTRAD" parameterClass="cl.araucana.sivegam.vo.AfentradVO">
+		UPDATE AFCDTA.AFENTRAD
+		SET ESTADOCRGA = 1
+		WHERE PERIODOCRG NOT IN (#PERIODOCRG#)
+	</update>
+	<delete id="deleteACFE" parameterClass="cl.araucana.sivegam.vo.LinAfcAFF01EVO">
+		DELETE FROM AFCDTA.AFF01E
+		WHERE TIPARCH = #tipArch#
+	</delete>
+</sqlMap>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/flora.datepicker.css" type="text/css" media="screen" title="Flora (Default)">
+<script src="js/jquery-1.2.6.js"></script>
+<script src="js/ui.datepicker.js"></script>
+<script src="js/ui.datepicker-es.js"></script>
+
+  <script>
+  var today = new Date();
+  alert(today);
+  $(document).ready(function(){
+    /* Datepicker */
+        $('#fecha').datepicker($.extend({
+            showOn: 'both',
+            minDate: today,
+            maxDate: new Date(today.getYear(), today.getMonth(), 30),
+            buttonImageOnly: true,
+            buttonImage: 'images/calendar.gif'
+        }, $.datepicker.regional['es'], {firstDay: 1}));
+
+$('#fechaRange').datepicker({rangeSelect: true, firstDay: 1});
+  });
+  </script>
+
+</head>
+<body>
+<input type="text" id="fecha" value="Ingresa fecha" readonly="true" style="width:100px;"/>
+<input type="text" id="fechaRange" value="Ingresa rango de fechas" style="width:300px;"/>
+</body>
+</html>

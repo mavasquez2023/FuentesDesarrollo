@@ -1,0 +1,15 @@
+#
+# Tasks planification configuration file.
+# IMPORTANT:
+# - All the index begin in 0, except day of month and
+#   month that begin in 1.
+# - The first day of the week is sunday.
+##########################################################
+#minuto (0-59),                                          #
+#|  hora (0-23),                                         #
+#|  |  día del mes (1-31),                               #
+#|  |  |  mes (1-12),                                    #
+#|  |  |  |  día de la semana (0-6 donde 0=Domingo)      #
+#|  |  |  |  |                                           #
+##########################################################
+*/5 *  *  *  * cl.laaraucana.recepcionsil.jcrontab.CronPersitentes

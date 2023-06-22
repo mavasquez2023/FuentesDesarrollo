@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.service.recepcionsil.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.service.recepcionsil.laaraucana.cl/">
+
+  <xs:element name="completarLicencia" type="tns:completarLicencia"/>
+
+  <xs:element name="completarLicenciaResponse" type="tns:completarLicenciaResponse"/>
+
+  <xs:element name="ingresoLicencia" type="tns:ingresoLicencia"/>
+
+  <xs:element name="ingresoLicenciaResponse" type="tns:ingresoLicenciaResponse"/>
+
+  <xs:complexType name="completarLicencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:licenciaNivel2VO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licenciaNivel2VO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nroLicencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="mixtaOFormulario" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipo" type="tns:tipoVO"/>
+      <xs:element minOccurs="0" name="reposo" type="tns:reposoVO"/>
+      <xs:element minOccurs="0" name="profesional" type="tns:profesionalVO"/>
+      <xs:element minOccurs="0" name="empleador" type="tns:empleadorVO"/>
+      <xs:element minOccurs="0" name="entidadPrevisional" type="tns:entidadPrevisionalVO"/>
+      <xs:element minOccurs="0" name="remuneraciones" type="tns:remuneracionesVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="empleadorVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="telefonoEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccionEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="deptoEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="comunaEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="ciudadEmpleador" type="xs:string"/>
+      <xs:element minOccurs="0" name="actividadLaboralTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="ocupacionTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="ocupacionTrabajadorOtro" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entidadPrevisionalVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="letraCajaPrevisional" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaPrimeraAfiliacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaContratoTrabajo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="profesionalVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaternoProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaternoProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombresProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="especialidadProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="registroColegioProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="correoProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccionProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefonoProfesional" type="xs:string"/>
+      <xs:element minOccurs="0" name="faxProfesional" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="remuneracionesVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="informeRemuneraciones" nillable="true" type="tns:remuneracionVO"/>
+      <xs:element minOccurs="0" name="remuneracionImponibleAFP60" type="xs:string"/>
+      <xs:element minOccurs="0" name="remuneracionImponibleAFC90" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="remuneracionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoEntidadPrevisional" type="xs:string"/>
+      <xs:element minOccurs="0" name="anioRemuneracion" type="xs:string"/>
+      <xs:element minOccurs="0" name="mesRemuneracion" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroDiasRemuneracion" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalRemuneraciones" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoSubsidio" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroDiasSubsidio" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reposoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoReposo" type="xs:string"/>
+      <xs:element minOccurs="0" name="jornadaReposo" type="xs:string"/>
+      <xs:element minOccurs="0" name="lugarReposo" type="xs:string"/>
+      <xs:element minOccurs="0" name="justificarOtro" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccionReposo" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefonoReposo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="recuperabilidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="inicioTramiteInvalidez" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaConcepcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="completarLicenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salidaRecepcionSILVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="salidaRecepcionSILVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="glosa" type="tns:respuestaVO"/>
+      <xs:element minOccurs="0" name="respuesta" type="tns:respuestaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresoLicencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:entradaRecepcionSILVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entradaRecepcionSILVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="consumo" type="tns:mixtaConsumoVO"/>
+      <xs:element minOccurs="0" name="licencia" type="tns:licenciaVO"/>
+      <xs:element minOccurs="0" name="validacion" type="tns:mixtaValidacionVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mixtaConsumoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosa" type="xs:string"/>
+      <xs:element minOccurs="0" name="xmlBase64" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licenciaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaIngreso" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaIngreso" type="xs:string"/>
+      <xs:element minOccurs="0" name="identifUsuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="mixtaOFormulario" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroLicenciaExterna" type="xs:string"/>
+      <xs:element minOccurs="0" name="dvNroLicenciaExterna" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaternoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoMaternoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="edadAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexoAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaAfiliacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaContrato" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaNacTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoReposo" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaEmisora" type="xs:string"/>
+      <xs:element minOccurs="0" name="sucursalCtaCte" type="xs:string"/>
+      <xs:element minOccurs="0" name="formaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficinaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaDesde" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaHasta" type="xs:string"/>
+      <xs:element minOccurs="0" name="diasLicencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoLicencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="operador" type="xs:string"/>
+      <xs:element minOccurs="0" name="color" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="indValidacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="indicadorVisada" type="xs:string"/>
+      <xs:element minOccurs="0" name="servicioSalud" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hijos" nillable="true" type="tns:hijoVO"/>
+      <xs:element minOccurs="0" name="fechaEmision" type="xs:string"/>
+      <xs:element minOccurs="0" name="codComunaUsoCompin" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoInstPrevision" type="xs:string"/>
+      <xs:element minOccurs="0" name="calidadTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="contratoDuracionIndefinido" type="xs:string"/>
+      <xs:element minOccurs="0" name="trabajadorAfiliadoAFC" type="xs:string"/> 
+      <xs:element minOccurs="0" name="excepcionMaternalSSB" type="xs:string"/>
+      <xs:element minOccurs="0" name="excepcionCompin" type="xs:string"/>
+      <xs:element minOccurs="0" name="excepcionInspTrabajo" type="xs:string"/>
+      <xs:element minOccurs="0" name="excepcionTrabajadorNuevo" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRecepcionEmpleador" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hijoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaternoHijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaternoHijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecNacMenorUnAnio" type="xs:string"/>
+      <xs:element minOccurs="0" name="folioDefuncion" type="xs:string"/>
+      <xs:element minOccurs="0" name="hijoNacidoMuerto" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreHijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutHijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexoHijo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mixtaValidacionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaProceso" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="glosaValidacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="horaRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoValidacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresoLicenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salidaRecepcionSILVO"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="editarCotizacionesSiv">
+
+	<!-- AREA DE CONSULTAS TIPO SELECT -->
+	<select id="obtenerDatosSif016PorRut" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT 	IDSIF016  id_sif016,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTOTTRA num_total_trabajador,
+				SIFTOTCAR num_total_cargas,
+				SIFCARRET cargas_retroactivas,
+				SIFMTOASF mto_asfam_mes,
+				SIFASFRET mto_asfam_mes_retro,
+				SIFRETMES mto_reintegros_mes,
+				SIFTOTPAF total_pago_asigfam,
+				SIFTOTCOT total_de_cotizacion,
+				SIFOTRDES otros_descuentos,
+				SIFRESNET resultado_neto
+		FROM	SVDTA.SIF016A2
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosPorCorrelativoSif016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT 	IDSIF016  id_sif016,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTOTTRA num_total_trabajador,
+				SIFTOTCAR num_total_cargas,
+				SIFCARRET cargas_retroactivas,
+				SIFMTOASF mto_asfam_mes,
+				SIFASFRET mto_asfam_mes_retro,
+				SIFRETMES mto_reintegros_mes,
+				SIFTOTPAF total_pago_asigfam,
+				SIFTOTCOT total_de_cotizacion,
+				SIFOTRDES otros_descuentos,
+				SIFRESNET resultado_neto
+		FROM	SVDTA.SIF016A2
+		WHERE	IDSIF016 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0		
+	</select>
+
+	<select id="obtenerDatosEstaticosIdSif016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF016A2
+		WHERE	IDSIF016 = #rangoUno#			
+	</select>
+	
+	<select id="obtenerDatosEstaticosRutSif016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFMESREC mes_recaudacion,
+				SIFMESREM mes_remuneracion
+		FROM	SVDTA.SIF016A2
+		WHERE	SIFRUTEMP = #rutSearch#	
+	</select>
+	<select id="selectSif016ModificarPorRutId" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT 	IDSIF016  id_sif016,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTOTTRA num_total_trabajador,
+				SIFTOTCAR num_total_cargas,
+				SIFCARRET cargas_retroactivas,
+				SIFMTOASF mto_asfam_mes,
+				SIFASFRET mto_asfam_mes_retro,
+				SIFRETMES mto_reintegros_mes,
+				SIFTOTPAF total_pago_asigfam,
+				SIFTOTCOT total_de_cotizacion,
+				SIFOTRDES otros_descuentos,
+				SIFRESNET resultado_neto
+		FROM	SVDTA.SIF016A2
+		WHERE	IDSIF016 = #idsif016#
+		AND		SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="selectSif016ModificarPorId" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="cl.araucana.sivegam.vo.LinSif016VO">
+		SELECT 	IDSIF016  id_sif016,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFNUMDEC numero_declaracion,
+				SIFFECDEC fech_declaracion,
+				SIFTOTTRA num_total_trabajador,
+				SIFTOTCAR num_total_cargas,
+				SIFCARRET cargas_retroactivas,
+				SIFMTOASF mto_asfam_mes,
+				SIFASFRET mto_asfam_mes_retro,
+				SIFRETMES mto_reintegros_mes,
+				SIFTOTPAF total_pago_asigfam,
+				SIFTOTCOT total_de_cotizacion,
+				SIFOTRDES otros_descuentos,
+				SIFRESNET resultado_neto,
+				SIFTIPSAL tipo_de_saldo,
+				SIFMODPAG modalidad_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fech_emision_doc,
+				SIFCODBCO codigo_banco
+		FROM	SVDTA.SIF016A2
+		WHERE	IDSIF016 = #idsif016#
+		AND		SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0		
+	</select>
+	
+	<select id="obtenerDatosSif017PorRut" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	IDSIF017  id_sif017,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMODPAG modalidad_de_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fech_emision_doc,
+				SIFCODBCO codigo_banco,
+				SIFNUMCAR numero_cartola,
+				SIFESTDOC estado_documento,
+				SIFFECREN fecha_rendicion
+		FROM	SVDTA.SIF017
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="selectSif017ModificarPorRutId" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	IDSIF017  id_sif017,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMODPAG modalidad_de_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fech_emision_doc,
+				SIFCODBCO codigo_banco,
+				SIFNUMCAR numero_cartola,
+				SIFESTDOC estado_documento,
+				SIFFECREN fecha_rendicion
+		FROM	SVDTA.SIF017
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		IDSIF017 = #idsif017#
+	</select>
+	
+	<select id="selectSif017ModificarPorId" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	IDSIF017  id_sif017,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMODPAG modalidad_de_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fech_emision_doc,
+				SIFCODBCO codigo_banco,
+				SIFNUMCAR numero_cartola,
+				SIFESTDOC estado_documento,
+				SIFFECREN fecha_rendicion
+		FROM	SVDTA.SIF017
+		WHERE	IDSIF017 = #idsif017#	
+	</select>
+	
+	<select id="obtenerDatosPorCorrelativoSif017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	IDSIF017  id_sif017,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empresa,
+				SIFDVREMP dv_empresa,
+				SIFNOMEMP nombre_empresa,
+				SIFTIPEGR cod_tipo_egreso,
+				SIFMODPAG modalidad_de_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fech_emision_doc,
+				SIFCODBCO codigo_banco,
+				SIFNUMCAR numero_cartola,
+				SIFESTDOC estado_documento,
+				SIFFECREN fecha_rendicion
+		FROM	SVDTA.SIF017
+		WHERE	IDSIF017 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosEstaticosIdSif017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF017
+		WHERE	IDSIF017 = #rangoUno#		
+	</select>
+	
+	<select id="obtenerDatosEstaticosRutSif017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="cl.araucana.sivegam.vo.LinSif017VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF017
+		WHERE	SIFRUTEMP = #rutSearch#			
+	</select>
+	
+	<select id="obtenerDatosPorRut" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO" >
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,	
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTA.SIF018
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+
+	<select id="obtenerDatosSif019PorRut" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	IDSIF019  id_sif019,
+				SIFRUTEMP rut_empresa,        
+				SIFDVREMP dv_empresa,         
+				SIFNOMEMP nombre_empresa,    
+				SIFMEORGA mes_origen_gasto,   
+				SIFESDOOR estado_doc_orig,   
+				SIFMOPAOR modo_pago_orig,    
+				SIFNUSEOR num_serie_orig,   
+				SIFNUDOOR num_docum_orig,   
+				SIFMODOOR monto_docum_orig, 
+				SIFFEEMOR fecha_emision_orig,
+				SIFCOBAOR codigo_banco_orig, 
+				SIFMOPANU modo_pago_nuevo,   
+				SIFNUSENU num_serie_nuevo,   
+				SIFNUDONU num_docum_nuevo,   
+				SIFMODONU monto_docum_nuevo, 
+				SIFFEEMNU fecha_emision_nuevo,
+				SIFCOBANU codigo_banco_nuevo
+		FROM	SVDTA.SIF019N
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="obtenerDatosPorCorrelativoSif019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	IDSIF019  id_sif019,
+				SIFRUTEMP rut_empresa,        
+				SIFDVREMP dv_empresa,         
+				SIFNOMEMP nombre_empresa,    
+				SIFMEORGA mes_origen_gasto,   
+				SIFESDOOR estado_doc_orig,   
+				SIFMOPAOR modo_pago_orig,    
+				SIFNUSEOR num_serie_orig,   
+				SIFNUDOOR num_docum_orig,   
+				SIFMODOOR monto_docum_orig, 
+				SIFFEEMOR fecha_emision_orig,
+				SIFCOBAOR codigo_banco_orig, 
+				SIFMOPANU modo_pago_nuevo,   
+				SIFNUSENU num_serie_nuevo,   
+				SIFNUDONU num_docum_nuevo,   
+				SIFMODONU monto_docum_nuevo, 
+				SIFFEEMNU fecha_emision_nuevo,
+				SIFCOBANU codigo_banco_nuevo
+		FROM	SVDTA.SIF019N
+		WHERE	IDSIF019 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="selectSif019ModificarPorRutId" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	IDSIF019  id_sif019,
+				SIFRUTEMP rut_empresa,        
+				SIFDVREMP dv_empresa,         
+				SIFNOMEMP nombre_empresa,    
+				SIFMEORGA mes_origen_gasto,   
+				SIFESDOOR estado_doc_orig,   
+				SIFMOPAOR modo_pago_orig,    
+				SIFNUSEOR num_serie_orig,   
+				SIFNUDOOR num_docum_orig,   
+				SIFMODOOR monto_docum_orig, 
+				SIFFEEMOR fecha_emision_orig,
+				SIFCOBAOR codigo_banco_orig, 
+				SIFMOPANU modo_pago_nuevo,   
+				SIFNUSENU num_serie_nuevo,   
+				SIFNUDONU num_docum_nuevo,   
+				SIFMODONU monto_docum_nuevo, 
+				SIFFEEMNU fecha_emision_nuevo,
+				SIFCOBANU codigo_banco_nuevo
+		FROM	SVDTA.SIF019N
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND 	IDSIF019 = #idSif019#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="selectSif019ModificarPorId" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT 	IDSIF019  id_sif019,
+				SIFRUTEMP rut_empresa,        
+				SIFDVREMP dv_empresa,         
+				SIFNOMEMP nombre_empresa,    
+				SIFMEORGA mes_origen_gasto,   
+				SIFESDOOR estado_doc_orig,   
+				SIFMOPAOR modo_pago_orig,    
+				SIFNUSEOR num_serie_orig,   
+				SIFNUDOOR num_docum_orig,   
+				SIFMODOOR monto_docum_orig, 
+				SIFFEEMOR fecha_emision_orig,
+				SIFCOBAOR codigo_banco_orig, 
+				SIFMOPANU modo_pago_nuevo,   
+				SIFNUSENU num_serie_nuevo,   
+				SIFNUDONU num_docum_nuevo,   
+				SIFMODONU monto_docum_nuevo, 
+				SIFFEEMNU fecha_emision_nuevo,
+				SIFCOBANU codigo_banco_nuevo
+		FROM	SVDTA.SIF019N
+		WHERE	IDSIF019 = #idSif019#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerDatosEstaticosRutIdSif019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF019N
+		WHERE	SIFRUTEMP = #rutSearch#	
+	</select>
+	
+	<select id="obtenerDatosEstaticosPorIdSif019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="cl.araucana.sivegam.vo.LinSif019VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF019N
+		WHERE	IDSIF019 = #rangoUno#	
+	</select>
+	<select id="obtenerDatosPorCorrelativoSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTA.SIF018
+		WHERE	IDSIF018 BETWEEN #rangoUno# AND #rangoDos#
+		AND		FLGDLT = 0	
+	</select>
+				
+	<select id="selectSif018ModificarPorRutId" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTA.SIF018
+		WHERE	IDSIF018 = #idsif018#
+		AND		SIFRUTEMP = #rutSearch#
+		AND		FLGDLT = 0
+	</select>
+	
+	<select id="selectSif018ModificarPorId" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT 	IDSIF018  id_sif018,
+				SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo,
+				SIFRUTEMP rut_empleador,
+				SIFDVREMP dv_empleador,
+				SIFNOMEMP nombre_empleador,
+				SIFMODPAG mod_pago,
+				SIFMTODOC monto_documento,
+				SIFNUMSER numero_serie,
+				SIFNUMDOC numero_documento,
+				SIFFECEMI fecha_emision_documento,
+				SIFCODBCO codigo_banco,
+				SIFFECCOB fecha_cobro
+		FROM	SVDTA.SIF018
+		WHERE	IDSIF018 = #idsif018#
+		AND		FLGDLT = 0	
+	</select>
+	
+	<select id="obtenerIdSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="string">
+		SELECT 	IDSIF018 id_sif018
+		FROM	SVDTA.SIF018
+		WHERE	SIFRUTEMP = #rutSearch#
+	</select>
+	
+	<select id="obtenerDatosEstaticosIdSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF018
+		WHERE	IDSIF018 = #idsif018#			
+	</select>
+	
+	<select id="obtenerDatosEstaticosRutIdSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="cl.araucana.sivegam.vo.LinSif018VO">
+		SELECT	SIFFECPRO fecha_proceso,
+				SIFCODENT codigo_entidad,
+				SIFCODARC codigo_archivo
+		FROM	SVDTA.SIF018
+		WHERE	SIFRUTEMP = #rutSearch#
+		AND		IDSIF018 = #idsif018#		
+	</select>
+
+	<select id="verificarRangoUnoDos016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF016A2
+		WHERE	IDSIF016 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="verificarSinRango016" parameterClass="cl.araucana.sivegam.vo.Sif016VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF016A2
+		WHERE	IDSIF016 = #rangoUno#
+	</select>
+	
+	<select id="verificarRangoUnoDos017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF017
+		WHERE	IDSIF017 BETWEEN #rangoUno# AND #rangoDos#	
+	</select>
+	
+	<select id="verificarSinRango017" parameterClass="cl.araucana.sivegam.vo.Sif017VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF017
+		WHERE	IDSIF017 = #rangoUno#
+	</select>
+	
+	<select id="verificarRangoUnoDos018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF018
+		WHERE	IDSIF018 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="verificarSinRango018" parameterClass="cl.araucana.sivegam.vo.Sif018VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF018
+		WHERE	IDSIF018 = #rangoUno#
+	</select>
+	
+	<select id="verificarRangoUnoDos019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF019N
+		WHERE	IDSIF019 BETWEEN #rangoUno# AND #rangoDos#
+	</select>
+	
+	<select id="verificarSinRango019" parameterClass="cl.araucana.sivegam.vo.Sif019VO" resultClass="string">
+		SELECT 	COUNT(1) AS contador
+		FROM 	SVDTA.SIF019N
+		WHERE	IDSIF019 = #rangoUno#
+	</select>
+		
+	<update id="updateSif016" parameterClass="cl.araucana.sivegam.vo.LinSif016VO">
+		UPDATE 	SVDTA.SIF016A2
+		SET		FLGMDF = 1,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFNOMEMP = #nombre_empresa#,
+				SIFNUMDEC = #numero_declaracion#,
+				SIFFECDEC = #fech_declaracion#,
+				SIFTOTTRA = #num_total_trabajador#,
+				SIFTOTCAR = #num_total_cargas#,
+				SIFCARRET = #cargas_retroactivas#,
+				SIFMTOASF = #mto_asfam_mes#,
+				SIFASFRET = #mto_asfam_mes_retro#,
+				SIFRETMES = #mto_reintegros_mes#,
+				SIFTOTPAF = #total_pago_asigfam#,
+				SIFTOTCOT = #total_de_cotizacion#,
+				SIFOTRDES = #otros_descuentos#,
+				SIFRESNET = #resultado_neto#,
+				SIFTIPSAL = #tipo_de_saldo#,
+				SIFMODPAG = #modalidad_pago#,
+				SIFMTODOC = #monto_documento#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFFECEMI = #fech_emision_doc#,
+				SIFCODBCO = #codigo_banco#
+		WHERE	IDSIF016  = #id_sif016#		
+	</update>
+	<update id="updateSif017" parameterClass="cl.araucana.sivegam.vo.LinSif017VO">
+		UPDATE	SVDTA.SIF017
+		SET		FLGMDF = 1,
+				SIFFECPRO = #fecha_proceso#,
+				SIFCODENT = #codigo_entidad#,
+				SIFCODARC = #codigo_archivo#,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFNOMEMP = #nombre_empresa#,
+				SIFTIPEGR = #cod_tipo_egreso#,
+				SIFMODPAG = #modalidad_de_pago#,
+				SIFMTODOC = #monto_documento#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFFECEMI = #fech_emision_doc#,
+				SIFCODBCO = #codigo_banco#,
+				SIFNUMCAR = #numero_cartola#,
+				SIFESTDOC = #estado_documento#,
+				SIFFECREN = #fecha_rendicion#
+		WHERE	IDSIF017  = #id_sif017#
+	</update>
+	
+	<update id="updateSif018" parameterClass="cl.araucana.sivegam.vo.LinSif018VO">
+		UPDATE 	SVDTA.SIF018
+		SET		FLGMDF = 1,
+				SIFCODARC = #codigo_archivo#,
+				SIFCODENT = 10105,
+				SIFRUTEMP = #rut_empleador#,
+				SIFDVREMP = #dv_empleador#,
+				SIFNOMEMP = #nombre_empleador#,
+				SIFMODPAG = #mod_pago#,
+				SIFMTODOC = #monto_documento#,
+				SIFNUMSER = #numero_serie#,
+				SIFNUMDOC = #numero_documento#,
+				SIFFECEMI = #fecha_emision_documento#,
+				SIFCODBCO = #codigo_banco#,
+				SIFFECCOB = #fecha_cobro#
+		WHERE	IDSIF018  = #id_sif018#
+	</update>
+
+	<update id="updateSif019" parameterClass="cl.araucana.sivegam.vo.LinSif019VO">
+		UPDATE	SVDTA.SIF019N
+		SET		FLGMDF = 1,
+				SIFRUTEMP = #rut_empresa#,
+				SIFDVREMP = #dv_empresa#,
+				SIFCODENT = 10105,
+				SIFNOMEMP = #nombre_empresa#,    
+				SIFMEORGA = #mes_origen_gasto#,   
+				SIFESDOOR = 102,   
+				SIFMOPAOR = #modo_pago_orig#,    
+				SIFNUSEOR = #num_serie_orig#,   
+				SIFNUDOOR = #num_docum_orig#,   
+				SIFMODOOR = #monto_docum_orig#, 
+				SIFFEEMOR = #fecha_emision_orig#,
+				SIFCOBAOR = #codigo_banco_orig#, 
+				SIFMOPANU = #modo_pago_nuevo#,   
+				SIFNUSENU = #num_serie_nuevo#,   
+				SIFNUDONU = #num_docum_nuevo#,   
+				SIFMODONU = #monto_docum_nuevo#, 
+				SIFFEEMNU = #fecha_emision_nuevo#,
+				SIFCOBANU = #codigo_banco_nuevo#
+		WHERE	IDSIF019  = #id_sif019#			
+	</update>
+	<update id="deleteRangoSif016" parameterClass="cl.araucana.sivegam.vo.Sif016VO">
+		UPDATE 	SVDTA.SIF016A2
+		SET		FLGDLT = 1
+		WHERE	IDSIF016 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif016" parameterClass="cl.araucana.sivegam.vo.Sif016VO">
+		UPDATE 	SVDTA.SIF016A2
+		SET		FLGDLT = 1
+		WHERE	IDSIF016 = #rangoUno#
+	</update>
+		
+	<update id="deleteRangoSif017" parameterClass="cl.araucana.sivegam.vo.Sif017VO">
+		UPDATE 	SVDTA.SIF017
+		SET		FLGDLT = 1
+		WHERE	IDSIF017 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif017" parameterClass="cl.araucana.sivegam.vo.Sif017VO">
+		UPDATE 	SVDTA.SIF017
+		SET		FLGDLT = 1
+		WHERE	IDSIF017 = #rangoUno#
+	</update>
+		
+	<update id="deleteRangoSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO">
+		UPDATE 	SVDTA.SIF018
+		SET		FLGDLT = 1
+		WHERE	IDSIF018 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif018" parameterClass="cl.araucana.sivegam.vo.Sif018VO">
+		UPDATE 	SVDTA.SIF018
+		SET		FLGDLT = 1
+		WHERE	IDSIF018 = #rangoUno#
+	</update>
+
+	<update id="deleteRangoSif019" parameterClass="cl.araucana.sivegam.vo.Sif019VO">
+		UPDATE 	SVDTA.SIF019N
+		SET		FLGDLT = 1
+		WHERE	IDSIF019 BETWEEN #rangoUno# AND #rangoDos#
+	</update>
+	
+	<update id="deleteSif019" parameterClass="cl.araucana.sivegam.vo.Sif019VO">
+		UPDATE 	SVDTA.SIF019N
+		SET		FLGDLT = 1
+		WHERE	IDSIF019 = #rangoUno#
+	</update>	
+</sqlMap>

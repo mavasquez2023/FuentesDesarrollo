@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="fechaIngreso">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="oficinaIngreso" >
+		<valida id="numerico"/>
+		<valida id="distintoDeCero"/>
+		<valida id="largo" maximo="3"/>
+		<formato id="relleno" relleno="0" largo="3"/>
+	</atributo>
+	<atributo name="identifUsuario" >
+		<valida id="largo" maximo="12"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="12"/>
+	</atributo>
+	<atributo name="rutAfiliado" >
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="nombreAfiliado" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="30"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30"/>
+	</atributo>
+	<atributo name="apellidoPaternoAfiliado" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="30"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30"/>
+	</atributo>
+	<atributo name="apellidoMaternoAfiliado" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="30"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="30"/>
+	</atributo>
+	<atributo name="fechaAfiliacion">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="fechaContrato">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="edadAfiliado">
+		<valida id="largo" maximo="2" />
+		<valida id="numerico" />
+		<valida id="mayorACero" />
+		<formato id="relleno" relleno="0" largo="2" />
+	</atributo>
+	<atributo name="fechaNacTrabajador" >
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8"/>
+	</atributo>
+	<atributo name="sexoAfiliado" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="1"/>
+		<valida id="valoresPermitidos" permitidos="F;M"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+	</atributo>
+	<atributo name="mixtaOFormulario" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="1"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+	</atributo>
+	<atributo name="tipoReposo" >
+		<valida id="largo" maximo="2"/>
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+	<atributo name="oficinaEmisora" >
+		<valida id="largo" maximo="3"/>
+		<valida id="numerico"/>
+		<valida id="distintoDeCero"/>
+		<formato id="relleno" relleno="0" largo="3"/>
+	</atributo>
+	<atributo name="sucursalCtaCte" >
+		<valida id="largo" maximo="15"/>
+		<valida id="numerico"/>
+		<valida id="distintoDeCero"/>
+		<formato id="relleno" relleno="0" largo="3"/>
+	</atributo>
+	<atributo name="nroLicenciaExterna" >
+		<valida id="largo" maximo="10"/>
+		<valida id="numerico"/>
+		<valida id="distintoDeCero"/>
+		<formato id="relleno" relleno="0" largo="10"/>
+	</atributo>
+	<atributo name="dvNroLicenciaExterna">
+		<valida id="largo" maximo="1" />
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="1" />
+	</atributo>
+	<atributo name="formaPago" >
+		<valida id="largo" maximo="1"/>
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="0;1;3;4;5;6"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="oficinaPago" >
+		<valida id="largo" maximo="3"/>
+		<valida id="numerico"/>
+		<valida id="distintoDeCero"/>
+		<formato id="relleno" relleno="0" largo="3"/>
+	</atributo>
+	<atributo name="rutEmpresa" >
+		<valida id="validaRut" />
+		<valida id="largo" maximo="10" />
+		<formato id="replace" oldchar="-" newchar="" />
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>
+	<atributo name="diasLicencia">
+		<valida id="largo" maximo="3" />
+		<valida id="numerico" />
+		<valida id="mayorACero" />
+		<formato id="relleno" relleno="0" largo="3" />
+	</atributo>
+	<atributo name="fechaDesde">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="fechaHasta">
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8" />
+	</atributo>
+	<atributo name="tipoLicencia" >
+		<valida id="largo" maximo="2"/>
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="1;3;4;7"/>
+		<formato id="relleno" relleno="0" largo="2"/>
+	</atributo>
+	<atributo name="operador" >
+		<valida id="largo" maximo="1"/>
+		<valida id="validaOperador"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="color">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico" />
+		<valida id="valoresPermitidos" permitidos="0;1;2"/>
+		<formato id="relleno" relleno="0" largo="1" />
+	</atributo>
+	<atributo name="estadoEmpresa">
+		<valida id="largo" maximo="10" />
+		<valida id="valoresPermitidos" permitidos="E;A"/>
+		<formato id="changeCase" to="toUpperCase" />
+		<formato id="relleno" relleno="0" largo="10" />
+	</atributo>	
+	<atributo name="indValidacion" >
+		<valida id="largo" maximo="1"/>
+		<valida id="valoresPermitidos" permitidos="T;;P"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="indicadorVisada" >
+		<valida id="largo" maximo="1"/>
+		<valida id="valoresPermitidos" permitidos="S;;N"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="servicioSalud" >
+		<!--<valida id="notNull"/>		-->
+		<valida id="largo" maximo="5"/>
+		<valida id="numerico" />
+		<formato id="relleno" relleno="0" largo="5"/>
+	</atributo>
+	<atributo name="fechaEmision">
+		<valida id="validaFecha"/>
+	</atributo>
+	<atributo name="codComunaUsoCompin">
+		<valida id="largo" maximo="5" />
+		<valida id="numerico" />
+		<valida id="distintoDeCero"/>
+	</atributo>
+	<atributo name="codigoInstPrevision" >
+		<valida id="largo" maximo="4" />
+		<valida id="numerico" />
+	</atributo>
+	<atributo name="calidadTrabajador">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico" />
+		<valida id="valoresPermitidos" permitidos="1;2;3;4"/>
+	</atributo>
+	<atributo name="excepcionCompin">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="0;;1"/>
+	</atributo>
+	<atributo name="excepcionInspTrabajo">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="0;;1"/>
+	</atributo>
+	<atributo name="excepcionMaternalSSB">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="0;;1"/>
+	</atributo>
+	<atributo name="excepcionTrabajadorNuevo">
+		<valida id="largo" maximo="1" />
+		<valida id="valoresPermitidos" permitidos="0;;1"/>
+	</atributo>
+	<atributo name="contratoDuracionIndefinido">
+		<valida id="largo" maximo="1" />
+		<valida id="numerico" />
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+	</atributo>
+	<atributo name="trabajadorAfiliadoAFC" >
+		<valida id="largo" maximo="1" />
+		<valida id="numerico" />
+		<valida id="valoresPermitidos" permitidos="1;2"/>
+	</atributo>
+	<atributo name="fechaRecepcionEmpleador">
+		<valida id="validaFecha"/>
+	</atributo>
+</clase>

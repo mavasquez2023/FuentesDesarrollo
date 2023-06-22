@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clase>
+	<atributo name="tipoValidacion" >
+		<valida id="notNull"/>
+		<valida id="largo" maximo="1"/>
+		<valida id="valoresPermitidos" permitidos="T;P"/>
+		<formato id="relleno" relleno=" " largo="1"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+	</atributo>
+	<atributo name="glosaValidacion" >
+		<valida id="largo" maximo="250"/>
+		<formato id="changeCase"  to="toUpperCase"/>
+		<formato id="relleno" relleno=" " largo="250"/>
+	</atributo>
+	<atributo name="codigoRespuesta" >
+		<valida id="numerico"/>
+		<valida id="valoresPermitidos" permitidos="0;1"/>
+		<valida id="largo" maximo="1"/>
+		<formato id="relleno" relleno="0" largo="1"/>
+	</atributo>
+	<atributo name="fechaProceso" >
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8"/>
+	</atributo>
+	<atributo name="fechaRespuesta" >
+		<valida id="validaFecha"/>
+		<formato id="relleno" relleno="0" largo="8"/>
+	</atributo>
+	<atributo name="horaRespuesta" >
+		<valida id="validaHora"/>
+		<formato id="relleno" relleno="0" largo="6"/>
+	</atributo>
+</clase>
