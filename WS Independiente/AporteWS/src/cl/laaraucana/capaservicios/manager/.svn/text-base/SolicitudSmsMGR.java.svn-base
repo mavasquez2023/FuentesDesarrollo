@@ -1,0 +1,174 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.Random;
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.dao.SolicitudSMSDao;
+import cl.laaraucana.capaservicios.database.vo.SolicitudSMS;
+import cl.laaraucana.capaservicios.util.Constantes;
+//import cl.laaraucana.capaservicios.util.ImprimeUtil;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.util.ValidarUtil;
+import cl.laaraucana.capaservicios.webservices.client.ServicioSMSInternoCliente;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifOut;
+
+public class SolicitudSmsMGR {
+
+  protected Logger logger = Logger.getLogger(this.getClass());
+  /**
+   * Genera un codigo de seguridad de 6 digitos siempre y cuando no exista un codigo
+   * de seguridad valido asociado al mismo rut y monto.
+   * @param entrada
+   * @return
+   */
+  public SolCodVerificacionOut solicitarCodVerif(SolCodVerificacionIn entrada) {
+    SolCodVerificacionOut salida = new SolCodVerificacionOut();
+    Log log = null;
+    
+    //Validar datos de entrada
+    log = validarDatosSolicitud(entrada);
+    if(log != null){
+    	salida.setLog(log);
+    	return salida;
+    }
+    
+    try {
+      // Generar código de seguridad
+      Random rnd = new Random();
+      String codSeg = String.valueOf(rnd.nextInt((999999 - 100000) + 1) + 100000);
+      // Almacenar código de seguridad
+      SolicitudSMSDao smsDao = new SolicitudSMSDao();
+      SolicitudSMS solicitud = new SolicitudSMS();
+
+      solicitud.setRutCliente(RutUtil.formatRutAs400(entrada.getRutCliente()));
+      solicitud.setDvRut(RutUtil.getDv(entrada.getRutCliente()));
+      solicitud.setCodSeguridad(codSeg);
+      solicitud.setFecha(Utils.getFechaHoyAs400());
+      solicitud.setHora(Utils.getHoraAs400());
+      solicitud.setMontoAprobado(entrada.getMontoAprobado());
+      solicitud.setOrigen(entrada.getOrigen());
+      //Estado inicial
+      solicitud.setEstado("0");
+
+      if (!smsDao.ingresarSolicitudSMS(solicitud)) {
+        // si aun existe un codigo de seguridad vigente se termina el proceso.
+        log = new Log(smsDao.getCodRespuesta(), smsDao.getMsjRespuesta());
+        salida.setLog(log);
+        return salida;
+      }
+
+      // Enviar código de seguridad por SMS
+      // Agregar el codigo de seguridad al mensaje que se enviara por telefono.
+      boolean resp = ServicioSMSInternoCliente.enviarSMS(entrada.getNroCelular(), String.format(Constantes.SMS_MENSAJETXT, solicitud.getCodSeguridad(),solicitud.getMontoAprobado()));
+      
+      if (resp) {
+        salida.setCodSeguridad(codSeg);
+        log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Código enviado exitosamente");
+      } else {
+    	smsDao.desactivarCodigo(solicitud);
+        log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al enviar el cod. de seguridad vía SMS");
+      }
+
+    } catch (NullPointerException nullE) {
+      logger.error("::CodigoVerificacion: error en solicitud de cóodigo de verificacion", nullE);
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, nullE.getMessage()));
+    } catch (Exception e) {
+    	logger.error("::CodigoVerificacion: error en solicitud de cóodigo de verificacion", e);
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al enviar el cod. de seguridad: " + e.getMessage());
+    }
+    salida.setLog(log);
+    //ImprimeUtil.imprimirCampos(salida, logger);
+    return salida;
+  }
+
+  /**
+   * Busca en la tabla SMS_SOLICITUD el codigo de verificacion.
+   * Para saber si el codigo de seguridad es valido, se consulta la cantidad de veces
+   * que ha sido utilizado y si fue generado con una diferencia menor a 5 minutos desde
+   * ese momento al de la utilizacion.
+   * 
+   * @param entrada
+   * @return
+   */
+  public VerificarCodVerifOut verificarCodVerif(VerificarCodVerifIn entrada) {
+    VerificarCodVerifOut salida = new VerificarCodVerifOut();
+    logger.info("::CodigoVerificacion: Verificar codigo:" + entrada.getCodSeguridad() + ", del cliente: " + entrada.getRutCliente());
+    Log log = null;
+    //Validar datos de entrada
+    log = validarDatosVerif(entrada);
+    if(log != null){
+    	salida.setLog(log);
+    	return salida;
+    }
+    
+    SolicitudSMSDao smsDao = new SolicitudSMSDao();
+    SolicitudSMS solicitudVO = new SolicitudSMS();
+
+    try {
+      solicitudVO.setCodSeguridad(entrada.getCodSeguridad());
+      solicitudVO.setRutCliente(RutUtil.formatRutAs400(entrada.getRutCliente()));
+
+      boolean codigoValido = smsDao.verificarCodigo(solicitudVO);
+
+      if (codigoValido) {
+        salida.setEsValido("true");
+        salida.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS, "Código Valido"));
+      } else {
+        salida.setEsValido("false");
+        salida.setLog(new Log(smsDao.getCodRespuesta(), smsDao.getMsjRespuesta()));
+      }
+      logger.info(String.format("El codigo %s es valido?: %s", entrada.getCodSeguridad(), salida.getEsValido()));
+    } catch (NullPointerException nullE) {
+      logger.error("::CodigoVerificacion: error al validar codigo: ", nullE);
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, nullE.getMessage()));
+    } catch (Exception e) {
+      logger.error("::CodigoVerificacion: Error en consulta SQL verificarCodVerif", e);
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error en verificacion de codigo seguridad:" + e.getMessage()));
+    }
+    //ImprimeUtil.imprimirCampos(salida);
+    return salida;
+  }
+  
+  /**
+   * Valida datos de entrada para el método solicitarCodVerif.
+   * @param entrada
+   * @return Objeto Log con el detalle del error, en caso de no haber errores de validación, retorna null.
+   */
+  private Log validarDatosSolicitud(SolCodVerificacionIn entrada){
+	  Log log = null;
+		if(!RutUtil.IsRutValido(entrada.getRutCliente()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut válido");
+		
+		if(!ValidarUtil.isNumeric(entrada.getNroCelular()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese Nro. celular válido");
+		
+		if(!ValidarUtil.isNumeric(entrada.getMontoAprobado()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese monto válido");
+		
+		if(entrada.getOrigen() == null || entrada.getOrigen().length()>3)
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese Origen válido");
+		return log;
+  }
+  
+  /**
+   * Valida datos de entrada para el método verificarCodVerif.
+   * @param entrada
+   * @return Objeto Log con el detalle del error, en caso de no haber errores de validación, retorna null.
+   */
+  private Log validarDatosVerif(VerificarCodVerifIn entrada){
+	  Log log = null;
+		if(!RutUtil.IsRutValido(entrada.getRutCliente()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut válido");
+		
+		if(!(ValidarUtil.isNumeric(entrada.getCodSeguridad()) && entrada.getCodSeguridad().length()<7))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese Cód. seguridad válido");
+
+		return log;
+  }
+  
+}

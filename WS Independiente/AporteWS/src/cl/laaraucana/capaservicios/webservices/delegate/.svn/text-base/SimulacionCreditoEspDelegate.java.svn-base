@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.SimulacionCreditoEspMGR;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="SimulacionCreditoEspService", portName="SimulacionCreditoEspPort", wsdlLocation="WEB-INF/wsdl/SimulacionCreditoEspService.wsdl")
+public class SimulacionCreditoEspDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.SimulacionCreditoEsp _simulacionCreditoEsp = null;
+
+    public SimulacionCreditoEspOut simularCreditoEsp (@WebParam(name="simulacionEntrada") SimulacionCreditoEspIn simulacionEntrada) {
+        return _simulacionCreditoEsp.simularCreditoEsp(simulacionEntrada);
+    }
+
+    public SimulacionCreditoEspDelegate() {
+        _simulacionCreditoEsp = new cl.laaraucana.capaservicios.webservices.service.SimulacionCreditoEsp(); }
+
+}

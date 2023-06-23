@@ -1,0 +1,46 @@
+package cl.laaraucana.capaservicios.manager;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.dao.MigracionDAO;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaEstMig.ConsultaEstMigOut;
+
+public class ConsultaMigracionMGR {
+	Logger logger = Logger.getLogger(this.getClass());
+	/**
+	 * Consulta estado de migracion a SAP
+	 * @param rut
+	 * @return
+	 */
+	public ConsultaEstMigOut consultarEstMig(String rut){
+		ConsultaEstMigOut salida = new ConsultaEstMigOut();
+		MigracionDAO dao = new MigracionDAO();
+		Log log = null;
+		
+		if(!RutUtil.IsRutValido(rut)){
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido");
+			salida.setLog(log);
+			return salida;
+		}
+		
+		boolean migrado = false;
+		try {
+			if(dao.consultarEstMig(rut)){
+				log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Consulta realizada correctamente");
+				migrado = true;
+			}else{
+				log = new Log(Constantes.COD_RESPUESTA_VACIO, "");
+				migrado = false;
+			}
+		} catch (Exception e) {
+			logger.error("::ConsultaMigracion: Error al realizar la consulta de migración", e);
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al realizar la consulta de migración");
+		}
+		salida.setMigrado(migrado);
+		salida.setLog(log);
+		return salida;
+	}
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.STL.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.STL.laaraucana.cl/">
+
+  <xs:element name="ingresoXMLString" type="tns:ingresoXMLString"/>
+
+  <xs:element name="ingresoXMLStringResponse" type="tns:ingresoXMLStringResponse"/>
+
+  <xs:complexType name="ingresoXMLString">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:notificacionTEFEntradaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="notificacionTEFEntradaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idSistemaOrigen" type="xs:string"/>
+      <xs:element minOccurs="0" name="vectorIni" type="xs:string"/>
+      <xs:element minOccurs="0" name="xmlEncriptado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingresoXMLStringResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:notificacionTEFSalidaVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="notificacionTEFSalidaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="vectorIni" type="xs:string"/>
+      <xs:element minOccurs="0" name="xmlSalida" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

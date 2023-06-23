@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="colocarCreditoEsp" type="tns:colocarCreditoEsp"/>
+
+  <xs:element name="colocarCreditoEspResponse" type="tns:colocarCreditoEspResponse"/>
+
+  <xs:complexType name="colocarCreditoEsp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:colocacionCreditoSAPIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colocacionCreditoSAPIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anexoEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="codBanco" type="xs:string"/>
+      <xs:element minOccurs="0" name="codOficina" type="xs:string"/>
+      <xs:element minOccurs="0" name="comentario" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoGiro" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuentaDestino" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="origen" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCuenta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colocarCreditoEspResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:colocacionCreditoSAPOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colocacionCreditoSAPOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

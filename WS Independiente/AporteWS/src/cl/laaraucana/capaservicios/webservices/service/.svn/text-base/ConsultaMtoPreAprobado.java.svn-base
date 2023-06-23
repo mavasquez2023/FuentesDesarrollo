@@ -1,0 +1,21 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+//import org.apache.log4j.Logger;
+import cl.laaraucana.capaservicios.manager.ConsultaMtoAprobadoMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoOut;
+
+public class ConsultaMtoPreAprobado {
+  /**
+   * Interfaz de conexion para el servicio ConsultaMtoAprobado.
+   * 
+   * @param entrada
+   * @return
+   */
+  public ConsultaMtoAprobadoOut consultaMtoAprobado(ConsultaMtoAprobadoIn consultaMtoAprobado) {
+    ConsultaMtoAprobadoOut salida = new ConsultaMtoAprobadoOut();
+    ConsultaMtoAprobadoMGR ws = new ConsultaMtoAprobadoMGR();
+    salida = ws.getMontoPreAprobado(consultaMtoAprobado);
+    return salida;
+  }
+}

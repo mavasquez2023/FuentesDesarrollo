@@ -1,0 +1,21 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.ConsultaMigracionMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaEstMig.ConsultaEstMigOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="ConsultaEstMigService", portName="ConsultaEstMigPort", wsdlLocation="WEB-INF/wsdl/ConsultaEstMigService.wsdl")
+public class ConsultaEstMigDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.ConsultaEstMig _consultaEstMig = null;
+
+    public ConsultaEstMigOut consultarEstMig (@WebParam(name="rut") String rut) {
+        return _consultaEstMig.consultarEstMig(rut);
+    }
+
+    public ConsultaEstMigDelegate() {
+        _consultaEstMig = new cl.laaraucana.capaservicios.webservices.service.ConsultaEstMig(); }
+
+}

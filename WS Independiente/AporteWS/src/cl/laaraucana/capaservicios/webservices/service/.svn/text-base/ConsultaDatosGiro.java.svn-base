@@ -1,0 +1,14 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.ConsultaDatosGiroMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaOut;
+
+public class ConsultaDatosGiro {
+	
+	public ConsultaTransferenciaOut obtenerTransferencia(ConsultaTransferenciaIn entrada){
+		ConsultaDatosGiroMGR mgr = new ConsultaDatosGiroMGR();
+		ConsultaTransferenciaOut salida = mgr.obtenerTransferencia(entrada);
+		return salida;
+	}
+}

@@ -1,0 +1,179 @@
+[08-06-2016 14:40:12,344 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 14:40:45,373 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 14:58:12,221 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 14:58:36,257 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:01:02,360 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:01:08,713 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:01:12,778 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:01:27,277 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:01:39,872 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:01:43,306 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:02:47,597 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:02:54,444 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:03:00,622 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:19:24,238 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:21:05,937 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:21:11,651 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:22:58,200 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:23:25,768 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:24:07,388 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:25:48,112 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:25:53,008 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 15:25:54,928 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+org.apache.axis2.deployment.DeploymentException: org.apache.axis2.transport.local.LocalTransportSender
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:707)
+	at org.apache.axis2.deployment.AxisConfigBuilder.populateConfig(AxisConfigBuilder.java:123)
+	at org.apache.axis2.deployment.DeploymentEngine.populateAxisConfiguration(DeploymentEngine.java:857)
+	at org.apache.axis2.deployment.FileSystemConfigurator.getAxisConfiguration(FileSystemConfigurator.java:116)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContext(ConfigurationContextFactory.java:64)
+	at org.apache.axis2.context.ConfigurationContextFactory.createConfigurationContextFromFileSystem(ConfigurationContextFactory.java:210)
+	at org.apache.axis2.client.ServiceClient.configureServiceClient(ServiceClient.java:151)
+	at org.apache.axis2.client.ServiceClient.<init>(ServiceClient.java:144)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:91)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:77)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:123)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.<init>(QueryCompContHeaderOUTServiceStub.java:115)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:43)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: java.lang.ClassNotFoundException: org.apache.axis2.transport.local.LocalTransportSender
+	at java.lang.Class.forName(Class.java:136)
+	at org.apache.axis2.util.Loader.loadClass(Loader.java:261)
+	at org.apache.axis2.deployment.AxisConfigBuilder.processTransportSenders(AxisConfigBuilder.java:682)
+	... 14 more
+[08-06-2016 15:27:03,651 - INFO] : Inicia proceso para obtener creditos especiales
+[08-06-2016 15:27:07,476 - DEBUG] : << Inicio Web Service: QueryCompContHeaderIn: 12138097-8
+[08-06-2016 16:49:49,136 - ERROR] : ::ConsultaCreditosEspVig: Error al obtener créditos esp. vigentes:
+java.lang.Exception: Error en servicio QueryCompContHeaderIn: compruebe el servicio
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:80)
+	at cl.laaraucana.capaservicios.manager.CreditosVigentesMGR.getCreditosVigentes(CreditosVigentesMGR.java:60)
+	at cl.araucana.credito.business.service.impl.CreditoServiceImpl.main(CreditoServiceImpl.java:42)
+Caused by: org.apache.axis2.AxisFault: First Element must contain the local name, Envelope , but found HTML
+	at org.apache.axis2.AxisFault.makeFault(AxisFault.java:430)
+	at org.apache.axis2.transport.TransportUtils.createSOAPMessage(TransportUtils.java:123)
+	at org.apache.axis2.transport.TransportUtils.createSOAPMessage(TransportUtils.java:67)
+	at org.apache.axis2.description.OutInAxisOperationClient.handleResponse(OutInAxisOperation.java:354)
+	at org.apache.axis2.description.OutInAxisOperationClient.send(OutInAxisOperation.java:421)
+	at org.apache.axis2.description.OutInAxisOperationClient.executeImpl(OutInAxisOperation.java:229)
+	at org.apache.axis2.client.OperationClient.execute(OperationClient.java:165)
+	at cl.laaraucana.capaservicios.webservices.autogenerado.QueryCompContHeaderIn.web_mobile.QueryCompContHeaderOUTServiceStub.queryCompContrHeader(QueryCompContHeaderOUTServiceStub.java:182)
+	at cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn.call(ClienteQueryCompContHeaderIn.java:74)
+	... 2 more
+Caused by: org.apache.axiom.soap.SOAPProcessingException: First Element must contain the local name, Envelope , but found HTML
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.constructNode(StAXSOAPModelBuilder.java:299)
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.createOMElement(StAXSOAPModelBuilder.java:246)
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.createNextOMElement(StAXSOAPModelBuilder.java:228)
+	at org.apache.axiom.om.impl.builder.StAXOMBuilder.next(StAXOMBuilder.java:249)
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.getSOAPEnvelope(StAXSOAPModelBuilder.java:198)
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.<init>(StAXSOAPModelBuilder.java:154)
+	at org.apache.axiom.soap.impl.builder.StAXSOAPModelBuilder.<init>(StAXSOAPModelBuilder.java:140)
+	at org.apache.axis2.builder.BuilderUtil.getSOAPBuilder(BuilderUtil.java:686)
+	at org.apache.axis2.transport.TransportUtils.createDocumentElement(TransportUtils.java:197)
+	at org.apache.axis2.transport.TransportUtils.createSOAPMessage(TransportUtils.java:145)
+	at org.apache.axis2.transport.TransportUtils.createSOAPMessage(TransportUtils.java:108)
+	... 9 more

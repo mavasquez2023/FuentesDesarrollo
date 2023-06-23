@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="obtenerCertAmortizacion" type="tns:obtenerCertAmortizacion"/>
+
+  <xs:element name="obtenerCertAmortizacionResponse" type="tns:obtenerCertAmortizacionResponse"/>
+
+  <xs:complexType name="obtenerCertAmortizacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:certAmortizacionIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certAmortizacionIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerCertAmortizacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certAmortizacionOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certAmortizacionOut">
+    <xs:sequence>
+      <xs:element name="costoTotal" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cuotas" nillable="true" type="tns:cuotaVO"/>
+      <xs:element minOccurs="0" name="fechaOtorgamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaUltVenc" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element name="montoGiro" type="xs:long"/>
+      <xs:element minOccurs="0" name="tasaIntMensual" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuotaVO">
+    <xs:sequence>
+      <xs:element name="cuotaTotal" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaVenc" type="xs:string"/>
+      <xs:element name="montoCapital" type="xs:long"/>
+      <xs:element name="montoInteres" type="xs:long"/>
+      <xs:element name="nroCuota" type="xs:int"/>
+      <xs:element name="saldoInsoluto" type="xs:long"/>
+      <xs:element name="segCesantia" type="xs:long"/>
+      <xs:element name="segDesgravamen" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

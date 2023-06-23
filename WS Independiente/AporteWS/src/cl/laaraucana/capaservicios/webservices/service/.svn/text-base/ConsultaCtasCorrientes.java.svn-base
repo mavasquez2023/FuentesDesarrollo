@@ -1,0 +1,29 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.ConsultaCtasCorrientesMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteVO;
+
+public class ConsultaCtasCorrientes {
+	
+	public ConsultaCtasCorrientesOut obtenerCtasCorrientes(String rut){
+		ConsultaCtasCorrientesMGR mgr = new ConsultaCtasCorrientesMGR();
+		ConsultaCtasCorrientesOut salida = mgr.obtenerCtasCorrientes(rut);
+		
+		return salida;
+	}
+	
+	public CtaCorrienteOut agregarCtaCorriente(CtaCorrienteVO ctaCorrienteEntrada){
+		ConsultaCtasCorrientesMGR mgr = new ConsultaCtasCorrientesMGR();
+		CtaCorrienteOut salida = mgr.agregarCtaCorriente(ctaCorrienteEntrada);
+		return salida;
+	}
+	
+	public CtaCorrienteOut eliminarCtaCorriente(ConsultaCtasCorrientesIn ctaCorrienteEntrada){
+		ConsultaCtasCorrientesMGR mgr = new ConsultaCtasCorrientesMGR();
+		CtaCorrienteOut salida = mgr.eliminarCtaCorriente(ctaCorrienteEntrada);
+		return salida;
+	}
+}

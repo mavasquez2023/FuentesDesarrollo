@@ -1,0 +1,15 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.AutenticarUsuarioMGR;
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.CrearUsuarioSalida;
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.UsuarioLdap;
+
+public class RegistroUsuariosLdap {
+	
+	public CrearUsuarioSalida crearUsuario(UsuarioLdap entrada){
+		AutenticarUsuarioMGR autenticar = new AutenticarUsuarioMGR();
+		CrearUsuarioSalida salida = autenticar.crearUsuario(entrada);
+		return salida;
+	}
+	
+}

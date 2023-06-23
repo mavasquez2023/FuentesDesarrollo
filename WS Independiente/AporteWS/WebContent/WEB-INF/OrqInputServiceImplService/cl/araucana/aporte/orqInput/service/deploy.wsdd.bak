@@ -1,0 +1,117 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OrqInputServiceImplService WSDL service -->
+
+  <service name="OrqInputServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.orqInput.aporte.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="OrqInputServiceImplService"/>
+      <parameter name="schemaQualified" value="http://vo.service.orqInput.aporte.araucana.cl,http://service.orqInput.aporte.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="OrqInputServiceImpl"/>
+      <parameter name="className" value="cl.araucana.aporte.orqInput.service.OrqInputServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="OrqInputServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerInfoPago" qname="operNS:obtenerInfoPago" xmlns:operNS="http://service.orqInput.aporte.araucana.cl" returnQName="retNS:obtenerInfoPagoReturn" xmlns:retNS="http://service.orqInput.aporte.araucana.cl" returnType="rtns:OrqInputResultVO" xmlns:rtns="http://vo.service.orqInput.aporte.araucana.cl" soapAction="" >
+        <parameter qname="pns:rut" xmlns:pns="http://service.orqInput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="obtenerInfoPagoRemote" qname="operNS:obtenerInfoPagoRemote" xmlns:operNS="http://service.orqInput.aporte.araucana.cl" returnQName="retNS:obtenerInfoPagoRemoteReturn" xmlns:retNS="http://service.orqInput.aporte.araucana.cl" returnType="rtns:OrqInputResultVO" xmlns:rtns="http://vo.service.orqInput.aporte.araucana.cl" soapAction="" >
+        <parameter qname="pns:rut" xmlns:pns="http://service.orqInput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerInfoPagoRemote obtenerInfoPago"/>
+
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:ErrorResultVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.ErrorResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:OrqInputResultVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.OrqInputResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:LeasingDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.LeasingDetalleVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service.orqInput.aporte.araucana.cl"
+        qname="ns:ArrayOf_tns1_LeasingDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.LeasingDetalleVO[]"
+        innerType="cmp-ns:LeasingDetalleVO" xmlns:cmp-ns="http://vo.service.orqInput.aporte.araucana.cl"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:AporteResultVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.AporteResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service.orqInput.aporte.araucana.cl"
+        qname="ns:ArrayOf_tns1_CreditoDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.CreditoDetalleVO[]"
+        innerType="cmp-ns:CreditoDetalleVO" xmlns:cmp-ns="http://vo.service.orqInput.aporte.araucana.cl"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:CreditoDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.CreditoDetalleVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:AporteDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.AporteDetalleVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:CreditoResultVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.CreditoResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service.orqInput.aporte.araucana.cl"
+        qname="ns:ArrayOf_tns1_AporteDetalleVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.AporteDetalleVO[]"
+        innerType="cmp-ns:AporteDetalleVO" xmlns:cmp-ns="http://vo.service.orqInput.aporte.araucana.cl"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqInput.aporte.araucana.cl"
+        qname="ns:LeasingResultVO"
+        type="java:cl.araucana.aporte.orqInput.service.vo.LeasingResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

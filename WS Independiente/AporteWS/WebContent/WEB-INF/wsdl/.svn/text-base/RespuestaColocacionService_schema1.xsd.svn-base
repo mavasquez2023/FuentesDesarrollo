@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="recibirRespColocacion" type="tns:recibirRespColocacion"/>
+
+  <xs:element name="recibirRespColocacionResponse" type="tns:recibirRespColocacionResponse"/>
+
+  <xs:complexType name="recibirRespColocacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:respuestaColocacionIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaColocacionIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="folioTesoreria" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCotizacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recibirRespColocacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:respuestaColocacionOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaColocacionOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folioInterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

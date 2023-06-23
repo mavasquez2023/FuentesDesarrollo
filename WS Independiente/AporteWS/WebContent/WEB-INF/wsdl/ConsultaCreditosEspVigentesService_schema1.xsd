@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="obtenerCreditosVigEsp" type="tns:obtenerCreditosVigEsp"/>
+
+  <xs:element name="obtenerCreditosVigEspResponse" type="tns:obtenerCreditosVigEspResponse"/>
+
+  <xs:complexType name="obtenerCreditosVigEsp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerCreditosVigEspResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCreditosEspVigOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCreditosEspVigOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="creditos" nillable="true" type="tns:creditoVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantCuotasPagadas" type="xs:string"/>
+      <xs:element minOccurs="0" name="cantCuotasVigentes" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaOtorg" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaPrimerVenc" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaUltVenc" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="mtoCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="mtoNominal" type="xs:string"/>
+      <xs:element minOccurs="0" name="mtoReajustado" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="segCesantia" type="xs:string"/>
+      <xs:element minOccurs="0" name="segDesgravamen" type="xs:string"/>
+      <xs:element minOccurs="0" name="segVida" type="xs:string"/>
+      <xs:element minOccurs="0" name="tasaInteres" type="xs:string"/>
+      <xs:element minOccurs="0" name="valorCuota" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="obtenerTransferencia" type="tns:obtenerTransferencia"/>
+
+  <xs:element name="obtenerTransferenciaResponse" type="tns:obtenerTransferenciaResponse"/>
+
+  <xs:complexType name="obtenerTransferencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:consultaTransferenciaIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaTransferenciaIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerTransferenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaTransferenciaOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaTransferenciaOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="transf" type="tns:transferencia"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaTransf" type="xs:string"/>
+      <xs:element minOccurs="0" name="folioCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="horaTransf" type="xs:string"/>
+      <xs:element name="montoGiro" type="xs:long"/>
+      <xs:element minOccurs="0" name="nombreBanco" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombres" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuenta" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCuenta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

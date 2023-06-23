@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="solicitarCodVerif" type="tns:solicitarCodVerif"/>
+
+  <xs:element name="solicitarCodVerifResponse" type="tns:solicitarCodVerifResponse"/>
+
+  <xs:element name="verificarCodVerif" type="tns:verificarCodVerif"/>
+
+  <xs:element name="verificarCodVerifResponse" type="tns:verificarCodVerifResponse"/>
+
+  <xs:complexType name="solicitarCodVerif">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:solCodVerificacionIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solCodVerificacionIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="montoAprobado" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCelular" type="xs:string"/>
+      <xs:element minOccurs="0" name="origen" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solicitarCodVerifResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:solCodVerificacionOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solCodVerificacionOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codSeguridad" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verificarCodVerif">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:verificarCodVerifIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verificarCodVerifIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codSeguridad" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verificarCodVerifResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verificarCodVerifOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verificarCodVerifOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="esValido" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

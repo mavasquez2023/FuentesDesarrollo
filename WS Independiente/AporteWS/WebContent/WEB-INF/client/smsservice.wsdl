@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http:mobile.asicom.cl"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+name="ams_info_service" 
+targetNamespace="http:mobile.asicom.cl">
+  
+  <types xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http:mobile.asicom.cl">
+      <complexType name="SMSRegister">
+        <sequence>
+          <element name="id" type="xsd:string" />
+          <element name="fecha" type="xsd:string" />
+          <element name="nc" type="xsd:int" />
+          <element name="fono" type="xsd:string" />
+          <element name="mensaje" type="xsd:string" />
+        </sequence>
+      </complexType>
+      <complexType name="SMSRegisters">
+        <sequence>
+          <element name="registro" type="tns:SMSRegister" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+      </complexType>
+    </schema>
+  </types>
+  
+  <wsdl:message name="SMSInfoRequest">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string"/>
+    <wsdl:part name="idc" type="xsd:string"/>
+    <wsdl:part name="fecha-inicial" type="xsd:string"/>
+    <wsdl:part name="fecha-final" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SMSInfoResponse">
+      <wsdl:part name="registros" type="tns:SMSRegisters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="SendSMSRequest">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string"/>
+    <wsdl:part name="destino" type="xsd:string"/>
+    <wsdl:part name="mensaje" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSResponse">
+      <wsdl:part name="estado" type="xsd:string"/>
+      <wsdl:part name="nc" type="xsd:string"/>
+      <wsdl:part name="idmensaje" type="xsd:string"/>
+  </wsdl:message>
+  
+  <wsdl:message name="SendSMSStatusRequest">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string"/>
+    <wsdl:part name="idmensaje" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSStatusResponse">
+      <wsdl:part name="idmensaje" type="xsd:string"/>
+      <wsdl:part name="estado_envio" type="xsd:string"/>
+      <wsdl:part name="estado_entrega" type="xsd:string"/>
+  </wsdl:message>
+  
+  <wsdl:message name="DataException">
+    <wsdl:part name="message" type="xsd:string" />
+  </wsdl:message>
+  
+  <wsdl:portType name="SMSServicePortType">
+    <wsdl:operation name="getRegisters">
+      <wsdl:input message="tns:SMSInfoRequest"/>
+      <wsdl:output message="tns:SMSInfoResponse"/>
+<!--       <wsdl:fault name="DataException" message="tns:DataException"/> -->
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS">
+      <wsdl:input message="tns:SendSMSRequest"/>
+      <wsdl:output message="tns:SendSMSResponse"/>
+<!--       <wsdl:fault name="DataException" message="tns:DataException"/> -->
+    </wsdl:operation>
+    <wsdl:operation name="sendSMSStatus">
+      <wsdl:input message="tns:SendSMSStatusRequest"/>
+      <wsdl:output message="tns:SendSMSStatusResponse"/>
+<!--       <wsdl:fault name="DataException" message="tns:DataException"/> -->
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="SMSServiceBinding" type="tns:SMSServicePortType">
+    <soap:binding style="rpc" 	transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <wsdl:operation name="getRegisters">
+      <soap:operation soapAction="http:mobile.asicom.cl#getRegisters" />
+      <wsdl:input>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:output>
+<!--       <wsdl:fault name="DataException">
+        <soap:fault name="DataException"  namespace="http:mobile.asicom.cl"  />
+      </wsdl:fault> -->
+    </wsdl:operation>
+
+    <wsdl:operation name="sendSMS">
+      <soap:operation soapAction="http:mobile.asicom.cl#sendSMS" />
+      <wsdl:input>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:output>
+<!--       <wsdl:fault name="DataException">
+        <soap:fault name="DataException"  namespace="http:mobile.asicom.cl"  />
+      </wsdl:fault> -->
+    </wsdl:operation>
+    
+    <wsdl:operation name="sendSMSStatus">
+      <soap:operation soapAction="http:mobile.asicom.cl#sendSMSStatus" />
+      <wsdl:input>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http:mobile.asicom.cl"  />
+      </wsdl:output>
+<!--       <wsdl:fault name="DataException">
+        <soap:fault name="DataException"  namespace="http:mobile.asicom.cl"  />
+      </wsdl:fault> -->
+    </wsdl:operation>
+    
+    
+  </wsdl:binding>
+  
+  <wsdl:service name="WS_SMS">
+    <wsdl:port binding="tns:SMSServiceBinding" name="SMSServicePort">
+      <soap:address location="http://190.196.2.91/ws/sms/smsservice.ws.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

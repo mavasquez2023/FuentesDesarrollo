@@ -1,0 +1,102 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/vo
+https://172.16.137.116/svn/IBM
+
+
+
+2014-10-14T15:09:44.958830Z
+3258
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+SimulacionCreditoEsp
+dir
+
+CodigoVerificacion
+dir
+
+ConsultaMtoPreAprobado
+dir
+
+ConsultaDatosCliente
+dir
+
+ColocacionCreditoSAP
+dir
+
+RegistroUsuariosLdap
+dir
+
+ConsultaTransferencia
+dir
+
+autenticarldap
+dir
+
+DatosAuxiliares
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/vo/ListaCodigosSTL
+1655
+
+Log.java
+file
+
+
+
+
+2014-09-24T13:21:32.563308Z
+09156a601eda60f073e63418d15ad0fd
+2014-09-26T14:35:56.102775Z
+3209
+acanifru
+
+ConsultaEstMig
+dir
+
+ConsultaCtasCorrientes
+dir
+
+ConsultaCreditosEspVigentes
+dir
+
+RespuestaColocacion
+dir
+
+CertAmortizacion
+dir
+

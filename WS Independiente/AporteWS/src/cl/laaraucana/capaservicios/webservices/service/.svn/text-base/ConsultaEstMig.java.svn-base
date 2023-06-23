@@ -1,0 +1,19 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.ConsultaMigracionMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaEstMig.ConsultaEstMigOut;
+
+public class ConsultaEstMig {
+  /**
+   * Interfaz de conexion para el servicio, estado migracion BP en AS400.
+   * 
+   * @param rut
+   * @return
+   */
+  public ConsultaEstMigOut consultarEstMig(String rut) {
+    ConsultaMigracionMGR mgr = new ConsultaMigracionMGR();
+    ConsultaEstMigOut salida = mgr.consultarEstMig(rut);
+    return salida;
+  }
+
+}

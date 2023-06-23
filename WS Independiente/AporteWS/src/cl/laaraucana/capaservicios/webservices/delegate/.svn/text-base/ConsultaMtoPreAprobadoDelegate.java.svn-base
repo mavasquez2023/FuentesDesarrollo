@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.ConsultaMtoAprobadoMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="ConsultaMtoPreAprobadoService", portName="ConsultaMtoPreAprobadoPort", wsdlLocation="WEB-INF/wsdl/ConsultaMtoPreAprobadoService.wsdl")
+public class ConsultaMtoPreAprobadoDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.ConsultaMtoPreAprobado _consultaMtoPreAprobado = null;
+
+    public ConsultaMtoAprobadoOut consultaMtoAprobado (@WebParam(name="consultaMtoAprobado") ConsultaMtoAprobadoIn consultaMtoAprobado) {
+        return _consultaMtoPreAprobado.consultaMtoAprobado(consultaMtoAprobado);
+    }
+
+    public ConsultaMtoPreAprobadoDelegate() {
+        _consultaMtoPreAprobado = new cl.laaraucana.capaservicios.webservices.service.ConsultaMtoPreAprobado(); }
+
+}

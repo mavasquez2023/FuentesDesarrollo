@@ -1,0 +1,37 @@
+package cl.laaraucana.capaservicios.webservices.client;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.util.Configuraciones;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.Log;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.SolicitudTEFEntradaVO;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.SolicitudTEFMasivaPortProxy;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.SolicitudTEFSalidaVO;
+
+
+public class ClienteSolicitudTEF {
+	Logger logger = Logger.getLogger(this.getClass()); 
+	
+	public SolicitudTEFSalidaVO call(SolicitudTEFEntradaVO entrada) throws Exception {
+		SolicitudTEFSalidaVO salidaVO = null;
+		Log log = new Log();
+		
+		SolicitudTEFMasivaPortProxy ws = new SolicitudTEFMasivaPortProxy();
+		ws._getDescriptor().setEndpoint(Configuraciones.getConfig("ep.solicitudTEF"));
+		SolicitudTEFSalidaVO respuesta;
+		try {
+			respuesta = ws.ingresaSolicitud(entrada);
+			salidaVO = respuesta;
+		} catch (Exception e) {
+			salidaVO = new SolicitudTEFSalidaVO();
+			log.setTipo(Constantes.COD_RESPUESTA_ERROR);
+			log.setMensaje("Error en servicio SolicitudTEF: compruebe el servicio");
+			return salidaVO;
+		}
+		logger.debug("Respuesta SolicitudTEF: " + salidaVO.getLog().getTipo() + ", " + salidaVO.getLog().getMensaje());
+
+		return salidaVO;
+	}
+
+}

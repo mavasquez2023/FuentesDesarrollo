@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/IBM/!svn/ver/3255/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client
+END
+SimuladorServicesUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/SimuladorServicesUtil.java
+END
+ClienteSolicitudTEF.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/IBM/!svn/ver/1073/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/ClienteSolicitudTEF.java
+END
+ClienteNotificacionTEF.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/ClienteNotificacionTEF.java
+END
+ServicioSMSInternoCliente.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/IBM/!svn/ver/3334/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/ServicioSMSInternoCliente.java
+END
+WSInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/WSInterface.java
+END

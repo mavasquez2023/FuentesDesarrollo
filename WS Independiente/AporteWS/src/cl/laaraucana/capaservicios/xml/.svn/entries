@@ -1,0 +1,94 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/xml
+https://172.16.137.116/svn/IBM
+
+
+
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+solicitud
+dir
+
+DatosComunas.java
+file
+
+
+
+
+2014-05-12T22:03:36.751605Z
+d6b5eef4ca79da9a8b05026644b54b51
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+Comuna.java
+file
+
+
+
+
+2014-05-12T22:03:36.755605Z
+e8f5c8d3de6336256f0da2a4256c02bb
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+Region.java
+file
+
+
+
+
+2014-05-12T22:03:36.759605Z
+e11fe660e5da85d4ef8716397f6f58e7
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+notificacion
+dir
+
+Ciudad.java
+file
+
+
+
+
+2014-05-12T22:03:36.768605Z
+8dc2ee219888ea5b26fa6abb83a4e81f
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+Regiones.java
+file
+
+
+
+
+2014-05-12T22:03:36.772605Z
+0ff203ac5d0f855d0137e72f053c228d
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="actualizarDatosCliente" type="tns:actualizarDatosCliente"/>
+
+  <xs:element name="actualizarDatosClienteResponse" type="tns:actualizarDatosClienteResponse"/>
+
+  <xs:element name="obtenerDatosCliente" type="tns:obtenerDatosCliente"/>
+
+  <xs:element name="obtenerDatosClienteResponse" type="tns:obtenerDatosClienteResponse"/>
+
+  <xs:complexType name="actualizarDatosCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:actDatosClienteVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actDatosClienteVO">
+    <xs:sequence>
+      <xs:element name="codAreaTelFijo" type="xs:int"/>
+      <xs:element minOccurs="0" name="codComuna" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCivil" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaNac" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCelular" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroDpto" type="xs:string"/>
+      <xs:element name="prefijoCelular" type="xs:int"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexo" type="xs:string"/>
+      <xs:element minOccurs="0" name="telFijo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actualizarDatosClienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:actualizarDatosClienteOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actualizarDatosClienteOut">
+    <xs:sequence>
+      <xs:element name="actualizado" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerDatosCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:consultaDatosClienteIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosClienteIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codEjecucion" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerDatosClienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaDatosClienteOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaDatosClienteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="datosCliente" type="tns:clienteVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="clienteVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string"/>
+      <xs:element name="codAreaTelFijo" type="xs:int"/>
+      <xs:element minOccurs="0" name="codComuna" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCivil" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaNac" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombres" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCelular" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroDpto" type="xs:string"/>
+      <xs:element minOccurs="0" name="oficina" type="xs:string"/>
+      <xs:element name="prefijoCelular" type="xs:int"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexo" type="xs:string"/>
+      <xs:element minOccurs="0" name="telFijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoAfiliado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,14 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.CertAmortizacionMGR;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionOut;
+
+public class CertAmortizacion {
+
+	public CertAmortizacionOut obtenerCertAmortizacion(CertAmortizacionIn entrada) {
+		CertAmortizacionMGR mgr = new CertAmortizacionMGR();
+		CertAmortizacionOut salida = mgr.obtenerCertAmortizacion(entrada);
+		return salida;
+	}
+}

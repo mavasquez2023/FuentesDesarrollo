@@ -1,0 +1,16 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.ColocacionCreditoMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPIn;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPOut;
+
+public class ColocacionCreditoSAP {
+	
+	public ColocacionCreditoSAPOut colocarCreditoEsp(ColocacionCreditoSAPIn entrada){
+		ColocacionCreditoMGR mgr = new ColocacionCreditoMGR();
+		ColocacionCreditoSAPOut salida = mgr.colocarCreditoEsp(entrada);
+		//ColocacionCreditoSAPOut salida = new ColocacionCreditoSAPOut();
+		//salida.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS, "Solicitud de colocación creada correctamente"));
+		return salida;
+	}
+}

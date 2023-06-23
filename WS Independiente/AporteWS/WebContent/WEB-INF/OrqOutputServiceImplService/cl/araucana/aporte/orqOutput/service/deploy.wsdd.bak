@@ -1,0 +1,66 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OrqOutputServiceImplService WSDL service -->
+
+  <service name="OrqOutputServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.orqOutput.aporte.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="OrqOutputServiceImplService"/>
+      <parameter name="schemaQualified" value="http://service.orqOutput.aporte.araucana.cl,http://vo.service.orqOutput.aporte.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="OrqOutputServiceImpl"/>
+      <parameter name="className" value="cl.araucana.aporte.orqOutput.service.OrqOutputServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="OrqOutputServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="recuperacionPago" qname="operNS:recuperacionPago" xmlns:operNS="http://service.orqOutput.aporte.araucana.cl" returnQName="retNS:recuperacionPagoReturn" xmlns:retNS="http://service.orqOutput.aporte.araucana.cl" returnType="rtns:OrqOutputResultVO" xmlns:rtns="http://vo.service.orqOutput.aporte.araucana.cl" soapAction="" >
+        <parameter qname="pns:rut" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoCredito" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoLeasing" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoAporte" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:periodoAporte" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaRecaudacion" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:horaRecaudacion" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:usuario" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:documentoPago" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ofi_folio" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="recuperacionPagoRemote" qname="operNS:recuperacionPagoRemote" xmlns:operNS="http://service.orqOutput.aporte.araucana.cl" returnQName="retNS:recuperacionPagoRemoteReturn" xmlns:retNS="http://service.orqOutput.aporte.araucana.cl" returnType="rtns:OrqOutputResultVO" xmlns:rtns="http://vo.service.orqOutput.aporte.araucana.cl" soapAction="" >
+        <parameter qname="pns:rut" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoCredito" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoLeasing" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montoAporte" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:periodoAporte" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaRecaudacion" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:horaRecaudacion" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:usuario" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:documentoPago" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ofi_folio" xmlns:pns="http://service.orqOutput.aporte.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="recuperacionPago recuperacionPagoRemote"/>
+
+      <typeMapping
+        xmlns:ns="http://vo.service.orqOutput.aporte.araucana.cl"
+        qname="ns:OrqOutputResultVO"
+        type="java:cl.araucana.aporte.orqOutput.service.vo.OrqOutputResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://vo.service.orqOutput.aporte.araucana.cl"
+        qname="ns:ErrorResultVO"
+        type="java:cl.araucana.aporte.orqOutput.service.vo.ErrorResultVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

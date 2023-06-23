@@ -1,0 +1,52 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/util/email
+https://172.16.137.116/svn/IBM
+
+
+
+2014-10-13T13:05:40.281071Z
+3251
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+Email.java
+file
+3334
+
+
+
+2014-10-24T17:12:52.031823Z
+2b39350eb5a7bcc74cd58e4d8254e3d4
+2014-10-24T17:24:54.136854Z
+3334
+acanifru
+
+AdjuntoVO.java
+file
+3273
+
+
+
+2014-10-15T18:15:56.007417Z
+1df59e6edc396e46457085a3a44b21cf
+2014-10-15T18:16:16.389506Z
+3273
+acanifru
+

@@ -1,0 +1,28 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.AuxiliarSTLMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ListaCodigosSTL.ListaCodigosSTLOut;
+
+public class ConsultaCodigosSTL {
+	
+	public ListaCodigosSTLOut getListaBancos(){
+		AuxiliarSTLMGR mgr = new AuxiliarSTLMGR();
+		ListaCodigosSTLOut bancos = mgr.getListaBancos();
+		
+		return bancos;
+	}
+	
+	public ListaCodigosSTLOut getTiposCuenta(){
+		AuxiliarSTLMGR mgr = new AuxiliarSTLMGR();
+		ListaCodigosSTLOut tiposCuenta = mgr.getTiposCuenta();
+		
+		return tiposCuenta;
+	}
+	
+	public ListaCodigosSTLOut getComunasProvRegiones(String tipoEjecucion){
+		AuxiliarSTLMGR mgr = new AuxiliarSTLMGR();
+		ListaCodigosSTLOut tiposCuenta = mgr.getComunasProvRegiones(tipoEjecucion);
+		return tiposCuenta;
+	}
+	
+}

@@ -1,0 +1,127 @@
+package cl.laaraucana.capaservicios.manager;
+
+import org.apache.log4j.Logger;
+
+import cl.araucana.core.registry.User;
+import cl.araucana.core.registry.UserInfo;
+import cl.araucana.core.registry.UserRegistryConnection;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.LdapUtil;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.CrearUsuarioSalida;
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.UsuarioLdap;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.AutenticacionLDAP;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.EntradaAutenticarLdap;
+
+public class AutenticarUsuarioMGR {
+  private final Logger logger = Logger.getLogger(this.getClass());
+
+  public AutenticacionLDAP autenticar(EntradaAutenticarLdap entradaWS){
+    AutenticacionLDAP salidaWS = new AutenticacionLDAP();
+
+    UserRegistryConnection conn = null;
+    UserInfo userInfo = null;
+    try {
+      // Autenticar usuario en Ldap
+      conn = new UserRegistryConnection(entradaWS.getUsuario(), entradaWS.getPassword());
+      userInfo = conn.getUserInfo(entradaWS.getUsuario());
+      conn.registerUserLogin(entradaWS.getUsuario(), false);
+      salidaWS.setDebeCambiarClave(userInfo.mustChangePassword());
+      salidaWS.setIdUsuario(userInfo.getUserID());
+      salidaWS.setUltimoLogin(userInfo.getLastLogin().toString());
+      logger.debug("::AutenticarLdap: Usuario '" + entradaWS.getUsuario() + "' autenticado correctamente");
+      salidaWS.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS, "Usuario autenticado correctamente."));
+    } catch (Exception e) {
+      logger.error("::AutenticarLdap: Error al autenticar usuario  '" + entradaWS.getUsuario(),e);
+      salidaWS.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error al autenticar usuario"));
+    }finally{
+    	 try {conn.close();} catch (Exception e2) { logger.error("Error al cerrar conexion Ldap");}
+    }
+    return salidaWS;
+  }
+  
+  
+  /**
+   * Crea usuario en Ldap
+   * Si el usuario existe, asigna la nueva contraseña y activa el flag de cambio de clave obligatorio
+   * Si no existe, lo crea
+   * 
+   * @param entrada Si se envia el parametro password, se establece éste, de lo contrario la password seran los 
+   * primeros 4 digitos del rut
+   * @return
+   */
+  public CrearUsuarioSalida crearUsuario(UsuarioLdap entrada){
+	  CrearUsuarioSalida salida = new CrearUsuarioSalida();
+		Log log  = null;
+		
+		//Validar datos de entrada
+		if(!RutUtil.IsRutValido(entrada.getRutUsuario())){
+			logger.debug("::RegistroUsuariosLdap: Ingrese un rut válido");
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido"));
+			return salida;
+		}
+		
+		UserRegistryConnection urConnection = null;
+		User user = null;
+		String pass = (entrada.getPassword() == null) ? entrada.getRutUsuario().substring(0, 4) : entrada.getPassword();
+		
+		try {
+			urConnection = new UserRegistryConnection();
+			user = urConnection.getUser(entrada.getRutUsuario());
+			//Cambiar contrasena y establecer cambio de clave obligatorio
+			LdapUtil ldap = new LdapUtil();
+			ldap.changePassword(entrada.getRutUsuario(), pass);
+			urConnection.forceUserChangePassword(entrada.getRutUsuario());
+			log = new Log(Constantes.COD_RESPUESTA_VACIO, "El usuario existe, se cambió correctamente la contraseña");
+		} catch (Exception e) {
+			logger.debug("::RegistroUsuariosLdap: usuario " + entrada.getRutUsuario() + " no existe en LDAP: " + e.getMessage());
+		}
+		
+		try {
+			// si usuario no existe en LDAP se debe crear
+			if (user == null) {
+				user = new User();
+				user.setID(entrada.getRutUsuario());
+				user.setName(Utils.reemplazaNuloPorEspacio(entrada.getNombre()));
+				user.setFirstName(Utils.reemplazaNuloPorEspacio(entrada.getApellidoPaterno()));
+				user.setLastName(Utils.reemplazaNuloPorEspacio(entrada.getApellidoMaterno()));
+				user.setEmail(Utils.reemplazaNuloPorEspacio(entrada.getEmail()));
+				user.setPhone(Utils.reemplazaNuloPorEspacio(entrada.getTelefono()));
+				user.setSex(Utils.reemplazaNuloPorEspacio(entrada.getSexo()));
+				user.setSituation("");
+				user.setQuestion("");
+				user.setAnswer("");
+				user.setServices("");
+				// se crea usuario y se asigna los primeros 4 digitos del rut
+				urConnection.createUser(user, pass);
+				// Se crea usuario en LDAP
+				logger.debug("::RegistroUsuariosLdap: El usuario " + entrada.getRutUsuario() + " se creo en LDAP");
+				log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Usuario creado correctamente");
+			}
+		} catch (Exception e) {
+			logger.error("::RegistroUsuariosLdap: Error al crear el usuario:",e);
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al crear el usuario: " + e.getMessage());
+		}
+		
+		//Cerrar conexion
+		try{urConnection.close();}catch(Exception e){}
+
+		salida.setLog(log);
+		return salida;
+  }
+  
+/*  public static void main(String[] args) throws UserRegistryException {
+	  //UserRegistryConnection urConnection = new UserRegistryConnection();
+	  
+	  //urConnection.removeUser("11111111-1");
+	  try {
+		  UserRegistryConnection urConnection = new UserRegistryConnection("11111111-1","1111");
+		System.out.println("Contraseña valida");
+	} catch (Exception e) {
+		System.out.println("Contraseña no valida: " + e.getMessage());
+	}
+  }*/
+  
+}

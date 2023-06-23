@@ -1,0 +1,17 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.ColocacionCreditoMGR;
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionOut;
+
+public class RespuestaColocacion {
+	
+	public RespuestaColocacionOut recibirRespColocacion(RespuestaColocacionIn entrada){
+		ColocacionCreditoMGR mgr = new ColocacionCreditoMGR(); 
+		RespuestaColocacionOut salida = mgr.recibirRespuestaColocacion(entrada);
+		//RespuestaColocacionOut salida = new RespuestaColocacionOut();
+		//salida.setFolioInterno("2");//DUMMY
+		//salida.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS, "Datos de crédito procesados correctamente"));
+		return salida;
+	}
+}

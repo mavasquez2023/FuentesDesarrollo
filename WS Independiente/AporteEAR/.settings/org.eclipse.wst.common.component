@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AporteEAR">
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module archiveName="axis.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/axis.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-discovery-0.2.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/commons-discovery-0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.0.4.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/commons-logging-1.0.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ibatis-2.3.0.677.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/ibatis-2.3.0.677.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jaxrpc.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/jaxrpc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jt400.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/jt400.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j-1.2.8.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/log4j-1.2.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="saaj.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/saaj.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="wsdl4j-1.5.1.jar" deploy-path="/lib" handle="module:/classpath/lib/AporteEAR/lib/wsdl4j-1.5.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AporteEJB.jar" deploy-path="/" handle="module:/resource/AporteEJB/AporteEJB">
+            <dependent-object>EjbModule_1327929487281</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AporteWS.war" deploy-path="/" handle="module:/resource/AporteWS/AporteWS">
+            <dependent-object>WebModule_1327929223312</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

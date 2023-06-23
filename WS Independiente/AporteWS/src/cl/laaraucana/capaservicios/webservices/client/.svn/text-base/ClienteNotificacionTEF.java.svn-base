@@ -1,0 +1,41 @@
+package cl.laaraucana.capaservicios.webservices.client;
+
+import org.apache.log4j.Logger;
+import cl.laaraucana.capaservicios.util.Configuraciones;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.webservices.autogenerado.NotificacionTEF.Log;
+import cl.laaraucana.capaservicios.webservices.autogenerado.NotificacionTEF.NotificacionTEFEntradaVO;
+import cl.laaraucana.capaservicios.webservices.autogenerado.NotificacionTEF.NotificacionTEFPortProxy;
+import cl.laaraucana.capaservicios.webservices.autogenerado.NotificacionTEF.NotificacionTEFSalidaVO;
+
+public class ClienteNotificacionTEF {
+
+	Logger logger = Logger.getLogger(this.getClass());
+	
+	/**
+	 * Implementa cliente servicio web NotificaciónTEF
+	 * @param entrada
+	 * @return
+	 */
+	public NotificacionTEFSalidaVO call(NotificacionTEFEntradaVO entrada) {
+		NotificacionTEFSalidaVO salidaVO = null;
+		Log log = new Log();
+
+		NotificacionTEFPortProxy ws = new NotificacionTEFPortProxy();
+		ws._getDescriptor().setEndpoint(Configuraciones.getConfig("ep.notificacionTEF"));
+
+		NotificacionTEFSalidaVO respuesta = new NotificacionTEFSalidaVO();
+		try {
+			respuesta = ws.ingresoXMLString(entrada);
+			salidaVO = respuesta;
+		} catch (Exception e) {
+			salidaVO = new NotificacionTEFSalidaVO();
+			log.setTipo(Constantes.COD_RESPUESTA_ERROR);
+			log.setMensaje("Error en servicio NotificaciontTEF: Compruebe el servicio");
+			salidaVO.setLog(log);
+		}
+		
+		logger.debug("Respuesta NotificacionTEF: " + salidaVO.getLog().getTipo() + ", " + salidaVO.getLog().getMensaje());
+		return salidaVO;		
+	}
+}

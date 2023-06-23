@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="cursarComprobanteTesoreria" type="tns:cursarComprobanteTesoreria"/>
+
+  <xs:element name="cursarComprobanteTesoreriaResponse" type="tns:cursarComprobanteTesoreriaResponse"/>
+
+  <xs:complexType name="cursarComprobanteTesoreria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:entradaCurseComprobanteVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entradaCurseComprobanteVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessArea" type="xs:string"/>
+      <xs:element minOccurs="0" name="creationOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentMethod" type="xs:string"/>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cursarComprobanteTesoreriaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salidaCurseComprobanteVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="salidaCurseComprobanteVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="resultCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

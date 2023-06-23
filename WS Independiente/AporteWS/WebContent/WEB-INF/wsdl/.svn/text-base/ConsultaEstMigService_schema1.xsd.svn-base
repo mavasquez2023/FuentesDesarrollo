@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="consultarEstMig" type="tns:consultarEstMig"/>
+
+  <xs:element name="consultarEstMigResponse" type="tns:consultarEstMigResponse"/>
+
+  <xs:complexType name="consultarEstMig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultarEstMigResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaEstMigOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaEstMigOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element name="migrado" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

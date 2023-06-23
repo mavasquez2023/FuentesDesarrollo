@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="simularCreditoEsp" type="tns:simularCreditoEsp"/>
+
+  <xs:element name="simularCreditoEspResponse" type="tns:simularCreditoEspResponse"/>
+
+  <xs:complexType name="simularCreditoEsp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="simulacionEntrada" type="tns:simulacionCreditoEspIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="simulacionCreditoEspIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anexoEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="codOficina" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoAprobado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoGiro" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="simularCreditoEspResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simulacionCreditoEspOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="simulacionCreditoEspOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CAE" type="xs:string"/>
+      <xs:element minOccurs="0" name="costoTotalCredito" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaPrimerVenc" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaUltVenc" type="xs:string"/>
+      <xs:element minOccurs="0" name="gastosNotariales" type="xs:string"/>
+      <xs:element minOccurs="0" name="impuestoLTE" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="montoGiro" type="xs:string"/>
+      <xs:element minOccurs="0" name="mtoSegCesantia" type="xs:string"/>
+      <xs:element minOccurs="0" name="mtoSegDesg" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCuotas" type="xs:string"/>
+      <xs:element minOccurs="0" name="tasaIntMensual" type="xs:string"/>
+      <xs:element minOccurs="0" name="valorCuota" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

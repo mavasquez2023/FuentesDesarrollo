@@ -1,0 +1,56 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.jws.WebParam;
+import javax.jws.WebService;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.StringUtils;
+
+import cl.laaraucana.capaservicios.util.ConstantesWS;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.AutenticacionLDAP;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.EntradaAutenticarLdap;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="AutenticarLdapService", portName="AutenticarLdapPort", wsdlLocation="WEB-INF/wsdl/AutenticarLdapService.wsdl")
+public class AutenticarLdapDelegate{
+
+  cl.laaraucana.capaservicios.webservices.service.AutenticarLdap _autenticarLdap = null;
+  @Resource
+  WebServiceContext wsctx;
+  /**
+   * Obtener las credenciales de autenticacion del servicio web
+   * Authorization Type: preemtive
+   * @throws Exception
+   */
+  public AutenticacionLDAP autenticarUsuario (@WebParam(name="entradaWS") EntradaAutenticarLdap entradaWS) throws Exception {
+    MessageContext mctx = wsctx.getMessageContext();
+    Map<?, ?> http_headers = (Map<?, ?>) mctx.get( MessageContext.HTTP_REQUEST_HEADERS);
+    boolean resAuth = false;
+
+    if(http_headers.containsKey("Authorization")){
+      String credenciales = ((List<?>) http_headers.get("Authorization")).get(0).toString();
+      credenciales = StringUtils.newStringUtf8(Base64.decodeBase64( credenciales.split(" ")[1].getBytes() ));
+      if(credenciales.trim().length()>0){
+        if(ConstantesWS.USER_AUTH.equals(credenciales.split(":")[0])  && ConstantesWS.PASS_AUTH.equals(credenciales.split(":")[1])){
+          resAuth=true;
+          System.out.println("Usuario Autenticado");
+        }
+      }
+    }
+
+    if(!resAuth){
+      throw new Exception(ConstantesWS.MENSAJE_AUTH_FAIL);
+    }
+    return _autenticarLdap.autenticarUsuario(entradaWS);
+  }
+
+  public AutenticarLdapDelegate() {
+    _autenticarLdap = new cl.laaraucana.capaservicios.webservices.service.AutenticarLdap(); }
+
+}

@@ -1,0 +1,21 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="RespuestaColocacionService", portName="RespuestaColocacionPort", wsdlLocation="WEB-INF/wsdl/RespuestaColocacionService.wsdl")
+public class RespuestaColocacionDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.RespuestaColocacion _respuestaColocacion = null;
+
+    public RespuestaColocacionOut recibirRespColocacion (@WebParam(name="entrada") RespuestaColocacionIn entrada) {
+        return _respuestaColocacion.recibirRespColocacion(entrada);
+    }
+
+    public RespuestaColocacionDelegate() {
+        _respuestaColocacion = new cl.laaraucana.capaservicios.webservices.service.RespuestaColocacion(); }
+
+}

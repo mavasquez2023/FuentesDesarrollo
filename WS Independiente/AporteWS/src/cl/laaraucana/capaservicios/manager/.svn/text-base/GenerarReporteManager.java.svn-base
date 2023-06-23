@@ -1,0 +1,141 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.vo.TransferenciaVO;
+import cl.laaraucana.capaservicios.util.Configuraciones;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.ReporteUtil;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CuotaVO;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaDatosCliente.ClienteVO;
+
+public class GenerarReporteManager {
+	Logger logger = Logger.getLogger(this.getClass());
+	
+	/**
+	 * Genera el PDF del comprobante de giro
+	 * @param transf
+	 * @return bites del archivo generado
+	 */
+	public byte[] generarComprobanteDeGiro(TransferenciaVO transf){
+		byte[] bites = null;
+		try {
+			//Generar PDF
+			Map<String, Object> hash = new HashMap<String, Object>();
+			hash.put("rutAfiliado", RutUtil.formatearRut(transf.getRutCliente() + "-" +transf.getDvCliente()));
+			hash.put("montoGirado", Long.parseLong(transf.getMontoGiro()));
+			hash.put("nombre", transf.getNombres() + " " + transf.getApellidoPaterno() + " " + transf.getApellidoMaterno());
+			hash.put("nroTransferencia", transf.getFolioCredito());
+			hash.put("fechaHoraTransf", transf.getFechaGiro() + " " + transf.getHoraGiro());
+			hash.put("banco",transf.getNombBanco());
+			hash.put("tipoCuenta", transf.getNombtipoCuenta());
+			hash.put("nroCuenta", transf.getNroCuentaDestino());
+			hash.put("email", transf.getEmail());
+			hash.put("nroCallCenter", Constantes.NRO_CALL_CENTER);
+			hash.put("rutaImg", Constantes.RUTA_IMG);
+			
+			String ruta = Constantes.RUTA_REPORTES+ Configuraciones.getConfig("ruta.comprobantePago");
+			ReporteUtil ru = new ReporteUtil(null, hash, ruta);
+			bites = ru.exportCompilePdf();
+		} catch (Exception e) {
+			logger.error("Error al generar comprobante de pago",e);
+		}
+		return bites;
+	}
+	
+	/**
+	 * Genera el certificado de cobertura de desgravamen en PDF
+	 * @param cliente
+	 * @param transf
+	 * @return bites del archivo generado
+	 */
+	public byte[] generarCertCobSegDesg(ClienteVO cliente, TransferenciaVO transf, CertAmortizacionOut certAmort){
+		byte[] bites = null;
+		try {
+			//GenerarPDF
+			Map<String, Object> hash = new HashMap<String, Object>();
+			hash.put("rutAfiliado", RutUtil.formatearRut(cliente.getRutCliente()));
+			hash.put("nombre",cliente.getNombres());
+			hash.put("apellidoPaterno", cliente.getApellidoPaterno());
+			hash.put("apellidoMaterno", cliente.getApellidoMaterno());
+			hash.put("fechaNac", Utils.stringToDate(cliente.getFechaNac()));
+			hash.put("nroOperacion", transf.getFolioCredito());
+			hash.put("montoInicial", Long.parseLong(transf.getMontoGiro()));
+			hash.put("vigenciaDesde", Utils.stringToDate(certAmort.getFechaOtorgamiento()));
+			hash.put("vigenciaHasta", Utils.stringToDate(certAmort.getFechaUltVenc()));
+			hash.put("rutaImg", Constantes.RUTA_IMG);
+			//sexo
+			if(cliente.getSexo().equals("M")){
+				hash.put("sexoM", "X");
+			} else if(cliente.getSexo().equals("F")){
+				hash.put("sexoF", "X");
+			}
+			
+			String ruta = Constantes.RUTA_REPORTES+ Configuraciones.getConfig("ruta.certCobDesgravamen");
+			ReporteUtil ru = new ReporteUtil(null, hash, ruta);
+			bites = ru.exportCompilePdf();
+		} catch (Exception e) {
+			logger.error("Error al generar certificado cob. seguro de desgravamen",e);
+		}
+		return bites;
+	}
+	
+	/**
+	 * Genera certificado de amortización en PDF
+	 * @param cliente
+	 * @param folioCredito
+	 * @param datosCert
+	 * @return bites del archivo generado
+	 */
+	public byte[] generarCertificadoAmortizacion(ClienteVO cliente, String folioCredito, CertAmortizacionOut datosCert) {
+		byte[] bites = null;
+		try {
+			//Generar PDF
+			Map<String, Object> hash = new HashMap<String, Object>();
+			hash.put("rutAfiliado", RutUtil.formatearRut(cliente.getRutCliente()));
+			hash.put("nombreAfiliado",cliente.getFullNombre());
+			hash.put("montoGiro",datosCert.getMontoGiro());
+			hash.put("costoTotal",datosCert.getCostoTotal());
+			hash.put("tasaInteres", datosCert.getTasaIntMensual());
+			hash.put("fechaOtorgamiento", datosCert.getFechaOtorgamiento());
+			hash.put("folioCredito", folioCredito);
+			hash.put("rutaImg", Constantes.RUTA_IMG);
+			
+			List<CuotaVO> cuotas = new ArrayList<CuotaVO>();
+			cuotas.add(null);
+			cuotas.addAll(datosCert.getCuotas());
+			
+			String ruta = Constantes.RUTA_REPORTES + Configuraciones.getConfig("ruta.certAmortizacion");
+			ReporteUtil ru = new ReporteUtil(cuotas, hash, ruta);
+			bites = ru.exportCompilePdf();
+		} catch (Exception e) {
+			logger.error("Error al generar certificado cob. seguro de desgravamen",e);
+		}
+		return bites;
+	}
+	
+	protected Date getFechaUltimoVenc(String tipoAfiliado, String nroCuotas,
+			String fechaOtorg) throws NumberFormatException {
+		Calendar cal = Calendar.getInstance();
+		try {
+			cal.setTime(Utils.stringToDate(fechaOtorg));
+			int cuotas = Integer.parseInt(nroCuotas);
+			// Setea el mes sumando todas las cuotas
+			cal.add(Calendar.MONTH, cuotas);
+			// setea la fecha al ultimo dia del mes.
+			cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+		} catch (Exception e) {
+		}
+		return cal.getTime();
+	}
+}
