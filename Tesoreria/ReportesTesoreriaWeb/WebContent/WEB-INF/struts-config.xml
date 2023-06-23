@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "struts-config_1_2.dtd">
+<struts-config>
+
+	<!-- **** Form Bean Definitions **** -->
+	<form-beans>
+		<form-bean name="SimpleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial="" />
+			<form-property name="offset" type="java.lang.String" initial="" />
+		</form-bean>
+	
+		<form-bean name="CrearUsuarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="rutUsuario" type="java.lang.String" initial=""/>
+			<form-property name="perfilUsuario" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="EliminarUsuarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="rutUsuario" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="ReporteComprobanteIngreso"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="fechaDesde" type="java.lang.String" initial=""/>
+			<form-property name="fechaHasta" type="java.lang.String" initial=""/>
+			<form-property name="_flagValidar" type="java.lang.String"	initial="" />
+		</form-bean>
+	
+	</form-beans>
+
+	<!-- **** Global Exception Definitions **** -->
+	<global-exceptions>
+		<exception handler="cl.araucana.tesoreria.util.KeyExceptionHandler"
+			key="exception" type="cl.araucana.tesoreria.util.FlowException" />
+		<exception handler="cl.araucana.tesoreria.util.ExceptionHandler"
+			key="exception" type="java.lang.Throwable" />
+	</global-exceptions>
+
+	<!-- **** Global Forward Definitions **** -->
+	<global-forwards>
+		<forward name="begin" path="/informes/comprobanteIngreso.do?_cmd=inicio" />
+		<forward name="failure" path="common.failure" />
+	</global-forwards>
+
+	<!-- **** Action Mapping Definitions **** -->
+	<action-mappings>
+		<action path="/NoPageError" type="org.apache.struts.actions.ForwardAction"
+			forward="common.failure.404" />
+		<action path="/NoAccess" type="org.apache.struts.actions.ForwardAction"
+			forward="common.failure.403" />
+		<action path="/Login" type="org.apache.struts.actions.ForwardAction"
+			forward="common.login" />
+		<action path="/LoginError" type="org.apache.struts.actions.ForwardAction"
+			forward="common.login.error" />
+		<action path="/Welcome" type="org.apache.struts.actions.ForwardAction"
+			forward="common.welcome" />
+
+		<action path="/informes/comprobanteIngreso" name="ReporteComprobanteIngreso"
+			type="cl.araucana.tesoreria.negocio.ReporteComprobanteIngresoAction">
+			<forward name="inicio" path="reporte.comprobante_ingreso" />
+		</action>
+		
+		<action path="/informes/buscarComprobanteIngreso" name="ReporteComprobanteIngreso"
+			type="cl.araucana.tesoreria.negocio.ReporteComprobanteIngresoAction" 
+			validate="true"
+			scope="session"
+			input="reporte.comprobante_ingreso">
+			<forward name="inicio" path="reporte.comprobante_ingreso" />
+		</action>
+		
+		<action path="/informes/exportarExcel" name="ReporteComprobanteIngreso"
+			type="cl.araucana.tesoreria.negocio.ReporteComprobanteIngresoAction" 
+			scope="session">
+			<forward name="successExcel" path="exportar.excel"/>
+		</action>
+		
+		
+		<action
+			path="/admin/crearUsuario" name="CrearUsuarioForm"
+			type="cl.araucana.tesoreria.negocio.CrearUsuarioAction">
+			<forward name="inicio" path="admin.usuario_crear" />
+			<forward name="resultado" path="admin.usuario_crear" />
+		</action>
+		
+		<action
+			path="/admin/eliminarUsuario" name="EliminarUsuarioForm"
+			type="cl.araucana.tesoreria.negocio.EliminarUsuarioAction">
+			<forward name="inicio" path="admin.usuario_eliminar" />
+			<forward name="resultado" path="admin.usuario_eliminar" />
+		</action>
+	
+	</action-mappings>
+
+	<!-- **** Controller Configuration **** -->
+	<controller processorClass="cl.araucana.tesoreria.util.RequestProcessor"
+		nocache="true" locale="false" />
+
+	<!-- **** Message Resources Definitions **** -->
+	<message-resources parameter="application_es" />
+
+	<!-- **** Plug Ins Configuration **** -->
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+
+	<!-- **** Plug Ins Configuration **** -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+<!-- 
+	<global>
+		<constant>
+			<constant-name>dateFormat</constant-name>
+			<constant-value>dd/MM/yyyy</constant-value>
+		</constant>
+	</global>
+	<formset>
+		<form name="/informes/buscarComprobanteIngreso">
+			<field property="fechaDesde" depends="required">
+				<arg0 key="label.fechaDesde" />
+			</field>
+			<field property="fechaHasta" depends="required">
+				<arg0 key="label.fechaHasta" />
+			</field>
+		</form>
+	</formset>
+	 -->
+</form-validation>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<!-- LAYOUT -->
+    <definition name="main_layout" path="/pages/main/main_layout.jsp">
+	    <put name="header" value="/pages/main/header.jsp" />
+	    <put name="menu" value="/pages/main/menu.jsp" />
+	    <put name="messages" value="/pages/main/messages.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/main/footer.jsp" />
+    </definition>
+
+    <definition name="web_layout" path="/pages/main/web_layout.jsp">
+	    <put name="header" value="/pages/main/header.jsp" />
+	    <put name="messages" value="/pages/main/messages.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/main/footer.jsp" />
+    </definition>
+
+    <definition name="simple_layout" path="/pages/main/simple_layout.jsp">
+	    <put name="header" value="/pages/main/header.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/main/footer.jsp" />
+    </definition>
+    
+    <!--  generales -->
+    <definition name="common.failure" extends="main_layout">
+	    <put name="body" value="/pages/main/error.jsp"/>
+	</definition>
+    <definition name="web.common.failure" extends="web_layout">
+	    <put name="body" value="/pages/main/error.jsp"/>
+	</definition>
+    <definition name="common.failure.404" extends="simple_layout">
+	    <put name="body" value="/pages/main/404.jsp"/>
+	</definition>
+    <definition name="common.failure.403" extends="simple_layout">
+	    <put name="body" value="/pages/main/403.jsp"/>
+	</definition>
+    <definition name="common.login" path="/pages/main/login.jsp">
+	</definition>
+	<definition name="common.login.error" path="/pages/main/login_error.jsp">
+	</definition>
+	
+	<definition name="reporte.comprobante_ingreso" extends="main_layout">
+	    <put name="body"  value="/pages/informes/reporteComprobanteIngreso.jsp"/>
+	</definition>
+	    
+    <definition name="admin.usuario_crear" extends="main_layout">
+        <put name="body" value="/pages/admin/crearUsuario.jsp"/>
+    </definition>   
+    
+     <definition name="admin.usuario_eliminar" extends="main_layout">
+        <put name="body" value="/pages/admin/eliminarUsuario.jsp"/>
+    </definition>  
+    
+</tiles-definitions>

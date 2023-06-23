@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mgr.tgr.araucana.cl/" version="1.0" xmlns:tns="http://mgr.tgr.araucana.cl/">
+
+  <xs:element name="SOAPException" type="tns:SOAPException"/>
+
+  <xs:element name="autenticacionWS" type="tns:autenticacionWS"/>
+
+  <xs:element name="autenticacionWSResponse" type="tns:autenticacionWSResponse"/>
+
+  <xs:element name="getCotizacionesByTrabajador" type="tns:getCotizacionesByTrabajador"/>
+
+  <xs:element name="getCotizacionesByTrabajadorResponse" type="tns:getCotizacionesByTrabajadorResponse"/>
+
+  <xs:element name="getCotizacionesByTrabajadores" type="tns:getCotizacionesByTrabajadores"/>
+
+  <xs:element name="getCotizacionesByTrabajadoresResponse" type="tns:getCotizacionesByTrabajadoresResponse"/>
+
+  <xs:element name="getStatus" type="tns:getStatus"/>
+
+  <xs:element name="getStatusResponse" type="tns:getStatusResponse"/>
+
+  <xs:complexType name="getStatus">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWS">
+    <xs:sequence>
+      <xs:element name="credentials" type="tns:credentialWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialWSTGR">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionWSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCotizacionesByTrabajadores">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestsWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestsWSTGR">
+    <xs:sequence>
+      <xs:element name="rut_empleador" type="xs:int"/>
+      <xs:element name="periodo" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" name="rut_trabajador" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCotizacionesByTrabajadoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseWSTGR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="empleador" type="tns:empleadorVO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="trabajador" nillable="true" type="tns:trabajadorVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="empleadorVO">
+    <xs:sequence>
+      <xs:element name="REGION_DOMICILIO" type="xs:int"/>
+      <xs:element name="RAZON_SOCIAL" type="xs:string"/>
+      <xs:element name="RUT_EMPLEADOR" type="xs:int"/>
+      <xs:element name="DV_EMPLEADOR" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trabajadorVO">
+    <xs:sequence>
+      <xs:element name="CODIGO_AFP" type="xs:int"/>
+      <xs:element name="PERIODO_PAGO" type="xs:int"/>
+      <xs:element name="FECHA_PAGO" type="xs:string"/>
+      <xs:element name="TIPO_PAGO" type="xs:int"/>
+      <xs:element name="RUT_AFILIADO" type="xs:int"/>
+      <xs:element name="DV_AFILIADO" type="xs:string"/>
+      <xs:element name="APE_PATERNO" type="xs:string"/>
+      <xs:element minOccurs="0" name="APE_MATERNO" type="xs:string"/>
+      <xs:element name="NOMBRE" type="xs:string"/>
+      <xs:element name="MONTO_IMPONIBLE" type="xs:int"/>
+      <xs:element name="MONTO_COTIZACION" type="xs:int"/>
+      <xs:element name="TIPO_NOMINA" type="xs:int"/>
+      <xs:element name="TIPO_CLIENTE" type="xs:int"/>
+      <xs:element name="DIAS_TRABAJADOS" type="xs:int"/>
+      <xs:element name="CODIGO_AUSENCIA" type="xs:int"/>
+      <xs:element name="MONTO_PAGO_SALUD" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCotizacionesByTrabajador">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="request" type="tns:requestWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestWSTGR">
+    <xs:sequence>
+      <xs:element name="rut_empleador" type="xs:int"/>
+      <xs:element name="periodo" type="xs:int"/>
+      <xs:element name="rut_trabajador" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCotizacionesByTrabajadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseWSTGR"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
