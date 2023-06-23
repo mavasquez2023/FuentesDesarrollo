@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PagoEnLinea">
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module archiveName="PagoEnLineaWebModule.war" deploy-path="/" handle="module:/resource/PagoEnLineaWebModule/PagoEnLineaWebModule">
+            <dependent-object>WebModule_1245185335890</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

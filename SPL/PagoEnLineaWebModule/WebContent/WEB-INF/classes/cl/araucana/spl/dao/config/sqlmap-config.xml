@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>	
+<transactionManager type="JDBC" commitRequired="true">
+		<property name="UserTransaction" value="java:comp/env/UserTransaction" />
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:comp/env/jdbc/arapagolinea" />
+		</dataSource>
+	</transactionManager>
+	
+<!--
+	<transactionManager type="JDBC">
+		<property name="commitRequired" value="false"/>
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.5/REQ_8534" />
+			<property name="JDBC.Username" value="SCHEMA" />
+			<property name="JDBC.Password" value="SCHEMA" />
+		</dataSource>
+	</transactionManager>
+	-->
+	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/MedioPago.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/Sistema.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/Pago.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/TransaccionBch.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/TransaccionBsa.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/TransaccionBes.xml" />	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/Estado.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/Inconsistencias.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/Bitacora.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBCI.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBCH.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBSA.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBES.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/ConcluirPago.xml" />
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/TransaccionBit.xml" />	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBit.xml" />	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/TransaccionBbv.xml" />	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/RendicionBbv.xml" />	
+	<sqlMap resource="cl/araucana/spl/dao/sqlmap/UtilsRol.xml" />
+    <sqlMap resource="cl/araucana/spl/dao/sqlmap/LibroBanco.xml" />
+    <sqlMap resource="cl/araucana/spl/dao/sqlmap/Tesoreria.xml" />
+    <sqlMap resource="cl/araucana/spl/dao/sqlmap/Parametros.xml" />
+		
+</sqlMapConfig>

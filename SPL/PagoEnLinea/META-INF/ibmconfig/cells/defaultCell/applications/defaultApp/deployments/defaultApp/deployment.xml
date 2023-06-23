@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1421931393590">
+  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1421931393590" deploymentId="0" startingWeight="1" binariesURL="$(APP_INSTALL_ROOT)/serv-244Node01Cell/PagoEnLinea.ear" useMetadataFromBinaries="false" enableDistribution="true" createMBeansForResources="true" reloadEnabled="false" appContextIDForSecurity="href:serv-244Node01Cell/PagoEnLinea">
+    <targetMappings xmi:id="DeploymentTargetMapping_1421931393590" enable="true" target="ServerTarget_1421931393590"/>
+    <targetMappings xmi:id="DeploymentTargetMapping_1421931393591" enable="true" target="ServerTarget_1421931393591"/>
+    <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebModuleDeployment_1421931393590" deploymentId="1" startingWeight="10000" uri="PagoEnLineaWebModule.war">
+      <targetMappings xmi:id="DeploymentTargetMapping_1421931393592" target="ServerTarget_1421931393590"/>
+      <targetMappings xmi:id="DeploymentTargetMapping_1421931393593" target="ServerTarget_1421931393591"/>
+    </modules>
+    <classloader xmi:id="Classloader_1421931393590" mode="PARENT_FIRST"/>
+  </deployedObject>
+  <deploymentTargets xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_1421931393590" name="webserver1" nodeName="webserver1_node"/>
+  <deploymentTargets xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_1421931393591" name="server1" nodeName="serv-244Node01"/>
+</appdeployment:Deployment>

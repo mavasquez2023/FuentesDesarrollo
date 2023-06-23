@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RendicionBES">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanRendicionBES" type="cl.araucana.spl.beans.RendicionBES"/>
+	<typeAlias alias="beanResumenDetalleRendicionBES" type="cl.araucana.spl.beans.ResumenDetalleRendicionBES"/>
+	<typeAlias alias="beanDetalleRendicionBES" type="cl.araucana.spl.beans.DetalleRendicionBES"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBES" id="detalleRendicionBesResultMap">
+		<result property="idResDetalleRend" column="ID_DET_REND_BES"/>
+		<result property="convenio" column="ID_CONVENIO"/>
+		<result property="idDetalleRend" column="ID_RES_DET_REND_BES"/>
+		<result property="rutCompra" column="RUT_COMPRADOR"/>
+		<result property="digRutCompra" column="DIG_COMPRA"/>
+		<result property="glosaMultipago" column="GLO_MULTIPAG"/>
+		<result property="fechaVencimiento" column="FEC_VEN"/>
+		<result property="estadoPago" column="ESTADO_PAGO"/>
+		<result property="txBanco" column="TX_BANCO"/>
+		<result property="fechaOperacion" column="FEC_OPE"/>
+		<result property="fechaContable" column="FEC_CONTA"/>
+		<result property="rutCuenta" column="RUT_CUENTA"/>
+		<result property="digRutCuenta" column="DIG_CUENTA"/>
+		<result property="convenio" column="CONVENIO"/>
+		<result property="glosaPago" column="GLO_PAGO"/>
+		<result property="codigoPago" column="COD_PAGO"/>
+		<result property="montoPago" column="MONTO_PAGO"/>
+		<result property="respuestaBatch" column="RES_BATCH"/>
+		<result property="alerta" column="ALERTA"/>  
+		<result property="filler" column="FILLER"/> 
+		<result property="codError" column="COD_ERROR" typeHandler="charTypeHandler"/> 
+		 
+	</resultMap>	
+	
+	<resultMap class="cl.araucana.spl.beans.ResumenDetalleRendicionBES" id="resumenDetalleRendicionBesResultMap">
+		<result property="idResDetalleRend" column="ID_RES_DET_REND_BES" />
+		<result property="idRendicion" column="ID_RENDICION_BES" />
+		<result property="resumenTxBanco" column="TX_BANCO" />
+		<result property="resumenNumPagos" column="NUM_PAGOS" />
+		<result property="resumenMontoPago" column="MTO_PAGOS" />
+		<result property="resumenFiller" column="FILLER" />
+	</resultMap>
+
+	<select id="sqlSequenceRendicionBES" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBES FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlSequenceResumenDetalleRendicionBES" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RESDETRENDICIONBES FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<select id="sqlSequenceDetalleRendicionBES" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBES FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlCountRendicionBesByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBES 
+		where checksum = #checksum#
+	</select>
+
+	<select id="sqlFindDetalleRendicionBesByPagoId" parameterClass="java.math.BigDecimal" resultMap="detalleRendicionBesResultMap">
+		select 
+			ID_DET_REND_BES,
+			ID_CONVENIO,
+			ID_RES_DET_REND_BES,
+			RUT_COMPRADOR,
+			DIG_COMPRA,
+			GLO_MULTIPAG,
+			FEC_VEN,
+			ESTADO_PAGO,
+			TX_BANCO,
+			FEC_OPE,
+			FEC_CONTA,
+			RUT_CUENTA,
+			DIG_CUENTA,
+			CONVENIO,
+			GLO_PAGO,
+			COD_PAGO,
+			MONTO_PAGO,
+			RES_BATCH,
+			ALERTA,
+			FILLER,
+			COD_ERROR
+		from DETRENDBES
+			where COD_PAGO = #codigoPago#
+	</select>
+		
+	<insert id="sqlInsertRendicionBES" parameterClass="beanRendicionBES">
+		insert into RENDICBES 
+
+			(ID_RENDICION_BES,
+			FEC_REND,
+			RUT_CONCEN,
+			DIG_CONCEN,
+			GLO_SERVIC,
+			FILLER,
+			REG_TOT,
+			MTO_TOTAL,
+			REG_ACEPT,
+			MTO_ACEPT,
+			NUM_MULTIPAG,
+			NUM_TXS,
+			FILLER_CONTROL,
+			CHECKSUM,
+			FCH_IMPORTACION)
+			
+			values(
+				#idRendicion#,
+				#encabezadoRendicionBES.fechaRendicion#,
+				#encabezadoRendicionBES.rutConcentrador#,
+				#encabezadoRendicionBES.digConcentrador#,
+				#encabezadoRendicionBES.glosaServicio#,
+				#encabezadoRendicionBES.filler#,
+				#controlRendicionBES.totalRegistros#,
+				#controlRendicionBES.montoTotal#,
+				#controlRendicionBES.registrosAceptados#,
+				#controlRendicionBES.montoAceptado#,
+				#controlRendicionBES.numMultipago#,
+				#controlRendicionBES.numTransacciones#,
+				#controlRendicionBES.filler#,
+				#checksum#,
+				#fchImportacion#)
+			
+   	</insert>
+   	
+	<insert id="sqlInsertResumenDetalleRendicionBES" parameterClass="beanResumenDetalleRendicionBES">
+		insert into RDRENDBES 
+			(ID_RES_DET_REND_BES,
+			ID_RENDICION_BES,
+			TX_BANCO,
+			NUM_PAGOS,
+			MTO_PAGOS,
+			FILLER)
+   		values (#idResDetalleRend#,
+				#idRendicion#,
+				#resumenTxBanco#,
+				#resumenNumPagos#,
+				#resumenMontoPago#,
+				#resumenFiller#)
+   	</insert>   	
+   
+	<insert id="sqlInsertDetalleRendicionBES" parameterClass="beanDetalleRendicionBES">
+		insert into DETRENDBES 
+			(ID_DET_REND_BES,
+				ID_CONVENIO,
+				ID_RES_DET_REND_BES,
+				RUT_COMPRADOR,
+				DIG_COMPRA,
+				GLO_MULTIPAG,
+				FEC_VEN,
+				ESTADO_PAGO,
+				TX_BANCO,
+				FEC_OPE,
+				FEC_CONTA,
+				RUT_CUENTA,
+				DIG_CUENTA,
+				CONVENIO,
+				GLO_PAGO,
+				COD_PAGO,
+				MONTO_PAGO,
+				RES_BATCH,
+				ALERTA,
+				FILLER,
+				COD_ERROR)
+				values (
+					#idDetalleRend#,
+					#convenio#,
+					#idResDetalleRend#,
+					#rutCompra#,
+					#digRutCompra#,
+					#glosaMultipago#,
+					#fechaVencimiento#,
+					#estadoPago#,
+					#txBanco#,
+					#fechaOperacion#,
+					#fechaContable#,
+					#rutCuenta#,
+					#digRutCuenta#,
+					#convenio#,
+					#glosaPago#,
+					#codigoPago#,
+					#montoPago#,
+					#respuestaBatch#,
+					#alerta#,
+					#filler#,
+					#codError#)
+   	</insert>	
+
+</sqlMap>
+

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="ConcluirPago">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="filtroConcluirPago" type="cl.araucana.spl.beans.FiltroConcluirPago" />
+	
+	<resultMap class="cl.araucana.spl.beans.ConcluirPago" id="pagoResultMap">
+		<result property="idPago" column="id_pago" />
+		<result property="pagador" column="pagador" typeHandler="charTypeHandler" />
+		<result property="fch_contable" column="fch_contable" />
+		<result property="id_Contrato" column="idcontrato" />
+		<result property="cod_idtransaccion" column="cod_idtransaccion" />
+		<result property="total" column="total"  />
+		<result property="nro_pagos" column="nro_pagos"/>
+		<result property="fch_inicio" column="fch_inicio"  />		
+		<result property="glosa" column="glosa" />
+	</resultMap>
+	
+	<resultMap class="cl.araucana.spl.beans.ConcluirPago" id="pagoBCIResultMap">
+		<result property="idPago" column="id_pago" />
+		<result property="pagador" column="pagador" typeHandler="charTypeHandler" />
+		<result property="fch_contable" column="fch_contable" />
+		<result property="cod_idtransaccion" column="cod_idtransaccion" />
+		<result property="total" column="total"  />
+		<result property="fch_inicio" column="fch_inicio"  />		
+		<result property="glosa" column="glosa" />
+	</resultMap>
+	
+	<resultMap class="cl.araucana.spl.beans.ConcluirPago" id="pagoBESResultMap">
+		<result property="idPago" column="id_pago" />
+		<result property="pagador" column="pagador" typeHandler="charTypeHandler" />
+		<result property="cod_idtransaccion" column="cod_idtransaccion" />
+		<result property="fch_contable" column="fch_contable" />
+		<result property="total" column="total"  />
+		<result property="rutCliente" column="rut_cliente"  />
+		<result property="fch_inicio" column="fch_inicio"  />		
+		<result property="glosa" column="glosa" />
+	</resultMap>
+	
+	
+	<select id="sqlBCHFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.idcontrato,
+		t.cod_idtransaccion,
+		t.total,
+		t.nro_pagos,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p,transbch t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	</select>
+	
+	<select id="sqlBSAFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.idcontrato,
+		t.cod_idtransaccion,
+		t.total,
+		t.nro_pagos,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p,transbsa t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	</select>
+	
+	<select id="sqlBESFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoBESResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.id_transaccion_bes as cod_idtransaccion,
+		p.monto as total,
+		t.rut_cliente,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p,transbes t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+	    <isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	
+	</select>
+	<select id="sqlBCIFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoBCIResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.id_transaccion_bci as cod_idtransaccion,
+		p.monto as total,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p, transbci t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	</select>
+	
+	<select id="sqlBITFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.idcontrato,
+		t.id_trx as cod_idtransaccion,
+		t.total,
+		t.nro_pagos,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p,transbit t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	</select>
+	
+	<select id="sqlBBVFindPagos" parameterClass="filtroConcluirPago" resultMap="pagoResultMap">
+		select distinct
+		p.id_pago,
+		p.pagador,
+		p.fch_contable,
+		t.idcontrato,
+		t.id_trx as cod_idtransaccion,
+		t.total,
+		t.nro_pagos,
+		p.fch_inicio,
+		p.glosa
+		from
+		    pago p,transbbv t , convenio c, mediopago m, sistema s, estado e
+		where
+		t.id_pago =p.id_pago
+	    and p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+		and p.pagado = '-1'
+	</select>
+	
+</sqlMap>
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RendicionBIT">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanRendicionBIT" type="cl.araucana.spl.beans.RendicionBIT"/>
+	<typeAlias alias="beanDetalleRendicionBIT" type="cl.araucana.spl.beans.DetalleRendicionBIT"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBIT" id="detalleRendicionBitResultMap">
+		<result property="idDetalleRend" column="ID_DET_REND_BIT"/>
+		<result property="idRendicion" column="ID_RENDICION_BIT"/>
+		<result property="idConvenio" column="ID_CONVENIO"/>
+		<result property="idPago" column="ID_PAGO"/>
+		<result property="numProducto" column="NUM_PRODUC"/>
+		<result property="numCliente" column="NUM_CLINET"/>
+		<result property="descripcionProducto" column="DESC_PRODC" typeHandler="charTypeHandler"/>
+		<result property="montoProducto" column="MONTO_PROD"/>
+		<result property="fechaOperacion" column="FEHCA_OPER"/>
+		<result property="codError" column="COD_ERROR" typeHandler="charTypeHandler"/>
+	</resultMap>	
+	
+	<select id="sqlSequenceRendicionBIT" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBIT FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<select id="sqlSequenceDetalleRendicionBIT" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBIT FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlCountRendicionBitByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBIT 
+		where checksum = #checksum#
+	</select>
+
+	<select id="sqlFindDetalleRendicionBitByPagoId" parameterClass="java.math.BigDecimal" resultMap="detalleRendicionBitResultMap">
+		SELECT
+		    ID_DET_REND_BIT,
+		    ID_CONVENIO,
+		    ID_RENDICION_BIT,
+		    ID_PAGO,
+		    NUM_PRODUC,
+		    NUM_CLINET,
+		    DESC_PRODC,
+		    MONTO_PROD,
+		    FEHCA_OPER,
+		    COD_ERROR
+		FROM DETRENDBIT
+		WHERE ID_PAGO = #idPago#
+	</select>
+	
+	<insert id="sqlInsertRendicionBIT" parameterClass="beanRendicionBIT">
+   			INSERT INTO RENDICBIT
+			    (ID_RENDICION_BIT, CHECKSUM, FCH_IMPORTACION, NUMERO_PAGOS, MONTO_TOTAL)
+			VALUES ( #idRendicion#, #checksum#, #fchImportacion#, #nroPagos#, #montoTotal#)
+   	</insert>
+   
+	<insert id="sqlInsertDetalleRendicionBIT" parameterClass="beanDetalleRendicionBIT">
+		INSERT INTO DETRENDBIT
+   			 ( ID_DET_REND_BIT, ID_CONVENIO, ID_RENDICION_BIT, ID_PAGO, NUM_PRODUC, NUM_CLINET, DESC_PRODC, MONTO_PROD, FEHCA_OPER, COD_ERROR)
+		VALUES ( #idDetalleRend#, #idConvenio#, #idRendicion#, #idPago#, #numProducto#, #numCliente#, #descripcionProducto#, #montoProducto#, #fechaOperacion#, #codError#)
+   	</insert>	
+
+</sqlMap>

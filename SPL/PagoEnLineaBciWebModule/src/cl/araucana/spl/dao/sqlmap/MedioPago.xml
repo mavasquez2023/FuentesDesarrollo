@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="MedioPagoBean">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+
+	<resultMap class="cl.araucana.spl.beans.MedioPago" id="medioPagoResultMap">
+		<result property="id" column="ID_MEDIOPAGO" />
+		<result property="codigo" column="CODIGO" typeHandler="charTypeHandler"/>
+		<result property="descripcion" column="DESCRIPCION" typeHandler="charTypeHandler" />
+		<result property="imagen" column="IMAGEN" typeHandler="charTypeHandler" />
+		<result property="urlIniPago" column="URL_INICIO_PAGO" typeHandler="charTypeHandler" />
+		<result property="activo" column="ACTIVO" />
+		<result property="codigoBanco" column="CODBANCO" />
+		<result property="tipoNotificacion" column="REG_LIB_BAN_TOTAL" />
+	</resultMap>
+
+	<select id="sqlFindMedioPagoById" parameterClass="decimal" resultMap="medioPagoResultMap">
+		select ID_MEDIOPAGO
+		      ,CODIGO
+		      ,DESCRIPCION
+		      ,IMAGEN
+		      ,URL_INICIO_PAGO
+		      ,ACTIVO
+		      ,CODBANCO
+		      ,URL_RETOR_PAGO
+		      ,URL_NOTIFI_PAGO
+		      ,REG_LIB_BAN_TOTAL
+	      from 
+	           MEDIOPAGO
+	     where 
+	           ID_MEDIOPAGO = #valor#
+	</select>
+	
+	<select id="sqlFindMedioPagoByCodigo" parameterClass="string" resultMap="medioPagoResultMap">
+		select ID_MEDIOPAGO
+		      ,CODIGO
+		      ,DESCRIPCION
+		      ,IMAGEN
+		      ,URL_INICIO_PAGO
+		      ,ACTIVO
+		      ,CODBANCO
+		      ,URL_RETOR_PAGO
+		      ,URL_NOTIFI_PAGO
+		      ,REG_LIB_BAN_TOTAL		      
+	      from 
+	           MEDIOPAGO
+	     where 
+		       CODIGO = #valor#
+	</select>	
+	
+	<select id="sqlFindMediosPago" resultMap="medioPagoResultMap">
+		select ID_MEDIOPAGO
+		      ,CODIGO
+		      ,DESCRIPCION
+		      ,IMAGEN
+		      ,URL_INICIO_PAGO
+		      ,ACTIVO
+		      ,CODBANCO
+		      ,URL_RETOR_PAGO
+		      ,URL_NOTIFI_PAGO	
+		      ,REG_LIB_BAN_TOTAL      
+	      from 
+	           MEDIOPAGO
+	      order by 1
+	</select>
+	
+	<select id="sqlFindMediosPagoBatch" resultMap="medioPagoResultMap">
+		select ID_MEDIOPAGO
+		      ,CODIGO
+		      ,DESCRIPCION
+		      ,IMAGEN
+		      ,URL_INICIO_PAGO
+		      ,ACTIVO
+		      ,CODBANCO
+		      ,URL_RETOR_PAGO
+		      ,URL_NOTIFI_PAGO
+		      ,REG_LIB_BAN_TOTAL	      
+	      from 
+	           MEDIOPAGO
+	      where REG_LIB_BAN_TOTAL = 0
+	      order by 1
+	</select>
+	
+
+	<resultMap class="cl.araucana.spl.beans.Convenio" id="convenioBancoResultMap">
+		<result property="id" column="C_ID_CONVENIO" />
+		<result property="codigo" column="C_CODIGO" typeHandler="charTypeHandler" />
+		<result property="urlCgi" column="C_URL_CGI" typeHandler="charTypeHandler" />
+		<result property="codigoServicioRecaudacion" column="C_SRVREC" />
+		<result property="medio.id" column="M_ID_MEDIOPAGO" />
+		<result property="medio.codigo" column="M_CODIGO" typeHandler="charTypeHandler" />
+		<result property="medio.descripcion" column="M_DESCRIPCION" typeHandler="charTypeHandler" />
+		<result property="medio.imagen" column="M_IMAGEN" typeHandler="charTypeHandler" />
+		<result property="medio.urlIniPago" column="M_URL_INICIO_PAGO" typeHandler="charTypeHandler" />
+		<result property="medio.codigoBanco" column="M_CODBANCO" />
+		<result property="medio.urlRetornoPago" column="M_URL_RETOR_PAGO" typeHandler="charTypeHandler" />
+		<result property="medio.urlNotificacionPago" column="M_URL_NOTIFI_PAGO" typeHandler="charTypeHandler" />						
+	</resultMap>
+	<select id="sqlFindConvenioByCodigoBanco" parameterClass="string" resultMap="convenioBancoResultMap">
+		select
+		    c.id_convenio as c_id_convenio,
+		    c.codigo as c_codigo,
+		    c.url_cgi as c_url_cgi,
+		    c.srvrec as c_srvrec,
+		    m.id_mediopago as m_id_mediopago,
+		    m.codigo as m_codigo,
+		    m.descripcion as m_descripcion,
+		    m.imagen as m_imagen,
+		    m.url_inicio_pago as m_url_inicio_pago,
+		    m.codbanco as m_codbanco,
+		    m.url_retor_pago as m_url_retor_pago,
+		    m.url_notifi_pago as m_url_notifi_pago
+		from
+		    convenio c,
+		    mediopago m
+		where
+		    c.id_mediopago = m.id_mediopago
+		    and m.codigo = #codigo#
+		fetch
+		    first 1 row only
+	</select>
+	
+	<resultMap class="cl.araucana.spl.beans.CTACTE" id="montoCtaMap">
+		<result property="montoTotal" column="MONTO_TOTAL" />
+		<result property="ctacte" column="CTACTE" />
+		<result property="idConvenio" column="ID_CONVENIO" />
+		<result property="cantidadRegistros" column="CANTIDAD_REGISTROS" />
+	</resultMap>
+	
+	<select id="findMontoPagadoPorMedioPago" resultMap="montoCtaMap">
+		select sum(p.MONTO) as MONTO_TOTAL , count(p.MONTO) as CANTIDAD_REGISTROS, c.CTACTE , c.ID_CONVENIO
+		from pago as p 
+		inner join CONVENIO as c on p.ID_CONVENIO = c.ID_CONVENIO and c.ID_MEDIOPAGO = #idMedioPago# 
+		where p.FCH_CONTABLE = '$fechaContable$' and p.pagado = 1 and p.REG_LIBRO_BANCO = 0 
+		group by c.CTACTE , c.ID_CONVENIO
+	</select>
+	
+	<update id="updateMarcaLibroBanco" parameterClass="map">
+		update pago as p 
+		SET p.REG_LIBRO_BANCO = 2
+		where  p.FCH_CONTABLE = '$fechaContable$' and p.pagado = 1 and p.REG_LIBRO_BANCO = 0  and p.ID_CONVENIO = #idConvenio# 
+	</update>
+	
+</sqlMap>

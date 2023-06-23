@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="TransaccionBBVA">
+	<typeAlias alias="beanTrxBbv" type="cl.araucana.spl.beans.TransaccionBbv"/>
+	<typeAlias alias="beanDetTrxBbv" type="cl.araucana.spl.beans.DetalleTrxBBV"/>
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	
+	<resultMap class="beanTrxBbv" id="transaccionBbvResultMap">
+		<result property="id" column="ID_TRANSACCION_BBV" />
+		<result property="pago.id" column="ID_PAGO" />
+		<result property="idContrato" column="ID_CONTRATO"/>
+		<result property="codigoIdTrx" column="ID_TRX" typeHandler="charTypeHandler"/>
+		<result property="total" column="TOTAL"/>
+		<result property="nroPagos" column="NRO_PAGOS" />
+		<result property="codRetorno" column="COD_RETORNO" />
+		<result property="descRetorno" column="DESC_RETORNO" typeHandler="charTypeHandler"/>
+		<result property="url" column="URL" typeHandler="charTypeHandler"/>
+	</resultMap>
+	
+	<resultMap class="beanDetTrxBbv" id="detalleTrxBbvResultMap">
+		<result property="id" column="ID_DET_TRX_BBV" />
+		<result property="transaccionBbv.id" column="ID_TRANSACCION_BBV" typeHandler="charTypeHandler" />
+		<result property="secuencia" column="SECUENCIA" />
+		<result property="numeroCliente" column="NUMERO_CLIENTE" />
+		<result property="numeroPDocumento" column="NUMERO_PDOCUMENTO"/>
+		<result property="monto" column="MONTO"/>
+		<result property="fechaVencimiento" column="FECHA_VENCIMIENTO"/>
+		<result property="estado" column="ESTADO" typeHandler="charTypeHandler"/>
+	</resultMap>
+	
+	<select id="sqlSequenceTransaccionBbv" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_TRANSBBV FROM SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertTransaccionBbv" parameterClass="beanTrxBbv">
+		INSERT INTO TRANSBBV (ID_TRANSACCION_BBV, ID_PAGO, ID_CONTRATO, ID_TRX, TOTAL, NRO_PAGOS, COD_RETORNO, DESC_RETORNO, URL)
+    	values(	#id#, #pago.id#, #idContrato#, #codigoIdTrx#,#total#, #nroPagos#, #codRetorno#, #descRetorno#, #url#)
+	</insert>
+	
+	<select id="sqlSequenceDetalleTrxBbv" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETTRXBBV FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<insert id="sqlInsertDetalleTrxBbv" parameterClass="beanDetTrxBbv">	
+		INSERT INTO DETTRXBBV (ID_DET_TRX_BBV, ID_TRANSACCION_BBV, SECUENCIA, NUMERO_CLIENTE, NUMERO_PDOCUMENTO, MONTO, FECHA_VENCIMIENTO, ESTADO)
+		values(	#id#, #transaccionBbv.id#, #secuencia#, #numeroCliente#, #numeroPDocumento#, #monto#, #fechaVencimiento#, #estado#)
+	</insert>																				  
+	
+	<select resultMap="transaccionBbvResultMap" id="sqlFindTrxBbvByCodigoIdTrx" parameterClass="string">
+		SELECT
+		    ID_TRANSACCION_BBV,
+		    ID_PAGO,
+		    ID_CONTRATO,
+		    ID_TRX,
+		    TOTAL,
+		    NRO_PAGOS,
+		    COD_RETORNO,
+		    DESC_RETORNO,
+		    URL
+		FROM
+		    TRANSBBV
+		WHERE  ID_TRANSACCION_BBV = #id#
+	</select>
+	
+	<update id="sqlUpdateNotificacionTrxBbv" parameterClass="beanTrxBbv">
+		update TRANSBBV 
+		set COD_RETORNO=#codRetorno#,
+			DESC_RETORNO=#descRetorno#
+    	where 
+    		ID_PAGO = #pago.id# 
+	</update>
+	
+	<update id="sqlUpdateUrlEnviarTrxBbv" parameterClass="beanTrxBbv">
+		update TRANSBBV 
+		set URL=#url#
+		where 
+    		ID_TRANSACCION_BBV=#id# 
+	</update>	
+	
+	<update id="sqlUpdateNotificacionPagoBbv" parameterClass="beanPago">
+		update PAGO
+		set FCH_TRANSACCION=#fechaTransaccion#, 
+		    FCH_CONTABLE=#fechaContable#,
+		    PAGADO=#pagado# 
+		where 
+    		ID_PAGO=#id#
+	</update>
+
+</sqlMap>
+

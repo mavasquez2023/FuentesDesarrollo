@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Parametros">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+		
+	<resultMap id="mapSPLPARAM" class="java.util.HashMap">
+		<result column="PAR_NOMBRE" property="key" />
+		<result column="PAR_VALOR" property="value" />
+	</resultMap>
+
+	<select id="getParametros" resultMap="mapSPLPARAM">
+		SELECT * FROM SPLPARAM
+	</select>
+
+</sqlMap>
+

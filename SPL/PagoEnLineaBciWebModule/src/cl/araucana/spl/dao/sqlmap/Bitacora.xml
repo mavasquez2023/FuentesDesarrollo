@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Bitacora">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanBitacora" type="cl.araucana.spl.beans.Bitacora"/>
+
+	<resultMap class="beanBitacora" id="bitacoraResultMap">
+		<result property="id" column="ID_BITACORA" />
+		<result property="estadoAnterior.id" column="ID_ESTADO" />
+		<result property="estadoAnterior.descripcion" column="DESCRIPCION" typeHandler="charTypeHandler" />
+		<result property="pago.id" column="ID_PAGO" />
+		<result property="pagadoAnterior" column="PAGADO_ANTERIOR" />
+		<result property="fechaIngreso" column="FCH_INGRESO" />
+		<result property="usuario" column="USUARIO" typeHandler="charTypeHandler" />
+		<result property="observacion" column="OBSERVACION" typeHandler="charTypeHandler" />
+	</resultMap>	
+
+	<select id="sqlSequenceBitacora" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_BITACORA FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<insert id="sqlInsertBitacora" parameterClass="beanBitacora">
+		insert into BITACORA
+		    (ID_BITACORA, ID_PAGO, ID_EST_ANTERIOR, PAGADO_ANTERIOR,
+		    FCH_INGRESO, USUARIO, OBSERVACION)
+		values
+		    (#id#, #pago.id#, #estadoAnterior.id#, #pagadoAnterior#, 
+		    #fechaIngreso#, #usuario#, #observacion#)
+	</insert>
+
+	<select id="sqlFindBitacoraByIdPago" parameterClass="decimal" resultMap="bitacoraResultMap">
+		select
+		    b.id_bitacora,
+		    e.id_estado,
+		    e.descripcion,
+		    b.pagado_anterior,
+		    b.id_pago,
+		    b.fch_ingreso,
+		    b.usuario,
+		    b.observacion
+		from
+		    bitacora b, estado e
+		where
+		    id_pago = #idPago#
+		    and e.id_estado = b.id_est_anterior
+		order by
+			b.fch_ingreso desc
+	</select>
+
+	<select id="sqlCountBitacoraByIdPago" parameterClass="string" resultClass="java.util.HashMap">
+		select
+			id_pago as id,
+			count(*) as cambios
+		from
+			bitacora
+		where
+			id_pago in ($pagos$)
+		group by id_pago
+	</select>
+</sqlMap>
+
