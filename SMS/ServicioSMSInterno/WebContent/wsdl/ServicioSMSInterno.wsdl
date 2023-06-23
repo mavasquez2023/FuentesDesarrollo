@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.araucana.cl" xmlns:intf="http://ws.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="enviarSMS">
+    <complexType>
+     <sequence>
+      <element name="telefono" type="xsd:string"/>
+      <element name="mensaje" type="xsd:string"/>
+      <element name="servicio" type="xsd:string"/>
+      <element name="cod_negocio" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviarSMSResponse">
+    <complexType>
+     <sequence>
+      <element name="enviarSMSReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="enviarSMSResponse">
+
+      <wsdl:part element="impl:enviarSMSResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="enviarSMSRequest">
+
+      <wsdl:part element="impl:enviarSMS" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ServicioSMSInterno">
+
+      <wsdl:operation name="enviarSMS">
+
+         <wsdl:input message="impl:enviarSMSRequest" name="enviarSMSRequest"/>
+
+         <wsdl:output message="impl:enviarSMSResponse" name="enviarSMSResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServicioSMSInternoSoapBinding" type="impl:ServicioSMSInterno">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="enviarSMS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="enviarSMSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="enviarSMSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServicioSMSInternoService">
+
+      <wsdl:port binding="impl:ServicioSMSInternoSoapBinding" name="ServicioSMSInterno">
+
+         <wsdlsoap:address location="http://localhost:9081/ServicioSMSInterno/services/ServicioSMSInterno"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

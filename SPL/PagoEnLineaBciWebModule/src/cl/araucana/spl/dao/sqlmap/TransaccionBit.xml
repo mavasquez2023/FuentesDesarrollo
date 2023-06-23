@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="TransaccionBitau">
+	<typeAlias alias="beanTrxBit" type="cl.araucana.spl.beans.TransaccionBit"/>
+	<typeAlias alias="beanDetTrxBit" type="cl.araucana.spl.beans.DetalleTrxBit"/>
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	
+	<resultMap class="beanTrxBit" id="transaccionBitResultMap">
+		<result property="id" column="ID_TRANSACCION_BIT" />
+		<result property="pago.id" column="ID_PAGO" />
+		<result property="idContrato" column="ID_CONTRATO"/>
+		<result property="codigoIdTrx" column="ID_TRX" typeHandler="charTypeHandler"/>
+		<result property="total" column="TOTAL"/>
+		<result property="nroPagos" column="NRO_PAGOS" />
+		<result property="codRetorno" column="COD_RETORNO" />
+		<result property="descRetorno" column="DESC_RETORNO" typeHandler="charTypeHandler"/>
+		<result property="fechaTransaccion" column="FECHA_TRX" />
+		<result property="fechaContable" column="FECHA_CONTACTO"/>
+		<result property="nroComprobante" column="NRO_COMPROBANTE" />								
+	</resultMap>
+	
+	<resultMap class="beanDetTrxBit" id="detalleTrxBitResultMap">
+		<result property="id" column="ID_DET_TRX_BIT" />
+		<result property="transaccionBit.id" column="ID_TRANSACCION_BIT" />
+		<result property="servRecaudacion" column="SERV_RECAUDACION" />
+		<result property="monto" column="MONTO" />
+		<result property="glosa" column="GLOSA" typeHandler="charTypeHandler"/>
+		<result property="cantidad" column="CANTIDAD" typeHandler="charTypeHandler"/>
+		<result property="precio" column="PRECIO" typeHandler="charTypeHandler"/>
+		<result property="datosAdicionales" column="DATOADIC" typeHandler="charTypeHandler"/>
+	</resultMap>
+	
+	<select id="sqlSequenceTransaccionBit" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_TRANSBIT FROM SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertTransaccionBit" parameterClass="beanTrxBit">
+		insert into TRANSBIT(ID_TRANSACCION_BIT, ID_PAGO, ID_CONTRATO, ID_TRX,TOTAL, NRO_PAGOS, COD_RETORNO, DESC_RETORNO,FECHA_TRX,FECHA_CONTACTO,NRO_COMPROBANTE) 
+    	values(	#id#, #pago.id#, #idContrato#, #codigoIdTrx#,#total#, #nroPagos#, #codRetorno#, #descRetorno#, #fechaTransaccion#, #fechaContable#, #nroComprobante#)
+	</insert>
+	
+	<select id="sqlSequenceDetalleTrxBit" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETTRXBIT FROM SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertDetalleTrxBit" parameterClass="beanDetTrxBit">	
+		insert into DETTRXBIT(ID_DET_TRX_BIT, ID_TRANSACCION_BIT, SERV_RECAUDACION, MONTO,GLOSA, CANTIDAD, PRECIO,DATOADIC) 
+		values(	#id#, #transaccionBit.id#, #servRecaudacion#, #monto#, #glosa#, #cantidad#, #precio#, #datosAdicionales#)
+	</insert>
+	
+	<select resultMap="transaccionBitResultMap" id="sqlFindTrxBitByCodigoIdTrx" parameterClass="string">
+		select
+			tr.ID_TRANSACCION_BIT,
+			tr.ID_PAGO,
+			tr.ID_CONTRATO,
+			tr.ID_TRX,
+			tr.TOTAL,
+			tr.NRO_PAGOS,
+			tr.COD_RETORNO,
+			tr.DESC_RETORNO,
+			tr.FECHA_TRX,
+			tr.FECHA_CONTACTO,
+			tr.NRO_COMPROBANTE	
+		from TRANSBIT tr
+		where 
+			tr.ID_TRX = #codigo#
+	</select>
+	
+	<update id="sqlUpdateNotificacionTrxBit" parameterClass="beanTrxBit">
+		update TRANSBIT 
+		set COD_RETORNO=#codRetorno#,
+			DESC_RETORNO=#descRetorno#,
+    		FECHA_TRX=#fechaTransaccion#,
+    		FECHA_CONTACTO=#fechaContable#,
+    		NRO_COMPROBANTE=#nroComprobante#
+    	where 
+    		ID_PAGO = #pago.id# 
+	</update>
+	
+	<update id="sqlUpdateNotificacionPagoBit" parameterClass="beanPago">
+		update PAGO
+		set FCH_TRANSACCION=#fechaTransaccion#, 
+		    FCH_CONTABLE=#fechaContable#,
+		    PAGADO=#pagado# 
+		where 
+    		ID_PAGO=#id#
+	</update>
+
+</sqlMap>
+

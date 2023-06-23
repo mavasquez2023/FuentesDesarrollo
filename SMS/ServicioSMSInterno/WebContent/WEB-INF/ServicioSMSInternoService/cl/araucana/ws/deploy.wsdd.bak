@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServicioSMSInternoService WSDL service -->
+
+  <service name="ServicioSMSInterno" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="ServicioSMSInternoService"/>
+      <parameter name="schemaQualified" value="http://ws.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="ServicioSMSInterno"/>
+      <parameter name="className" value="cl.araucana.ws.ServicioSMSInternoSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ServicioSMSInterno"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="enviarSMS" qname="operNS:enviarSMS" xmlns:operNS="http://ws.araucana.cl" returnQName="retNS:enviarSMSReturn" xmlns:retNS="http://ws.araucana.cl" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:telefono" xmlns:pns="http://ws.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mensaje" xmlns:pns="http://ws.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:servicio" xmlns:pns="http://ws.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cod_negocio" xmlns:pns="http://ws.araucana.cl" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="enviarSMS"/>
+
+  </service>
+</deployment>

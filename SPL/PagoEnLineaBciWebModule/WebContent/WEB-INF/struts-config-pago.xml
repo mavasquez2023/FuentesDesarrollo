@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans></form-beans>
+	<global-exceptions></global-exceptions>
+	<global-forwards></global-forwards>
+
+	<action-mappings>
+		
+		<!-- INICIO: MODULO BANCO BCI/TBANC -->
+		<action
+			path="/pagobci/InicioPago"
+			type="cl.araucana.spl.actions.pagobci.InicioPagoBciAction">
+			<forward name="precompra" path="pagobci.precompra" />
+		</action>
+		<action
+			path="/pagotbc/InicioPago"
+			type="cl.araucana.spl.actions.pagobci.InicioPagoTBancAction">
+		</action>
+		
+		<action
+			path="/pagobci/NotificacionPago"
+			type="cl.araucana.spl.actions.pagobci.NotificacionPagoAction">
+		</action>
+
+		<action
+			path="/pagobci/TerminoPago"
+			type="cl.araucana.spl.actions.pagobci.TerminoPagoAction">
+			<forward name="target" path="pagosbco.termino" />
+		</action>
+		<!-- FIN: MODULO BANCO BCI/TBANC -->				
+	</action-mappings>
+
+</struts-config>

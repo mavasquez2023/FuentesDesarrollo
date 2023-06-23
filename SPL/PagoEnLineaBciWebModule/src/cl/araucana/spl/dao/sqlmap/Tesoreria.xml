@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+  
+  <!-- Actualiza tipo de pago segun resultado de transferencia  -->
+  <update id="actCompTesoreria" parameterClass="cl.araucana.spl.beans.ComprobanteTesoreria">
+  		UPDATE TEDTA.TE07F1 SET
+  		TE41A = #tipoPago#,
+  		TE3YA = #estMovimiento#,
+  		SAJKM92 = #usuario#,
+  		OBF005 = current date,
+  		OBF006 = current time
+  		WHERE TE3WA = #folioTes#
+  		WITH NC
+  </update>
+  
+  	<parameterMap id="MapProLibroBanco" class="cl.araucana.spl.beans.ComprobanteTesoreria">
+       <parameter property="folioTes" jdbcType="DECIMAL" mode="IN" />
+       <parameter property="tipoPago" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="usuario" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="estMovimiento" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="cantActualizados" jdbcType="INTEGER" mode="INOUT" />
+    </parameterMap>
+  <procedure id="actualizaTesoreria" parameterMap="MapProLibroBanco">
+  	{call ACTUALIZATESORERIA(?,?,?,?,?)}
+  </procedure>
+</sqlMap>

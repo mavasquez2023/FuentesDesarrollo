@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>
+	<!-- INICIO: TEMPLATES -->
+	<definition name=".public" path="/WEB-INF/pages/_tiles/public/template.jsp">
+		<put name="header" value="/WEB-INF/pages/_tiles/public/head.jsp" />
+		<put name="main" value="/WEB-INF/pages/_tiles/public/main.jsp" />
+		<put name="tail" value="/WEB-INF/pages/_tiles/public/tail.jsp" />
+	</definition>
+	<definition name=".admin" path="/WEB-INF/pages/_tiles/admin/template.jsp">
+		<put name="header" value="/WEB-INF/pages/_tiles/admin/head.jsp" />
+		<put name="menu" value="/WEB-INF/pages/_tiles/admin/menu.jsp" />
+		<put name="message" value="/WEB-INF/pages/_tiles/admin/message.jsp" />
+		<put name="main" value="/WEB-INF/pages/_tiles/admin/main.jsp" />
+		<put name="tail" value="/WEB-INF/pages/_tiles/admin/tail.jsp" />
+	</definition>	
+	<definition name=".popup" path="/WEB-INF/pages/_tiles/popup/template.jsp">
+		<put name="main" value="/WEB-INF/pages/_tiles/popup/main.jsp" />
+	</definition>
+	<!-- FIN: TEMPLATES -->
+
+<!--
+	<definition name="home" extends=".main">
+		<put name="main" value="/WEB-INF/pages/_commons/blank.jsp" />
+	</definition>
+	<definition name="unauthorized" extends=".main">
+		<put name="main" value="/WEB-INF/pages/_commons/blank.jsp" />
+	</definition>
+-->
+
+	<!-- INICIO: PAGINAS MEDIOS PAGO -->
+	<definition name="medios.list" extends=".public">
+		<put name="main" value="/WEB-INF/pages/medios/mediosList.jsp" />
+	</definition>
+	<!-- FIN: PAGINAS MEDIOS PAGO -->
+
+
+
+	<!-- INICIO: PAGINAS ADMIN -->
+	<definition name="importarRendicion.frm" extends=".admin">
+		<put name="main" value="/WEB-INF/pages/admin/rendicion/importarRendicion.jsp" />
+	</definition>
+	<definition name="importarRendicion.preview" extends=".admin">
+		<put name="main" value="/WEB-INF/pages/admin/rendicion/previewRendicion.jsp" />
+	</definition>
+	<definition name="admin.listarInconsistencias" extends=".admin">
+		<put name="main" value="/WEB-INF/pages/admin/inconsistencia/listarInconsistencias.jsp" />
+	</definition>	
+	<definition name="admin.verDetallePago" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/admin/inconsistencia/verDetallePago.jsp" />
+	</definition>
+	<definition name="admin.verBitacora" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/admin/inconsistencia/verBitacora.jsp" />
+	</definition>		
+	<definition name="admin.refrescarInconsistencia" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/admin/inconsistencia/refrescar.jsp" />
+	</definition>		
+	<definition name="admin.modificarInconsistencia" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/admin/inconsistencia/modificar.jsp" />
+	</definition>		
+	<definition name="admin.listarPagos" extends=".admin">
+		<put name="main" value="/WEB-INF/pages/admin/pagos/listarPagos.jsp" />
+	</definition>
+	<definition name="consilodarPago" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/admin/pagos/enviarPagoSPL.jsp" />
+	</definition>
+	<!-- FIN: PAGINAS ADMIN -->	
+
+
+	<!--  INICIO: Paginas Pago bancos general -->
+	<definition name="pagosbco.termino" extends=".public">
+		<put name="main" value="/WEB-INF/pages/pagos/termino.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago bancos general -->
+
+	<!--  INICIO: Paginas Pago BCH -->
+	<definition name="pagobch.inicio" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bch/inicio.jsp" />
+	</definition>
+	<definition name="pagobch.cierraPopup" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bch/cierraPopup.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago BCH -->
+
+	<!--  INICIO: Paginas Pago BSA -->
+	<definition name="pagobsa.inicio" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bsa/inicio.jsp" />
+	</definition>
+	<definition name="pagobsa.cierraPopup" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bsa/cierraPopup.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago BSA -->
+
+
+	<!--  INICIO: Paginas Pago BES -->
+	<definition name="pagobes.inicio" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bes/inicio.jsp" />
+	</definition>
+	<definition name="pagobes.cierraPopup" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bes/cierraPopup.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago BES -->
+	
+	<!--  INICIO: Paginas Pago BIT -->
+	<definition name="pagobit.inicio" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bit/inicio.jsp" />
+	</definition>
+	<definition name="pagobit.cierraPopup" extends=".popup">
+		<put name="main" value="/WEB-INF/pages/pagos/bit/cierraPopup.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago BIT -->
+	
+	<!--  INICIO: Paginas Pago bancos general -->
+	<definition name="pagobes.envia" extends=".public">
+		<put name="main" value="/WEB-INF/pages/pagos/bes/test/simulaRespBanco.jsp" />
+	</definition>
+	<!--  FIN: Paginas Pago bancos general -->
+	
+</tiles-definitions>

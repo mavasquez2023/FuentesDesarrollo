@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RendicionBCH">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanRendicionBCH" type="cl.araucana.spl.beans.RendicionBCH"/>
+	<typeAlias alias="beanDetalleRendicionBCH" type="cl.araucana.spl.beans.DetalleRendicionBCH"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBCH" id="detalleRendicionBchResultMap">
+		<result property="idDetalleRend" column="ID_DET_REND_BCH" />
+		<result property="idRendicion" column="ID_RENDICION_BCH" />
+		<result property="idConvenio" column="ID_CONVENIO" />
+		<result property="idPago" column="ID_PAGO" />
+		<result property="codEmpresa" column="COD_EMPRESA" />
+		<result property="oficinaCaptura" column="OFICINA_CAPTURA" />
+		<result property="fchPago" column="FCH_PAGO" />
+		<result property="montoPagado" column="MNT_PAGADO" />
+		<result property="medioPago" column="MEDIO_PAGO" />
+		<result property="montoPagadoMonedaOrigen" column="MNT_PAGADO_MONE_ORIGEN" />
+		<result property="tipoCambio" column="TIPO_CAMBIO" />
+		<result property="montoMora" column="MNT_MORA" />
+		<result property="camposAgregados" column="CAMPOS_AGREGADOS" typeHandler="charTypeHandler" />
+		<result property="montoInformado" column="MNT_INFORMADO" />
+		<result property="codError" column="COD_ERROR" typeHandler="charTypeHandler" />
+	</resultMap>	
+
+	<select id="sqlSequenceRendicionBCH" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBCH FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<select id="sqlSequenceDetalleRendicionBCH" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBCH FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlCountRendicionBchByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBCH 
+		where checksum = #checksum#
+	</select>
+
+	<select id="sqlFindDetalleRendicionBchByPagoId" parameterClass="java.math.BigDecimal" resultMap="detalleRendicionBchResultMap">
+		select 
+			ID_DET_REND_BCH, ID_RENDICION_BCH, ID_CONVENIO, ID_PAGO, 
+			COD_EMPRESA, OFICINA_CAPTURA, FCH_PAGO, 
+			MNT_PAGADO, MEDIO_PAGO, MNT_PAGADO_MONE_ORIGEN, TIPO_CAMBIO,
+			MNT_MORA, CAMPOS_AGREGADOS, MNT_INFORMADO, COD_ERROR
+		from DETRENDBCH 
+		where ID_PAGO = #idPago#
+	</select>
+	
+	<insert id="sqlInsertRendicionBCH" parameterClass="beanRendicionBCH">
+		insert into RENDICBCH 
+			(ID_RENDICION_BCH, CHECKSUM, FCH_IMPORTACION,
+			FCH_CAPTURA, NRO_REGISTROS)
+   		values (#idRendicion#, #checksum#, #fchImportacion#,
+   			#fchCaptura#, #nroRegistros#)
+   	</insert>
+   
+	<insert id="sqlInsertDetalleRendicionBCH" parameterClass="beanDetalleRendicionBCH">
+		insert into DETRENDBCH 
+			(ID_DET_REND_BCH, ID_RENDICION_BCH, ID_CONVENIO, ID_PAGO, 
+			COD_EMPRESA, OFICINA_CAPTURA, FCH_PAGO, 
+			MNT_PAGADO, MEDIO_PAGO, MNT_PAGADO_MONE_ORIGEN, TIPO_CAMBIO,
+			MNT_MORA, CAMPOS_AGREGADOS, MNT_INFORMADO, COD_ERROR)
+		values (#idDetalleRend#, #idRendicion#, #idConvenio#, #idPago#,
+			#codEmpresa#, #oficinaCaptura#, #fchPago#,
+			#montoPagado#, #medioPago#, #montoPagadoMonedaOrigen#, #tipoCambio#,
+			#montoMora#, #camposAgregados#, #montoInformado#, #codError#)
+   	</insert>	
+
+</sqlMap>

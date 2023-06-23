@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="DetRendicionBBV">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanDetRendicionBBV" type="cl.araucana.spl.beans.DetalleRendicionBBV"/>
+	<typeAlias alias="beanRendicionBBV" type="cl.araucana.spl.beans.RendicionBBV"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBBV" id="DetrendicionBbvResultMap">
+		<result property="idDetalleRend"	column="ID_DET_REND_BBV" />
+		<result property="idRendicion"		column="ID_REND_BBV" />
+		<result property="idConvenio" 			column="ID_CONVENIO" />	
+		<result property="idPago" 				column="ID_PAGO" />	
+		<result property="codTransBanco" 		column="COD_TRANS_BANCO" typeHandler="charTypeHandler" />	
+		<result property="codTransComercio" 	column="COD_TRANS_COMERCIO" typeHandler="charTypeHandler"/>	
+		<result property="numTransaccion" 		column="NUM_TRANSACCION" />	
+		<result property="idCliente" 			column="ID_CLIENTE" typeHandler="charTypeHandler"/>
+		<result property="idDocumento" 			column="ID_DOCUMENTO"  typeHandler="charTypeHandler"/>	
+		<result property="rutClientePagador"	column="RUT_CLIENT" typeHandler="charTypeHandler"/>	
+		<result property="montoPago" 			column="MONTO_PAGO" />
+		<result property="fechaPago" 			column="FECHA_PAGO" />
+		<result property="horaPago" 			column="HORA_PAGO" />
+		<result property="fechaRendicion" 		column="FECHA_RENDICION" />
+	</resultMap>	
+
+	<select id="sqlSequenceDetRendicionBBV" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBBV FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlSequenceRendicionBBV" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBBV FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<select id="sqlCountRendicionBbvByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBBV 
+		where checksum = #checksum#
+	</select>
+
+	<select id="sqlFindDetRendicionBbvByPagoId" parameterClass="java.math.BigDecimal" resultMap="DetrendicionBbvResultMap">
+		SELECT
+			ID_DET_REND_BBV,
+			ID_REND_BBV,
+			ID_CONVENIO,
+			ID_PAGO,
+			COD_TRANS_BANCO,
+			COD_TRANS_COMERCIO,
+			NUM_TRANSACCION,
+			ID_CLIENTE,
+			ID_DOCUMENTO,
+			RUT_CLIENT,
+			MONTO_PAGO,
+			FECHA_PAGO,
+			HORA_PAGO,
+			FECHA_RENDICION
+		FROM
+		    DETRENDBBV
+		WHERE ID_PAGO = #idPago#
+	</select>
+	
+	<insert id="sqlInsertDetRendicionBBV" parameterClass="beanDetRendicionBBV">
+		INSERT INTO DETRENDBBV
+				(ID_DET_REND_BBV, ID_REND_BBV, ID_CONVENIO, ID_PAGO, COD_TRANS_BANCO, COD_TRANS_COMERCIO, NUM_TRANSACCION, ID_CLIENTE, ID_DOCUMENTO, RUT_CLIENT, MONTO_PAGO, FECHA_PAGO,HORA_PAGO, FECHA_RENDICION)
+    	VALUES (#idDetalleRend#,#idRendicion#, #idConvenio#, #idPago#, #codTransBanco#, #codTransComercio#, #numTransaccion#, #idCliente#, #idDocumento#, #rutClientePagador#, #montoPago#, #fechaPago#, #horaPago#, #fechaRendicion#)
+	</insert>
+	
+	<insert id="sqlInsertRendicionBBV" parameterClass="beanRendicionBBV">
+		INSERT INTO RENDICBBV
+			(ID_REND_BBV, CHECKSUM, FCH_IMPORTACION, NUMERO_PAGOS, MONTO_TOTAL)
+    	VALUES (#idRendicion#,#checksum#, #fchImportacion#, #nroRegistros#, #montoTotal#)
+	</insert>
+ </sqlMap>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Inconsistencias">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="filtroInconsistencias" type="cl.araucana.spl.beans.FiltroInconsistencias" />
+
+	<resultMap class="cl.araucana.spl.beans.Inconsistencia" id="pagoResultMap">
+		<result property="idPago" column="ID_PAGO" />
+		<result property="pagador" column="PAGADOR" typeHandler="charTypeHandler" />
+
+		<result property="estado.id" column="E_ID_ESTADO" />
+		<result property="estado.descripcion" column="E_DESCRIPCION" />
+		<result property="sistema" column="S_CODIGO" typeHandler="charTypeHandler" />
+		<result property="medio" column="M_CODIGO" typeHandler="charTypeHandler" />
+
+		<result property="fechaTransaccion" column="P_FCH_TRANSACCION" />
+		<result property="fechaContable" column="P_FCH_CONTABLE" />
+		<result property="pagado" column="P_PAGADO" />
+
+		<result property="monto" column="P_MONTO" />
+		<result property="montoRendicion" column="P_MONTO_RENDICION" />
+	</resultMap>
+
+	<sql id="fragment_findpagos_select">
+	select distinct
+		p.id_pago,
+		p.pagador,
+	
+		e.id_estado as e_id_estado,
+		e.descripcion as e_descripcion,
+	
+		s.codigo as s_codigo,
+	
+		m.codigo as m_codigo,
+	
+		p.fch_transaccion as p_fch_transaccion,
+		p.fch_contable as p_fch_contable,
+		p.pagado as p_pagado,
+	
+		p.monto as p_monto,
+		p.monto_rendicion as p_monto_rendicion
+	</sql>
+
+
+	<sql id="fragment_findpagos_fromwhere">
+	from
+	    pago p, convenio c, mediopago m, sistema s, estado e
+	where
+	    p.id_convenio = c.id_convenio
+	    and m.id_mediopago = c.id_mediopago
+	    and p.id_sistema = s.id_sistema
+	    and p.id_estado = e.id_estado
+	</sql>
+
+
+	<sql id="fragment_findpagos_filters">
+		<isEqual prepend="AND" property="tipoFecha" compareValue="P">
+	    (
+	    	date(p.fch_transaccion) between date('$dbFechaPagoDesde$') and date('$dbFechaPagoHasta$') 
+	      	OR
+	      	date(p.fch_inicio) between date('$dbFechaPagoDesde$') and date('$dbFechaPagoHasta$') 
+	    )
+		</isEqual>
+	
+		<isEqual prepend="AND" property="tipoFecha" compareValue="C">
+	    ( p.fch_contable between date('$dbFechaContableDesde$') and date('$dbFechaContableHasta$') )
+		</isEqual>
+	
+	    <isNotEmpty prepend="AND" property="estado">
+	    p.id_estado = #estado#
+	    </isNotEmpty>
+	    
+	    <isNotEmpty prepend="AND" property="banco">
+	    c.id_mediopago = #banco#
+	    </isNotEmpty>
+	    
+	    <isNotEmpty prepend="AND" property="sistema">
+	    p.id_sistema = #sistema#
+	    </isNotEmpty>
+	</sql>
+
+
+	<sql id="fragment_findpagos_dynamicfilter">
+		<isNotEmpty property="numeroPago">
+			and p.id_pago = #numeroPago#
+		</isNotEmpty>
+
+		<isEmpty property="numeroPago">
+			<isNotEmpty property="numeroFolio">
+			    and p.id_pago in (select id_pago from detpago where folio = #numeroFolio#)
+			</isNotEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEmpty property="numeroFolio">
+				<include refid="fragment_findpagos_filters" />
+			</isEmpty>
+		</isEmpty>
+		
+		<isEmpty property="numeroPago">
+			<isEqual property="trxConsiderar" compareValue="terminadas">
+				and p.fch_transaccion > timestamp('1990-01-01-00.00.00')
+			</isEqual>
+		</isEmpty>
+	</sql>
+
+	<select id="sqlFindPagosByFiltro" parameterClass="filtroInconsistencias" resultMap="pagoResultMap">
+		<include refid="fragment_findpagos_select" />
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+	</select>
+
+	<select id="sqlFindInconsistenciasPaginadas" parameterClass="filtroInconsistencias" resultMap="pagoResultMap">
+		<include refid="fragment_findpagos_select" />
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+		and p.id_pago >= $offset$
+		fetch first $limit$ rows only
+	</select>
+	
+	<select id="sqlFindInconsistenciasPaginaPreviaInvertida" parameterClass="filtroInconsistencias" resultMap="pagoResultMap">
+		<include refid="fragment_findpagos_select" />
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+		and p.id_pago <![CDATA[ < ]]> $offset$
+		order by p.id_pago desc
+		fetch first $limit$ rows only
+	</select>
+	
+
+	<select id="sqlSumMontoBancoByFiltro" parameterClass="filtroInconsistencias" resultClass="decimal">
+		select distinct sum(p.monto_rendicion)
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+		and p.monto_rendicion >= 0
+	</select>
+	<select id="sqlCountBancoByFiltro" parameterClass="filtroInconsistencias" resultClass="decimal">
+		select count(distinct p.id_pago)
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+		and p.monto_rendicion >= 0
+	</select>
+
+	<select id="sqlSumMontoPagoByFiltro" parameterClass="filtroInconsistencias" resultClass="decimal">
+		select distinct sum(p.monto)
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+		and p.monto >= 0
+	</select>
+	<select id="sqlCountPagoByFiltro" parameterClass="filtroInconsistencias" resultClass="decimal">
+		select count(distinct p.id_pago)
+		<include refid="fragment_findpagos_fromwhere" />
+		<include refid="fragment_findpagos_dynamicfilter" />
+	</select>
+	
+</sqlMap>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Parametro">
+	<typeAlias alias="beanParametro"
+		type="cl.araucana.spl.beans.Parametro" />
+	<typeAlias alias="charTypeHandler"
+		type="cl.araucana.spl.util.IbatisCharTypeHandler" />
+
+	<resultMap class="beanParametro" id="parametroResultMap">
+		<result property="id" column="ID_PARAMETRO" />
+		<result property="nombre" column="NOMBRE" />
+		<result property="tipoParametro" column="TIPO_PARAMETRO" />
+		<result property="tipoValor" column="TIPO_VALOR" />
+		<result property="descripcion" column="DESCRIPCION" />
+		<result property="valor" column="VALOR" />
+	</resultMap>
+
+	<select id="sqlSrvrecPago" resultClass="string">
+		SELECT VALOR FROM PARAMETRO WHERE ID_PARAMETRO = #idParametro#
+	</select>
+
+	<select id="sqlIPPrivadaSPL" resultClass="string">
+		SELECT VALOR FROM PARAMETRO WHERE ID_PARAMETRO = #idParametro#
+	</select>
+
+</sqlMap>
+

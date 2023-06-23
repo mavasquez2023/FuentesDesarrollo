@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="EstadoBean">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+
+	<resultMap class="cl.araucana.spl.beans.Estado" id="estadoResultMap">
+		<result property="id" column="ID_ESTADO" />
+		<result property="descripcion" column="DESCRIPCION" typeHandler="charTypeHandler" />
+	</resultMap>
+	<select id="sqlFindEstados" resultMap="estadoResultMap">
+		select ID_ESTADO, DESCRIPCION from ESTADO
+	</select>
+	<select id="sqlFindEstadoById" resultMap="estadoResultMap" parameterClass="decimal">
+		select 
+			ID_ESTADO, DESCRIPCION 
+		from 
+			ESTADO
+		where
+			ID_ESTADO = #idEstado#
+	</select>
+	
+</sqlMap>

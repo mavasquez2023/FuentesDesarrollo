@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Application_ID" version="1.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<display-name>PagoEnLinea</display-name>
+	<module id="WebModule_1245185335890">
+		<web>
+			<web-uri>PagoEnLineaWebModule.war</web-uri>
+			<context-root>PagoEnLineaWebModule</context-root>
+		</web>
+	</module>
+	<security-role id="SecurityRole_1421931233590">
+		<description>
+		admin</description>
+		<role-name>admin</role-name>
+	</security-role>
+</application>
