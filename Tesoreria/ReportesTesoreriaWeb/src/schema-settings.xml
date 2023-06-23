@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema-settings>
+
+	<descrption>Configuracion libreria utilitarios schema</descrption>
+	<version>1.0</version>
+
+	<general-services>
+		<true-values>1YESOKTRUEONSIVP</true-values>
+		<config-refresh>15000</config-refresh>
+		<xml-settings-handler>com.schema.util.XmlSettings</xml-settings-handler>
+		<default-settings-filename>arau-settings.xml</default-settings-filename>
+		<default-errors-filename>arau-errors.properties</default-errors-filename>
+	</general-services>
+
+	<j2ee-services>
+		<jndi>
+			<context-url>t3://161.131.154.26,161.131.154.27,161.131.154.29,161.131.154.30,161.131.154.116,161.131.154.117,161.131.154.118:8101</context-url> 
+			<factory-class>weblogic.jndi.WLInitialContextFactory</factory-class> 
+		</jndi>
+
+		<jdbc>
+		</jdbc>
+	</j2ee-services>
+	<tuxedo>
+	</tuxedo>
+
+</schema-settings>

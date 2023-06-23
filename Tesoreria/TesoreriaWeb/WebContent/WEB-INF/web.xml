@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+   <web-app id="WebApp">
+      <display-name>TGRBonifica</display-name>
+     <servlet>
+      <servlet-name>log4j-init</servlet-name>
+      <servlet-class>cl.araucana.tgr.servlet.Log4jInit</servlet-class>
+   		<init-param>
+      		<param-name>log4j-init-file</param-name>
+      		<param-value>WEB-INF/log4j.properties</param-value>
+    	</init-param>
+    	<load-on-startup>1</load-on-startup>
+   	  </servlet>
+      <welcome-file-list id="WelcomeFileList_1110842102621">
+         <welcome-file>index.html</welcome-file>
+         <welcome-file>index.htm</welcome-file>
+         <welcome-file>index.jsp</welcome-file>
+         <welcome-file>default.html</welcome-file>
+         <welcome-file>default.htm</welcome-file>
+         <welcome-file>default.jsp</welcome-file>
+      </welcome-file-list>
+      <resource-ref id="ResourceRef_1378911482245">
+      	<description>Cotizaciones de Trabajadores</description>
+      	<res-ref-name>jdbc/cppub</res-ref-name>
+      	<res-type>javax.sql.DataSource</res-type>
+      	<res-auth>Container</res-auth>
+      	<res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+   </web-app>

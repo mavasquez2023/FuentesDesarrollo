@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	id="WebApp_ID">
+
+	<display-name>ReportesTesoreriaWeb</display-name>
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>application_es</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>definitions-config</param-name>
+			<param-value>/WEB-INF/tiles-defs.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/NoPageError.do</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/NoAccess.do</location>
+	</error-page>
+
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tags/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/tld/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/tld/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/tld/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-nested</taglib-uri>
+			<taglib-location>/WEB-INF/tld/struts-nested.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-tiles</taglib-uri>
+			<taglib-location>/WEB-INF/tld/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/c</taglib-uri>
+			<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/araucana</taglib-uri>
+			<taglib-location>/WEB-INF/tld/araucana.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/pd4ml</taglib-uri>
+			<taglib-location>/WEB-INF/tld/pd4ml.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+
+	<!-- seguridad -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Resources</web-resource-name>
+			<description>Recursos de Struts</description>
+			<url-pattern>*.do</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>administradorRole</role-name>
+			<role-name>ejecutivoRole</role-name>
+			<role-name>autenticadoRole</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>OpenResources</web-resource-name>
+			<description>Trap de recursos que son siempre ser accesibles</description>
+			<url-pattern>/NoPageError.do</url-pattern>
+			<url-pattern>/NoAccess.do</url-pattern>
+			<url-pattern>/Login.do</url-pattern>
+		</web-resource-collection>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/Login.do</form-login-page>
+			<form-error-page>/LoginError.do</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- accesos -->
+	<security-role id="SecurityRole_administrador">
+		<description>Administradores</description>
+		<role-name>administradorRole</role-name>
+	</security-role>
+	<security-role id="SecurityRole_ejecutivo">
+		<description>Ejecutivos Atencion al Cliente</description>
+		<role-name>ejecutivoRole</role-name>
+	</security-role>
+
+	<security-role id="SecurityRole_autenticado">
+		<description>Cualquier usuario Autenticado</description>
+		<role-name>autenticadoRole</role-name>
+	</security-role>
+
+</web-app>
