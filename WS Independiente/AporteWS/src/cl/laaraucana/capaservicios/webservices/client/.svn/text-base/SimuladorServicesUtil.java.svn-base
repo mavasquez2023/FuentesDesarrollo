@@ -1,0 +1,235 @@
+package cl.laaraucana.capaservicios.webservices.client;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.ConstantesWS;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.CreaCotizacionClient;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.VO.CreaCotizacionEntradaVO;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.VO.CreaCotizacionSalidaVO;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.VO.TasasInteresVO;
+import cl.laaraucana.capaservicios.webservices.client.QuerySimulationWeb.ClienteQuerySimulationWeb;
+import cl.laaraucana.capaservicios.webservices.client.QuerySimulationWeb.VO.PaymentOptionsEntradaVO;
+import cl.laaraucana.capaservicios.webservices.client.QuerySimulationWeb.VO.QuerySimulationEntradaVO;
+import cl.laaraucana.capaservicios.webservices.client.QuerySimulationWeb.VO.QuerySimulationSalidaVO;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspOut;
+
+public class SimuladorServicesUtil {
+
+  protected static Logger logger = Logger.getLogger(SimuladorServicesUtil.class);
+
+  /**
+   * Llama a los servicios web CrearCotizacion y QuerySimWeb para obtener una simulacion de crédito.
+   * 
+   * @param SimulacionCreditoEspIn
+   * @return SimulacionCreditoEspOut
+   */
+  public SimulacionCreditoEspOut getResultadoSimulacion(SimulacionCreditoEspIn parametros) {
+    Log log;
+    CreaCotizacionSalidaVO salidaCreaCotizacion;
+    SimulacionCreditoEspOut resultado = new SimulacionCreditoEspOut();
+
+    String tipoEjecucion = ConstantesWS.TIPO_EJECUCION_SIMULAR;
+    String tipoSimulacionQuerySimulation = ConstantesWS.TIPO_PRO_QUERY_SIMULATION_ESPECIAL;
+
+    try {
+      salidaCreaCotizacion = getCreaCotizacion(parametros, tipoEjecucion);
+      if (!salidaCreaCotizacion.getCodigoError().equals(Constantes.COD_RESPUESTA_SUCCESS)) {
+        log = new Log(Constantes.COD_RESPUESTA_ERROR, salidaCreaCotizacion.getMensaje());
+        logger.debug("::SimulacionCreditoEsp: Error en servicio creaCotizacion: " + salidaCreaCotizacion.getMensaje());
+        resultado.setLog(log);
+        return resultado;
+      } else {
+        logger.info("::SimulacionCreditoEsp: Llamada a crea cotizacion OK.");
+      }
+    } catch (Exception e) {
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error en servicio creaCotizacion: " + e.getMessage());
+      logger.debug("::SimulacionCreditoEsp: Error en servicio creaCotizacion: " + e.getMessage());
+      resultado.setLog(log);
+      return resultado;
+    }
+
+    QuerySimulationSalidaVO salidaQuerySimulation;
+    try {
+      salidaQuerySimulation = getQuerySimWeb(parametros, salidaCreaCotizacion, tipoSimulacionQuerySimulation);
+      if (!salidaQuerySimulation.getCodigoError().equals(Constantes.COD_RESPUESTA_SUCCESS)) {
+        log = new Log(Constantes.COD_RESPUESTA_ERROR, salidaQuerySimulation.getMensaje());
+        logger.error("::SimulacionCreditoEsp: Error en servicio QuerySimulation: " + salidaQuerySimulation.getMensaje());
+        resultado.setLog(log);
+        return resultado;
+      }
+    } catch (NumberFormatException ne) {
+      logger.error("::SimulacionCreditoEsp: Error al parsear Integer cuotas", ne);
+      resultado.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error al actualizar fecha ultimo vencimiento con cuota: " + parametros.getNroCuotas()));
+      return resultado;
+    } catch (Exception e) {
+      logger.error("::SimulacionCreditoEsp: Error en servicio QuerySimulation: ", e);
+      resultado.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error en servicio QuerySimulation: " + e.getMessage()));
+      return resultado;
+    }
+
+    //Salida desde CreaCotizacion, se quitan decimales a los montos, se cambia separador de decimal a las tasas
+    resultado.setTasaIntMensual(salidaCreaCotizacion.getTasaIntMensual().replace(".", ","));
+    resultado.setMtoSegDesg(Utils.quitarDecimalesString(salidaCreaCotizacion.getSegDesgravamen()));
+    resultado.setMtoSegCesantia(Utils.quitarDecimalesString(salidaCreaCotizacion.getSegCesantia()));
+    resultado.setImpuestoLTE(Utils.quitarDecimalesString(salidaCreaCotizacion.getLte()));
+    resultado.setGastosNotariales(Utils.quitarDecimalesString(salidaCreaCotizacion.getGastosNotariales()));
+
+    resultado.setFechaPrimerVenc(Utils.dateToString(getFechaPrimerVenc(ConstantesWS.COD_AFILIADO)));
+    resultado.setFechaUltVenc(Utils.dateToString(getFechaUltimoVenc(ConstantesWS.COD_AFILIADO, parametros.getNroCuotas())));
+    //Salida desde QuerySimWeb
+    resultado.setCAE(salidaQuerySimulation.getCae());
+    resultado.setValorCuota(salidaQuerySimulation.getMontoCuota());
+    resultado.setCostoTotalCredito(salidaQuerySimulation.getCostoTotal());
+
+    resultado.setNroCuotas(parametros.getNroCuotas());
+    resultado.setMontoGiro(parametros.getMontoGiro());
+    
+    int montoCuota = Integer.parseInt(resultado.getValorCuota());
+    int montoCuoMax = Integer.parseInt(salidaCreaCotizacion.getMontoCuotaMax());
+    int montoMax = Integer.parseInt(salidaCreaCotizacion.getMontoMaximo());
+    int montoSolicitado = Integer.parseInt(parametros.getMontoGiro());
+    
+    if(montoCuota > montoCuoMax){
+    	log = new Log(Constantes.COD_RESPUESTA_VACIO, String.format(Constantes.MSJ_SIM_CUOTA_NO_CUMPLE,Utils.formateaIntSinDecimal(montoCuoMax)));
+    }else if(montoSolicitado>montoMax){
+        log = new Log(Constantes.COD_RESPUESTA_VACIO, String.format(Constantes.MSJ_SIM_MONTO_NO_CUMPLE,Utils.formateaIntSinDecimal(montoMax)));
+    }else{
+    	log = new Log(Constantes.COD_RESPUESTA_SUCCESS, salidaQuerySimulation.getMensaje());
+    }
+    
+    resultado.setLog(log);
+    return resultado;
+
+  }
+
+
+  /**
+   * Funcion encargada de llamar al servcio web que crea una cotizacion de credito.
+   * 
+   * @param parametros
+   * @param tipoSimulacionCotiza
+   * @return
+   * @throws Exception
+   *           en caso de fallo en la comunicacion con SAP.
+   */
+  public CreaCotizacionSalidaVO getCreaCotizacion(SimulacionCreditoEspIn parametros, String tipoEjecucion) throws Exception {
+    CreaCotizacionEntradaVO entrada = new CreaCotizacionEntradaVO();
+    entrada.setTipoEjecucion(tipoEjecucion);
+    entrada.setTipoAfiliado(ConstantesWS.COD_AFILIADO);
+    entrada.setRut(parametros.getRutCliente());
+    entrada.setRutEmpleador(parametros.getRutEmpresa());
+
+    entrada.setSapEmpleador(parametros.getAnexoEmpresa());//Anexo de empresa
+    entrada.setMontoSolicitado(parametros.getMontoGiro().replace(".", ""));
+    entrada.setCuotas(parametros.getNroCuotas());
+    entrada.setProducto(ConstantesWS.TIPO_PRO_SIMULACION_ESPECIAL);
+    entrada.setMoneda(ConstantesWS.TIPO_MONEDA_PESOS);
+    entrada.setOficinaVenta(parametros.getCodOficina());
+    entrada.setCanalVenta(ConstantesWS.CANAL_VENTA);
+    entrada.setSeguroCesantia(ConstantesWS.SEGURO_CESANTIA);// Por defecto desactivado
+    entrada.setSectorVenta(ConstantesWS.SECTOR_VENTA);
+    // crearCotizacion
+    CreaCotizacionClient client = new CreaCotizacionClient();
+    CreaCotizacionSalidaVO salidaCreaCotizacion = client.call(entrada);
+    return salidaCreaCotizacion;
+  }
+
+  /**
+   * Funcion encargada de llamar al servicio web QuerySimWeb que realiza una simulacion de crédito.
+   * 
+   * @param parametros
+   * @param salidaCreaCotizacion
+   * @param tipoSimulacionQuerySimulation
+   * @return
+   * @throws Exception
+   */
+  protected QuerySimulationSalidaVO getQuerySimWeb(SimulacionCreditoEspIn parametros, CreaCotizacionSalidaVO salidaCreaCotizacion, String tipoSimulacionQuerySimulation) throws Exception {
+    QuerySimulationEntradaVO entrada = new QuerySimulationEntradaVO();
+
+    // paymentOptions
+    List<PaymentOptionsEntradaVO> paymentOptionsEntradaList = new ArrayList<PaymentOptionsEntradaVO>();
+    List<TasasInteresVO> tasaInteresList = salidaCreaCotizacion.getTasasInteresList();
+
+    PaymentOptionsEntradaVO payment;
+    for (TasasInteresVO tasasInteresVO : tasaInteresList) {
+      payment = new PaymentOptionsEntradaVO();
+      if (!"0".equalsIgnoreCase(tasasInteresVO.getMeses())) {
+        payment.setAgTerm(ConstantesWS.getTasaEscala("escala." + tasasInteresVO.getMeses()));
+        payment.setInterestRate(tasasInteresVO.getPorcentaje());
+        paymentOptionsEntradaList.add(payment);
+      }
+    }
+
+    entrada.setPaymentOptionsEntradaList(paymentOptionsEntradaList);
+    entrada.setOrgId(ConstantesWS.ORIGEN_ID);
+    entrada.setStartDate(Utils.getFechaHoySAP());
+    entrada.setEndDate(Utils.getFechaHoySAPMasMeses(Integer.parseInt(parametros.getNroCuotas())));
+    entrada.setProductId(tipoSimulacionQuerySimulation);
+    entrada.setCreditAmount(parametros.getMontoGiro().replace(".", ""));
+    entrada.setInterestRate(salidaCreaCotizacion.getTasaIntMensual());
+    entrada.setAmountZnot(salidaCreaCotizacion.getGastosNotariales());
+    entrada.setAmountZlte(salidaCreaCotizacion.getLte());
+    entrada.setAmountZsde(salidaCreaCotizacion.getSegDesgravamen());
+    entrada.setAmountZsce(salidaCreaCotizacion.getSegCesantia());
+
+    //Siempre es trabajador
+    entrada.setPensionado(" ");
+
+    ClienteQuerySimulationWeb cliente = new ClienteQuerySimulationWeb();
+    QuerySimulationSalidaVO salidaQuerySimulation = cliente.call(entrada);
+    return salidaQuerySimulation;
+  }
+
+  /**
+   * Permite calcular la primera fecha de vencimiento del trabajador
+   * 
+   * @param tipoAfiliado
+   * @return La fecha de primer vencimiento segpun tipo de afiliado
+   */
+  protected Date getFechaPrimerVenc(String tipoAfiliado) {
+    Calendar f = Calendar.getInstance();
+    // Afiliado e independiente
+    if ((tipoAfiliado.equalsIgnoreCase(ConstantesWS.COD_AFILIADO)) || (tipoAfiliado.equalsIgnoreCase(ConstantesWS.COD_INDEPENDIENTE))) {
+      f.add(Calendar.MONTH, 1);
+      f.set(Calendar.DAY_OF_MONTH, f.getActualMaximum(Calendar.DAY_OF_MONTH));
+    } else if (tipoAfiliado.equalsIgnoreCase(ConstantesWS.COD_PENSIONADO)) {
+      // Pensionado
+      f.add(Calendar.MONTH, 2);
+      f.set(Calendar.DAY_OF_MONTH, f.getActualMaximum(Calendar.DAY_OF_MONTH));
+    }
+    Date fecha = new Date();
+    fecha = f.getTime();
+
+    return fecha;
+  }
+
+  /**
+   * Permite calcular la ultima fecha de vencimiento asociada a la simulacion.
+   * 
+   * @param tipoAfiliado
+   * @param nroCuotas
+   * @return
+   * @throws NumberFormatException
+   */
+  protected Date getFechaUltimoVenc(String tipoAfiliado, String nroCuotas) throws NumberFormatException {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(getFechaPrimerVenc(tipoAfiliado));
+    int cuotas = Integer.parseInt(nroCuotas)-1;
+    // Setea el mes sumando todas las cuotas
+    cal.add(Calendar.MONTH, cuotas);
+    // setea la fecha al ultimo dia del mes.
+    cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+    return cal.getTime();
+  }
+
+}

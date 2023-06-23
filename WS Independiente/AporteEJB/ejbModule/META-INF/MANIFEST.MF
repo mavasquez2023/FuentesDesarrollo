@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: lib/log4j-1.2.8.jar lib/ibatis-2.3.0.677.jar lib/jt400.jar
+

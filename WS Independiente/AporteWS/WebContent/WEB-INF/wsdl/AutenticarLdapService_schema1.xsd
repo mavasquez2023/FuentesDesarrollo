@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="autenticarUsuario" type="tns:autenticarUsuario"/>
+
+  <xs:element name="autenticarUsuarioResponse" type="tns:autenticarUsuarioResponse"/>
+
+  <xs:complexType name="autenticarUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entradaWS" type="tns:entradaAutenticarLdap"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entradaAutenticarLdap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticarUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:autenticacionLDAP"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autenticacionLDAP">
+    <xs:sequence>
+      <xs:element name="debeCambiarClave" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="idUsuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="ultimoLogin" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.ClienteCurseComprobante;
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.vo.EntradaCurseComprobanteVO;
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.vo.SalidaCurseComprobanteVO;
+
+public class CurseComprobante {
+
+  public SalidaCurseComprobanteVO cursarComprobanteTesoreria(EntradaCurseComprobanteVO entrada) {
+    ClienteCurseComprobante cliente = new ClienteCurseComprobante();
+    SalidaCurseComprobanteVO salida = new SalidaCurseComprobanteVO();
+    salida = cliente.callCurse(entrada);
+    return salida;
+  }
+}

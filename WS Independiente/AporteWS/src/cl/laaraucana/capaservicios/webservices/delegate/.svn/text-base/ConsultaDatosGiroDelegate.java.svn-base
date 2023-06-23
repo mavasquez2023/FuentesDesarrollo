@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.ConsultaDatosGiroMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="ConsultaDatosGiroService", portName="ConsultaDatosGiroPort", wsdlLocation="WEB-INF/wsdl/ConsultaDatosGiroService.wsdl")
+public class ConsultaDatosGiroDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.ConsultaDatosGiro _consultaDatosGiro = null;
+
+    public ConsultaTransferenciaOut obtenerTransferencia (@WebParam(name="entrada") ConsultaTransferenciaIn entrada) {
+        return _consultaDatosGiro.obtenerTransferencia(entrada);
+    }
+
+    public ConsultaDatosGiroDelegate() {
+        _consultaDatosGiro = new cl.laaraucana.capaservicios.webservices.service.ConsultaDatosGiro(); }
+
+}

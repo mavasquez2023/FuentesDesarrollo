@@ -1,0 +1,17 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.AutenticarUsuarioMGR;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.AutenticacionLDAP;
+import cl.laaraucana.capaservicios.webservices.vo.autenticarldap.EntradaAutenticarLdap;
+
+public class AutenticarLdap {
+
+  public AutenticacionLDAP autenticarUsuario(EntradaAutenticarLdap entradaWS){
+    AutenticacionLDAP salidaWS = new AutenticacionLDAP();
+    AutenticarUsuarioMGR manager = new AutenticarUsuarioMGR();
+    salidaWS = manager.autenticar(entradaWS);
+    return salidaWS;
+
+  }
+
+}

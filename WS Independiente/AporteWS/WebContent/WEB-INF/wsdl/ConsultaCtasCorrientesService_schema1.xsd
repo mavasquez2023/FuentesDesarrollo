@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="agregarCtaCorriente" type="tns:agregarCtaCorriente"/>
+
+  <xs:element name="agregarCtaCorrienteResponse" type="tns:agregarCtaCorrienteResponse"/>
+
+  <xs:element name="eliminarCtaCorriente" type="tns:eliminarCtaCorriente"/>
+
+  <xs:element name="eliminarCtaCorrienteResponse" type="tns:eliminarCtaCorrienteResponse"/>
+
+  <xs:element name="obtenerCtasCorrientes" type="tns:obtenerCtasCorrientes"/>
+
+  <xs:element name="obtenerCtasCorrientesResponse" type="tns:obtenerCtasCorrientesResponse"/>
+
+  <xs:complexType name="eliminarCtaCorriente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ctaCorrienteEntrada" type="tns:consultaCtasCorrientesIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCtasCorrientesIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nroCuenta" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarCtaCorrienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ctaCorrienteOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ctaCorrienteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="agregarCtaCorriente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ctaCorrienteEntrada" type="tns:ctaCorrienteVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ctaCorrienteVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codBanco" type="xs:string"/>
+      <xs:element name="modificable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="nroCuenta" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfi" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCuenta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="agregarCtaCorrienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ctaCorrienteOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerCtasCorrientes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerCtasCorrientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaCtasCorrientesOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaCtasCorrientesOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cuentas" nillable="true" type="tns:ctaCorrienteVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

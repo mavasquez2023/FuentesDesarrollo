@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="os_ConsultaCuentaBancaria_SI"
+	targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile" xmlns:p1="http://lautaro.com/xi/CRM/WEB-Mobile"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation />
+	<wsp:UsingPolicy wsdl:required="true" />
+	<wsp:Policy wsu:Id="OP_os_ConsultaCuentaBancaria_SI" />
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/CRM/WEB-Mobile"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lautaro.com/xi/CRM/WEB-Mobile"
+			xmlns:p5="http://lautaro.com/xi/CRM/Legacy">
+			<xsd:import namespace="http://lautaro.com/xi/CRM/Legacy" />
+			<xsd:element name="ia_ConsultaCuentaBancariaOUT_MT" type="ia_ConsultaCuentaBancaria_DT" />
+			<xsd:element name="oa_ConsultaCuentaBancariaOUT_MT" type="oa_ConsultaCuentaBancaria_DT" />
+			<xsd:simpleType name="Rut">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">a89f8892fbab11e28836000000362a9a
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0" />
+					<xsd:maxLength value="20" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="oa_ConsultaCuentaBancaria_DT">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">8c3f1803f17f11e3c1ab0000002327ce
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="ET_BANKDETAILS"  minOccurs="0"
+						maxOccurs="unbounded" type="ET_BANKDETAILSComplexType">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">f27b00eff0dc11e3bf8bcaf733fb0e91
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ET_RETURN" type="p5:Log" minOccurs="0"
+						maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">f27b00f0f0dc11e3bb7ecaf733fb0e91
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ia_ConsultaCuentaBancaria_DT">
+				<xsd:annotation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">4e008e02f0d111e3b36d0000002327ce
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="RUT" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ET_BANKDETAILSComplexType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="BANKDETAILID"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_CTRY"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_CTRYISO"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_ACCT"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="CTRL_KEY"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_REF"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="ACCOUNTHOLDER"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="COLL_AUTH"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="EXTERNALBANKID"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANKACCOUNTNAME"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="IBAN"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="IBAN_FROM_DATE"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_KEY"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="BANKDETAILVALIDFROM" type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANKDETAILVALIDTO"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANKDETAILMOVEDATE"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANKDETAILMOVEID"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BANK_ACCOUNT_TYPE"
+						type="xsd:string">
+						<xsd:annotation></xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xsd:schema targetNamespace="http://lautaro.com/xi/CRM/Legacy"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://lautaro.com/xi/CRM/Legacy">
+			<xsd:complexType name="Log">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Log Entries
+					</xsd:documentation>
+					<xsd:appinfo source="http://sap.com/xi/VersionID">111406b9f54711e2bd5e000000362a9a
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="TYPE" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a5f7bb7f411e2b03242689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Tipo Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ID" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fecb7f411e2bdca42689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Clase Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="NUMBER" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fedb7f411e2a31c42689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Numero de Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8feeb7f411e2b24c42689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Texto Mensaje</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LOG_NO" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8fefb7f411e2813642689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Numero de Log</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LOG_MSG_NO" type="xsd:string"
+						minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">fa8a8ff0b7f411e2c96942689d1519c2
+							</xsd:appinfo>
+							<xsd:documentation>Numero consecutivo interno de mensaje
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V1" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8ba3e5f49c11e2bcc402004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V2" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be56ef49c11e2b75002004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V3" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be56ff49c11e2b9a802004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MESSAGE_V4" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be570f49c11e28f9302004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="PARAMETER" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be571f49c11e28ba602004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ROW" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be572f49c11e2caae02004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FIELD" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be573f49c11e2bab802004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="SYSTEM" minOccurs="0" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">7e8be574f49c11e2b64402004e435049
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="ia_ConsultaCuentaBancariaOUT_MT">
+		<wsdl:documentation />
+		<wsdl:part name="ia_ConsultaCuentaBancariaOUT_MT" element="p1:ia_ConsultaCuentaBancariaOUT_MT" />
+	</wsdl:message>
+	<wsdl:message name="oa_ConsultaCuentaBancariaOUT_MT">
+		<wsdl:documentation />
+		<wsdl:part name="oa_ConsultaCuentaBancariaOUT_MT" element="p1:oa_ConsultaCuentaBancariaOUT_MT" />
+	</wsdl:message>
+	<wsdl:portType name="os_ConsultaCuentaBancaria_SI">
+		<wsdl:documentation />
+		<wsdl:operation name="os_ConsultaCuentaBancaria_SI">
+			<wsdl:documentation />
+			<wsp:Policy>
+				<wsp:PolicyReference URI="#OP_os_ConsultaCuentaBancaria_SI" />
+			</wsp:Policy>
+			<wsdl:input message="p1:ia_ConsultaCuentaBancariaOUT_MT" />
+			<wsdl:output message="p1:oa_ConsultaCuentaBancariaOUT_MT" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="os_ConsultaCuentaBancaria_SIBinding"
+		type="p1:os_ConsultaCuentaBancaria_SI">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		<wsdl:operation name="os_ConsultaCuentaBancaria_SI">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="os_ConsultaCuentaBancaria_SIService">
+		<wsdl:port name="os_ConsultaCuentaBancaria_SIPort" binding="p1:os_ConsultaCuentaBancaria_SIBinding">
+			<soap:address
+				location="http://ARAMACIPIT.sap.novis.cl:50000/sap/xi/engine?type=entry&amp;version=3.0&amp;Sender.Service=WEB_Mobile&amp;Interface=http%3A%2F%2Flautaro.com%2Fxi%2FCRM%2FWEB-Mobile%5Eos_ConsultaCuentaBancaria_SI"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

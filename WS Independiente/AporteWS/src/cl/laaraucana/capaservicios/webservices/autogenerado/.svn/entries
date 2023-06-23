@@ -1,0 +1,70 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado
+https://172.16.137.116/svn/IBM
+
+
+
+2014-09-25T12:51:51.322492Z
+3180
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+SolSMS
+dir
+
+QueryContractCashflowIn
+dir
+
+SolicitudSMS
+dir
+
+QueryContractHeaderIn
+dir
+
+treasurymovementeventout
+dir
+
+NotificacionTEF
+dir
+
+CuentasCorrientesSAP
+dir
+
+QueryCompContHeaderIn
+dir
+
+QuerySimulationWeb
+dir
+
+QueryBPStatus
+dir
+
+ConsultaCreditoPreAprob
+dir
+
+CreaCotizacion
+dir
+
+SolicitudTEF
+dir
+
+ModificaCotizacion
+dir
+

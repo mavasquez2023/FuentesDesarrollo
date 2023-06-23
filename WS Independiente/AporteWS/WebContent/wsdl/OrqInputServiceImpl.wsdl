@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.orqInput.aporte.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.orqInput.aporte.araucana.cl" xmlns:intf="http://service.orqInput.aporte.araucana.cl" xmlns:tns1="http://vo.service.orqInput.aporte.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.orqInput.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.service.orqInput.aporte.araucana.cl"/>
+   <element name="obtenerInfoPago">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerInfoPagoResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerInfoPagoReturn" type="tns1:OrqInputResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_AporteDetalleVO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:AporteDetalleVO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_CreditoDetalleVO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:CreditoDetalleVO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_LeasingDetalleVO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:LeasingDetalleVO"/>
+    </sequence>
+   </complexType>
+   <element name="obtenerInfoPagoRemote">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerInfoPagoRemoteResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerInfoPagoRemoteReturn" type="tns1:OrqInputResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo.service.orqInput.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://service.orqInput.aporte.araucana.cl"/>
+   <complexType name="AporteDetalleVO">
+    <sequence>
+     <element name="fechaVencimiento" type="xsd:int"/>
+     <element name="interesesReajuste" type="xsd:int"/>
+     <element name="monto" type="xsd:int"/>
+     <element name="rentaPromedio" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="AporteResultVO">
+    <sequence>
+     <element name="aporteDetalle" nillable="true" type="impl:ArrayOf_tns1_AporteDetalleVO"/>
+     <element name="monto" type="xsd:int"/>
+     <element name="numRegistros" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreditoDetalleVO">
+    <sequence>
+     <element name="capital" type="xsd:int"/>
+     <element name="codigoOficina" type="xsd:int"/>
+     <element name="estadoCouta" type="xsd:int"/>
+     <element name="fechaVencimiento" type="xsd:int"/>
+     <element name="folioCredito" type="xsd:int"/>
+     <element name="gravamenes" type="xsd:int"/>
+     <element name="intereses" type="xsd:int"/>
+     <element name="lineaCredito" type="xsd:int"/>
+     <element name="montoAbonado" type="xsd:int"/>
+     <element name="montoDescuento" type="xsd:int"/>
+     <element name="multas" type="xsd:int"/>
+     <element name="numCuota" type="xsd:int"/>
+     <element name="seguros" type="xsd:int"/>
+     <element name="totalCoutas" type="xsd:int"/>
+     <element name="valorCouta" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreditoResultVO">
+    <sequence>
+     <element name="creditoDetalle" nillable="true" type="impl:ArrayOf_tns1_CreditoDetalleVO"/>
+     <element name="monto" type="xsd:int"/>
+     <element name="numRegistros" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ErrorResultVO">
+    <sequence>
+     <element name="codError" type="xsd:int"/>
+     <element name="glsError" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="LeasingDetalleVO">
+    <sequence>
+     <element name="codigoOficina" type="xsd:int"/>
+     <element name="fechaVencimiento" type="xsd:int"/>
+     <element name="monto" type="xsd:int"/>
+     <element name="montoUF" type="xsd:long"/>
+     <element name="numCuenta" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="LeasingResultVO">
+    <sequence>
+     <element name="leasingDetalle" nillable="true" type="impl:ArrayOf_tns1_LeasingDetalleVO"/>
+     <element name="monto" type="xsd:int"/>
+     <element name="numRegistros" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="OrqInputResultVO">
+    <sequence>
+     <element name="aporteVO" nillable="true" type="tns1:AporteResultVO"/>
+     <element name="creditoVO" nillable="true" type="tns1:CreditoResultVO"/>
+     <element name="errorVO" nillable="true" type="tns1:ErrorResultVO"/>
+     <element name="leasingBO" nillable="true" type="tns1:LeasingResultVO"/>
+     <element name="leasingVO" nillable="true" type="tns1:LeasingResultVO"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="obtenerInfoPagoRequest">
+
+      <wsdl:part element="impl:obtenerInfoPago" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfoPagoRemoteResponse">
+
+      <wsdl:part element="impl:obtenerInfoPagoRemoteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfoPagoResponse">
+
+      <wsdl:part element="impl:obtenerInfoPagoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfoPagoRemoteRequest">
+
+      <wsdl:part element="impl:obtenerInfoPagoRemote" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OrqInputServiceImpl">
+
+      <wsdl:operation name="obtenerInfoPago">
+
+         <wsdl:input message="impl:obtenerInfoPagoRequest" name="obtenerInfoPagoRequest"/>
+
+         <wsdl:output message="impl:obtenerInfoPagoResponse" name="obtenerInfoPagoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfoPagoRemote">
+
+         <wsdl:input message="impl:obtenerInfoPagoRemoteRequest" name="obtenerInfoPagoRemoteRequest"/>
+
+         <wsdl:output message="impl:obtenerInfoPagoRemoteResponse" name="obtenerInfoPagoRemoteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OrqInputServiceImplSoapBinding" type="impl:OrqInputServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="obtenerInfoPago">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerInfoPagoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerInfoPagoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfoPagoRemote">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerInfoPagoRemoteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerInfoPagoRemoteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OrqInputServiceImplService">
+
+      <wsdl:port binding="impl:OrqInputServiceImplSoapBinding" name="OrqInputServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:9081/AporteWS/services/OrqInputServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

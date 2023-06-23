@@ -1,0 +1,151 @@
+package cl.laaraucana.capaservicios.webservices.client.QueryContractCashflowIn.VO;
+
+public class SalidaQueryContractCashflowInVO {
+
+	private String fechaVencCuota;
+	private String nroCuota;
+	private String estadoCuota;
+	private String montoCapital;
+	private String montoInteres;
+	private String montoServAdic;
+	private String totalCuota;
+	private String montoGravamenes;
+	private String montoAbono;
+	private String capitalRestante;
+	private String ultFechaPago;
+	private String oficinaPago;
+	private String folioPago;
+	private String transactionType;
+	private String estadoPago;
+	private String moneda;
+
+	public String getFechaVencCuota() {
+		return fechaVencCuota;
+	}
+
+	public void setFechaVencCuota(String fechaVencCuota) {
+		this.fechaVencCuota = fechaVencCuota;
+	}
+
+	public String getNroCuota() {
+		return nroCuota;
+	}
+
+	public void setNroCuota(String nroCuota) {
+		this.nroCuota = nroCuota;
+	}
+
+	public String getEstadoCuota() {
+		return estadoCuota;
+	}
+
+	public void setEstadoCuota(String estadoCuota) {
+		this.estadoCuota = estadoCuota;
+	}
+
+	public String getMontoCapital() {
+		return montoCapital;
+	}
+
+	public void setMontoCapital(String montoCapital) {
+		this.montoCapital = montoCapital;
+	}
+
+	public String getMontoInteres() {
+		return montoInteres;
+	}
+
+	public void setMontoInteres(String montoInteres) {
+		this.montoInteres = montoInteres;
+	}
+
+	public String getMontoServAdic() {
+		return montoServAdic;
+	}
+
+	public void setMontoServAdic(String montoServAdic) {
+		this.montoServAdic = montoServAdic;
+	}
+
+	public String getTotalCuota() {
+		return totalCuota;
+	}
+
+	public void setTotalCuota(String totalCuota) {
+		this.totalCuota = totalCuota;
+	}
+
+	public String getMontoGravamenes() {
+		return montoGravamenes;
+	}
+
+	public void setMontoGravamenes(String montoGravamenes) {
+		this.montoGravamenes = montoGravamenes;
+	}
+
+	public String getMontoAbono() {
+		return montoAbono;
+	}
+
+	public void setMontoAbono(String montoAbono) {
+		this.montoAbono = montoAbono;
+	}
+
+	public String getUltFechaPago() {
+		return ultFechaPago;
+	}
+
+	public void setUltFechaPago(String ultFechaPago) {
+		this.ultFechaPago = ultFechaPago;
+	}
+
+	public String getOficinaPago() {
+		return oficinaPago;
+	}
+
+	public void setOficinaPago(String oficinaPago) {
+		this.oficinaPago = oficinaPago;
+	}
+
+	public String getFolioPago() {
+		return folioPago;
+	}
+
+	public void setFolioPago(String folioPago) {
+		this.folioPago = folioPago;
+	}
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+	public String getEstadoPago() {
+		return estadoPago;
+	}
+
+	public void setEstadoPago(String estadoPago) {
+		this.estadoPago = estadoPago;
+	}
+
+	public String getMoneda() {
+		return moneda;
+	}
+
+	public void setMoneda(String moneda) {
+		this.moneda = moneda;
+	}
+
+	public String getCapitalRestante() {
+		return capitalRestante;
+	}
+
+	public void setCapitalRestante(String capitalRestante) {
+		this.capitalRestante = capitalRestante;
+	}
+
+
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.commonbnd="commonbnd.xmi" xmlns:com.ibm.ejs.models.base.bindings.ejbbnd="ejbbnd.xmi" xmlns:com.ibm.etools.ejb="ejb.xmi" xmi:id="EJBJarBinding_1327929554421">
+  <defaultDatasource xmi:id="ResourceRefBinding_1457131723461">
+    <defaultAuth xmi:type="com.ibm.ejs.models.base.bindings.commonbnd:BasicAuthData" xmi:id="BasicAuthData_1457131723461"/>
+  </defaultDatasource>
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1327929554421" jndiName="cl/araucana/aporte/dispDatos/ejb/DispDatosRemoteHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#DispDatosBean"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1328124066734" jndiName="cl/araucana/aporte/orqInput/ejb/OrqInputRemoteHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#OrqInputBean"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1328563665515" jndiName="cl/araucana/aporte/orqOutput/ejb/OrqOutputRemoteHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#OrqOutputBean"/>
+  </ejbBindings>
+  <defaultCMPConnectionFactory xmi:id="CMPConnectionFactoryBinding_1457131723461"/>
+</com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding>

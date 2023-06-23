@@ -1,0 +1,56 @@
+package cl.laaraucana.capaservicios.manager;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.dao.TransferenciaDao;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.ConsultaTransferenciaOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.Transferencia;
+
+public class ConsultaDatosGiroMGR {
+	Logger logger = Logger.getLogger(this.getClass());
+	/**
+	 * Implementación de la lógica del servicio web que retorna los datos de la transferencia (giro)
+	 * realizadas
+	 * @param entrada
+	 * @return
+	 */
+	public ConsultaTransferenciaOut obtenerTransferencia(ConsultaTransferenciaIn entrada){
+		ConsultaTransferenciaOut salida = new ConsultaTransferenciaOut();
+		Log log = null;
+		Transferencia transf = null;
+		
+		if(!RutUtil.IsRutValido(entrada.getRutAfiliado())){
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido"));
+			return salida;
+		}
+		
+		if(!(entrada.getFolioCredito() != null && entrada.getFolioCredito().matches("\\d{3}-\\d{7,10}"))){
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un folio de crédito válido"));
+			return salida;
+		}
+		
+		try {
+			TransferenciaDao dao = new TransferenciaDao();
+			entrada.setFolioCredito(entrada.getFolioCredito().replace("-", ""));
+			transf= dao.getDatosTransf(entrada.getRutAfiliado(), entrada.getFolioCredito());
+		
+			if(transf == null){
+				log = new Log(Constantes.COD_RESPUESTA_VACIO, "Folio de crédito no encontrado");
+			}else{
+				log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Datos obtenidos correctamente");
+			}
+			
+		} catch (Exception e) {
+			logger.error("::ConsultaDatosGiro: Error al consultar datos transferencia", e);
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al consultar datos transferencia: " + e.getMessage());
+		}
+		
+		salida.setTransf(transf);
+		salida.setLog(log);
+		return salida;
+	}
+}

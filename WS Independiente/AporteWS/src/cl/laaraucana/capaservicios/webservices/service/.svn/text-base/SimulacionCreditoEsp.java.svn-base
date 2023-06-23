@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.SimulacionCreditoEspMGR;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspOut;
+
+public class SimulacionCreditoEsp {
+
+  /**
+   * Interfaz de conexion par el servicio de simulacion credito especial.
+   * 
+   * @param entrada
+   * @return simulacion SimulacionCreditoEspOut
+   */
+  public SimulacionCreditoEspOut simularCreditoEsp(SimulacionCreditoEspIn simulacionEntrada) {
+    // Instanciar el manager y enviar los datos recibidos para simular.
+    SimulacionCreditoEspMGR mgr = new SimulacionCreditoEspMGR();
+    SimulacionCreditoEspOut salida = mgr.obtenerSimulacion(simulacionEntrada);
+    return salida;
+  }
+
+}

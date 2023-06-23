@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1457131754758">
+  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1457131754758" deploymentId="0" startingWeight="1" binariesURL="$(APP_INSTALL_ROOT)/serv-120Node01Cell/AporteEAR.ear" useMetadataFromBinaries="false" enableDistribution="true" createMBeansForResources="true" reloadEnabled="false" appContextIDForSecurity="href:serv-120Node01Cell/AporteEAR">
+    <targetMappings xmi:id="DeploymentTargetMapping_1457131754758" enable="true" target="ServerTarget_1457131754758"/>
+    <targetMappings xmi:id="DeploymentTargetMapping_1457131754759" enable="true" target="ServerTarget_1457131754759"/>
+    <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebModuleDeployment_1457131754758" deploymentId="1" startingWeight="10000" uri="AporteWS.war">
+      <targetMappings xmi:id="DeploymentTargetMapping_1457131754760" target="ServerTarget_1457131754758"/>
+      <targetMappings xmi:id="DeploymentTargetMapping_1457131754761" target="ServerTarget_1457131754759"/>
+    </modules>
+    <modules xmi:type="appdeployment:EJBModuleDeployment" xmi:id="EJBModuleDeployment_1457131754758" deploymentId="1" startingWeight="5000" uri="AporteEJB.jar">
+      <targetMappings xmi:id="DeploymentTargetMapping_1457131754762" target="ServerTarget_1457131754758"/>
+      <targetMappings xmi:id="DeploymentTargetMapping_1457131754763" target="ServerTarget_1457131754759"/>
+    </modules>
+    <classloader xmi:id="Classloader_1457131754758" mode="PARENT_FIRST"/>
+  </deployedObject>
+  <deploymentTargets xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_1457131754758" name="webserver1" nodeName="webserver1_node"/>
+  <deploymentTargets xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_1457131754759" name="server1" nodeName="serv-120Node01"/>
+</appdeployment:Deployment>

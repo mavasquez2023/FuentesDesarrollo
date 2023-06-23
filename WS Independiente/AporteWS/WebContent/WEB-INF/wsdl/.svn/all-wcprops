@@ -1,0 +1,191 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/IBM/!svn/ver/3260/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl
+END
+CodigoVerificacionService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/IBM/!svn/ver/2458/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CodigoVerificacionService.wsdl
+END
+ConsultaEstMigService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IBM/!svn/ver/1113/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaEstMigService_schema1.xsd
+END
+ConsultaCtasCorrientesService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/1117/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaCtasCorrientesService_schema1.xsd
+END
+ConsultaDatosClienteService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/IBM/!svn/ver/3546/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaDatosClienteService.wsdl
+END
+ColocacionCreditoSAPService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/IBM/!svn/ver/1718/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ColocacionCreditoSAPService.wsdl
+END
+AutenticarLdapService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/IBM/!svn/ver/2207/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/AutenticarLdapService.wsdl
+END
+CurseComprobanteService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/3092/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CurseComprobanteService_schema1.xsd
+END
+ConsultaEstMigService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/IBM/!svn/ver/1113/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaEstMigService.wsdl
+END
+ConsultaCtasCorrientesService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/IBM/!svn/ver/1117/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaCtasCorrientesService.wsdl
+END
+smsservice.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IBM/!svn/ver/2253/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/smsservice.wsdl
+END
+ConsultaCreditosEspVigentesService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/1233/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaCreditosEspVigentesService.wsdl
+END
+CertAmortizacionService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2030/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CertAmortizacionService_schema1.xsd
+END
+ConsultaDatosGiroService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/IBM/!svn/ver/1612/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaDatosGiroService.wsdl
+END
+CurseComprobanteService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IBM/!svn/ver/3092/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CurseComprobanteService.wsdl
+END
+SimulacionCreditoEspService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/2246/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/SimulacionCreditoEspService_schema1.xsd
+END
+CodigoVerificacionService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2458/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CodigoVerificacionService_schema1.xsd
+END
+ConsultaMtoPreAprobadoService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/1975/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaMtoPreAprobadoService_schema1.xsd
+END
+CertAmortizacionService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IBM/!svn/ver/1510/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/CertAmortizacionService.wsdl
+END
+SimulacionCreditoEspService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/IBM/!svn/ver/2088/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/SimulacionCreditoEspService.wsdl
+END
+AutenticarLdapService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IBM/!svn/ver/2277/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/AutenticarLdapService_schema1.xsd
+END
+DatosAuxiliaresService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/IBM/!svn/ver/1666/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/DatosAuxiliaresService_schema1.xsd
+END
+ConsultaMtoPreAprobadoService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/IBM/!svn/ver/1258/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaMtoPreAprobadoService.wsdl
+END
+ConsultaCreditosEspVigentesService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/IBM/!svn/ver/1233/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaCreditosEspVigentesService_schema1.xsd
+END
+ConsultaDatosGiroService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/1612/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaDatosGiroService_schema1.xsd
+END
+RegistroUsuariosLdapService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/IBM/!svn/ver/3260/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/RegistroUsuariosLdapService.wsdl
+END
+RespuestaColocacionService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/1721/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/RespuestaColocacionService_schema1.xsd
+END
+DatosAuxiliaresService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/IBM/!svn/ver/1666/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/DatosAuxiliaresService.wsdl
+END
+RespuestaColocacionService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IBM/!svn/ver/1721/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/RespuestaColocacionService.wsdl
+END
+ConsultaDatosClienteService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/3546/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ConsultaDatosClienteService_schema1.xsd
+END
+ColocacionCreditoSAPService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/1741/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/ColocacionCreditoSAPService_schema1.xsd
+END
+RegistroUsuariosLdapService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/3260/was85/InterfazServiciosCES/WebContent/WEB-INF/wsdl/RegistroUsuariosLdapService_schema1.xsd
+END

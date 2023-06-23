@@ -1,0 +1,456 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.dao.DatosClienteDAO;
+import cl.laaraucana.capaservicios.database.dao.LogDao;
+import cl.laaraucana.capaservicios.database.dao.TransferenciaDao;
+import cl.laaraucana.capaservicios.database.vo.ComprobanteTesoreria;
+import cl.laaraucana.capaservicios.database.vo.TransferenciaVO;
+import cl.laaraucana.capaservicios.util.CompletaUtil;
+import cl.laaraucana.capaservicios.util.Configuraciones;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.ConstantesWS;
+import cl.laaraucana.capaservicios.util.EncriptUtils;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.UtilXML;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.util.ValidarUtil;
+import cl.laaraucana.capaservicios.util.email.AdjuntoVO;
+import cl.laaraucana.capaservicios.util.email.Email;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.SolicitudTEFEntradaVO;
+import cl.laaraucana.capaservicios.webservices.autogenerado.SolicitudTEF.SolicitudTEFSalidaVO;
+import cl.laaraucana.capaservicios.webservices.client.ClienteSolicitudTEF;
+import cl.laaraucana.capaservicios.webservices.client.SimuladorServicesUtil;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.VO.CreaCotizacionSalidaVO;
+import cl.laaraucana.capaservicios.webservices.client.ModificaCotizacion.ModificaCotizacionClient;
+import cl.laaraucana.capaservicios.webservices.client.ModificaCotizacion.VO.ModificaCotizacionEntradaVO;
+import cl.laaraucana.capaservicios.webservices.client.ModificaCotizacion.VO.ModificaCotizacionSalidaVO;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPIn;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaDatosCliente.ClienteVO;
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.RespuestaColocacion.RespuestaColocacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+import cl.laaraucana.capaservicios.xml.solicitud.Beneficiario;
+import cl.laaraucana.capaservicios.xml.solicitud.ListaTEF;
+import cl.laaraucana.capaservicios.xml.solicitud.SistemaOrigen;
+import cl.laaraucana.capaservicios.xml.solicitud.Solicitud;
+import cl.laaraucana.capaservicios.xml.solicitud.SolicitudTEF;
+import cl.laaraucana.capaservicios.xml.solicitud.Transferencia;
+//import cl.laaraucana.capaservicios.database.vo.DatosClienteVO;
+
+/**
+ * Realiza el proceso asíncrono de colocación del cédito
+ * @author usist84
+ *
+ */
+public class ColocacionCreditoMGR {
+  private final Logger logger = Logger.getLogger(this.getClass());
+
+  /**
+   * Crea cotización y almacena datos de transferencia
+   * @param ColocacionCreditoSAPIn entrada
+   * @return
+   */
+  public ColocacionCreditoSAPOut colocarCreditoEsp(ColocacionCreditoSAPIn entrada){
+    ColocacionCreditoSAPOut salida = new ColocacionCreditoSAPOut();
+    //Validar datos de entrada
+    Log log = validaEntradaSolCol(entrada);
+    if(log != null){
+      logger.debug("::ColocacionCreditoSAP: Error al validar datos de entrada: " + log.getMensaje());
+      salida.setLog(log);
+      return salida;
+    }
+    try {
+      //Consultar datos de clientes (Invalidante)
+      DatosClienteDAO dao = new DatosClienteDAO();
+      ClienteVO clienteVO = dao.getDatosClienteCorp(entrada.getRutCliente()).getCliente();
+
+      if(clienteVO == null){
+    	logger.debug("::ColocacionCreditoSAP: No se encontró el cliente consultado");
+        log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al realizar la colocación: No se pudo obtener los datos de cliente");
+        salida.setLog(log);
+        return salida;
+      }
+
+      //Generar cotización (Invalidante)
+      SimuladorServicesUtil crearCot = new SimuladorServicesUtil();
+      SimulacionCreditoEspIn sim = new SimulacionCreditoEspIn();
+      sim.setRutCliente(entrada.getRutCliente());
+      sim.setRutEmpresa(entrada.getRutEmpresa());
+      sim.setAnexoEmpresa(entrada.getAnexoEmpresa());
+      sim.setMontoGiro(entrada.getMontoGiro());
+      sim.setNroCuotas(entrada.getNroCuotas());
+      sim.setCodOficina(entrada.getCodOficina());
+      CreaCotizacionSalidaVO cotSalida = crearCot.getCreaCotizacion(sim, ConstantesWS.TIPO_EJECUCION_CREAR_COTIZACION);
+
+      //Si el servicio responde con error o no trae NUMERO_COTIZACION
+      if(cotSalida.getCodigoError().equals(Constantes.COD_RESPUESTA_ERROR) ||
+          cotSalida.getNroCotizacion() == null ||
+          cotSalida.getNroCotizacion().isEmpty()){
+        logger.error("::ColocacionCreditoSAP: error al crear cotización: " + cotSalida.getMensaje());
+        log = new Log(cotSalida.getCodigoError(), "Error al realizar la colocación: No se pudo obtener el nro. de cotización");
+        salida.setLog(log);
+        return salida;
+      }
+      logger.debug("::ColocacionCreditoSAP: Cotización creada correctamente");
+
+      //Almacenar transferencia en BD (Invalidante)
+      TransferenciaDao tDao = new TransferenciaDao();
+      TransferenciaVO transf = new TransferenciaVO();
+      transf.setNroCotSAP(cotSalida.getNroCotizacion());
+      transf.setRutCliente(RutUtil.getLongRut(entrada.getRutCliente()));
+      transf.setDvCliente(RutUtil.getDv(entrada.getRutCliente()));
+      transf.setRutEmpresa(RutUtil.getLongRut(entrada.getRutEmpresa()));
+      transf.setDvEmpresa(RutUtil.getDv(entrada.getRutEmpresa()));
+      transf.setNombres(clienteVO.getNombres());
+      transf.setApellidoPaterno(clienteVO.getApellidoPaterno());
+      transf.setApellidoMaterno(clienteVO.getApellidoMaterno());
+
+      String celular = (String.valueOf(clienteVO.getPrefijoCelular()) + String.valueOf(clienteVO.getNroCelular())).trim();
+      transf.setNroCelular(celular);
+      transf.setEmail(clienteVO.getEmail());
+      transf.setMontoGiro(entrada.getMontoGiro());
+      transf.setOrigen(entrada.getOrigen());
+      transf.setComentario(entrada.getComentario());
+
+      transf.setNroCuentaDestino(entrada.getNroCuentaDestino().trim());
+      transf.setCodBanco(entrada.getCodBanco());
+      transf.setTipoCuenta(entrada.getTipoCuenta());
+      long folioInterno = tDao.ingresarTransferencia(transf);
+      transf.setFolioInterno(folioInterno);
+
+      //Llamada al servicio ModificaCotizacion
+      ModificaCotizacionClient modCotClient = new ModificaCotizacionClient();
+      ModificaCotizacionEntradaVO modCotIn = new ModificaCotizacionEntradaVO();
+      modCotIn.setNroCotizacion(cotSalida.getNroCotizacion().trim());
+      modCotIn.setIdTransferencia(cotSalida.getNroCotizacion().trim());
+      
+      modCotIn.setTipoCuenta(entrada.getTipoCuenta());
+      modCotIn.setClaveBanco(entrada.getCodBanco());
+      modCotIn.setCuenta(entrada.getNroCuentaDestino());
+      modCotIn.setContacto(" ");
+      ModificaCotizacionSalidaVO modCotOut = modCotClient.call(modCotIn);
+
+      if(modCotOut.getCodigoError().equals(Constantes.COD_RESPUESTA_ERROR)){
+        transf.setEstadoCol(Constantes.ERROR_COLOCACION);
+        logger.error("::ColocacionCreditoSAP: error al modificar cotización: " + modCotOut.getMensaje());
+        log = new Log(modCotOut.getCodigoError(), "Error al realizar la colocación: Se produjo un error error al modificar cotización");
+      }else{
+        transf.setEstadoCol(Constantes.GIRO_EN_PROCESO);
+        logger.debug("::ColocacionCreditoSAP: Transferencia almacenada correctamente \n ::ColocacionCreditoSAP: Primer paso colocación realizado correctamente");
+        log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Solicitud de colocación realizada correctamente");
+      }
+
+      boolean estado = tDao.actualizarEstadoTransf(transf);
+      logger.info(String.format("Transferencia con id %s actualizada: %s",transf.getFolioInterno(),estado));
+
+    } catch (Exception e) {
+      logger.error("::ColocacionCreditoSAP: Se produjo una excepción",e);
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al generar la colocación: " + e.getMessage());
+    }
+
+    salida.setLog(log);
+    return salida;
+  }
+
+  /**
+   * Procesa la respuesta de la colocación desde SAP y realiza la solicitud de transferencia a STL
+   * @param entrada
+   * @return
+   */
+  public RespuestaColocacionOut recibirRespuestaColocacion(RespuestaColocacionIn entrada){
+    RespuestaColocacionOut salida = new RespuestaColocacionOut();
+
+    //validar datos de entrada
+    Log log = validaEntradaRespCol(entrada);
+    if(log!=null){
+      salida.setLog(log);
+      return salida;
+    }
+
+    TransferenciaDao tDao = new TransferenciaDao();
+    TransferenciaVO transf = null;
+    try {
+      //Consulta los datos de la transferencia por el Nro de cotización enviado
+      transf = tDao.consultaTransfByNroCot(entrada.getNroCotizacion(), Constantes.GIRO_EN_PROCESO);
+
+      //Si no encontró el nro de cotización
+      if(transf == null){
+    	logger.debug("::RespuestaColocacion: Nro. de cotización no encontrado");
+        log = new Log(Constantes.COD_RESPUESTA_VACIO, "Nro. de cotización no encontrado");
+        salida.setLog(log);
+        return salida;
+      }
+      //Agregar folio de tesorería y de crédito desde SAP
+      transf.setFolioTesoreria(Long.parseLong(entrada.getFolioTesoreria()));
+      transf.setFolioCredito(entrada.getFolioCredito());
+
+      //Generar comprobante y certificados y enviar por email
+      //Consultar datos de clientes (Invalidante)
+      DatosClienteDAO dao = new DatosClienteDAO();
+      ClienteVO clienteVO = dao.getDatosClienteCorp(transf.getRutCliente()+"-" +transf.getDvCliente()).getCliente();
+
+      if(clienteVO == null){
+    	logger.debug("::RespuestaColocacion: No se pudo obtener los datos de cliente");
+        log = new Log(Constantes.COD_RESPUESTA_VACIO, "Error al realizar la colocación: No se pudo obtener los datos de cliente");
+        salida.setLog(log);
+        return salida;
+      }
+      if(transf.getApellidoMaterno() == null || transf.getApellidoMaterno().isEmpty()){
+        transf.setApellidoMaterno("  ");
+      }
+
+      //Registrar movimiento en Log
+      LogDao logDao = new LogDao();
+      transf.setEvento(Constantes.EVENTO_COLOCACION);
+      if(!logDao.registrarColocacion(transf)){
+        logger.error("::Respuesta colocación: Error al registrar colocación en LCDTA.LC07TRAZA");
+      }
+      transf.setFolioCredito(entrada.getFolioCredito());
+      
+      //Generar Xml y enviar solicitud a STL
+      try {
+        String xmlSol = generarXmlSolicitud(transf);
+        HashMap<String, String> xmlEnc = EncriptUtils.encode(xmlSol, Constantes.KEY_SISTEMA_ORIGEN);
+
+        logger.debug("::Respuesta colocación: Xml solicitudTEF creado correctamente");
+        ClienteSolicitudTEF solClient = new ClienteSolicitudTEF();
+        SolicitudTEFEntradaVO solIn = new SolicitudTEFEntradaVO();
+        solIn.setIdSistemaOrigen(Constantes.ID_SISTEMA_ORIGEN);
+        solIn.setVectorIni(xmlEnc.get("vector"));
+        solIn.setXmlEncriptado(xmlEnc.get("xmlEncript"));
+
+        SolicitudTEFSalidaVO solSTLOut = solClient.call(solIn);
+
+        //Si falló la solicitudTEF
+        if(solSTLOut.getResultCode().equals(Constantes.COD_RESPUESTA_ERROR)){
+          //Actualizar estado transferencia a transferencia fallida.
+          transf.setEstadoCol(Constantes.SOL_STL_ERROR);
+          logger.error("::RespuestaColocacion: Error al realizar solicitud a STL: " + solSTLOut.getLog().getMensaje());
+          //Actualizar comprobante de tesorería
+          ComprobanteTesoreria compTes = new ComprobanteTesoreria();
+          compTes.setFolioTes(transf.getFolioTesoreria());
+          compTes.setTipoPago(Constantes.TIPO_PAGO_TES_ERROR);
+          if(!tDao.actCompTesoreria(compTes)){
+              logger.debug("::RespuestaColocacion: error al actualizar estado de comprobante en tesoreria");
+          }
+          //Enviar SMS a cliente
+    	  NotificacionMGR notMgr = new NotificacionMGR();
+    	  notMgr.enviarSMSCliente(String.valueOf(transf.getNroCelular()));
+        }else{
+          //Actualizar estado transferencia a Solicitud de transf. enviada
+          transf.setEstadoCol(Constantes.SOL_STL_ENVIADA);
+          logger.debug("::RespuestaColocacion: SolicitudTEF realizada correctamente");
+        }
+      } catch (Exception e) {
+    	NotificacionMGR notMgr = new NotificacionMGR();
+    	notMgr.enviarSMSCliente(String.valueOf(transf.getNroCelular()));
+    	transf.setEstadoCol(Constantes.SOL_STL_ERROR);
+        logger.error("::Respuesta colocación: Error al realizar solicitud a STL", e);
+      }
+
+      if(!tDao.actualizarRespTransf(transf)){
+        logger.error("::Respuesta colocación: Error al actualizar estado de colocación");
+        salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error al actualizar estado de colocación"));
+        return salida;
+      }
+      //Generar certificados
+      enviarEmailComprobantes(clienteVO, transf);
+      //Operación realizada correctamente
+      log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Respuesta de colocación procesada correctamente");
+    } catch (Exception e) {
+      logger.error("::RespuestaColocacion: Error al procesar la respuesta de colocación: ",e);
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al procesar la respuesta de colocación: " + e.getMessage());
+    }
+    salida.setFolioInterno(String.valueOf(transf.getFolioInterno()));
+    salida.setLog(log);
+    return salida;
+  }
+
+  /**
+   * Generar comprobante y certificados del giro y los envía por email
+   * @param clienteVO
+   * @param transf
+   */
+  private void enviarEmailComprobantes(ClienteVO clienteVO, TransferenciaVO transf){
+    try {
+    	//Reformatear folio
+    	transf.setFolioCredito(Utils.formatearFolio(transf.getFolioCredito()));
+    	
+      List<AdjuntoVO> adjuntos = new ArrayList<AdjuntoVO>();
+      // Comprobante de giro
+      GenerarReporteManager genReportMgr = new GenerarReporteManager();
+      byte[] compGiroBytes = genReportMgr.generarComprobanteDeGiro(transf);
+      AdjuntoVO compGiro = new AdjuntoVO(Constantes.NOMB_COMP_GIRO_EMAIL+".pdf", AdjuntoVO.PDF_TYPE, compGiroBytes);
+      adjuntos.add(compGiro);
+
+      //Obtener datos del certificado de amortización
+      CertAmortizacionMGR mgr = new CertAmortizacionMGR();
+      CertAmortizacionIn certAmortIn = new CertAmortizacionIn();
+      
+      certAmortIn.setRut(clienteVO.getRutCliente());
+      certAmortIn.setFolioCredito(transf.getFolioCredito());
+      CertAmortizacionOut certAmortOut = mgr.obtenerCertAmortizacion(certAmortIn);
+
+      if(!certAmortOut.getLog().getCodRespuesta().equals(Constantes.COD_RESPUESTA_SUCCESS)){
+        //Si falla la obtención de datos
+        logger.error("::RespuestaColocacion: Error al obtener los datos para generar los certificados: " + certAmortOut.getLog().getMensaje());
+        return;
+      }
+      //Certificado de amortizacion
+      byte[] certAmortBytes = genReportMgr.generarCertificadoAmortizacion(clienteVO, transf.getFolioCredito(), certAmortOut);
+      AdjuntoVO certAmort = new AdjuntoVO(Constantes.NOMB_CERT_AMORT_EMAIL+".pdf", AdjuntoVO.PDF_TYPE, certAmortBytes);
+      adjuntos.add(certAmort);
+
+      //Certificado de cobertura de seguro de desgravamen
+      byte[] certCobDesgBytes = genReportMgr.generarCertCobSegDesg(clienteVO, transf, certAmortOut);
+      AdjuntoVO cobDesg = new AdjuntoVO(Constantes.NOMB_CERT_COB_DESG_EMAIL+".pdf", AdjuntoVO.PDF_TYPE, certCobDesgBytes);
+      adjuntos.add(cobDesg);
+
+      String mensaje = "<div style='text-align: justify'>" +
+          "<img src='cid:banner' width='350'> <br />Estimado(a): "+ clienteVO.getFullNombre()+"<br />" +
+          Configuraciones.getConfig("msj.email.comprobantes")+
+          "<div style='text-align: justify; font-style: italic; margin: 1em'>"+
+          "Este email es generado en forma automática, por favor no responda a este mensaje, si tiene cualquier duda, favor contactarse con nuestro servicio de ayuda corporativo "+Constantes.NRO_CALL_CENTER+".</div>" +
+          "</div>";
+      Email.sendEmail(Constantes.MAIL_SESSION, transf.getEmail(), Constantes.ASUNTO_EMAIL_EXITO, mensaje, adjuntos);
+    } catch (Exception e) {
+      logger.error("::Respuesta colocación: Error al enviar correo de notificación transferencia: ",e);
+    }
+  }
+
+  /**
+   * Genera el Xml de solicitudTEF de STL en base al objeto TransferenciaVO
+   * Limpia datos de entrada para generar Xml
+   * @param transf
+   * @return String con el Xml de solicitud
+   */
+  private String generarXmlSolicitud(TransferenciaVO transf){
+    //Agregar transferencia a objeto Xml
+    String folioTes = String.valueOf(transf.getFolioTesoreria());
+    Transferencia trXmlObj = new Transferencia(String.valueOf(transf.getFolioInterno()),
+        folioTes,
+        transf.getMontoGiro());//Máx. 13 caracteres enteros, no considera decimales
+    ArrayList<Transferencia> listaTransf = new ArrayList<Transferencia>();
+    listaTransf.add(trXmlObj);
+
+    ListaTEF lista = new ListaTEF();
+    lista.setTransferencia(listaTransf);
+    Solicitud transferencia = new Solicitud(transf.getTipoCuenta(),
+        transf.getNroCuentaDestino(),
+        transf.getCodBanco(),
+        " ",
+        Constantes.MONEDA_SISTEMA_ORIGEN,
+        transf.getMontoGiro(), //Máx. 13 caracteres enteros, no considera decimales
+        lista);
+    Beneficiario beneficiario = new Beneficiario(String.valueOf(transf.getRutCliente()),
+        transf.getDvCliente(),
+        CompletaUtil.quitarTildes(transf.getNombres()),
+        CompletaUtil.quitarTildes(transf.getApellidoPaterno()),
+        CompletaUtil.quitarTildes(transf.getApellidoMaterno()),
+        CompletaUtil.quitarTildesEmail(transf.getEmail()),
+        " ",
+        String.valueOf(transf.getNroCelular()));
+    SistemaOrigen sistema = new SistemaOrigen();
+    sistema.setId(Constantes.ID_SISTEMA_ORIGEN);
+    sistema.setUsername(Constantes.USER_SISTEMA_ORIGEN);
+    sistema.setPassword(Constantes.PASS_SISTEMA_ORIGEN);
+    sistema.setNombre(Constantes.USER_SISTEMA_ORIGEN);
+    sistema.setUrlRespuesta(Constantes.URL_NOTIFICACION);
+    String glosaCartola = "";
+    try {
+      glosaCartola = Utils.rellenarCampos(transf.getRutCliente()+transf.getDvCliente(), 10, "0");
+      glosaCartola += Utils.rellenarCampos(folioTes, 10, "0");
+    } catch (Exception e) {}
+    sistema.setGlosaCartolaCliente(glosaCartola);//Rut + DV + Folio tes.
+    sistema.setFlgEnviaMensajes(Constantes.FLG_ENVIA_MENSAJE);
+
+    SolicitudTEF solicitud = new SolicitudTEF();
+    solicitud = new SolicitudTEF(sistema, beneficiario, transferencia);
+    String salida = UtilXML.getStringFromXML(solicitud);
+    return salida;
+  }
+
+  /**
+   * Valida los datos de entrada del método colocarCreditoEsp del servicio ColocacionCreditoSAP
+   * @param entrada
+   * @return
+   */
+  private Log validaEntradaSolCol(ColocacionCreditoSAPIn entrada){
+    //Validar los datos de entrada
+    if(!RutUtil.IsRutValido(entrada.getRutCliente())) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut cliente válido");
+    }
+
+    if(!RutUtil.IsRutValido(entrada.getRutEmpresa())) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut de empresa válido");
+    }
+
+    //Largo 10, según WSDL de 'CreaCotizacion'
+    if(entrada.getAnexoEmpresa() == null || entrada.getAnexoEmpresa().length()>10) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese anexo de empresa válido");
+    }
+
+    //Largo 13
+    if(!(ValidarUtil.isNumeric(entrada.getMontoGiro()) && entrada.getMontoGiro().length()<14)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese monto válido");
+    }
+
+    if(!(ValidarUtil.isNumeric(entrada.getNroCuotas()) && entrada.getNroCuotas().length()<4)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese nro. cuotas válido");
+    }
+
+    if(entrada.getCodOficina() == null || entrada.getCodOficina().length()>10) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese cod. de oficina válido");
+    }
+
+    if(!(ValidarUtil.isNumeric(entrada.getNroCuentaDestino())  && entrada.getNroCuentaDestino().trim().length()<19)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese nro. cuenta destino válido");
+    }
+
+    if(!(ValidarUtil.isNumeric(entrada.getCodBanco()) && entrada.getCodBanco().length()<5)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese cod. de banco válido");
+    }
+
+    if(!(ValidarUtil.isNumeric(entrada.getTipoCuenta()) && entrada.getTipoCuenta().length()<3)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese tipo de cuenta válido");
+    }
+
+    if(!(entrada.getOrigen() != null && entrada.getOrigen().length() < 21)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese 'Origen' válido (max. 20 caracteres)");
+    }
+
+    return null;
+  }
+
+  /**
+   * Valida los datos de entrada del servicio RespuestaColocacion
+   * @param entrada
+   * @return
+   */
+  private Log validaEntradaRespCol(RespuestaColocacionIn entrada){
+
+    if(!(entrada.getNroCotizacion() != null && entrada.getNroCotizacion().length()<11)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Nro. de cotización no válido");
+    }
+
+    if(!(entrada.getFolioCredito() != null && entrada.getFolioCredito().matches("\\d{10,13}"))) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Folio de crédito no válido");
+    }
+
+    if(!(entrada.getFolioTesoreria() != null && entrada.getFolioTesoreria().length()<11)) {
+      return new Log(Constantes.COD_RESPUESTA_ERROR, "Folio de tesorería no válido");
+    }
+
+    return null;
+  }
+}

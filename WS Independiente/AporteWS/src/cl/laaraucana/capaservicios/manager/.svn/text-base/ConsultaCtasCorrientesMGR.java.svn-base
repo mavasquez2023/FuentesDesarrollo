@@ -1,0 +1,171 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.database.dao.CuentaCorrienteDAO;
+import cl.laaraucana.capaservicios.database.vo.CuentaCorrienteVO;
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.ValidarUtil;
+import cl.laaraucana.capaservicios.webservices.client.CuentasCorrientesSAP.CuentasCorrientesSAPClient;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteVO;
+
+public class ConsultaCtasCorrientesMGR {
+	private Logger logger = Logger.getLogger(this.getClass());
+	/**
+	 * Obtiene cuentas corrientes desde modelo de crédito especial AS400
+	 * @param rut
+	 * @return lista de cuentas corrientes
+	 */
+	public ConsultaCtasCorrientesOut obtenerCtasCorrientes(String rut){
+		CuentaCorrienteDAO ctasDao = new CuentaCorrienteDAO();
+		ConsultaCtasCorrientesOut salida = new ConsultaCtasCorrientesOut();
+		Log log = null;
+		
+		//Validar datos de entrada
+		if(!RutUtil.IsRutValido(rut)){
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido");
+			salida.setLog(log);
+			return salida;
+		}
+		
+		//Lógica del servicio
+		try {
+			List<CtaCorrienteVO> cuentas = new ArrayList<CtaCorrienteVO>();
+			
+			//Obtener cuentas corrientes desde SAP
+			ConsultaCtasCorrientesOut cuentasSapOut = new ConsultaCtasCorrientesOut();
+			CuentasCorrientesSAPClient ctasClient = new CuentasCorrientesSAPClient();
+			cuentasSapOut = ctasClient.obtenerCuentas(rut);
+			if(cuentasSapOut.getLog().getCodRespuesta().equals(Constantes.COD_RESPUESTA_ERROR)){
+				log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al obtener cuentas corrientes desde SAP");
+				salida.setLog(log);
+				return salida;
+			}
+			//Agregar cuentas corrientes desde SAP a la lista
+			if(cuentasSapOut.getLog().getCodRespuesta().equals(Constantes.COD_RESPUESTA_SUCCESS)){
+				cuentas.addAll(cuentasSapOut.getCuentas());
+			}
+			
+			List<CuentaCorrienteVO> cuentasVO = ctasDao.getCtasCorrientesByRut(rut);
+			for (CuentaCorrienteVO cuenta : cuentasVO) {
+				CtaCorrienteVO cta = new CtaCorrienteVO(rut,
+														cuenta.getCodBanco(), 
+														cuenta.getTipoCuenta(),
+														cuenta.getNroCuenta().trim(),
+														true);//Cuentas modificables
+				cuentas.add(cta);
+			}
+			salida.setCuentas(cuentas);
+			if(salida.getCuentas().size()>0){
+				log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Cuentas obtenidas correctamente");
+			}else{
+				log = new Log(Constantes.COD_RESPUESTA_VACIO, "Rut no tiene cuentas asociadas");
+			}
+		} catch (Exception e) {
+			logger.error("Error al obtener cuentas corrientes: ",e);
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al obtener ctas. corrientes: " + e.getMessage());
+		}
+		salida.setLog(log);
+		return salida;
+	}
+	
+	/**
+	 *  Agrega cuenta corriente en modelo de crédito especial AS400
+	 * @param entrada
+	 * @return 3 si se agregó correctamente o 5 si falló la operación (Excepción)
+	 */
+	public CtaCorrienteOut agregarCtaCorriente(CtaCorrienteVO entrada){
+		CtaCorrienteOut salida = new CtaCorrienteOut();
+		CuentaCorrienteDAO ctasDao = new CuentaCorrienteDAO();
+		//Validar datos de entrada
+		Log log = validarAgregarCta(entrada);
+		if(log!=null){
+			salida.setLog(log);
+			return salida;
+		}
+		
+		try {
+			CuentaCorrienteVO ctaCorriente = new CuentaCorrienteVO(RutUtil.getLongRut(entrada.getRutAfi()),
+																	RutUtil.getDv(entrada.getRutAfi()),
+																	entrada.getNroCuenta(),
+																	entrada.getTipoCuenta(),
+																	entrada.getCodBanco());
+			ctasDao.agregarCtaCorriente(ctaCorriente);
+			log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Cuenta corriente agregada correctamente");
+			salida.setCodRespuesta(Constantes.COD_RESPUESTA_SUCCESS);
+		} catch (Exception e) {
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al agregar cta. corriente: " + e.getMessage());
+			salida.setCodRespuesta(Constantes.COD_RESPUESTA_ERROR);
+		}
+		salida.setLog(log);
+		return salida;
+	}
+	
+	/**
+	 * Elimina cuenta corriente desde AS400
+	 * @param entrada
+	 * @return 1 si la cuenta no existe, 3 si se eliminó correctamente y 5 si falló la operación (Excepción)
+	 */
+	public CtaCorrienteOut eliminarCtaCorriente(ConsultaCtasCorrientesIn entrada){
+		CtaCorrienteOut salida = new CtaCorrienteOut();
+		CuentaCorrienteDAO ctasDao = new CuentaCorrienteDAO();
+		Log log = null;
+		String rut = entrada.getRutCliente().replaceAll("\\.","");
+		//Validar datos de entrada
+		if (!RutUtil.IsRutValido(rut)) {
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido"));
+			return salida;
+		}
+		if(!(entrada.getNroCuenta() !=null && entrada.getNroCuenta().matches("\\d{1,18}"))){
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un nro. de cuenta válido"));
+			return salida;
+		}
+
+		try {
+			if(ctasDao.eliminarCtaCorriente(rut, entrada.getNroCuenta())){
+				log = new Log(Constantes.COD_RESPUESTA_SUCCESS, "Cuenta corriente eliminada correctamente");
+				salida.setCodRespuesta(Constantes.COD_RESPUESTA_SUCCESS);
+			}else{
+				log = new Log(Constantes.COD_RESPUESTA_VACIO, "La cuenta corriente que desea eliminar no existe");
+				salida.setCodRespuesta(Constantes.COD_RESPUESTA_VACIO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al eliminar cta. corriente: " + e.getMessage());
+			salida.setCodRespuesta(Constantes.COD_RESPUESTA_ERROR);
+		}
+		salida.setLog(log);
+		return salida;
+	}
+	
+	/**
+	 * Validar datos de entrada de método para agregar cuentas corrientes.
+	 * @param entrada
+	 * @return
+	 */
+	private Log validarAgregarCta(CtaCorrienteVO entrada){
+		
+		if(!RutUtil.IsRutValido(entrada.getRutAfi()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido");
+		
+		if(!ValidarUtil.isNumeric(entrada.getCodBanco()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR,"Ingrese código de banco válido");
+		
+		if(!ValidarUtil.isNumeric(entrada.getTipoCuenta()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR,"Ingrese tipo de cuenta válido");
+		
+		if(!ValidarUtil.isNumeric(entrada.getNroCuenta()))
+			return new Log(Constantes.COD_RESPUESTA_ERROR,"Ingrese Nro. de cuenta válido");
+		
+		return null;
+	}
+	
+}

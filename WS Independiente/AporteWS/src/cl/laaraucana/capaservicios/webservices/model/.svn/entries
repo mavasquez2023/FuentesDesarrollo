@@ -1,0 +1,52 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/model
+https://172.16.137.116/svn/IBM
+
+
+
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+AbstractSalidaVO.java
+file
+
+
+
+
+2014-05-12T22:03:36.862605Z
+cc31df71edab0a83ce4e570b6fb941c8
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+
+AbstractEntradaVO.java
+file
+
+
+
+
+2014-05-12T22:03:36.865605Z
+c41fe4e2dc8f21ec295f76539f396546
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+

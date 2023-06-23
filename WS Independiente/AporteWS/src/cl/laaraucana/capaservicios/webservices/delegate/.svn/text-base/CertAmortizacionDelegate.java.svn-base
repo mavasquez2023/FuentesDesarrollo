@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.CertAmortizacionMGR;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="CertAmortizacionService", portName="CertAmortizacionPort", wsdlLocation="WEB-INF/wsdl/CertAmortizacionService.wsdl")
+public class CertAmortizacionDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.CertAmortizacion _certAmortizacion = null;
+
+    public CertAmortizacionOut obtenerCertAmortizacion (@WebParam(name="entrada") CertAmortizacionIn entrada) {
+        return _certAmortizacion.obtenerCertAmortizacion(entrada);
+    }
+
+    public CertAmortizacionDelegate() {
+        _certAmortizacion = new cl.laaraucana.capaservicios.webservices.service.CertAmortizacion(); }
+
+}

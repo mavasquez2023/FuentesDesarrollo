@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.ClienteCurseComprobante;
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.vo.EntradaCurseComprobanteVO;
+import cl.laaraucana.capaservicios.webservices.client.TreasuryMovementEventOut.vo.SalidaCurseComprobanteVO;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="CurseComprobanteService", portName="CurseComprobantePort", wsdlLocation="WEB-INF/wsdl/CurseComprobanteService.wsdl")
+public class CurseComprobanteDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.CurseComprobante _curseComprobante = null;
+
+    public SalidaCurseComprobanteVO cursarComprobanteTesoreria (@WebParam(name="entrada") EntradaCurseComprobanteVO entrada) {
+        return _curseComprobante.cursarComprobanteTesoreria(entrada);
+    }
+
+    public CurseComprobanteDelegate() {
+        _curseComprobante = new cl.laaraucana.capaservicios.webservices.service.CurseComprobante(); }
+
+}

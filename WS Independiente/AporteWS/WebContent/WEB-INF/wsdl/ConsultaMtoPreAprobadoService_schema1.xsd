@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="consultaMtoAprobado" type="tns:consultaMtoAprobado"/>
+
+  <xs:element name="consultaMtoAprobadoResponse" type="tns:consultaMtoAprobadoResponse"/>
+
+  <xs:complexType name="consultaMtoAprobado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="consultaMtoAprobado" type="tns:consultaMtoAprobadoIn"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaMtoAprobadoIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rut" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaMtoAprobadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:consultaMtoAprobadoOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consultaMtoAprobadoOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element name="montoMinimo" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="montosAprobados" nillable="true" type="tns:montoAprobadoVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="montoAprobadoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anexoBP" type="xs:string"/>
+      <xs:element minOccurs="0" name="anexoEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="cobroGastoNotarial" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoOficina" type="xs:string"/>
+      <xs:element name="maxCuotas" type="xs:int"/>
+      <xs:element name="minCuotas" type="xs:int"/>
+      <xs:element minOccurs="0" name="montoAdeudado" type="xs:string"/>
+      <xs:element minOccurs="0" name="montoDisponible" type="xs:string"/>
+      <xs:element minOccurs="0" name="razonSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresaAsoc" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

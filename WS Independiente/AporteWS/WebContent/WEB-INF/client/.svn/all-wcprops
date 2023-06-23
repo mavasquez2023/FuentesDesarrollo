@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/IBM/!svn/ver/3113/was85/InterfazServiciosCES/WebContent/WEB-INF/client
+END
+NotificacionTEFService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/WebContent/WEB-INF/client/NotificacionTEFService_schema1.xsd
+END
+os_ConsultaCuentaBancaria_SI_PIQ.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/2058/was85/InterfazServiciosCES/WebContent/WEB-INF/client/os_ConsultaCuentaBancaria_SI_PIQ.wsdl
+END
+CuentasCorrientesOLD.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/IBM/!svn/ver/2052/was85/InterfazServiciosCES/WebContent/WEB-INF/client/CuentasCorrientesOLD.wsdl
+END
+SolicitudTEFMasivaService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/WebContent/WEB-INF/client/SolicitudTEFMasivaService.wsdl
+END
+QueryContractCashFlowOUT.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IBM/!svn/ver/1940/was85/InterfazServiciosCES/WebContent/WEB-INF/client/QueryContractCashFlowOUT.wsdl
+END
+smsservice.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/2436/was85/InterfazServiciosCES/WebContent/WEB-INF/client/smsservice.wsdl
+END
+TreasuryMovementEventOUT.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IBM/!svn/ver/3092/was85/InterfazServiciosCES/WebContent/WEB-INF/client/TreasuryMovementEventOUT.wsdl
+END
+NotificacionTEFService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/IBM/!svn/ver/2249/was85/InterfazServiciosCES/WebContent/WEB-INF/client/NotificacionTEFService.wsdl
+END
+ConsultaCreditoPreAprobOUT.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IBM/!svn/ver/2436/was85/InterfazServiciosCES/WebContent/WEB-INF/client/ConsultaCreditoPreAprobOUT.wsdl
+END
+CreaCotizacionOUT.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/3113/was85/InterfazServiciosCES/WebContent/WEB-INF/client/CreaCotizacionOUT.wsdl
+END
+SolicitudTEFMasivaService_schema1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/WebContent/WEB-INF/client/SolicitudTEFMasivaService_schema1.xsd
+END
+ModificaCotizacionOUT.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IBM/!svn/ver/2517/was85/InterfazServiciosCES/WebContent/WEB-INF/client/ModificaCotizacionOUT.wsdl
+END

@@ -1,0 +1,32 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.ConsultaCtasCorrientesMGR;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.ConsultaCtasCorrientesOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaCtasCorrientes.CtaCorrienteVO;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="ConsultaCtasCorrientesService", portName="ConsultaCtasCorrientesPort", wsdlLocation="WEB-INF/wsdl/ConsultaCtasCorrientesService.wsdl")
+public class ConsultaCtasCorrientesDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.ConsultaCtasCorrientes _consultaCtasCorrientes = null;
+
+    public ConsultaCtasCorrientesOut obtenerCtasCorrientes (@WebParam(name="rut") String rut) {
+        return _consultaCtasCorrientes.obtenerCtasCorrientes(rut);
+    }
+
+    public CtaCorrienteOut agregarCtaCorriente (@WebParam(name="ctaCorrienteEntrada") CtaCorrienteVO ctaCorrienteEntrada) {
+        return _consultaCtasCorrientes.agregarCtaCorriente(ctaCorrienteEntrada);
+    }
+
+    public CtaCorrienteOut eliminarCtaCorriente (@WebParam(name="ctaCorrienteEntrada") ConsultaCtasCorrientesIn ctaCorrienteEntrada) {
+        return _consultaCtasCorrientes.eliminarCtaCorriente(ctaCorrienteEntrada);
+    }
+
+    public ConsultaCtasCorrientesDelegate() {
+        _consultaCtasCorrientes = new cl.laaraucana.capaservicios.webservices.service.ConsultaCtasCorrientes(); }
+
+}

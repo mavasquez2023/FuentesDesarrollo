@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.webservices.capaservicios.laaraucana.cl/">
+
+  <xs:element name="getComunasProvRegiones" type="tns:getComunasProvRegiones"/>
+
+  <xs:element name="getComunasProvRegionesResponse" type="tns:getComunasProvRegionesResponse"/>
+
+  <xs:element name="getListaBancos" type="tns:getListaBancos"/>
+
+  <xs:element name="getListaBancosResponse" type="tns:getListaBancosResponse"/>
+
+  <xs:element name="getTiposCuenta" type="tns:getTiposCuenta"/>
+
+  <xs:element name="getTiposCuentaResponse" type="tns:getTiposCuentaResponse"/>
+
+  <xs:complexType name="getComunasProvRegiones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoEjecucion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getComunasProvRegionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:listaCodigosSTLOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listaCodigosSTLOut">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codigos" nillable="true" type="tns:codigoVO"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="codigoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+      <xs:element minOccurs="0" name="desc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTiposCuenta">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getTiposCuentaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:listaCodigosSTLOut"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getListaBancos">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getListaBancosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:listaCodigosSTLOut"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

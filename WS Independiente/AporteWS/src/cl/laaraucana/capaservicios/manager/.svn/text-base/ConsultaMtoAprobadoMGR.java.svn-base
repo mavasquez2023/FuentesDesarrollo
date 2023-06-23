@@ -1,0 +1,111 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.webservices.client.ConsultaCreditoPreAprob.ConsultaCreditoPreAprobClient;
+import cl.laaraucana.capaservicios.webservices.client.ConsultaCreditoPreAprob.VO.ConsultaCreditoPreAprobEntradaVO;
+import cl.laaraucana.capaservicios.webservices.client.ConsultaCreditoPreAprob.VO.ConsultaCreditoPreAprobSalidaVO;
+import cl.laaraucana.capaservicios.webservices.client.ConsultaCreditoPreAprob.VO.SalidaListaConsultaCreditoPreAprob;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoIn;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.ConsultaMtoAprobadoOut;
+import cl.laaraucana.capaservicios.webservices.vo.ConsultaMtoPreAprobado.MontoAprobadoVO;
+
+public class ConsultaMtoAprobadoMGR {
+
+  protected Logger logger = Logger.getLogger(this.getClass());
+
+  /**
+   * Llama al servicio web ConsultaCreditoPreAprob para consultar si un cliente tiene un
+   * credito con monto pre-aprobado.
+   * 
+   * @param entradaVO
+   * @return
+   */
+  public ConsultaMtoAprobadoOut getMontoPreAprobado(ConsultaMtoAprobadoIn entradaVO) {
+    Log log = null;
+    
+    ConsultaMtoAprobadoOut salidaVO = new ConsultaMtoAprobadoOut();
+    ConsultaCreditoPreAprobClient ws = new ConsultaCreditoPreAprobClient();
+    
+    //Validar datos de entrada
+    if(!RutUtil.IsRutValido(entradaVO.getRut())){
+    	 log = new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido");
+    	 salidaVO.setLog(log);
+    	 return salidaVO;
+    }
+    
+    try {
+      SalidaListaConsultaCreditoPreAprob salida = ws.call(mapEntradaWS(entradaVO));
+      
+      if(salida.getCodigoError().equals(Constantes.COD_RESPUESTA_ERROR)){
+    	  logger.error("::ConsultaMtoAprobado: Error al consultar monto aprobado: "+ salida.getMensaje());
+    	  log = new Log(Constantes.COD_RESPUESTA_ERROR, salida.getMensaje());
+    	  salidaVO.setLog(log);
+      }else if(salida.getCodigoError().equals(Constantes.COD_RESPUESTA_VACIO)){
+          salidaVO.setLog(new Log(Constantes.COD_RESPUESTA_VACIO, "El cliente no tiene activada línea crédito especial"));
+      }else{
+    	  salidaVO = mapSalidaWS(salida);
+      }
+    } catch (Exception e) {
+      logger.error("::ConsultaMtoAprobado: Error en servicio ConsultaMtoAprobado: ", e);
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error en servicio ConsultaMtoAprobado: " + e.getMessage());
+      salidaVO.setLog(log);
+    }
+    return salidaVO;
+  }
+
+  /**
+   * Mapea el origen de entrada WEB, en entrada para el web service SAP.
+   * 
+   * @param entradaVO
+   * @return entradaWS
+   */
+  protected ConsultaCreditoPreAprobEntradaVO mapEntradaWS(ConsultaMtoAprobadoIn entradaVO) {
+    ConsultaCreditoPreAprobEntradaVO entradaWS = new ConsultaCreditoPreAprobEntradaVO();
+    entradaWS.setRut(entradaVO.getRut());
+    return entradaWS;
+
+  }
+
+  /**
+   * Mapea la salida desde el cliente del servicio SAP al objeto de salida del servicio web Java
+   * Consulta la razón social de la empresa
+   * 
+   * @param salidaWS
+   * @return
+ * @throws Exception 
+   */
+  protected ConsultaMtoAprobadoOut mapSalidaWS(SalidaListaConsultaCreditoPreAprob salidaWS){
+	
+    ConsultaMtoAprobadoOut salidaVO = new ConsultaMtoAprobadoOut();
+    List<MontoAprobadoVO> listaMontosAprobados = new ArrayList<MontoAprobadoVO>();
+    if (salidaWS.getDetallePreAprobado() != null && salidaWS.getDetallePreAprobado().size() > 0) {
+      for (ConsultaCreditoPreAprobSalidaVO creditoWS : salidaWS.getDetallePreAprobado()) {
+    	MontoAprobadoVO creditoVO = new MontoAprobadoVO();
+        creditoVO.setMontoAdeudado(Utils.quitarDecimalesString(creditoWS.getCapitalAdeudado()));
+        creditoVO.setMontoDisponible(Utils.quitarDecimalesString(creditoWS.getMontoMax()));
+        creditoVO.setRutEmpresaAsoc(creditoWS.getRutEmpleador());
+        creditoVO.setAnexoBP(creditoWS.getBpPersona());
+        creditoVO.setAnexoEmpresa(creditoWS.getBpEmpleador());
+        creditoVO.setMinCuotas(Integer.parseInt(Constantes.NRO_MIN_CUO));
+        creditoVO.setMaxCuotas(Integer.parseInt(creditoWS.getNoMaxCuotas()));
+        creditoVO.setCodigoOficina(creditoWS.getCodigoOficina());
+        creditoVO.setCobroGastoNotarial(creditoWS.getCobroGastoNotarial());
+        creditoVO.setRazonSocial(creditoWS.getNombreEmpleador());
+       
+        listaMontosAprobados.add(creditoVO);
+      }
+      salidaVO.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS, "Monto aprobado especial obtenido correctamente"));
+    }
+    salidaVO.setMontoMinimo(Long.parseLong(Constantes.MONTO_MIN_GIRO));
+    salidaVO.setMontosAprobados(listaMontosAprobados);
+    return salidaVO;
+  }
+
+}

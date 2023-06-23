@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.orqOutput.aporte.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.orqOutput.aporte.araucana.cl" xmlns:intf="http://service.orqOutput.aporte.araucana.cl" xmlns:tns1="http://vo.service.orqOutput.aporte.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.orqOutput.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.service.orqOutput.aporte.araucana.cl"/>
+   <element name="recuperacionPago">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+      <element name="montoCredito" type="xsd:int"/>
+      <element name="montoLeasing" type="xsd:int"/>
+      <element name="montoAporte" type="xsd:int"/>
+      <element name="periodoAporte" type="xsd:int"/>
+      <element name="fechaRecaudacion" type="xsd:string"/>
+      <element name="horaRecaudacion" type="xsd:string"/>
+      <element name="usuario" type="xsd:string"/>
+      <element name="documentoPago" type="xsd:int"/>
+      <element name="ofi_folio" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="recuperacionPagoResponse">
+    <complexType>
+     <sequence>
+      <element name="recuperacionPagoReturn" type="tns1:OrqOutputResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="recuperacionPagoRemote">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+      <element name="montoCredito" type="xsd:int"/>
+      <element name="montoLeasing" type="xsd:int"/>
+      <element name="montoAporte" type="xsd:int"/>
+      <element name="periodoAporte" type="xsd:int"/>
+      <element name="fechaRecaudacion" type="xsd:string"/>
+      <element name="horaRecaudacion" type="xsd:string"/>
+      <element name="usuario" type="xsd:string"/>
+      <element name="documentoPago" type="xsd:int"/>
+      <element name="ofi_folio" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="recuperacionPagoRemoteResponse">
+    <complexType>
+     <sequence>
+      <element name="recuperacionPagoRemoteReturn" type="tns1:OrqOutputResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo.service.orqOutput.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ErrorResultVO">
+    <sequence>
+     <element name="codError" type="xsd:int"/>
+     <element name="glsError" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="OrqOutputResultVO">
+    <sequence>
+     <element name="errorVO" nillable="true" type="tns1:ErrorResultVO"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="recuperacionPagoRemoteResponse">
+
+      <wsdl:part element="impl:recuperacionPagoRemoteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="recuperacionPagoResponse">
+
+      <wsdl:part element="impl:recuperacionPagoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="recuperacionPagoRemoteRequest">
+
+      <wsdl:part element="impl:recuperacionPagoRemote" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="recuperacionPagoRequest">
+
+      <wsdl:part element="impl:recuperacionPago" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OrqOutputServiceImpl">
+
+      <wsdl:operation name="recuperacionPago">
+
+         <wsdl:input message="impl:recuperacionPagoRequest" name="recuperacionPagoRequest"/>
+
+         <wsdl:output message="impl:recuperacionPagoResponse" name="recuperacionPagoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recuperacionPagoRemote">
+
+         <wsdl:input message="impl:recuperacionPagoRemoteRequest" name="recuperacionPagoRemoteRequest"/>
+
+         <wsdl:output message="impl:recuperacionPagoRemoteResponse" name="recuperacionPagoRemoteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OrqOutputServiceImplSoapBinding" type="impl:OrqOutputServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="recuperacionPago">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="recuperacionPagoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="recuperacionPagoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recuperacionPagoRemote">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="recuperacionPagoRemoteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="recuperacionPagoRemoteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OrqOutputServiceImplService">
+
+      <wsdl:port binding="impl:OrqOutputServiceImplSoapBinding" name="OrqOutputServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:9081/AporteWS/services/OrqOutputServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

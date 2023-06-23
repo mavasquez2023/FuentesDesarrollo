@@ -1,0 +1,180 @@
+package cl.laaraucana.capaservicios.manager;
+
+import java.util.ArrayList;
+/*import java.util.Calendar;
+import java.util.Date;
+import cl.laaraucana.capaservicios.util.Utils;*/
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.ConstantesWS;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.Utils;
+import cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.ClienteQueryCompContHeaderIn;
+import cl.laaraucana.capaservicios.webservices.client.QueryCompContHeaderIn.VO.SalidaQueryCompContHeaderInVO;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractCashflowIn.ClienteQueryContractCashflowIn;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractCashflowIn.VO.EntradaQueryContractCashflowInVO;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractCashflowIn.VO.SalidaListaQueryContractCashflowInVO;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractCashflowIn.VO.SalidaQueryContractCashflowInVO;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractHeaderIn.ClienteQueryContractHeaderIn;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractHeaderIn.VO.EntradaQueryContractHeaderInVO;
+import cl.laaraucana.capaservicios.webservices.client.QueryContractHeaderIn.VO.SalidaQueryContractHeaderInVO;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CertAmortizacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.CertAmortizacion.CuotaVO;
+
+public class CertAmortizacionMGR {
+	Logger logger = Logger.getLogger(this.getClass());
+		
+	/**
+	 * Obtiene detalle del desarrollo del crédito
+	 * Consulta a servicios QueryContractHeader y QueryContractCashFlow
+	 * @param CertAmortizacionIn
+	 * @return
+	 */
+		public CertAmortizacionOut obtenerCertAmortizacion(CertAmortizacionIn entrada){
+			CertAmortizacionOut salida = new CertAmortizacionOut();
+			//Validar datos de entrada
+		    if(!RutUtil.IsRutValido(entrada.getRut())){
+		        salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese un rut válido"));
+		        return salida;
+		      }
+		    if(!(entrada.getFolioCredito() != null && entrada.getFolioCredito().matches("\\d{3}-\\d{7,10}"))){
+		        salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese folio crédito válido"));
+		        return salida;
+		    }
+			
+			List<CuotaVO> cuotasSalida = null;
+			entrada.setFolioCredito(entrada.getFolioCredito().replace("-", ""));//Eliminar guión al folio
+			
+			SalidaQueryContractHeaderInVO infoCredito = null;
+			SalidaQueryCompContHeaderInVO credito = null;
+				
+			//Llamada a QueryContractCash
+			ClienteQueryContractCashflowIn cashFlowClient = new ClienteQueryContractCashflowIn();
+			EntradaQueryContractCashflowInVO cashFlowIn = new EntradaQueryContractCashflowInVO();
+			cashFlowIn.setFolioCredito(entrada.getFolioCredito());
+			
+			SalidaListaQueryContractCashflowInVO cashFlowOut;
+			try {
+				//Búsqueda del crédito en CompContractHeader
+				ClienteQueryCompContHeaderIn compCont = new ClienteQueryCompContHeaderIn();
+				credito= compCont.buscarCredito(entrada.getRut(), entrada.getFolioCredito(), ConstantesWS.ESTADO_TODOS_CREDITOS);
+				if(credito == null){
+					salida.setLog(new Log(Constantes.COD_RESPUESTA_VACIO, "Crédito no encontrado"));
+					return salida;
+				}
+				
+				//Obtener cabecera del crédito
+				ClienteQueryContractHeaderIn clienteQueryContract = new ClienteQueryContractHeaderIn();
+				EntradaQueryContractHeaderInVO contractHeadIn = new EntradaQueryContractHeaderInVO();
+				contractHeadIn.setRut(entrada.getRut());
+				contractHeadIn.setAcnum_ext(entrada.getFolioCredito());
+				infoCredito = (SalidaQueryContractHeaderInVO) clienteQueryContract.call(contractHeadIn);
+				
+				if(infoCredito.getCodigoError().equals(Constantes.COD_RESPUESTA_VACIO)){
+					salida.setLog(new Log(Constantes.COD_RESPUESTA_VACIO, "Crédito no encontrado"));
+					return salida;
+				}
+				
+				long montoGiro, montoNominal, gastosNotariales, impLte;
+				montoNominal = Long.parseLong(credito.getContractAmount());
+				gastosNotariales = Long.parseLong(infoCredito.getNotarialCharge());
+				impLte = Long.parseLong(infoCredito.getLteAmount());
+				montoGiro = montoNominal-gastosNotariales-impLte;
+				
+				//Fecha de primer vencimiento
+				salida.setFechaOtorgamiento(Utils.pasaFechaSAPaWEBNulo(credito.getContractBegin(), " "));
+				salida.setMontoGiro(montoGiro);
+				
+				cashFlowOut = (SalidaListaQueryContractCashflowInVO) cashFlowClient.call(cashFlowIn);
+				List<SalidaQueryContractCashflowInVO> cuotas = cashFlowOut.getListaCuotas();
+				
+				//Detalle del desarrollo del crédito
+				cuotasSalida = new ArrayList<CuotaVO>();
+				salida.setFechaUltVenc(Utils.pasaFechaSAPaWEBNulo(infoCredito.getContractEnd(), " "));
+				salida.setTasaIntMensual(infoCredito.getMonthlyInterestrate());
+				
+				for (SalidaQueryContractCashflowInVO cuotaAux : cuotas) {
+					CuotaVO cuota = new CuotaVO();
+					cuota.setFechaVenc(Utils.pasaFechaSAPaWEBNulo(cuotaAux.getFechaVencCuota(), " "));
+					
+					cuota.setCuotaTotal(Long.parseLong(cuotaAux.getTotalCuota().trim().replace(".", "")));
+					cuota.setMontoCapital(Long.parseLong(cuotaAux.getMontoCapital().trim().replace(".", "")));
+					cuota.setMontoInteres(Long.parseLong(cuotaAux.getMontoInteres().trim().replace(".", "")));
+					cuota.setNroCuota(Integer.parseInt(cuotaAux.getNroCuota().trim()));
+					cuota.setSaldoInsoluto(Long.parseLong(cuotaAux.getCapitalRestante().trim().replace(".", "")));
+					//ContractHeader
+					cuota.setSegCesantia(Long.parseLong(infoCredito.getUnemploymentinsur().trim().replace(".", "")));
+					cuota.setSegDesgravamen(Long.parseLong(infoCredito.getLifeInsurance().trim().replace(".", "")));
+					cuotasSalida.add(cuota);
+				}
+				long costoTotal;
+				int valorCuota, ultCuota;
+				valorCuota = Integer.parseInt(cuotas.get(0).getTotalCuota().trim().replace(".", ""));
+				ultCuota = Integer.parseInt(cuotas.get(cuotas.size()-1).getTotalCuota().trim().replace(".", ""));
+				costoTotal = (valorCuota * (cuotas.size() - 1))+ultCuota;
+				salida.setCostoTotal(costoTotal);
+				
+				salida.setCuotas(cuotasSalida);
+			} catch (Exception e) {
+				logger.error("::CertAmortizacion: Error al obtener datos de certificado",e);
+				salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Error al obtener datos de certificado"));
+				return salida;
+			}
+			salida.setLog(new Log(Constantes.COD_RESPUESTA_SUCCESS,"Datos obtenidos correctamente"));
+			return salida;
+		}
+		
+/*		private CertAmortizacionOut dummy(CertAmortizacionIn entrada){
+			CertAmortizacionOut salida = new CertAmortizacionOut();
+			Log log = new Log();
+			log = new Log(Constantes.COD_RESPUESTA_SUCCESS,"Datos Obtenidos OK");
+			
+			List<CuotaVO> cuotas = new ArrayList<CuotaVO>();
+			
+			double seguro = 100;
+			double tasaInteres = 0.0264;
+			int plazo = 60;
+			double saldoInsoluto = 1000000;
+			double valorCuota = saldoInsoluto*(tasaInteres *(Math.pow((1+tasaInteres),plazo)));
+			valorCuota = (valorCuota / ((Math.pow((1+tasaInteres), plazo))-1));
+			valorCuota +=seguro;
+			double intereses = (saldoInsoluto*tasaInteres);
+			double montoCap = saldoInsoluto - intereses;
+			Date fecha = new Date();
+			Calendar cal = Calendar.getInstance();
+			
+			for (int i = 0; i <= plazo; i++) {
+				CuotaVO cuota = new CuotaVO();
+				cuota.setNroCuota(i);
+				cuota.setSaldoInsoluto(new Double(saldoInsoluto).longValue());
+				cuota.setMontoCapital(new Double(montoCap).longValue());
+				cuota.setMontoInteres(new Double(intereses).longValue());
+				cuota.setSegDesgravamen(new Double(seguro).longValue());
+				cuota.setSegCesantia(0);
+				cuota.setCuotaTotal(Math.round(valorCuota));
+				
+				cal.add(Calendar.MONTH, 1);
+				fecha = cal.getTime();
+				cuota.setFechaVenc(Utils.pasaDateToFechaWeb(fecha));
+				
+				intereses = (saldoInsoluto*tasaInteres);
+				montoCap = valorCuota - intereses;
+				saldoInsoluto =  saldoInsoluto-montoCap;
+				
+			cuotas.add(cuota);	
+			}
+			
+			salida.setMontoGiro(150000);
+			salida.setFechaOtorgamiento("03-06-2014");
+			salida.setTasaIntMensual("2,46");
+			salida.setCostoTotal(170000);
+			salida.setCuotas(cuotas);
+			salida.setLog(log);
+			return salida;
+		}*/
+}

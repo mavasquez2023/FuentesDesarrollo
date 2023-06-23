@@ -1,0 +1,28 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.manager.SolicitudSmsMGR;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifOut;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="CodigoVerificacionService", portName="CodigoVerificacionPort", wsdlLocation="WEB-INF/wsdl/CodigoVerificacionService.wsdl")
+public class CodigoVerificacionDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.CodigoVerificacion _codigoVerificacion = null;
+
+    public SolCodVerificacionOut solicitarCodVerif (@WebParam(name="entrada") SolCodVerificacionIn entrada) {
+        return _codigoVerificacion.solicitarCodVerif(entrada);
+    }
+
+    public VerificarCodVerifOut verificarCodVerif (@WebParam(name="entrada") VerificarCodVerifIn entrada) {
+        return _codigoVerificacion.verificarCodVerif(entrada);
+    }
+
+    public CodigoVerificacionDelegate() {
+        _codigoVerificacion = new cl.laaraucana.capaservicios.webservices.service.CodigoVerificacion(); }
+
+}

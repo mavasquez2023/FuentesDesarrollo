@@ -1,0 +1,21 @@
+package cl.laaraucana.capaservicios.webservices.delegate;
+
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.CrearUsuarioSalida;
+import cl.laaraucana.capaservicios.webservices.vo.RegistroUsuariosLdap.UsuarioLdap;
+import javax.jws.WebService;
+import javax.jws.WebParam;
+
+
+@WebService (targetNamespace="http://delegate.webservices.capaservicios.laaraucana.cl/", serviceName="RegistroUsuariosLdapService", portName="RegistroUsuariosLdapPort", wsdlLocation="WEB-INF/wsdl/RegistroUsuariosLdapService.wsdl")
+public class RegistroUsuariosLdapDelegate{
+
+    cl.laaraucana.capaservicios.webservices.service.RegistroUsuariosLdap _registroUsuariosLdap = null;
+
+    public CrearUsuarioSalida crearUsuario (@WebParam(name="entrada") UsuarioLdap entrada) {
+        return _registroUsuariosLdap.crearUsuario(entrada);
+    }
+
+    public RegistroUsuariosLdapDelegate() {
+        _registroUsuariosLdap = new cl.laaraucana.capaservicios.webservices.service.RegistroUsuariosLdap(); }
+
+}

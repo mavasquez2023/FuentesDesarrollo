@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IBM/!svn/ver/3258/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate
+END
+ConsultaDatosGiroDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/IBM/!svn/ver/1612/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaDatosGiroDelegate.java
+END
+RespuestaColocacionDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/IBM/!svn/ver/1721/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/RespuestaColocacionDelegate.java
+END
+CurseComprobanteDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/IBM/!svn/ver/3092/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/CurseComprobanteDelegate.java
+END
+CertAmortizacionDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/IBM/!svn/ver/1592/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/CertAmortizacionDelegate.java
+END
+SimulacionCreditoEspDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/IBM/!svn/ver/1338/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/SimulacionCreditoEspDelegate.java
+END
+CodigoVerificacionDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/IBM/!svn/ver/1122/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/CodigoVerificacionDelegate.java
+END
+ConsultaMtoPreAprobadoDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/IBM/!svn/ver/1115/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaMtoPreAprobadoDelegate.java
+END
+ConsultaDatosClienteDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/IBM/!svn/ver/1137/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaDatosClienteDelegate.java
+END
+ColocacionCreditoSAPDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/IBM/!svn/ver/1746/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ColocacionCreditoSAPDelegate.java
+END
+RegistroUsuariosLdapDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/IBM/!svn/ver/3258/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/RegistroUsuariosLdapDelegate.java
+END
+AutenticarLdapDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/IBM/!svn/ver/2277/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/AutenticarLdapDelegate.java
+END
+ConsultaEstMigDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/IBM/!svn/ver/1111/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaEstMigDelegate.java
+END
+ConsultaCtasCorrientesDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/IBM/!svn/ver/1121/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaCtasCorrientesDelegate.java
+END
+DatosAuxiliaresDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/IBM/!svn/ver/1667/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/DatosAuxiliaresDelegate.java
+END
+ConsultaCreditosEspVigentesDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/IBM/!svn/ver/1223/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/delegate/ConsultaCreditosEspVigentesDelegate.java
+END

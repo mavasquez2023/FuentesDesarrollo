@@ -1,0 +1,72 @@
+package cl.laaraucana.capaservicios.manager;
+
+import org.apache.log4j.Logger;
+
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.RutUtil;
+import cl.laaraucana.capaservicios.util.ValidarUtil;
+import cl.laaraucana.capaservicios.webservices.client.SimuladorServicesUtil;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspOut;
+
+public class SimulacionCreditoEspMGR {
+  protected Logger logger = Logger.getLogger(this.getClass());
+  /**
+   * Simula giro de crédito especial en SAP
+   * @param simEntrada
+   * @return Condiciones del giro simulado
+   */
+  public SimulacionCreditoEspOut obtenerSimulacion(SimulacionCreditoEspIn simEntrada){
+    logger.info("Inicio proceso de Simulacion credito especial");
+    SimulacionCreditoEspOut salida = new SimulacionCreditoEspOut();
+    //Validar datos de entrada
+
+    if(!RutUtil.IsRutValido(simEntrada.getRutCliente())){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut de cliente válido"));
+      return salida;
+    }
+
+    if(!RutUtil.IsRutValido(simEntrada.getRutEmpresa())){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese rut de empresa válido"));
+      return salida;
+    }
+
+    if(!(simEntrada.getAnexoEmpresa() != null && simEntrada.getAnexoEmpresa().length()<11)){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese anexo de empresa válido"));
+      return salida;
+    }
+
+    if(!(ValidarUtil.isNumeric(simEntrada.getMontoGiro()) && simEntrada.getMontoGiro().length()<14)){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese monto a girar válido"));
+      return salida;
+    }
+
+    if(!(ValidarUtil.isNumeric(simEntrada.getNroCuotas()) && simEntrada.getNroCuotas().length()<4)){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese nro. cuotas válido"));
+      return salida;
+    }
+
+    if(!(simEntrada.getCodOficina() != null && simEntrada.getCodOficina().length()<11)){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese cod. de oficina válido"));
+      return salida;
+    }
+
+/* Se obtiene monto maximo desde SAP
+ *    if(!ValidarUtil.isNumeric(simEntrada.getMontoAprobado())){
+      salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Ingrese Monto aprobado"));
+      return salida;
+    }
+    
+    if(Integer.parseInt(simEntrada.getMontoGiro())> Integer.parseInt(simEntrada.getMontoAprobado())){
+    	 salida.setLog(new Log(Constantes.COD_RESPUESTA_ERROR, "Monto a girar es superior a monto aprobado."));
+         return salida;
+    }*/
+
+    SimuladorServicesUtil interfazServicios = new SimuladorServicesUtil();
+    salida = interfazServicios.getResultadoSimulacion(simEntrada);
+    logger.info("Codigo salida: " + salida.getLog().getCodRespuesta());
+    return salida;
+  }
+
+}

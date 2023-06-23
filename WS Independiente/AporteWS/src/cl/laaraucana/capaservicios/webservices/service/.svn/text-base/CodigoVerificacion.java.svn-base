@@ -1,0 +1,22 @@
+package cl.laaraucana.capaservicios.webservices.service;
+
+import cl.laaraucana.capaservicios.manager.SolicitudSmsMGR;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.SolCodVerificacionOut;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifIn;
+import cl.laaraucana.capaservicios.webservices.vo.CodigoVerificacion.VerificarCodVerifOut;
+
+public class CodigoVerificacion {
+	
+	public SolCodVerificacionOut solicitarCodVerif(SolCodVerificacionIn entrada){
+		SolicitudSmsMGR mgr = new SolicitudSmsMGR();
+		SolCodVerificacionOut salida = mgr.solicitarCodVerif(entrada);
+		return salida;
+	}
+	
+	public VerificarCodVerifOut verificarCodVerif(VerificarCodVerifIn entrada){
+		SolicitudSmsMGR mgr = new SolicitudSmsMGR();
+		VerificarCodVerifOut salida = mgr.verificarCodVerif(entrada);
+		return salida;
+	}
+}
