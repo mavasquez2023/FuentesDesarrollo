@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+         <property name="connection.datasource">java:comp/env/jdbc/cotpreviTES</property> 
+        <!--<property name="connection.datasource">jdbc/cp_tes</property>-->
+        
+        <property name="hibernate.dialect">cl.araucana.cp.hibernate.utils.ParcheDialecto</property> 
+        <!-- property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property-->
+		<property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+        
+        <property name="cache.use_second_level_cache">true</property>
+
+		<property name="hibernate.cache.use_structured_entries">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>   
+		<property name="hibernate.use_sql_comments">true</property>  
+		
+		<!-- DEFINICION DE FILTROS -->
+		<mapping resource="cl/araucana/cp/hibernate/beans/definicionFiltros.hbm.xml"/>
+		
+		<mapping resource="cl/araucana/cp/hibernate/beans/TESte07f1.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/TESte07f1SPL.hbm.xml"/>
+		
+		<!-- PRODUCTOS CAJA -->
+		<mapping resource="cl/araucana/cp/hibernate/beans/RCF300.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/RCF310.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/T0031.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/T0032.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/AF02F1.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/hibernate/beans/AF02F1EEPP.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+
+
+

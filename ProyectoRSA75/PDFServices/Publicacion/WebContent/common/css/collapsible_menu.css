@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* CSS Document */
+
+.expand_all, .collapse_all {
+	cursor: pointer;
+}
+.menu_collapse {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.menu_collapse ul {
+	display:none;
+	list-style: none;
+	padding: 0;
+	margin-top: 5px;
+	margin-right: 0;
+	margin-bottom: 5px;
+	margin-left: 0;
+}
+#menu1 {
+	margin: 0;
+}
+#menu1 li, .menu_collapse li {
+	background:url(../img/btn_lateral_off.jpg) top no-repeat;
+	width:170px;
+/*	padding: 0px;*/
+	margin: 0px;
+	padding-bottom:3px;
+}
+.menu_collapse ul ul {
+	display: block;
+}
+.menu_collapse ul ul li a {
+	padding:0px;
+}
+.menu_collapse a {
+	color: #333333;
+	cursor: pointer;
+	display: block;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom:8px;
+	padding-left: 15px;
+	margin: 0;
+	font-weight: bold;
+}
+.menu_collapse a.expanded {
+	/*background-image: url(../images/collapse.gif);
+	background-repeat: no-repeat;
+	background-position: 3px 50%;*/
+}
+.menu_collapse a.collapsed {
+	/*background-image: url(../images/expand.gif);
+	background-repeat: no-repeat;
+	background-position: 3px 50%;*/
+}
+.menu_collapse a:hover {
+	text-decoration: none;
+	background:url(../img/btn_lateral_on.jpg) top no-repeat;
+	color:#1A72A9;
+}
+.menu_collapse a.active:hover {
+	color:#1A72A9;
+}
+.menu_collapse ul a {
+	color: #666;
+	display: block;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+.menu_collapse ul a:link {
+	font-weight: normal;
+}
+.menu_collapse ul a:hover {
+	background:url(../img/btn_lateral_on.jpg) top no-repeat;
+}
+.menu_collapse .active {
+	color: #1A72A9;
+	font-weight:bold;
+	background:url(../img/btn_lateral_on.jpg) top no-repeat;
+}
+.menu_collapse ul .active {
+	color: #666;
+	font-weight:bold;
+	background-color: Transparent;	
+}
+#menu1 ul li, .menu_collapse ul li  {
+	background-image:none;
+	margin:0px;
+	height:15px;
+	border-bottom:1px solid #CCCCCC;
+	width:163px;
+}
+#menu1 ul li, .menu_collapse ul li a {
+	font-size: 11px;
+	padding: 2px 0px 5px 7px;
+
+}
+#menu1 ul li, .menu_collapse ul li a:hover {
+	color:#1C74A9;
+	background:none;
+}
+#menu1 ul li, .menu_collapse ul li .activo {
+	color:#1C74A9;
+}
+

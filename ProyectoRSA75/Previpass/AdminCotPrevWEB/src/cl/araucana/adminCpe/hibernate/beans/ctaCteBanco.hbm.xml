@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.CtaCteBancoVO" table="CTACTEBANC">
+		<composite-id>
+        	<key-property name="idBanco">
+        		<column name="ID_BANCO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCtaCte">
+        		<column name="ID_CTA_CTE" not-null="true"/> 
+        	</key-property>        	
+    	</composite-id>
+	</class>
+</hibernate-mapping>

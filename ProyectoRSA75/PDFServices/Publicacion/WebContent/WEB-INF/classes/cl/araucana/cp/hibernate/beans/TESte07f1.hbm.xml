@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.TESTe07f1VO" table="TEDTA.TE07F1">
+    	<id column="TE3WA" name="te3wa"/>
+   		<property name="te3ya" column="TE3YA" />
+   		<property name="te1ta" column="TE1TA" />
+   		<property name="te41a" column="TE41A" />
+   		<property name="obf006" column="OBF006" />
+   		<property name="sajkm92" column="SAJKM92" />
+<!-- Modificacion para consulta de comprobante de pago -->
+		<property name="te1ba" column="TE1BA" />
+		<property name="te1ca" column="TE1CA" />
+		<property name="te10a" column="TE10A" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="modafiliadoNS">
+
+	<parameterMap id="paramMap" class="map">
+   		<parameter property="P_IDDOCUMENTO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter> 
+   		<parameter property="P_GLOSAERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   	</parameterMap>
+
+	<!-- Updates a las tablas involucradas en el negocio. -->
+	<!-- Query que hace un update al tipoEstadoAfiliado de la tabla Afiliado. Recibe un form. (txt_rut). -->
+	<update id="updateEstadoAfiliado" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.AFILIADO A	
+		SET	A.TIPOESTADOAFILIADO = #input.dbx_EstSolicitud#
+		WHERE A.IDPERSONAAFILIADO IN
+									(SELECT IDPERSONA
+									 FROM $IIDTA$.PERSONA B
+									 WHERE B.IDPERSONA = A.IDPERSONAAFILIADO
+									 AND B.IDDOCUMENTO = #input.txt_Rut#)
+	</update>
+	
+	<!-- Update a la tabla GrupoFamiliar. Recibe como entrada un objeto del tipo GrupoFamiliarVO. -->
+	<update id="updateAfiliadoGrupoFamiliar" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.GRUPOFAMILIAR 
+		SET		CONYUGE = #input.conyugue#,
+				CANTHIJOS = #input.cantHijos#
+		WHERE	IDGRUPOFAM = #input.idGrupoFam#			
+	</update>
+	
+	<!-- Update a la tabla IngresoEconomico. Recibe como entrada un objeto del tipo IngresoEconomicoVO. -->
+	<update id="updateAfiliadoIngresoEconomico" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.INGRESOECONOMICO 
+		SET 	ACTECONOM = #input.actEconom#,
+				RENTAIMPONIBLE = #input.rentaImponible#,
+				RENTACOTIZADA = #input.rentaCotizada#,
+				HONORARIO = #input.honorario#,
+				MONTOULTCOTIZACION = #input.montoUltimaCotizacion#,				
+				FECHAULTCOTIZACION = #input.fecUltCotizacion#						
+		WHERE	IDINGECONOM = #input.idIngEconom#						 	
+	</update>
+	
+	<!-- Update a la tabla Afiliado. Recibe como entrada un objeto del tipo AfiliadoVO. -->
+	<update id="updateAfiliadoAfiliado" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.AFILIADO 
+		SET	TIPOPROFESION = #input.tipoProfesion#,
+			TIPONIVELEDUC = #input.tipoNivelEduc#,
+			TIPOREGSALUD  = #input.tipoRegSalud#,
+			TIPOAFP		= #input.tipoAfp#,
+			TIPOESTCIVIL  = #input.tipoEstado#,
+			MONTOCOTIZAR	= #input.montoCotizar#,
+			IDSECUENCIAAGRUPACION	= #input.idSecuenciaAgrupacion#			
+		WHERE IDPERSONAAFILIADO = #input.idPersonaAfiliado#				
+	</update>
+	
+	<!-- Update a la tabla Persona. Recibe como entrada un objeto del tipo PersonaVO -->
+	<update id="updateAfiliadoPersona" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.PERSONA 
+		SET APELLIDOPATERNO = #input.apellidoPaterno#,
+			APELLIDOMATERNO = #input.apellidoMaterno#,
+			NOMBRES = #input.nombres#,
+			TIPOSEXO = #input.tipoSexo#,
+			TIPONACIONALIDAD = #input.tipoNacionalidad#
+		WHERE IDPERSONA = #input.idPersona#
+	</update>
+	
+	<!-- Update a la tabla Solicitud. Recibe como entrada un objeto del tipo SolicitudVO -->
+	<update id="updateAfiliadoSolicitud" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.SOLICITUD 
+		SET		TIPOCAJAORIGEN = #input.tipoCajaOrigen#,
+		WHERE	IDSOLICITUD = #input.idSolicitud#					 		
+	</update>
+	
+	<!-- Update a la tabla Email. Recibe como entrada un objeto del tipo EmailVO -->
+	<update id="updateAfiliadoEmail" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.EMAIL 
+		SET 	DIRECCMAIL = #input.direccMail#
+		WHERE 	IDSECUENCIAMAIL = #input.idSecuenciaEmail#
+		AND TIPOLOCALIDAD=#input_localidad#
+	</update>
+	
+	<!-- Update a la tabla Telefono (Para telefono particular). Recibe como entrada un objeto del tipo TelefonoVO -->	
+	<update id="updateAfiliadoTelefonoParticular" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TELEFONO 
+		SET 	NROTELEFONO = #input.nroTelefono#,
+				CODAREA = #input.codArea#
+		WHERE	IDSECUENCIATELEFONO = #input.idSecuenciaTelefono#
+	</update>
+	
+	<!-- Update a la tabla Telefono (Para telefono celular). Recibe como entrada un objeto del tipo TelefonoVO -->
+	<update id="updateAfiliadoTelefonoCelular" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TELEFONO 
+		SET 	NROTELEFONO = #input.nroTelefono#,
+				CODAREA = #input.codArea#
+		WHERE 	IDSECUENCIATELEFONO = #input.idSecuenciaTelefono#
+	</update>
+	
+	<!-- Update a la tabla Telefono (Para telefono comercial). Recibe como entrada un objeto del tipo TelefonoVO -->
+	<update id="updateAfiliadoTelefonoComercial" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TELEFONO 
+		SET 	NROTELEFONO = #input.nroTelefono#,
+				CODAREA = #input.codArea#
+		WHERE 	IDSECUENCIATELEFONO = #input.idSecuenciaTelefono#
+						
+	</update>
+	
+	<!-- Update a la tabla Direccion (Para direccion particular). Recibe como entrada un objeto del tipo DireccionVO  -->
+	<update id="updateAfiliadoDireccionParticular" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.DIRECCION 
+		SET GLOSCALLE = #input.glosCalle#,
+			NUMDIRECCION = #input.numDireccion#,
+			POBLACIONVILLA = #input.poblacionVilla#,
+			DEPTO = #input.dpto#,
+			COMUNA = #input.comuna#,
+			CIUDAD = #input.ciudad#,
+			REGION = #input.region#
+		WHERE IDSECUENCIADIRECCION = #input.idSecuenciaDireccion#
+	</update>
+	
+	<!-- Update a la tabla Direccion (Para direccion comercial). Recibe como entrada un objeto del tipo DireccionVO -->
+	<update id="updateAfiliadoDireccionComercial" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.DIRECCION 
+		SET GLOSCALLE = #input.glosCalle#,
+			NUMDIRECCION = #input.numDireccion#,
+			POBLACIONVILLA = #input.poblacionVilla#,
+			DEPTO = #input.dpto#,
+			COMUNA = #input.comuna#,
+			CIUDAD = #input.ciudad#,
+			REGION = #input.region#
+		WHERE IDSECUENCIADIRECCION = #input.idSecuenciaDireccion#
+	</update>
+	<!-- FIN UPDATES -->
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene un contador para un determinado rut de la tabla Persona que este asociado a un tipoestadoafiliado en estados (4,5,7)
+		y a un tipoestadosolicitud en los estados (1,2,4,5,7). Recibe un string y retorna un string. -->
+	<select id="obtenerCountRUT" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(1)
+     	FROM	$IIDTA$.PERSONA A
+     			JOIN $IIDTA$.AFILIADO B
+       				ON B.IDPERSONAAFILIADO = A.IDPERSONA
+     			JOIN $IIDTA$.SOLICITUD C
+       				ON C.IDSOLICITUD = B.IDSOLICITUD
+      			LEFT JOIN $IIDTA$.TABLASGLOBALES D
+       				ON C.TIPOESTADOSOLICITUD = D.CODIGO
+      				AND D.ENTIDAD = 11
+    	WHERE	B.TIPOESTADOAFILIADO IN (4, 5, 7) 
+    	AND 	C.TIPOESTADOSOLICITUD IN (1,2,4,5,7)
+		AND		A.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que obtiene un contador de un rut de la tabla Persona, para evitar duplicidad de datos. -->
+	<select id="obtCountRUT" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM $IIDTA$.PERSONA
+		WHERE IDDOCUMENTO = #input#
+	</select>
+	
+	
+	
+	<!-- Query que obtiene un contador de Afiliado. -->
+	<select id="obtenerContAfiliadoR" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*) contador 
+		FROM	$IIDTA$.AFILIADO B,
+				$IIDTA$.PERSONA C
+		WHERE	B.IDPERSONAAFILIADO = C.IDPERSONA
+		AND     C.IDDOCUMENTO = #input#
+	</select>
+
+	<!-- Query que obtiene los datos desde la tabla Afiliado. Recibe un form y retorna un objeto tipo AfiliadoVO. -->
+	<select id="obtenerAfiliadoRAfiliado" resultClass="cl.araucana.independientes.vo.AfiliadoVO" parameterClass="java.util.HashMap">
+		SELECT	F.IDPERSONAAFILIADO idPersonaAfiliado,
+				F.TIPOESTADOAFILIADO tipoEstadoAfiliado,
+				F.TIPONIVELEDUC tipoNivelEduc,
+				F.TIPOPROFESION tipoProfesion,
+				F.TIPOAFP tipoAfp,
+				F.TIPOREGSALUD tipoRegSalud,
+				F.TIPOESTCIVIL tipoEstado,
+				F.MONTOCOTIZAR montoCotizar,
+				CASE  WHEN F.IDSECUENCIAAGRUPACION IS NULL THEN 0 ELSE F.IDSECUENCIAAGRUPACION END idSecuenciaAgrupacion			
+		FROM	$IIDTA$.AFILIADO F,
+                $IIDTA$.PERSONA B	
+		WHERE	B.IDPERSONA = F.IDPERSONAAFILIADO 
+		AND   	B.IDDOCUMENTO  = #input#
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Persona. Recibe un form y retorna un objeto tipo PersonaVO. -->
+	<select id="obtenerAfiliadoRPersona" resultClass="cl.araucana.independientes.vo.PersonaVO" parameterClass="java.util.HashMap">
+		SELECT	B.IDPERSONA idPersona,
+				B.IDDOCUMENTO idDocumento,
+				B.DIGVERIFICADOR digVerificador,
+				B.APELLIDOPATERNO apellidoPaterno,
+				B.APELLIDOMATERNO apellidoMaterno,
+				B.NOMBRES nombres,
+				CHAR(B.FECHANAC, USA) fechaNacimiento,
+				B.TIPOSEXO tipoSexo,
+				B.TIPONACIONALIDAD tipoNacionalidad
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE B.IDPERSONA = F.IDPERSONAAFILIADO
+		AND   B.IDDOCUMENTO       = #input#
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Solicitud. Recibe un form y retorna un objeto tipo SolicitudVO. -->
+	<select id="obtenerAfiliadoRSolicitud" resultClass="cl.araucana.independientes.vo.SolicitudVO" parameterClass="java.util.HashMap">
+		SELECT	A.IDSOLICITUD idSolicitud,
+				A.FOLIO folio,
+				A.TIPOCAJAORIGEN tipoCajaOrigen,
+				A.FECHAVIGENCIA fechaVigencia,
+				A.FECHAINGRESO fechaIngreso,
+				CHAR(A.FECHAFIRMA, USA) fechaFirma,
+				CASE  WHEN A.HORAINGRESO IS NULL THEN '' ELSE A.HORAINGRESO END horaCaptacion
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND     F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND     B.IDDOCUMENTO       = #input#
+
+	</select>
+	
+		<!-- Query que obtiene los datos desde la tabla Solicitud. Recibe un form y retorna un objeto tipo SolicitudVO. -->
+	<select id="obtenerEstadoAfiliadoRSolicitud" resultClass="cl.araucana.independientes.vo.SolicitudVO" parameterClass="java.util.HashMap">
+		SELECT	A.TIPOSOLICITUD tipoSolicitud,
+				A.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				CHAR(A.FECHAVIGENCIA , USA) fechaVigencia
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND     F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND     B.IDDOCUMENTO       = #input#
+		AND		A.TIPOSOLICITUD = 2
+
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla GrupoFamiliar. Recibe un form y retorna un objeto tipo GrupoFamiliarVO-->
+	<select id="obtenerAfiliadoRGrupoFamiliar" resultClass="cl.araucana.independientes.vo.GrupoFamiliarVO" parameterClass="java.util.HashMap">
+		SELECT  G.IDGRUPOFAM idGrupoFam,
+				G.CONYUGE conyugue,
+				G.CANTHIJOS cantHijos		
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F,
+				$IIDTA$.GRUPOFAMILIAR G
+		WHERE	F.IDPERSONAAFILIADO    = B.IDPERSONA
+		AND 	F.IDPERSONAAFILIADO    = G.IDPERSONAAFILIADO
+		AND   	B.IDDOCUMENTO          = #input#
+
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla IngresoEconomico. Recibe un form y retorna un objeto tipo IngresoEconomicoVO. -->
+	<select id="obtenerAfiliadoRIngresoEconomico" resultClass="cl.araucana.independientes.vo.IngresoEconomicoVO" parameterClass="java.util.HashMap">
+		SELECT  I.IDINGECONOM idIngEconom,
+				I.ACTECONOM actEconom,
+				I.RENTAIMPONIBLE rentaImponible,
+				I.RENTACOTIZADA rentaCotizada,
+				I.HONORARIO honorario,
+				CASE  WHEN I.MONTOULTCOTIZACION IS NULL THEN 0 ELSE I.MONTOULTCOTIZACION END montoUltimaCotizacion,
+				CASE  WHEN I.FECHAULTCOTIZACION IS NULL THEN '01.01.1900' ELSE I.FECHAULTCOTIZACION END fecUltCotizacion				
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F,
+				$IIDTA$.INGRESOECONOMICO I
+		WHERE  	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND 	F.IDPERSONAAFILIADO = I.IDPERSONAAFILIADO
+		AND   	B.IDDOCUMENTO = #input#
+
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Telefono (Para telefono particular). Recibe un form y retorna un objeto tipo TelefonoVO. -->
+	<!--  comentado al final AND		C1.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoRTelefonoParticular" resultClass="cl.araucana.independientes.vo.TelefonoVO" parameterClass="java.util.HashMap">
+		SELECT  C1.IDSECUENCIATELEFONO idSecuenciaTelefono,
+				C1.NROTELEFONO nroTelefono,
+				C1.CODAREA codArea
+		FROM 	$IIDTA$.TELEFONO C1,
+				$IIDTA$.TELEFONOENTIDAD L,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND    	L.IDENTIDAD = B.IDPERSONA
+		AND		L.IDSECUENCIATELEFONO = C1.IDSECUENCIATELEFONO
+		AND   	B.IDDOCUMENTO = #input#	
+		AND		C1.TIPOLOCALIDAD = 2
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Telefono (Para telefono celular). Recibe un form y retorna un objeto tipo TelefonoVO. -->
+	<!-- comentado al final  AND		C2.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoRCelularParticular" resultClass="cl.araucana.independientes.vo.TelefonoVO" parameterClass="java.util.HashMap">
+		SELECT  C2.IDSECUENCIATELEFONO idSecuenciaTelefono,
+				C2.NROTELEFONO nroTelefono,
+				C2.CODAREA codArea
+		FROM	$IIDTA$.TELEFONO C2,
+				$IIDTA$.TELEFONOENTIDAD L,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	L.IDENTIDAD = B.IDPERSONA
+		AND		L.IDSECUENCIATELEFONO = C2.IDSECUENCIATELEFONO
+		AND   	B.IDDOCUMENTO = #input#	
+		AND		C2.TIPOLOCALIDAD = 1
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Telefono (Para telefono comercial). Recibe un form y retorna un objeto tipo TelefonoVO. -->
+	<!-- comentado al final AND		C3.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoRTelefonoComercial" resultClass="cl.araucana.independientes.vo.TelefonoVO" parameterClass="java.util.HashMap">
+		SELECT  C3.IDSECUENCIATELEFONO idSecuenciaTelefono,
+				C3.NROTELEFONO nroTelefono,
+				C3.CODAREA codArea
+		FROM	$IIDTA$.TELEFONO C3,
+				$IIDTA$.TELEFONOENTIDAD L,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	L.IDENTIDAD = B.IDPERSONA
+		AND		L.IDSECUENCIATELEFONO = C3.IDSECUENCIATELEFONO
+		AND   	B.IDDOCUMENTO = #input#	
+		AND		C3.TIPOLOCALIDAD = 3
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Email. Recibe un form y retorna un objeto tipo EmailVO. -->
+	<!-- comentado al final AND		D.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoREmail" resultClass="cl.araucana.independientes.vo.EmailVO" parameterClass="java.util.HashMap">
+		SELECT  
+				CASE  WHEN D.IDSECUENCIAMAIL IS NULL THEN 0 ELSE D.IDSECUENCIAMAIL END idSecuenciaEmail,				
+				CASE  WHEN D.DIRECCMAIL IS NULL THEN '' ELSE D.DIRECCMAIL END direccMail,					
+				CASE  WHEN D.TIPOLOCALIDAD IS NULL THEN 0 ELSE D.TIPOLOCALIDAD END tipoLocalidad			
+		FROM	$IIDTA$.EMAIL D,
+				$IIDTA$.EMAILENTIDAD M,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	(D.TIPOLOCALIDAD =#input_localidad# or D.TIPOLOCALIDAD is NULL)
+		AND 	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	M.IDENTIDAD = B.IDPERSONA
+		AND		M.IDSECUENCIAMAIL = D.IDSECUENCIAMAIL
+		AND   	B.IDDOCUMENTO = #input#
+		ORDER BY tipoLocalidad DESC
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Direccion (Para direccion particular). Recibe un form y retorna un objeto tipo DireccionVO. -->
+	<!-- comentado al final AND		E1.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoRDireccionParticular" resultClass="cl.araucana.independientes.vo.DireccionVO" parameterClass="java.util.HashMap">
+		SELECT  E1.IDSECUENCIADIRECCION idSecuenciaDireccion,
+				E1.GLOSACALLE glosCalle,
+				E1.NUMDIRECCION numDireccion,
+				E1.POBLACIONVILLA poblacionVilla,
+				E1.DEPTO dpto,
+				E1.REGION region,
+				E1.CIUDAD ciudad,
+				E1.COMUNA comuna
+		FROM	$IIDTA$.DIRECCION E1,
+				$IIDTA$.DIRECCIONENTIDAD K,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F,
+				$IIDTA$.SOLICITUD S
+		WHERE	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND 	S.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND   	K.IDENTIDAD = B.IDPERSONA
+		AND		K.IDSECUENCIADIRECCION = E1.IDSECUENCIADIRECCION
+		AND   	B.IDDOCUMENTO = #input#
+		AND   	E1.TIPOLOCALIDAD = 1
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Direccion (Para direccion comercial). Recibe un form y retorna un objeto tipo DireccionVO. -->
+	<!-- comentado al final AND		E2.TIPOPRINCIPALIDAD = 1 -->
+	<select id="obtenerAfiliadoRDireccionComercial" resultClass="cl.araucana.independientes.vo.DireccionVO" parameterClass="java.util.HashMap">
+		SELECT 	E2.IDSECUENCIADIRECCION idSecuenciaDireccion,
+				E2.GLOSACALLE glosCalle,
+				E2.NUMDIRECCION numDireccion,
+				E2.POBLACIONVILLA poblacionVilla,
+				E2.DEPTO dpto,
+				E2.REGION region,
+				E2.CIUDAD ciudad,
+				E2.COMUNA comuna
+		FROM	$IIDTA$.DIRECCION E2,
+				$IIDTA$.DIRECCIONENTIDAD K,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	K.IDENTIDAD = B.IDPERSONA
+		AND		K.IDSECUENCIADIRECCION = E2.IDSECUENCIADIRECCION
+		AND   	B.IDDOCUMENTO = #input#
+		AND   	E2.TIPOLOCALIDAD = 2
+	</select>
+	
+	<!-- Query que obtiene los datos desde la tabla Analista. Recibe un form y retorna un objeto tipo AnalistaVO. -->
+	<select id="obtenerAfiliadoRAnalista" resultClass="cl.araucana.independientes.vo.AnalistaVO" parameterClass="java.util.HashMap">
+		SELECT  J.IDANALISTA idAnalista,
+				J.APELLIDOPATERNO apellidoPaterno,
+				J.APELLIDOMATERNO apellidoMaterno,
+				J.NOMBRES nombres,
+				J.OFICINA oficina
+		FROM	$IIDTA$.ANALISTA J,
+		    	$IIDTA$.SOLICITUD A,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND   	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND		A.IDCAPTADOR = J.IDANALISTA
+		AND   	B.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que obtiene codigo y glosa desde la tabla TablasGlobales. Recibe un string y retorna un objeti tipo Parametro. -->
+	<select id="getEstadosDestinoPosibles" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT A.CODIGO_DES codigo, B.GLOSA glosa FROM $IIDTA$.ESTAFILIAD A, $IIDTA$.TABLASGLOBALES B WHERE B.CODIGO = A.CODIGO_DES AND B.ENTIDAD = 6 AND A.CODIGO_ORI = #input#
+	</select>
+	
+	<!-- Ejecuta la llamada al Procedimiento Almacenado que inserta usuarios en LDAP -->
+	<procedure id="SP_LOGINDP" parameterMap="paramMap" resultClass="cl.araucana.independientes.vo.param.Retorno">
+		{ call IIDTA.SP_LOGINDP(?,?,?)}   
+	</procedure>
+	
+	<select id="selectIdLogInd" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.LOGIND_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<insert id="insertLogInd" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.LOGIND (IDLOGIND,FLAG,IDDOCUMENTO,FECHAINGRESOLOG)
+		VALUES(#idlogind#,#flag#,#iddocumento#,current timestamp)
+	</insert>
+	
+</sqlMap>

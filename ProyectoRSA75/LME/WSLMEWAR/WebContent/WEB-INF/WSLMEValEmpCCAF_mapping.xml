@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.araucana.wslme.integration.jaxrpc.ws</package-type>
+        <namespaceURI>urn:www:lme:gov:cl:lme</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFRequest</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:LMEValEmpCCAFRequest</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>claveOperador</java-variable-name>
+            <xml-element-name>ClaveOperador</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>codigoCCAF</java-variable-name>
+            <xml-element-name>CodigoCCAF</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>codigoOperador</java-variable-name>
+            <xml-element-name>CodigoOperador</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>rutTrabajadorDig</java-variable-name>
+            <xml-element-name>RutTrabajadorDig</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>rutTrabajadorNum</java-variable-name>
+            <xml-element-name>RutTrabajadorNum</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFRequest</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:LMEValEmpCCAFRequest</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.Empleador[]</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:ArrayOfEmpleador</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>empleador</java-variable-name>
+            <xml-element-name>Empleador</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFResponse</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:LMEValEmpCCAFResponse</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>estado</java-variable-name>
+            <xml-element-name>Estado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>gloEstado</java-variable-name>
+            <xml-element-name>GloEstado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>listaEmpleadores</java-variable-name>
+            <xml-element-name>ListaEmpleadores</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFResponse</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:LMEValEmpCCAFResponse</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.Empleador[]</java-type>
+        <anonymous-type-qname>urn:www:lme:gov:cl:lme:Empleador[0,unbounded]</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.Empleador</java-type>
+        <root-type-qname xmlns:rtq="urn:www:lme:gov:cl:lme">rtq:Empleador</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>nomRazSoc</java-variable-name>
+            <xml-element-name>NomRazSoc</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>rutEmpleador</java-variable-name>
+            <xml-element-name>RutEmpleador</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>ultimaCotizacion</java-variable-name>
+            <xml-element-name>UltimaCotizacion</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>short</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:short</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.wslme.integration.jaxrpc.ws.Empleador[]</java-type>
+        <anonymous-type-qname>urn:www:lme:gov:cl:lme:ArrayOfEmpleador&gt;Empleador[0,unbounded]</anonymous-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.araucana.wslme.integration.jaxrpc.ws.WSLMEValEmpCCAFService</service-interface>
+        <wsdl-service-name xmlns:sim="urn:www:lme:gov:cl:lme">sim:WSLMEValEmpCCAFService</wsdl-service-name>
+        <port-mapping>
+            <port-name>WSLMEValEmpCCAF</port-name>
+            <java-port-name>WSLMEValEmpCCAF</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.araucana.wslme.integration.jaxrpc.ws.WSLMEValEmpCCAF</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="urn:www:lme:gov:cl:lme">seimwpt:WSLMEValEmpCCAF</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="urn:www:lme:gov:cl:lme">seimwb:WSLMEValEmpCCAFSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>LMEValEmpCCAF</java-method-name>
+            <wsdl-operation>LMEValEmpCCAF</wsdl-operation>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFRequest</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="urn:www:lme:gov:cl:lme">mppm:LMEValEmpCCAFRequest</wsdl-message>
+                    <wsdl-message-part-name>request</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>cl.araucana.wslme.integration.jaxrpc.ws.LMEValEmpCCAFResponse</method-return-value>
+                <wsdl-message xmlns:wrvm="urn:www:lme:gov:cl:lme">wrvm:LMEValEmpCCAFResponse</wsdl-message>
+                <wsdl-message-part-name>LMEValEmpCCAFReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

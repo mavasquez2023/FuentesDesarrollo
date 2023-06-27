@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE031">
+
+  <typeAlias alias="ilfe031" type="com.microsystem.lme.ibatis.domain.Ilfe031VO"/>
+
+  <resultMap id="returnObject" class="ilfe031">    
+    <result property="ideOpe" column="IDEOPE"/>
+	<result property="codOpe" column="CODOPE"/>
+
+	<result property="urlOpe" column="URLOPE"/>	
+	<result property="codCcaf" column="CODCCAF"/>	
+	<result property="pwdCcaf" column="PWDCCAF"/>	
+	<result property="afiRut" column="AFIRUT"/>	
+	<result property="numImpre" column="NUMIMPRE"/>	
+	<result property="numImpdv" column="NUMIMPDV"/>	
+	<result property="empNombre" column="C1EMPNOM"/>	
+	<result property="c1empRut" column="C1EMPRUT"/>	
+	<result property="c1emprutDv" column="C1EMPRUTDV"/>	
+	<result property="empFechaRecepcion" column="C1EMPFECRE"/>	
+
+	<result property="empDireccionCalle" column="C1EMPDIR"/>	
+	<result property="codigoComunaCompin" column="C1COCOCP"/>	
+	<result property="codigoActividadLaboral" column="C1COACLA"/>	
+	<result property="codigoOcupacion" column="C1COOCUP"/>	
+	<result property="empOtraOcupacion" column="C1EMOTOC"/>	
+	<result property="prevFechaRecepcionCcaf" column="C2FERECCAF"/>
+
+	<result property="codigoRegimenPrevisional" column="C2COREPREV"/>
+	<result property="codigoLetraCaja" column="C2COLETCAJ"/>
+	<result property="prevNombre" column="C2PREVNOM"/>
+	<result property="codigoCalidadTrabajador" column="C2COCAAFIL"/>
+	<result property="codigoSeguroAfc" column="C2SEGAFC"/>
+	<result property="codigoSeguroIndef" column="C2COSEINDE"/>
+	<result property="fechaAfiliacion" column="C2FECFILIA"/>
+	<result property="fechaContrato" column="C2FECCONTR"/>
+	<result property="codigoEntidadPagadora" column="C2CODENTPA"/>
+	<result property="prevNombrePagador" column="C2PRENOMAF"/>
+	<result property="porcenDesahucio" column="C3PORCDES"/>
+	<result property="montoImponibleMesAnterior" column="C3MTOIMPO"/>
+	<result property="lmaLicenciasAnt" column="C4LICANT"/>
+	
+	<result property="codigoTramitacionCCAF" column="C5COTRCCAF"/>
+	<result property="tieneMas100" column="C5EMP100" nullValue=""/>
+	<result property="enviada" column="ENVIADA"/>
+	<result property="fechaProceso" column="FECPROCE"/>
+	<result property="respWs" column="RESPWS"/>
+	<result property="marca" column="MARCA"/>
+	<result property="codigoTipoRegimenPrevisional" column="C2CODTIPRE"/>
+	<result property="empDireccionCiudad" column="C1EMPCIU"/>
+	<result property="empDireccionPais" column="C1EMPPAI"/>
+	<result property="empDireccionComuna" column="C1EMPCOM"/>
+	
+	<result property="glosaEstado" column="GLORESP"/>
+	<result property="fechaConsulta" column="FECRESP"/>
+	<result property="hora" column="HORRESP"/>
+  </resultMap>
+  
+  <select id="getIlfe031" resultMap="returnObject" parameterClass="ilfe031">
+    SELECT
+		IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF,AFIRUT,NUMIMPRE,NUMIMPDV,C1EMPNOM,C1EMPRUT,C1EMPRUTDV,C1EMPFECRE,
+		C1EMPDIR,C1COCOCP,C1COACLA,C1COOCUP,C1EMOTOC,C2FERECCAF,
+		C2COREPREV,C2COLETCAJ,C2PREVNOM,C2COCAAFIL,C2SEGAFC,C2COSEINDE,C2FECFILIA,C2FECCONTR,C2CODENTPA,C2PRENOMAF,C3PORCDES,C3MTOIMPO,C4LICANT,
+		C5COTRCCAF,C5EMP100,ENVIADA,FECPROCE,RESPWS,MARCA, C2CODTIPRE, C1EMPCIU, C1EMPPAI, C1EMPCOM
+		, GLORESP, FECRESP, HORRESP
+	FROM LIEXP.ILFE031
+<!-- 	WHERE ENVIADA = '0' -->
+	<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="enviada">
+				ENVIADA = #enviada#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>			
+		</dynamic>
+		WITH UR
+    </select>
+
+	<update id="updateIlfe031" parameterClass="ilfe031">
+		UPDATE LIEXP.ILFE031
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#,
+		FECRESP = #fechaConsulta#, HORRESP = #hora#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# 
+		WITH NC
+	</update>
+	
+	<update id="updateIlfe031Map">
+		UPDATE LIEXP.ILFE031
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#,
+		FECRESP = #fechaConsulta#, HORRESP = #hora#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# 
+		WITH NC
+	</update>
+
+
+</sqlMap>

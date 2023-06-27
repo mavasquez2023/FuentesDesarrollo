@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+	
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.GrupoConvenioVO" table="GRUPOCONV">
+		<id name="idGrupoConvenio" column="ID_GRUPO_CONVENIOS" />
+		<property name="idEmpresa" column="ID_EMPRESA" />
+		<property name="idMapaNomRem" column="ID_MAPANOM_REM" />
+		<property name="idMapaNomGra" column="ID_MAPANOM_GRA" />
+		<property name="idMapaNomDep" column="ID_MAPANOM_DEP" />
+		<property name="idMapaNomRel" column="ID_MAPANOM_REL" />
+		<property name="idMapaCod" column="ID_MAPACOD" />
+		<property name="idOpcion" column="ID_OPCION" />
+		<property name="nombre" column="NOMBRE" />
+		<property name="creado" column="CREADO" />
+		<property name="habilitado" column="HABILITADO" />
+		<property name="numBloqueos" column="N_BLOQUEOS" />
+		<property name="previred" column="PREVIRED" />		
+		<!--filter name="filtroHabilitacion"/-->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionPendienteREVO" table="REMUNPEND">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="detalle" column="DETALLE" />
+   		<bag name="causas" cascade="all-delete-orphan" table="CAUSACRP" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.CausaREVO" />
+   		</bag>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionPendienteRAVO" table="RELIQPEND">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="detalle" column="DETALLE" />
+   		<bag name="causas" cascade="all-delete-orphan" table="CAUSACAP" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.CausaRAVO" />
+   		</bag>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionPendienteGRVO" table="GRATPEND">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="detalle" column="DETALLE" />
+   		<bag name="causas" cascade="all-delete-orphan" table="CAUSACGP" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.CausaGRVO" />
+   		</bag>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionPendienteDCVO" table="DEPCONVPEN">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="detalle" column="DETALLE" />
+   		<bag name="causas" cascade="all-delete-orphan" table="CAUSACDP" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.CausaDCVO" />
+   		</bag>
+    </class>
+</hibernate-mapping>

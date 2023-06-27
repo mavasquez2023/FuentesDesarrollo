@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/2617/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador
+END
+Liquidacion.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/Liquidacion.java
+END
+LMEInfLiquidResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfLiquidResponse.java
+END
+ServiciosOperador.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2382/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/ServiciosOperador.java
+END
+ResultadoType.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/ResultadoType.java
+END
+LMEInfValCCAFResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfValCCAFResponse.java
+END
+LicenciaType.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LicenciaType.java
+END
+LMEDetLccResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEDetLccResponse.java
+END
+LMEInfSeccC.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfSeccC.java
+END
+WsLMEInet_ServiceLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/WsLMEInet_ServiceLocator.java
+END
+LMEEvenLcc.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEEvenLcc.java
+END
+LMEDevEmp.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEDevEmp.java
+END
+LMEInfResol.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfResol.java
+END
+LMEVerTramEmp.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEVerTramEmp.java
+END
+LMEVerLccTrab.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEVerLccTrab.java
+END
+WsLMEInet_Service.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/WsLMEInet_Service.java
+END
+LMEInfSeccCResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfSeccCResponse.java
+END
+LMEEvenLccResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEEvenLccResponse.java
+END
+LMEDevEmpResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEDevEmpResponse.java
+END
+LicenciaCompletaType.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LicenciaCompletaType.java
+END
+LMEInfResolResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfResolResponse.java
+END
+LMEVerTramEmpResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEVerTramEmpResponse.java
+END
+LMEInfTramEmp.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfTramEmp.java
+END
+LMEVerLccTrabResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEVerLccTrabResponse.java
+END
+WsLMEInetProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/2382/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/WsLMEInetProxy.java
+END
+ServiciosMultiOperador.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/IBM/!svn/ver/2617/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/ServiciosMultiOperador.java
+END
+WsLMEInet_PortType.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/WsLMEInet_PortType.java
+END
+RespuestaServicio.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/RespuestaServicio.java
+END
+LMEInfTramEmpResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfTramEmpResponse.java
+END
+LMEInfLiquid.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfLiquid.java
+END
+LicenciaSimpleType.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LicenciaSimpleType.java
+END
+WsLMEInetSOAPStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2470/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/WsLMEInetSOAPStub.java
+END
+LmeTrabType.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LmeTrabType.java
+END
+LMEInfValCCAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEInfValCCAF.java
+END
+LMEDetLcc.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/LMEDetLcc.java
+END
+RespuestaDetalleLicencia.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/RespuestaDetalleLicencia.java
+END

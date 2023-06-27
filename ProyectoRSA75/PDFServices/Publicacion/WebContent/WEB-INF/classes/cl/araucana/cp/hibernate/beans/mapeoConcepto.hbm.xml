@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoConceptoVO" table="MAPEOCONCE">
+    	<composite-id>
+        	<key-property name="idConcepto">
+        		<column name="ID_CONCEPTO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="tipoProceso">
+        		<column name="ID_TIPO_NOMINA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idMapa">
+        		<column name="ID_MAPANOM" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+
+   		<property name="posicion" column="POSICION"/>
+   		<property name="largo" column="LARGO"/>
+    </class>
+</hibernate-mapping>

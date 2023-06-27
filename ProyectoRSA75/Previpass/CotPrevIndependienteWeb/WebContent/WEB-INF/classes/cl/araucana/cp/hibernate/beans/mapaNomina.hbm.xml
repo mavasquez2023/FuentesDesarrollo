@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.MapaNominaVO" table="MAPANOM">
+		<id name="idMapaNom" column="ID_MAPANOM" />
+		<property name="idTipoNomina" column="ID_TIPO_NOMINA"/>
+		<property name="descripcion" column="DESCRIPCION"/>
+		<property name="largoRegistro" column="LARGO_REGISTRO"/>
+		<property name="numBloqueos" column="N_BLOQUEOS"/>
+	</class>
+</hibernate-mapping>

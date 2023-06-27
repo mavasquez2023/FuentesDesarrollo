@@ -1,0 +1,2 @@
+&txt_con=<br><div align="justify"><p><b>Autentificación</b><br>En esta pantalla debe identificarse como usuario del sistema, escriba lo siguiente:<br>En el campo <b>Identificador</b> digite <b>123456789</b>, luego en el campo <b>Contraseña</b> digite <b>1234</b>.<br>Finalmente presione el botón <b>Ingresar</b>
+

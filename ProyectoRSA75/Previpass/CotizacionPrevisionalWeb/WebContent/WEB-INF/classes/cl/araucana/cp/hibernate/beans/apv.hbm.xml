@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.ApvVO" table="APV">
+    	<id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_APV</param>
+            </generator>
+        </id>
+   		<property name="rutEmpresa" column="ID_EMPRESA" />
+   		<property name="idConvenio" column="ID_CONVENIO" />
+   		<property name="idCotizante" column="ID_COTIZANTE" />
+   		<property name="idEntidadApv" column="ID_ENT_APV" />
+   		<property name="ahorro" column="AHORRO" />
+   		<property name="regimen" column="REGIMEN_APV" />
+    </class>
+</hibernate-mapping>

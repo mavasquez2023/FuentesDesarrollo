@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.PersonaVO" table="PERSONA">
+		<id name="idPersona" column="ID_PERSONA" />
+		<property name="idComuna" column="ID_COMUNA" />
+		<property name="nombres" column="NOMBRES" />
+		<property name="apellidoPaterno" column="APELLIDO_PATERNO" />
+		<property name="apellidoMaterno" column="APELLIDO_MATERNO" />
+		<property name="email" column="EMAIL" />
+		<property name="telefono" column="TELEFONO" />
+		<property name="celular" column="CELULAR" />
+		<property name="fax" column="FAX" />
+		<property name="direccion" column="DIRECCION" />
+		<property name="numero" column="NUMERO" />
+		<property name="dpto" column="DEPARTAMENTO" />
+		<property name="adminAraucana" column="ES_ADMIN_ARAU" />
+	</class>
+</hibernate-mapping>

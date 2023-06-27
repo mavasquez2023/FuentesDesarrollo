@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<!-- LAYOUT -->
+    <definition name="main_layout" path="/pages/commons/main_layout.jsp">
+	    <put name="header" value="/pages/commons/header.jsp" />
+	    <put name="menu" value="/pages/commons/menu.jsp" />
+	    <put name="messages" value="/pages/commons/messages.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/commons/footer.jsp" />
+    </definition>
+
+    <definition name="web_layout" path="/pages/commons/web_layout.jsp">
+	    <put name="header" value="/pages/commons/header.jsp" />
+	    <put name="messages" value="/pages/commons/messages.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/commons/footer.jsp" />
+    </definition>
+
+    <definition name="simple_layout" path="/pages/commons/simple_layout.jsp">
+	    <put name="header" value="/pages/commons/header.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/commons/footer.jsp" />
+    </definition>
+    
+    <definition name="simple_nf_layout" path="/pages/commons/simple_nf_layout.jsp">
+	    <put name="header" value="/pages/commons/header.jsp" />
+        <put name="body" value="" />
+    </definition>
+
+    <definition name="print_layout" path="/pages/commons/print_layout.jsp">
+        <put name="body" value="" />
+    </definition>
+    
+    <definition name="pdf_layout" path="/pages/commons/pdf_layout.jsp">
+        <put name="body" value="" />
+    </definition>
+
+    <definition name="excel_layout" path="/pages/commons/excel_layout.jsp">
+        <put name="body" value="" />
+    </definition>
+
+    <!--  generales -->
+    <definition name="common.failure" extends="main_layout">
+	    <put name="body" value="/pages/commons/error.jsp"/>
+	</definition>
+    <definition name="web.common.failure" extends="web_layout">
+	    <put name="body" value="/pages/commons/error.jsp"/>
+	</definition>
+    <definition name="common.failure.404" extends="simple_layout">
+	    <put name="body" value="/pages/commons/404.jsp"/>
+	</definition>
+    <definition name="common.failure.403" extends="simple_layout">
+	    <put name="body" value="/pages/commons/403.jsp"/>
+	</definition>
+    <definition name="common.login" path="/pages/commons/login.jsp">
+	</definition>
+	<definition name="common.login.error" path="/pages/commons/login_error.jsp">
+	</definition>
+    <definition name="common.welcome" extends="main_layout">
+	    <put name="body" value="/pages/commons/welcome.jsp"/>
+	</definition>
+	
+	<definition name="definicion.codigos" extends="main_layout">
+	    <put name="body"  value="definicion.codigos.base"/>
+	</definition>
+	
+	<definition name="definicion.codigos.base" path="/pages/definicionCodigos/definicionCodigo.jsp">
+	    <put   name="combo.cajas" 			value="combo.cajas.base"/>
+	    <put name="busqueda.tipo.codigo" 	value="busqueda.tipo.codigo.base"/>
+	    <put name="listado.codigo" 			value="listado.codigo.base"/>
+	</definition>
+	
+	<definition name="combo.cajas.base" 			path="/pages/comunes/comboCajasCCAF.jsp"/>
+	<definition name="busqueda.tipo.codigo.base" 	path="/pages/definicionCodigos/busquedaTipoCodigo.jsp"/>
+	<definition name="listado.codigo.base" 			path="/pages/definicionCodigos/listadoCodigo.jsp"/>
+	<definition name="informacion.archivo.base" 	path="/pages/comunes/informacionArchivo.jsp"/>
+	
+	<definition name="carga.archivo" extends="main_layout">
+	    <put name="body"  value="carga.archivo.base"/>
+	</definition>
+	
+	<definition name="carga.archivo.base" path="/pages/cargaArchivo/seleccionArchivo.jsp">
+	    <put   name="combo.cajas" 			value="combo.cajas.base"/>
+	</definition>
+	
+	<definition name="carga.archivo.procesamiento" extends="main_layout">
+	    <put name="body"  value="/pages/cargaArchivo/confirmarProcesamiento.jsp"/>
+	</definition>
+	
+	<definition name="reporte.carga" extends="main_layout">
+	    <put name="body"  value="reporte.carga.base"/>
+	</definition>
+	
+	<definition name="reporte.carga.base" path="/pages/reportesCarga/inicioReporte.jsp"/>
+		
+	<definition name="reporte.carga.resultado" extends="main_layout">
+	    <put name="body"  value="reporte.carga.resultado.base"/>
+	</definition>
+	
+	<definition name="reporte.carga.resultado.base" path="/pages/reportesCarga/resultadoReporte.jsp">
+	    <put   name="informacion.archivo" 			value="informacion.archivo.base"/>
+	</definition>
+	
+	<!-- Inicio Prototipo -->
+	
+	
+	<definition name="comprobante.print" extends="pdf_layout">
+	    <put name="body" value="/pages/solicitudBecasIncentivos/imprimirBeneficiosCreados.jsp"/>
+	</definition>
+	
+	
+	<definition name="gestorBecas.busqueda.persona" extends="main_layout">
+	    <put name="body"  value="/pages/solicitudBecasIncentivos/busquedaPersona.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.busqueda.persona.despliegue" extends="main_layout">
+	    <put name="body"  value="/pages/solicitudBecasIncentivos/resultadoPersona.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.resultado.persona" extends="main_layout">
+	    <put name="body"  value="/pages/solicitudBecasIncentivos/resultadoPersona.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.resultado.postulacion" extends="main_layout">
+	    <put name="body"  value="/pages/solicitudBecasIncentivos/resultadoBeneficios.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.beneficios.creados" extends="main_layout">
+	    <put name="body"  value="/pages/solicitudBecasIncentivos/beneficiosCreados.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.administracion.listaBecasIncentivos" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/listaBecasIncentivos.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.administracion.listaBeneficiariosBecasIncentivos" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/listaBeneficiariosBecasIncentivos.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.consulta.becasIncentivosByPersona" extends="main_layout">
+	    <put name="body"  value="/pages/consultaBecasIncentivos/busquedaPersonaBecasIncentivos.jsp"/>
+	</definition>	
+		
+	<definition name="gestorBecas.consulta.becasIncentivos.despliegue" extends="main_layout">
+	    <put name="body"  value="/pages/consultaBecasIncentivos/consultarBecasIncentivos.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.consulta.detalle.beneficiario" extends="simple_nf_layout">
+	    <put name="body"  value="/pages/consultaBecasIncentivos/detalleBeneficiario.jsp"/>
+	</definition>
+
+	<definition name="gestorBecas.informe.becasByFecha" extends="main_layout">
+	    <put name="body"  value="/pages/informes/becasByFechas.jsp"/>
+	</definition>
+	
+	 <definition name="exportar.excel" extends="excel_layout">
+        <put name="body" value="/pages/informes/infoBecasByFechasExcel.jsp"/>
+    </definition>
+    
+     <definition name="gestorBecas.administracion.buscarPersonaEliminaBeca" extends="main_layout">
+        <put name="body" value="/pages/adminBecasIncentivos/elimina/buscarPersonaBeca.jsp"/>
+    </definition>
+    
+    <definition name="gestorBecas.administracion.crearUsuario" extends="main_layout">
+        <put name="body" value="/pages/adminBecasIncentivos/crearUsuario.jsp"/>
+    </definition>   
+    
+     <definition name="gestorBecas.administracion.eliminarUsuario" extends="main_layout">
+        <put name="body" value="/pages/adminBecasIncentivos/eliminarUsuario.jsp"/>
+    </definition>  
+    
+    <definition name="gestorBecas.administracion.cargaMasivaUsuarios" extends="main_layout">
+        <put name="body" value="/pages/adminBecasIncentivos/cargaMasivaUsuarios.jsp"/>
+    </definition>   
+    
+    <definition name="gestorBecas.administracion.eliminaBecasIncentivosByPersona" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/elimina/consultarEliminaBecas.jsp"/>
+	</definition>	
+	
+	<definition name="gestorBecas.administracion.eliminaDetalleBeneficiario" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/elimina/eliminaDetalleBeneficiario.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.administracion.configuracionBecasIncentivos" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/configuracionBecasIncentivos.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.administrador.tipoPremioDocReque.lista" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/tipoPremioDocReque/listaTipoPremioDocReque.jsp"/>
+	</definition>
+	
+	
+	<definition name="gestorBecas.administrador.tipoPremioDocReque.guarda" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/tipoPremioDocReque/guardaTipoPremioDocRequerido.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.entregaIncentivos.incentivosByPersona" extends="main_layout">
+	    <put name="body"  value="/pages/entregaIncentivos/busquedaPersonaIncentivos.jsp"/>
+	</definition>
+	<definition name="gestorBecas.entregaIncentivos.incentivos.despliegue" extends="main_layout">
+	    <put name="body"  value="/pages/entregaIncentivos/consultarIncentivos.jsp"/>
+	</definition>
+		<definition name="gestorBecas.entregaIncentivos.detalle.beneficiario" extends="main_layout">
+	    <put name="body"  value="/pages/entregaIncentivos/detalleBeneficiario.jsp"/>
+	</definition>
+	
+	<definition name="gestorBecas.cargaResultado.inicioCargaResultado" extends="main_layout">
+	    <put name="body"  value="/pages/adminBecasIncentivos/cargarResultado/cargarResultado.jsp"/>
+	</definition>
+	
+	 <definition name="exportar.excel.cargaResultado" extends="excel_layout">
+        <put name="body" value="/pages/adminBecasIncentivos/cargarResultado/cargarResultadoExcel.jsp"/>
+    </definition>
+			
+	<!-- Fin Prototipo -->
+		
+</tiles-definitions>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<!-- Orígenes de datos -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Beans de formulario -->
+	<form-beans>
+		<form-bean name="LoginForm"               type="cl.araucana.independientes.struts.Forms.LoginForm" />
+		<form-bean name="MenuPpalForm"            type="cl.araucana.independientes.struts.Forms.MenuPpalForm" />
+		<form-bean name="NewSolForm"              type="cl.araucana.independientes.struts.Forms.NewSolicitudForm" />		
+		<form-bean name="NewSolDesafiliacionForm" type="cl.araucana.independientes.struts.Forms.NewSolDesafiliacionForm" />		
+		<form-bean name="ModSolForm"              type="cl.araucana.independientes.struts.Forms.ModSolicitudForm"></form-bean>
+		<form-bean name="ConsDesafiliacionForm"   type="cl.araucana.independientes.struts.Forms.ConsDesafiliacionForm"></form-bean>
+		<form-bean name="ModAfiForm"              type="cl.araucana.independientes.struts.Forms.ModAfiliadoForm"></form-bean>		
+        <form-bean name="RepNomSolAfiForm"        type="cl.araucana.independientes.struts.Forms.RepNominaSolAfiForm"></form-bean>
+        <form-bean name="RepNomSolDesafAfiForm"   type="cl.araucana.independientes.struts.Forms.RepNominaSolDesafAfiForm"></form-bean>
+        <form-bean name="ConsModMasSolForm"       type="cl.araucana.independientes.struts.Forms.ConsModMasivaSolForm"></form-bean>
+        <form-bean name="RepNomApoAfiForm"        type="cl.araucana.independientes.struts.Forms.RepNominaApoAfiForm"></form-bean>
+        <form-bean name="SolBeneficiosForm"       type="cl.araucana.independientes.struts.Forms.SolBeneficiosForm"></form-bean>
+        <form-bean name="ConsMasivaApoForm"       type="cl.araucana.independientes.struts.Forms.ConsMasivaApoForm"></form-bean>
+	    <form-bean name="MenuIntercForm" 	      type="cl.araucana.independientes.struts.Forms.MenuIntercForm"></form-bean>
+	    <form-bean name="GenArchEntradaIntForm"   type="cl.araucana.independientes.struts.Forms.GenArchEntradaIntForm"></form-bean>
+	    <form-bean name="GenArchSalidaIntForm" 	  type="cl.araucana.independientes.struts.Forms.GenArchSalidaIntForm"></form-bean>
+	    <form-bean name="CasosPendientesIntForm"  type="cl.araucana.independientes.struts.Forms.CasosPendientesIntForm"></form-bean>
+        <form-bean name="MenuBenefForm"           type="cl.araucana.independientes.struts.Forms.MenuBenefForm"></form-bean>
+        <form-bean name="ConsBenefProgForm"       type="cl.araucana.independientes.struts.Forms.ConsBenefProgForm"></form-bean>
+        <form-bean name="ConsHistBenef"           type="cl.araucana.independientes.struts.Forms.HistoricoBeneficiosForm"></form-bean>
+        <form-bean name="UploadFileIntForm"       type="cl.araucana.independientes.struts.Forms.UploadFileForm"></form-bean>	
+        <form-bean name="MantenedoresForm"        type="cl.araucana.independientes.struts.Forms.MantenedoresForm"></form-bean>	
+        <form-bean name="MenuAporteForm"          type="cl.araucana.independientes.struts.Forms.MenuAporteForm"></form-bean>	
+		<!-- NUEVAS AGRUPACIONES EN MENU PRINCIPAL -->
+		<form-bean name="MenuDesafiliacionForm"   type="cl.araucana.independientes.struts.Forms.MenuDesafiliacionForm"></form-bean>
+        <form-bean name="MenuAfiliacionForm"	  type="cl.araucana.independientes.struts.Forms.MenuAfiliacionForm"></form-bean>
+        
+	</form-beans>
+
+	<!-- Excepciones globales -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Reenvíos globales -->
+	<global-forwards>
+		<forward name="login" path="/pages/Login.jsp"></forward>
+	</global-forwards>
+
+	<!-- Correlaciones de acción -->
+	<action-mappings>
+		<action path="/login" name="LoginForm" type="cl.araucana.independientes.struts.Actions.LoginAction" scope="request">
+		    <forward name="errorLogin"  path="/pages/Login.jsp"/>
+		    <forward name="menuPpal"	path="/pages/MenuPrincipal.jsp"/>
+		</action>
+	
+		<action path="/menuPpal" name="MenuPpalForm" type="cl.araucana.independientes.struts.Actions.MenuPpalAction" scope="request">
+		    <forward name="menuPpal"   			path="/pages/MenuPrincipal.jsp"/>
+		    <forward name="logout"   			path="/pages/Login.jsp"/>
+		    <forward name="menuAporte"          path="/pages/MenuAporte.jsp"/>
+		    <forward name="menuBenef"           path="/pages/MenuBeneficio.jsp"/>	
+		    <forward name="menuIntercaja" 		path="/pages/MenuIntercaja.jsp"></forward>
+   		    <forward name="mantenedores"		path="/pages/Mantenedores.jsp"/>
+			<!-- NUEVAS AGRUPACIONES EN MENU PRINCIPAL -->
+			<forward name="menuDesaf"			path="/pages/MenuDesafiliacion.jsp"/>
+   		    <forward name="menuAfi"				path="/pages/MenuAfiliacion.jsp"/>
+		</action>
+		
+		<!-- AFILIACION -->
+		
+		<action path="/menuAfi" name="MenuAfiliacionForm" type="cl.araucana.independientes.struts.Actions.MenuAfiliacionAction" scope="request">
+		    <forward name="ingresoSolicitud"   	path="/pages/FormDeSolicitud.jsp"></forward>	
+		    <forward name="modificaSolicitud"   path="/pages/ConsModIndividual.jsp"></forward>	
+		    <forward name="modificaAfiliado"   	path="/pages/ConsModAfiliados.jsp"></forward>
+		    <forward name="repNominaSolAfi"     path="/pages/RepNominaSolAfi.jsp"></forward>	
+		    <forward name="consModMasivaSol" 	path="/pages/ConsModMasivaSol.jsp"></forward>	
+		    <forward name="menuPpal"	      	path="/pages/MenuPrincipal.jsp"></forward>	
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>	
+   		    <forward name="menuAfi"         	path="/pages/MenuAfiliacion.jsp"></forward>		
+        </action>
+		
+		<action path="/newSol" name="NewSolForm" type="cl.araucana.independientes.struts.Actions.NewSolicitudAction" scope="request">
+		    <forward name="ingresoSolicitud"	path="/pages/FormDeSolicitud.jsp"/>
+		    <forward name="menuPpal"   			path="/pages/MenuAfiliacion.jsp"/>
+		    <forward name="logout"   			path="/pages/Login.jsp"/>
+		</action>
+		
+		<action path="/modSol" name="ModSolForm" type="cl.araucana.independientes.struts.Actions.ModSolicitudAction" scope="request">
+		    <forward name="menuPpal"			path="/pages/MenuAfiliacion.jsp"/>
+		    <forward name="logout"   			path="/pages/Login.jsp"/>
+		</action>
+		
+		<action path="/modAfi" name="ModAfiForm" type="cl.araucana.independientes.struts.Actions.ModAfiliadoAction" scope="request">
+		    <forward name="menuPpal"			path="/pages/MenuAfiliacion.jsp"/>
+		    <forward name="logout"   			path="/pages/Login.jsp"/>
+		</action>
+
+		<action path="/repNomina" name="RepNomSolAfiForm" type="cl.araucana.independientes.struts.Actions.RepNominaSolAfiAction" scope="request">
+		    <forward name="menuPpal"	      path="/pages/MenuAfiliacion.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="repNominaSolAfi"   path="/pages/RepNominaSolAfi.jsp"></forward>
+		</action>
+
+		<action path="/modMasiva" name="ConsModMasSolForm" type="cl.araucana.independientes.struts.Actions.ConsModMasivaAction" scope="request">
+			<forward name="menuPpal"	      path="/pages/MenuAfiliacion.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="consModMasivaSol"  path="/pages/ConsModMasivaSol.jsp"></forward>
+		</action>
+		
+		<!-- Aporte -->
+		<action path="/repNominaApo" name="RepNomApoAfiForm" type="cl.araucana.independientes.struts.Actions.RepNominaApoAfiAction" scope="request">
+		    <forward name="menuAporte"         	path="/pages/MenuAporte.jsp"></forward>
+		    <forward name="logout"   	        path="/pages/Login.jsp"></forward>
+		    <forward name="repNominaApoAfi"     path="/pages/RepNominaApoAfi.jsp"></forward>
+		</action>
+		
+		<action path="/consMasivaApo" name="ConsMasivaApoForm" type="cl.araucana.independientes.struts.Actions.ConsMasivaApoAction" scope="request">
+		    <forward name="menuAporte"         	path="/pages/MenuAporte.jsp"></forward>
+		    <forward name="logout"   	        path="/pages/Login.jsp"></forward>
+		    <forward name="consMasivaApo"       path="/pages/ConsMasivaApo.jsp"></forward>
+		</action>
+		
+		<action path="/menuAporte" name="MenuAporteForm" type="cl.araucana.independientes.struts.Actions.MenuAporteAction" scope="request">
+		    <forward name="menuPpal"	      	path="/pages/MenuPrincipal.jsp"></forward>
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>
+		    <forward name="menuAporte"         	path="/pages/MenuAporte.jsp"></forward>
+		    <forward name="repNominaApoAfi"     path="/pages/RepNominaApoAfi.jsp"></forward>
+		    <forward name="consMasivaApo"       path="/pages/ConsMasivaApo.jsp"></forward>
+		</action>		
+		
+		<!-- Beneficios  -->
+		<action path="/solBeneficios" name="SolBeneficiosForm" type="cl.araucana.independientes.struts.Actions.SolBeneficiosAction" scope="request">
+		    <forward name="menuBenef"         path="/pages/MenuBeneficio.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="solBeneficios"     path="/pages/SolBeneficios.jsp"></forward>
+		</action>
+		
+		<action path="/menuBenef" name="MenuBenefForm" type="cl.araucana.independientes.struts.Actions.MenuBenefAction" scope="request">
+		    <forward name="menuPpal"	      	path="/pages/MenuPrincipal.jsp"></forward>
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>
+		    <forward name="menuBenef"         	path="/pages/MenuBeneficio.jsp"></forward>
+		    <forward name="solBeneficios"    	path="/pages/SolBeneficios.jsp"></forward>
+		    <forward name="consBenefProg"     	path="/pages/ConsBenefProg.jsp"></forward>
+			 <forward name="consHistorica"     path="/pages/HistoricoBeneficios.jsp"></forward>		
+        </action>
+		
+		<action path="/consBenefProg" name="ConsBenefProgForm" type="cl.araucana.independientes.struts.Actions.ConsBenefProgAction" scope="request">
+		    <forward name="menuBenef"         	path="/pages/MenuBeneficio.jsp"></forward>
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>
+		    <forward name="consBenefProg"     	path="/pages/ConsBenefProg.jsp"></forward>
+		</action>
+
+		<action path="/consHistBenef" name="ConsHistBenef" type="cl.araucana.independientes.struts.Actions.HistoricoBeneficiosAction" scope="request">
+		    <forward name="menuBenef"         path="/pages/MenuBeneficio.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="consHistorica"     path="/pages/HistoricoBeneficios.jsp"></forward>
+		</action>
+		
+		<!-- Proceso de Intercaja -->
+		<action path="/menuInterc" name="MenuIntercForm" type="cl.araucana.independientes.struts.Actions.MenuIntercAction" scope="request">
+			<forward name="menuPpal" 		  	path="/pages/MenuPrincipal.jsp"></forward>
+			<forward name="logout" 			  	path="/pages/Login.jsp"></forward>
+			<forward name="menuIntercaja" 	  	path="/pages/MenuIntercaja.jsp"></forward>
+			<forward name="generarArchSalida"   path="/pages/GenArchSalidaIntercaja.jsp"></forward>
+			<forward name="generarCasosPend" 	path="/pages/CasosPendientesIntercaja.jsp"></forward>
+			<forward name="SubirArchivoIntercaja" 	path="/pages/UploadFileIntercaja.jsp"></forward>
+			<!-- <forward name="generarArchEntrada" 	path="/pages/GenArchEntradaIntercaja.jsp"></forward> -->				
+		</action>
+		
+		<action path="/uploadFileInt" name="UploadFileIntForm" type="cl.araucana.independientes.struts.Actions.UploadFileIntercajaAction" scope="request">
+			<forward name="logout" 					path="/pages/Login.jsp"></forward>
+			<forward name="menuIntercaja" 			path="/pages/MenuIntercaja.jsp"></forward>
+			<forward name="generarArchEntrada" 		path="/pages/GenArchEntradaIntercaja.jsp"></forward>
+			<!-- <forward name="SubirArchivoIntercaja" 	path="/pages/UploadFileIntercaja.jsp"></forward> -->
+		</action>
+		
+		<action path="/genArchEntrada" name="GenArchEntradaIntForm" type="cl.araucana.independientes.struts.Actions.GenArchEntIntercAction" scope="request">
+			<forward name="logout" 				path="/pages/Login.jsp"></forward>
+			<forward name="menuIntercaja" 		path="/pages/MenuIntercaja.jsp"></forward>
+			<!-- <forward name="generarArchEntrada" 	path="/pages/GenArchEntradaIntercaja.jsp"></forward> -->
+			<forward name="SubirArchivoIntercaja" 	path="/pages/UploadFileIntercaja.jsp"></forward>
+		</action>
+		
+		<action path="/genArchSalida" name="GenArchSalidaIntForm" type="cl.araucana.independientes.struts.Actions.GenArchSalIntercAction" scope="request">
+			<forward name="logout" 				path="/pages/Login.jsp"></forward>
+			<forward name="menuIntercaja" 		path="/pages/MenuIntercaja.jsp"></forward>
+			<forward name="generarArchSalida" 	path="/pages/GenArchSalidaIntercaja.jsp"></forward>		
+		</action>
+		
+		<action path="/casosPendInt" name="CasosPendientesIntForm" type="cl.araucana.independientes.struts.Actions.CasosPendIntercAction" scope="request">
+			<forward name="logout" 				path="/pages/Login.jsp"></forward>
+			<forward name="menuIntercaja" 		path="/pages/MenuIntercaja.jsp"></forward>
+			<forward name="generarCasosPend" 	path="/pages/CasosPendientesIntercaja.jsp"></forward>
+		</action>
+		
+		<!-- Fin proceso de Intercaja -->
+		
+		<!-- Mantenedores -->		
+		<action path="/Mantenedores" name="MantenedoresForm" type="cl.araucana.independientes.struts.Actions.MantenedoresAction" scope="request">
+		    <forward name="menuPpal"	      path="/pages/MenuPrincipal.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="Mantenedores"     path="/pages/Mantenedores.jsp"></forward>
+		</action>
+		
+					<!-- NUEVAS AGRUPACIONES EN MENU PRINCIPAL -->
+					
+		<!-- Desafiliacion  -->
+		
+		<action path="/menuDesaf" name="MenuDesafiliacionForm" type="cl.araucana.independientes.struts.Actions.MenuDesafiliacionAction" scope="request">
+		    <forward name="menuPpal"	      	path="/pages/MenuPrincipal.jsp"></forward>
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>
+		    <forward name="menuDesaf"         	path="/pages/MenuDesafiliacion.jsp"></forward>
+		    <forward name="solDesafiliacion"   	path="/pages/SolDesafiliacion.jsp"></forward>
+		    <forward name="consDesafiliacion"   path="/pages/ConsDesafiliacion.jsp"></forward>
+			<forward name="RepNominaSolDesafAfi" path="/pages/RepNominaSolDesafAfi.jsp"></forward>		
+        </action>
+        
+        <action path="/solDesafiliacion" name="NewSolDesafiliacionForm" type="cl.araucana.independientes.struts.Actions.NewSolDesafiliacionAction" scope="request">
+		    <forward name="menuDesaf"         path="/pages/MenuDesafiliacion.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="solDesafiliacion"  path="/pages/SolDesafiliacion.jsp"></forward>
+		</action>
+		
+		<action path="/consDesafiliacion" name="ConsDesafiliacionForm" type="cl.araucana.independientes.struts.Actions.ConsDesafiliacionAction" scope="request">
+		    <forward name="menuDesaf"         	path="/pages/MenuDesafiliacion.jsp"></forward>
+		    <forward name="logout"   	      	path="/pages/Login.jsp"></forward>
+		    <forward name="consDesafiliacion"  	path="/pages/ConsDesafiliacion.jsp"></forward>
+		</action>
+
+		<action path="/RepNominaSolDesafAfi"  name="RepNomSolDesafAfiForm" type="cl.araucana.independientes.struts.Actions.RepNominaSolDesafAfiAction" scope="request">
+		    <forward name="menuDesaf"         path="/pages/MenuDesafiliacion.jsp"></forward>
+		    <forward name="logout"   	      path="/pages/Login.jsp"></forward>
+		    <forward name="RepNominaSolDesafAfi"  path="/pages/RepNominaSolDesafAfi.jsp"></forward>
+		</action>
+
+		
+	</action-mappings>
+
+	<!-- Recursos de mensaje -->
+	<message-resources parameter="cl.araucana.independientes.resources.ApplicationResources"/>
+
+</struts-config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadPensionVO" table="ENTIDAD_FONDO_PENSION">
+		<id name="id" column="ID_ENT_FONDO_PENSION"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="idBanco" column="ID_BANCO" />
+   		<property name="idCtaCte" column="ID_CTA_CTE" />
+   		<property name="idAfc" column="ID_AFC" />
+   		<property name="cotizacionObligatoria" column="COTIZACION_OBLIGATORIA" />
+   		<property name="comision" column="COMISION_AFP" />
+   		<property name="sis" column="SIS" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.ComprobanteVO" table="COMPROBANTE_PAGO">
+    	<id column="ID_CODIGO_BARRA" name="idCodigoBarra">
+            <generator class="sequence">
+                <param name="sequence">S_CODBARR</param>
+            </generator>
+    	</id>
+   		<property name="folioTesoreria" column="FOLIO_TESORERIA" />
+   		<property name="idEstado" column="ID_ESTADO" />
+   		<property name="idDocumento" column="ID_DOCUMENTO" />
+   		<property name="emitido" column="EMITIDO" />
+   		<property name="formaPago" column="FORMA_PAGO" />
+   		<property name="medioPago" column="MEDIO_PAGO" />
+   		<property name="pagado" column="PAGADO" />
+   		<property name="total" column="TOTAL" />
+   		<property name="numTrabajadores" column="N_TRABAJADORES" />
+   		<property name="cierre" column="CIERRE" />
+   		<property name="renta_imponible" column="RENTA_IMPONIBLE" />
+   		<bag name="secciones" cascade="all-delete-orphan" lazy="true" table="SECCION" inverse="true" order-by="ID_TIPO_SECCION">
+   	   		<key column="ID_CODIGO_BARRA"/>   	   		
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.SeccionVO" />
+  		</bag>
+    </class>
+</hibernate-mapping>

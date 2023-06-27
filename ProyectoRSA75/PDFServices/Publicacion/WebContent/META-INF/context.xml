@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+     <Resource name="jdbc/pw" 
+             auth="Container" 
+             type="javax.sql.DataSource" 
+             username="SISTEMAS" 
+             password="sistemas" 
+             url="jdbc:as400:/testdesa;user=SISTEMAS;password=sistemas" 
+            driverClassName="com.ibm.as400.access.AS400JDBCDriver" 
+           maxActive="8" 
+           maxIdle="4" />
+ </Context>
+ 

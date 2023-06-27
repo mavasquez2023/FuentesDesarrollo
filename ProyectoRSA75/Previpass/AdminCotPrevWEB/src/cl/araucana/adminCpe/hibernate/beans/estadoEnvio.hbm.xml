@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EstadoEnvioVO" table="ESTENVIO">
+    	<id column="ID_ESTADO" name="id" type="int"/>
+   		<property name="descripcion" column="NOMBRE" />
+    </class>
+</hibernate-mapping>

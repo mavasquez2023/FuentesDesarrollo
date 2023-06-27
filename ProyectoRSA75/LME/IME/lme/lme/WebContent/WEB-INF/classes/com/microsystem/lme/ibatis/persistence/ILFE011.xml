@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE011">
+
+  <typeAlias alias="ilfe011" type="com.microsystem.lme.ibatis.domain.Ilfe011VO"/>
+
+  <resultMap id="returnObject11" class="ilfe011">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="periodo" column="PERIODO"/>
+		<result property="montoApagarSubsidio" column="MTOAPOSUB"/>
+		<result property="montoAportePensiones" column="MTOAPOPEN"/>
+		<result property="montoSubsidioDiario" column="MTOSUBDIA"/>
+		<result property="montoAporteSalud" column="MTOAPOSAL"/>
+		<result property="montoSeguroCesantia" column="MTOAPOCES"/>
+		<result property="ndiasApagarSubsidios" column="NUMDIASUB"/>
+		<result property="ndiasApagarPrevision" column="NUMDIAAPO"/>
+		<result property="marca" column="MARCA"/>
+		<result property="fecProce" column="FECPROCE"/>
+		<result property="fecPropag" column="FECPROPAG"/>
+		<result property="fecDesde" column="FECDESDE"/>
+		<result property="fecHasta" column="FECHASTA"/>
+		<result property="tipoLiquidacion" column="TIPO"/>
+		<result property="eventoLiquidacion" column="EVENTO"/>
+
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+  </resultMap>
+
+  <select id="getIlfe011" resultMap="returnObject11">
+    SELECT	IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF, LICIMPNUM, DVLIC,
+		PAGFOL, AFIRUT, NUMIMPRE, EMPRUT, PERIODO, MTOSUBDIA, MTOAPOPEN, MTOAPOSUB,
+		MTOAPOSAL, MTOAPOCES, FECPROPAG, FECDESDE, FECHASTA, NUMDIASUB, NUMDIAAPO, 
+		FECPROCE, MARCA, ENVIADA, RESPWS, TIPO, EVENTO, 
+		GLORESP
+		, IFNULL( FECRESP, '19000101') as FECRESP
+		, IFNULL( HORRESP, '000000') as HORRESP
+		, FECHAEST
+		, HORAEST	
+	FROM	LIEXP.ILFE011
+	WHERE ENVIADA = '0'
+	WITH UR
+  </select>
+
+	<update id="updateIlfe011" parameterClass="ilfe011">
+		UPDATE LIEXP.ILFE011
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+			FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# and FECHAEST = #fechaEstado# and HORAEST = #horaEstado#
+		WITH NC
+	</update>
+</sqlMap>

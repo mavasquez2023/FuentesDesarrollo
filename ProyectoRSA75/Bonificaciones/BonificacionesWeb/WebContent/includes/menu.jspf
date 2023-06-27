@@ -1,0 +1,80 @@
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+ 
+<% if (userinformation.hasAccess("opSocio")) { %>
+  <tr>
+     <td><html:link page="/prepareOption.do?destino=socios" target="_top"><html:img page="/images/botonera_lado/socios.gif" alt="Socios" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+  <tr>
+     <td><html:link page="/prepareOption.do?destino=sociosInactivos" target="_top"><html:img page="/images/botonera_lado/sociosInactivos.gif" alt="Socios Inactivos" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>  
+  
+<% } %>
+          
+<% if (userinformation.hasAccess("opCaso")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=casos" target="_top"><html:img page="/images/botonera_lado/casos.gif" alt="Casos" width="143" height="27" border="0"/></html:link></td>
+  </tr>   
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+
+<% if (userinformation.hasAccess("prcPreCaso")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=listaPreCasos" target="_top"><html:img page="/images/botonera_lado/preCasos.gif" alt="Pre-Casos" width="143" height="27" border="0"/></html:link></td>
+  </tr>   
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+          
+<% if (userinformation.hasAccess("opConvenio")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=convenios" target="_top"><html:img page="/images/botonera_lado/convenios.gif" alt="Convenios" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+          
+<% if (userinformation.hasAccess("opCobertura")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=coberturas" target="_top"><html:img page="/images/botonera_lado/coberturas.gif" alt="Coberturas" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+          
+<% if (userinformation.hasAccess("opOperacion")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=operaciones" target="_top"><html:img page="/images/botonera_lado/operaciones.gif" alt="Operaciones" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+          
+<% if (userinformation.hasAccess("opReporte")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=reportes" target="_top"><html:img page="/images/botonera_lado/reportes.gif" alt="Reportes" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+  <tr>
+    <td><html:img page="/images/botonera_lado/raya_separadora.gif" alt="" width="143" height="1"/></td>
+  </tr>
+<% } %>
+          
+<% if (false && userinformation.hasAccess("opConfiguracion")) { %>
+  <tr>
+    <td><html:link page="/prepareOption.do?destino=configuracion" target="_top"><html:img page="/images/botonera_lado/configuracion.gif" alt="Configuraci&oacute;n" width="143" height="27" border="0"/></html:link></td>
+  </tr>
+<% } %>
+          
+</table>
+

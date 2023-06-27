@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.LectorEntidadVO" table="LECTOENT">
+    	<id name="idLectorEntidad" column="ID_LECTOR_ENTIDAD" />
+   		<property name="habilitado" column="HABILITADO" />
+
+		<set name="entidadesPension" table="LECTOR_ENTIDAD_FONDO_PENSION" cascade="all">
+			<key column="ID_LECTOR_ENTIDAD" />
+			<many-to-many column="ID_ENT_FONDO_PENSION" class="cl.araucana.cp.distribuidor.hibernate.beans.EntidadPensionVO" />
+		</set>
+
+		<set name="entidadesSalud" table="LECTOR_ENTIDAD_SALUD" cascade="all">
+			<key column="ID_LECTOR_ENTIDAD" />
+			<many-to-many column="ID_ENT_SALUD" class="cl.araucana.cp.distribuidor.hibernate.beans.EntidadSaludVO" />
+		</set>
+
+		<set name="entidadesApv" table="LECTOR_ENTIDAD_APV" cascade="all">
+			<key column="ID_LECTOR_ENTIDAD" />
+			<many-to-many column="ID_ENT_APV" class="cl.araucana.cp.distribuidor.hibernate.beans.EntidadApvVO" />
+		</set>
+
+		<set name="entidadesCcaf" table="LECTOR_ENTIDAD_CCAF" cascade="all">
+			<key column="ID_LECTOR_ENTIDAD" />
+			<many-to-many column="ID_CCAF" class="cl.araucana.cp.distribuidor.hibernate.beans.EntidadCCAFVO" />
+		</set>
+
+		<set name="entidadesMutual" table="LECTOR_ENTIDAD_MUTUAL" cascade="all">
+			<key column="ID_LECTOR_ENTIDAD" />
+			<many-to-many column="ID_MUTUAL" class="cl.araucana.cp.distribuidor.hibernate.beans.EntidadMutualVO" />
+		</set>
+
+    </class>
+</hibernate-mapping>

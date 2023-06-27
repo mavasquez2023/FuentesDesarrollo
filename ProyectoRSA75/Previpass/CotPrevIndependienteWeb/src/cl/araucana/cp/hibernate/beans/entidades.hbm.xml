@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadSaludVO" table="ENTIDAD_SALUD">
+    	<id name="id" type="int" column="ID_ENT_SALUD"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="tasaSalud" column="TASA_SALUD" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadPensionVO" table="ENTIDAD_FONDO_PENSION">
+    	<id name="id" type="int" column="ID_ENT_FONDO_PENSION"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="idBanco" column="ID_BANCO" />
+   		<property name="idCtaCte" column="ID_CTA_CTE" />
+   		<property name="idAfc" column="ID_AFC" />
+   		<property name="cotizacionObligatoria" column="COTIZACION_OBLIGATORIA" />
+   		<property name="comision" column="COMISION_AFP" />
+   		<property name="sis" column="SIS" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadAFCVO" table="ENTIDAD_AFC">
+    	<id name="id" type="int" column="ID_AFC"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadExCajaVO" table="ENTIDAD_EXCAJA">
+    	<id name="id" type="int" column="ID_ENT_EXCAJA"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="NOMBRE" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadApvVO" table="ENTAPV">
+    	<id name="id" type="int" column="ID_ENT_APV"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadSilVO" table="ENTSIL">
+    	<id name="id" type="int" column="ID_ENT_SIL"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadMutualVO" table="ENTIDAD_MUTUAL">
+    	<id name="id" type="int" column="ID_MUTUAL"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadCCAFVO" table="ENTIDAD_CCAF">
+        <id name="id" type="int" column="ID_CCAF"/>
+        <property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+        <property name="porcentajeFonasa" column="PORCENTAJE_FONASA" />
+        <property name="asigFam" column="ASFAM" />
+        <property name="creditos" column="CREDITOS" />
+        <property name="leasing" column="LEASING" />
+        <property name="dental" column="DENTAL" />
+        <property name="segurosVida" column="SEGURO" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.TipoMovimientoPersonalVO" table="TIPOMVTOPE">
+    	<id name="id" column="ID_TIPO_MVTO"/>
+   		<property name="nombre" column="DESCRIPCION"/>
+   		<property name="fechaTerminoObligatoria" column="FECHA_TERMINO_OBLIGATORIA" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.TipoMvtoPersoAFVO" table="TIPOMVTOPEAF">
+    	<id name="id" column="ID_TIPO_MVTO"/>
+   		<property name="nombre" column="DESCRIPCION"/>
+   		<property name="fechaTerminoObligatoria" column="FECHA_TERMINO_OBLIGATORIA" />
+   		<property name="fechaInicioObligatoria" column="FECHA_INICIO_OBLIGATORIA" />
+    </class>
+</hibernate-mapping>

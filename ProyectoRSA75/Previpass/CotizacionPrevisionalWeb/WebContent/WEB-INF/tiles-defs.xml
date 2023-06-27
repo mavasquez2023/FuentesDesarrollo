@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+<tiles-definitions>
+	<definition name="inicio" extends="principal">
+		<put name="main" value="/araucana/jsp/inicio.jsp" />
+		<put name="nombre" type="string" value="Inicio" />
+	</definition>
+	<definition name="procesos" extends="principal">
+		<put name="main" value="/araucana/jsp/resumen.jsp" />
+		<put name="nombre" type="string" value="Gestión de Pago" />
+	</definition>	
+	<definition name="comprobanteEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/comprobanteEditar.jsp" />
+		<put name="nombre" type="string" value="Editar comprobante" />
+	</definition>
+	<definition name="cotizantesLista" extends="principal">
+		<put name="main" value="/araucana/jsp/cotizantesLista.jsp" />
+		<put name="nombre" type="string" value="Editar Nómina" />
+	</definition>
+	<definition name="trabListaAll" extends="principal">
+		<put name="main" value="/araucana/jsp/cotizantesListaAll.jsp" />
+		<put name="nombre" type="string" value="Trabajadores" />
+	</definition>
+	<definition name="trabajadorEditarD" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorEditarD.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorEditarG" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorEditarG.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorEditarA" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorEditarA.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorEditarR" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorEditarR.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorEditarF" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorEditarF.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	
+	
+	<definition name="trabajadorVerD" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorVerD.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorVerG" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorVerG.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorVerA" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorVerA.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorVerR" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorVerR.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+	<definition name="trabajadorVerF" extends="principal">
+		<put name="main" value="/araucana/jsp/trabajadorVerF.jsp" />
+		<put name="nombre" type="string" value="Trabajador" />
+	</definition>
+
+	<definition name="pagoNominas" extends="principal">
+		<put name="main" value="/araucana/jsp/pagoNominas.jsp" />
+		<put name="nombre" type="string" value="Pago de Nóminas" />
+	</definition>
+
+	<definition name="comprobanteFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/comprobanteFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle por Institución" />
+	</definition>
+	<definition name="comprobanteEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/comprobanteEditar.jsp" />
+		<put name="nombre" type="string" value="Edición de Comprobante" />
+	</definition>
+	<definition name="resumenComprProvi" extends="principal">
+		<put name="main" value="/araucana/jsp/resumenComprProvi.jsp" />
+		<put name="nombre" type="string" value="Resumen Comprobante" />
+	</definition>
+
+	<definition name="empresaLista" extends="principal">
+		<put name="main" value="/araucana/jsp/empresaLista.jsp" />
+		<put name="nombre" type="string" value="Empresas" />
+	</definition>
+	<definition name="empresaFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/empresaFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle Empresa" />
+	</definition>
+	<definition name="empresaEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/empresaEditar.jsp" />
+		<put name="nombre" type="string" value="Edición Empresa" />
+	</definition>
+	<definition name="sucursalesLista" extends="principal">
+		<put name="main" value="/araucana/jsp/sucursalesLista.jsp" />
+		<put name="nombre" type="string" value="Sucursales" />
+	</definition>
+	<definition name="sucursalesEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/sucursalesEditar.jsp" />
+		<put name="nombre" type="string" value="Edición Sucursal" />
+	</definition>
+	<definition name="sucursalesFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/sucursalesFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle Sucursal" />
+	</definition>
+	<definition name="conveniosLista" extends="principal">
+		<put name="main" value="/araucana/jsp/conveniosLista.jsp" />
+		<put name="nombre" type="string" value="Convenios" />
+	</definition>
+	<definition name="conveniosEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/conveniosEditar.jsp" />
+		<put name="nombre" type="string" value="Edición Convenio" />
+	</definition>
+	<definition name="conveniosCrear" extends="principal">
+		<put name="main" value="/araucana/jsp/conveniosCrear.jsp" />
+		<put name="nombre" type="string" value="Creación Convenio" />
+	</definition>
+	<definition name="conveniosFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/conveniosFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle Convenio" />
+	</definition>
+
+	<definition name="usuarioLista" extends="principal">
+		<put name="main" value="/araucana/jsp/usuarioLista.jsp" />
+		<put name="nombre" type="string" value="Encargados" />
+	</definition>
+	<definition name="usuarioFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/usuarioFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle Usuario" />
+	</definition>
+	<definition name="usuarioEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/usuarioEditar.jsp" />
+		<put name="nombre" type="string" value="Edición Usuario" />
+	</definition>
+
+	<definition name="consulta" extends="principal">
+		<put name="main" value="/araucana/jsp/consulta.jsp" />
+		<put name="nombre" type="string" value="Consulta" />
+	</definition>
+	<definition name="descargaPC" extends="principal">
+		<put name="main" value="/araucana/jsp/descargaPC.jsp" />
+		<put name="nombre" type="string" value="DescargaPC" />
+	</definition>
+	<definition name="sabana" extends="principal">
+		<put name="main" value="/araucana/jsp/verDetallesSabana.jsp" />
+		<put name="nombre" type="string" value="Detalle Comprobante" />
+	</definition>
+	<definition name="codigosFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/codigosFicha.jsp" />
+		<put name="nombre" type="string" value="Códigos Concepto" />
+	</definition>
+	<definition name="blancoNomTrab" extends="principal">
+		<put name="main" value="/araucana/jsp/blanco.jsp" />
+		<put name="nombre" type="string" value="Nóminas de Trabajadores" />
+	</definition>	
+	<definition name="blancoDefCod" extends="principal">
+		<put name="main" value="/araucana/jsp/blanco.jsp" />
+		<put name="nombre" type="string" value="Definición de Códigos" />
+	</definition>
+	<definition name="codigosEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/codigosEditar.jsp" />
+		<put name="nombre" type="string" value="Edición de Códigos" />
+	</definition>
+	<definition name="archivosLista" extends="principal">
+		<put name="main" value="/araucana/jsp/archivosLista.jsp" />
+		<put name="nombre" type="string" value="Descripción Archivo txt" />
+	</definition>
+	<definition name="archivosFicha" extends="principal">
+		<put name="main" value="/araucana/jsp/archivoFicha.jsp" />
+		<put name="nombre" type="string" value="Detalle de Mapeo Archivo" />
+	</definition>
+	<definition name="archivosEditar" extends="principal">
+		<put name="main" value="/araucana/jsp/archivoEditar.jsp" />
+		<put name="nombre" type="string" value="Edición de Mapeo Archivo" />
+	</definition>
+	<definition name="error" extends="principal">
+		<put name="main" value="/araucana/jsp/error.jsp" />
+		<put name="nombre" type="string" value="Error" />
+	</definition>
+	<definition name="retorno" extends="principal">
+		<put name="main" value="/araucana/PagoEnLinea/retornoSPL.jsp" />
+		<put name="nombre" type="string" value="Resultado" />
+	</definition>
+
+	<definition name="envio_adaptado" extends="principal">
+		<put name="main" value="/WEB-INF/adapted/nozipped.jsp" />
+		<put name="nombre" type="string" value="Envío de Nóminas" />
+	</definition>
+
+	<definition name="envio_adaptadoNominaUnica" extends="principal">
+		<put name="main" value="/WEB-INF/adapted/nozippedNominaUnica.jsp" />
+		<put name="nombre" type="string" value="Envío de Nóminas" />
+	</definition>
+
+	<definition name="showReceiptReport" extends="principal">
+		<put name="main" value="/WEB-INF/adapted/showReceiptReport.jsp" />
+		<put name="nombre" type="string" value="Reporte de Envío de Nóminas" />
+	</definition>
+
+	<definition name="principal" path="/tiles/plantilla.jsp">
+		<put name="left_menu" value="/tiles/menuIzq.jsp" />
+		<put name="nombre" type="string" value="" />
+	</definition>
+	
+	<definition name="informe" path="/tiles/plantillaInforme.jsp">		
+		<put name="nombre" type="string" value="" />
+	</definition>
+	
+	<definition name="errores" extends="informe">
+		<put name="main" value="/araucana/jsp/errores.jsp" />
+		<put name="nombre" type="string" value="Listado Errores" />
+	</definition>
+	
+	<definition name="buscarInforme" extends="principal">
+		<put name="main" value="/araucana/jsp/buscarInforme.jsp" />
+		<put name="nombre" type="string" value="Buscar Informe" />
+	</definition>
+	
+	<definition name="detalleInforme" extends="principal">
+		<put name="main" value="/araucana/jsp/detalleInforme.jsp" />
+		<put name="nombre" type="string" value="Listado Avisos-Errores" />
+	</definition>
+	<definition name="detalleInformeDNP" extends="principal">
+		<put name="main" value="/araucana/jsp/detalleInfoDeclaraNoPago.jsp" />
+		<put name="nombre" type="string" value="Listado Declaraciones y No Pago" />
+	</definition>
+	
+	<definition name="listadoAvisos" extends="informe">
+		<put name="main" value="/araucana/jsp/avisos.jsp" />
+		<put name="nombre" type="string" value="Listado Avisos" />
+	</definition>
+	
+	<definition name="listadoErrores" extends="informe">
+		<put name="main" value="/araucana/jsp/errores.jsp" />
+		<put name="nombre" type="string" value="Listado Errores" />
+	</definition>
+	
+	<definition name="detalleInfoDeclaraNoPago" extends="principal">
+		<put name="main" value="/araucana/jsp/detalleInfoDeclaraNoPago.jsp" />
+		<put name="nombre" type="string" value="Listado de Declaraciones y No Pago" />
+	</definition>
+	
+	<definition name="informacionNomina" extends="informe">
+		<put name="main" value="/araucana/jsp/informacionNomina.jsp" />
+		<put name="nombre" type="string" value="Información Nómina" />
+	</definition>
+
+	<definition name="plantilla" path="/araucana/jsp/changePassword/plantilla.jsp" />
+	
+	<definition name="mustUserChangePassword" extends="plantilla">
+		<put name="body" value="/araucana/jsp/changePassword/changePassword.jsp" />
+	</definition>
+	
+	<definition name="exitoChangePassword" extends="principal">
+		<put name="main" value="/araucana/jsp/changePassword/exitoChangePassword.jsp" />
+		<put name="nombre" type="string" value="Cambiar Clave" />
+	</definition>
+	
+	<definition name="errorChangePassword" extends="principal">
+		<put name="main" value="/araucana/jsp/changePassword/errorChangePassword.jsp" />
+		<put name="nombre" type="string" value="Cambiar Clave" />		
+	</definition>
+	
+	<definition name="changePassword" extends="principal">
+		<put name="main" value="/araucana/jsp/changePassword/changePassword.jsp" />
+		<put name="nombre" type="string" value="Cambiar Clave" />
+	</definition>
+
+	<definition name="blancoCargasFam" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/blanco.jsp" />
+		<put name="nombre" type="string" value="Cargas Familiares" />
+	</definition>
+	<definition name="busquedaRut" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/busquedaRut.jsp" />
+		<put name="nombre" type="string" value="Cargas Familiares por RUT" />
+	</definition>
+	<definition name="detalleBusquedaRut" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/detalleBusquedaRut.jsp" />
+		<put name="nombre" type="string" value="Cargas Familiares por RUT" />
+	</definition>
+	<definition name="listaNominas" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/listaNominas.jsp" />
+		<put name="nombre" type="string" value="Validación Nóminas" />
+	</definition>
+	<definition name="busquedaEmpresa" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/busquedaEmpresa.jsp" />
+		<put name="nombre" type="string" value="Búsqueda de Empresa" />
+	</definition>
+	<definition name="busquedaTrabajadores" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/listadoTrabajadores.jsp" />
+		<put name="nombre" type="string" value="Búsqueda de Empresa" />
+	</definition>
+	<definition name="trabListaCargas" extends="principal">
+		<put name="main" value="/araucana/jsp/cargasFamiliares/consultaCargas.jsp" />
+		<put name="nombre" type="string" value="Consulta de Cargas Familiares" />
+	</definition>
+	<definition name="cargasFamPDF" path="/araucana/jsp/cargasFamiliares/consultaCargasPDF.jsp"/>
+</tiles-definitions>

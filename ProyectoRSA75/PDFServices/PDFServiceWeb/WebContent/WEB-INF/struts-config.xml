@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<!-- Data Sources -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+
+         <form-bean name="mantenedorDeScriptForm" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.forms.MantenedorDeScriptForm" />
+         <form-bean name="TaskFormBean" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.forms.TaskFormBean">
+         </form-bean> 
+            
+	</form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+        <forward name="index" 		
+        	 	 path="/index.jsp" 		
+        	 	 contextRelative="true"/>
+        
+        <forward name="listaScripts" 
+        		 path="/scriptsList.jsp" 	
+        		 contextRelative="true" 
+        		 redirect="true"/>
+        		 
+        <forward name="mantenedorDeScript" 
+				 path="/adminScripts.jsp" 		
+				 contextRelative="true"/>
+				 
+        <forward name="home" 		
+        		 path="/LoadConfUser.do" 		
+        		 contextRelative="true" 
+        		 redirect="true"/>
+        
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+
+       <action path="/RunScript" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.RunScriptAction">
+        	<forward name="success" path="/messageResult.jsp"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       
+       <action path="/ViewTasks" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.ViewTasksAction">
+        	<forward name="success" path="/taskList.jsp"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       
+       <action path="/LoadConfUser" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.LoadConfUserAction">
+           	<forward name="success0" path="/scriptsList.jsp" redirect="true"></forward>
+           	<forward name="success1" path="/systemsList.jsp" redirect="true"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       
+       <action path="/InputParameters" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.InputParametersAction">
+	   		<forward name="success" path="/inputParams.jsp"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/ViewProcess" name="TaskFormBean"  scope="request" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.ViewProcessAction" input="/taskList.jsp" validate="true">
+       		<forward name="success" path="/taskProcess.jsp"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       
+       <action path="/AbortTask" name="TaskFormBean"  scope="request" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.AbortTaskAction" input="/taskList.jsp" validate="true">
+       		<forward name="success" path="/ViewTasks.do"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/LoadScripts" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.LoadScriptsAction">
+           	<forward name="success" path="/scriptsList.jsp" ></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       
+       <action path="/LogOut" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.LogOutAction">
+       		<forward name="success" path="/index.jsp"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/CleanTasksEnded" name="TaskFormBean" scope="request" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.CleanTasksEndedAction" input="/taskList.jsp" validate="true">
+   	   		<forward name="success" path="/ViewTasks.do"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/CleanProcessEnded" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.CleanProcessEndedAction"  >
+       		<forward name="success" path="/taskProcess.jsp"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+
+       <action path="/ViewLogs" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.ViewLogsAction">
+       		<forward name="success" path="/viewLogs.jsp"></forward>
+			<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/AdminScripts" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.AdminScriptsAction">
+          	<forward name="success" path="/adminScripts.jsp"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/ActualizaScript" name="mantenedorDeScriptForm" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.ActualizaScriptAction" input="/adminScripts.jsp" validate="true">
+          	<forward name="success" path="/scriptsList.jsp" redirect="true"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+       <action path="/DeleteScript" type="cl.araucana.pdfserviceweb.administrator.presentation.struts.actions.DeleteScriptAction" >
+       	    <forward name="success" path="/scriptsList.jsp" redirect="true"></forward>
+        	<forward name="failture" path="/errorGeneral.jsp"></forward>
+       </action>
+
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<message-resources parameter="cl.araucana.pdfserviceweb.administrator.presentation.struts.resources.ApplicationResources"/>
+
+</struts-config>

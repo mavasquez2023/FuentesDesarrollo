@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- **** Form Bean Definitions **** -->
+	<form-beans>
+
+		<form-bean name="SimpleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial="" />
+			<form-property name="offset" type="java.lang.String" initial="" />
+		</form-bean>
+
+		<form-bean name="BusquedaPersonaForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="rutTitular" type="java.lang.String" initial=""/>
+			<form-property name="segmento" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="CrearUsuarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="rutUsuario" type="java.lang.String" initial=""/>
+			<form-property name="perfilUsuario" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="EliminarUsuarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="rutUsuario" type="java.lang.String" initial=""/>
+		</form-bean>
+
+		<form-bean name="ResultadoPersonaForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="_flagValidar" type="java.lang.String"
+				initial="" />
+			<form-property name="nivelEducacional" type="java.lang.String" initial=""/>
+			<form-property name="curso" type="java.lang.String" initial=""/>
+			<form-property name="calificacion" type="java.lang.String" initial=""/>
+			<form-property name="puntajeLenguaje" type="java.lang.String" initial=""/>
+			<form-property name="puntajeMatematica" type="java.lang.String" initial=""/>
+			<form-property name="puntajePromedio" type="java.lang.String" initial=""/>
+			<form-property name="email" type="java.lang.String" initial=""/>
+			<form-property name="telefono" type="java.lang.String" initial=""/>
+			<form-property name="celular" type="java.lang.String" initial=""/>
+			<form-property name="tipoCalificacion" type="java.lang.String" initial=""/>
+			<form-property name="index" type="java.lang.String" initial=""/>
+		</form-bean>
+
+		<form-bean name="ResultadoBeneficiosForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="indice" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="BecasIncentivosForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+		</form-bean>
+
+		<form-bean name="BeneficiariosBecasIncentivosForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+		</form-bean>
+
+		<form-bean name="BeneficiosCreadosForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String"
+				initial="" />
+			<form-property name="indice" type="java.lang.String" />
+			<form-property name="idBeneficiario" type="java.lang.String"/>
+		</form-bean>
+		
+		<form-bean name="DetalleBeneficiarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial="" />
+			<form-property name="idBeneficiario" type="java.lang.String" initial=""/>
+			<form-property name="rutSolicitante" type="java.lang.String" initial=""/>
+			<form-property name="dvRutSolicitante" type="java.lang.String" initial=""/>
+			<form-property name="rutBeneficiario" type="java.lang.String" initial=""/>
+			<form-property name="idBeca" type="java.lang.String" initial=""/>
+			<form-property name="idNivelEducacional" type="java.lang.String" initial=""/>
+			<form-property name="idCurso" type="java.lang.String" initial=""/>
+			<form-property name="idSegmento" type="java.lang.String" initial=""/>
+			<form-property name="calificacion" type="java.lang.String" initial=""/>
+			<form-property name="premioEntregado" type="java.lang.String" initial=""/>
+			<form-property name="premio" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="CartaGanadorBecaPDFForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="idBeneficiario" type="java.lang.String"/>
+		</form-bean>
+
+		<form-bean name="BecasByFechaForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="fechaDesde" type="java.lang.String" initial=""/>
+			<form-property name="fechaHasta" type="java.lang.String" initial=""/>
+			<form-property name="opcBeca" type="java.lang.String" initial=""/>
+			<form-property name="opcOficina" type="java.lang.String" initial=""/>
+			<form-property name="_flagValidar" type="java.lang.String"	initial="" />
+
+<form-property name="isEstadoFolio" type="java.lang.String"	initial="" />
+		</form-bean>
+		
+		<form-bean name="EliminarBeneficiarioForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="texto" type="java.lang.String" initial=""/>
+			<form-property name="beneficiarioDVO.idBeneficiario" type="java.lang.String" initial=""/>
+			<form-property name="idBeneficiario" type="java.lang.String" initial=""/>
+		</form-bean>
+
+
+	
+	     <form-bean name="ConfiguracionBecasIncentivosForm" type="cl.araucana.gestorBecas.forms.administracionBecasIncentivos.ConfiguracionBecasIncentivosForm" ></form-bean>
+
+		<form-bean name="listaTipoPremioDocRequeFrom" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="GuardaTipoPremioDocRequeFrom" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial="" />
+			<form-property name="opc" type="java.lang.String" initial="" />
+			<form-property name="codigo" type="java.lang.String" initial=""/>
+			<form-property name="nombre" type="java.lang.String" initial=""/>
+		</form-bean>
+		
+		<form-bean name="EntregarIncentivoFrom" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="beneficiarioDVO.idBeneficiario" type="java.lang.String" initial="" />
+		</form-bean>
+		
+		<form-bean name="CargaResultadoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="_cmd" type="java.lang.String" initial="" />
+			<form-property name="opcBeca" type="java.lang.String" initial="" />
+			<form-property name="operacion" type="java.lang.String" initial="" />
+			<form-property name="_flagValidar" type="java.lang.String"	initial="" />			
+			<form-property name="subirResultado" type="java.io.File"/>
+		</form-bean>
+		
+		
+
+	</form-beans>
+
+	<!-- **** Global Exception Definitions **** -->
+	<global-exceptions>
+		<exception handler="cl.araucana.gestorBecas.ui.KeyExceptionHandler"
+			key="exception" type="cl.araucana.gestorBecas.util.GestorBecasException" />
+		<exception handler="cl.araucana.gestorBecas.ui.KeyExceptionHandler"
+			key="exception" type="cl.araucana.gestorBecas.ui.FlowException" />
+		<exception handler="cl.araucana.gestorBecas.ui.ExceptionHandler"
+			key="exception" type="java.lang.Throwable" />
+	</global-exceptions>
+
+	<!-- **** Global Forward Definitions **** -->
+	<global-forwards>
+		<forward name="begin" path="/Welcome.do" />
+		<forward name="failure" path="common.failure" />
+	</global-forwards>
+
+	<!-- **** Action Mapping Definitions **** -->
+	<action-mappings>
+
+		<!-- generales -->
+		<action path="/NoPageError" type="org.apache.struts.actions.ForwardAction"
+			forward="common.failure.404" />
+		<action path="/NoAccess" type="org.apache.struts.actions.ForwardAction"
+			forward="common.failure.403" />
+		<action path="/Login" type="org.apache.struts.actions.ForwardAction"
+			forward="common.login" />
+		<action path="/LoginError" type="org.apache.struts.actions.ForwardAction"
+			forward="common.login.error" />
+		<action path="/Welcome" type="org.apache.struts.actions.ForwardAction"
+			forward="common.welcome" />
+
+		<action path="/Welcome" type="org.apache.struts.actions.ForwardAction"
+			forward="common.welcome" />
+
+		<action path="/solicitudBecasIncentivos/BusquedaPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.BusquedaPersonaAction"
+			validate="true"
+			input="gestorBecas.busqueda.persona" scope="request">
+			<forward name="inicio" path="gestorBecas.busqueda.persona" />
+			<forward name="error" path="gestorBecas.busqueda.persona" />
+			<forward name="resultado" path="gestorBecas.busqueda.persona.despliegue"></forward>
+		</action>
+
+		<action path="/solicitudBecasIncentivos/inicioBusquedaPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.BusquedaPersonaAction">
+			<forward name="inicio" path="gestorBecas.busqueda.persona" />
+			<forward name="resultado" path="gestorBecas.busqueda.persona.despliegue"></forward>
+		</action>
+
+		<action path="/solicitudBecasIncentivos/ResultadoPersona" name="ResultadoPersonaForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.ResultadoPersonaAction"
+			validate="true"
+			input="gestorBecas.resultado.persona" scope="request">
+			<forward name="volver" path="gestorBecas.busqueda.persona" />
+			<forward name="inicio" path="gestorBecas.resultado.persona" />
+			<forward name="resultado" path="gestorBecas.resultado.postulacion" />
+		</action>
+
+		<action path="/solicitudBecasIncentivos/ResultadoBeneficios"
+			name="ResultadoBeneficiosForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.ResultadoBeneficiosAction"
+			validate="true"
+			input="gestorBecas.resultado.postulacion">
+			<forward name="inicio" path="gestorBecas.resultado.postulacion" />
+			<forward name="resultado" path="gestorBecas.resultado.postulacion" />
+		</action>
+
+		<action path="/solicitudBecasIncentivos/BeneficiosCreados"
+			name="BeneficiosCreadosForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.BeneficiosCreadosAction" scope="request">
+			<forward name="inicio" path="gestorBecas.beneficios.creados" />
+			<forward name="volver" path="gestorBecas.busqueda.persona" />
+			<forward name="resultado" path="gestorBecas.beneficios.creados" />
+		</action>
+
+		<action path="/adminBecasIncentivos/ListaBecasIncentivos"
+			name="BecasIncentivosForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.ListaBecasIncentivos">
+			<forward name="inicio"
+				path="gestorBecas.administracion.listaBecasIncentivos" />
+			<forward name="resultado"
+				path="gestorBecas.administracion.listaBecasIncentivos" />
+		</action>
+
+		<action
+			path="/adminBecasIncentivos/ListaBeneficiariosBecasIncentivos"
+			name="BeneficiariosBecasIncentivosForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.ListaBeneficiariosBecasIncentivos">
+			<forward name="inicio"
+				path="gestorBecas.administracion.listaBeneficiariosBecasIncentivos" />
+			<forward name="resultado"
+				path="gestorBecas.administracion.listaBeneficiariosBecasIncentivos" />
+		</action>
+
+	    <action path="/solicitudBecasIncentivos/ImprimirBeneficiosCreados"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.ImprimirBeneficiosCreadosAction"
+			name="SimpleForm">
+			<forward name="resultado"
+				path="comprobante.print" />
+		</action>
+		
+		<action path="/consultaBecasIncentivos/BusquedaPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.ConsultaBecasIncentivosAction"
+			validate="true"
+			input="gestorBecas.consulta.becasIncentivosByPersona" scope="request">
+			<forward name="inicio" path="gestorBecas.consulta.becasIncentivosByPersona" />
+			<forward name="error" path="gestorBecas.consulta.becasIncentivosByPersona" />
+			<forward name="resultado" path="gestorBecas.consulta.becasIncentivos.despliegue"></forward>
+		</action>
+
+		<action path="/consultaBecasIncentivos/inicioConsultaBecasIncentivosByPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.ConsultaBecasIncentivosAction">
+			<forward name="inicio" path="gestorBecas.consulta.becasIncentivosByPersona" />
+			<forward name="resultado" path="gestorBecas.consulta.becasIncentivos.despliegue"></forward>
+		</action>
+		
+		<action path="/consultaBecasIncentivos/detalleBeneficiario" name="SimpleForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.DetalleBeneficiario">
+			<forward name="resultado" path="gestorBecas.consulta.detalle.beneficiario"></forward>
+		</action>
+		
+		<action path="/solicitudBecasIncentivos/cartaGanadorBecaPDF" name="CartaGanadorBecaPDFForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.CartaGanadoresBecasPDFAction">
+		</action>
+
+		<action path="/informes/becasByFecha" name="BecasByFechaForm"
+			type="cl.araucana.gestorBecas.actions.informes.BecasByFechaAction">
+			<forward name="inicio" path="gestorBecas.informe.becasByFecha" />
+		</action>
+		
+		<action path="/informes/buscarbecasByFecha" name="BecasByFechaForm"
+			type="cl.araucana.gestorBecas.actions.informes.BecasByFechaAction" 
+			validate="true"
+			scope="request"
+			input="gestorBecas.informe.becasByFecha">
+			<forward name="inicio" path="gestorBecas.informe.becasByFecha" />
+		</action>
+		
+		<action path="/informes/exportarExcel" name="BecasByFechaForm"
+			type="cl.araucana.gestorBecas.actions.informes.BecasByFechaAction" 
+			scope="session">
+			<forward name="successExcel" path="exportar.excel"/>
+		</action>
+		
+		<action
+			path="/adminBecasIncentivos/inicioBuscarPersonaEliminaBeca" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.solicitudBecasIncentivos.BusquedaPersonaAction">
+			<forward name="inicio" path="gestorBecas.administracion.buscarPersonaEliminaBeca" />
+		</action>
+		
+		<action
+			path="/adminBecasIncentivos/crearUsuario" name="CrearUsuarioForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.CrearUsuarioAction">
+			<forward name="inicio" path="gestorBecas.administracion.crearUsuario" />
+			<forward name="resultado" path="gestorBecas.administracion.crearUsuario" />
+		</action>
+		
+		<action
+			path="/adminBecasIncentivos/cargaMasivaUsuarios" name="CrearUsuarioForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.CargaMasivaUsuariosAction">
+			<forward name="inicio" path="gestorBecas.administracion.cargaMasivaUsuarios" />
+		</action>
+		
+		<action
+			path="/adminBecasIncentivos/eliminarUsuario" name="EliminarUsuarioForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.EliminarUsuarioAction">
+			<forward name="inicio" path="gestorBecas.administracion.eliminarUsuario" />
+			<forward name="resultado" path="gestorBecas.administracion.eliminarUsuario" />
+		</action>
+		
+		<action path="/adminBecasIncentivos/BusquedaPersonaEliminaBeca" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.ConsultaBecasIncentivosAction"
+			validate="true"
+			input="gestorBecas.administracion.buscarPersonaEliminaBeca" scope="request">
+			<forward name="inicio" path="gestorBecas.administracion.buscarPersonaEliminaBeca" />
+			<forward name="error" path="gestorBecas.administracion.buscarPersonaEliminaBeca" />
+			<forward name="resultado" path="gestorBecas.administracion.eliminaBecasIncentivosByPersona"></forward>
+		</action>
+		
+		<action path="/adminBecasIncentivos/eliminaDetalleBeneficiario" name="EliminarBeneficiarioForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.DetalleBeneficiario">
+			<forward name="resultado" path="gestorBecas.administracion.eliminaDetalleBeneficiario"></forward>
+		</action>
+		
+		<action path="/adminBecasIncentivos/EliminaBeneficiario" name="EliminarBeneficiarioForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.elimina.EliminaBeneficiarioAction"
+			validate="true"
+			input="gestorBecas.administracion.eliminaDetalleBeneficiario" scope="request">			
+			<forward name="resultado" path="gestorBecas.administracion.eliminaDetalleBeneficiario"></forward>
+		</action>	
+	<action path="/adminBecasIncentivos/configuracionBecasIncentivos" type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.ConfiguracionBecasIncentivosAction" 
+		name="ConfiguracionBecasIncentivosForm" scope="request" input="gestorBecas.administracion.configuracionBecasIncentivos"> 
+			<forward name="inicio" path="gestorBecas.administracion.configuracionBecasIncentivos" />
+			<forward name="exito" path="/adminBecasIncentivos/ListaBecasIncentivos.do?_cmd=" />
+		</action>
+			
+			
+			
+		<action path="/adminBecasIncentivos/listaTipoPremioDocReque" name="listaTipoPremioDocRequeFrom"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.tipPremDocReq.ListaTipPremDocReqAction"
+			 scope="request">
+			<forward name="inicio" path="gestorBecas.administrador.tipoPremioDocReque.lista" />
+		</action>
+		
+		<action path="/adminBecasIncentivos/inicioTipoPremioDocReque" name="GuardaTipoPremioDocRequeFrom"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.tipPremDocReq.GuardaTipPremDocReqAction"
+			 scope="request">
+			<forward name="inicio" path="gestorBecas.administrador.tipoPremioDocReque.guarda" />
+		</action>
+		
+		<action path="/adminBecasIncentivos/guardaTipoPremioDocReque" name="GuardaTipoPremioDocRequeFrom" validate="true"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.tipPremDocReq.GuardaTipPremDocReqAction"
+			input="gestorBecas.administrador.tipoPremioDocReque.guarda" scope="request">
+			<forward name="inicio" path="gestorBecas.administrador.tipoPremioDocReque.guarda" />
+			<forward name="guardar" path="/adminBecasIncentivos/listaTipoPremioDocReque.do" />
+		</action>
+		
+		<action path="/entregaIncentivos/inicioBusquedaIncentivosByPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.ConsultaBecasIncentivosAction">
+			<forward name="inicio" path="gestorBecas.entregaIncentivos.incentivosByPersona" />
+			<forward name="resultado" path="gestorBecas.entregaIncentivos.incentivos.despliegue"></forward>
+		</action>
+		<action path="/entregaIncentivos/BusquedaPersona" name="BusquedaPersonaForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.ConsultaBecasIncentivosAction"
+			validate="true"
+			input="gestorBecas.entregaIncentivos.incentivosByPersona" scope="request">
+			<forward name="inicio" path="gestorBecas.entregaIncentivos.incentivosByPersona" />
+			<forward name="error" path="gestorBecas.entregaIncentivos.incentivosByPersona" />
+			<forward name="resultado" path="gestorBecas.entregaIncentivos.incentivos.despliegue"></forward>
+		</action>
+		<action path="/entregaIncentivos/detalleBeneficiario" name="SimpleForm"
+			type="cl.araucana.gestorBecas.actions.consultarBecasIncentivos.DetalleBeneficiario">
+			<forward name="resultado" path="gestorBecas.entregaIncentivos.detalle.beneficiario"></forward>
+		</action>
+		<action path="/entregaIncentivos/entregarIncentivo" name="EntregarIncentivoFrom"
+			type="cl.araucana.gestorBecas.actions.entregaIncentivos.EntregaIncentivoAction">
+			<forward name="entrega" path="gestorBecas.entregaIncentivos.detalle.beneficiario"></forward>
+		</action>
+		
+		
+		
+		
+		<action path="/cargaResultado/inicioCargaResultado" name="CargaResultadoForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.cargaResultado.CargaResultadoAction">
+			<forward name="inicio" path="gestorBecas.cargaResultado.inicioCargaResultado"></forward>
+		</action>
+		<action path="/cargaResultado/buscaCargaResultado" name="CargaResultadoForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.cargaResultado.CargaResultadoAction"
+			validate="true"
+			input="gestorBecas.cargaResultado.inicioCargaResultado" scope="request">
+			<forward name="inicio" path="gestorBecas.cargaResultado.inicioCargaResultado" />
+			<forward name="resultado" path="gestorBecas.cargaResultado.inicioCargaResultado"></forward>
+		</action>
+		<action path="/cargaResultado/exportarExcel" name="CargaResultadoForm"
+			type="cl.araucana.gestorBecas.actions.adminBecasIncentivos.cargaResultado.CargaResultadoAction" 
+			scope="session">
+			<forward name="successExcel" path="exportar.excel.cargaResultado"/>
+		</action>
+	
+		<!-- utilitarios Ajax -->
+		<action path="/commons/GetComboListAjax"
+			type="cl.araucana.gestorBecas.actions.commons.GetComboListAjaxAction" />
+		<action path="/commons/GetTextoAjax"
+			type="cl.araucana.gestorBecas.actions.commons.GetTextoAjaxAction" />
+
+		<action path="/commons/GetInformesAjax"
+			type="cl.araucana.gestorBecas.actions.commons.GetInformesAjaxAction" />
+		<action path="/commons/GetConfiguracionAjaxAction"
+		type="cl.araucana.gestorBecas.actions.commons.GetConfiguracionAjaxAction" />
+
+	</action-mappings>
+
+	<!-- **** Controller Configuration **** -->
+	<controller processorClass="cl.araucana.gestorBecas.ui.GestorBecasRequestProcessor"
+		nocache="true" locale="false" />
+
+	<!-- **** Message Resources Definitions **** -->
+	<message-resources parameter="application_es" />
+
+	<!-- **** Plug Ins Configuration **** -->
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+
+	<!-- **** Plug Ins Configuration **** -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>
+

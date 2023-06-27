@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wsext:WsExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wsext="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wsext.xmi" xmi:id="WsExtension_1486409409784">
+  <wsDescExt xmi:id="WsDescExt_1486411828748" wsDescNameLink="WSConsultaFonasaImplService">
+    <pcBinding xmi:id="PcBinding_1486411828748" pcNameLink="WSConsultaFonasaImpl"/>
+  </wsDescExt>
+</com.ibm.etools.webservice.wsext:WsExtension>

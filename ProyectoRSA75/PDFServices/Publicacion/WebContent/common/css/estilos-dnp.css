@@ -1,0 +1,203 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**
+ * HTML.
+ */
+h1 {
+	font-size: 13px;
+	color: #437687;
+	font-weight: bold;
+	padding-left: 3px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+ 
+h2 {
+	font-size: 11px;
+	color: #333333;
+	font-weight: bold;
+	padding-left: 3px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	padding-top:4px;
+	font-size: 11px;
+	color: #333333;
+	font-weight: bold;
+	padding-left: 3px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+table {
+	border:1px solid #CCCCCC;
+}
+table th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #85B4BE;
+	font-size: 10px;
+	color: #000000;
+	font-weight: bold;
+	padding-left: 3px;
+	height: 22px;
+	border-top-width: 2px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #D2E4E8;
+	border-right-color: #6B929C;
+	border-bottom-color: #6B929C;
+	border-left-color: #D2E4E8;
+}
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #004D6E;
+}
+a:link {
+	text-decoration: underline;
+	color: #1A556A;
+}
+a:visited {
+	text-decoration: underline;
+	color: #004D6E;
+}
+a:hover {
+	text-decoration: underline;
+	color: #004D6E;
+}
+a:active {
+	text-decoration: underline;
+	color: #004D6E;
+	font-weight: normal;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:2px 2px 2px 2px;
+}
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+/**
+ * Globales
+ */
+
+/* Botones */
+#button,#comprobante,#cancelar,#si,#no,#button2 {
+	color: #1A556A;
+	font: bold 11px Arial;
+	/*background-image: url(../images/btn_bg2.gif);*/
+	height: 21px;
+	/*width: 137px;*/
+	text-align: center;
+	border: none;
+}
+
+#header {
+	background-image:url(../img/logo_interior.jpg);
+	background-repeat:no-repeat;
+	width:767px;
+	height:95px;
+}
+#header-bottom {
+	background-image:url(../img/sombra.jpg);
+	width:767px;
+	height:7px;
+}
+#main {
+	width:767px;
+}
+#footer {
+	width:767px;
+	padding-top:7px;
+}
+
+.tr1{
+	color: #333333;
+	padding-left: 3px;
+	padding-right: 3px;
+	background-color: #D1E6E7;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #6B929C;
+	height: 22px;
+	font-weight: normal;
+	font-variant: normal;
+
+}
+
+.tr2 {
+	color: #333333;
+	font: normal;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #F5FAF9;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #A6C4BF;
+	height: 22px;
+}
+
+#footer p{
+	color: #666666;
+	font: normal 9px Verdana, Arial, Helvetica, sans-serif;
+	padding-left: 3px;
+	padding-right: 3px;
+    text-align:center;
+}
+
+/* Mensajes */
+.mensaje-vencimiento {
+background-color:#FFCC00;
+	
+}
+
+ .mensaje{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #CC0000;
+	font-weight:bold;
+}
+
+#simbologia {
+	width:10px;
+	height:10px;
+	background-color:#FFCC00;
+}
+
+#click_help {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:9px;
+position:absolute;
+left:600px;
+top:110px;
+}
+
+#ayuda {
+ width:400px;
+ background-color:#FFFFFF;
+ border:1px solid #006633;
+ position:absolute;
+ z-index:99;
+ left:360px;
+ top:125px;
+}

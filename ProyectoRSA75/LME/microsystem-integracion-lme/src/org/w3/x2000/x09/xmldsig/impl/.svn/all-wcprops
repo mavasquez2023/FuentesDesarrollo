@@ -1,0 +1,299 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl
+END
+PGPDataDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/PGPDataDocumentImpl.java
+END
+DSAKeyValueTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DSAKeyValueTypeImpl.java
+END
+DigestMethodDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DigestMethodDocumentImpl.java
+END
+PGPDataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/PGPDataTypeImpl.java
+END
+DigestMethodTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DigestMethodTypeImpl.java
+END
+KeyValueDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/KeyValueDocumentImpl.java
+END
+SignedInfoDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignedInfoDocumentImpl.java
+END
+CanonicalizationMethodDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/CanonicalizationMethodDocumentImpl.java
+END
+SignedInfoTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignedInfoTypeImpl.java
+END
+KeyValueTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/KeyValueTypeImpl.java
+END
+KeyNameDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/KeyNameDocumentImpl.java
+END
+CanonicalizationMethodTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/CanonicalizationMethodTypeImpl.java
+END
+RSAKeyValueDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/RSAKeyValueDocumentImpl.java
+END
+MgmtDataDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/MgmtDataDocumentImpl.java
+END
+RSAKeyValueTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/RSAKeyValueTypeImpl.java
+END
+ReferenceDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ReferenceDocumentImpl.java
+END
+HMACOutputLengthTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/HMACOutputLengthTypeImpl.java
+END
+SignatureValueDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureValueDocumentImpl.java
+END
+X509DataDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/X509DataDocumentImpl.java
+END
+ReferenceTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ReferenceTypeImpl.java
+END
+SignatureValueTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureValueTypeImpl.java
+END
+X509DataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/X509DataTypeImpl.java
+END
+ObjectDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ObjectDocumentImpl.java
+END
+ObjectTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ObjectTypeImpl.java
+END
+TransformDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/TransformDocumentImpl.java
+END
+DigestValueDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DigestValueDocumentImpl.java
+END
+SignaturePropertiesDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignaturePropertiesDocumentImpl.java
+END
+TransformTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/TransformTypeImpl.java
+END
+DigestValueTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DigestValueTypeImpl.java
+END
+SignaturePropertiesTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignaturePropertiesTypeImpl.java
+END
+CryptoBinaryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/CryptoBinaryImpl.java
+END
+RetrievalMethodDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/RetrievalMethodDocumentImpl.java
+END
+TransformsDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/TransformsDocumentImpl.java
+END
+SPKIDataDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SPKIDataDocumentImpl.java
+END
+SignatureDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureDocumentImpl.java
+END
+RetrievalMethodTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/RetrievalMethodTypeImpl.java
+END
+TransformsTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/TransformsTypeImpl.java
+END
+SignatureMethodDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureMethodDocumentImpl.java
+END
+SPKIDataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SPKIDataTypeImpl.java
+END
+X509IssuerSerialTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/X509IssuerSerialTypeImpl.java
+END
+SignatureTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureTypeImpl.java
+END
+KeyInfoDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/KeyInfoDocumentImpl.java
+END
+SignatureMethodTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignatureMethodTypeImpl.java
+END
+SignaturePropertyDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignaturePropertyDocumentImpl.java
+END
+ManifestDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ManifestDocumentImpl.java
+END
+KeyInfoTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/KeyInfoTypeImpl.java
+END
+SignaturePropertyTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/SignaturePropertyTypeImpl.java
+END
+ManifestTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/ManifestTypeImpl.java
+END
+DSAKeyValueDocumentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/org/w3/x2000/x09/xmldsig/impl/DSAKeyValueDocumentImpl.java
+END

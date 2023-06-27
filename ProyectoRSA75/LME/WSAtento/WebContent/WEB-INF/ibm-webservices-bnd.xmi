@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wsbnd:WSBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wsbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wsbnd.xmi" xmi:id="WSBinding_1371826475419">
+  <wsdescBindings xmi:id="WSDescBinding_1371826475419" wsDescNameLink="WSCalidadService">
+    <pcBindings xmi:id="PCBinding_1371826475419" pcNameLink="WSCalidad"/>
+  </wsdescBindings>
+  <wsdescBindings xmi:id="WSDescBinding_1371826632835" wsDescNameLink="WSCreditoService">
+    <pcBindings xmi:id="PCBinding_1371826632835" pcNameLink="WSCredito"/>
+  </wsdescBindings>
+  <wsdescBindings xmi:id="WSDescBinding_1371826649058" wsDescNameLink="WSLicenciaService">
+    <pcBindings xmi:id="PCBinding_1371826649058" pcNameLink="WSLicencia"/>
+  </wsdescBindings>
+</com.ibm.etools.webservice.wsbnd:WSBinding>

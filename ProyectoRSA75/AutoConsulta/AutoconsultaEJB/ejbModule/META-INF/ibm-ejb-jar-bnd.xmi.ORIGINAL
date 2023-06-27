@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbbnd="ejbbnd.xmi" xmlns:ejb="ejb.xmi" xmi:id="EJBJarBinding_1079393718719">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1085775169984" jndiName="ejb/cl/araucana/autoconsulta/serv/ServicesAutoconsultaSLBean/ServivesAutoconsultaHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServivesAutoconsulta"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1086117489640" jndiName="ejb/cl/araucana/autoconsulta/serv/ServicesAutoconsultaSLBean/ServicesAutoconsultaHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesAutoconsulta"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1136414026718" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1136414026718"/>
+    </resRefBindings>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

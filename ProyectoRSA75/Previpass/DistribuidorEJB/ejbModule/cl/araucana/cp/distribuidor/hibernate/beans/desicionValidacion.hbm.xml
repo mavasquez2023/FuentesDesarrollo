@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.NodoSiguienteVO" table="DESICIONVALIDACION">
+    	<composite-id>
+        	<key-property name="idValidacion">
+        		<column name="IDVALIDACION" not-null="true"></column> 
+        	</key-property>
+        	<key-property name="tipoProceso">
+        		<column name="ID_TIPO_NOMINA" not-null="true"></column> 
+        	</key-property>
+        	<key-property name="valor">
+        		<column name="VALOR" not-null="true"></column> 
+        	</key-property>
+    	</composite-id>
+
+   		<property name="idSiguiente" column="IDSIGUIENTE"/>
+    </class>
+	<query name="validacionSinConcepto">
+        FROM NodoSiguienteVO as desicion
+		    WHERE desicion.tipoProceso = ? AND 
+					desicion.idValidacion NOT IN (
+		    		SELECT concepto.idValidacion 
+		    		FROM ConceptoValidacionVO as concepto
+		    		where concepto.tipoProceso = ? )
+	</query>
+</hibernate-mapping>

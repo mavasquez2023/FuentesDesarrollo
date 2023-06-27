@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.adminCpe.hibernate.beans.SPLMedioPagoVO" table="MEDIOPAGO">
+    	<id name="id" column="ID_MEDIOPAGO" />
+    	<property name="codigo" column="CODIGO"/>
+    	<property name="descripcion" column="DESCRIPCION" />
+    	<property name="imagen" column="IMAGEN" />
+    	<property name="urlInicioPago" column="URL_INICIO_PAGO" />
+    	<property name="activo" column="ACTIVO" />
+   		<property name="codBanco" column="CODBANCO" />
+    </class>
+</hibernate-mapping>

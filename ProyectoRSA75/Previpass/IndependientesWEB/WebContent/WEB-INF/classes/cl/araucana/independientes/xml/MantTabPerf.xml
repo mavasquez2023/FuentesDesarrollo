@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabPerfNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene rut, perfil y estado desde la tabla PERFILES. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabPerf" resultClass="cl.araucana.independientes.vo.LinMantTabPerfVO" parameterClass="java.util.HashMap">
+		SELECT	IDDOCUMENTO rut,
+				IDPERFIL perfil,
+				ESTADO estado
+		FROM $IIDTA$.PERFILES
+		ORDER BY IDDOCUMENTO
+	</select>
+	
+	<!-- Select a las tablas involucradas en el negocio filtradas por rut.-->
+	<!-- Query que obtiene rut, perfil y estado desde la tabla PERFILES. Retorna un objeto tipo Parametro. -->
+	<select id="filtrarTabPerf" resultClass="cl.araucana.independientes.vo.LinMantTabPerfVO" parameterClass="java.util.HashMap">
+		SELECT	IDDOCUMENTO rut,
+				IDPERFIL perfil,
+				ESTADO estado
+		FROM $IIDTA$.PERFILES
+		WHERE	IDDOCUMENTO  = #input.idDocumento#
+	</select>
+	
+	<!-- Query que obtiene un contador para un determinado rut  y perfil de la tabla PERFILES -->
+	<select id="obtenerCountPerfil" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(1)
+     	FROM	$IIDTA$.PERFILES 
+    	WHERE	IDDOCUMENTO  = #input.idDocumento#
+    	AND 	IDPERFIL = #input.idPerfil#
+	</select>
+	
+	<!-- Insert a la tabla PERFILES.-->
+		<insert id="insertNewTabPerf" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.PERFILES(IDDOCUMENTO,IDPERFIL,ESTADO)
+		VALUES(#input.idDocumento#,#input.idPerfil#,#input.estado#)
+		</insert>
+	
+		
+	<!-- Update PERFILES -->
+	<update id="updateMantTabPerf" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.PERFILES
+		SET		IDPERFIL = #input.idPerfil# 
+    	WHERE	IDDOCUMENTO  = #input.idDocumento#
+    	AND 	IDPERFIL = #perfil#
+	</update>
+	
+	<!-- Update ESTADO para PERFILES -->
+	<update id="cambiarEstadoMantTabPerf" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.PERFILES
+		SET		ESTADO = #input.estado#
+    	WHERE	IDDOCUMENTO  = #input.idDocumento#
+    	AND 	IDPERFIL = #input.idPerfil#
+	</update>
+</sqlMap>

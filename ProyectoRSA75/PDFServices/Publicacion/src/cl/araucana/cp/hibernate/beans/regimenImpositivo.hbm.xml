@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.RegImpositivoVO" table="REGIMPOS">
+    	<composite-id>
+			<key-property name="idEntExCaja" column="ID_ENT_EXCAJA"/>
+			<key-property name="idRegImpositivo" column="ID_REGIMEN_IMPOSITIVO"/>
+		</composite-id>
+   		<property name="tasaPension" column="TASA_FDOPENS_CON_ISAPRE" />
+   		<property name="descripcion" column="DESCRIPCION" />
+    </class>
+</hibernate-mapping>

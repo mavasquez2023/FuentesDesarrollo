@@ -1,0 +1,52 @@
+8
+
+dir
+3233
+https://172.16.137.116/svn/IBM/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/excepciones
+https://172.16.137.116/svn/IBM
+
+
+
+2014-07-11T16:07:36.235677Z
+2327
+fquinteros
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+ErrorRespuestaOperadorException.java
+file
+
+
+
+
+2014-10-02T21:36:03.202180Z
+838b279e3eae3c27095238707e84dc53
+2014-07-11T16:07:36.235677Z
+2327
+fquinteros
+
+ErrorInvocacionOperadorException.java
+file
+
+
+
+
+2014-10-02T21:36:03.197180Z
+e23124fc68f75b92dc06d46b0ffbaa61
+2014-07-11T16:07:36.235677Z
+2327
+fquinteros
+

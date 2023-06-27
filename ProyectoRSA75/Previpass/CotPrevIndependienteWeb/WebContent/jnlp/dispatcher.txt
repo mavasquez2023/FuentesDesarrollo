@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<jnlp $$CODE_BASE$$>
+    <information>
+        <title>Dispatcher</title>
+        <vendor>La Araucana</vendor>
+        <homepage href="$$HOST$$"/>
+        <description>Despachador de Nominas de Cotizaciones</description>
+        <description kind="short">Despachador</description>
+        <icon href="$$WEB_CONTEXT_URL$$/img/logo3.gif"/>
+    </information>
+  	<security>
+    	<all-permissions/>
+  	</security>
+    <resources>
+	    <j2se version="1.4+"/>
+	 	<jar href="$$WEB_CONTEXT_URL$$/jnlp/lib/dispatcher.1.1.jar" main="true"/>
+	 	<jar href="$$WEB_CONTEXT_URL$$/jnlp/lib/core.1.1.jar"/>
+    </resources>
+    <application-desc main-class="cl.araucana.cp.client.NominasDispatcher">
+    	<argument>$$WEB_CONTEXT_URL$$</argument>
+    	<argument>$$CODIGO_SESSION$$</argument>
+    	<argument>true</argument>
+    </application-desc>
+</jnlp>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.laaraucana.integracion.impl</package-type>
+        <namespaceURI>http://impl.integracion.laaraucana.cl</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.laaraucana.integracion.impl.IntegracionDTService</service-interface>
+        <wsdl-service-name xmlns:sim="http://impl.integracion.laaraucana.cl">sim:IntegracionDTService</wsdl-service-name>
+        <port-mapping>
+            <port-name>IntegracionDT</port-name>
+            <java-port-name>IntegracionDT</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.laaraucana.integracion.impl.IntegracionDT</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://impl.integracion.laaraucana.cl">seimwpt:IntegracionDT</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://impl.integracion.laaraucana.cl">seimwb:IntegracionDTSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>integracionDT</java-method-name>
+            <wsdl-operation>integracionDT</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://impl.integracion.laaraucana.cl">mppm:integracionDTRequest</wsdl-message>
+                    <wsdl-message-part-name>entrada</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wrvm="http://impl.integracion.laaraucana.cl">wrvm:integracionDTResponse</wsdl-message>
+                <wsdl-message-part-name>integracionDTReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RendicionBCI">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanRendicionBCI" type="cl.araucana.spl.beans.RendicionBCI"/>
+	<typeAlias alias="beanDetalleRendicionBCI" type="cl.araucana.spl.beans.DetalleRendicionBCI"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBCI" id="detalleRendicionBciResultMap">
+		<result property="idDetalleRend" column="ID_DET_REND_BCI" />
+		<result property="idRendicion" column="ID_RENDICION_BCI" />
+		<result property="idConvenio" column="ID_CONVENIO" />
+		<result property="idPago" column="ID_PAGO" />
+		<result property="pagadorRut" column="PAGADOR_RUT" />
+		<result property="pagadorDv" column="PAGADOR_DV" typeHandler="charTypeHandler" />
+		<result property="pagadorNombre" column="PAGADOR_NOMBRE" typeHandler="charTypeHandler" />
+		<result property="idProducto" column="ID_PRODUCTO" typeHandler="charTypeHandler" />
+		<result property="precio" column="PRECIO" />
+		<result property="cantidad" column="CANTIDAD" />
+		<result property="total" column="TOTAL" />
+		<result property="formaPago" column="FORMAPAGO" typeHandler="charTypeHandler" />
+		<result property="comisionCompra" column="COMISION_COMPRA" />
+		<result property="estado" column="ESTADO" />
+		<result property="codRechazo" column="COD_RECHAZO" />
+		<result property="codError" column="COD_ERROR" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	<select id="sqlCountRendicionBciByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBCI 
+		where checksum = #checksum#
+	</select>
+	
+	<select id="sqlSequenceRendicionBCI" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBCI FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<select id="sqlSequenceDetalleRendicionBCI" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBCI FROM SYSIBM.SYSDUMMY1
+	</select>
+	
+	<insert id="sqlInsertRendicionBCI" parameterClass="beanRendicionBCI">
+		insert into RENDICBCI 
+			(ID_RENDICION_BCI, CHECKSUM, FCH_RENDICION, FCH_IMPORTACION, 
+			ENC_EMPRESA_ID, ENC_EMPRESA_RUT, ENC_EMPRESA_DV, ENC_EMPRESA_NOMBRE, 
+			CTR_TOTAL_REGISTROS, CTR_TOTAL_MONTOS, CTR_TOTAL_COMISIONES, CTR_CANTIDAD_ACEPTADOS, 
+			CTR_MONTO_ACEPTADOS, CTR_CANTIDAD_RECHAZADOS, CTR_MONTO_RECHAZADOS)
+   		values (#idRendicion#, #checksum#, #fchRendicion#, #fchImportacion#,
+   			#empresaId#, #empresaRut#, #empresaDv#, #empresaNombre#,
+   			#totalRegistros#, #totalMontos#, #totalComisiones#, #cantidadAceptados#,
+   			#montoAceptados#, #cantidadRechazados#, #montoRechazados#)
+   	</insert>
+
+	<insert id="sqlInsertDetalleRendicionBCI" parameterClass="beanDetalleRendicionBCI">
+		insert into DETRENDBCI 
+			(ID_DET_REND_BCI, ID_RENDICION_BCI, ID_CONVENIO, ID_PAGO, 
+			PAGADOR_RUT, PAGADOR_DV, PAGADOR_NOMBRE, ID_PRODUCTO, 
+			PRECIO, CANTIDAD, TOTAL, FORMAPAGO, 
+			COMISION_COMPRA, ESTADO, COD_RECHAZO, COD_ERROR)
+		values (#idDetalleRend#, #idRendicion#, #idConvenio#, #idPago#,
+			#pagadorRut#, #pagadorDv#, #pagadorNombre#, #idProducto#, 
+			#precio#, #cantidad#, #total#, #formaPago#,
+			#comisionCompra#, #estado#, #codRechazo#, #codError#)
+   	</insert>
+   	
+	<select id="sqlFindDetalleRendicionBCIByPagoId" parameterClass="decimal" resultMap="detalleRendicionBciResultMap">
+		select 
+			ID_DET_REND_BCI, ID_RENDICION_BCI, ID_CONVENIO, 
+			ID_PAGO, PAGADOR_RUT, PAGADOR_DV,
+			PAGADOR_NOMBRE, ID_PRODUCTO, PRECIO,
+			CANTIDAD, TOTAL, FORMAPAGO,
+			COMISION_COMPRA, ESTADO, COD_RECHAZO, 
+			COD_ERROR 
+		from DETRENDBCI 
+		where ID_PAGO = #idPago#
+	</select>
+
+</sqlMap>
+

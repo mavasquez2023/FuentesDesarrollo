@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="spOrqInput">
+
+	<parameterMap id="paramMap" class="map">	
+   		<parameter property="P_RUT" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+	</parameterMap>
+	
+	<parameterMap id="paramMap2" class="map">	
+   		<parameter property="P_ENTIDAD" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ENTRADA1" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA2" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA3" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA4" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA5" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA6" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_CONTROL" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_SALIDA" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+	</parameterMap>
+
+   	<!--- Calling stored procedure --> 
+	<procedure id="SP_CONSAPT" parameterMap="paramMap" resultClass="cl.araucana.aporte.orqInput.bo.AporteDetalleBO">
+		{call IIDTA.SP_CONSAPT(?)}   
+	</procedure>
+	<procedure id="SP_DATORQ" parameterMap="paramMap2">
+		{call IIDTA.SP_DATORQ(?,?,?,?,?,?,?,?,?,?)}   
+	</procedure>
+	
+</sqlMap>

@@ -1,0 +1,45 @@
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td>		
+				<!-- Main Link -->
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<table width="160px" cellpadding="0" cellspacing="0">
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;</td>
+									</tr>
+								</table>
+							</td>
+							<td class="bbg" style="height: 21px; width: 640px; vertical-align: top">
+								&nbsp;&nbsp;&nbsp; 
+								<html:link href="http://www.cp.cl" styleClass="mainlink">Inicio</html:link> 
+								<span class="divider">&nbsp;|&nbsp;</span>
+								<html:link forward="home" styleClass="selectedmainlink">Servicios</html:link>
+								<span class="divider">&nbsp;|&nbsp;</span> 
+								<html:link forward="faq" styleClass="mainlink" >Preguntas Frecuentas</html:link>
+								<span class="divider">&nbsp;|&nbsp;</span> 
+								<html:link href="http://www.laaraucana.cl/?seccion=159&nom=" styleClass="mainlink" >Cont&aacute;ctenos</html:link>
+								<span class="divider">&nbsp;|&nbsp;</span> 
+								<html:link forward="demo" styleClass="mainlink" >Demo</html:link>
+								<logic:present name="ea_user_profile" scope="session">
+									<span class="divider">&nbsp;|&nbsp;</span> 
+									<span>
+										<html:link forward="logout" styleClass="salir">
+											Salir de Sesi&oacute;n
+										</html:link>
+									</span>
+								</logic:present>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>

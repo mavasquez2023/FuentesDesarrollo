@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans></form-beans>
+	<global-exceptions></global-exceptions>
+	<global-forwards></global-forwards>
+
+	<action-mappings>
+
+		<action
+			path="/pagobsa/InicioPago"
+			type="cl.araucana.spl.actions.pagobsa.InicioPagoAction">
+			<forward name="target" path="pagobsa.inicio" />
+		</action>
+		
+		<action
+			path="/pagobsa/NotificacionInvoker"
+			type="cl.araucana.spl.actions.pagobsa.NotificacionInvokerAction">
+		</action>
+
+		<action
+			path="/pagobsa/NotificacionPago"
+			type="cl.araucana.spl.actions.pagobsa.NotificacionPagoAction">
+		</action>
+
+		<action
+			path="/pagobsa/SalidaPago"
+			type="cl.araucana.spl.actions.pagobsa.SalidaPagoAction">
+			<forward name="cierraPopup" path="pagobsa.cierraPopup"></forward>
+		</action>
+
+		<action
+			path="/pagobsa/TerminoPago"
+			type="cl.araucana.spl.actions.pagobsa.TerminoPagoAction">
+			<forward name="termino" path="pagosbco.termino"></forward>
+		</action>
+
+		<action
+			path="/pagobsa/ReconfirmacionReplier"
+			type="cl.araucana.spl.actions.pagobsa.ReconfirmacionReplierAction">
+		</action>
+		 
+	</action-mappings>
+
+</struts-config>

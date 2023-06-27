@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.commonbnd="commonbnd.xmi" xmlns:com.ibm.ejs.models.base.bindings.ejbbnd="ejbbnd.xmi" xmlns:com.ibm.etools.ejb="ejb.xmi" xmi:id="EJBJarBinding_1079393718719">
+  <defaultDatasource xmi:id="ResourceRefBinding_1365515003962">
+    <defaultAuth xmi:type="com.ibm.ejs.models.base.bindings.commonbnd:BasicAuthData" xmi:id="BasicAuthData_1365515003962"/>
+  </defaultDatasource>
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_1"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_gestorBecas" jndiName="ejb/cl/araucana/gestorBecas/ejb/gestorBecasHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#Session_gestorBecas"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1365515003962" jndiName="ejb/cl/araucana/gestorBecas/ejb/GestorBecasHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#Session_GestorBecas"/>
+  </ejbBindings>
+  <defaultCMPConnectionFactory xmi:id="CMPConnectionFactoryBinding_1365515003962"/>
+</com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding>

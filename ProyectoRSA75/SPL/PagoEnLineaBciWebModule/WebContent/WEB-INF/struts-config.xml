@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="importarRendicionForm" type="cl.araucana.spl.forms.admin.rendicion.ImportarRendicionForm" />
+		<form-bean name="mediosPagoForm" type="cl.araucana.spl.forms.medios.MediosPagoForm" />
+		<form-bean name="inconsistenciasForm" type="cl.araucana.spl.forms.admin.InconsistenciasForm" />
+		<form-bean name="pagoForm" type="cl.araucana.spl.forms.admin.PagoForm" />
+		<form-bean name="modificarInconsistenciaForm" type="cl.araucana.spl.forms.admin.inconsistencia.ModificarInconsistenciaForm" />
+		<form-bean name="concluirPagoForm" type="cl.araucana.spl.forms.admin.ConcluirPagoForm" />
+	</form-beans>
+
+
+	<global-exceptions>
+	</global-exceptions>
+
+	<global-forwards>
+	</global-forwards>
+
+
+	<action-mappings>
+		
+		<!-- action path="/Index" type="org.apache.struts.actions.ForwardAction" parameter=".public" /-->
+		
+		<action	path="/pagobase/ConsultaTerminoPago"
+			type="cl.araucana.spl.actions.pagobase.ConsultaTerminoPagoAction">
+		</action>
+		
+		<action
+			path="/pago/test"
+			type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/pages/pagoTest/test.jsp">
+		</action>
+		
+	</action-mappings>
+	
+
+	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"  />
+
+
+	<message-resources
+		parameter="cl.araucana.spl.resources.ApplicationResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+		<set-property property="definitions-parser-validate" value="true" />
+	</plug-in>
+
+	<!-- 
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property
+		property="pathnames"
+		value="/org/apache/struts/validator/validator-rules.xml,
+		/WEB-INF/validation.xml"/>
+		</plug-in>
+	-->
+
+</struts-config>
+

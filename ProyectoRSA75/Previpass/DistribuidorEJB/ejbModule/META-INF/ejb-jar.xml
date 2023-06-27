@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar id="ejb-jar_ID" version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+	<display-name>DistribuidorEJB</display-name>
+	<enterprise-beans>
+		<session id="Session_1213739178570">
+			<display-name>Distribuidor</display-name>
+			<ejb-name>DistribuidorSession</ejb-name>
+			<home>cl.araucana.cp.distribuidor.business.ejbs.DistribuidorSessionHome</home>
+			<remote>cl.araucana.cp.distribuidor.business.ejbs.DistribuidorSession</remote>
+			<ejb-class>cl.araucana.cp.distribuidor.business.ejbs.DistribuidorSessionBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+			<resource-ref id="ResourceRef_1213904026866">
+				<description>desc referencia DB2</description>
+				<res-ref-name>jdbc/cotprevi</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+	</enterprise-beans>
+	<assembly-descriptor>
+	</assembly-descriptor>
+	<ejb-client-jar>DistribuidorEJBClient.jar</ejb-client-jar>
+</ejb-jar>

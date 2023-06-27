@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/excepciones
+END
+NegException.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/excepciones/NegException.java
+END
+BaseException.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/excepciones/BaseException.java
+END
+SysException.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/excepciones/SysException.java
+END

@@ -1,0 +1,43 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/client/QuerySimulationWeb
+https://172.16.137.116/svn/IBM
+
+
+
+2014-09-26T17:49:30.622191Z
+3211
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+VO
+dir
+
+ClienteQuerySimulationWeb.java
+file
+3384
+
+
+
+2014-11-03T13:48:15.040535Z
+e60cf0d583f7f3bcec750d53601a3758
+2014-11-03T14:06:35.895281Z
+3384
+acanifru
+

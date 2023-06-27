@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: ea_credito.jar ea_ctacte.jar ea_common.jar
+

@@ -1,0 +1,201 @@
+body {
+	margin:0px;
+	padding:0px;
+	font-family:Tahoma, Geneva, sans-serif;
+	color:#454545;
+	background-image: url(../images/logo.jpg); 
+	background-repeat: no-repeat;
+}
+a {
+	color:#1C73A9;
+	text-decoration:none;
+}
+/*Posicionamiento del DIV*/
+.centrarDiv{
+	position: absolute;
+	width: 350px;
+	height: 155px;
+	top: 162;
+	left: 450;
+	background-color: #F2F2F2;
+}
+/*Fin posicionamiento del DIV*/
+a:hover {
+	color:#333;
+}
+/*LOGIN*/
+#caja {
+	width:550px;
+	height:180px;
+	font-size:12px;
+	padding:25px;
+}
+.txt_caja {
+	font-size:13px;
+	line-height:25px;
+}
+.btn {
+	width:65px;
+	height:20px;
+	background-image:url(../images/btn_login.jpg);
+	border:none;
+}
+/*MENU OPCIONES*/
+.fondo {
+	background-color:#FFF;
+}
+.separador_header {
+	border-bottom:20px solid #1C74A9;
+}
+.caja {
+	height:260px;
+	background:url(../images/borde.gif) no-repeat center;
+	margin-top:25px;
+	margin-bottom:40px;
+}
+/*MENU INTERIOR PRINCIPAL*/
+#menu {
+	background:url(../images/header.gif);
+	height:118px;
+}
+#menu .ppal {
+	width:179px;
+	float:right;
+	margin-right:4px;
+	margin-top:40px;
+}
+#titulo_ppal {
+	background-color:#8EADCA;
+	height:40px;
+	color:#FFF;
+	font-size:20px;
+	padding-left:10px;
+	padding-top:5px;
+}
+.default-logo a {
+	background:transparent;
+	width:210px;
+	height:80px;
+	float:left;
+}
+#logo{ 
+    margin:5px 0 0 0;
+	float:left;
+}
+/*FOOTER*/
+#footer {
+	height:70px;
+	font-size:13px;
+	color:#005D99;
+	border-top:10px solid #A3BCD4;
+	background-color:#FFF;
+}
+.txt_foot {
+	padding-left:5px;
+	padding-top:17px;
+	padding-bottom:10px;
+}
+/*REGISTRO*/
+#caja_registro {
+	width:550px;
+/*	height:600px;*/
+	font-size:12px;
+	padding:25px;
+}
+input.btn_limp {
+	background:url(../images/btn_login.jpg) no-repeat;
+	color:#FFF;
+	font-weight:bold;
+	font-size:11px;
+	border:none;
+	height:20px;
+	width:65px;
+}
+
+input.btn_est {
+	background:url(../images/btn_estado.jpg) no-repeat;
+	color:#FFF;
+	font-weight:bold;
+	font-size:10px;
+	border:none;
+	height:20px;
+	width:85px;
+	text-align: left
+}
+
+/*CONTENIDO*/
+#container .iframecapana {
+	width: 957px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+/*SToro*/
+p1 {
+	font-size:16px;
+}
+p2 {
+	color:#F001C73A9;
+	font-size:16px;
+}
+input.btn_menu {
+	background:url(../images/btn_grande.jpg)  repeat;
+	color:#FFF;
+	font-weight:bold;
+	font-size:11px;
+	border:none;
+	height:20px;
+	width:320px;
+}
+
+select.dbx_geo{
+	width: 330px;
+}
+
+select.dbx_titulo{
+	width: 360px;
+}
+
+select.dbx_oficina{
+	width: 350px;
+}
+
+select.dbx_mantenedor{
+	width: 450px;
+}
+
+select.dbx_comboPerfiles{
+	width: 200px;
+}
+
+select.dbx_comboEntidades {
+	width: 450px;
+}
+
+select.dbx_agrupa{
+	width: 320px;
+}
+
+select.dbx_cajaCompensacion{
+	width: 200px;
+}
+
+select.dbx_estAporte{
+	width: 150;
+}
+select.dbx_estSolicitud{
+	width: 150;
+}
+
+select.dbx_tipoArchivoIntercaja{
+	width: 150;
+}
+combobox { 
+	width: 150px; 
+}
+
+option { width: 150px; }
+

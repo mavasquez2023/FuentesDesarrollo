@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<signers>
+	<signer>
+		<name> cp_fpg </name>
+		<description> Firmador integrado al framework FPG </description>
+		<class> cl.araucana.pdf.signers.implementations.fpg.FPGPDFSigner </class>
+		<default> true </default>
+
+		<properties>
+			<property>
+				<name> storeType </name>
+				<value> jks </value>
+			</property>
+			
+			<property>
+				<name> keyStore </name>
+				<value> /cp/firmas/LAARAUCANA-RSA,SHA1.jks </value>
+			</property>
+
+			<property>
+				<name> keyStoreUserPrincipal </name>
+				<value> 6132563563335276636D55366347467A63336476636D51364D4467724C5373724C566C5A575868344A69303D </value>
+			</property>
+
+			<property>
+				<name> aliasUserPrincipal </name>
+				<value> 51564A4256554E42546B45366347467A63336476636D5136497930684F43597A4B794534495351774955593D </value>
+			</property>
+			
+			<property>
+				<name> digestAlgorithm </name>
+				<value> MD5 </value>
+			</property>
+			
+			<property>
+				<name> signAlgorithm </name>
+				<value> MD5withRSA </value>
+			</property>			
+		</properties>
+	</signer>
+	
+	<signer>
+		<name> cp_bfo </name>
+		<description> Firmador BigFaceless Library </description>
+		<class> cl.araucana.pdf.signers.implementations.faceless.BFOPDFSigner </class>
+		<default> false </default>
+
+		<properties>
+			<property>
+				<name> licenseKey </name>
+				<value> 52305A494F4441774D6A4D36534451784F4441305344705A4B7A41774D486734526E67684D43456B4A48673D </value>
+			</property>
+			
+			<property>
+				<name> requiredBFOVersion </name>
+				<value> 2.10.2 </value>
+			</property>
+			
+			<property>
+				<name> handlerFactoryType </name>
+				<value> acrobat6 </value>
+			</property>
+			
+			<property>
+				<name> keyStore </name>
+				<value> /cp/firmas/LAARAUCANA-RSA,SHA1.jks </value>
+			</property>
+
+			<property>
+				<name> keyStoreUserPrincipal </name>
+				<value> 6132563563335276636D55366347467A63336476636D51364D4467724C5373724C566C5A575868344A69303D </value>
+			</property>
+
+			<property>
+				<name> aliasUserPrincipal </name>
+				<value> 51564A4256554E42546B45366347467A63336476636D5136497930684F43597A4B794534495351774955593D </value>
+			</property>
+		</properties>
+	</signer>	
+</signers>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Orígenes de datos -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Beans de formulario -->
+	<form-beans>
+		<form-bean name="publiFROM" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="texto" type="java.lang.String">
+			</form-property>
+			<form-property name="accion" type="java.lang.String">
+			</form-property>
+		</form-bean>
+	</form-beans>
+
+	<!-- Excepciones globales -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Reenvíos globales -->
+	<global-forwards>
+		<forward name="muestraPublicidad" path="/ManagePublicAction.do" redirect="false">
+		</forward>
+	</global-forwards>
+
+	<!-- Correlaciones de acción -->
+	<action-mappings>
+		<action path="/ManagePublicAction" type="cl.araucana.autoconsulta.ui.actions.admin.ManagePublicAction" name="publiFROM" scope="request" validate="true">
+			<forward name="listaPublicidad" path="/pages/listaPublicidad.jsp">
+			</forward>
+		</action>
+	</action-mappings>
+
+	<!-- Recursos de mensaje -->
+	<message-resources parameter="resources.application">
+	</message-resources>
+
+</struts-config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="TipoParametroVO" table="EVENTLOG_PARAMETER_TYPE">
+		<id name="idTipoParametro" column="ID_PARAMETER_TYPE" />
+		<property name="nombre" column="ID_EVENT_TYPE" />
+		<property name="descripcion" column="PARAMETERS" />
+	</class>
+</hibernate-mapping>

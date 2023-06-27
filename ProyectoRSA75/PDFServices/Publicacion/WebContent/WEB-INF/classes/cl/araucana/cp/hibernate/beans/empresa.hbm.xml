@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="EmpresaVO" table="EMPRESA">
+		<id name="idEmpresa" column="ID_EMPRESA" />
+		<property name="idCasaMatriz" column="ID_CASA_MATRIZ" />
+		<property name="idAdmin" column="ID_ADMIN" />
+		<property name="idRepLegal" column="ID_REP_LEGAL" />
+		<property name="razonSocial" column="RAZON_SOCIAL" />
+		<property name="privada" column="PRIVADA" />
+		<property name="habilitada" column="HABILITADA" />
+		<property name="iniciacion" column="INICIACION" />
+		<property name="vigenciaRepLegal" column="VIGENCIA_REP_LEGAL" />
+		<filter name="filtraHabilitacion"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE daoConfig
+    PUBLIC "-//ibatis.apache.org//DTD DAO Configuration 2.0//EN"
+    "http://ibatis.apache.org/dtd/dao-2.dtd">
+
+<daoConfig>
+
+  <context>
+
+    <transactionManager type="SQLMAP">
+      <property name="SqlMapConfigResource" value="cl/araucana/spl/dao/config/sqlmap-config.xml"/>
+    </transactionManager>
+
+    <dao interface="cl.araucana.spl.dao.MedioPagoDAO" implementation="cl.araucana.spl.dao.sqlmap.MedioPagoSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.PagoDAO" implementation="cl.araucana.spl.dao.sqlmap.PagoSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.TransaccionBchDAO" implementation="cl.araucana.spl.dao.sqlmap.TransaccionBchSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.TransaccionBsaDAO" implementation="cl.araucana.spl.dao.sqlmap.TransaccionBsaSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.TransaccionBesDAO" implementation="cl.araucana.spl.dao.sqlmap.TransaccionBesSqlMapDAO"/>    
+
+    <dao interface="cl.araucana.spl.dao.SistemaDAO" implementation="cl.araucana.spl.dao.sqlmap.SistemaSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.EstadoDAO" implementation="cl.araucana.spl.dao.sqlmap.EstadoSqlMapDAO"/>
+
+    <dao interface="cl.araucana.spl.dao.RendicionBciDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBciSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.RendicionBchDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBchSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.RendicionBsaDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBsaSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.RendicionBesDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBesSqlMapDAO"/>
+
+    <dao interface="cl.araucana.spl.dao.BitacoraDAO" implementation="cl.araucana.spl.dao.sqlmap.BitacoraSqlMapDAO"/>
+    
+    <dao interface="cl.araucana.spl.dao.TransaccionBitDAO" implementation="cl.araucana.spl.dao.sqlmap.TransaccionBitSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.RendicionBitDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBitSqlMapDAO"/>
+    
+    <dao interface="cl.araucana.spl.dao.TransaccionBbvDAO" implementation="cl.araucana.spl.dao.sqlmap.TransaccionBbvSqlMapDAO"/>
+    <dao interface="cl.araucana.spl.dao.RendicionBbvDAO" implementation="cl.araucana.spl.dao.sqlmap.RendicionBbvSqlMapDAO"/>
+    
+    <dao interface="cl.araucana.spl.dao.UtilisRolDAO" implementation="cl.araucana.spl.dao.sqlmap.UtilisRolSqlMapDAO"/>
+    
+    <dao interface="cl.araucana.spl.dao.LibroBancoDAO" implementation="cl.araucana.spl.dao.sqlmap.LibroBancoDao"/>
+    <dao interface="cl.araucana.spl.dao.TesoreriaDAO" implementation="cl.araucana.spl.dao.sqlmap.TesoreriaDao"/>
+    <dao interface="cl.araucana.spl.dao.ParametrosDAO" implementation="cl.araucana.spl.dao.sqlmap.ParametrosSqlMapDAO"/>
+  </context>
+
+</daoConfig>

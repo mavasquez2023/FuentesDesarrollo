@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="EventoVO" table="EVENTLOG_EVENT">
+    	<id column="ID_EVENT" type="int" name="idEvento">
+             <generator class="sequence">
+                <param name="sequence">S_EVENTO</param>
+            </generator>
+   		</id>
+		<property name="idTipoEvento"  column="ID_EVENT_TYPE" />
+		<property name="idAgente" column="ID_AGENT" />
+		<property name="cuando" column="WHEN" />
+		<property name="parametros" column="PARAMETERS" />
+	</class>
+</hibernate-mapping>

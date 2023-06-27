@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="SeccionVO" table="SECCION">
+		<composite-id>
+        	<key-property name="idCodigoBarra">
+        		<column name="ID_CODIGO_BARRA" not-null="true" />
+        	</key-property>
+        	<key-property name="idTipoSeccion">
+        		<column name="ID_TIPO_SECCION" not-null="true" />
+        	</key-property>
+    	</composite-id>
+		<property name="mm1" column="M1" />
+		<property name="mm2" column="M2" />
+		<property name="mm3" column="M3" />
+		<property name="mm4" column="M4" />
+		<property name="mm5" column="M5" />
+		<property name="mm6" column="M6" />
+		<property name="mm7" column="M7" />
+		<property name="mm8" column="M8" />
+		<property name="mm9" column="M9" />
+		<property name="mm10" column="M10" />
+		<property name="mm11" column="M11" />
+		<property name="mm12" column="M12" />
+		<property name="numTrabajadores" column="N_TRABAJADORES" />
+   		<property name="tipoPago" column="TIPO_PAGO" />
+   		<bag name="detallesSeccion" cascade="all-delete-orphan" lazy="true" table="DETALLE_SECCION" inverse="true">
+   			<key>
+   				<column name="ID_CODIGO_BARRA" />
+   				<column name="ID_TIPO_SECCION" />
+   			</key>
+			<one-to-many class="DetalleSeccionVO" />
+  		</bag>
+	</class>
+</hibernate-mapping>
+

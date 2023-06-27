@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.dispDatos.aporte.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.dispDatos.aporte.araucana.cl" xmlns:intf="http://service.dispDatos.aporte.araucana.cl" xmlns:tns1="http://vo.service.dispDatos.aporte.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.dispDatos.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.service.dispDatos.aporte.araucana.cl"/>
+   <element name="obtenerInfDatos">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerInfDatosResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerInfDatosReturn" type="tns1:DispDatosResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerInfDatosRemote">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerInfDatosRemoteResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerInfDatosRemoteReturn" type="tns1:DispDatosResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo.service.dispDatos.aporte.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="AfiliadoResultVO">
+    <sequence>
+     <element name="fax" nillable="true" type="xsd:string"/>
+     <element name="numero" nillable="true" type="xsd:string"/>
+     <element name="tipoDireccion" type="xsd:int"/>
+     <element name="actEconomica" type="xsd:int"/>
+     <element name="mail" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="apellidoPaterno" nillable="true" type="xsd:string"/>
+     <element name="genero" type="xsd:int"/>
+     <element name="celular" nillable="true" type="xsd:string"/>
+     <element name="rut" type="xsd:int"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="apellidoMaterno" nillable="true" type="xsd:string"/>
+     <element name="nombres" nillable="true" type="xsd:string"/>
+     <element name="comuna" type="xsd:int"/>
+     <element name="departamento" nillable="true" type="xsd:string"/>
+     <element name="dlgVerificador" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ErrorResultVO">
+    <sequence>
+     <element name="glsError" nillable="true" type="xsd:string"/>
+     <element name="codError" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="DispDatosResultVO">
+    <sequence>
+     <element name="afiliado" nillable="true" type="tns1:AfiliadoResultVO"/>
+     <element name="error" nillable="true" type="tns1:ErrorResultVO"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="obtenerInfDatosRemoteResponse">
+
+      <wsdl:part element="intf:obtenerInfDatosRemoteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfDatosRemoteRequest">
+
+      <wsdl:part element="intf:obtenerInfDatosRemote" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfDatosRequest">
+
+      <wsdl:part element="intf:obtenerInfDatos" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerInfDatosResponse">
+
+      <wsdl:part element="intf:obtenerInfDatosResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DispDatosServiceImpl">
+
+      <wsdl:operation name="obtenerInfDatos">
+
+         <wsdl:input message="intf:obtenerInfDatosRequest" name="obtenerInfDatosRequest"/>
+
+         <wsdl:output message="intf:obtenerInfDatosResponse" name="obtenerInfDatosResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfDatosRemote">
+
+         <wsdl:input message="intf:obtenerInfDatosRemoteRequest" name="obtenerInfDatosRemoteRequest"/>
+
+         <wsdl:output message="intf:obtenerInfDatosRemoteResponse" name="obtenerInfDatosRemoteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DispDatosServiceImplSoapBinding" type="intf:DispDatosServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="obtenerInfDatos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerInfDatosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerInfDatosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerInfDatosRemote">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerInfDatosRemoteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerInfDatosRemoteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DispDatosServiceImplService">
+
+      <wsdl:port binding="intf:DispDatosServiceImplSoapBinding" name="DispDatosServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:9080/AporteWS/services/DispDatosServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

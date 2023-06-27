@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="intercajaNS">
+
+<!-- Consulta que obtiene los datos desde el sistema independiente, para generar el archivo de salida -->
+<!--   	
+	<select id="generarArchivoSalida" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinSalidaIntercajaVO">
+		SELECT	PER.IDDOCUMENTO rutAfiliado, 
+				PER.DIGVERIFICADOR digVerificador,
+				CHAR(SOL.FECHAINGRESO, USA) fechaSolicitudAfiliacion,
+				PER.NOMBRES nombreAfiliado,
+				PER.APELLIDOPATERNO apellidoPaternoAfiliado,
+				PER.APELLIDOMATERNO apellidoMaternoAfiliado,
+				IEC.MONTOULTCOTIZACION montoUltCotizacion,
+				CHAR(IEC.FECHAULTCOTIZACION, USA) fechaUltCotizacion,
+				AFI.TIPOESTADOAFILIADO tipoEstadoAfiliado,
+				SOL.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				SOL.FOLIO folio,
+				SOL.TIPOSOLICITUD tipoSolicitud,
+				AFI.IDPERSONAAFILIADO idPersonaAfiliado,
+				SOL.IDAFILIADOAGRUPACION idAfiliadoAgrupacion,
+				SOL.TIPOCAJAORIGEN tipoCajaOrigen
+		FROM	$IIDTA$.PERSONA PER
+		JOIN	$IIDTA$.AFILIADO AFI
+		ON		AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+		JOIN	$IIDTA$.SOLICITUD SOL
+		ON		SOL.IDAFILIADOAGRUPACION = AFI.IDPERSONAAFILIADO
+		JOIN	$IIDTA$.INGRESOECONOMICO IEC
+		ON		IEC.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+		WHERE	((AFI.TIPOESTADOAFILIADO IN (1) AND SOL.TIPOCAJAORIGEN IN (1) AND(SOL.TIPOESTADOSOLICITUD IN (2,4) AND SOL.TIPOSOLICITUD IN (1)))
+		OR		(AFI.TIPOESTADOAFILIADO IN (1) AND SOL.TIPOCAJAORIGEN NOT IN (1) AND(SOL.TIPOESTADOSOLICITUD IN (2,4) AND SOL.TIPOSOLICITUD IN (1)))
+		OR		(AFI.TIPOESTADOAFILIADO IN (6) AND	SOL.TIPOESTADOSOLICITUD IN (7)))
+		AND		SOL.FECHAINGRESO BETWEEN #input.txt_FecInicio# AND #input.txt_FecCorte#
+		ORDER BY rutAfiliado DESC
+	</select>
+-->
+<!-- Actualizacion de Query de Generacion de Archivo de Salida -->
+	<select id="generarArchivoSalida" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinSalidaIntercajaVO">
+		SELECT	PER.IDDOCUMENTO rutAfiliado, 
+				PER.DIGVERIFICADOR digVerificador,
+				CHAR(SOL.FECHAINGRESO, USA) fechaSolicitudAfiliacion,
+				PER.NOMBRES nombreAfiliado,
+				PER.APELLIDOPATERNO apellidoPaternoAfiliado,
+				PER.APELLIDOMATERNO apellidoMaternoAfiliado,
+				IEC.MONTOULTCOTIZACION montoUltCotizacion,
+				CHAR(IEC.FECHAULTCOTIZACION, USA) fechaUltCotizacion,
+				AFI.TIPOESTADOAFILIADO tipoEstadoAfiliado,
+				SOL.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				SOL.FOLIO folio,
+				SOL.TIPOSOLICITUD tipoSolicitud,
+				AFI.IDPERSONAAFILIADO idPersonaAfiliado,
+				SOL.IDAFILIADOAGRUPACION idAfiliadoAgrupacion,
+				SOL.TIPOCAJAORIGEN tipoCajaOrigen
+		FROM	$IIDTA$.PERSONA PER
+		JOIN	$IIDTA$.AFILIADO AFI
+		ON		AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+		JOIN	$IIDTA$.SOLICITUD SOL
+		ON		SOL.IDAFILIADOAGRUPACION = AFI.IDPERSONAAFILIADO
+		JOIN	$IIDTA$.INGRESOECONOMICO IEC
+		ON		IEC.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+		WHERE	((AFI.TIPOESTADOAFILIADO IN (1) AND SOL.TIPOCAJAORIGEN IN (1) AND(SOL.TIPOESTADOSOLICITUD IN (2,4) AND SOL.TIPOSOLICITUD IN (1)))
+		OR		(AFI.TIPOESTADOAFILIADO IN (1) AND SOL.TIPOCAJAORIGEN NOT IN (1) AND(SOL.TIPOESTADOSOLICITUD IN (2,4) AND SOL.TIPOSOLICITUD IN (1)))
+		OR      (SOL.TIPOESTADOSOLICITUD IN (4) AND SOL.TIPOSOLICITUD IN (2))
+		OR      (AFI.TIPOESTADOAFILIADO IN (4)))
+		AND		SOL.FECHAINGRESO BETWEEN #input.txt_FecInicio# AND #input.txt_FecCorte#
+		AND     PER.IDDOCUMENTO NOT IN (SELECT IDDOCUMENTO FROM $IIDTA$.FILTRODETALLESALIDAINTERCAJA)
+		UNION 
+		SELECT	PER.IDDOCUMENTO rutAfiliado, 
+				PER.DIGVERIFICADOR digVerificador,
+				CHAR(SOL.FECHAINGRESO, USA) fechaSolicitudAfiliacion,
+				PER.NOMBRES nombreAfiliado,
+				PER.APELLIDOPATERNO apellidoPaternoAfiliado,
+				PER.APELLIDOMATERNO apellidoMaternoAfiliado,
+				IEC.MONTOULTCOTIZACION montoUltCotizacion,
+				CHAR(IEC.FECHAULTCOTIZACION, USA) fechaUltCotizacion,
+				AFI.TIPOESTADOAFILIADO tipoEstadoAfiliado,
+				SOL.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				SOL.FOLIO folio,
+				SOL.TIPOSOLICITUD tipoSolicitud,
+				AFI.IDPERSONAAFILIADO idPersonaAfiliado,
+				SOL.IDAFILIADOAGRUPACION idAfiliadoAgrupacion,
+				SOL.TIPOCAJAORIGEN tipoCajaOrigen
+		FROM	$IIDTA$.PERSONA PER
+		JOIN	$IIDTA$.AFILIADO AFI
+		ON		AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+		JOIN	$IIDTA$.SOLICITUD SOL
+		ON		SOL.IDAFILIADOAGRUPACION = AFI.IDPERSONAAFILIADO
+		JOIN	$IIDTA$.INGRESOECONOMICO IEC
+		ON		IEC.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+		WHERE   ((AFI.TIPOESTADOAFILIADO IN (6) AND	SOL.TIPOESTADOSOLICITUD IN (7)))
+		AND     PER.IDDOCUMENTO NOT IN (SELECT IDDOCUMENTO FROM $IIDTA$.FILTRODETALLESALIDAINTERCAJA)
+		ORDER BY rutAfiliado DESC
+	</select>	
+
+	<!-- Obtiene la siguiente secuencia de la tabla sessionDirectorio -->
+	<select id="selectIdSesionDirectorio" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.IDSESDIR_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Obtiene la siguiente secuencia de la tabla mestroIntercaja -->
+	<select id="selectIdMaestroIntercaja" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.IDMAEARC_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Obtiene la siguiente secuencia de la tabla DetalleSalidaIntercaja -->
+	<select id="selectIdDetalleSalidaIntercaja" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.IDDETSAL_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Obtiene la siguiente secuencia de la tabla sessionDirectorio -->
+	<select id="selectIdFiltroSalInt" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.FILTROSALINT_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Query para obtener la fecha de sistema. -->
+	<select id="obtenerFechaSistema" resultClass="string">
+		SELECT current date FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Obtiene un contador para verificar que el numero de sesion que se va a ingresar no este registrado en la tabla SesionDirectorio-->
+	<select id="selectCountNumSesion" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT COUNT(*) numeroSesion
+		FROM $IIDTA$.SESIONDIRECTORIO
+		WHERE NUMSESION = #input#
+	</select>
+
+	<select id="selectDataEntrIntercaja" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinEntradaIntercajaVO">
+		SELECT 	NOMBREARCHIVO nombreArchivo,
+				IDTIPOARCHIVO tipoArchivo,
+				CHAR(FECHAPROCESO, USA) fechaCarga,
+				STATUSPROCESO statusProceso
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	FECHAPROCESO BETWEEN #input.fechaInicio# AND #input.fechaFin#
+		AND		IDTIPOARCHIVO NOT IN(7)
+		ORDER BY fechaCarga
+	</select>
+	
+	<select id="selectCountRegistro" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) cont
+		FROM 	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+		AND		IDTIPOARCHIVO = #input.tipoArchivo#
+	</select>
+	
+	<!-- SELECT PARA ESTADISTICAS POR TIPO DE ARCHIVO. -->
+	<!-- Select`s estadisticas para archivo TRASPASOS -->
+	<select id="selectCountRegProcesadosTra" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLETRASPASOSINTERCAJA
+		WHERE	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountAplNegocioRecTra" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLETRASPASOSINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountRegPendientesRecTra" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLETRASPASOSINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<!-- Select`s estadisticas para archivo COLISIONES -->
+	<select id="selectCountRegProcesadosCol" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLECOLISIONESINTERCAJA
+		WHERE 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountAplNegocioRecCol" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLECOLISIONESINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountRegPendientesRecCol" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLECOLISIONESINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+		
+	<!-- Select`s estadisticas para archivo RECIBIDOS  -->
+	<select id="selectCountRegProcesadosRec" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLERECIBIDOSINTERCAJA
+		WHERE 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountAplNegocioRec" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLERECIBIDOSINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)	
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountRegPendientesRec" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLERECIBIDOSINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<!-- Select`s estadisticas para archivo ESTADISTICAS -->
+	<select id="selectCountRegProcesadosEst" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEESTADISTICOINTERCAJA
+		WHERE 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountAplNegocioEst" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEESTADISTICOINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)	
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountRegPendientesEst" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLEESTADISTICOINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<!-- Select`s estadisticas para archivo ERRORES -->
+	<select id="selectCountRegProcesadosErr" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEERRORESINTERCAJA
+		WHERE 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountAplNegocioErr" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEERRORESINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)	
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+
+	<select id="SelectCountRegPendientesErr" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLEERRORESINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<!-- Select`s estadisticas para archivo BASE COMUN AFILIADOS -->
+	<select id="selectCountRegProcesadosBca" parameterClass="java.util.HashMap" resultClass="string">	
+		SELECT	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEBASECOMUNINTERCAJA
+		WHERE 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<select id="SelectCountAplNegocioBca" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM 	$IIDTA$.DETALLEBASECOMUNINTERCAJA
+		WHERE	STATUSAPLNEGOCIO NOT IN (2)	
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+		
+	<select id="SelectCountRegPendientesBca" parameterClass="java.util.HashMap" resultClass="string">	
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLEBASECOMUNINTERCAJA
+		WHERE	STATUSAPLNEGOCIO IN (2)
+		AND 	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	<!-- FIN SELECT PARA ESTADISTICA POR TIPO DE ARCHIVO -->
+
+	<select id="selectDetalleArchivo" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.EntradaIntercajaVO">
+		SELECT	IDMAESTROARCHIVO idMaestroArchivo,
+				NOMBREARCHIVO nombreArchivo,
+				STATUSPROCESO statusProceso,
+				CHAR(FECHAPROCESO, USA) fechaProceso,
+				IDTIPOARCHIVO tipoArchivo
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+	</select>
+	
+	<select id="selectDetalleParaArchivoFallido" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.EntradaIntercajaVO">
+		SELECT	IDMAESTROARCHIVO idMaestroArchivo,
+				NOMBREARCHIVO nombreArchivo,
+				STATUSPROCESO statusProceso,
+				CHAR(FECHAPROCESO, USA) fechaProceso,
+				IDTIPOARCHIVO tipoArchivo
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+		AND		STATUSPROCESO = 1
+	</select>
+
+	<select id="selectDetalleDespuesCobol" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.EntradaIntercajaVO">
+		SELECT	IDMAESTROARCHIVO idMaestroArchivo,
+				NOMBREARCHIVO nombreArchivo,
+				STATUSPROCESO statusProceso,
+				CHAR(FECHAPROCESO, USA) fechaProceso,
+				IDTIPOARCHIVO tipoArchivo
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+		AND		IDMAESTROARCHIVO = #input.idMaestroArchivo#	
+	</select>
+	<!-- Para consultas que llenan la grilla -->
+	<select id="selectRecPendIntercaja" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	REC.IDDOCUMENTO rutAfiliado,
+				REC.NOMBREAFILIADO nombreCompleto,
+				TGL.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				CHAR(MIT.FECHAPROCESO, USA) fechaProcesamiento,
+				LCP.IDDETALLEFILE numeroRegistroTabla,
+				LCP.CORRELCASEPEND correlCasePendiente
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.DETALLERECIBIDOSINTERCAJA REC,
+				$IIDTA$.TABLASGLOBALES TGL,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		LCP.IDMAESTROARCHIVO = #input.idMaestroArchivo#
+		AND		LCP.IDDETALLEFILE = REC.IDDETALLERECIB
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+		AND		TGL.ENTIDAD = 45
+		AND		TGL.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO	
+	</select>
+
+	<select id="selectTraPendIntercaja" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	TRA.IDDOCUMENTO rutAfiliado,
+				TRA.NOMBREAFILIADO nombreCompleto,
+				TGL.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				CHAR(TRA.FECHASOLICITUD, USA) fechaSolicitud,
+				CHAR(TRA.FECHAINICIO, USA) fechaInicio,
+				LCP.IDDETALLEFILE numeroRegistroTabla,
+				LCP.CORRELCASEPEND correlCasePendiente
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.DETALLETRASPASOSINTERCAJA TRA,
+				$IIDTA$.TABLASGLOBALES TGL,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		LCP.IDMAESTROARCHIVO = #input.idMaestroArchivo#		
+		AND		LCP.IDDETALLEFILE = TRA.IDDETALLETRASP
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+		AND		TGL.ENTIDAD = 45
+		AND		TGL.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+	</select>
+	
+	<select id="selectColPendIntercaja" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT	COL.IDDETALLECOLISIONES numeroRegistroTabla,
+				TGL1.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				COL.IDDOCUMENTO rutAfiliado,
+				COL.NOMBREAFILIADO nombreAfiliado,
+				LCP.CORRELCASEPEND correlCasePendiente				
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.DETALLECOLISIONESINTERCAJA COL,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.TABLASGLOBALES TGL1,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		LCP.IDMAESTROARCHIVO = #input.idMaestroArchivo#		
+		AND		LCP.IDDETALLEFILE = COL.IDDETALLECOLISIONES
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+		AND		TGL1.ENTIDAD = 45
+		AND		TGL1.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO	
+	</select>	
+	
+	<select id="selectErrPendIntercaja" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	ERR.IDDOCUMENTO rutAfiliado,
+				ERR.NOMBREAFILIADO nombreCompleto,
+				TGL.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				LCP.IDDETALLEFILE numeroRegistroTabla,
+				LCP.CORRELCASEPEND correlCasePendiente
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.DETALLEERRORESINTERCAJA ERR,
+				$IIDTA$.TABLASGLOBALES TGL,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		LCP.IDMAESTROARCHIVO = #input.idMaestroArchivo#
+		AND		LCP.IDDETALLEFILE = ERR.IDDETALLEERRORES
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+		AND		TGL.ENTIDAD = 45
+		AND		TGL.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+	</select>
+	
+	<!-- consultas que traen detalle por numero de registro -->
+	<select id="selectDetalleRecPendInt" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	REC.IDDETALLERECIB numeroRegistroTabla,
+				TGL1.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				REC.IDDOCUMENTO rutAfiliado,
+				CHAR(REC.FECHASOLICITUD, USA) fechaSolicitud,
+				CHAR(REC.FECHAINICIO, USA) fechaInicio,
+				REC.NOMBREAFILIADO nombreCompleto,
+				REC.IDCCAFORIGEN ccafCajaOrigen,
+				REC.IDCCAFDESTINO ccafCajaDestino
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.DETALLERECIBIDOSINTERCAJA REC,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.TABLASGLOBALES TGL1,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDDETALLEFILE = REC.IDDETALLERECIB
+		AND		LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		TGL1.ENTIDAD = 45
+		AND		TGL1.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+		AND		LCP.CORRELCASEPEND = #input.correlCasePendiente#
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+	</select>
+	
+	
+	<select id="selectDetalleTraPendInt" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	TRA.IDDETALLETRASP numeroRegistroTabla,
+				TGL1.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				TRA.IDDOCUMENTO rutAfiliado,
+				CHAR(TRA.FECHASOLICITUD, USA) fechaSolicitud,
+				CHAR(TRA.FECHAINICIO, USA) fechaInicio,
+				TRA.NOMBREAFILIADO nombreCompleto,
+				TRA.IDCCAFORIGEN ccafCajaOrigen,
+				TRA.IDCCAFDESTINO ccafCajaDestino
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.DETALLETRASPASOSINTERCAJA TRA,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.TABLASGLOBALES TGL1,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDDETALLEFILE = TRA.IDDETALLETRASP
+		AND		LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		TGL1.ENTIDAD = 45
+		AND		TGL1.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+		AND		LCP.CORRELCASEPEND = #input.correlCasePendiente#
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+	</select>
+	
+	<select id="selectDetalleColPendInt" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT	COL.IDDETALLECOLISIONES numeroRegistroTabla,
+				TGL1.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				COL.IDDOCUMENTO rutAfiliado,
+				COL.NOMBREAFILIADO nombreCompleto,
+				LCP.CORRELCASEPEND correlCasePendiente
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.DETALLECOLISIONESINTERCAJA COL,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.TABLASGLOBALES TGL1,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDDETALLEFILE = COL.IDDETALLECOLISIONES
+		AND		LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		TGL1.ENTIDAD = 45
+		AND		TGL1.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+		AND		LCP.CORRELCASEPEND = #input.correlCasePendiente#
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#
+	</select>
+	
+	<select id="selectGrillaColPendInt" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	DCA.ID_CCAF id_ccaf,
+				CHAR(DCA.FECHASOLICITUD, USA) fechaSolicitud,
+				DCA.FLAGRECIBEAFILIADO flagRecibe
+		FROM	$IIDTA$.DETALLECOLISIONAFILIADO DCA,
+				$IIDTA$.DETALLECOLISIONESINTERCAJA COL,
+				$IIDTA$.LOGCASOSPENDIENTES LCP
+		WHERE	LCP.IDDETALLEFILE = COL.IDDETALLECOLISIONES
+		AND		COL.IDDETALLECOLISIONES = DCA.IDDETALLECOLISIONES
+		AND		LCP.CORRELCASEPEND = #input.correlCasePendiente#
+		AND		LCP.IDTIPOARCHIVO = 2	
+	</select>
+	<select id="selectDetalleErrPendInt" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		SELECT 	ERR.IDDETALLEERRORES numeroRegistroTabla,
+				TGL1.GLOSA descripcionError,
+				MIT.NOMBREARCHIVO nombreArchivo,
+				TGL2.GLOSA tipoArchivo,
+				ERR.IDDOCUMENTO rutAfiliado,
+				ERR.NOMBREAFILIADO nombreCompleto,
+				CHAR(ERR.FECHASOLICITUD, USA) fechaSolicitud,
+				LCP.IDTIPOERROR idTipoError
+		FROM	$IIDTA$.LOGCASOSPENDIENTES LCP,
+				$IIDTA$.DETALLEERRORESINTERCAJA ERR,
+				$IIDTA$.MAESTROINTERCAJA MIT,
+				$IIDTA$.TABLASGLOBALES TGL1,
+				$IIDTA$.TABLASGLOBALES TGL2
+		WHERE	LCP.IDDETALLEFILE = ERR.IDDETALLEERRORES
+		AND		LCP.IDMAESTROARCHIVO = MIT.IDMAESTROARCHIVO
+		AND		TGL1.ENTIDAD = 45
+		AND		TGL1.CODIGO = LCP.IDTIPOERROR
+		AND		TGL2.ENTIDAD = 43
+		AND		TGL2.CODIGO = LCP.IDTIPOARCHIVO
+		AND		LCP.CORRELCASEPEND = #input.correlCasePendiente#
+		AND		LCP.IDTIPOARCHIVO = #input.tipoArchivo#	
+	</select>
+
+	<select id="selectCajaPendIntercaja" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	B.NOMBRE glosaCaja
+		FROM 	$CPEDTA$.ENTIDAD_CCAF A, 
+				$CPEDTA$.ENTPAGAD B 
+		WHERE 	A.ID_ENT_PAGADORA = B.ID_ENT_PAGADORA 
+		AND		A.ID_ENT_PAGADORA != 0 
+		AND 	A.ID_ENT_PAGADORA = #input#
+	</select>
+	
+	<select id="selectArchivosPorFechayTipo" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.param.ParametroLong">
+		SELECT 	IDMAESTROARCHIVO codigo,
+				NOMBREARCHIVO glosa
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	IDTIPOARCHIVO = #input.tipoArchivo#	
+		AND		FECHAPROCESO BETWEEN #input.fechaInferior# AND #input.fechaSuperior#
+	</select>
+	
+	<!-- select para flujo 4 -->
+	<!-- query que consulta si el rut esta registrado en la tabla detallebasecomunintercaja -->
+	<select id="selectCountRutBaseComun" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	COUNT(*) contador
+		FROM	$IIDTA$.DETALLEBASECOMUNINTERCAJA
+		WHERE	IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- query que consulta por la fecha de ingreso de un rut en particular.-->
+	<select id="selectFecIngrPorRutBaseC" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.BaseComunIntercajaVO">
+		SELECT 	CHAR(FECHAINGRESO, USA) fechaIngreso
+		FROM	$IIDTA$.DETALLEBASECOMUNINTERCAJA
+		WHERE	IDDOCUMENTO = #input#	
+	</select>
+	
+	<select id="consultarFlagCorreo" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	STATUSSENDMAIL statusSendMail
+		FROM	$IIDTA$.MAESTROINTERCAJA
+		WHERE	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</select>
+	
+	<!-- INSERT -->
+	<!-- Consulta que realiza el insert a la tabla sesionDirectorio -->
+	<insert id="insertSesionDirectorio" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.SESIONDIRECTORIO(IDSESIONDIRECTORIO, NUMSESION, FECHASESION, FECHAINICIOMOV, FECHACORTEMOV)
+		VALUES(#input.idSesionDirectorio#,#input.numeroSesion#,#input.fechaSesionDate#,#input.fechaInicioMovDate#,#input.fechaCorteMovDate#)
+	</insert>
+	
+	<!-- Insert para archivo salida hacia intercaja. -->
+	<insert id="insertMaestroIntercaja" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.MAESTROINTERCAJA(IDMAESTROARCHIVO, NOMBREARCHIVO, STATUSPROCESO, FECHAPROCESO, IDTIPOARCHIVO, IDANALISTA, STATUSSENDMAIL)
+		VALUES(#input.idMaestroArchivo#,#input.nombreArchivo#,#input.statusProceso#,#input.fechaProcesoDate#,#input.idTipoArchivo#,#input.idAnalista#,#input.statusSendMail#)
+	</insert>
+	
+	<insert id="insertDetalleSalidaIntercaja" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.DETALLESALIDAINTERCAJA(IDDETALLESALIDA, IDMAESTROARCHIVO, CANTMOVIMIENTOS, IDSESIONDIRECTORIO, IDTIPOMOVINTERCAJA, IDTIPOMOVINDEPENDIENTES)
+		VALUES(#input.idDetalleSalida#,#input.idMaestroArchivo#,#input.cantMovimientos#,#input.idSesionDirectorio#,#input.idTipoMovIntercaja#,#input.idTipoMovIndependientes#)
+	</insert>
+	
+	<insert id="insertEntradaMaestroIntercaja" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.MAESTROINTERCAJA(IDMAESTROARCHIVO, NOMBREARCHIVO, FECHACABECERA, STATUSPROCESO, FECHAPROCESO, IDTIPOARCHIVO, IDANALISTA, STATUSSENDMAIL)
+		VALUES(#input.idMaestroArchivo#,#input.nombreArchivo#,#input.fechaCabeceraDate#,#input.statusProceso#,#input.fechaProcesoDate#,#input.idTipoArchivo#,#input.idAnalista#,#input.statusSendMail#)
+	</insert>
+	
+	<!-- Consulta que realiza el insert a la tabla filtroDetalleSalidaIntercaja -->
+	<insert id="insertFiltroDetalleSalidaIntercaja" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.FILTRODETALLESALIDAINTERCAJA(IDFILTRODETALLE, IDDOCUMENTO, DIGVERIFICADOR, FECHAFILTRO)
+		VALUES(#input.idFiltroDetalle#,#input.idDocumento#,#input.digVerificador#,(SELECT current date FROM sysibm.sysdummy1))
+	</insert>
+	
+	<!-- UPDATES -->
+	<select id="selectIdMaestroArchivoMail" parameterClass="java.util.HashMap" resultClass="string">
+		SELECT 	IDMAESTROARCHIVO
+		FROM 	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+	</select>
+	
+	<update id="upateMailMaestroInterc" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.MAESTROINTERCAJA
+		SET		STATUSSENDMAIL = 3
+		WHERE	IDMAESTROARCHIVO = #input.idMaestroArchivo#
+	</update>
+	
+	<select id="selectStatusProceso" parameterClass="java.util.HashMap" resultClass="cl.araucana.independientes.vo.EntradaIntercajaVO">
+		SELECT 	STATUSPROCESO statusProceso,
+				IDMAESTROARCHIVO idMaestroArchivo
+		FROM 	$IIDTA$.MAESTROINTERCAJA
+		WHERE	NOMBREARCHIVO = #input.nombreArchivo#
+		AND		IDTIPOARCHIVO = #input.tipoArchivo#	
+	</select>
+</sqlMap>
+
+

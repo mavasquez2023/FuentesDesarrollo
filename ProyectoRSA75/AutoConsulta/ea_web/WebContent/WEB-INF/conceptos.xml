@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE conceptos [
+<!ELEMENT conceptos (concepto+)>
+<!ELEMENT concepto (glosa,descripcion,mensaje,tieneSubsistema?)>
+<!ATTLIST concepto id CDATA #IMPLIED>
+<!ELEMENT glosa  (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT mensaje  (#PCDATA)>
+<!ELEMENT tieneSubsistema  (#PCDATA)>
+]>
+<conceptos>
+	<concepto id="1">
+		<glosa>Declaración de cotizaciones sin pago</glosa>
+		<descripcion>Planillas declaradas y no pagadas por la Empresa, para el período indicado</descripcion>
+		<mensaje></mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>
+	<concepto id="2">
+		<glosa>Morosidad Ahorro</glosa>
+		<descripcion>Los descuentos por cuotas de Ahorro efectuados a los trabajadores y no enterados en la Caja, en los períodos indicados.</descripcion>
+		<mensaje></mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="3">
+		<glosa>Morosidad Crédito</glosa>
+		<descripcion>Los descuentos por cuotas de Crédito efectuados a los trabajadores y no enterados en la Caja, en los períodos y folios indicados.</descripcion>
+		<mensaje></mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>
+	<concepto id="402">
+		<glosa>Nómina de diferencia de Asignación Familiar.</glosa>
+		<descripcion>Mayor valor cobrado por la Empresa por concepto  de Asignación Familiar en relación a uno o más trabajadores, en el período indicado.</descripcion>
+		<mensaje>Para mayor información, favor consultar con Departamento Beneficios, Fono: 4228154, o e-mail: jcerda@laaraucana.cl.</mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>
+	<concepto id="459">
+		<glosa>Bono Extraordinario Ley N° 20.012</glosa>
+		<descripcion>Pago bono extraordinario Ley 20.012, otorgado por el Estado a sectores de menores ingresos.</descripcion>
+		<mensaje>Para mayor información, favor consultar con Departamento Beneficios, Fono: 4228154, o e-mail: jcerda@laaraucana.cl.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="658">
+		<glosa>Devolución de cuotas duplicadas Crédito social</glosa>
+		<descripcion>Devolución por pago duplicado por concepto cuotas de Crédito social.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="671">
+		<glosa>Abono a morosidad de Crédito.</glosa>
+		<descripcion>Cobro de cuotas de créditos morosos.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="674">
+		<glosa>Devolución por mayor valor pagado en Crédito social</glosa>
+		<descripcion>Devolución de pagos en exceso por concepto de Crédito social.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="675">
+		<glosa>Devolución por restauración de cuota Crédito social.</glosa>
+		<descripcion>Devolución de cuotas restauradas (Anulación de pagos) por concepto de Crédito social.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="703">
+		<glosa>Cobranza por mayor valor pagado por la Caja en Saldo a Favor.</glosa>
+		<descripcion>Mayor valor pagado por la Caja por concepto de Saldo a Favor</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="704">
+		<glosa>Menor pago de la Empresa en Cotización informada.</glosa>
+		<descripcion>Diferencia por error en cálculo del 0,6 % o por mayor valor compensado en Asignación Familiar.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>	
+	<concepto id="705">
+		<glosa>Menor Cotización por Licencia Médica</glosa>
+		<descripcion>Menor remuneración  imponible informada a la Caja, detectada en cobro de Licencias médicas para un trabajador especifico.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con Departamento Beneficios, Fono: 4228154, o e-mail: jcerda@laaraucana.cl.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="706">
+		<glosa>Saldo a Favor Empresa por cotizaciones</glosa>
+		<descripcion>Valor determinado: Cotización 0,6 % de SIL menos Asignación Familiar autorizada por la Caja.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>
+	<concepto id="707">
+		<glosa>Nómina Suplementaria de pagos de Asignación Familiar</glosa>
+		<descripcion>Pagos de Asignación Familiar no compensados por la Empresa, en el período indicado.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con Departamento Beneficios, Fono: 4228154, o e-mail: jcerda@laaraucana.cl.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="709">
+		<glosa>Reversa devolución de cuotas duplicadas Crédito social.</glosa>
+		<descripcion>Cobro de pago indebido de cuota duplicada de Crédito.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="710">
+		<glosa>Abono a deudas cuentas corrientes </glosa>
+		<descripcion>Pagos o abonos efectuados por la Empresa a deudas vigentes en cuentas corrientes.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="711">
+		<glosa>Liquidación Cuenta Corriente Empresas</glosa>
+		<descripcion>Es el valor liquidado a la Empresa, según la información de la cuenta corriente que tiene en la Caja.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="712">
+		<glosa>Compensación de deudas a través de Cotización Electrónica.</glosa>
+		<descripcion>Pago anticipado del Saldo a Favor por parte de su Empresa, descontándolo de los montos a enterar en la Caja por conceptos de Crédito y Ahorro</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="713">
+		<glosa>Regulariza cobro en exceso efectuado por la Caja en proceso de Cotización Electrónica.</glosa>
+		<descripcion>Modificación o anulación del concepto asociado a La compensación del Saldo a Favor por Cotización electrónica.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="714">
+		<glosa>Reversa cobro en exceso a la Empresa en Nómina de diferencia de Asignación Familiar.</glosa>
+		<descripcion>Regulariza cobro en exceso efectuado por la Caja en Nómina de Diferencia de Asignación Familiar.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con Departamento Beneficios, Fono: 4228154, o e-mail: jcerda@laaraucana.cl.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="715">
+		<glosa>Reversa cobro en exceso a la Empresa en Cotización informada.</glosa>
+		<descripcion>Regulariza cobro en exceso efectuado por la Caja en Cotización informada.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="716">
+		<glosa>Devolución por pago de cotizaciones duplicadas.</glosa>
+		<descripcion>Es el valor de la Cotización cancelada por segunda vez de un mismo período.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="717">
+		<glosa>Devolución de cotización a Empresa no adherente.</glosa>
+		<descripcion>Se devuelve el valor cancelado en la cotización de una Empresas no adherida a la Caja </descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="718">
+		<glosa>Cobro de Gravámenes por cotizaciones no pagadas</glosa>
+		<descripcion>El Gravamen está originado por no pago parcial o total de la cotización de la Empresa en el período legal establecido</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="719">
+		<glosa>Traspaso de Saldo a Favor entre cuentas corrientes de la Empresa en la Caja.</glosa>
+		<descripcion>Traspaso de Saldo a Favor entre cuentas corrientes habilitadas por la Caja correspondientes a Sucursales de la Empresa.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="720">
+		<glosa>Compensación de Saldo a Favor en Cotización Electrónica</glosa>
+		<descripcion>Pago anticipado del Saldo a Favor, por parte de la Empresa, descontándolo de los montos a enterar en la Caja por conceptos de Crédito y Ahorro. </descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>	
+	<concepto id="722">
+		<glosa>Devolución cotización Recaudación Electrónica Previred</glosa>
+		<descripcion>Devolución de cotizaciones presentadas en forma duplicada y/o  devolución por mayor valor cancelado por concepto de cotizaciones, vía electrónica Previred.</descripcion>
+		<mensaje>Para mayor información, comuníquese con División Financiera &amp; Habitacional Fono: 4228227.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="723">
+		<glosa>Devolución cotización sistema Electrónico Caja</glosa>
+		<descripcion>Devolución de cotizaciones presentadas en forma duplicada y/o devolución por mayor valor cancelado por concepto de cotizaciones, vía electrónica Caja.</descripcion>
+		<mensaje>Para mayor información, comuníquese con División Financiera &amp; Habitacional Fono: 4228227</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="724">
+		<glosa>Devolución cotización sistema Electrónico Los Andes</glosa>
+		<descripcion>Devolución de cotizaciones presentadas en forma duplicada y/o  devolución por mayor valor cancelado por concepto de cotizaciones, vía electrónica Los Andes.</descripcion>
+		<mensaje>Para mayor información, comuníquese con División Financiera &amp; Habitacional Fono: 4228227.</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>
+	<concepto id="751">
+		<glosa>Reemplazo de cheques de Saldo a Favor.</glosa>
+		<descripcion>Cheques anulados o caducados reemplazados por petición de la Empresa o devueltos por correo.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>Y</tieneSubsistema>
+	</concepto>	
+	<concepto id="752">
+		<glosa>Devolución de gravámenes por cotizaciones</glosa>
+		<descripcion>Pago de gravámenes erróneamente descontados por la Caja a la Empresa.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="754">
+		<glosa>Devolución de cotizaciones 0,6% de SIL.</glosa>
+		<descripcion>Pago de gravámenes erróneamente descontados por la Caja a la Empresa.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="755">
+		<glosa>Pago adicional a la empresa por concepto de Saldo a Favor.</glosa>
+		<descripcion>Pago originado por cálculo erróneo en Saldo a Favor de la Empresa.</descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+	<concepto id="760">
+		<glosa>Retención parcial o total Bono extraordinario Ley N° 20.012.</glosa>
+		<descripcion>Pago anticipado del bono, por parte de la Empresas descontándolos de los montos a enterar en la Caja por concepto de cotización 0,6&#37; </descripcion>
+		<mensaje>Para mayor información, favor comuníquese con División Financiera &amp; Habitacional, Fono: 4228227, o e-mail: ctorres@laaraucana.cl .</mensaje>
+		<tieneSubsistema>N</tieneSubsistema>
+	</concepto>	
+</conceptos>

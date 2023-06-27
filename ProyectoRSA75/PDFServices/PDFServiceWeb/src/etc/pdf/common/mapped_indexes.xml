@@ -1,0 +1,497 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<mappedIndexes>
+	<mappedIndex>
+		<name> PlanillaIsapre </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreIsapre </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaAfp </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+
+	<mappedIndex>
+		<name> PlanillaAfpAV </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaAfpDnp </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaApv </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaApvColectivo </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaTp </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaMutual </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreMutual </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaCcaf </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreCaja </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> PlanillaInp </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+
+	<mappedIndex>
+		<name> PlanillaInpDnp </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+
+	<mappedIndex>
+		<name> PlanillaInpDnpPagada </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> CertificadoCotizaciones </name>
+
+		<mappings>
+			<mapping>
+				<name> certType </name>
+				<fieldName> TipoProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> trabajador </name>
+				<fieldName> RutTrabajador </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+	<mappedIndex>
+		<name> InformeCotizaciones </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> infoType </name>
+				<fieldName> TipoProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> trabajador </name>
+				<fieldName> RutTrabajador </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>	
+	
+	<mappedIndex>
+		<name> ComprobantePago </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> Periodo </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> compType </name>
+				<fieldName> TipoProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> nroComprobante </name>
+				<fieldName> NumeroComprobante </fieldName>
+			</mapping>			
+		</mappings>
+
+	</mappedIndex>
+	
+	
+		<mappedIndex>
+		<name> PlanillaAfpSil </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> FechaProceso </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> entidad </name>
+				<fieldName> NombreAFP </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> holding </name>
+				<fieldName> Holding </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> convenio </name>
+				<fieldName> Convenio </fieldName>
+			</mapping>			
+		</mappings>
+	</mappedIndex>
+	
+</mappedIndexes>

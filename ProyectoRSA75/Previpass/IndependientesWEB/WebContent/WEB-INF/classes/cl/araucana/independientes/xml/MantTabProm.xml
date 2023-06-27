@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabPromNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene rut, nombres apellido paterno, apellido materno y estado desde la tabla PROMOTOR. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabProm" resultClass="cl.araucana.independientes.vo.LinMantTabPromVO" parameterClass="java.util.HashMap">
+		SELECT	IDPROMOTOR codigo,
+				IDCAPTADOR rut,
+				NOMBRES nombres,
+				APELLIDOPATERNO apellidoPaterno,
+				APELLIDOMATERNO apellidoMaterno,
+				ESTPROMOT estado,
+				TIPOORGAN tipoOrgan,
+				TIPOCARGO tipoCargo,
+				CODAREA codArea,
+				NROTELEFONO nroTelefono,
+				CHAR(FECHAINICIO, USA) fechaInicio,
+				CHAR(FECHABAJA, USA)  fechaBaja,
+				GLOSACALLE glosaCalle
+		FROM $IIDTA$.PROMOTOR
+		ORDER BY IDCAPTADOR
+	</select>
+	
+	<!-- Select a las TABLAS GLOBALES.-->
+	<!-- Query que obtiene rut, nombres apellido paterno, apellido materno y estado desde la tabla PROMOTOR. Retorna un objeto tipo Parametro. -->
+	<select id="filtraTabProm" resultClass="cl.araucana.independientes.vo.LinMantTabPromVO" parameterClass="java.util.HashMap">
+		SELECT	IDPROMOTOR codigo,
+				IDCAPTADOR rut,
+				NOMBRES nombres,
+				APELLIDOPATERNO apellidoPaterno,
+				APELLIDOMATERNO apellidoMaterno,
+				ESTPROMOT estado,
+				TIPOORGAN tipoOrgan,
+				TIPOCARGO tipoCargo,
+				CODAREA codArea,
+				NROTELEFONO nroTelefono,
+				CHAR(FECHAINICIO, USA) fechaInicio,
+				CHAR(FECHABAJA, USA)  fechaBaja,
+				GLOSACALLE glosaCalle
+		FROM $IIDTA$.PROMOTOR
+		WHERE IDCAPTADOR = #input.idCaptador#
+	</select>
+	
+	<!-- Query que obtiene un contador para un determinado rut-->
+	<select id="obtenerCountPromotor" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(1)
+     	FROM	$IIDTA$.PROMOTOR 
+    	WHERE	IDCAPTADOR  = #input#
+	</select>
+	
+	
+	<!-- Select de idpromotor de la tabla promotor. 	-->
+	<select id="selectSeqPromotor" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.PROMOTOR_SEQ FROM sysibm.sysdummy1
+	</select>
+
+	<!-- Insert a la tabla PROMOTOR.-->
+	<insert id="insertNewPromotor" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.PROMOTOR(IDPROMOTOR,IDCAPTADOR,DIGVERIFICADOR,APELLIDOPATERNO,APELLIDOMATERNO,NOMBRES,TIPOORGAN,TIPOCARGO,CODAREA,NROTELEFONO,FECHAINICIO,FECHABAJA,ESTPROMOT,GLOSACALLE)
+		VALUES(#input.idPromotor#,#input.idCaptador#,#input.digVerificador#,#input.apellidoPaterno#,#input.apellidoMaterno#,#input.nombres#,#input.tipoOrgan#,#input.tipoCargo#,#input.codArea#,#input.nroTelefono#,#input.fechaInicio#,#input.fechaBaja#,#input.estPromot#,#input.glosaCalle#)
+	</insert>
+	
+	<!-- Update ESTADO para PROMOTORES -->
+	<update id="cambiarEstadoMantTabPromBaja" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.PROMOTOR
+		SET		ESTPROMOT = #input.estPromot#,
+				FECHABAJA = #input.fechaBaja#
+    	WHERE	IDCAPTADOR  = #input.idCaptador#
+	</update>
+	
+	<!-- Update ESTADO para PROMOTORES -->
+	<update id="cambiarEstadoMantTabProm" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.PROMOTOR
+		SET		ESTPROMOT = #input.estPromot#
+    	WHERE	IDCAPTADOR  = #input.idCaptador#
+	</update>
+	
+	<!-- Update PROMOTOR -->
+	<update id="updateMantTabProm" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.PROMOTOR
+		SET		APELLIDOPATERNO = #input.apellidoPaterno#,
+				APELLIDOMATERNO = #input.apellidoMaterno#,
+				NOMBRES = #input.nombres#,
+				TIPOORGAN = #input.tipoOrgan#,
+				TIPOCARGO = #input.tipoCargo#,
+				CODAREA = #input.codArea#,
+				NROTELEFONO = #input.nroTelefono#,
+				GLOSACALLE = #input.glosaCalle#,
+				FECHAINICIO = #input.fechaInicio#
+    	WHERE	IDCAPTADOR  = #input.idCaptador#
+	</update>
+	
+</sqlMap>

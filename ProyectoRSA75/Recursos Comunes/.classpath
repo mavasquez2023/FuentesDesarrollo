@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/com.ibm.mq.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/jt400.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/xerces.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/ftp.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/itext-1.02b.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/JimiProClasses.zip"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/Notes.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/NCSO.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/poi-3.2-FINAL.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/userRegistry.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/bcprov-jdk14-147.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/DES.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/httputils.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/ostermillerutils-1.0.5.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/lib/core-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/RAD70/projects/groups/Recursos Comunes/src/TEC012.jar"/>
+	<classpathentry kind="lib" path="C:/RSA7.5/lib/j2ee.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

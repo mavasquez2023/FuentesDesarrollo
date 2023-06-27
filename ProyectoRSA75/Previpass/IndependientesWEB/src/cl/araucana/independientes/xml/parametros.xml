@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="parametrosNS">
+
+	<!-- Query que selecciona un código y Glosa desde la tabla TablasGlobales y que están asociadas a una determinada entidad. Recibe como entrada 
+		un string y retorna un objeto tipo Parámetro.  -->
+	<select id="obtenerParametricos" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODIGO codigo, GLOSA glosa, ESTADO estado FROM $IIDTA$.TABLASGLOBALES WHERE ENTIDAD = #input#
+	</select>
+	
+	<!-- Query que obtiene las descripciones de los tipos de documento -->
+	<select id="obtenerDocumentosParam" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODIGO codigo, GLOSA glosa FROM $IIDTA$.TIPODOCUMENTO
+	</select>
+	
+	<select id="obtenerDocumentosParamFull" resultClass="cl.araucana.independientes.vo.param.Documento" parameterClass="java.util.HashMap">
+		SELECT CODIGO tipoDocumento, GLOSA glosaTipoDocumento, ESTADO alta, OBLIGATORIO obligatorio FROM $IIDTA$.TIPODOCUMENTO WHERE TIPOSOLICITUD = 1 ORDER BY CODIGO
+	</select>
+	
+	<select id="obtenerDocumentosParamDesafiliacion" resultClass="cl.araucana.independientes.vo.param.Documento" parameterClass="java.util.HashMap">
+		SELECT CODIGO tipoDocumento, GLOSA glosaTipoDocumento, ESTADO alta, OBLIGATORIO obligatorio FROM $IIDTA$.TIPODOCUMENTO WHERE TIPOSOLICITUD = 2 ORDER BY CODIGO
+	</select>
+	
+	<!-- Query para obtener los datos geográficos, estos son Region, provincia y comuna a través de sus respectivos id`s. -->
+	<select id="obtenerGeograficos" resultClass="cl.araucana.independientes.vo.param.Geografico" parameterClass="java.util.HashMap">
+		SELECT AFSICORE idRegion, AFSINORE desRegion, AFSICOPR idProvincia, AFSINOPR desProvincia, AFSICOCO idComuna, AFSINOCO desComuna FROM $AFDTA$.AFP51F1
+	</select>
+	
+	<!-- Query para obtener las regiones. -->
+	<select id="obtenerRegiones" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT DISTINCT(A.AFSICORE) codigo, 
+       (SELECT MAX(B.AFSINORE) FROM $AFDTA$.AFP51F1 B WHERE A.AFSICORE = B.AFSICORE GROUP BY AFSICORE)  glosa 
+  		FROM $AFDTA$.AFP51F1 A
+	</select>
+	
+	<!-- Query para obtener las oficinas de la CCAF. -->
+	<select id="obtenerOficinas" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CMBA codigo, CMCA glosa FROM $CMDTA$.CM01F1 ORDER BY REPLACE(CMCA, 'Ñ', 'N')
+	</select>
+	
+	<!-- Query para obtener los mantenedores -->
+	<select id="obtenerMantenedores" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODIGO, GLOSA FROM $IIDTA$.TIPOMANTENEDOR
+	</select>
+	
+	<!-- Query para obtener los datos geográficos, estos son Region, provincia y comuna a través de sus respectivos id`s. -->
+	<select id="obtenerDescMotivos" resultClass="cl.araucana.independientes.vo.param.MotivoDesaf" parameterClass="java.util.HashMap">
+		SELECT 
+			MOT.CODIGO idMotivo,
+			MOT.GLOSA desMotivo,
+			DES.CODIGO idDescMotivo,
+			DES.GLOSA desDescMotivo
+		FROM
+			$IIDTA$.TABLASGLOBALES MOT,
+			$IIDTA$.TABLASGLOBALES DES,
+			$IIDTA$.TRANSMOTDESAF TRAN
+		WHERE
+			MOT.ENTIDAD = 19
+			AND DES.ENTIDAD = 71
+			AND MOT.CODIGO = TRAN.CODIGO_ORI
+			AND DES.CODIGO = TRAN.CODIGO_DES
+		
+	</select>
+	
+	<!-- Query para obtener las descripciones de los motivos -->
+	<select id="obtenerMotivos" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODIGO codigo, GLOSA glosa FROM $IIDTA$.TABLASGLOBALES WHERE ENTIDAD = 19
+	</select>
+	
+	<!-- Query para obtener las ENTIDADES -->
+	<select id="obtenerEntidades" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODENTIDAD codigo, GLOSAENTIDAD glosa FROM $IIDTA$.TABLAENTIDADES 
+		WHERE	CODENTIDAD = 1 OR
+				CODENTIDAD = 4 OR
+				CODENTIDAD = 5 OR
+				CODENTIDAD = 7 OR
+				CODENTIDAD = 8 OR
+				CODENTIDAD = 9 OR
+				CODENTIDAD = 14 OR
+				CODENTIDAD = 15 OR
+				CODENTIDAD = 19 OR
+				CODENTIDAD = 22 OR
+				CODENTIDAD = 25 OR
+				CODENTIDAD = 30 OR
+				CODENTIDAD = 31 OR
+				CODENTIDAD = 33 OR
+				CODENTIDAD = 34 OR
+				CODENTIDAD = 35 OR
+				CODENTIDAD = 36 OR
+				CODENTIDAD = 41 OR
+				CODENTIDAD = 50 OR
+				CODENTIDAD = 51 OR
+				CODENTIDAD = 59 OR
+				CODENTIDAD = 60 OR
+				CODENTIDAD = 65 OR
+				CODENTIDAD = 66 OR
+				CODENTIDAD = 68 OR
+				CODENTIDAD = 70 OR
+				CODENTIDAD = 71
+		ORDER	BY GLOSAENTIDAD
+	</select>
+	
+	<!-- Query para obtener la GLOSA de los BENEFICIOS -->
+	<select id="obtenerGlosaBeneficio" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT IDBENEFICIO idBeneficio, GLOSACORTA glosaCorta, GLOSA glosa FROM $IIDTA$.LISTA_BENEFICIOS
+	</select>
+	
+	<!-- Query para obtener la GLOSA de los DOCUMENTOS PARA LOS BENEFICIOS -->
+	<select id="obtenerGlosaDocBeneficio" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT IDDOCBENEFICIO idDocBeneficio, GLOSACORTA glosaCorta, GLOSA glosa FROM $IIDTA$.LISTA_DOC_BEN
+	</select>
+	
+	<!-- Query para obtener la GLOSACORTA de los BENEFICIOS -->
+	<select id="obtenerGlosaCortaBeneficio" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT IDBENEFICIO codigo, GLOSACORTA glosa FROM $IIDTA$.LISTA_BENEFICIOS
+	</select>	
+	
+	<!-- Query para obtener la GLOSACORTA de los DOCUMENTOS PARA LOS BENEFICIOS -->
+	<select id="obtenerGlosaCortaDocBeneficio" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT IDDOCBENEFICIO codigo, GLOSACORTA glosa FROM $IIDTA$.LISTA_DOC_BEN
+	</select>
+
+	<!-- Query para obtener las cajas de compensación. -->
+	<select id="obtenerCajas" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT 1 codigo, 'NINGUNA' glosa FROM sysibm.sysdummy1 UNION SELECT A.ID_ENT_PAGADORA codigo, B.NOMBRE glosa FROM $CPEDTA$.ENTIDAD_CCAF A, $CPEDTA$.ENTPAGAD B WHERE A.ID_ENT_PAGADORA = B.ID_ENT_PAGADORA AND	A.ID_ENT_PAGADORA != 0 AND A.ID_ENT_PAGADORA != 70016160
+	</select>
+
+	<!-- Query para obtener la fecha de sistema. -->
+	<select id="obtenerFechaSistema" resultClass="string">
+		SELECT current date FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Query para obtener la hora de sistema. -->
+	<select id="obtenerHoraSistema" resultClass="string">
+		SELECT current time FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- JLGN 13-02-2013 Query para obtener la fecha de sistema Mes Anterior. -->
+	<select id="obtenerFechaSistemaMesAnterior" resultClass="string">
+		SELECT DATE(RTRIM((CHAR(YEAR(CURRENT TIMESTAMP - INTEGER(TRIM(1))MONTH))))||'-'||RTRIM((CHAR(MONTH(CURRENT TIMESTAMP - INTEGER(TRIM(1))MONTH))))||'-01') FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Query para obtener el perfil del analista. -->
+	<select id="obtenerPerfil" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT IDPERFIL perfil FROM $IIDTA$.PERFILES WHERE IDDOCUMENTO=#input# AND ESTADO = 1
+	</select>
+	
+	<!-- REQ5348 -->
+	<!-- OBTENER INFORMACION DESDE TABLA AGRUPACION PARA LLENADO DE COMBO "NOMBRE AGRUPACIONES" -->
+	<select id="selectAgrupacion" resultClass="cl.araucana.independientes.vo.AgrupacionVO" parameterClass="java.util.HashMap">
+
+		SELECT
+			IDAGRUPACION idSecuencia,
+			TIPODOCUMENTO tipoDocumento,
+			IDDOCUMENTO idDocumento,
+			DIGVERDOCUMENTO digVerDocumento,
+			RAZONSOCIAL razonSocial,
+			TIPOGIROCOMERCIAL tipoGiroComercial,
+			FECHAINICIO fechaInicio,
+			TIPOACTECONOM tipoActEconomica,
+			NUMINTEGRANTES numIntegrantes,
+			TIPOAGRUPACION tipoAgrupacion,
+			REPRESENTANTELEGAL representanteLegal
+		FROM
+			$IIDTA$.AGRUPACION
+		ORDER BY RAZONSOCIAL ASC	
+	</select>	
+	<select id="getMesVigente" resultClass="cl.araucana.independientes.vo.MesVigenteVO" parameterClass="java.util.HashMap">
+		SELECT
+			CMAA dia_1,
+			CMJA dia_2,
+			CMKA dia_3,
+			CMLA dia_4,
+			CMMA dia_5,
+			CMUA dia_6,
+			CMVA dia_7,
+			CMWA dia_8,
+			CMZA dia_9,
+			CM10A dia_10,
+			CM11A dia_11,
+			CM12A dia_12,
+			CM1BA dia_13,
+			CM1CA dia_14,
+			CM1DA dia_15,
+			CM1EA dia_16,
+			CM1FA dia_17,
+			CM1GA dia_18,
+			CM1HA dia_19,
+			CM1IA dia_20,
+			CM1JA dia_21,
+			CM1KA dia_22,
+			CM1LA dia_23,
+			CM1MA dia_24,
+			CM1NA dia_25,
+			CM1OA dia_26,
+			CM1PA dia_27,
+			CM1QA dia_28,
+			CM1TA dia_29,
+			CM1UA dia_30,
+			CM21A dia_31
+		FROM
+			$CMDTA$.CM18F1 
+		WHERE SAJKL5S = #input#
+	</select>			
+	<!-- FIN REQ5348 -->	
+	
+	<select id="obtenerBeneficiosParamFull" resultClass="cl.araucana.independientes.vo.param.Beneficio" parameterClass="java.util.HashMap">
+		SELECT	IDBENEFICIO					idBeneficio,
+				GLOSACORTA					glosaCortaBeneficio,
+				GLOSA						glosaBeneficio,
+				CODIGOCONTABLE				codigoContable,
+				ESTADO						estadoBeneficio,
+				TIPOPAGO					tipoBeneficio,
+				VALORPAGO					valorPorTipo,
+				MONTOPAGARMAX				montoMaximo,
+				CARENCIA					carencia,
+				RECURRENCIA					maxSolicitudes,
+				PLAZOCOBRO					plazoCobro,
+				CHAR(FECHAINIVALIDEZ, USA)	strFechaIniValidez,
+				CHAR(FECHAFINVALIDEZ, USA)	strFechaFinValidez,
+				ISCAUSANTEUNICO				isCausanteUnico
+		FROM $IIDTA$.LISTA_BENEFICIOS 
+		WHERE ESTADO = 1
+		AND current date BETWEEN FECHAINIVALIDEZ AND FECHAFINVALIDEZ
+		ORDER BY IDBENEFICIO
+	</select>
+	
+	<select id="obtenerDocBeneficiosFull" resultClass="cl.araucana.independientes.vo.param.DocBeneficio" parameterClass="java.util.HashMap">
+		SELECT	LIS.IDDOCBENEFICIO	idDocBeneficio,
+				LIS.GLOSACORTA		glosaCortaDocBeneficio,
+				LIS.GLOSA			glosaDocBeneficio,
+				REL.ISOBLIGATORIO	isObligatorio
+		FROM	$IIDTA$.LISTA_DOC_BEN	LIS,
+				$IIDTA$.REL_BEN_DOC		REL
+		WHERE	REL.IDDOCBENEFICIO = LIS.IDDOCBENEFICIO
+		AND		REL.IDBENEFICIO = #input#
+		AND		REL.ESTADO = 1
+		AND		LIS.ESTADO = 1
+		ORDER BY IDBENEFICIO
+	</select>
+	
+</sqlMap>

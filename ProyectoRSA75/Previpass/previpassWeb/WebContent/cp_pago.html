@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Previpass - Cotización Electrónica</title>
+<link href="css/estilo_formularios.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function swapAll(id, imgId)
+{
+	obj = document.getElementById(id);
+	img = document.getElementById(imgId);
+    if ( obj.style.display == '' )
+    {
+		obj.style.display='none';
+		img.src   = '/img/ico_mas.gif';
+		img.alt   = "Expandir";
+		img.title = "Expandir";
+	} else
+	{
+		obj.style.display = '';
+		img.src   = '/img/ico_menos.gif';
+		img.alt   = "Contraer";
+		img.title = "Contraer";
+	}
+}
+</script>
+<link href="css/collapsible_menu.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onLoad="initMenu(&#39;inicio&#39;, &#39;&#39;);">
+<table width="940" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+    <ul>
+    	<li><img src="img/ico_cerrar.gif" width="11" height="12" hspace="3" /><a href="#">Cerrar Sesión</a></li>
+    	<li><img src="img/ico_contacto.gif" width="11" height="12" hspace="3" /> <a href="#">Contáctenos</a></li>
+    	<li><img src="img/ico_clave.gif" width="11" height="12" hspace="3" /> <a href="#">Cambiar Clave</a></li>
+    	<li><img src="img/ico_calendario.gif" width="11" height="12" hspace="3" /> <a href="#">Calendario</a></li>
+    	<li> <img src="img/ico_home.gif" width="11" height="12" hspace="3" /> <a href="#">Home</a></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><table width="900" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" style="padding-top:25px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div id="menu_lateral_p">
+            	<ul>
+                <li class="selected">Empresas DNP</li>
+                <li><a href="#">Comprobantes Emitidos</a></li>
+                <li><a href="#">Declaraciones Fuera de Plazo</a></li>
+                </ul>
+            </div>
+              <a href="#"></a></td>
+            </tr>
+          </table></td>
+        <td align="center" valign="top" style="padding-top:25px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top" style="padding-top:15px;"><table width="100%" border="0" cellspacing="8" cellpadding="0">
+          <tr>
+            <td align="left" class="titulo">Declaraciones Fuera de Plazo</td>
+          </tr>
+          <tr>
+            <td class="txt_pago_atrasado">Declaraciones no pagadas que se encuentran fuera de plazo para ser canceladas a través de este sitio. Para efecto del pago dirigirse a las instituciones correspondientes.</td>
+          </tr>
+          <tr>
+            <td align="left" nowrap="nowrap"><strong>Monto Total Atrasado: $ 0 </strong>
+              <label> | Fecha de Cálculo al : <span class="datepicker_wrap">
+                <input name="txtFecha" type="text" readonly="readonly" id="selector" value="05/10/2011" size="10" class="hasDatepicker" />
+                <img src="img/icono_calendario.gif" width="23" height="22" hspace="2" vspace="2" border="0" align="absbottom" /></span></label>
+              <input name="button" type="submit" disabled="none" class="btn2" id="button" value="Calcular" /></td>
+          </tr>
+          <tr>
+            <td><br />
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" id="tabla_contenido">
+              <tbody>
+                <tr>
+                  <th width="7%" align="center" scope="col">Periodo</th>
+                  <th width="12%" align="center" scope="col">Fecha Declaración</th>
+                  <th width="14%" align="center" scope="col">Fecha Vencimiento</th>
+                  <th width="8%" align="center" scope="col">Monto</th>
+                  <th width="9%" align="center" scope="col">Institución</th>
+                  <th width="14%" align="center" scope="col">Rut Empresa</th>
+                  <th width="36%" align="center" scope="col">Empresa</th>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">3/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-06-2011</td>
+                  <td nowrap="nowrap" align="center">$ 324.700</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td nowrap="nowrap" align="center">MANUEL MUNOZ GACITUA </td>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">5/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-08-2011</td>
+                  <td nowrap="nowrap" align="center">$ 45.846</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td align="center">ALTAMIRA LTDA. </td>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">5/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-08-2011</td>
+                  <td nowrap="nowrap" align="center">$ 25.336</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td nowrap="nowrap" align="center">SEGICHILE LTDA. </td>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">5/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-08-2011</td>
+                  <td nowrap="nowrap" align="center">$ 41.965</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td nowrap="nowrap" align="center">AGROINDUSTRIA LECHERA NEGRETE LTDA. </td>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">5/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-08-2011</td>
+                  <td nowrap="nowrap" align="center">$ 31.672</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td nowrap="nowrap" align="center">FERNANDO LIZ PEREZ </td>
+                  </tr>
+                <tr>
+                  <td nowrap="nowrap" align="center">5/2011</td>
+                  <td nowrap="nowrap" align="center">07-09-2011</td>
+                  <td nowrap="nowrap" align="center">01-08-2011</td>
+                  <td nowrap="nowrap" align="center">$ 29.813</td>
+                  <td nowrap="nowrap" align="center">INP</td>
+                  <td nowrap="nowrap" align="center">70016160-9</td>
+                  <td nowrap="nowrap" align="center">INVERSIONES SOFIA S.A. </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" id="tabla_contenido">
+                <tbody>
+                  <tr>
+                    <th scope="col" width="15"> &nbsp;&nbsp;&nbsp;&nbsp; </th>
+                    <th scope="col" width="54">Periodo</th>
+                    <th scope="col" width="85">Rut Empresa</th>
+                    <th scope="col" width="47">Conv.</th>
+                    <th width="94" scope="col">Razón Social</th>
+                    <th scope="col" width="90">Monto <br />
+                      Declarado</th>
+                    <th scope="col" width="110">Monto Interes <br />
+                      y Reajuste</th>
+                    <th scope="col" width="84">Monto <br />
+                      Multa</th>
+                    <th scope="col" width="94">Total <br />
+                      Gravamenes</th>
+                    <th scope="col" width="75">Condonación</th>
+                    <th scope="col" width="75">Total a <br />
+                      Pagar</th>
+                    <th scope="col" width="75">Fecha de Cálculo</th>
+                    </tr>
+                  <tr>
+                    <td colspan="12" align="center"> Sin Declaraciones por Pagar </td>
+                    </tr>
+                  </tbody>
+                </table></td>
+          </tr>
+          <tr>
+            <td><input name="button2" type="submit" disabled="none" class="btn_largo" id="button2" value="Generar Comprobante(s)" />
+              <input name="button3" type="submit" disabled="none" class="btn_largo" id="button3" value="Agregar Nuevo Comprobante" />
+              <input name="button4" type="submit" disabled="none" class="btn_grande" id="button4" value="Pagar en Línea" /></td>
+          </tr>
+        </table></td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="calendario_calculo" style="left:697px; top: 328px; position: absolute; display:none;">
+  <div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="20"><a href="#" onclick="jQuery.datepicker._clearDate(0);">Limpiar</a></td>
+        <td align="right"><a href="#" onclick="jQuery.datepicker._hideDatepicker();">Cerrar</a></td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#cccccc;">
+      <tr>
+        <td height="4"><a href="#">&lt; Ant</a></td>
+        <td align="right"><a href="#" onclick="jQuery.datepicker._hideDatepicker();">Sig &gt;</a></td>
+      </tr>
+    </table>
+  </div>
+  <div class="datepicker_links">
+    <div class="datepicker_prev"></div>
+    <div class="datepicker_next"></div>
+  </div>
+  <div class="datepicker_oneMonth datepicker_newRow">
+    <div class="datepicker_header">
+      <select name="select" class="datepicker_newMonth" onchange="jQuery.datepicker._selectMonthYear(0, this, 'M');" onclick="jQuery.datepicker._clickMonthYear(0);">
+      </select>
+      <select name="select" class="datepicker_newYear" onchange="jQuery.datepicker._selectMonthYear(0, this, 'Y');" onclick="jQuery.datepicker._clickMonthYear(0);">
+        <option value="2011" selected="selected">2011</option>
+      </select>
+    </div>
+    <table width="188" border="0" cellpadding="0" cellspacing="0" class="datepicker">
+      <thead>
+        <tr class="datepicker_titleRow">
+          <td class="datepicker_weekEndCell"><a onclick="jQuery.datepicker._changeFirstDay(0, 0);" title="Domingo">Do</a></td>
+          <td><a onclick="jQuery.datepicker._changeFirstDay(0, 1);" title="Lunes">Lu</a></td>
+          <td><a onclick="jQuery.datepicker._changeFirstDay(0, 2);" title="Martes">Ma</a></td>
+          <td><a onclick="jQuery.datepicker._changeFirstDay(0, 3);" title="Miércoles">Mi</a></td>
+          <td><a onclick="jQuery.datepicker._changeFirstDay(0, 4);" title="Jueves">Ju</a></td>
+          <td><a onclick="jQuery.datepicker._changeFirstDay(0, 5);" title="Viernes">Vi</a></td>
+          <td class="datepicker_weekEndCell"><a onclick="jQuery.datepicker._changeFirstDay(0, 6);" title="Sádabo">Sá</a></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="datepicker_daysRow">
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_otherMonth datepicker_unselectable">&nbsp;</td>
+          <td align="right" class="datepicker_daysCell datepicker_otherMonth datepicker_unselectable">&nbsp;</td>
+          <td align="right" class="datepicker_daysCell datepicker_otherMonth datepicker_unselectable">&nbsp;</td>
+          <td align="right" class="datepicker_daysCell datepicker_otherMonth datepicker_unselectable">&nbsp;</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">1</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">2</td>
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">3</td>
+        </tr>
+        <tr class="datepicker_daysRow">
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">4</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">5</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">6</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">7</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">8</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">9</td>
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">10</td>
+        </tr>
+        <tr class="datepicker_daysRow">
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">11</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">12</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">13</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">14</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">15</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">16</td>
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">17</td>
+        </tr>
+        <tr class="datepicker_daysRow">
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">18</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">19</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">20</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">21</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">22</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">23</td>
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">24</td>
+        </tr>
+        <tr class="datepicker_daysRow">
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_unselectable ">25</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">26</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">27</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">28</td>
+          <td align="right" class="datepicker_daysCell datepicker_unselectable ">29</td>
+          <td align="right" class="datepicker_daysCell datepicker_daysCellOver datepicker_unselectable ">30</td>
+          <td align="right" class="datepicker_daysCell datepicker_weekEndCell datepicker_otherMonth datepicker_unselectable">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+</body>
+</html>

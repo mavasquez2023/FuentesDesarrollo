@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="TipoCargaVO" table="TIPO_CARGA">
+   		<id name="idTipoCarga" type="int" column="ID_TIPO_CARGA"/>
+		<property name="codigoTipoCarga" column="CODIGO_TIPO_CARGA" />
+		<property name="tipoCarga" column="TIPO_CARGA" />
+		<property name="descripcion" column="DESCRIPCION" />
+    </class>
+</hibernate-mapping>

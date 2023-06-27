@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.EncargadoConvenioVO" table="ENCARGADO_CONVENIO">
+		<composite-id>
+			<key-property name="idEmpresa" column="ID_EMPRESA"/>
+			<key-property name="idConvenio" column="ID_CONVENIO"/>
+			<key-property name="idEncargado" column="ID_ENCARGADO"/>
+			<key-property name="idNivelAcceso" column="NIVEL_ACCESO"/>
+		</composite-id>
+	</class>
+</hibernate-mapping>

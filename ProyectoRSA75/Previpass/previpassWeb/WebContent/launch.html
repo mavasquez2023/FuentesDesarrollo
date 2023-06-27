@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<script type="text/javascript">
+
+	  // indica si es un explorar con bajas capacidades
+	  function isOldFashionBrowser() {
+		  var val = navigator.userAgent.toLowerCase();
+		  if (val.indexOf("msie 6") > -1 || val.indexOf("msie 7") > -1)
+				return true;
+		  return false;
+			
+	  }
+	  	  
+	</script>  
+	<script type="text/javascript">
+			// se activa el modelo SOLO si no es explorador antiguo
+			if ( !isOldFashionBrowser() )
+			  	document.location = "/portal/inicioNormal.jsp";
+			else
+				document.location = "/portal";
+
+	</script>
+	</head>
+
+</html>

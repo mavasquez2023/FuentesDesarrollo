@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="LME_TYPES_1.6.3.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_ZONA_0.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra está publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>Definiciones de tipos de datos de la Licencia Medica Electronica</Titulo>
+				<Autor>Luis Andres Baez Arribada</Autor>
+				<Institucion>SuperIntendencia de Seguridad Social - Unidad de Licencia Medica Electronica</Institucion>
+				<Creacion>2006-05-01</Creacion>
+				<Estado>Activo</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-05-18</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora codigo de operador</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se define tipo a elementos anonimos</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-28</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agrega elemento prestador de tipo complejo CTPrestador</modificaciones>
+				</Modificado>
+				<Descripcion>Este esquema define la identificación única de la licencia médica electrónica, se indica su tipo, el folio asignado y el estado de la licencia médica electrónica</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="CT_ZONA_0">
+		<xsd:sequence>
+			<xsd:element name="ZONA_01" type="CT_ZONA_01">
+				<xsd:annotation>
+					<xsd:documentation>Estado general de la licencia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_0F" type="CT_ZONA_F">
+				<xsd:annotation>
+					<xsd:documentation>Firmas digitales (PKI o Huella).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_01">
+		<xsd:sequence>
+			<xsd:element name="id_licencia" type="STRut"/>
+			<xsd:element name="rut_operador" type="STRut"/>
+			<xsd:element name="codigo_tipo_formulario" type="STTipo_formulario"/>
+			<xsd:element name="empleador_adscrito" type="STSiNo"/>
+			<xsd:element name="codigo_entidad" type="STCodigo_entidad"/>
+			<xsd:element name="estado" type="CTEstado" maxOccurs="unbounded"/>
+			<xsd:element name="codigo_operador" type="STCodigoOperador"/>
+			<xsd:element name="prestador" type="CTPrestador" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

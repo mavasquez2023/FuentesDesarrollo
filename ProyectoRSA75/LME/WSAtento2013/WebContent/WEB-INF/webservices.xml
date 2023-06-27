@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd">
+    <webservice-description>
+        <webservice-description-name>WSCalidadService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/WSCalidad.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/WSCalidad_mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>WSCalidad</port-component-name>
+            <wsdl-port xmlns:pfx="http://ws.jaxrpc.integration.wsatento.araucana.cl">pfx:WSCalidad</wsdl-port>
+            <service-endpoint-interface>cl.araucana.wsatento.integration.jaxrpc.ws.WSCalidad</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>cl_araucana_wsatento_integration_jaxrpc_ws_WSCalidad</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+    <webservice-description>
+    	<webservice-description-name>WSCreditoService</webservice-description-name>
+    	<wsdl-file>WEB-INF/wsdl/WSCredito.wsdl</wsdl-file>
+    	<jaxrpc-mapping-file>WEB-INF/WSCredito_mapping.xml</jaxrpc-mapping-file>
+    	<port-component>
+    		<port-component-name>WSCredito</port-component-name>
+    		<wsdl-port xmlns:pfx="http://ws.jaxrpc.integration.wsatento.araucana.cl">
+    		pfx:WSCredito</wsdl-port>
+    		<service-endpoint-interface>cl.araucana.wsatento.integration.jaxrpc.ws.WSCredito</service-endpoint-interface>
+    		<service-impl-bean>
+    			<servlet-link>
+    			cl_araucana_wsatento_integration_jaxrpc_ws_WSCredito</servlet-link>
+    		</service-impl-bean>
+    	</port-component>
+    </webservice-description>
+    <webservice-description>
+    	<webservice-description-name>WSLicenciaService</webservice-description-name>
+    	<wsdl-file>WEB-INF/wsdl/WSLicencia.wsdl</wsdl-file>
+    	<jaxrpc-mapping-file>WEB-INF/WSLicencia_mapping.xml</jaxrpc-mapping-file>
+    	<port-component>
+    		<port-component-name>WSLicencia</port-component-name>
+    		<wsdl-port xmlns:pfx="http://ws.jaxrpc.integration.wsatento.araucana.cl">
+    		pfx:WSLicencia</wsdl-port>
+    		<service-endpoint-interface>cl.araucana.wsatento.integration.jaxrpc.ws.WSLicencia</service-endpoint-interface>
+    		<service-impl-bean>
+    			<servlet-link>
+    			cl_araucana_wsatento_integration_jaxrpc_ws_WSLicencia</servlet-link>
+    		</service-impl-bean>
+    	</port-component>
+    </webservice-description>
+</webservices>

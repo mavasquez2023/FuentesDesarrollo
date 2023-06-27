@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.commonbnd="commonbnd.xmi" xmlns:com.ibm.ejs.models.base.bindings.ejbbnd="ejbbnd.xmi" xmlns:com.ibm.etools.ejb="ejb.xmi" xmi:id="EJBJarBinding_1079393718719">
+  <defaultDatasource xmi:id="ResourceRefBinding_1456248483052">
+    <defaultAuth xmi:type="com.ibm.ejs.models.base.bindings.commonbnd:BasicAuthData" xmi:id="BasicAuthData_1456248483052"/>
+  </defaultDatasource>
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1085775169984" jndiName="ejb/cl/araucana/autoconsulta/serv/ServicesAutoconsultaSLBean/ServivesAutoconsultaHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#ServivesAutoconsulta"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1086117489640" jndiName="ejb/cl/araucana/autoconsulta/serv/ServicesAutoconsultaSLBean/ServicesAutoconsultaHome">
+    <enterpriseBean xmi:type="com.ibm.etools.ejb:Session" href="META-INF/ejb-jar.xml#ServicesAutoconsulta"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1136414026718" jndiName="jdbc/corporativo" properties="">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1136414026718"/>
+    </resRefBindings>
+  </ejbBindings>
+  <defaultCMPConnectionFactory xmi:id="CMPConnectionFactoryBinding_1456248483052"/>
+</com.ibm.ejs.models.base.bindings.ejbbnd:EJBJarBinding>

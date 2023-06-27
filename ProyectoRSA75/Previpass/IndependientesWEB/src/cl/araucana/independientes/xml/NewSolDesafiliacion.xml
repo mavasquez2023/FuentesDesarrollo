@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NewSolDesafiliacionNS">
+	
+	<!-- AQUI FILTRO POR RUT. -->
+	<!-- Query que obtiene datos básicos de la tabla Persona. Recibe un form desde donde se toma el rut de la persona y retorna un objeto de tipo PersonaVO. -->
+	<select id="obtenerSolicitudRutPers" resultClass="cl.araucana.independientes.vo.PersonaVO" parameterClass="java.util.HashMap">
+		SELECT 	P.IDPERSONA idPersona,
+				P.IDDOCUMENTO idDocumento,
+				P.DIGVERIFICADOR digVerificador,
+				P.APELLIDOPATERNO apellidoPaterno,
+				P.APELLIDOMATERNO apellidoMaterno,
+				P.NOMBRES nombres				
+		FROM	$IIDTA$.PERSONA P
+		WHERE	P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que selecciona un código y Glosa desde la tabla TablasGlobales y que están asociadas a una determinada entidad. Recibe como entrada 
+		un string y retorna un objeto tipo Parámetro.  -->
+	<select id="obtenerParametricosDes" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT CODIGO codigo, GLOSA glosa, ESTADO estado FROM $IIDTA$.TABLASGLOBALES WHERE ENTIDAD = #input#
+	</select>
+	
+	<!-- Query para obtener la fecha de sistema. -->
+	<select id="obtenerFechaSistemaDes" resultClass="string">
+		SELECT current date FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Query que obtiene el folio y el tipoEstadoSolicitud de la tabla Solicitud. Recibe un form desde donde se toma el rut de la persona y retorna un arreglo de objetos SolicitudVO. -->
+	<select id="obtenerSolicitudRutSol" resultClass="cl.araucana.independientes.vo.SolicitudVO" parameterClass="java.util.HashMap">
+		SELECT 	S.FOLIO folio,
+				S.OFICINA oficina,
+				S.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				S.FECHAVIGENCIA fechaVigencia
+		FROM	$IIDTA$.SOLICITUD S,
+				$IIDTA$.AFILIADO A,
+				$IIDTA$.PERSONA P
+		WHERE	P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND		S.IDAFILIADOAGRUPACION = A.IDPERSONAAFILIADO
+		AND		P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que obtiene los datos de la tabla Telefono (Para telefono particular). Recibe un form desde donde se rscatan el folio y el rut, y retorna un objeto de tipo TelefonoVO. -->
+	<select id="obtenerSolicitudFRTelefonoParticular" resultClass="cl.araucana.independientes.vo.TelefonoVO" parameterClass="java.util.HashMap">
+		SELECT  C1.NROTELEFONO nroTelefono,
+				C1.CODAREA codArea,
+				C1.IDSECUENCIATELEFONO idSecuenciaTelefono
+		FROM 	$IIDTA$.TELEFONO C1,
+				$IIDTA$.TELEFONOENTIDAD L,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND    	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND    	L.IDENTIDAD = B.IDPERSONA
+		AND		L.IDSECUENCIATELEFONO = C1.IDSECUENCIATELEFONO
+		AND   	B.IDDOCUMENTO = #input#	
+		AND		C1.TIPOLOCALIDAD = 2
+	</select>
+	
+		<!-- Query que obtiene los datos de la tabla Telefono (Para telefono celular). Recibe un form desde donde se rscatan el folio y el rut, y retorna un objeto de tipo TelefonoVO. -->
+	<select id="obtenerSolicitudFRCelularParticular" resultClass="cl.araucana.independientes.vo.TelefonoVO" parameterClass="java.util.HashMap">
+		SELECT  C2.NROTELEFONO nroTelefono,
+				C2.CODAREA codArea,
+				C2.IDSECUENCIATELEFONO idSecuenciaTelefono
+		FROM	$IIDTA$.TELEFONO C2,
+				$IIDTA$.TELEFONOENTIDAD L,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND   	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	L.IDENTIDAD = B.IDPERSONA
+		AND		L.IDSECUENCIATELEFONO = C2.IDSECUENCIATELEFONO
+		AND   	B.IDDOCUMENTO = #input#	
+		AND		C2.TIPOLOCALIDAD = 1
+		AND		C2.TIPOPRINCIPALIDAD = 1
+		ORDER BY C2.IDSECUENCIATELEFONO DESC
+	</select>
+	
+	<!-- Query que obtiene los datos de la tabla Email. Recibe un form desde donde se rscatan el folio y el rut, y retorna un objeto de tipo EmailVO. -->
+	<select id="obtenerSolicitudFREmail" resultClass="cl.araucana.independientes.vo.EmailVO" parameterClass="java.util.HashMap">
+		SELECT  D.DIRECCMAIL direccMail,
+				D.IDSECUENCIAMAIL idSecuenciaEmail
+		FROM	$IIDTA$.EMAIL D,
+				$IIDTA$.EMAILENTIDAD M,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	D.TIPOLOCALIDAD = #input_localidad#
+		AND 	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND   	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	M.IDENTIDAD = B.IDPERSONA
+		AND		M.IDSECUENCIAMAIL = D.IDSECUENCIAMAIL
+		AND   	B.IDDOCUMENTO = #input#
+		AND		D.TIPOPRINCIPALIDAD = 1
+		ORDER BY D.IDSECUENCIAMAIL DESC
+	</select>
+	
+		<!-- Query que obtiene los datos de la tabla Direccion (Para direccion particular). Recibe un form desde donde se rscatan el folio y el rut, y retorna un objeto de tipo DireccionVO. -->
+	<select id="obtenerSolicitudFRDireccionParticular" resultClass="cl.araucana.independientes.vo.DireccionVO" parameterClass="java.util.HashMap">
+		SELECT  E1.IDSECUENCIADIRECCION idSecuenciaDireccion,
+				E1.GLOSACALLE glosCalle,
+				E1.NUMDIRECCION numDireccion,
+				E1.POBLACIONVILLA poblacionVilla,
+				E1.DEPTO dpto,
+				E1.REGION region,
+				E1.CIUDAD ciudad,
+				E1.COMUNA comuna
+		FROM	$IIDTA$.DIRECCION E1,
+				$IIDTA$.DIRECCIONENTIDAD K,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND   	F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND   	K.IDENTIDAD = B.IDPERSONA
+		AND		K.IDSECUENCIADIRECCION = E1.IDSECUENCIADIRECCION
+		AND   	B.IDDOCUMENTO = #input#
+		AND   	E1.TIPOLOCALIDAD = 1
+		ORDER BY IDSECUENCIADIRECCION DESC
+	</select>
+	
+	<select id="obtenerEstadoAfiliado" resultClass="cl.araucana.independientes.vo.AfiliadoVO" parameterClass="java.util.HashMap">
+		SELECT	F.TIPOESTADOAFILIADO tipoEstadoAfiliado,
+				F.PROCESODESAFILIACION procesoDesafiliacion
+		FROM	$IIDTA$.AFILIADO F
+		WHERE	F.IDPERSONAAFILIADO = #input#
+	</select>
+	
+	<!-- Query que retorna un contador para el Folio, desde la tabla Solicitud. Recibe de entrada un string y retorna un string -->
+	<select id="SelectCountFolio" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*) SOLICITUD
+		FROM $IIDTA$.SOLICITUD
+		WHERE FOLIO = #input#
+		AND	TIPOSOLICITUD = 2
+	</select>
+	
+	<!-- REQ 7002 -->
+	<select id="SelectSumaDeudaAporte" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT SUM(VALORPAGO)
+		FROM   $IIDTA$.APORTE 
+		WHERE  IDPERSONAAFILIADO IN (SELECT IDPERSONA FROM $IIDTA$.PERSONA WHERE IDDOCUMENTO = #input#)
+		AND    FECHAPAGO IS NULL
+	</select>
+	
+</sqlMap>

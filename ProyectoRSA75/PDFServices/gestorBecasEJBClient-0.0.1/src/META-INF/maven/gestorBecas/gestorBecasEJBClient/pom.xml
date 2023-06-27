@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gestorBecas</groupId>
+  <artifactId>gestorBecasEJBClient</artifactId>
+  <name>gestorBecasEJBClient</name>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+    
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+    
+  <dependencies>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.13</version>
+	    <optional>true</optional>
+	</dependency>
+	<dependency>
+		<groupId>schema</groupId>
+		<artifactId>schema-lib</artifactId>
+		<version>2.4.16</version>
+	    <optional>true</optional>
+	</dependency>
+	<dependency>
+	  <groupId>gestorBecas</groupId>
+	  <artifactId>gestorBecasBusiness</artifactId>
+	  <version>0.0.1</version>
+	  <optional>true</optional>
+	</dependency>		
+	<dependency>
+		<groupId>javax.ejb</groupId>
+		<artifactId>ejb</artifactId>
+		<version>2.0</version>
+        <scope>provided</scope>
+  	</dependency>
+  </dependencies>  
+
+  <build>
+	    <plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>2.1</version>
+		        <configuration>
+		          <verbose>true</verbose>
+		          <fork>true</fork>
+		          <executable>${JAVA_1_4_HOME}/bin/javac</executable>
+		          <compilerVersion>1.4.2</compilerVersion>
+		        </configuration>
+		      </plugin>			
+	    </plugins>
+	  <resources> 
+            <resource> 
+                    <directory>src/main/java</directory> 
+            </resource> 
+            <resource> 
+                    <directory>src/main/resources</directory> 
+            </resource> 
+            <resource> 
+                    <directory>src/test/resources</directory> 
+            </resource> 
+    </resources>
+  </build> 
+    
+      
+</project>

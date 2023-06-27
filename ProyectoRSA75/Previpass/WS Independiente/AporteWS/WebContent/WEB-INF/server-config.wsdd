@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="D:\La Araucana - Independientes\WorkSpace\01 - Independientes\webservice\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\AporteEAR.ear\AporteWS.war\WEB-INF\attachments"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="DispDatosServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="obtenerInfDatos" qname="ns1:obtenerInfDatos" returnQName="ns1:obtenerInfDatosReturn" returnType="ns2:DispDatosResultVO" soapAction="" xmlns:ns1="http://service.dispDatos.aporte.araucana.cl" xmlns:ns2="http://vo.service.dispDatos.aporte.araucana.cl">
+   <parameter qname="ns1:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="obtenerInfDatosRemote" qname="ns3:obtenerInfDatosRemote" returnQName="ns3:obtenerInfDatosRemoteReturn" returnType="ns4:DispDatosResultVO" soapAction="" xmlns:ns3="http://service.dispDatos.aporte.araucana.cl" xmlns:ns4="http://vo.service.dispDatos.aporte.araucana.cl">
+   <parameter qname="ns3:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="obtenerInfDatosRemote obtenerInfDatos"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="DispDatosServiceImpl"/>
+  <parameter name="className" value="cl.araucana.aporte.dispDatos.service.DispDatosServiceImpl"/>
+  <parameter name="wsdlServicePort" value="DispDatosServiceImpl"/>
+  <parameter name="schemaQualified" value="http://vo.service.dispDatos.aporte.araucana.cl,http://service.dispDatos.aporte.araucana.cl"/>
+  <parameter name="wsdlTargetNamespace" value="http://service.dispDatos.aporte.araucana.cl"/>
+  <parameter name="wsdlServiceElement" value="DispDatosServiceImplService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:ErrorResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.dispDatos.service.vo.ErrorResultVO" xmlns:ns5="http://vo.service.dispDatos.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:DispDatosResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.dispDatos.service.vo.DispDatosResultVO" xmlns:ns6="http://vo.service.dispDatos.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:AfiliadoResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.dispDatos.service.vo.AfiliadoResultVO" xmlns:ns7="http://vo.service.dispDatos.aporte.araucana.cl"/>
+ </service>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="OrqInputServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="obtenerInfoPago" qname="ns8:obtenerInfoPago" returnQName="ns8:obtenerInfoPagoReturn" returnType="ns9:OrqInputResultVO" soapAction="" xmlns:ns8="http://service.orqInput.aporte.araucana.cl" xmlns:ns9="http://vo.service.orqInput.aporte.araucana.cl">
+   <parameter qname="ns8:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="obtenerInfoPagoRemote" qname="ns10:obtenerInfoPagoRemote" returnQName="ns10:obtenerInfoPagoRemoteReturn" returnType="ns11:OrqInputResultVO" soapAction="" xmlns:ns10="http://service.orqInput.aporte.araucana.cl" xmlns:ns11="http://vo.service.orqInput.aporte.araucana.cl">
+   <parameter qname="ns10:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="obtenerInfoPago obtenerInfoPagoRemote"/>
+  <parameter name="wsdlPortType" value="OrqInputServiceImpl"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="schemaQualified" value="http://service.orqInput.aporte.araucana.cl,http://vo.service.orqInput.aporte.araucana.cl"/>
+  <parameter name="wsdlServicePort" value="OrqInputServiceImpl"/>
+  <parameter name="className" value="cl.araucana.aporte.orqInput.service.OrqInputServiceImpl"/>
+  <parameter name="wsdlTargetNamespace" value="http://service.orqInput.aporte.araucana.cl"/>
+  <parameter name="wsdlServiceElement" value="OrqInputServiceImplService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:OrqInputResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.OrqInputResultVO" xmlns:ns12="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:CreditoDetalleVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.CreditoDetalleVO" xmlns:ns13="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:AporteResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.AporteResultVO" xmlns:ns14="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:LeasingDetalleVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.LeasingDetalleVO" xmlns:ns15="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:ErrorResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.ErrorResultVO" xmlns:ns16="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:LeasingResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.LeasingResultVO" xmlns:ns17="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:AporteDetalleVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.AporteDetalleVO" xmlns:ns18="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns19:CreditoResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqInput.service.vo.CreditoResultVO" xmlns:ns19="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <arrayMapping innerType="ns21:CreditoDetalleVO" languageSpecificType="java:cl.araucana.aporte.orqInput.service.vo.CreditoDetalleVO[]" qname="ns20:ArrayOf_tns1_CreditoDetalleVO" xmlns:ns20="http://service.orqInput.aporte.araucana.cl" xmlns:ns21="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <arrayMapping innerType="ns23:LeasingDetalleVO" languageSpecificType="java:cl.araucana.aporte.orqInput.service.vo.LeasingDetalleVO[]" qname="ns22:ArrayOf_tns1_LeasingDetalleVO" xmlns:ns22="http://service.orqInput.aporte.araucana.cl" xmlns:ns23="http://vo.service.orqInput.aporte.araucana.cl"/>
+  <arrayMapping innerType="ns25:AporteDetalleVO" languageSpecificType="java:cl.araucana.aporte.orqInput.service.vo.AporteDetalleVO[]" qname="ns24:ArrayOf_tns1_AporteDetalleVO" xmlns:ns24="http://service.orqInput.aporte.araucana.cl" xmlns:ns25="http://vo.service.orqInput.aporte.araucana.cl"/>
+ </service>
+ <service name="OrqOutputServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="recuperacionPago" qname="ns26:recuperacionPago" returnQName="ns26:recuperacionPagoReturn" returnType="ns27:OrqOutputResultVO" soapAction="" xmlns:ns26="http://service.orqOutput.aporte.araucana.cl" xmlns:ns27="http://vo.service.orqOutput.aporte.araucana.cl">
+   <parameter qname="ns26:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:montoCredito" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:montoLeasing" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:montoAporte" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:periodoAporte" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:fechaRecaudacion" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:horaRecaudacion" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:usuario" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns26:documentoPago" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="recuperacionPagoRemote" qname="ns28:recuperacionPagoRemote" returnQName="ns28:recuperacionPagoRemoteReturn" returnType="ns29:OrqOutputResultVO" soapAction="" xmlns:ns28="http://service.orqOutput.aporte.araucana.cl" xmlns:ns29="http://vo.service.orqOutput.aporte.araucana.cl">
+   <parameter qname="ns28:rut" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:montoCredito" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:montoLeasing" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:montoAporte" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:periodoAporte" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:fechaRecaudacion" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:horaRecaudacion" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:usuario" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns28:documentoPago" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="recuperacionPagoRemote recuperacionPago"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="OrqOutputServiceImpl"/>
+  <parameter name="className" value="cl.araucana.aporte.orqOutput.service.OrqOutputServiceImpl"/>
+  <parameter name="wsdlServicePort" value="OrqOutputServiceImpl"/>
+  <parameter name="schemaQualified" value="http://vo.service.orqOutput.aporte.araucana.cl,http://service.orqOutput.aporte.araucana.cl"/>
+  <parameter name="wsdlTargetNamespace" value="http://service.orqOutput.aporte.araucana.cl"/>
+  <parameter name="wsdlServiceElement" value="OrqOutputServiceImplService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns30:ErrorResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqOutput.service.vo.ErrorResultVO" xmlns:ns30="http://vo.service.orqOutput.aporte.araucana.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns31:OrqOutputResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.araucana.aporte.orqOutput.service.vo.OrqOutputResultVO" xmlns:ns31="http://vo.service.orqOutput.aporte.araucana.cl"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

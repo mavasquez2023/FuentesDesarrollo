@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>Esta pantalla nos permite conocer en detalle el valor cobrado a la empresa.</div>

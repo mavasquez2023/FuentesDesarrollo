@@ -1,0 +1,35 @@
+.txtHomeVersion {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0099CC;
+}
+.txtHomeVersion2 {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #CCCCCC;
+}
+.txtHomeVersion3 {
+
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+body {
+	background-attachment: fixed;
+	background-image:  url(images/fondo01.gif);
+	background-repeat: repeat-x;
+	background-color: #666666;
+
+}
+.txtHomeVersion4 {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+}

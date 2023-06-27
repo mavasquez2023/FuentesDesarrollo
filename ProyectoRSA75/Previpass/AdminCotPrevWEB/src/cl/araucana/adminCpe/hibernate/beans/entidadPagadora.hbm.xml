@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadPagadoraVO" table="ENTPAGAD">
+    	<id name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="idCtoBanco" column="ID_BANCO" />
+   		<property name="idCtaCte" column="ID_CTA_CTE" />
+   		<property name="nombre" column="NOMBRE" />
+   		<property name="tieneConvenio" column="TIENE_CONVENIO" />
+   		<property name="imprime" column="IMPRIME" />
+   		<property name="idBancoSpl" column="ID_BANCO_SPL" />
+   		<property name="idCtaCteSpl" column="ID_CTA_CTE_SPL" />
+   		<property name="generaCheque" column="GENERA_CHEQUE_SPL" />
+   		<property name="reiniciaFolio" column="REINICIA_FOLIO" />   		
+		<property name="correoContacto" column="CORREO_CONT"/>
+		<property name="nombreContacto" column="NOMB_CONT"/>
+		<property name="entidadFTP" column="FTP_ENT"/>
+		<property name="carpetaFTP" column="FTP_CAR"/>		
+		<property name="usuarioFTP" column="USU_FTP"/>
+		<property name="claveFTP" column="CLA_FTP"/>
+		<property name="tipoArchMovimiento" column="TIPO_ARCH_MP"/>		
+    </class>
+</hibernate-mapping>

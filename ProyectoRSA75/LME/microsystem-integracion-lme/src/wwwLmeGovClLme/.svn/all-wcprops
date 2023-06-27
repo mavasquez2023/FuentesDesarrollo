@@ -1,0 +1,425 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme
+END
+STContinuacion.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STContinuacion.java
+END
+CTDireccionArchivo.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTDireccionArchivo.java
+END
+CTZONAD.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAD.java
+END
+CTDetalleHaber.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTDetalleHaber.java
+END
+STCodigoEntidad.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCodigoEntidad.java
+END
+STNResolucion.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STNResolucion.java
+END
+CTResolucion.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTResolucion.java
+END
+STEntidadPagadora.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STEntidadPagadora.java
+END
+CTZONAA2.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA2.java
+END
+STTipoFormulario.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoFormulario.java
+END
+STCalidadTrabajador.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCalidadTrabajador.java
+END
+CTZONAC2.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAC2.java
+END
+STTipoProfesional.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoProfesional.java
+END
+CTZONAA6.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA6.java
+END
+CTFirma.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTFirma.java
+END
+CTDireccion.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTDireccion.java
+END
+CTPersona.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTPersona.java
+END
+CTZONAA.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA.java
+END
+CTHuellaDigital.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTHuellaDigital.java
+END
+CTZONA01.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONA01.java
+END
+CTHaberes.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTHaberes.java
+END
+CTTelefono.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTTelefono.java
+END
+STTipoLugarReposo.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoLugarReposo.java
+END
+STEventoLiquidacionCCAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STEventoLiquidacionCCAF.java
+END
+STTipoLicencia.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoLicencia.java
+END
+STTipoPronunciamiento.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoPronunciamiento.java
+END
+STCodigoComuna.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCodigoComuna.java
+END
+STSiNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STSiNo.java
+END
+STCodigoRegimenPrevision.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCodigoRegimenPrevision.java
+END
+CTZONAB1.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAB1.java
+END
+CTZONAA3.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA3.java
+END
+CTZONAD1.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAD1.java
+END
+CTZONAC3.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAC3.java
+END
+STOcupacion.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STOcupacion.java
+END
+CTLiquidacion.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTLiquidacion.java
+END
+CTLugarReposo.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTLugarReposo.java
+END
+STTipoArchivo.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoArchivo.java
+END
+CTZONAB.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAB.java
+END
+CTLicenciaAnterior.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTLicenciaAnterior.java
+END
+CTZONAAC.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAAC.java
+END
+CTZONAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAF.java
+END
+CTZONACC.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONACC.java
+END
+STRegimenPrevisional.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STRegimenPrevisional.java
+END
+STEstadoLicencia.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STEstadoLicencia.java
+END
+STCausaRechazo.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCausaRechazo.java
+END
+STContacto.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STContacto.java
+END
+STRut.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STRut.java
+END
+STTipoLiquidacionCCAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoLiquidacionCCAF.java
+END
+CTZONAA4.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA4.java
+END
+CTZONAC4.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAC4.java
+END
+STSexo.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STSexo.java
+END
+STCodigoCCAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCodigoCCAF.java
+END
+STMotivoDevolucionCCAF.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STMotivoDevolucionCCAF.java
+END
+STLetraCaja.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STLetraCaja.java
+END
+CTZONAC.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAC.java
+END
+CTEstado.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTEstado.java
+END
+STCodigoOperador.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STCodigoOperador.java
+END
+STMotivoNorecepcion.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STMotivoNorecepcion.java
+END
+STTipoReposo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoReposo.java
+END
+LMEDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/LMEDocument.java
+END
+STJornadaReposo.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STJornadaReposo.java
+END
+CTZONA0.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONA0.java
+END
+CTRemuneracion.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTRemuneracion.java
+END
+CTZONAA1.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA1.java
+END
+CTZONAC1.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAC1.java
+END
+CTZONAA5.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/CTZONAA5.java
+END
+STTipoSubsidio.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoSubsidio.java
+END
+STTipoResolucion.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STTipoResolucion.java
+END
+STActividadLaboral.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STActividadLaboral.java
+END
+STEmail.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IBM/!svn/ver/2271/was6/microsystem-integracion-lme/src/wwwLmeGovClLme/STEmail.java
+END

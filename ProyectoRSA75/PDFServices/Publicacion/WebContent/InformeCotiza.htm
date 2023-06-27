@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Informe Cotizaciones</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<link href="common/css/estilo_formularios.css" rel="stylesheet" type="text/css" />
+		<link href="common/css/collapsible_menu.css" rel="stylesheet" type="text/css" />
+		<link href="common/css/grid_960.css" rel="stylesheet" type="text/css" />
+	</head>
+<body leftmargin="3" topmargin="3" marginwidth="3" marginheight="3" onload="window.open('InformeCotiza_Obj.htm','frmResultado');window.open('Download.htm','frmDownload');window.open('Print.htm','frmPrint');sizeRows();">
+	<script>
+	function rut_razon(){
+		
+	}
+	
+	function AgregaRut()
+	{
+	  if (form1.RutTrabajador.value == "") return;
+	  var fg = 1;
+	  for (var i = 0; i < form1.ListaRut.children.length; i++)
+	  {
+	    var strCurrentValueId = form1.ListaRut.children[i].id;
+	    if (form1.RutTrabajador.value == strCurrentValueId) fg = 0;
+	  }
+	  if (fg == 1)
+	    {
+	        var newOpt;
+	        newOpt = document.createElement("OPTION");
+	        newOpt = new Option(form1.RutTrabajador.value, form1.RutTrabajador.value);
+	        newOpt.id = form1.RutTrabajador.value;
+	        form1.ListaRut.add(newOpt);
+	    }
+	  form1.RutTrabajador.value = "";
+	  form1.dv2.value = "";
+	}
+	
+	function EliminaRut()
+	{
+	  for (var i = 0; i < form1.ListaRut.children.length; i++)
+	  {
+	    if (form1.ListaRut.children[i].selected)
+	    {
+	        form1.ListaRut.remove(i);
+	    }
+	  }
+	  return;
+	}
+	
+	function ListaRutT()
+	{
+	  var strRut = "";
+	  for (var i = 0; i < form1.ListaRut.children.length; i++)
+	  {
+	    strRut = strRut + form1.ListaRut.children[i].value + " ";
+	  }
+	  return strRut;
+	}
+	
+	function VeRut(dest,orig){
+		document.all.item(dest).value = JDigitoRut(orig.value);
+		if(JTrim(document.all.item(dest).value) == "0" && orig.value > 1){
+			document.all.item(dest).value = "";
+		}
+	}
+	
+	function DejaRut(){
+		if(form1.RutTrabajador.value != ""){
+			form1.NombreTrabajador.value = "";
+			form1.NombreTrabajador.disabled = true;
+		}else{
+			form1.NombreTrabajador.disabled = false;
+			form1.dv2.value = ""
+		}
+	}
+	
+	function DejaNombre(){
+		if(JTrim(form1.NombreTrabajador.value) != ""){
+			form1.RutTrabajador.value = "";
+			form1.dv2.value = "";
+			form1.RutTrabajador.disabled = true;
+		}else{
+			form1.RutTrabajador.disabled = false;
+		}
+	}
+	
+	function ValidaFeinicotiza(Obj, Obj2){
+		if (Obj.value == ""){
+			return;
+		}
+		if (Obj.value < window.parent.frames["frmPresenta"].document.all.ocuFeinicotiza.value) {
+	     alert ("Fecha de inicio de cotización es " + window.parent.frames["frmPresenta"].document.all.ocuFeinicotiza.value);
+	     Obj.value = "";
+	     ValidaRango(Obj, Obj2);
+	     Obj.focus();
+	    }
+	    return;
+	}
+	
+	function ValidaRango(Obj, Obj2){
+		if (Obj2.value == ""){
+			return;
+		}
+		if (Obj.value == ""){
+			Obj.value = Obj2.value;
+			Obj2.value = "";
+			ValidaFeinicotiza(Obj, Obj2);
+			return;
+		}
+		if (Obj.value > Obj2.value){
+			alert ("Período de Fechas no es válido");
+			Obj2.focus();
+			Obj2.select();
+		}
+	}
+	
+	function ValidaFecha(Obj){
+		var EsError,a;
+		if (Obj.value == ""){
+			return;}
+		aux = Obj.value;
+		if (aux.length != 6){
+			alert("Fecha Inválida");
+			if (!document.all){
+				Obj.value = "";
+			}
+			Obj.focus();
+			Obj.select();
+			return;
+		}
+		EsError=CheckDate("01" + Obj.value)
+		if (EsError == "si"){
+			alert ("Fecha Inválida");
+			if (!document.all){
+				Obj.value = "";
+			}
+			Obj.focus();
+			Obj.select();
+			return;
+		}
+		else{
+			//Obj.value = aux.substring(0,2) + "/" + aux.substring(2,4) +"/" + aux.substring(4,8);
+			return;
+		}
+	}
+	
+	function Aceptar(){
+		window.parent.frames["frmResultado"].document.all.TipoProceso.value = form1.TipoProceso.value;
+		if (form1.FechaProceso2.value != ""){
+			window.parent.frames["frmResultado"].document.all.FechaProceso.value = form1.FechaProceso.value + " " + form1.FechaProceso2.value;
+		}else{
+			window.parent.frames["frmResultado"].document.all.FechaProceso.value = form1.FechaProceso.value;
+		}
+		if (form1.FechaProceso.value == ""){
+			if (window.parent.frames["frmPresenta"].document.all.ocuFeinicotiza.value != "") {	
+			    window.parent.frames["frmResultado"].document.all.FechaProceso.value=window.parent.frames["frmPresenta"].document.all.ocuFeinicotiza.value + " " + "205908";
+			}else{
+				alert("Ingrese un período para la búsqueda");
+				return false;
+			}
+		}
+		window.parent.frames["frmResultado"].document.all.RutEmpresa.value = form1.RutEmpresa.value;
+		window.parent.frames["frmResultado"].document.all.RutTrabajador.value = ListaRutT();
+		if(form1.RutEmpresa.value == "" && form1.RutTrabajador.value == "" && form1.NombreTrabajador.value == ""){
+			window.parent.frames["frmResultado"].document.all.NombreTrabajador.value = "%";
+		}else{
+			window.parent.frames["frmResultado"].document.all.NombreTrabajador.value = form1.NombreTrabajador.value;
+		}
+	
+		window.parent.frames["frmResultado"].document.all.Convenio.value = form1.Convenio.value;
+		window.parent.frames["frmResultado"].document.all.Sucursal.value = form1.Sucursal.value;
+		window.parent.frames["frmResultado"].document.all.Holding.value = window.parent.frames["frmPresenta"].document.all.ocuHolding.value;
+		window.parent.frames["frmResultado"].document.all.form1.submit();
+	}
+	
+	function BajarPDF(){
+		var strCondicion = "";
+	    strCondicion = strCondicion + " AND Holding = " + window.parent.frames["frmPresenta"].document.all.ocuHolding.value;
+		if (form1.TipoProceso.selectedIndex != 0) {
+			strCondicion = strCondicion + " AND TipoProceso = ''" + form1.TipoProceso.value + "''";
+	    }
+		if (form1.FechaProceso.value != "") {
+			strCondicion = strCondicion + " AND FechaProceso BETWEEN " + (cantidaddias(form1.FechaProceso.value)-5);
+			if (form1.FechaProceso2.value == ""){
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso.value)+5);
+			}else{
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso2.value)+5);
+			}
+		}
+	
+		if (ListaRutT() != "") {
+			strCondicion = strCondicion + " AND RutTrabajador in (" + JTrim(ListaRutT()) + ")";
+	    }
+	
+	    strCondicion = strCondicion + " AND Convenio IN (" + JTrim(form1.Convenio.value) + ")";
+	
+		if (form1.Sucursal.value != "") {
+			strCondicion = strCondicion + " AND Sucursal IN (''" + JTrim(form1.Sucursal.value) + "'')";
+	    }
+	
+		if (form1.RutEmpresa.selectedIndex == 0) {
+			aux = form1.RutEmpresa.value;
+			largo = aux.length;
+			aux = aux.substring(0, largo - 1);
+		} else {
+			aux = form1.RutEmpresa.value;
+		}
+		strCondicion = strCondicion + " AND RutEmpresa IN (" + aux + ")";
+		
+		window.parent.frames["frmDownload"].document.all.inTipo.value = "9";
+		window.parent.frames["frmDownload"].document.all.inCondicion.value = strCondicion;
+		window.parent.frames["frmDownload"].document.all.form2.submit();
+	}
+	
+	function PrintPDF(){
+		var strCondicion = "";
+		if (form1.TipoProceso.selectedIndex != 0) {
+			strCondicion = strCondicion + " AND TipoProceso = ''" + form1.TipoProceso.value + "''";
+		}
+		if (form1.FechaProceso.value != "") {
+			strCondicion = strCondicion + " AND FechaProceso BETWEEN " + (cantidaddias(form1.FechaProceso.value)-5);
+			if (form1.FechaProceso2.value == ""){
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso.value)+5);
+			}else{
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso2.value)+5);
+			}
+	    }
+	
+		if (ListaRutT() != "") {
+			strCondicion = strCondicion + " AND RutTrabajador in (" + JTrim(ListaRutT()) + ")";
+		}
+	
+		if (form1.Sucursal.value != "") {
+			strCondicion = strCondicion + " AND Sucursal IN (''" + JTrim(form1.Sucursal.value) + "'')";
+	    }
+	    strCondicion = strCondicion + " AND Holding = " + window.parent.frames["frmPresenta"].document.all.ocuHolding.value;
+	
+	    strCondicion = strCondicion + " AND Convenio IN (" + JTrim(form1.Convenio.value) + ")";
+	
+		if (form1.RutEmpresa.selectedIndex == 0) {
+			aux = form1.RutEmpresa.value;
+			largo = aux.length;
+			aux = aux.substring(0, largo - 1);
+		} else {
+			aux = form1.RutEmpresa.value;
+		}
+		strCondicion = strCondicion + " AND RutEmpresa IN (" + aux + ")";
+		
+		window.parent.frames["frmPrint"].document.all.inTipo.value = "9";
+		window.parent.frames["frmPrint"].document.all.inCondicion.value = strCondicion;
+		window.parent.frames["frmPrint"].document.all.form3.submit();
+		}
+		function sizeRows() 
+		{ 
+			var frameset = parent.document.getElementById("main_frame"); 
+			frameset.rows = "270,*"; 
+		} 
+
+	</script>
+	<script language="javascript" src="Includes/FuncionesJava.js"></script>
+		<FORM id="form1">
+				<font class="titulo">Solicitud Informe Cotizaciones</font>
+				<br/>
+				<br/>
+				<font face="Verdana, Arial, Helvetica, sans-serif" style="font-size: 3pt;">&nbsp;<br></font>
+				<table width="650" border="0" cellspacing="5" cellpadding="0" id="tabla_cont">
+					<tr>
+						<td width="18%" height="29" align="left" valign="middle">Tipo Proceso :</td>
+						<td width="27%" align="left" valign="middle"><strong>	
+							<select name="TipoProceso" size="1" id="TipoProceso" class="campos">
+								<option value="">Todos</option>
+								<option value="R">Remuneraciones</option>
+								<option value="G">Gratificaciones</option>
+						 	 </select>
+							</strong>
+						</td>
+						<td align="left" valign="middle" nowrap="nowrap">Período</td>
+			        	<td align="left" valign="middle" nowrap="nowrap">Desde<strong>
+								<input type="text" id="FechaProceso" style="font-family:Arial;font-size:8pt;" size="8" maxlength="6" onkeypress="JValidaCaracter('Numerico','');" onblur="ValidaFecha(this); ValidaRango(this, FechaProceso2); ValidaFeinicotiza(this, FechaProceso2)">&nbsp;
+										</strong>Hasta<strong>
+								<input type="text" id="FechaProceso2" style="font-family:Arial;font-size:8pt;" size="8" maxlength="6" onkeypress="JValidaCaracter('Numerico','');" onblur="ValidaFecha(this); ValidaRango(FechaProceso, this); ValidaFeinicotiza(FechaProceso, this)">&nbsp;
+										<span class="fecha_cuadro">(aaaamm)</span> </strong>
+						</td>
+					</tr>
+					<tr>
+						<td align="left" valign="middle" nowrap="nowrap">Rut Empresa :</td>
+						<td align="left" valign="middle">
+							<div id="divRut"></div>
+						</td>
+						<td align="left" valign="middle">Convenio :</td>
+						<td align="left" valign="middle">
+							<div id="divConvenio"></div>
+						</td>
+
+					</tr>
+					<tr>
+						<td align="left" valign="middle">Sucursal :</td>
+						<td align="left" valign="middle">
+							<div id="divSucursal">
+						</div>
+						</td>
+						<td align="left" valign="middle" nowrap="nowrap">Nombre Trabajador :</td>
+						<td>
+							<input name="NombreTrabajador" type="text" id="NombreTrabajador" style="font-family:Arial;font-size:8pt;" onblur="DejaNombre();" onkeypress="JValidaCaracter('Texto','');" size="37" maxlength="40">
+						</td>
+					</tr>
+					<tr>
+						<td align="left" valign="middle" nowrap="nowrap">Rut Trabajador :</td>
+				  		<td align="left" valign="middle" nowrap="nowrap">
+							  <input name="RutTrabajador" type="text" id="RutTrabajador" style="font-family:Arial;font-size:8pt;" onblur="DejaRut();" onchange="VeRut('dv2',this);" onkeypress="JValidaCaracter('Numerico','');" size="14" maxlength="9">&nbsp;-&nbsp;
+   						  	  <input id="dv2" type="text" size="1" maxlength="1" style="font-family:Arial;font-size:8pt;" disabled>
+   						 </td>
+   						 <td>
+   						  	  <input type="button" value=" >> " class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="AgregaRut();">
+   						</td>
+   						<td rowspan="2" align="left" valign="middle">
+ 					  		<SELECT name="ListaRut" id="ListaRut" size="8" style="WIDTH:100px; HEIGHT:80px"></SELECT>   						  	
+   					  	</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						 
+						</td>
+						<td align="left" valign="top">
+	   						 <input type="button" value=" Borra " class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="EliminaRut();">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" align="center">
+							<input type="button" value="Buscar" class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="Aceptar();">
+							<input type="reset" value="Limpiar" class="btn1" style="Cursor:Pointer; Cursor:Hand">
+							<input type="button" value="Bajar ZIP" class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="BajarPDF();">
+							<input type="button" value="Imprimir PDF" class="btn1" style="Cursor:Pointer; Cursor:Hand; width:71px;" onclick="PrintPDF();">
+					</td>
+				</tr>
+			</table>
+		</FORM>
+	<script>
+	document.all.divConvenio.innerHTML = window.parent.frames["frmPresenta"].document.all.ocuConvenio.value;
+	document.all.divRut.innerHTML = window.parent.frames["frmPresenta"].document.all.ocuRut.value;
+	document.all.divSucursal.innerHTML = window.parent.frames["frmPresenta"].document.all.ocuSucursal.value;
+	</script>
+</body>
+</html>
+	
+
+  

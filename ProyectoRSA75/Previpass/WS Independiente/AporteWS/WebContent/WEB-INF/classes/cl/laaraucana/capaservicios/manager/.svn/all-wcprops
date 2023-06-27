@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IBM/!svn/ver/3267/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager
+END
+GenerarReporteManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/2594/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/GenerarReporteManager.java
+END
+CertAmortizacionMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/CertAmortizacionMGR.java
+END
+ConsultaMtoAprobadoMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ConsultaMtoAprobadoMGR.java
+END
+ConsultaCtasCorrientesMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ConsultaCtasCorrientesMGR.java
+END
+ConsultaMigracionMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ConsultaMigracionMGR.java
+END
+CreditoEspecialVigenteMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/CreditoEspecialVigenteMGR.java
+END
+DatosAuxiliaresMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/1665/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/DatosAuxiliaresMGR.java
+END
+SolicitudSmsMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/3334/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/SolicitudSmsMGR.java
+END
+ColocacionCreditoMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3334/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ColocacionCreditoMGR.java
+END
+ConsultaDatosGiroMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3333/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ConsultaDatosGiroMGR.java
+END
+SimulacionCreditoEspMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/3254/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/SimulacionCreditoEspMGR.java
+END
+NotificacionMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/3154/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/NotificacionMGR.java
+END
+ConsultaDatosClienteMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/3510/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/ConsultaDatosClienteMGR.java
+END
+AutenticarUsuarioMGR.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3476/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/manager/AutenticarUsuarioMGR.java
+END

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RendicionBSA">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	<typeAlias alias="beanRendicionBSA" type="cl.araucana.spl.beans.RendicionBSA"/>
+	<typeAlias alias="beanDetalleRendicionBSA" type="cl.araucana.spl.beans.DetalleRendicionBSA"/>
+	
+	<resultMap class="cl.araucana.spl.beans.DetalleRendicionBSA" id="detalleRendicionBsaResultMap">
+		<result property="idDetalleRend" column="ID_DET_REND_BSA" />
+		<result property="idRendicion" column="ID_RENDICION_BSA" />
+		<result property="idConvenio" column="ID_CONVENIO" />
+		<result property="idPago" column="ID_PAGO" />
+		<result property="idCarro" column="ID_CARRO" typeHandler="charTypeHandler" />
+		<result property="nroProducto" column="NRO_PRODUCTO" />
+		<result property="nroCliente" column="NRO_CLIENTE" typeHandler="charTypeHandler" />
+		<result property="fchExpiracion" column="FCH_EXPIRAC_PROD" />
+		<result property="descProducto" column="DESC_PRODUCTO" typeHandler="charTypeHandler" />
+		<result property="montoProducto" column="MNT_PRODUCTO" />
+		<result property="fchHoraOperacion" column="FCH_HORA_OPERACION" />
+		<result property="codError" column="COD_ERROR" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	<select id="sqlSequenceRendicionBSA" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_RENDICIONBSA FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<select id="sqlSequenceDetalleRendicionBSA" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETALLERENDICIONBSA FROM SYSIBM.SYSDUMMY1
+	</select>	
+	
+	<select id="sqlFindRendicionBsaByChecksum" parameterClass="string" resultClass="decimal">
+		select count(*) 
+		from RENDICBSA 
+		where checksum = #checksum#
+	</select>
+
+	<select id="sqlFindDetalleRendicionBsaByPagoId" parameterClass="decimal" resultMap="detalleRendicionBsaResultMap">
+		select 
+			ID_DET_REND_BSA, ID_RENDICION_BSA, ID_CONVENIO, ID_PAGO, 
+			ID_CARRO, NRO_PRODUCTO, NRO_CLIENTE, FCH_EXPIRAC_PROD, 
+			DESC_PRODUCTO, MNT_PRODUCTO, FCH_HORA_OPERACION, COD_ERROR		
+		from DETRENDBSA 
+		where ID_PAGO = #idPago#
+	</select>
+	
+	<insert id="sqlInsertRendicionBSA" parameterClass="beanRendicionBSA">
+		insert into RENDICBSA 
+			(ID_RENDICION_BSA, CHECKSUM, FCH_IMPORTACION, 
+			NRO_PAGOS, MNT_TOTAL)
+   		values 
+   			(#idRendicion#, #checksum#, #fchImportacion#, 
+   			#nroPagos#, #montoTotal#)
+   	</insert>
+   	
+	<insert id="sqlInsertDetalleRendicionBSA" parameterClass="beanDetalleRendicionBSA">
+		insert into DETRENDBSA 
+			(ID_DET_REND_BSA, ID_RENDICION_BSA, ID_CONVENIO, ID_PAGO, 
+			ID_CARRO, NRO_PRODUCTO, NRO_CLIENTE, 
+			FCH_EXPIRAC_PROD, DESC_PRODUCTO, MNT_PRODUCTO, 
+			FCH_HORA_OPERACION, COD_ERROR)
+		values 
+			(#idDetalleRend#, #idRendicion#, #idConvenio#, #idPago#,
+			#idCarro#, #nroProducto#, #nroCliente#,
+			#fchExpiracion#, #descProducto#, #montoProducto#,
+			#fchHoraOperacion#, #codError#)
+   	</insert>
+
+</sqlMap>
+

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- Archivo XML: newsolicitud.xml. -->
+<!-- Contiene las querys que serán usadas en lo que respecta a consulta e inserción de datos. -->
+<sqlMap namespace="newsolicitudNS">
+	
+	<!-- Query que retorna un contador de un rut desde la tabla Persona. Recibe un string y retorna un string. 
+		 Dicho contador evalúa si el tipoestadoafiliado de ese rut se encuentra en los estados (4,5,7) y además 
+		 si el tipoestadosolicitud del mismo rut se encuentra en los estados(1,2,4,5,7). -->
+	<select id="selectCountRUT" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(1)
+     	FROM	$IIDTA$.PERSONA A
+     			JOIN $IIDTA$.AFILIADO B
+       				ON B.IDPERSONAAFILIADO = A.IDPERSONA
+     			JOIN $IIDTA$.SOLICITUD C
+       				ON C.IDAFILIADOAGRUPACION = B.IDPERSONAAFILIADO
+      			LEFT JOIN $IIDTA$.TABLASGLOBALES D
+       				ON C.TIPOESTADOSOLICITUD = D.CODIGO
+      				AND D.ENTIDAD = 11
+    	WHERE	B.TIPOESTADOAFILIADO IN (4, 5, 7)
+    	AND 	C.TIPOESTADOSOLICITUD IN (1,2,4,5,7)
+		AND		A.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que retorna el Folio y la descripción del estado de solicitud desde la tablas Solicitud y TablasGlobales respectivamente, cuando el
+		 tipoEstadoAfiliado está en los estados 4,5 y 7, y el tipoestadosolicitud está en estado (1,2,4,5,7). 
+		 Recibe como parámetro un string y retorna un resultClass de tipo SolicitudVo. 	-->
+	<select id="selectCountRUTDescripcion" resultClass="cl.araucana.independientes.vo.SolicitudVO" parameterClass="java.util.HashMap">
+      	SELECT 	C.FOLIO folio, 
+      			D.GLOSA desTipoEstadoSolicitud
+     	FROM	$IIDTA$.PERSONA A
+     			JOIN $IIDTA$.AFILIADO B
+       				ON B.IDPERSONAAFILIADO = A.IDPERSONA
+     			JOIN $IIDTA$.SOLICITUD C
+      				ON C.IDAFILIADOAGRUPACION = B.IDPERSONAAFILIADO 
+      			LEFT JOIN $IIDTA$.TABLASGLOBALES D
+       				ON C.TIPOESTADOSOLICITUD = D.CODIGO
+      				AND D.ENTIDAD = 11
+    	WHERE	B.TIPOESTADOAFILIADO IN (4, 5, 7) 
+      	AND 	C.TIPOESTADOSOLICITUD IN (1, 2, 4, 5, 7) 
+      	AND 	A.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query que retorna un contador para el Folio, desde la tabla Solicitud. Recibe de entrada un string y retorna un string -->
+	<select id="SelectCountFolio" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*) SOLICITUD
+		FROM $IIDTA$.SOLICITUD
+		WHERE FOLIO = #input#
+		AND	TIPOSOLICITUD = 1
+	</select>
+	
+	<!-- Query que retorna un contador desde la tabla Personas. Es necesario para verificar que no se dupliquen datos en dicha tabla. 
+		 Recibe de entrada un string y retorna un string. -->
+	<select id="SelectCountRutValida" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM $IIDTA$.PERSONA
+		WHERE IDDOCUMENTO = #input#	
+	</select>
+	
+	<!-- Query que retorna un contador desde la tabla Solicitudes. Es necesario para verificar que no exita mas de una solicitud de desafiliacion.
+		 Recibe de entrada un string y retorna un string. -->
+	<select id="SelectCountIdSolicitudValida" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(IDSOLICITUD)
+		FROM $IIDTA$.SOLICITUD
+		WHERE IDAFILIADOAGRUPACION = #input#	
+		AND TIPOSOLICITUD = 2
+	</select>
+		
+	<!-- Query para obtener el Id del analista. -->
+	<select id="selectIdAnalista" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT COUNT(*) IDANALISTA
+		FROM $IIDTA$.ANALISTA
+		WHERE IDANALISTA = #input#
+	</select>
+
+	<!-- Las siguientes querys corresponden a select de los id´s de las tablas involucradas en el negocio, y que tienen relación con la inserción de datos
+		 en las mismas. Esto es para tener un orden en dicha inserción. -->
+	<!-- Select de idsolicitud de la tabla solicitud. -->
+	<select id="selectIdSolicitud" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.SOLICITUD_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Select de idPersona de la tabla Persona. -->
+	<select id="selectIdPersona" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.PERSONA_SEQ FROM sysibm.sysdummy1
+	</select>
+
+	<!-- Select de idSecuenciaDireccion de la tabla Direccion. -->
+	<select id="selectIdDireccion" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.DIRECCION_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Select de idSecuenciaTelefono de la tabla Telefono. -->
+	<select id="selectIdTelefono" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.TELEFONO_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Select de idSecuenciaEmail de la tabla Email. -->
+	<select id="selectIdEmail" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.EMAIL_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Select de idGrupoFamiliar de la tabla GrupoFamiliar. -->
+	<select id="selectIdGrupoFamiliar" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.GPOFAMILIAR_SEQ FROM sysibm.sysdummy1
+	</select>				
+
+	<!-- Select de idIngresoEconomico de la tabla IngresoEconomico. -->
+	<select id="selectIdIngresoEconomico" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.INGECONOMICO_SEQ FROM sysibm.sysdummy1
+	</select>				
+	
+	<!-- QUERYS PARA SELECCIONAR UN DETERMINADO ID DE CADA TABLA, DADO EL RUT DE LA PERSONA. -->
+	<!-- Select para obtener el idPersona de un rut que ya existe en la tabla persona. -->
+	<select id="selectidPersonaDoc" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	IDPERSONA idPersona
+		FROM 	$IIDTA$.PERSONA
+		WHERE	IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- Query para obtener cualquier idSecuenciaDireccion de la tabla Direccion que esté previamente insertado en dicha tabla y que este relacionado al rut 
+		de una persona. Cabe destacar que sólo entrega el id de la direccion particular de la persona asociada. -->
+	<!--  comentada al final AND		D.TIPOPRINCIPALIDAD = 1  -->
+	<select id="selectIdSecuenciaDireccion" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	D1.IDSECUENCIADIRECCION idSecuenciaDireccion
+		FROM 	$IIDTA$.DIRECCION D,
+				$IIDTA$.DIRECCIONENTIDAD D1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	D.IDSECUENCIADIRECCION = D1.IDSECUENCIADIRECCION
+		AND 	P.IDPERSONA = D1.IDENTIDAD
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	D.TIPOLOCALIDAD = 1
+		AND		P.IDDOCUMENTO =	#input#
+		ORDER BY D.IDSECUENCIADIRECCION DESC
+	</select>
+	
+	<!-- OBTENER IDSECUENCIA DE LA TABLA MAIL. -->
+	<!-- comentada al final AND		E.TIPOPRINCIPALIDAD = 1  -->
+	<select id="selectIdSecuenciaMail" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	E.IDSECUENCIAMAIL idSecuenciaMail
+		FROM	$IIDTA$.EMAIL E,
+				$IIDTA$.EMAILENTIDAD E1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	E.TIPOLOCALIDAD=#input_localidad#
+		AND 	E1.IDSECUENCIAMAIL = E.IDSECUENCIAMAIL
+		AND		E1.IDENTIDAD = P.IDPERSONA
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND		P.IDDOCUMENTO = #input#
+		ORDER BY E.IDSECUENCIAMAIL DESC
+	</select>
+	
+	<!-- OBTENER IDSECUENCIA DE LA DIRECCION COMERCIAL -->
+	<select id="selectIdSecuenciaDireccCom" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	D1.IDSECUENCIADIRECCION idSecuenciaDireccion
+		FROM 	$IIDTA$.DIRECCION D,
+				$IIDTA$.DIRECCIONENTIDAD D1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	D.IDSECUENCIADIRECCION = D1.IDSECUENCIADIRECCION
+		AND 	P.IDPERSONA = D1.IDENTIDAD
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	D.TIPOLOCALIDAD = 2
+		AND		P.IDDOCUMENTO = #input#	
+	</select>
+	
+	<!-- OBTENER IDSECUENCIA (IDGRUPOFAM) PARA GRUPO FAMILIAR -->
+	<select id="selectIdSecuenciaGrupFam" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	G.IDGRUPOFAM idGrupoFam
+		FROM	$IIDTA$.GRUPOFAMILIAR G,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND		G.IDPERSONAAFILIADO = A.IDPERSONAAFILIADO
+		AND 	P.IDDOCUMENTO = #input#	
+	</select>
+	
+	<!-- OBTENER IDINGECONOM PARA INGRESO ECONOMICO -->
+	<select id="selectIdSecuenciaIngEco" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	I.IDINGECONOM idIngEconom
+		FROM	$IIDTA$.INGRESOECONOMICO I,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND		I.IDPERSONAAFILIADO = A.IDPERSONAAFILIADO
+		AND 	P.IDDOCUMENTO = #input#	
+	</select>
+	
+	<!-- OBTENER IDPERSONAAFILIADO PARA AFILIADO -->
+	<select id="selectIdSecuenciaAfiliado" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	A.IDPERSONAAFILIADO idPersonaAfiliado
+		FROM 	$IIDTA$.AFILIADO A,
+				$IIDTA$.PERSONA P
+		WHERE	P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- OBTENER IDANALISTA PARA ANALISTA -->
+	<select id="selectIdSecuenciaAnalist" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	A.IDANALISTA idAnalista
+		FROM 	$IIDTA$.ANALISTA A,
+				$IIDTA$.SOLICITUD S,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO AFI
+		WHERE	P.IDPERSONA = AFI.IDPERSONAAFILIADO
+		AND		AFI.IDPERSONAAFILIADO = S.IDAFILIADOAGRUPACION
+		AND		S.IDCAPTADOR = A.IDANALISTA
+		AND		P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- OBTENER IDSECUENCIATELEFONO PARA TELEFONO CELULAR -->
+	<!--  comentada al final AND		T.TIPOPRINCIPALIDAD = 1 -->
+	<select id="selectIdSecuenciaTelCel" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	T.IDSECUENCIATELEFONO idSecuenciaTelefono
+		FROM 	$IIDTA$.TELEFONO T,
+				$IIDTA$.TELEFONOENTIDAD T1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	T.IDSECUENCIATELEFONO = T1.IDSECUENCIATELEFONO
+		AND 	P.IDPERSONA = T1.IDENTIDAD
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	T.TIPOLOCALIDAD = 1
+		AND		P.IDDOCUMENTO = #input#	
+		ORDER BY T.IDSECUENCIATELEFONO DESC
+	</select>
+	
+	<!-- OBTENER IDSECUENCIATELEFONO PARA TELEFONO PARTICULAR -->
+	<select id="selectIdSecuenciaTelPart" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	T.IDSECUENCIATELEFONO idSecuenciaTelefono
+		FROM 	$IIDTA$.TELEFONO T,
+				$IIDTA$.TELEFONOENTIDAD T1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	T.IDSECUENCIATELEFONO = T1.IDSECUENCIATELEFONO
+		AND 	P.IDPERSONA = T1.IDENTIDAD
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	T.TIPOLOCALIDAD = 2
+		AND		P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- OBTENER IDSECUENCIATELEFONO PARA TELEFONO COMERCIAL -->
+	<select id="selectIdSecuenciaTelCom" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT 	T.IDSECUENCIATELEFONO idSecuenciaTelefono
+		FROM 	$IIDTA$.TELEFONO T,
+				$IIDTA$.TELEFONOENTIDAD T1,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	T.IDSECUENCIATELEFONO = T1.IDSECUENCIATELEFONO
+		AND 	P.IDPERSONA = T1.IDENTIDAD
+		AND		P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND 	T.TIPOLOCALIDAD = 3
+		AND		P.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- FIN QUERYS PARA SELECCIONAR UN DETERMINADO ID DE CADA TABLA, DADO EL RUT DE LA PERSONA. -->
+	
+	<!-- Aqui los insert para nueva solicitud del trabajador independiente-->	
+	<!-- Aqui insert para tablas de relación. -->
+	<insert id="insertNewSolIdDireccEnt" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.DIRECCIONENTIDAD(IDSECUENCIADIRECCION,IDENTIDAD)
+		VALUES(#input.idSecuencia#,#input.idEntidad#)
+	</insert>
+	
+	<insert id="insertNewSolIdTelefEnt" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.TELEFONOENTIDAD(IDSECUENCIATELEFONO,IDENTIDAD)
+		VALUES(#input.idSecuencia#,#input.idEntidad#)
+	</insert>
+	
+	<insert id="insertNewSolIdEmailEnt" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.EMAILENTIDAD(IDSECUENCIAMAIL,IDENTIDAD)
+		VALUES(#input.idSecuencia#,#input.idEntidad#)
+	</insert>
+	<!-- fin insert para tablas de relacion -->
+	
+	<!-- Insert para la tabla SOLICITUD -->
+	<insert id="insertNewSolSolicitud" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.SOLICITUD (IDSOLICITUD,IDAFILIADOAGRUPACION,FOLIO,TIPOSOLICITUD,TIPOCAJAORIGEN,FECHAVIGENCIA,TIPOESTADOSOLICITUD,IDANALISTA,FECHAINGRESO,FECHAFIRMA,IDCAPTADOR,HORAINGRESO,OFICINA)
+		VALUES(#input.idSolicitud#,#input.idAfiliadoAgrupacion#,#input.folio#,#input.tipoSolicitud#,#input.tipoCajaOrigen#,#input.fechaVigenciaDate#,#input.tipoEstadoSolicitud#,#input.idAnalista#,#input.fechaIngresoDate#,#input.fechaFirmaDate#,#input.idCaptador#,#input.horaCaptacion#,#input.oficina#)
+	</insert>
+	
+	<!-- Insert para la tabla SOLICITUD DESAFILIACION -->
+	<insert id="insertNewSolSolicitudDesaf" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.SOLICITUD (IDSOLICITUD,IDAFILIADOAGRUPACION,FOLIO,TIPOSOLICITUD,TIPOCAJAORIGEN,FECHAVIGENCIA,TIPOESTADOSOLICITUD,IDANALISTA,FECHAINGRESO,HORAINGRESO,OFICINA,TIPOMOTIVODESAFILIACION,FECHAULTAPORTE,TIPODESCRIPCION,OBSERVACIONES,COMENTARIOS,FECHAFIRMA)
+		VALUES(#input.idSolicitud#,#input.idAfiliadoAgrupacion#,#input.folio#,#input.tipoSolicitud#,#input.tipoCajaOrigen#,#input.fechaVigenciaDate#,#input.tipoEstadoSolicitud#,#input.idAnalista#,#input.fechaIngresoDate#,#input.horaCaptacion#,#input.oficina#,#input.tipoMotivoDesafiliacion#,#input.fechaUltAporteDate#,#input.descTipoMotivoDesafiliacion#,#input.observaciones#,#input.comentarios#,#input.fechaFirmaDate#)
+	</insert>
+	
+	<!-- Insert para la tabla PERSONA -->		
+	<insert id="insertNewSolPersona" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.PERSONA (IDPERSONA,TIPODOCUMENTO,IDDOCUMENTO, DIGVERIFICADOR, APELLIDOPATERNO, APELLIDOMATERNO, NOMBRES, FECHANAC, TIPOSEXO, TIPOPERSONA, TIPONACIONALIDAD)
+		VALUES(#input.idPersona#,#input.tipoDocumento#,#input.idDocumento#,#input.digVerificador#,#input.apellidoPaterno#,#input.apellidoMaterno#,#input.nombres#,#input.fechaNacimientoDate#,#input.tipoSexo#,#input.tipoPersona#,#input.tipoNacionalidad#)
+	</insert>
+	
+	<!-- Insert para la tabla TELEFONO -->
+	<insert id="insertNewSolTelefono" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.TELEFONO (IDSECUENCIATELEFONO,TIPOLOCALIDAD,CODAREA,NROTELEFONO,TIPOPRINCIPALIDAD)
+		VALUES (#input.idSecuenciaTelefono#,#input.tipoLocalidad#,#input.codArea#,#input.nroTelefono#,1)
+	</insert>
+	
+	<!-- Insert para la tabla EMAIL -->
+	<insert id="insertNewSolEmail" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.EMAIL (IDSECUENCIAMAIL,TIPOLOCALIDAD,DIRECCMAIL,TIPOPRINCIPALIDAD)
+		VALUES(#input.idSecuenciaEmail#,#input.tipoLocalidad#,#input.direccMail#,1)
+	</insert>
+	
+	<!-- Insert para la tabla DIRECCION -->
+	<insert id="insertNewSolDireccion" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.DIRECCION (IDSECUENCIADIRECCION,TIPOLOCALIDAD,GLOSACALLE,NUMDIRECCION,POBLACIONVILLA,DEPTO,REGION,CIUDAD,COMUNA,TIPOPRINCIPALIDAD)
+		VALUES(#input.idSecuenciaDireccion#,#input.tipoLocalidad#,#input.glosCalle#,#input.numDireccion#,#input.poblacionVilla#,#input.dpto#,#input.region#,#input.ciudad#,#input.comuna#,1)
+	</insert>
+	
+	<!-- Insert para la tabla GRUPOFAMILIAR -->
+	<insert id="insertNewSolGrupoFamiliar" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.GRUPOFAMILIAR (IDGRUPOFAM, IDPERSONAAFILIADO, CONYUGE,CANTHIJOS)
+		VALUES (#input.idGrupoFam#,#input.idPersonaAfiliado#,#input.conyugue#,#input.cantHijos#)
+	</insert>
+	
+	<!-- Insert para la tabla INGRESOECONOMICO -->
+	<insert id="insertNewSolIngresoEconomico" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.INGRESOECONOMICO (IDINGECONOM,IDPERSONAAFILIADO,ACTECONOM,RENTAIMPONIBLE,RENTACOTIZADA,HONORARIO, MONTOULTCOTIZACION,FECHAULTCOTIZACION)
+		VALUES (#input.idIngEconom#,#input.idPersonaAfiliado#,#input.actEconom#,#input.rentaImponible#,#input.rentaCotizada#,#input.honorario#, #input.montoUltimaCotizacion#, #input.fecUltCotizacion#)
+	</insert>
+	
+	<!-- Insert para la tabla AFILIADO -->
+	<insert id="insertNewSolAfiliado" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.AFILIADO (IDPERSONAAFILIADO,TIPOESTADOAFILIADO,TIPOPROFESION,TIPONIVELEDUC,TIPOREGSALUD,TIPOAFP, TIPOESTCIVIL, IDSOLICITUD,FECHAINICIO, MONTOCOTIZAR,IDSECUENCIAAGRUPACION)
+		VALUES (#input.idPersonaAfiliado#,#input.tipoEstadoAfiliado#,#input.tipoProfesion#,
+		#input.tipoNivelEduc#,#input.tipoRegSalud#,#input.tipoAfp#,#input.tipoEstado#,
+		#input.idSolicitud#,#input.fechaInicio#,#input.montoCotizar#,#input.idSecuenciaAgrupacion#)
+	</insert>
+	
+	<!-- Insert para la tabla ANALISTA -->
+	<insert id="insertNewSolAnalista" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.ANALISTA (IDANALISTA,APELLIDOPATERNO,APELLIDOMATERNO,NOMBRES,OFICINA)
+		VALUES (#input.idAnalista#,#input.apellidoPaterno#,#input.apellidoMaterno#,#input.nombres#,#input.oficina#)
+	</insert>
+
+	
+	<!-- Insert para la tabla AFILIADOAGRUPACION -->
+	<insert id="insertNewSolAfiliadoAgrupacion" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.AFILIADOAGRUPACION (IDAGRUPACION,IDPERSONA)
+		VALUES(#input.idSecuenciaAgrupacion#,#input.idPersonaAfiliado#)
+	</insert>
+	
+	<!-- Si existe analista en la tabla no se inserta, pero si se debe updatear la oficina en caso de que ella cambie. -->
+	<update id="updateNewSolOficinaAnalista" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.ANALISTA
+		SET OFICINA = #input.oficina#
+		WHERE IDANALISTA = #input.idAnalista#
+	</update>
+	<!-- FIN Ingreso nueva solicitud para trabajador independiente-->
+	<!-- ################################################################################## -->
+	
+	<select id="obtenerPromotor" resultClass="cl.araucana.independientes.vo.AnalistaVO" parameterClass="java.util.HashMap">
+		SELECT  IDPROMOTOR idAnalista,
+				APELLIDOPATERNO apellidoPaterno,
+				APELLIDOMATERNO apellidoMaterno,
+				NOMBRES nombres
+		FROM	$IIDTA$.PROMOTOR
+		WHERE   IDCAPTADOR = #input#
+	</select>
+	
+</sqlMap>

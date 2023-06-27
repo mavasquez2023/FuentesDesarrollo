@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="ArchivoCargaFamiliarVO" table="ARCHIVO_CARGA_FAMILIAR_CCAF">
+    	<id name="id" column="ID_ARCHIVO_CARGA_FAMILIAR_CCAF">
+   			<generator class="increment"/>
+   		</id>
+		<property name="fecha"			column="FECHA" />
+		<property name="hora"			column="HORA" />
+		<property name="idCaja"			column="PK_ID_CCAF" />
+		<property name="estado"			column="ESTADO_CARGA" />
+    </class>
+</hibernate-mapping>

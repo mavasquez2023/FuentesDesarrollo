@@ -1,0 +1,40 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/vo/RespuestaColocacion
+https://172.16.137.116/svn/IBM
+
+
+
+2014-06-06T14:08:13.468717Z
+1702
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+RespuestaColocacionIn.java
+file
+
+
+
+
+2014-06-06T14:04:08.349504Z
+2c776335721348392e970329d9f807d0
+2014-06-06T14:08:13.468717Z
+1702
+acanifru
+
+RespuestaColocacionOut.java
+file
+
+
+
+
+2014-06-06T14:06:36.853353Z
+fc3bddf3ffa4eaf02bfe5ad503e43498
+2014-06-06T14:08:13.468717Z
+1702
+acanifru
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="LdapVO" table="DUDTA.LDAP1000">
+		<id name="userName" column="USERNAME" />
+		<property name="clave" column="CLAVE" />
+		<property name="nombre" column="NOMBRE" />
+		<property name="apellidoPaterno" column="APEPAT" />
+		<property name="apellidoMaterno" column="APEMAT" />
+		<property name="sexo" column="SEXO" />
+		<property name="email" column="EMAIL" />
+		<property name="fono" column="FONO" />
+		<property name="origen" column="ORIGEN" />
+		<property name="estado" column="ESTADO" />		
+		<property name="fechaCreacion" column="FECCRE" />		
+		<property name="horaCreacion" column="HORCRE" />		
+		<property name="usuarioCreacion" column="USRCRE" />		
+		<property name="fechaUltimoCambio" column="FECCAM" />		
+		<property name="horaUltimoCambio" column="HORCAM" />		
+		<property name="usuarioUltiCambio" column="USRCAM" />		
+	</class>
+</hibernate-mapping>

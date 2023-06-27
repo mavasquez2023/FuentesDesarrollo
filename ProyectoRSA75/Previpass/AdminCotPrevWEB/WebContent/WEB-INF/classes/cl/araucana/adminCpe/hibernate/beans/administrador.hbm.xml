@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+	
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.AdministradorVO" table="ADMINEMPRE" >
+		<id name="idAdmin" column="ID_ADMIN" />
+		<many-to-one name="administrador" column="ID_ADMIN" insert="false" update="false" />
+		<property name="habilitado" column="HABILITADO" />
+	<property name="empresa" column="EMPRESA" />
+		<property name="independiente" column="INDEPENDIENTE" />
+	</class>
+</hibernate-mapping>

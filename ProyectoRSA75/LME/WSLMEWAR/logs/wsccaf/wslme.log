@@ -1,0 +1,11 @@
+2018-09-07 16:49:54,251  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:139 - Endpoint:http://ARAPRCIPIP.laaraucana.local:50000/XISOAPAdapter/MessageServlet?senderParty=&senderService=WEB_Mobile&receiverParty=&receiverService=&interface=SI_ConsultaEmpresaAfiliadoOut&interfaceNamespace=http://lautaro.com/xi/CRM/WEB-Mobile
+2018-09-07 16:50:04,363  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:147 - Estado:1
+2018-09-07 17:11:34,564  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:159 - Empresa: 70016160, LA ARAUCANA C.C.A.F.
+2018-09-07 21:56:54,570  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:139 - Endpoint:http://ARAPRCIPIP.laaraucana.local:50000/XISOAPAdapter/MessageServlet?senderParty=&senderService=WEB_Mobile&receiverParty=&receiverService=&interface=SI_ConsultaEmpresaAfiliadoOut&interfaceNamespace=http://lautaro.com/xi/CRM/WEB-Mobile
+2018-09-07 21:57:02,831  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:147 - Estado:1
+2018-09-07 22:00:18,059  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:159 - Empresa: 70016160, LA ARAUCANA C.C.A.F.
+2018-09-10 20:09:10,547  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:159 - Endpoint:http://ARAPRCIPIP.laaraucana.local:50000/XISOAPAdapter/MessageServlet?senderParty=&senderService=WEB_Mobile&receiverParty=&receiverService=&interface=SI_ConsultaEmpresaAfiliadoOut&interfaceNamespace=http://lautaro.com/xi/CRM/WEB-Mobile
+2018-09-10 20:09:21,906  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:168 - Estado:1
+2018-09-10 20:10:39,349  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:180 - Empresa: 70016160, LA ARAUCANA C.C.A.F.
+2018-09-10 20:11:18,807  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:159 - Endpoint:http://ARAPRCIPIP.laaraucana.local:50000/XISOAPAdapter/MessageServlet?senderParty=&senderService=WEB_Mobile&receiverParty=&receiverService=&interface=SI_ConsultaEmpresaAfiliadoOut&interfaceNamespace=http://lautaro.com/xi/CRM/WEB-Mobile
+2018-09-10 20:11:42,472  INFO cl.araucana.wslme.integration.dao.impl.EmpleadorDaoImpl:168 - Estado:0

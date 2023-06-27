@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>PagoEnLineaBciWebModule</display-name>
+
+	<!-- Lista de URLs que tienen permitido el acceso a la accion NotificacionPago -->
+	<context-param>
+		<param-name>ACL_URLS_NOTIFICACION_BCI</param-name>
+		<param-value>127.0.0.1;146.83.1.125;146.83.1.244</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>ConfigureLog4j</servlet-name>
+		<servlet-class>com.bh.talon.servlets.ConfigureLog4j</servlet-class>
+		<init-param>
+			<param-name>props</param-name>
+			<param-value>/WEB-INF/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+	    <init-param>
+	      <param-name>debug</param-name>
+	      <param-value>3</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>detail</param-name>
+	      <param-value>3</param-value>
+	    </init-param>
+		<init-param>  
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml,/WEB-INF/struts-config-pago.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<security-constraint>
+		<display-name>
+		Restricciones Administracion</display-name>
+		<web-resource-collection>
+			<web-resource-name>/admin/</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>TRACE</http-method>
+			<http-method>POST</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>OPTIONS</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+			Admin</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.html</form-login-page>
+			<form-error-page>/loginErr.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description>
+		Administracion</description>
+		<role-name>admin</role-name>
+	</security-role>
+	<resource-ref id="ResourceRef_1205509197663">
+		<description>
+		</description>
+		<res-ref-name>jdbc/arapagolinea</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1396968973849">
+		<res-ref-name>jdbc/arapagolineacpe</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<listener>
+		<listener-class>cl.araucana.spl.listener.InicializarParametros</listener-class>
+	</listener><!--
+	<listener>
+		<listener-class>cl.araucana.spl.listener.InicializaJobs</listener-class>
+	</listener>
+--></web-app>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://services.cp.araucana.cl" xmlns:intf="http://services.cp.araucana.cl" xmlns:tns2="http://vo.services.cp.araucana.cl" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.cp.araucana.cl">
+ <wsdl:types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.cp.araucana.cl" xmlns:tns2="http://vo.services.cp.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.services.cp.araucana.cl"/>
+   <element name="creaIndependienteResponse">
+    <complexType>
+     <sequence>
+      <element name="creaIndependienteReturn" nillable="true" type="tns2:ErrorResultVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creaIndependiente">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:int"/>
+      <element name="dv" nillable="true" type="xsd:string"/>
+      <element name="apellidoPaterno" nillable="true" type="xsd:string"/>
+      <element name="apellidoMaterno" nillable="true" type="xsd:string"/>
+      <element name="nombres" nillable="true" type="xsd:string"/>
+      <element name="genero" type="xsd:int"/>
+      <element name="codigoActividadEconomica" type="xsd:int"/>
+      <element name="tipoDireccion" nillable="true" type="xsd:string"/>
+      <element name="direccion" nillable="true" type="xsd:string"/>
+      <element name="numero" nillable="true" type="xsd:string"/>
+      <element name="dpto" nillable="true" type="xsd:string"/>
+      <element name="idComuna" type="xsd:int"/>
+      <element name="email" nillable="true" type="xsd:string"/>
+      <element name="telefono" nillable="true" type="xsd:string"/>
+      <element name="fax" nillable="true" type="xsd:string"/>
+      <element name="celular" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://vo.services.cp.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ErrorResultVO">
+    <sequence>
+     <element name="codigo" type="xsd:int"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="creaIndependienteRequest">
+     <wsdl:part element="intf:creaIndependiente" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="creaIndependienteResponse">
+     <wsdl:part element="intf:creaIndependienteResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="InServiceInd">
+     <wsdl:operation name="creaIndependiente">
+       <wsdl:input message="intf:creaIndependienteRequest" name="creaIndependienteRequest"/>
+
+       <wsdl:output message="intf:creaIndependienteResponse" name="creaIndependienteResponse"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="InServiceIndSoapBinding" type="intf:InServiceInd">
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="creaIndependiente">
+       <wsdlsoap:operation soapAction="creaIndependiente"/>
+
+       <wsdl:input name="creaIndependienteRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="creaIndependienteResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="InServiceIndService">
+     <wsdl:port binding="intf:InServiceIndSoapBinding" name="InServiceInd">
+       <wsdlsoap:address location="https://localhost:9443/CotPrevIndependienteWeb/services/InServiceInd"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,10 @@
+#Wed Apr 18 14:41:52 GMT-04:00 2012
+eclipse.preferences.version=1
+encoding//WebContent/araucana/jsp/changePassword/changePassword.jsp=ISO-8859-1
+encoding//WebContent/araucana/jsp/changePassword/plantilla.jsp=ISO-8859-1
+encoding//src/cl/araucana/cp/presentation/struts/actions/InicioAction.java=ISO-8859-1
+encoding//src/cl/araucana/cp/presentation/struts/actions/ReceptorAction.java=ISO-8859-1
+encoding//src/cl/araucana/cp/presentation/struts/actions/RetornoSPLAction.java=ISO-8859-1
+encoding//src/cl/araucana/cp/presentation/struts/actions/Tiles.java=ISO-8859-1
+encoding//src/cl/araucana/cp/receipt/NominaChecker.java=ISO-8859-1
+encoding//src/cl/araucana/cp/utils/IPAddressesACL.java=ISO-8859-1

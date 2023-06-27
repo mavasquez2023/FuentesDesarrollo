@@ -1,0 +1,1351 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+
+<form-validation>
+
+<!--
+     This is a blank Validator form file with a commented examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+
+        <!-- An example form
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                    <arg0 key="logonForm.username"/>
+             </field>
+         <field
+            property="password"
+            depends="required,mask">
+            <arg0 key="logonForm.password"/>
+            <var>
+                <var-name>mask</var-name>
+                <var-value>^[0-9a-zA-Z]*$</var-value>
+            </var>
+         </field>
+        </form>
+        end example form -->
+        
+	   <form name="/opcionesProducto"> 
+	       <field property="descuento" depends="requiredIfExclusive,range">
+	       		<arg0 key="label.producto.descuento"/>
+                <arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+			    <var>
+			    	<var-name>field[0]</var-name>
+			    	<var-value>opcion</var-value>
+			    </var>
+			    <var>
+			    	<var-name>fieldTest[0]</var-name>
+			  	    <var-value>EQUAL</var-value>
+			    </var>
+			    <var>
+			    	<var-name>fieldValue[0]</var-name>
+				    <var-value>1</var-value>
+			    </var>
+			    <var>
+			    	<var-name>field[1]</var-name>
+			    	<var-value>opcion</var-value>
+			    </var>
+			    <var>
+			    	<var-name>fieldTest[1]</var-name>
+			  	    <var-value>EQUAL</var-value>
+			    </var>
+			    <var>
+			    	<var-name>fieldValue[1]</var-name>
+				    <var-value>2</var-value>
+			    </var>
+				<var>
+				  <var-name>fieldJoin</var-name>
+				  <var-value>OR</var-value>
+				</var>
+				<var>
+				  	<var-name>min</var-name>
+				   	<var-value>0</var-value>
+				</var>
+                <var>
+				  	<var-name>max</var-name>
+				   	<var-value>100</var-value>
+				</var>
+	       </field>
+	   </form>
+	   
+       <form name="/opcionesSocio">
+           <field property="fechaIngreso" depends="required,date">
+                <arg0 key="label.socio.fechaIngreso"/>
+	           	<var>
+		          	<var-name>datePatternStrict</var-name>
+        			<var-value>dd/MM/yyyy</var-value>
+	           	</var>
+           </field>
+       </form>
+       
+        <form name="/getListaCandidatos">
+            <field property="rut" depends="long">
+                    <arg0 key="label.candidato.rut"/>
+            </field>
+        </form>
+
+        <form name="/getListaSocios">
+            <field property="rut" depends="long">
+                    <arg0 key="label.socio.rut"/>
+            </field>
+        </form>
+        
+        <form name="/getListaCasos">
+            <field property="casoID" depends="long">
+                    <arg0 key="label.caso.id"/>
+            </field>
+            <field property="rutSocio" depends="long">
+                    <arg0 key="label.socio.rut"/>
+            </field>
+            <field property="monto" depends="long">
+                    <arg0 key="label.monto"/>
+            </field>
+        </form>
+       
+        <form name="/opcionesCobertura">
+            <field property="descripcion" depends="requiredIfExclusive">
+                    <arg0 key="label.cobertura.descripcion"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="valorTope" depends="requiredIfExclusive,float">
+                    <arg0 key="label.cobertura.valorTope"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="valorReferencial" depends="requiredIfExclusive,float">
+                    <arg0 key="label.cobertura.valorReferencial"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="periodoCarencia" depends="requiredIfExclusive,integer">
+                    <arg0 key="label.cobertura.periodoCarencia"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+        </form>
+        
+        <form name="/opcionesCaso">
+            <field property="fechaDeOcurrencia" depends="requiredIfExclusive,date,validaFechaMenor">
+                    <arg0 key="label.caso.fechaDeOcurrencia"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>3</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>                    
+                    <var>
+		                <var-name>datePatternStrict</var-name>
+        		        <var-value>dd/MM/yyyy</var-value>
+            		</var>
+            </field>
+            <field property="cuotasBienestar" depends="requiredIfExclusive,integer">
+                    <arg0 key="label.caso.cuotasBienestar"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>3</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>                    
+            </field>
+            <field property="cuotasConvenio" depends="requiredIfExclusive,integer">
+                    <arg0 key="label.caso.cuotasConvenio"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>3</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>                    
+            </field>
+        </form>
+        
+        <form name="/opcionesDetallesCaso">
+            <field property="valorPrestacion" depends="requiredIfExclusive,long">
+                    <arg0 key="label.detalle.valorPrestacion"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+   					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="descuento" depends="requiredIfExclusive,long">
+                    <arg0 key="label.detalle.descuento"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+   					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="aporteIsapre" depends="requiredIfExclusive,long,validaDetalle">
+                    <arg0 key="label.detalle.aporteIsapre"/>
+                    <arg0 key="label.detalle.descuento"/>
+                    <arg0 key="label.detalle.valorPrestacion"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+   					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+				    <var>
+						<var-name>valorPrestacion</var-name>
+						<var-value>valorPrestacion</var-value>
+					</var>
+					<var>
+						<var-name>descuento</var-name>
+						<var-value>descuento</var-value>
+					</var>
+            </field>
+            <field property="cobertura" depends="requiredIfExclusive,valida">
+                    <arg0 key="label.cobertura.codigo"/>
+				    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+				    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+   					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+   					<var>
+					  <var-name>parametro</var-name>
+					  <var-value>0</var-value>
+					</var>
+            </field>
+        </form>
+
+        <form name="/opcionesRangos">
+            <field property="inicioRango" depends="requiredIfExclusive,long">
+                    <arg0 key="label.rango.inicio"/>
+                    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="finRango" depends="requiredIfExclusive,long,validaRango">
+                    <arg0 key="label.rango.fin"/>
+                    <arg1 key="label.rango.inicio"/>
+                    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+						<var-name>rangoi</var-name>
+						<var-value>inicioRango</var-value>
+					</var>
+			</field>
+            <field property="porcentajeCobertura" depends="requiredIfExclusive,range">
+                    <arg0 key="label.rango.porcentajeCobertura"/>
+                    <arg1 name="range" key="${var:min}" resource="false"/>
+					<arg2 name="range" key="${var:max}" resource="false"/>
+                    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+                    <var>
+				    	<var-name>min</var-name>
+				    	<var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>max</var-name>
+				    	<var-value>100</var-value>
+				    </var>
+            </field>
+        </form>
+
+        <form name="/opcionesRangosProducto">
+            <field property="inicioRango" depends="requiredIfExclusive,long">
+                    <arg0 key="label.rango.inicio"/>
+                    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="finRango" depends="requiredIfExclusive,validaRango">
+                    <arg0 key="label.rango.fin"/>
+                    <arg1 key="label.rango.inicio"/>
+                    <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+						<var-name>rangoi</var-name>
+						<var-value>inicioRango</var-value>
+					</var>
+            </field>
+            <field property="porcentajeCobertura" depends="requiredIfExclusive,range">
+                    <arg0 key="label.rango.porcentajeCobertura"/>
+                    <arg1 name="range" key="${var:min}" resource="false"/>
+					<arg2 name="range" key="${var:max}" resource="false"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+                    <var>
+				    	<var-name>min</var-name>
+				    	<var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>max</var-name>
+				    	<var-value>100</var-value>
+				    </var>
+            </field>
+        </form>
+
+        <form name="/getListaConvenios">
+            <field property="codigo" depends="long">
+                    <arg0 key="label.convenio.codigo"/>
+            </field>
+        </form>
+        <form name="/getListaConveniosConcepto">
+            <field property="codigo" depends="long">
+                    <arg0 key="label.convenio.codigo"/>
+            </field>
+        </form>
+        <form name="/getListaConveniosCobertura">
+            <field property="codigo" depends="long">
+                    <arg0 key="label.convenio.codigo"/>
+            </field>
+        </form>
+        <form name="/getListaConveniosCaso">
+            <field property="codigo" depends="long">
+                    <arg0 key="label.convenio.codigo"/>
+            </field>
+        </form>
+
+        <form name="/opcionesConceptos">
+            <field property="descripcion" depends="requiredIfExclusive">
+                   <arg0 key="label.concepto.descripcion"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+        </form>
+        <form name="/administrarDatosProfesionales">
+            <field property="nombre" depends="requiredIfExclusive">
+                    <arg0 key="label.datos.profesionales.nombre"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="rut" depends="requiredIfExclusive,long,validaRUT">
+                    <arg0 key="label.datos.profesionales.rut"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+					  <var-name>dv</var-name>
+					  <var-value>dv</var-value>
+					</var>
+            </field>
+            <field property="dv" depends="requiredIfExclusive,mask">
+                    <arg0 key="label.datos.profesionales.dv"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+                    <var>
+		                <var-name>mask</var-name>
+        		        <var-value>^[0-9kK]$</var-value>
+            		</var>
+            </field>
+           <field property="monto" depends="requiredIfExclusive,validaIntMayor">
+                   <arg0 key="label.datos.profesionales.monto"/>
+                   <arg1 name="validaIntMayor" key="${var:parametro}" resource="false"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>2</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+					  <var-name>parametro</var-name>
+					  <var-value>0</var-value>
+					</var>           
+           </field>
+        </form>
+ 
+        <form name="/opcionesConvenio">
+            <field property="nombre" depends="requiredIfExclusive">
+                    <arg0 key="label.convenio.nombre"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>4</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+            <field property="rut" depends="requiredIfExclusive,long,validaRUT">
+                    <arg0 key="label.convenio.rut"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>4</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+					  <var-name>dv</var-name>
+					  <var-value>dv</var-value>
+					</var>
+            </field>
+            <field property="dv" depends="requiredIfExclusive,mask">
+                    <arg0 key="label.convenio.dv"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>4</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+                    <var>
+		                <var-name>mask</var-name>
+        		        <var-value>^[0-9kK]$</var-value>
+            		</var>
+            </field>
+            <field property="numCuotasExternas" depends="requiredIfExclusive,integer">
+                    <arg0 key="label.convenio.numCuotasExternas"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>4</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+            </field>
+        </form>
+        <form name="/opcionesTalonario">
+           <field property="inicioSecuencia" depends="requiredIfExclusive,validaIntMayor">
+                   <arg0 key="label.talonario.inicioSecuencia"/>
+                   <arg1 name="validaIntMayor" key="${var:parametro}" resource="false"/>
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>3</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>
+					<var>
+					  <var-name>parametro</var-name>
+					  <var-value>0</var-value>
+					</var>           
+           </field>
+           <field property="finSecuencia" depends="requiredIfExclusive,validaIntMayor,validaTalonario">
+                   <arg0 key="label.talonario.finSecuencia"/>
+                   <arg1 name="validaTalonario" key="label.talonario.inicioSecuencia"/>
+                   <arg1 name="validaIntMayor" key="${var:parametro}" resource="false"/>              
+                   
+                   <var>
+				    	<var-name>field[0]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[0]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[0]</var-name>
+					    <var-value>1</var-value>
+				    </var>
+                    <var>
+				    	<var-name>field[1]</var-name>
+				    	<var-value>opcion</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldTest[1]</var-name>
+				  	    <var-value>EQUAL</var-value>
+				    </var>
+				    <var>
+				    	<var-name>fieldValue[1]</var-name>
+					    <var-value>3</var-value>
+				    </var>
+					<var>
+					  <var-name>fieldJoin</var-name>
+					  <var-value>OR</var-value>
+					</var>           
+					<var>
+					  <var-name>parametro</var-name>
+					  <var-value>0</var-value>
+					</var>           
+					<var>
+					  <var-name>inicioSecuencia</var-name>
+					  <var-value>inicioSecuencia</var-value>
+					</var>           
+			</field>
+       </form>       
+        <form name="/getTalonariosDisponibles">
+           <field property="codigoConvenio" depends="long">
+                   <arg0 key="label.convenio.codigo"/>
+           </field>
+           <field property="codigoTalonario" depends="long">
+                   <arg0 key="label.talonario.codigo"/>
+           </field>
+       </form>       
+
+       <form name="/getListaConvenios">
+           <field property="codigo" depends="long">
+                   <arg0 key="label.convenio.codigo"/>
+           </field>
+           <field property="rut" depends="long">
+                   <arg0 key="label.convenio.rut"/>
+           </field>
+       </form>       
+
+       <form name="/getListaConveniosConcepto">
+           <field property="codigo" depends="long">
+                   <arg0 key="label.convenio.codigo"/>
+           </field>
+           <field property="rut" depends="long">
+                   <arg0 key="label.convenio.rut"/>
+           </field>
+       </form>       
+
+       <form name="/getListaConveniosCaso">
+           <field property="codigo" depends="long">
+                   <arg0 key="label.convenio.codigo"/>
+           </field>
+           <field property="rut" depends="long">
+                   <arg0 key="label.convenio.rut"/>
+           </field>
+       </form>       
+
+       <form name="/getListaConveniosCobertura">
+           <field property="codigo" depends="long">
+                   <arg0 key="label.convenio.codigo"/>
+           </field>
+           <field property="rut" depends="long">
+                   <arg0 key="label.convenio.rut"/>
+           </field>
+       </form>       
+
+	   <form name="/getListaTalonarios">
+	       <field property="inicioSecuencia" depends="long">
+	               <arg0 key="label.talonario.inicioSecuencia"/>
+	       </field>
+	       <field property="finSecuencia" depends="long">
+	               <arg0 key="label.talonario.finSecuencia"/>
+	       </field>
+	    </form>
+	           
+	   <form name="/getListaCoberturas">
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.cobertura.codigo"/>
+	       </field>
+	    </form>
+
+	   <form name="/getListaCoberturasConvenio">
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.cobertura.codigo"/>
+	       </field>
+	    </form>
+
+	   <form name="/getListaCoberturasLookUp">
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.cobertura.codigo"/>
+	       </field>
+	   </form>
+	   
+	   <form name="/getListaCoberturasCaso">
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.cobertura.codigo"/>
+	       </field>
+	   </form>
+
+	   <form name="/getListaCoberturasConcepto">
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.cobertura.codigo"/>
+	       </field>
+	   </form>
+	   <form name="/registraEvento">
+	       <field property="comentario" depends="required">
+	               <arg0 key="label.evento.anotacion"/>
+	       </field>
+	   </form>
+
+	   <form name="/getMovimientosConvenio"> 
+	       <field property="codigo" depends="long">
+	               <arg0 key="label.producto.codigo"/>
+	       </field>
+	   </form>
+
+	   <form name="/calculaImpuesto"> 
+	       <field property="creditoGirado" depends="required,integer">
+	               <arg0 key="label.impuesto.creditoGirado"/>
+	       </field>
+	       <field property="numeroCuotas" depends="required,integer">
+	               <arg0 key="label.impuesto.numCuotas"/>
+	       </field>
+	   </form>
+
+	<form name="/getResumenMovimientoBeneficiario">
+		<field property="fechaInicio" depends="validaPeriodo">
+			<arg0 key="label.common.fechaInicial"/>
+			<arg1 key="label.common.fechaFinal"/>
+			<var>
+				<var-name>fechaFinal</var-name>
+				<var-value>fechaFin</var-value>
+			</var>
+		</field>
+	</form>
+
+	<form name="/getMovimientosConvenio">
+		<field property="fechaInicio" depends="validaPeriodo">
+			<arg0 key="label.common.fechaInicial"/>
+			<arg1 key="label.common.fechaFinal"/>
+			<var>
+				<var-name>fechaFinal</var-name>
+				<var-value>fechaFin</var-value>
+			</var>
+		</field>
+	</form>
+
+	<form name="/getListaAportesBienestar">
+		<field property="fechaInicio" depends="validaPeriodo">
+			<arg0 key="label.common.fechaInicial"/>
+			<arg1 key="label.common.fechaFinal"/>
+			<var>
+				<var-name>fechaFinal</var-name>
+				<var-value>fechaFin</var-value>
+			</var>
+		</field>
+	</form>
+
+	<form name="/opcionesRangos">
+		<field property="fechaInicioVig" depends="validaPeriodoPosibleFechaFinalNula">
+			<arg0 key="label.common.fechaInicioVig"/>
+			<arg1 key="label.common.fechaFinVig"/>
+			<var>
+				<var-name>fechaFinal</var-name>
+				<var-value>fechaFinVig</var-value>
+			</var>
+		</field>
+	</form>
+
+	<form name="/opcionesRangoFuturo">
+		<field property="fechaInicioVig" depends="validaPeriodoPosibleFechaFinalNula">
+			<arg0 key="label.common.fechaInicioVig"/>
+			<arg1 key="label.common.fechaFinVig"/>
+			<var>
+				<var-name>fechaFinal</var-name>
+				<var-value>fechaFinVig</var-value>
+			</var>
+		</field>
+	</form>
+	
+	<form name="/registrarProfesional">
+		<field property="rut" depends="required,long,validaRUT">
+			<arg0 key="label.rut"/>
+			<arg1 key="label.dv"/>
+			<var>
+			  <var-name>dv</var-name>
+			  <var-value>dv</var-value>
+			</var>			
+		</field>
+        <field property="dv" depends="required,mask">
+                <arg0 key="label.dv"/>
+                <var>
+	                <var-name>mask</var-name>
+    		        <var-value>^[0-9kK]$</var-value>
+        		</var>
+        </field> 		
+		<field property="nombre" depends="requiredIfExclusive">
+			<arg0 key="label.socio.nombre"/>
+		</field>	
+	</form>
+
+   <form name="/setearDetalleSeleccionado"> 
+       <field property="monto" depends="requiredIfExclusive, integer, validaIntMayor">
+           <arg0 key="label.precaso.detalle.caso.monto"/>
+           <arg1 name="validaIntMayor" key="${var:parametro}" resource="false"/>
+            <var>
+		    	<var-name>field[0]</var-name>
+		    	<var-value>opcion</var-value>
+		    </var>
+		    <var>
+		    	<var-name>fieldTest[0]</var-name>
+		  	    <var-value>EQUAL</var-value>
+		    </var>
+		    <var>
+		    	<var-name>fieldValue[0]</var-name>
+			    <var-value>1</var-value>
+		    </var>
+			<var>
+			  <var-name>parametro</var-name>
+			  <var-value>0</var-value>
+			</var>              
+       </field>
+       <field property="indice" depends="requiredIfExclusive,integer">
+            <arg0 key="label.precaso.detalle.caso.seleccion"/>
+            <var>
+		    	<var-name>field[0]</var-name>
+		    	<var-value>opcion</var-value>
+		    </var>
+		    <var>
+		    	<var-name>fieldTest[0]</var-name>
+		  	    <var-value>EQUAL</var-value>
+		    </var>
+		    <var>
+		    	<var-name>fieldValue[0]</var-name>
+			    <var-value>1</var-value>
+		    </var>
+       </field>
+   </form>		
+
+    </formset>
+    <!-- An example formset for another locale
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+
+   </formset>
+   -->
+
+</form-validation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.DescriptorNominaVO" table="DESCRIPTOR">
+    	<composite-id>
+        	<key-property name="idConvenio">
+        		<column name="CONVENIO" not-null="true" />
+        	</key-property>
+        	<key-property name="idEnvio">
+        		<column name="ID_ENVIO" not-null="true" />
+        	</key-property>
+        	<key-property name="tipoProceso">
+        		<column name="TIPO_NOMINA" not-null="true" />
+        	</key-property>
+        	<key-property name="rutEmpresa">
+        		<column name="EMPRESA" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="idRechazo" column="ID_RECHAZO" />
+   		<property name="idGrupoConvenio" column="GRUPO_CONVENIO" />
+   		<property name="normalSize" column="NORMAL_SIZE" />
+   		<property name="comprimidoSize" column="COMPRIMIDO_SIZE" />
+   		<property name="numRegistros" column="NUMREGISTROS" />
+    </class>
+</hibernate-mapping>

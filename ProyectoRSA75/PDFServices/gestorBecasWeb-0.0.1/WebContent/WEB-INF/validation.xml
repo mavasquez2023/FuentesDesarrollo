@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+    <global>
+        <constant>
+            <constant-name>dateFormat</constant-name>
+            <constant-value>dd/MM/yyyy</constant-value>
+        </constant>
+    </global>
+    
+    <formset>
+
+		<form name="/solicitudBecasIncentivos/BusquedaPersona"> 
+			<field property="rutTitular" depends="required, rut">
+				<arg0 key="label.rutTitular"/>
+			</field>
+			<field property="segmento" depends="required">
+				<arg0 key="label.segmentoPostular"/>
+			</field>
+		</form>
+
+		<form name="/solicitudBecasIncentivos/ResultadoPersona"> 
+			<field property="index" depends="requiredif">
+				<arg0 key="label.seleccioneBeneficiario"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+			<field property="nivelEducacional" depends="requiredif">
+				<arg0 key="label.nivelEducacional"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+			<field property="curso" depends="requiredif">
+				<arg0 key="label.curso"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+			<field property="tipoCalificacion" depends="requiredif">
+				<arg0 key="label.tipoCalificacion"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+			
+		</form>
+
+		<form name="/solicitudBecasIncentivos/ResultadoBeneficios"> 
+			<field property="indice" depends="required">
+				<arg0 key="label.beneficiosPostular"/>
+			</field>
+		</form>
+		<form name="/consultaBecasIncentivos/BusquedaPersona"> 
+			<field property="rutTitular" depends="required, rut">
+				<arg0 key="label.rutTitular"/>
+			</field>
+		</form>
+
+		<form name="/informes/buscarbecasByFecha"> 
+			<field property="fechaDesde" depends="required">
+				<arg0 key="label.informe.becasByFecha.fechaDesde"/>
+			</field>
+			<field property="fechaHasta" depends="required">
+				<arg0 key="label.informe.becasByFecha.fechaHasta"/>
+			</field>
+			<field property="opcBeca" depends="requiredif, float">
+				<arg0 key="label.informe.becasByFecha.beca"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+			<field property="opcOficina" depends="requiredif, float">
+				<arg0 key="label.informe.becasByFecha.oficina"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+		</form>
+		<form name="/adminBecasIncentivos/BusquedaPersonaEliminaBeca">
+			<field property="rutTitular" depends="required, rut">
+				<arg0 key="label.rutTitular"/>
+			</field>
+		</form>
+		<form name="/adminBecasIncentivos/EliminaBeneficiario"> 
+			<field property="texto" depends="required">
+				<arg0 key="label.texto"/>
+			</field>
+		</form>
+		
+		<form name="/adminBecasIncentivos/configuracionBecasIncentivos"> 
+			<field property="nombreBeca" depends="required">
+				<arg0 key="label.administracion.config.beca.nombreBeca"/>
+			</field>
+		</form>
+		
+		<form name="/adminBecasIncentivos/guardaTipoPremioDocReque"> 
+			<field property="nombre" depends="required">
+				<arg0 key="label.administracion.tipoPremioDocReque.tipoPremio.descripcion"/>
+			</field>
+		</form>
+		<form name="/entregaIncentivos/BusquedaPersona"> 
+			<field property="rutTitular" depends="required, rut">
+				<arg0 key="label.rutTitular"/>
+			</field>
+		</form>
+		<form name="/cargaResultado/buscaCargaResultado"> 
+			<field property="opcBeca" depends="requiredif, float">
+				<arg0 key="label.administracion.carga.resultado.beca"/>
+				<var>
+					<var-name>field[0]</var-name>
+					<var-value>_flagValidar</var-value>
+				</var>
+				<var>
+					<var-name>fieldTest[0]</var-name>
+					<var-value>EQUAL</var-value>
+				</var>
+				<var>
+					<var-name>fieldValue[0]</var-name>
+					<var-value>true</var-value>
+				</var>							
+			</field>
+		</form>
+		
+		
+		
+					
+	</formset>		
+
+</form-validation>

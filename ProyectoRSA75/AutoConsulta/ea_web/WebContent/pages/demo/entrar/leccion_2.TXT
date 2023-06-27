@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Dirección Web</b><br>Ingrese a la pagina Web <b>extranet.araucana.cl:9080/ea/</b> (escriba con minuscula) y luego presione la tecla <b>ENTER</b> o haga un clik en el boton <b>"Ir"</b> para acceder al sitio.</div>

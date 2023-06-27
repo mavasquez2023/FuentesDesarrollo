@@ -1,0 +1,15 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<table width="100%">
+	<tr>
+		<td class="contextUser" align="left">
+			Bienvenido ${usuario.nombre}
+			&nbsp;
+			(${usuario.identificador})
+			&nbsp;-&nbsp;
+			${usuario.rolAsociado}
+			<c:if test="${usuario.root==true}" >
+				Global
+			</c:if>
+		</td>
+	</tr>
+</table>

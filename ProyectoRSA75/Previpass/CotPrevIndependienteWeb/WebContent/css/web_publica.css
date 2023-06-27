@@ -1,0 +1,64 @@
+body 
+{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-repeat: no-repeat;
+	background-color: #FFFFFF;
+}
+.titulos_tabla 
+{
+	font-size: 11px;
+	color: #FF8A00;
+	font-variant: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.boton_login 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 60px;
+	border: 0;
+	height: 16px;
+	background-image: url(../img/bg_btn1.jpg);
+	background-repeat: no-repeat;
+}
+.titulo_login 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FF8A00;
+	font-variant: normal;
+}
+.btn_caja 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #666666;
+	font-weight: bold;
+
+}
+.textospie 
+{
+
+	color: #666666;
+	font: normal 9px Verdana, Arial, Helvetica, sans-serif;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.mensaje_login 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: bold;
+	color: #FF8A00;
+	font-variant: normal;
+}

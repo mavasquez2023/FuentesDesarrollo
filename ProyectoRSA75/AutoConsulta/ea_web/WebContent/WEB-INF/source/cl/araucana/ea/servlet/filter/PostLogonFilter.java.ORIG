@@ -1,0 +1,186 @@
+package cl.araucana.ea.servlet.filter;
+
+import java.io.IOException;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Properties;
+import java.util.TreeSet;
+
+import javax.naming.InitialContext;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import cl.araucana.common.Profile;
+import cl.araucana.common.Registry;
+import cl.araucana.common.RegistryFactory;
+import cl.araucana.common.Rut;
+import cl.araucana.common.UserProfile;
+import cl.araucana.ea.credito.dto.OpcionTO;
+import cl.araucana.ea.ctacte.dto.EmpresaTO;
+import cl.araucana.ea.ctacte.dto.RutTO;
+
+/**
+ * @version 	1.0
+ * @author
+ */
+public class PostLogonFilter implements Filter {
+	/**
+	* @see java.lang.Object#Object ()
+	*/
+	public PostLogonFilter() {
+		super();
+	}
+
+	/**
+	* @see javax.servlet.Filter#void ()
+	*/
+	public void destroy() {
+
+	}
+
+	/**
+	* @see javax.servlet.Filter#void (javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
+	*/
+	public void doFilter(
+		ServletRequest req,
+		ServletResponse resp,
+		FilterChain chain)
+		throws ServletException, IOException {
+
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpSession session = request.getSession();
+
+		// execute chained servlet.		
+		chain.doFilter(req, resp);
+
+		/*
+		 *		Create a profile for the user
+		 * 			1. get user id
+		 * 			2. create new instance of profile
+		 * 			3. set attributes
+		 * 			4. add profile to session
+		 */
+
+		if (request.getUserPrincipal() != null) {
+			String userId = request.getParameter("j_username");
+			if (request.isUserInRole("Ejecutivo")){
+				session.setAttribute("rol","Ejecutivo");
+			}
+
+			Profile profile = new UserProfile(userId);
+			try {
+				InitialContext initCtx = new InitialContext();
+				Properties props = (Properties) initCtx.lookup("INIT_CONFIG");
+				if (props.containsKey("REGISTRY_TYPE")) {
+					String registryType =
+						(String) props.getProperty("REGISTRY_TYPE");
+					Registry registry =
+						RegistryFactory.singleton().newInstance(registryType);
+					profile =
+						createProfile(
+							userId,
+							(String) registry.get(userId, "NOMBRE_COMPLETO"),
+							(Collection) registry.get(userId, "EMPRESAS"));
+					session.setAttribute(
+						"opciones",
+						profile.getAttribute("opcionesEmpresa"));
+					session.setAttribute("ea_user_profile", profile);
+				} else {
+					// InvalidInitialConfigurationException();
+					profile.setStatus(Profile.INVALID_STATUS);
+				}
+			} catch (Exception e) {
+				e.printStackTrace(System.out);
+				profile.setStatus(Profile.INVALID_STATUS);
+			}
+
+			String ctacteDelegateImpl = request.getSession()
+										  	   .getServletContext()
+										  	   .getInitParameter("CTACTA_DELEGATE_IMPL");
+			String creditoDelegateImpl = request.getSession()
+											   .getServletContext()
+											   .getInitParameter("CREDITO_DELEGATE_IMPL");
+			try {
+				cl.araucana.ea.ctacte.delegate.BusinessDelegate ctacteDelegate = 
+					(cl.araucana.ea.ctacte.delegate.BusinessDelegate)
+						cl.araucana.ea.ctacte.delegate.BusinessDelegateFactory
+						.singlton()
+						.newInstance(ctacteDelegateImpl);
+
+				cl.araucana.ea.credito.delegate.BusinessDelegate creditoDelegate = 
+					(cl.araucana.ea.credito.delegate.BusinessDelegate)
+						cl.araucana.ea.credito.delegate.BusinessDelegateFactory
+						.singlton()
+						.newInstance(creditoDelegateImpl);
+			} catch (Exception e) {
+				// serviceUnavailableException()
+			}
+					
+			// set user Locale as "es" forcing the numeric values are represented by Spanish format.
+			 
+			// The decimal format symboles defined in sun.text.resources.LocalElements_es_xx.java 
+			// has erroneous pattern definition.
+			// Locale can be set at request scope in Action class using
+			// setLocale(request, new java.util.Locale("es"));
+			session.setAttribute(org.apache.struts.Globals.LOCALE_KEY, 
+								 new java.util.Locale("es"));
+		}
+	}
+
+	/**
+	* Method init.
+	* @param config
+	* @throws javax.servlet.ServletException
+	*/
+	public void init(FilterConfig config) throws ServletException {
+
+	}
+
+	private Profile createProfile(String id, String nombreCompleto,
+			Collection c) throws Exception {
+
+		Profile profile = new UserProfile(id);
+		
+		EmpresaTO empresa = null;
+		Collection empresas = new ArrayList();
+		TreeSet opcionesEmpresa = new TreeSet();
+
+		Iterator it = c.iterator();
+		while (it.hasNext()) {
+			String[] elem = (String[]) it.next();
+			Rut rut = new Rut(elem[0]);
+			empresa =
+				new EmpresaTO(new RutTO(rut.getId(), rut.getDv()), elem[1]);
+			empresas.add(empresa);
+			opcionesEmpresa.add(
+				new OpcionTO(
+					new Long(rut.getId()).toString(),
+					rut.getFormattedRut() + "-" + 
+					rut.getDv() + ": " + 
+					elem[1]));
+		}
+		
+		profile.setAttribute("nombreCompleto", nombreCompleto);
+		
+		if (empresas.size() > 0) {
+			profile.setAttribute(
+					"empresa",
+					new Long(((OpcionTO) opcionesEmpresa.first()).getIdValue()));
+		}
+				
+		profile.setAttribute("empresas", empresas);
+		profile.setAttribute("opcionesEmpresa", opcionesEmpresa);
+		profile.setStatus(Profile.VALID_STATUS);
+		
+		return profile;
+	}
+}

@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<!-- Definitions for Tiles documentation   -->
+<tiles-definitions>
+
+
+	<!--       ******* layout definitions *******          -->
+
+	<!-- ========================================================== -->
+	<!-- Content layout definition                                  -->
+	<!-- ========================================================== -->
+	<definition name="master.contentLayout" path="/WEB-INF/tiles/layouts/contentLayout.jsp">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="header" value="/WEB-INF/tiles/common/header.jsp" />
+		<put name="body" value="/WEB-INF/tiles/common/body.jsp" />
+		<put name="footer" value="/WEB-INF/tiles/common/footer.jsp" />
+	</definition>
+
+
+	<!-- ========================================================== -->
+	<!-- Classic layout definition                                  -->
+	<!-- ========================================================== -->
+	<definition name="master.classicLayout" path="/WEB-INF/tiles/layouts/classicLayout.jsp">
+		<put name="title" value="classic layout" />
+		<put name="header" value="/WEB-INF/tiles/common/header.jsp" />
+		<put name="menu" value="/WEB-INF/tiles/common/menu.bar" />
+		<put name="body" value="/WEB-INF/tiles/body.jsp" />
+		<put name="footer" value="/WEB-INF/tiles/common/footer.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!-- Center layout definition                                  -->
+	<!-- ========================================================== -->
+	<definition name="master.centerLayout" path="/WEB-INF/tiles/layouts/centerLayout.jsp">
+		<put name="title" value="center layout" />
+		<put name="header" value="/WEB-INF/tiles/common/header.jsp" />
+		<put name="left" value="/WEB-INF/tiles/common/menu.jsp" />
+		<put name="body" value="/WEB-INF/tiles/body.jsp" />
+		<put name="right" value="/WEB-INF/tiles/common/menu.jsp" />
+		<put name="footer" value="/WEB-INF/tiles/common/footer.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!-- Body definition                                            -->
+	<!-- ========================================================== -->
+
+	<definition name="master.body" path="/WEB-INF/tiles/layouts/bodyLayout.jsp">
+		<put name="empresa.body" value="/WEB-INF/tiles/common/empresaBody.jsp" />
+		<put name="banner.body" value="/WEB-INF/tiles/common/bannerBody.jsp" />
+		<put name="filter.body" value="/WEB-INF/tiles/common/fil
+		terBody.jsp" />
+		<put name="detailTable.body" value="/WEB-INF/tiles/common/detailTableBody.jsp" />
+	</definition>
+
+	<definition name="master.resumen.body" path="/WEB-INF/tiles/layouts/resumenBodyLayout.jsp">
+		<put name="empresa.body" value="/WEB-INF/tiles/common/empresaBody.jsp" />
+		<put name="banner.body" value="/WEB-INF/tiles/common/bannerBody.jsp" />
+		<put name="filter.body" value="/WEB-INF/tiles/common/filterBody.jsp" />
+		<put name="resumen.body" value="/WEB-INF/tiles/common/resumenBody.jsp" />
+		<put name="detailTable.body" value="/WEB-INF/tiles/common/detailTableBody.jsp" />
+	</definition>
+
+
+
+
+	<!-- ========================================================== -->
+	<!--        Root	                                -->
+	<!-- ========================================================== -->
+	<definition name="index.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/navLeftHome.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/index.jsp" />	
+	</definition>
+
+	<definition name="logon.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/navLeftLogon.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/logon.jsp" />
+	</definition>
+
+	<definition name="logonError.page" extends="master.centerLayout">
+		<put name="left" value="/WEB-INF/tiles/common/navLeftLogon.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/logonError.jsp" />
+	</definition>	
+
+	<!-- ========================================================== -->
+	<!--                        errors	                            -->
+	<!-- ========================================================== -->
+	<definition name="error.authenticationFailed.page" path="/WEB-INF/tiles/pages/error/authenticationFailed.jsp" />
+	<definition name="error.invalidSessionStatus.page" path="/WEB-INF/tiles/pages/error/invalidSessionStatus.jsp" />
+	<definition name="error.unauthorizedAccess.page" path="/WEB-INF/tiles/pages/error/unauthorizedAccess.jsp" />
+	<definition name="error.invalidProfile.page" path="/WEB-INF/tiles/pages/error/invalidProfile.jsp" />
+	<definition name="error.serviceUnavailable.page" path="/WEB-INF/tiles/pages/error/serviceUnavailable.jsp" />
+	<definition name="error.duplicateFormSubmission.page" path="/WEB-INF/tiles/pages/error/duplicateFormSubmission.jsp" />
+	<definition name="error.servletException.page" path="/WEB-INF/tiles/pages/error/servletException.jsp" />
+	<definition name="error.404.page" path="/WEB-INF/tiles/pages/error/404.jsp" />
+
+	<!-- ========================================================== -->
+	<!--        servicios.page	                                -->
+	<!-- ========================================================== -->
+	<definition name="index.service.page" extends="master.contentLayout">
+		<put name="body" value="/WEB-INF/tiles/pages/service/body.jsp" />	
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        seleccionEmpresa.page	                                -->
+	<!-- ========================================================== -->
+	<definition name="seleccionEmpresa.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftEmpresa.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/seleccionEmpresa.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        capturaEmpresa.page	                                -->
+	<!-- ========================================================== -->
+	<definition name="capturaEmpresa.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="body" value="/WEB-INF/tiles/pages/capturaEmpresa.jsp" />
+	</definition>
+
+	<!-- Preguntas Frecuentes -->
+	<definition name="faq.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/faq/body.jsp" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel1/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--        uc.general.page	                                -->
+	<!-- ========================================================== -->
+	<definition name="uc.general.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/navLeft1.jsp" />
+		<put name="body" value="/WEB-INF/tiles/pages/uc.jsp" />	
+	</definition>
+
+
+	<!-- ========================================================== -->
+	<!--        cuenta corriente	                                -->
+	<!-- ========================================================== -->
+
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--             Nivel 1                                        -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorrienteN1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="cuentaCorrienteN1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorrienteN1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--             Nivel 2                                        -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorrienteN2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="cuentaCorrienteN2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorrienteN2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--             Movimiento                                     -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorrienteN3.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/movimiento/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/movimiento/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/movimiento/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="cuentaCorrienteN3.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorrienteN3.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/movimiento/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--        	Nivel 4                                         -->
+	<!--            	402 - Nivel 1                               -->
+	<!-- ========================================================== -->
+	<definition name="ctaCte.402.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte.402.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="ctaCte.402.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--        	Nivel 4                                         -->
+	<!--            	402 - Nivel 2                               -->
+	<!-- ========================================================== -->
+	<definition name="ctaCte.402.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte.402.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="ctaCte.402.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/402/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--             Nivel 4 - 704                                  -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorriente704.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/704/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/704/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/704/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte704.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorriente704.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/704/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--        	Nivel 4                                         -->
+	<!--            	720 - Nivel 1, 2                               -->
+	<!-- ========================================================== -->
+	<definition name="ctaCte.720.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte.720.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="ctaCte.720.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<definition name="ctaCte.720.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte.720.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="ctaCte.720.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/720/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--             Nivel 4 - under construction                   -->
+	<!-- ========================================================== -->
+	<definition name="ctaCte.uc.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/uc/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/uc/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/uc/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="ctaCte.uc.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="ctaCte.uc.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/uc/rightMenuBar.jsp" />
+	</definition>	
+	
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--    		planilla cotizaciones Nivel 1 					-->
+	<!-- ========================================================== -->
+
+	<definition name="declaracionCotizacionSinPagoN1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="declaracionCotizacionSinPagoN1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="declaracionCotizacionSinPagoN1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--			Dplanilla cotizaciones Nivel 2 					-->
+	<!-- ========================================================== -->
+
+	<definition name="declaracionCotizacionSinPagoN2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="declaracionCotizacionSinPagoN2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="declaracionCotizacionSinPagoN2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/planillaCotizacion/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--            Morosidad Crédito - Nivel 1                     -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorriente.morosidadCredito.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="cuentaCorriente.morosidadCredito.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorriente.morosidadCredito.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--        Cuenta Corriente                                    -->
+	<!--            Morosidad Crédito - Nivel 2                     -->
+	<!-- ========================================================== -->
+	<definition name="cuentaCorriente.morosidadCredito.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="cuentaCorriente.morosidadCredito.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="cuentaCorriente.morosidadCredito.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/cuentaCorriente/morosidadCredito/nivel2/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 1                                             -->
+	<!-- ========================================================== -->
+
+	<definition name="liquidacionN1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacionN1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacionN1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 2                                             -->
+	<!-- ========================================================== -->
+
+	<definition name="liquidacionN2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/liquidacion/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacionN2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F.s" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacionN2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 2                                             -->
+	<!--            Abonos a saldo adeudado                         -->
+	<!-- ========================================================== -->
+	<definition name="body.abonosASaldoAdeudado.nivel2.liquidacion" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonosASaldoAdeudado/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonosASaldoAdeudado/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonosASaldoAdeudado/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="abonosASaldoAdeudado.nivel2.liquidacion" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="body.abonosASaldoAdeudado.nivel2.liquidacion" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonosASaldoAdeudado/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 2                                             -->
+	<!--            Pagos saldo a favor empresa                     -->
+	<!-- ========================================================== -->
+	<definition name="body.pagosSaldoAFavorEmpresa.nivel2.liquidacion" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/pagosSaldoAFavorEmpresa/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/pagosSaldoAFavorEmpresa/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/pagosSaldoAFavorEmpresa/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="pagosSaldoAFavorEmpresa.nivel2.liquidacion" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="body.pagosSaldoAFavorEmpresa.nivel2.liquidacion" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/pagosSaldoAFavorEmpresa/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 2                                             -->
+	<!--            Saldo favor por cotizacion                      -->
+	<!-- ========================================================== -->
+	<definition name="body.saldoFavorPorCotizacion.nivel2.liquidacion" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/saldoFavorPorCotizacion/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/saldoFavorPorCotizacion/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/saldoFavorPorCotizacion/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="saldoFavorPorCotizacion.nivel2.liquidacion" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="body.saldoFavorPorCotizacion.nivel2.liquidacion" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/saldoFavorPorCotizacion/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Nivel 2                                             -->
+	<!--            Abono a morosidad credito                       -->
+	<!-- ========================================================== -->
+	<definition name="body.abonoAMorosidadCredito.nivel2.liquidacion" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonoAMorosidadCredito/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonoAMorosidadCredito/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonoAMorosidadCredito/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="abonoAMorosidadCredito.nivel2.liquidacion.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="body.abonoAMorosidadCredito.nivel2.liquidacion" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/nivel2/abonoAMorosidadCredito/rightMenuBar.jsp" />
+	</definition>
+
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Default                                                -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.default.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/default/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/default/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/default/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.default.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.default.nivel2.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/default/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Default                                             -->
+	<!--            Nivel 3 (under construction)                    -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.uc.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/uc/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/uc/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/uc/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.uc.page" extends="master.centerLayout">
+		<put name="title" value="Liquidación Cuenta Corriente" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.uc.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/uc/rightMenuBar.jsp" />
+	</definition>	
+		
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        402                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.402.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.402.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.402.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        402                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.402.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.402.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.402.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel2/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        402                                                 -->
+	<!--            Nivel 3                                             -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.402.nivel3.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel3/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel3/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel3/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.402.nivel3.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.402.nivel3.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/402/nivel3/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        455                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.455.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/455/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/455/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/455/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.455.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.455.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/455/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        680                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.680.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/680/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/680/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/680/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.680.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.680.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/680/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        680                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.680.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/680/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/680/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/680/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.680.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.680.nivel2.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/680/nivel2/rightMenuBar.jsp" />
+	</definition>
+						
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        704                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.704.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/704/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/704/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/704/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.704.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.704.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/704/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        704                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.704.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/704/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/704/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/704/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.704.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.704.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/704/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        706                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="nivel1.706.liquidacion.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="nivel1.706.liquidacion.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="nivel1.706.liquidacion.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel1/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        706                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="nivel2.706.liquidacion.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="nivel2.706.liquidacion.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="nivel2.706.liquidacion.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/706/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        707                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.707.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/707/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/707/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/707/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.707.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.707.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/707/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        658                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.658.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/658/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/658/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/658/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.658.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.658.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/658/nivel1/rightMenuBar.jsp" />
+	</definition>
+	
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        712                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.712.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/jsp/consulta/liquidacion/712/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/liquidacion/712/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/liquidacion/712/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.712.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="Liquidacion Cuenta Corriente Mensual" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.712.nivel1.body" />
+		<put name="right" value="/jsp/consulta/liquidacion/712/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        712                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.712.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/712/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/712/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/712/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.712.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.712.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/712/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        720                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.720.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.720.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.720.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        751                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.751.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.751.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.751.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        751                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.751.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.751.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.751.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/751/nivel2/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        720                                                 -->
+	<!--            Nivel 1                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.720.nivel1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.720.nivel1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.720.nivel1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel1/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        720                                                 -->
+	<!--            Nivel 2                                         -->
+	<!-- ========================================================== -->
+	<definition name="liquidacion.720.nivel2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.720.nivel2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.720.nivel2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/720/nivel2/rightMenuBar.jsp" />
+	</definition>
+		
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Documento de Pago                                   -->
+	<!-- ========================================================== -->
+
+	<definition name="documentoPago.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/documentoPago/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/documentoPago/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/documentoPago/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="documentoPago.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="documentoPago.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/documentoPago/rightMenuBar.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!--    Liquidación Cuenta Corriente Mensual                    -->
+	<!--        Gravámenes                                          -->
+	<!-- ========================================================== -->
+
+	<definition name="liquidacion.gravamenes.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/gravamenes/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/gravamenes/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/gravamenes/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="liquidacion.gravamenes.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="liquidacion.gravamenes.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/liquidacionCuentaCorriente/gravamenes/rightMenuBar.jsp" />
+	</definition>
+
+
+
+	<!--            ************ Credito ****************           -->
+
+	<!-- ========================================================== -->
+	<!--    Consulta Crédito                                        -->
+	<!--        Tabla de Desarrollo                                 -->
+	<!-- ========================================================== -->
+
+	<definition name="tablaDesarrolloCredito.body" extends="master.resumen.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/credito/tablaDesarrollo/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/credito/tablaDesarrollo/filtro.jsp" />	
+		<put name="resumen.body" value="/WEB-INF/tiles/pages/service/credito/tablaDesarrollo/resumen.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/credito/tablaDesarrollo/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="tablaDesarrolloCredito.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="tablaDesarrolloCredito.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/credito/tablaDesarrollo/rightMenuBar.jsp" />
+	</definition>	
+	
+	<!-- ========================================================== -->
+	<!--    Consulta Crédito                                        -->
+	<!--        Nivel 1                                             -->
+	<!-- ========================================================== -->
+	<definition name="creditoN1.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/credito/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/credito/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/credito/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="creditoN1.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="creditoN1.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/credito/nivel1/rightMenuBar.jsp" />
+	</definition>		
+
+	<!-- ========================================================== -->
+	<!--    Consulta Crédito                                        -->
+	<!--        Nivel 2                                             -->
+	<!-- ========================================================== -->
+
+	<definition name="creditoN2.body" extends="master.body">
+		<put name="banner.body" value="/WEB-INF/tiles/pages/service/credito/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/WEB-INF/tiles/pages/service/credito/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/WEB-INF/tiles/pages/service/credito/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="creditoN2.page" extends="master.centerLayout">
+		<put name="title" value="La Araucana C.C.A.F." />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="creditoN2.body" />
+		<put name="right" value="/WEB-INF/tiles/pages/service/credito/nivel2/rightMenuBar.jsp" />
+	</definition>		
+
+	<!-- ========================================================== -->
+	<!--    Consulta Crédito                                        -->
+	<!--        Prepago por Finiquito Nivel 1                       -->
+	<!-- ========================================================== -->
+
+	<definition name="prepagoFiniquitoN1.body" extends="master.body">
+		<put name="empresa.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel1/empresa.jsp" />	
+		<put name="banner.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel1/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel1/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel1/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="prepagoFiniquitoN1.page" extends="master.centerLayout">
+		<put name="title" value="Tabla de Desarrollo" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="prepagoFiniquitoN1.body" />
+		<put name="right" value="/jsp/consulta/credito/prepagoFiniquito/nivel1/rightMenuBar.jsp" />
+	</definition>		
+
+	<!-- ========================================================== -->
+	<!--    Consulta Crédito                                        -->
+	<!--        Prepago por Finiquito Nivel 2                       -->
+	<!-- ========================================================== -->
+
+	<definition name="prepagoFiniquitoN2.body" extends="master.body">
+		<put name="empresa.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel2/empresa.jsp" />	
+		<put name="banner.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel2/banner.jsp" />	
+		<put name="filter.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel2/filtro.jsp" />	
+		<put name="detailTable.body" value="/jsp/consulta/credito/prepagoFiniquito/nivel2/detalleTabla.jsp" />	
+	</definition>
+
+	<definition name="prepagoFiniquitoN2.page" extends="master.centerLayout">
+		<put name="title" value="Tabla de Desarrollo" />
+		<put name="left" value="/WEB-INF/tiles/common/leftMenuBar.jsp" />
+		<put name="body" value="prepagoFiniquitoN2.body" />
+		<put name="right" value="/jsp/consulta/credito/prepagoFiniquito/nivel2/rightMenuBar.jsp" />
+	</definition>		
+	
+	
+	<definition name=".basic.layout" path="/jsp/basicLayout.jsp">
+		<put name="title" value="Default title" />
+		<put name="header" value="/jsp/header.jsp" />
+		<put name="leftNavigator" value="/jsp/leftNavigator.jsp" />
+		<put name="content" value="/jsp/defaultContentPage.jsp" />
+		<put name="rightNavigator" value="/jsp/rightNavigator.jsp" />
+		<put name="footer" value="/jsp/footer.jsp" />
+	</definition>
+
+	<!-- ========================================================== -->
+	<!-- Cuenta Corriente: Decalración de Cotizaciones sin Pago     -->
+	<!-- ========================================================== -->
+	<!-- Se extiende de la basicLayout, reemplazar content page
+	-->
+	<definition name=".ctaCte.declaracionCotizacionesSinPago.nivel1" extends=".basic.layout">
+		<put name="title" value="Cuenta Corriente" />
+		<put name="header" value="" />
+		<put name="content" value="/servicios/cuentaCorriente/contentDeclaracionCotizacionesSinPago.jsp" />
+	</definition>
+
+	<definition name=".view.penguins" extends=".basic.layout">
+		<put name="title" value="Welcome to the Penguin Store" />
+		<put name="header" value="/include/header.jsp" />
+		<put name="leftNavigator" value="/include/navLeft.jsp" />		
+		<put name="content" value=".content.basic.layout" />
+		<put name="footer" value="/include/footer.jsp" />
+	</definition>
+
+	<definition name=".content.basic.layout" path="/jsp/contentBasicLayout.jsp">
+		<put name="content1" value="/jsp/content3.jsp" />
+		<put name="content2" value="/jsp/content2.jsp" />
+		<put name="content3" value="/jsp/content1.jsp" />
+	</definition>
+
+
+</tiles-definitions>
+
+

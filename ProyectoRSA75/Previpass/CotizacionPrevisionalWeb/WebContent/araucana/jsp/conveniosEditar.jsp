@@ -1,0 +1,226 @@
+<%@ include file="/html/comun/taglibs.jsp" %>
+<script src="<c:url value='/js/contenidoCajas.js'/>"></script>
+<html:form action="/EditarConvenio" styleId="formulario" onsubmit="return onFormSubmit(this)">
+<html:hidden property="accion" name="accion" styleId="accion" value="admin" />
+<html:hidden property="subAccion" name="subAccion" styleId="subAccion" value="empresas" />
+<html:hidden property="subSubAccion" name="subSubAccion" styleId="subSubAccion" value="conveniosEditar" />
+<html:hidden property="rutEmpresa"><nested:write property="rutEmpresa"/></html:hidden>
+
+<html:hidden property="cajaInicio" styleId="cajaInicio" value="${EditarConvenioActionForm.opcCaja}"/>
+<html:hidden property="eliminaNominas" name="eliminaNominas" styleId="eliminaNominas" value="NO" />
+
+<table width="590" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<html:errors />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		    <html:messages id="msg" message="true">
+				<div class="msgExito">${msg}</div>
+			</html:messages>
+		</td>
+	</tr>
+	<tr>
+      	<td valign="top">
+      	<table width="100%" border="0" cellpadding="1" cellspacing="1" class="textos-formularios3">
+			<tr> 
+				<td width="15%"><strong>RUT:</strong></td>
+				<td width="20%">
+					<nested:hidden property="rutEmpresaFmt" write="true"/>
+				</td>
+				<td><strong>Empresa:</strong></td>
+				<td>
+					<nested:hidden property="nombreEmpresa" write="true"/>
+				</td>
+			</tr>
+          	<tr> 
+	            <td><strong>Convenio:</strong></td>
+	            <td>
+	            	<nested:select property="opcConvenio" styleClass="campos" onchange="javascript:bCancel=true;submit();">
+	            		<nested:optionsCollection property="convenios"/>
+	            	</nested:select>
+				</td>
+	            <td colspan="2">&nbsp;</td>
+         	</tr>
+        </table>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td>
+            <table width="100%" border="0" cellpadding="0" cellspacing="1">
+              <tr valign="bottom"> 
+                <td height="30" bgcolor="#FFFFFF" class="titulo"><strong>Edici&oacute;n de Convenio</strong></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellpadding="1" cellspacing="1" class="tabla-datos">
+              <tr> 
+                <td width="25%" height="17" class="barra_tablas"><strong>C&oacute;digo</strong></td>
+                <td width="25%" height="17" class="textos_formularios">
+                	<nested:hidden property="codigoConvenio" write="true"/>
+                </td>
+                <td width="25%" height="17" class="barra_tablas"><strong>Descripci&oacute;n *</strong></td>
+                <td width="25%" height="17" class="textos_formularios">
+                	<nested:text property="nombreConvenio" styleId="nombreConvenio" styleClass="campos" size="45" maxlength="30" onblur="javascript:soloDescripcion(this);" onkeyup="javascript:soloDescripcion(this);"/>
+                </td>
+              </tr>
+              <tr>
+                <td height="17" class="barra_tablas"><strong>Estado *</strong></td>
+                <td height="17" class="textos_formularios">
+                	<nested:select property="opcHabilitado" styleClass="campos">
+                		<html:option value="0">Deshabilitado</html:option>
+                		<html:option value="1">Habilitado</html:option>
+                	</nested:select>
+              	</td>
+                <td height="17" class="barra_tablas"><strong>Caja de Compensaci&oacute;n *</strong></td>
+                <td height="17" class="textos_formularios">
+					<nested:select property="opcCaja" styleClass="campos" styleId="opcCaja">
+						<html:option value="0">INP-CAJA</html:option>
+						<nested:optionsCollection property="cajas" />
+					</nested:select>
+              	</td>
+              </tr>
+              <tr> 
+                <td height="17" class="barra_tablas" colspan="4"><strong>Grupo de Convenios *</strong></td>
+              </tr>
+              <tr> 
+                <td height="17" class="barra_tablas"><strong>C&oacute;digo:</strong></td>
+                <td height="17" class="textos_formularios">                	
+                	<nested:text property="codigoGrupoConvenio" styleId="codigoGrupoConvenio" styleClass="campos" size="14" maxlength="9" onkeyup="javascript:soloNumero(this);" onblur="javascript:soloNumero(this);return cambiaCodigoGC(this);"/>
+		       	</td>
+                <td height="17" class="barra_tablas">Nombre:</td>
+                <td height="17" class="textos_formularios">
+                	<nested:select property="codigoGrupoConvenio" styleClass="campos" onclick="javascript:document.getElementById('codigoGrupoConvenio').value=this.value" styleId="comboGrupoConvenio">
+                		<html:option value="0">Sin asignar</html:option>
+                		<nested:optionsCollection property="grupos" label="nombre" value="idGrupoConvenio" />
+                	</nested:select>
+                </td>
+              </tr>
+              <tr> 
+                <td height="17" class="barra_tablas"><strong>C&aacute;lculo Mov. Personal *</strong></td>
+                <td height="17" class="textos_formularios">
+					<nested:select property="opcCalculoMovPersonal" styleClass="campos">
+						<html:option value="1">S&iacute;</html:option>
+						<html:option value="0">No</html:option>
+					</nested:select>
+              	</td>
+                <td height="17" class="barra_tablas">&nbsp;</td>
+                <td height="17" class="textos_formularios">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td height="17" class="barra_tablas" colspan="4"><strong>Actividad Econ&oacute;mica *</strong></td>
+              </tr>
+              <tr> 
+                <td height="17" class="barra_tablas"><strong>C&oacute;digo:</strong></td>
+                <td height="17" class="textos_formularios">
+                	<nested:text property="opcActividadEconomicaMostrar" styleId="opcActividadEconomicaMostrar" maxlength="6" size="9" styleClass="campos" onkeyup="javascript:soloNumero(this);" onblur="javascript:txtRubrosOnChange(this);"/>
+                </td>
+                <td height="17" class="barra_tablas"><strong>Nombre:</strong></td>
+                <td height="17" class="textos_formularios">
+                	<nested:select property="opcActividadEconomica" styleClass="campos" styleId="opcActividadEconomica" onchange="javascript:rubrosOnChange(this);">
+                		<html:option disabled="true" value="">-Seleccionar-</html:option>
+                		<nested:optionsCollection property="actividadesEconomicas"/>
+                	</nested:select>
+                </td>
+              </tr>
+            </table>
+            </td>
+        </tr>
+      </table></td>
+  </tr>
+	<tr>
+		<td align="right" valign="top" class="leyenda">(*)Campos Obligatorios</td>
+	</tr>
+  <tr>
+    <td align="center" valign="top"><br />
+    	<html:submit property="operacion" styleClass="btn_grande" value="${guardar}"/>
+    	<html:cancel property="operacion" styleClass="btn_grande" value="${cancelar}"/>
+      </td>
+  </tr>
+</table>
+</html:form>
+<script language="javaScript">
+	function rubrosOnChange(obj) 
+	{
+		document.getElementById("opcActividadEconomicaMostrar").value = obj.value;
+	}
+	
+	function txtRubrosOnChange(obj) 
+	{
+		
+		var cmbRubro = document.getElementById("opcActividadEconomica");
+		var opcs = cmbRubro.options;
+		var bEncontrado = false
+		for (var i = 0; i < opcs.length; i++) 
+		{
+			if (opcs[i].value == "")
+				continue;
+			if (opcs[i].value == obj.value) 
+			{
+				bEncontrado = true;
+				break;
+			}
+		}
+		if (bEncontrado)
+			cmbRubro.selectedIndex = i;
+		else 
+		{
+			alert("Código de actividad económica no existe!");
+			cmbRubro.selectedIndex = 0;
+		}
+	}
+
+	function validaFormulario(f) 
+	{
+		if(document.getElementById('cajaInicio').value != document.getElementById('opcCaja').value){
+			if (!confirm("Si modifica la Caja de Compensación se eliminara todas las nóminas de esta Empresa, ¿Está seguro que desea continuar?"))
+			{
+				return false;
+			}else{
+				document.getElementById("eliminaNominas").value = 'SI';
+			}
+		}
+		var sMsje = "";
+		if (!validaReq(document.getElementById("nombreConvenio")))
+			sMsje += "* Debe ingresar la descripción del convenio\n";
+		if (!validaReq(document.getElementById("codigoGrupoConvenio")))
+			sMsje += "* Debe ingresar el código del grupo de convenios\n";
+		opcActEc = document.getElementById("opcActividadEconomica");
+		if (opcActEc.options[opcActEc.selectedIndex].value == "")
+			sMsje += "* Debe seleccionar la actividad económica\n";
+			
+		if (sMsje == "")
+		{
+			if (!validaDescripcion(document.getElementById("nombreConvenio").value))
+				sMsje += "* Caracteres inválidos en la descripción del convenio\n";
+			if (!validaNumero(document.getElementById("codigoGrupoConvenio").value))
+				sMsje += "* Código del grupo de convenios, no es un número válido\n";
+		}
+		
+		if (sMsje != "") 
+		{
+			alert("Errores de validación:\n\n" + sMsje);
+			return false;
+		}
+		return true;
+	}
+
+	function cambiaCodigoGC(textInput) 
+	{
+		var oldValue = textInput.form.comboGrupoConvenio.value;
+		textInput.form.comboGrupoConvenio.value = textInput.value;
+		if (textInput.form.comboGrupoConvenio.value != textInput.value) 
+		{
+			alert('Código de grupo de convenios no existe!');
+			textInput.form.comboGrupoConvenio.value = oldValue;
+			textInput.value = oldValue;
+		}
+		return true;
+	}
+
+	function foco()
+	{
+		document.getElementById('nombreConvenio').focus();
+	}
+	foco();
+</script>

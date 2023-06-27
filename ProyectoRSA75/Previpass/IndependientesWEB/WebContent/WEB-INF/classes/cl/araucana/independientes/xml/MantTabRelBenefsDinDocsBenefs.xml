@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabRelBenefsDinDocsBenefsNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene rut, perfil y estado desde la tabla PERFILES. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabRelBenefsDinDocsBenefs" resultClass="cl.araucana.independientes.vo.LinMantTabRelBenefsDinDocsBenefsVO" parameterClass="java.util.HashMap">
+		SELECT	IDRELBENEFICIODOC idRelBenefDoc,
+				IDBENEFICIO idBeneficio,
+				IDDOCBENEFICIO idDocBenef,
+				ISOBLIGATORIO obligatorio,
+				ESTADO estado
+		FROM $IIDTA$.REL_BEN_DOC
+	</select>
+	
+	<!-- Select de idbeneficio de la tabla REL_BEN_DOC. 	-->
+	<select id="selectSeqBenDinDoc" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.RELBENFDOC_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Insert a la tabla REL_BEN_DOC.-->
+	<insert id="insertNewBenDinDoc" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.REL_BEN_DOC(IDRELBENEFICIODOC,IDBENEFICIO,IDDOCBENEFICIO,ISOBLIGATORIO,ESTADO)
+		VALUES(#input.idRelBeneficioDoc#,
+			   #input.idBeneficio#,
+			   #input.idDocBeneficio#,
+			   #input.isObligatorio#,
+			   #input.estado#)
+	</insert>
+	
+	<!-- Update ESTADO para DOCBENDIN -->
+	<update id="cambiarEstadoMantTabBenDinDoc" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.REL_BEN_DOC
+		SET		ESTADO = #input.estado#
+    	WHERE	IDRELBENEFICIODOC  = #input.idRelBeneficioDoc#
+	</update>
+	
+	<!-- Update DOCBENDIN -->
+	<update id="updateMantTabBenDinDoc" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.REL_BEN_DOC
+		SET		IDBENEFICIO = #input.idBeneficio#,
+				IDDOCBENEFICIO = #input.idDocBeneficio#,
+				ISOBLIGATORIO = #input.isObligatorio#
+    	WHERE	IDRELBENEFICIODOC  = #input.idRelBeneficioDoc#
+	</update>
+	
+</sqlMap>

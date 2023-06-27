@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<indexes>
+
+	<!-- NOMINA DE AHORRO -->
+
+	<index>
+		<name> NominaAhorro </name>
+		<description> Indice para las nominas de ahorro </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<value> Nomina Leasing PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Nomina Leasing PDF </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Nomina Leasing PDF </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> Periodo </name>
+				<description> Periodo de Cobranza </description>
+				<type> ndate </type>
+			</field>
+			
+			<field>
+				<name> Folio </name>
+				<type> int </type>
+				<docID> 1 </docID>
+			</field>			
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> CodigoOficina </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoAhorro </name>
+				<type> string </type>
+			</field>
+		</fields>
+	</index>
+</indexes>

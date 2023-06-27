@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><java-wsdl-mapping version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.araucana.clientewsfonasa.common.exception</package-type>
+        <namespaceURI>http://exception.common.clientewsfonasa.araucana.cl</namespaceURI>
+    </package-mapping>
+    <package-mapping>
+        <package-type>cl.araucana.clientewsfonasa.business.to</package-type>
+        <namespaceURI>http://to.business.clientewsfonasa.araucana.cl</namespaceURI>
+    </package-mapping>
+    <package-mapping>
+        <package-type>cl.araucana.clientewsfonasa.business.services.impl</package-type>
+        <namespaceURI>http://impl.services.business.clientewsfonasa.araucana.cl</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.business.to.ResponseWSFonasaTO</java-type>
+        <root-type-qname xmlns:rtq="http://to.business.clientewsfonasa.araucana.cl">rtq:ResponseWSFonasaTO</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>estado</java-variable-name>
+            <xml-element-name>estado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extApellidoMat</java-variable-name>
+            <xml-element-name>extApellidoMat</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extApellidoPat</java-variable-name>
+            <xml-element-name>extApellidoPat</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extCodEstBen</java-variable-name>
+            <xml-element-name>extCodEstBen</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extDescEstado</java-variable-name>
+            <xml-element-name>extDescEstado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extFechaNacimi</java-variable-name>
+            <xml-element-name>extFechaNacimi</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extNombres</java-variable-name>
+            <xml-element-name>extNombres</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>extSexo</java-variable-name>
+            <xml-element-name>extSexo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>gloEstado</java-variable-name>
+            <xml-element-name>gloEstado</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.util.Calendar</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:dateTime</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.business.to.ResponseFormFonasaTO</java-type>
+        <root-type-qname xmlns:rtq="http://to.business.clientewsfonasa.araucana.cl">rtq:ResponseFormFonasaTO</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>estado</java-variable-name>
+            <xml-element-name>estado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>glosaEstado</java-variable-name>
+            <xml-element-name>glosaEstado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>resultado</java-variable-name>
+            <xml-element-name>resultado</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>glosaResultado</java-variable-name>
+            <xml-element-name>glosaResultado</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.common.exception.ServiceException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.common.clientewsfonasa.araucana.cl">rtq:ServiceException</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>mensaje</java-variable-name>
+            <xml-element-name>mensaje</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.common.exception.ServiceException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.common.clientewsfonasa.araucana.cl">rtq:ServiceException</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.common.exception.DaoException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.common.clientewsfonasa.araucana.cl">rtq:DaoException</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>mensaje</java-variable-name>
+            <xml-element-name>mensaje</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>cl.araucana.clientewsfonasa.common.exception.DaoException</java-type>
+        <root-type-qname xmlns:rtq="http://exception.common.clientewsfonasa.araucana.cl">rtq:DaoException</root-type-qname>
+        <qname-scope>element</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>short</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:short</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <exception-mapping>
+        <exception-type>cl.araucana.clientewsfonasa.common.exception.ServiceException</exception-type>
+        <wsdl-message xmlns:em="http://impl.services.business.clientewsfonasa.araucana.cl">em:ServiceException</wsdl-message>
+        <constructor-parameter-order>
+            <element-name>codigo</element-name>
+            <element-name>mensaje</element-name>
+        </constructor-parameter-order>
+    </exception-mapping>
+    <exception-mapping>
+        <exception-type>cl.araucana.clientewsfonasa.common.exception.DaoException</exception-type>
+        <wsdl-message xmlns:em="http://impl.services.business.clientewsfonasa.araucana.cl">em:DaoException</wsdl-message>
+        <constructor-parameter-order>
+            <element-name>codigo</element-name>
+            <element-name>mensaje</element-name>
+        </constructor-parameter-order>
+    </exception-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.araucana.clientewsfonasa.business.services.impl.WSConsultaFonasaImplService</service-interface>
+        <wsdl-service-name xmlns:sim="http://impl.services.business.clientewsfonasa.araucana.cl">sim:WSConsultaFonasaImplService</wsdl-service-name>
+        <port-mapping>
+            <port-name>WSConsultaFonasaImpl</port-name>
+            <java-port-name>WSConsultaFonasaImpl</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.araucana.clientewsfonasa.business.services.impl.WSConsultaFonasaImpl</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://impl.services.business.clientewsfonasa.araucana.cl">seimwpt:WSConsultaFonasaImpl</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://impl.services.business.clientewsfonasa.araucana.cl">seimwb:WSConsultaFonasaImplSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>consultarRutFonasa</java-method-name>
+            <wsdl-operation>consultarRutFonasa</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://impl.services.business.clientewsfonasa.araucana.cl">mppm:consultarRutFonasaRequest</wsdl-message>
+                    <wsdl-message-part-name>rut</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>cl.araucana.clientewsfonasa.business.to.ResponseWSFonasaTO</method-return-value>
+                <wsdl-message xmlns:wrvm="http://impl.services.business.clientewsfonasa.araucana.cl">wrvm:consultarRutFonasaResponse</wsdl-message>
+                <wsdl-message-part-name>consultarRutFonasaReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>consultarEstadoFormulario</java-method-name>
+            <wsdl-operation>consultarEstadoFormulario</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://impl.services.business.clientewsfonasa.araucana.cl">mppm:consultarEstadoFormularioRequest</wsdl-message>
+                    <wsdl-message-part-name>color</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://impl.services.business.clientewsfonasa.araucana.cl">mppm:consultarEstadoFormularioRequest</wsdl-message>
+                    <wsdl-message-part-name>numeroLicencia</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://impl.services.business.clientewsfonasa.araucana.cl">mppm:consultarEstadoFormularioRequest</wsdl-message>
+                    <wsdl-message-part-name>rutAfiliado</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>cl.araucana.clientewsfonasa.business.to.ResponseFormFonasaTO</method-return-value>
+                <wsdl-message xmlns:wrvm="http://impl.services.business.clientewsfonasa.araucana.cl">wrvm:consultarEstadoFormularioResponse</wsdl-message>
+                <wsdl-message-part-name>consultarEstadoFormularioReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

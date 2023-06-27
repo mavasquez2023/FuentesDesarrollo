@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background:url(../img/background.jpg) repeat-x top;
+	margin:0px;
+	padding:0px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+h1 {
+	font-size:26px;
+	color:#004686;
+	font-weight:bold;
+	margin:0px;
+}
+h2 {
+	font-size:22px;
+	color:#666;
+	font-weight:bold;
+}
+.altura-contenedor {
+	/* [disabled]height:768px; */
+}
+.titulo-ingreso {
+	font-size:22px;
+	color:#004686;
+	line-height:135%;
+}
+.titulo {
+	font-size:23px;
+	color:#666;
+	line-height:135%;
+}
+.titulo-interior {
+	font-size:32px;
+	color:#004686;
+}
+.txt-dedo {
+	font-size:45px;
+	color:#004686;
+	line-height:125%;
+	margin:20px;
+}
+/*CAJA RUT-CLAVE*/
+.caja {
+	height:32px;
+	width:310px;
+	border:none;
+	font-size:28px;
+	color:#666;
+	text-align:right;
+	background-color:#FAFAFA;
+}
+/*MENU INTERIOR*/
+
+/*Menu 1*/
+#menu-1 {
+	width:184px;
+	height:61px;
+	float:left;
+	display:block;
+}
+/*Menu 2*/
+.lineamenu {
+	border-right:2px solid #5898C7;
+	height:32px;
+	float:left;
+	margin-top:16px;
+}
+#menu a {
+	font-size:22px;
+	text-decoration:none;
+	height:50px;
+	padding:20px 12px 0px 12px;
+	text-align:center;
+	display:block;
+	float:left;
+	margin-left:0px;
+	color:#C6E7FF;
+}
+#menu a.selected {
+	color:#FFFFFF;
+	text-align:center;
+	text-decoration:none;
+}
+/*CAJA TEXTO INFORMACIÓN*/ 
+#info {
+	background:#FFF;
+	font-size:16px;
+	color:#666;
+	line-height:125%;
+	padding:15px;
+}
+#info .pie {
+	font-size:14px;
+}
+/*CAJA CREDITO PRE*/
+.credito {
+	font-size:24px;
+	color:#004D8C;
+}
+.monto {
+	font-size:65px;
+	color:#004D8C;
+}
+	
+	

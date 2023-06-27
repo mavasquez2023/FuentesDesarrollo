@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="Factory">
+        <property name="connection.datasource">java:comp/env/jdbc/cotprevi</property>
+        <property name="hibernate.dialect">cl.araucana.cp.distribuidor.hibernate.utils.ParcheDialecto</property>
+        <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+        <property name="cache.use_second_level_cache">true</property>
+
+		<property name="hibernate.cache.use_structured_entries">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+		<property name="hibernate.use_sql_comments">true</property>
+
+		<!-- COTPREV MAPEOS -->
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/nodo.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/envio.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/sucursal.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/comuna.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/ciudad.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/region.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/genero.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/documento.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/nominaDc.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/nominaRe.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/nominaRa.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/nominaGr.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/concepto.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/mapeoConcepto.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/mapeos.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/conceptoValidacion.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/validacion.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/desicionValidacion.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/parametros.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/apellidoCompuesto.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/propertiesMapeo.hbm.xml"/>
+		
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/descriptor.hbm.xml"/>
+		
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/estadoNomina.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoNomina.hbm.xml"/>
+		
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/cotizacionPendiente.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/causa.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoCausa.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/cotizaciones.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/cotizante.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/convenio.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/grupoConvenio.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/opcionProc.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/empresa.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/avisosCotizante.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/movtoPersonal.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/mvtoPersoAF.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/entidades.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/apv.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/asigFam.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/regimenImpositivo.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoMovimientoPersonal.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoMvtoPeAF.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/balanceoCarga.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoSeccion.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/comprobante.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/seccion.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleSeccion.hbm.xml"/>
+		
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/configPDF.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoEvento.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/evento.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoParametro.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/parametroAuditoria.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleAporteCcaf.hbm.xml"/>	
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleCreditoCcaf.hbm.xml"/>	
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleLeasingCcaf.hbm.xml"/>	
+		
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/persona.hbm.xml"/>
+
+		<!-- CARGAS FAMILIARES -->
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/cargaFamiliar.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleCargaFamiliar.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/tipoCarga.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/parentescoCarga.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/cargaFamiliarTipoCarga.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/eventoCargaValidacion.hbm.xml"/>
+
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/rutEspeciales.hbm.xml"/>
+		
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/seccion_DNP.hbm.xml"/>
+		<mapping resource="cl/araucana/cp/distribuidor/hibernate/beans/detalleSeccion_DNP.hbm.xml"/>
+		
+		
+	
+    </session-factory>
+</hibernate-configuration>
+
+
+

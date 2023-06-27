@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<indexes>
+
+	<!-- ANEXO DE TRABAJADORES -->
+
+	<index>
+		<name> AnexoTrabajadores </name>
+		<description> Indice para los anexos de trabajadores </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<value> Anexos Asfam PDF2 </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Anexos Asfam PDF2 </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Anexos Asfam PDF </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> Periodo </name>
+				<description> Periodo de Cobranza </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> CodigoOficina </name>
+				<type> int </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+				<docID> 3 </docID>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> CodigoSucursal </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> CodigoAnexo </name>
+				<type> int </type>
+				<docID> 4 </docID>
+			</field>			
+		</fields>
+	</index>
+</indexes>

@@ -1,0 +1,197 @@
+BODY
+{
+    BACKGROUND-COLOR: #FFFFFF;
+    COLOR: #333366;
+    FONT-FAMILY: 'Times New Roman'
+}
+H1
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+H2
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+H3
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+
+H4
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+
+H5
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+H6
+{
+    COLOR: #6666CC;
+    FONT-FAMILY: 'Times New Roman';
+    TEXT-TRANSFORM: capitalize
+}
+TH {
+ color: #6060cc
+}
+
+.boton {
+	text-align: center;
+}
+
+.title {
+	font-family : ariel;
+	font-size : large;
+	font-weight : bolder;
+    color : #6666cc;
+	text-align: center;
+}
+
+.tHHL {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : bold;
+	background-color: #deebfe;
+	text-align: left;
+	vertical-align: top;	
+	text-decoration: underline;	
+}
+
+.tHHC {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : normal;
+	background-color: #deebfe;
+	text-align: left;
+}
+
+.tH {
+	font-family : ariel;
+	background-color: #25319c;
+	font-size: x-small;
+	font-weight: bold;
+ 	color: #ffffff;
+	text-align: center;
+}
+
+.tL1 {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : bold;
+	text-align: left;
+	text-decoration: none;
+}
+
+.tC {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	text-align: left;	
+}
+
+.tCNumber {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	text-align: right;	
+}
+
+.tCB {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : bold;
+	text-align: left;	
+}
+
+.tCBNumber {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : bold;
+	text-align: Right;	
+}
+
+
+
+.label {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	font-weight : bold;
+	text-align: left;
+	text-decoration: underline;
+}
+
+.normal {
+	font-family : Ariel;
+	color : #000066;
+	font-size : x-small;
+	text-align: left;
+}
+
+img.navbull
+{
+	margin-top: 5px;
+}
+
+.smallfontreverse {font-weight:bold;background:#0B5C98;font-size:8.5pt;color:white;font-family:Tahoma,Arial,Helvetica;}
+.smallprompt{font:8.5pt tahoma;}
+.smallboldprompt{font:8.5pt tahoma; font-weight : bold;}
+.smalltableheader {font:8.5pt tahoma; font-weight: bold; text-align: center;}
+.smallcurrency{font:8.5pt tahoma; text-align : right;}
+.smallboldcurrency{font:8.5pt tahoma; font-weight : bold; text-align : right;}
+.smallfontreverse{font:8.5pt tahoma; color: white;}
+a.mainlink:link { text-decoration: none; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.mainlink:visited { text-decoration: none; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.mainlink:hover { text-decoration: underline; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+.selectedmainlink { text-decoration: underline; color: #fefac0; font-family: Verdana, Arial, sans-serif; font-size: 11px; font-weight: bold; }
+.divider { color: #999999; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.bbg { background-color : #212772; vertical-align: middle; white-space: nowrap;}
+.verticalgray { background-color: #ffffff; background-image: url(../img/dsh_v.gif); background-repeat: repeat; }
+a.pagelink:link { text-decoration: none; color: #0000ff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+a.pagelink:visited { text-decoration: none; color: #0000ff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+a.pagelink:hover { text-decoration: underline; color: #0000ff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.selectedpagelink { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+.nolinkpage { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.nota { text-decoration: none; color: #0000ff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.note { text-decoration: none; color: #0000ff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.warningnote { text-decoration: none; color: #ff0000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+.labelbold { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+.buttonbold { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+.buttonnormal { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: normal; }
+
+
+.uslnavbold { font-size: 12px; font-family: Arial, sans-serif; font-weight : bold; color: #0066cc; text-decoration: none;}
+.uslnavplain { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none;}
+a.uslnav:link { font-size: 11px; font-family: Arial, sans-serif; color: #0000ff; text-decoration: none; font-weight: normal; }
+a.uslnav:visited { font-size: 11px; font-family: Arial, sans-serif; color: #993333; text-decoration: none; font-weight: normal; }
+a.uslnav:hover { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: underline; font-weight: normal; }
+
+.leftnav1 { font-size: 12px; font-weight : bold; font-family: Verdana, Arial, sans-serif; color: #003366; text-decoration: none;}
+.leftnav2 { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none;}
+.leftnav { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none;}
+a.leftnav:link { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none; font-weight: normal; }
+a.leftnav:visited { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none; font-weight: normal; }
+a.leftnav:hover { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: underline; font-weight: normal; }
+
+.navleftgroup1 { font-size: 12px; font-weight : bold; font-family: Verdana, Arial, sans-serif; color: #003366; text-decoration: none;}
+.navleftgroup2 { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none;}
+.navleftgroup3 { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none;}
+a.navleftelem:link { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none; font-weight: normal; }
+a.navleftelem:visited { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: none; font-weight: normal; }
+a.navleftelem:hover { font-size: 11px; font-family: Arial, sans-serif; color: #000000; text-decoration: underline; font-weight: normal; }

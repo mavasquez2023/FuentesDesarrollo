@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd"> -->
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://localhost:9080/IndependientesWEB/dtd/dwr20.dtd"> -->
+<!-- <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://directwebremoting.org/schema/dwr20.dtd"> -->
+
+<!-- mapeo de los campos de cada clase para ser usados por funciones del tipo DWR -->
+<dwr>
+  <allow>
+    <create creator="new" javascript="ModAfiliadoDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ModAfiliadoDWR"/>
+    </create>
+	<create creator="new" javascript="ModSolicitudDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ModSolicitudDWR"/>
+    </create>
+    <create creator="new" javascript="GeograficoDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.GeograficoDWR"/>
+    </create>
+    <create creator="new" javascript="NewSolicitudDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.NewSolicitudDWR"/>	
+    </create>
+    <create creator="new" javascript="RepNominaSolAfiDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.RepNominaSolAfiDWR"/>	
+    </create>
+    <create creator="new" javascript="RepNominaSolDesafAfiDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.RepNominaSolDesafAfiDWR"/>	
+    </create>
+    <create creator="new" javascript="MantenedoresDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.MantenedoresDWR"/>	
+    </create>
+    <create creator="new" javascript="ConsModMasivaSolDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ConsModMasivaSolDWR"/>	
+    </create>
+    <create creator="new" javascript="RepNominaApoAfiDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.RepNominaApoAfiDWR"/>	
+    </create>
+    <create creator="new" javascript="SalidaIntercajaDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.SalidaIntercajaDWR"/>
+    </create>
+    <create creator="new" javascript="EntradaIntercajaDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.EntradaIntercajaDWR"/>
+    </create>
+    <create creator="new" javascript="SolBeneficiosDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.SolBeneficiosDWR"/>	
+    </create>
+    <create creator="new" javascript="HistoricoBeneficiosDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.HistoricoBeneficiosDWR"/>	
+    </create>
+    <create creator="new" javascript="ConsMasivaApoDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ConsMasivaApoDWR"/>	
+    </create>
+    <create creator="new" javascript="ConsBenefProgDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ConsBenefProgDWR"/>	
+    </create>
+    <create creator="new" javascript="PendientesIntercajaDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.PendientesIntercajaDWR"/>	
+    </create>
+    <!-- PARA DESAFILIACION -->
+    <create creator="new" javascript="NewSolDesafiliacionDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.NewSolDesafiliacionDWR"/>
+    </create>
+    <create creator="new" javascript="ModSolDesafiliacionDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.ModSolDesafiliacionDWR"/>
+    </create>
+	<create creator="new" javascript="MenuPrincipalDWR">
+      <param name="class" value="cl.araucana.independientes.struts.dwr.actions.MenuPrincipalDWR"/>	
+    </create>
+       
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinSalidaIntercajaVO">
+    	<param name="include" value="ccafProcedencia,rutAfiliado,digVerificador,fechaSolicitudAfiliacion,codigoMovimiento,nombreAfiliado,apellidoPaternoAfiliado,apellidoMaternoAfiliado,ceros,blancoUno,codigoInternoUno,codigoInternoDos,montoUltCotizacion,fechaUltCotizacion,blancoDos,tipoEstadoSolicitud,folio,tipoSolicitud,idAfiliadoAgrupacion,tipoEstadoAfiliado,idPersonaAfiliado,tipoCajaOrigen"/>
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.SalidaIntercajaVO">
+    	<param name="include" value="resultado,codResultado,fechaConPimerDiaMes,fechaConUltimoDiaMes,afiliacionesNuevas,desafiliados,cambioCCAF,fallecidos,desafiliadosTipo1,desafiliadosTipo2,contadores,nombreArchivo,archivoSalidaIntercaja,lisSalidaIntercaja,rangoUno,rangoDos,rangoTres"/>
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinConsModMasivaSolVO">
+	    <param name="include" value="fechaIngreso,folio,rut,apellidoPaterno,apellidoMaterno,nombres,oficina,estadoSolicitud" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.ConsModMasivaSolVO">
+    	<param name="include" value="paginaConsModMasivaSol,paginaActualConsModMasivaSol,lisConsModMasivaSol" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.RepNominaSolAfiVO">
+    	<param name="include" value="archivoInforme,paginaRepNominaSolAfi,paginaActualRepNominaSolAfi,lisRepNominaSolAfi" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.RepNominaSolDesafAfiVO">
+    	<param name="include" value="archivoInforme,paginaRepNominaSolDesafAfi,paginaActualRepNominaSolDesafAfi,lisRepNominaSolDesafAfi" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaSolAfiVO">
+    	<param name="include" value="fechaIngreso,folio,rut,apellidoPaterno,apellidoMaterno,nombres,codigoVendedor,lugarAfiliacion,estadoSolicitud,rentaImponible" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaSolDesafAfiVO">
+    	<param name="include" value="fechaIngreso,folio,rut,apellidoPaterno,apellidoMaterno,nombres,analista,lugarAfiliacion,estadoSolicitud" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaSolDesafAfiVO">
+    	<param name="include" value="fechaIngreso,folio,rut,apellidoPaterno,apellidoMaterno,nombres,analista,lugarAfiliacion,estadoSolicitud" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.SolicitudNegocioVO">
+    	<param name="include" value="resultado,codResultado,afiliadoVO,agrupacionVO,analistaVO,beneficiarioVO,direccionPartVO,direccionComerVO,emailVO,grupoFamiliarVO,ingresoEconomicoVO,personaVO,solicitudVO,telefonoPartVO,telefonoCeluVO,telefonoComerVO,analistaCaptadorVO,listaDocumentoVO, emailComerVO" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.AfiliadoVO">
+    	<param name="include" value="idPersonaAfiliado,tipoProfesion,tipoNivelEduc,fechaMatrimonio,fechaDefuncion,tipoRegSalud,tipoAfp,tipoEstado,idSecuenciaAgrupacion,fechaInicio,montoCotizar,tipoEstadoAfiliado,desTipoEstadoAfiliado" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.AgrupacionVO">
+    	<param name="include" value="idSecuencia,tipoDocumento,idDocumento,digVerDocumento,razonSocial,tipoGiroComercial,fechaInicio,tipoActEconomica,numIntegrantes,tipoAgrupacion" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.AnalistaVO">
+    	<param name="include" value="idAnalista,apellidoPaterno,apellidoMaterno,nombres,oficina,desOficina" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.BeneficiarioVO">
+    	<param name="include" value="idPersonaBenef,idPersonaAfiliado" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.DireccionVO">
+    	<param name="include" value="idSecuenciaDireccion,tipoLocalidad,glosCalle,numDireccion,poblacionVilla,dpto,observaciones,comuna,ciudad,region,tipoPrincipalidad" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.EmailVO">
+    	<param name="include" value="idSecuenciaEmail,tipoLocalidad,direccMail,tipoPrincipalidad" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.GrupoFamiliarVO">
+    	<param name="include" value="idGrupoFam,idPersonaAfiliado,conyugue,cantHijos,cantBeneficiarios" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.IngresoEconomicoVO">
+    	<param name="include" value="idIngEconom,idPersonaAfiliado,actEconom,rentaImponible,rentaCotizada,honorario,montoUltimaCotizacion,fecUltCotizacion" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.PersonaVO">
+    	<param name="include" value="idPersona,tipoDocumento,idDocumento,digVerificador,apellidoPaterno,apellidoMaterno,nombres,fechaNacimiento,tipoSexo,tipoPersona,tipoNacionalidad" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.SolicitudVO">
+    	<param name="include" value="idSolicitud,idAfiliadoAgrupacion,folio,tipoSolicitud,tipoCajaOrigen,fechaVigencia,tipoMotivoDesafiliacion,descTipoMotivoDesafiliacion,observaciones,tipoEstadoSolicitud,desTipoEstadoSolicitud,fechaUltAporte,flagIntercaja,fechaIngreso,idAnalista,fechaFirma,idCaptador,horaCaptacion,resolucionDirectorio,oficina,desOficina,comentarios" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.EstadoSolAfiVO">
+    	<param name="include" value="tipoSolicitud,tipoEstadoSolicitud,fechaVigencia,fechaVigenciaDate,tipoEstadoAfiliado" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.TelefonoVO">
+    	<param name="include" value="idSecuenciaTelefono,tipoLocalidad,codArea,nroTelefono,anexoTelefono,tipoPrincipalidad" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.DocumentoVO">
+    	<param name="include" value="idSecuenciaDocumento,idSolicitud,estadoDocumento,observacionesDocumento,tipoDocumento,glosaTipoDocumento,alta,obligatorio" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.param.Parametro">
+    	<param name="include" value="codigo,glosa,estado" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.struts.Forms.ModAfiliadoForm">
+    	<param name="include" value="opcion,resultado,dbx_EstSolicitudAux,dbx_tipoEstadoAfiliado,txt_NRut,txt_NNumVerif,dbx_EstSolicitud,txt_Fecha,txt_Folio,txt_Rut,txt_NumVerif,txt_ApePat,txt_ApeMat,txt_Nombres,dbx_Nacionalidad,txt_FecNac,dbx_Sexo,dbx_EstCivil,txt_TelCelular,txt_TelContacto,txt_Email,txt_Calle,txt_Numero,txt_PoblVilla,txt_Departamento,dbx_Region,dbx_Provincia,dbx_Comuna,dbx_NivEstudios,dbx_TitAcademico,rbt_Agrupacion,txt_RazonSocialAgrup,txt_RutAgrup,txt_NumVerifAgrup,dbx_TipoAgrup,dbx_RegPrevisional,dbx_RegSalud,rbt_Conyugue,txt_Hijos,txt_Actividad,rbt_Honorarios,txt_CalleComerc,txt_NumeroComerc,txt_PoblVillaComerc,txt_DptoComerc,txt_TelComerc,dbx_RegionComerc,dbx_ProvinciaComerc,dbx_ComunaComerc,txt_RentaImp,txt_RentaCot,txt_ValorACot,idPersona,idSolicitud,idPersonaAfiliado,idGrupoFam,idIngEconom,idSecuenciaTelefono,idSecuenciaEmail,idSecuenciaDireccion" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.RepNominaApoAfiVO">
+    	<param name="include" value="archivoInforme,paginaRepNominaSolAfi,paginaActualRepNominaSolAfi,nombreAfiliado, apellidoPaternoAfiliado, apellidoMaternoAfiliado, estadoAfiliado, oficinaAfiliacion, repNominaApoAfi" />
+    </convert>    
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaApoAfiResultVO">
+    	<param name="include" value="nombreAfiliado, apellidoPaternoAfiliado, apellidoMaternoAfiliado, estadoAfiliado, oficinaAfiliacion, repNominaApoAfi" />
+    </convert>    
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaApoAfiVO">
+    	<param name="include" value="mesAporte, fechaVigencia, fechaPago, codigoEventoContable, eventoContable, monto, codigoEstado, Estado, formaPago, tipoPago, valorPago" />
+    </convert>    
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinRepNominaApoAfiVO2">
+    	<param name="include" value="mesAporte, fechaVigencia, fechaPago, formaPago, montoAporte, estado, montoPendiente, montoPago, tipoPago, valorPago" />
+    </convert>  
+    <convert converter="bean" match="cl.araucana.independientes.vo.param.Beneficio">
+    	<param name="include" value="idBeneficio,glosaBeneficio,glosaCortaBeneficio,codigoContable,estadoBeneficio,tipoBeneficio,strTipoBeneficio,valorPorTipo,montoMaximo,carencia,maxSolicitudes,plazoCobro,fechaIniValidez,strFechaIniValidez,fechaFinValidez,strFechaFinValidez,isCausanteUnico,listaDocumentosBeneficio" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.BeneficioVO">
+    	<param name="include" value="idBeneficioAfiliado,idPersonaAfiliado,idbeneficio,glosaCortaBeneficio,fechaSolicitud,strFechaSolicitud,estado,glosaEstado,nombreCausante,rutCausante,strRutCausante,fechaCausante,copago,montoPagar,strMontoPagar,fechaPago,rutTercero,nombreTercero,idAnalista,strIdAnalista,tipoComprobante,glosaTipoComporbante,folio,folioReversado," />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.param.DocBeneficio">
+    	<param name="include" value="idDocBeneficio,glosaDocBeneficio,glosaCortaDocBeneficio,estadoDocBeneficio,isObligatorio" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.HistoricoBeneficiosVO">
+    	<param name="include" value="estadoAfiliado,nombreAfiliado,idPersonaAfiliado,cantReembolsos,montoReembolsado,listaBeneficios" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.AfiliadoBeneficiosVO">
+    	<param name="include" value="idDocumentoPersona,idPersonaAfiliado,tipoEstadoAfiliado,glosaTipoestadoAfiliado,apellidoPaterno,apellidoMaterno,nombres,fechaVigencia,fechaVigenciaDate,totalDias,estadoAporte,glosaEstadoAporte" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.ConsMasivaApoVO">
+    	<param name="include" value="archivoInforme,paginaConsMasivaApo,paginaActualConsModMasivaSol,lisConsMasivaApoVO" />
+    </convert>  
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinConsMasivaApoVO">
+    	<param name="include" value="rut,apellidoPaternoAfiliado,apellidoMaternoAfiliado,nombreAfiliado,estadoAfiliado,oficinaAfiliacion,rentaImponible,mesAporte,fechaVigencia,fechaPago,formaPago,montoAporte,estadoAporte,tipoPago, valorPago" />
+    </convert>  
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.SesionDirectorioVO">
+    	<param name="include" value="idSesionDirectorio,numeroSesion,fechaSesion,fechaSesionDate,fechaInicioMov,fechaInicioMovDate,fechaCorteMov,fechaCorteMovDate"/>
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.MaestroIntercajaVO">
+    	<param name="include" value="idMaestroArchivo,nombreArchivo,fechaCabecera,statusProceso,fechaProceso,fechaProcesoDate,idTipoArchivo,idAnalista,statusSendMail"/>
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.DetalleSalidaIntercajaVO">
+    	<param name="include" value="idDetalleSalida,idMaestroArchivo,cantMovimientos,idSesionDirectorio,idTipoMovIntercaja,idTipoMovIndependientes"/>
+    </convert>
+
+	<convert converter="bean" match="cl.araucana.independientes.vo.EntradaIntercajaVO">
+		<param name="include" value="resultado,codResultado,tipoArchivoLeido,fechaCabecera,rutaArchivo,nombreArchivo,tipoArchivo,fechaUltDia,statusProceso,lisEntradaIntercaja,fechaInicio,fechaFin,totalRegProcesados,totalRegAplNegocio,totalRegPendientes,glosaIdTipoArchivo,glosaStatusProceso,fechaProceso,idMaestroArchivo,idLogAS400,rangoUno,rangoDos,rangoTres,fechaConPimerDiaMes,fechaConUltimoDiaMes"/>
+	</convert>
+	
+	<convert converter="bean" match="cl.araucana.independientes.vo.LinEntradaIntercajaVO">
+		<param name="include" value="nombreArchivo,tipoArchivo,tipoArchivoGlosa,fechaCarga,fechaCargaDate,statusProcesoGlosa,statusProceso"/>
+	</convert>
+	
+	<convert converter="bean" match="cl.araucana.independientes.vo.RespuestaVO">
+		<param name="include" value="codRespuesta,msgRespuesta"/>
+	</convert>
+	
+	<convert converter="bean" match="cl.araucana.independientes.vo.PendientesIntercajaVO">
+		<param name="include" value="resultado,codResultado,usuarioLogueado,fechaSistena,fechaInferior,fechaInferiorDate,fechaSuperior,fechaSuperiorDate,tipoArchivo,lisPendientesIntercaja,numeroRegistro"/>
+	</convert>	
+	
+	<convert converter="bean" match="cl.araucana.independientes.vo.LinPendientesIntercajaVO">
+		<param name="include" value="rutAfiliado,nombreAfiliado,apellidoPaterno,apellidoMaterno,movimientoRequerido,descripcionError,nombreArchivo,tipoArchivo,tipoArchivoCod,fechaProcesamiento,fechaProcesamientoDate,nombreCompleto,numeroRegistroTabla,fechaSolicitud,fechaInicio,correlCasePendiente,statusResolPendiente,idTipoError,ccafCajaOrigen,ccafCajaDestino,ccafCajaOrigenGlosa,ccafCajaDestinoGlosa,id_ccaf,glosaCaja,flagRecibe,recibeAfiliado"/>
+	</convert>
+	
+    <convert converter="bean" match="cl.araucana.independientes.vo.param.ParametroLong">
+    	<param name="include" value="codigo,glosa,periodo"/>
+    </convert>	
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.BaseComunIntercajaVO">
+    	<param name="include" value="resultado,codResultado,idDetalleBaseComun,idMaestroArchivo,idCcafOrigen,idDocumento,digVerificador,nombreAfiliado,fechaSolicitud,fechaSolicitud,fechaIngreso,fechaIngreso,montoUltCotiz,fechaUltCotiz,fechaUltCotiz"/>
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.TablasGlobalesVO">
+    	<param name="include" value="codigo,glosa,entidad,estado"/>
+    </convert>
+    
+     <convert converter="bean" match="cl.araucana.independientes.vo.MantTabGlobVO">
+    	<param name="include" value="archivoInforme,paginaMantTabGlob,paginaActualMantTabGlob,lisMantTabGlob" />
+    </convert>
+
+     <convert converter="bean" match="cl.araucana.independientes.vo.MantTabPerfVO">
+    	<param name="include" value="archivoInforme,paginaMantTabPerf,paginaActualMantTabPerf,lisMantTabPerf" />
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.MantTabPromVO">
+    	<param name="include" value="archivoInforme,paginaMantTabProm,paginaActualMantTabProm,lisMantTabProm" />
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.MantTabTipoDocVO">
+    	<param name="include" value="archivoInforme,paginaMantTabTipoDoc,paginaActualMantTabTipoDoc,lisMantTabTipoDoc" />
+    </convert>
+    
+    <convert converter="bean" match="cl.araucana.independientes.vo.MantTabBenefVO">
+    	<param name="include" value="archivoInforme,paginaMantTabBenef,paginaActualMantTabBenef,lisMantTabBenef" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.MantTabDocsBenefsDinVO">
+    	<param name="include" value="archivoInforme,paginaMantTabDocsBenefsDin,paginaActualMantTabDocsBenefsDin,lisMantTabDocsBenefsDin" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.MantTabRelBenefsDinDocsBenefsVO">
+    	<param name="include" value="archivoInforme,paginaMantTabRelBenefsDinDocsBenefs,paginaActualMantTabRelBenefsDinDocsBenefs,lisMantTabRelBenefsDinDocsBenefs" />
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabGlobVO">
+    	<param name="include" value="codigo,glosa,entidad,estado"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabPerfVO">
+    	<param name="include" value="rut,perfil,estado"/>
+    </convert>    
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabPromVO">
+    	<param name="include" value="rut,nombres,estado,apellidoPaterno,apellidoMaterno,tipoOrgan,tipoCargo,nroTelefono,fechaInicio,fechaBaja,glosaCalle,codArea"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabTipoDocVO">
+    	<param name="include" value="codigo,nombre,estado,obligatorio,tipoSolicitud"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabBenefVO">
+    	<param name="include" value="idBeneficio,glosaCorta,glosa,codigoContable,estado,tipoPago,valorPago,montoPagarMax,carencia,recurrencia,plazoCobro,fechaIniValidez,fechaFinValidez,isCausanteUnico"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabDocsBenefsDinVO">
+    	<param name="include" value="idDocumento,glosaCorta,glosa,estado"/>
+    </convert>
+    <convert converter="bean" match="cl.araucana.independientes.vo.LinMantTabRelBenefsDinDocsBenefsVO">
+    	<param name="include" value="idRelBenefDoc,idBeneficio,idDocBenef,obligatorio,estado"/>
+    </convert> 
+	<convert converter="bean" match="cl.araucana.independientes.vo.param.Retorno">
+    	<param name="include" value="codError,desError"/>
+    </convert>
+
+   <!-- <create creator="new" javascript="MyFormFile">
+  		<param name="class" value="org.apache.struts.upload.FormFile"/>
+  	</create>-->
+  	
+  	<!-- <convert converter="bean" match="org.apache.struts.upload.FormFile">
+  		<param name="include" value="contentType,fileSize,fileName"/>
+  	</convert> --> 
+    
+  </allow>
+</dwr>

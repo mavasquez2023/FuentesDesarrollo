@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<!-- Application Forms -->
+	<form-beans>
+		<form-bean name="reporteSituacionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="fechaUF" type="java.lang.String" initial=""/>
+      		<form-property name="valorUF" type="java.lang.String" initial = "" />
+      	</form-bean>
+    	<form-bean name="PersonaForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="digito" type="java.lang.Character" initial=""/>
+      		<form-property name="nombre" type="java.lang.String" initial=""/>
+      		<form-property name="apellidoPaterno" type="java.lang.String" initial=""/>
+      		<form-property name="apellidoMaterno" type="java.lang.String" initial=""/>      		
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="source" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="CargaForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rutCarga" type="java.lang.String" initial=""/>
+      		<form-property name="nombreCarga" type="java.lang.String" initial=""/>
+			<form-property name="rutSocio" type="java.lang.String" initial=""/>
+			<form-property name="nombreSocio" type="java.lang.String" initial=""/>
+			<form-property name="tipoCarga" type="java.lang.String" initial=""/>			
+      	</form-bean>
+    	<form-bean name="ConceptoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigo" type="java.lang.String" initial=""/>
+      		<form-property name="descripcion" type="java.lang.String" initial=""/>
+      		<form-property name="tipo" type="java.lang.String" initial=""/>
+			<form-property name="fecha" type="java.lang.String"/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="cuentaAcreedora" type="java.lang.String" initial=""/>
+      		<form-property name="cuentaDeudora" type="java.lang.String" initial=""/>
+      		<form-property name="areaTesoreria" type="java.lang.String" initial=""/>
+      		<form-property name="conceptoTesoreriaIngreso" type="java.lang.String" initial=""/>
+      		<form-property name="conceptoTesoreriaEgreso" type="java.lang.String" initial=""/>
+     	</form-bean>
+    	<form-bean name="SocioForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="email" type="java.lang.String" initial=""/>
+      		<form-property name="fechaIngreso" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="CoberturaLookUpForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigo" type="java.lang.String" initial=""/>
+      		<form-property name="descripcion" type="java.lang.String" initial=""/>
+      		<form-property name="codigoConcepto" type="java.lang.String" initial=""/>
+      		<form-property name="concepto" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="estado" type="java.lang.String" initial=""/>
+      		<form-property name="source" type="java.lang.String" initial=""/>
+    	</form-bean> 
+    	<form-bean name="CoberturaForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="valorTope" type="java.lang.String" initial=""/>
+       		<form-property name="tipoTope" type="java.lang.String" initial=""/>
+      		<form-property name="descripcion" type="java.lang.String" initial=""/>
+      		<form-property name="concepto" type="java.lang.String" initial=""/>
+      		<form-property name="valorReferencial" type="java.lang.String" initial=""/>
+      		<form-property name="periodoCarencia" type="java.lang.String" initial=""/>
+  		    <form-property name="tipoCobertura" type="java.lang.String" initial=""/>
+  		    <form-property name="codigoCoberturaAdicional" type="java.lang.String" initial=""/>
+  		    <form-property name="tieneOcurrencias" type="java.lang.String" initial=""/>
+  		    <form-property name="etiquetaOcurrencias" type="java.lang.String" initial=""/>  		    
+    	</form-bean>
+    	<form-bean name="RangoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="indice" type="java.lang.String" initial=""/>
+   		    <form-property name="indiceFuturo" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="opcionFuturo" type="java.lang.String" initial=""/>      		
+      		<form-property name="inicioRango" type="java.lang.String" initial="0"/>
+      		<form-property name="finRango" type="java.lang.String" initial="0"/>
+      		<form-property name="porcentajeCobertura" type="java.lang.String" initial="0"/>
+      		<form-property name="cuentaGasto" type="java.lang.String" initial="0"/>
+      		<form-property name="fechaInicioVig" type="java.lang.String" />
+      		<form-property name="fechaFinVig" type="java.lang.String" />
+    	</form-bean>
+    	<form-bean name="ConvenioLookUpForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigo" type="java.lang.String" initial=""/>
+      		<form-property name="nombre" type="java.lang.String" initial=""/>
+      		<form-property name="codigoConcepto" type="java.lang.String" initial=""/>
+      		<form-property name="estado" type="java.lang.String" initial=""/>
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="cobertura" type="java.lang.String" initial=""/>
+      		<form-property name="concepto" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="ConvenioForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="nombre" type="java.lang.String" initial=""/> 
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="dv" type="java.lang.String" initial=""/>
+      		<form-property name="estado" type="java.lang.String" initial=""/>
+      		<form-property name="concepto" type="java.lang.String" initial=""/>
+      		<form-property name="numCuotasExternas" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="TalonarioLookUpForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="inicioSecuencia" type="java.lang.String" initial=""/>
+      		<form-property name="finSecuencia" type="java.lang.String" initial=""/>
+      		<form-property name="codigo" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="TalonarioForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="inicioSecuencia" type="java.lang.String" initial=""/>
+      		<form-property name="finSecuencia" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="ProductoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="descuento" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="porcentajeAporteConvenio" type="java.lang.String" initial=""/>      		
+    	</form-bean>
+    	<form-bean name="OptionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="codigo" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="TalonarioDisponibleLookUpForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigoConvenio" type="java.lang.String" initial=""/>
+      		<form-property name="codigoTalonario" type="java.lang.String" initial=""/>
+      		<form-property name="nombreConvenio" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="CasoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="fechaDeOcurrencia" type="java.lang.String" initial=""/>
+      		<form-property name="tipoCaso" type="java.lang.String" initial=""/>
+      		<form-property name="cuotasBienestar" type="java.lang.String" initial=""/>
+      		<form-property name="cuotasConvenio" type="java.lang.String" initial=""/>
+      		<form-property name="numeroDocumento" type="java.lang.String" initial=""/>
+      		<form-property name="tipoDocumento" type="java.lang.String" initial=""/>
+      		<form-property name="compraBono" type="java.lang.String" initial=""/>
+    	</form-bean>
+    	<form-bean name="CasoLookUpForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rutSocio" type="java.lang.String" initial=""/>
+      		<form-property name="casoID" type="java.lang.String" initial=""/>
+      		<form-property name="estado" type="java.lang.String" />
+      		<form-property name="tipoCaso" type="java.lang.String" initial=""/>
+      		<form-property name="monto" type="java.lang.String" initial=""/>
+    	</form-bean>
+ 	  	<form-bean name="EventoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="comentario" type="java.lang.String" initial=""/>
+    	</form-bean>
+ 	  	<form-bean name="DetalleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="valorPrestacion" type="java.lang.String" initial=""/>
+      		<form-property name="descuento" type="java.lang.String" initial=""/>
+      		<form-property name="aporteIsapre" type="java.lang.String" initial=""/>
+      		<form-property name="cobertura" type="java.lang.Long" initial=""/>
+      		<form-property name="documento" type="java.lang.String" initial=""/>
+      		<form-property name="indice" type="java.lang.String" initial=""/>
+      		<form-property name="cantidadOcurrencias" type="java.lang.String" initial=""/>      		
+    	</form-bean>
+    	<form-bean name="CalculoBonificacionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="tipoCaso" type="java.lang.String" initial="" />
+      		<form-property name="indice" size="1" type="java.lang.String"/>
+      	</form-bean>
+    	<form-bean name="ResumenMovimientoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="tipoTope" type="java.lang.String" initial="" />
+      		<form-property name="producto" type="java.lang.String" initial="" />
+      		<form-property name="codigo" type="java.lang.String" initial="" />
+      		<form-property name="source" type="java.lang.String" initial="" />
+      		<form-property name="fechaInicio" type="java.lang.String" />
+      		<form-property name="fechaFin" type="java.lang.String" />
+      	</form-bean>
+	   	<form-bean name="ResumenAportesBienestarForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="cobertura" type="java.lang.String" initial="" />
+      		<form-property name="codigo" type="java.lang.String" initial="" />
+      		<form-property name="fechaInicio" type="java.lang.String" />
+      		<form-property name="fechaFin" type="java.lang.String" />
+      	</form-bean>
+    	<form-bean name="ImpuestoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="creditoGirado" type="java.lang.String" initial="" />
+      		<form-property name="numeroCuotas" type="java.lang.String" initial="" />
+      		<form-property name="opcion" type="java.lang.String" initial="" />
+      	</form-bean>
+    	<form-bean name="CalculoReembolsoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="indice" size="1" type="java.lang.String"/>
+      		<form-property name="fechaOcurrencia" type="java.lang.String"/>
+      	</form-bean>
+    	<form-bean name="CalculoDescuentoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="indice" size="1" type="java.lang.String"/>
+      		<form-property name="fechaOcurrencia" type="java.lang.String"/>
+      	</form-bean>
+    	<form-bean name="CierreCasoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="montoAbono" type="java.lang.String" initial="" />
+      		<form-property name="montoPrestamo" type="java.lang.String" initial="" />
+      		<form-property name="numeroPrestamo" type="java.lang.String" initial="" />
+      		<form-property name="observacion" type="java.lang.String" initial="" />
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      	</form-bean>
+    	<form-bean name="AporteEspecialForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="montoAporte" type="java.lang.String" initial="" />
+      		<form-property name="coPagoSocio" type="java.lang.String" initial="" />      		
+      		<form-property name="codigoCobertura" type="java.lang.String" initial="" />
+      		<form-property name="observacion" type="java.lang.String" initial="" />
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      	</form-bean>      	
+	   	<form-bean name="LookUpUploadFileForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigoConvenio" type="java.lang.String" initial="" />
+      		<form-property name="nombreConvenio" type="java.lang.String" initial="" />
+      		<form-property name="codigoProducto" type="java.lang.String" initial="" />
+      		<form-property name="nombreProducto" type="java.lang.String" initial="" />      		
+      	</form-bean>    	
+	   	<form-bean name="UploadFileForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="codigoConvenio" type="java.lang.String" initial="" />
+      		<form-property name="codigoProducto" type="java.lang.String" initial="" />
+      		<form-property name="archivo" type="java.lang.String" initial="" />      		
+      	</form-bean>
+	   	<form-bean name="PreCasoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="formaPago" type="java.lang.String" initial="" />
+      		<form-property name="pagarA" type="java.lang.String" initial="" />
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      		<form-property name="indice" size="1" type="java.lang.String"/>
+      		<form-property name="indiceIngreso" type="java.lang.String" initial=""/>
+      		<form-property name="accion" type="java.lang.String" initial=""/>
+      		<form-property name="montoIngreso" type="java.lang.String" initial=""/>
+      	</form-bean> 
+	   	<form-bean name="DatosProfesionalesForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="opcion" type="java.lang.String" initial="" />
+      		<form-property name="indice" type="java.lang.String" initial="" />
+      		<form-property name="formaPago" type="java.lang.String" initial="" />
+      		<form-property name="nombre" type="java.lang.String" initial="" />
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="dv" type="java.lang.String"/>
+      		<form-property name="monto" type="java.lang.String" initial=""/>
+      	</form-bean>
+      	<form-bean name="ProfesionalesForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="dv" type="java.lang.String" initial=""/>
+      		<form-property name="nombre" type="java.lang.String" initial=""/>
+      		<form-property name="tipo" type="java.lang.String" initial=""/>
+      	</form-bean>
+      	<form-bean name="FiltroProfesionalesForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rutFiltro" type="java.lang.String" initial=""/>
+      		<form-property name="nombreFiltro" type="java.lang.String" initial=""/>
+      	</form-bean>
+      	<form-bean name="DatosDistrucionDetallesForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="monto" type="java.lang.String" initial=""/>
+      		<form-property name="indice" type="java.lang.String" initial=""/>
+      		<form-property name="opcion" type="java.lang.String" initial=""/>
+      	</form-bean>      	
+   	</form-beans>  
+	<!-- Global Exceptions -->
+	<global-exceptions>
+    	<exception handler="cl.araucana.common.ui.struts.UserFriendlyExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.ui.UserFriendlyException" />
+    	<exception handler="cl.araucana.common.ui.struts.BusinessExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.BusinessException" />
+    	<exception handler="cl.araucana.common.ui.struts.ExceptionHandler"
+        	       key="exception"
+            	   type="java.lang.Exception" />
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+    	<forward name="failure" path="/pages/common/failure.jsp" />
+    	<forward name="success" path="/pages/common/success.jsp" />
+		<forward name="socios" path="/getListaSocios.do"/>
+		<forward name="sociosInactivos" path="/getListaSociosInactivos.do"/>
+		<forward name="coberturas" path="/getListaCoberturas.do"/>
+		<forward name="convenios" path="/getListaConvenios.do"/>
+		<forward name="operaciones" path="/pages/operacion/operacion.jsp?bandera=false"/>
+		<forward name="bonificaciones" path="/index_aplicacion.jsp"/>
+    	<forward name="noservice" path="/pages/common/noservice.jsp" />
+    	<forward name="casos" path="/getListaCasos.do" />
+    	<forward name="reportes" path="/pages/reportes/reportes.jsp" />
+        <forward name="welcome" path="/prepareOption.do"/>
+        <forward name="listaPreCasos" path="/prepareListaPreCasos.do"/>
+        <forward name="genericMsg" path="/pages/common/genericMessage.jsp" />
+	</global-forwards>
+
+  	<!-- Action Mappings -->
+
+  	<action-mappings>
+        <action path="/SecurityPageError" type="org.apache.struts.actions.ForwardAction"
+            parameter="/pages/common/securityError.jsp"/>
+            
+  		
+  		<action path="/prepareOption" type="cl.araucana.bienestar.bonificaciones.ui.actions.PrepareOptionAction">
+  		</action>
+  		
+  		<action name="SocioForm" path="/setFichaSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.SetFichaSocioAction">
+  			<forward name="socio" path="/pages/socio/socio.jsp">
+  			</forward>
+  		</action>
+  		
+  		<action name="PersonaForm" path="/getListaSocios" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaSociosAction" scope="request" validate="true" input="/pages/common/lookups/socios.jsp">
+  			<forward name="listaSocios" path="/pages/common/lookups/socios.jsp">
+  			</forward>
+  			<forward name="listaCandidatos" path="/pages/common/lookups/candidato.jsp">
+  			</forward>
+  			<forward name="listaSociosCaso" path="/pages/caso/listaSocios.jsp">
+  			</forward>
+  			<forward name="listaSociosReporte" path="/pages/common/lookups/socios.jsp">
+  			</forward>
+  		</action>
+  		<action name="PersonaForm" path="/getListaSociosInactivos" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaSociosInactivosAction" scope="request" validate="true" input="/pages/common/lookups/socios.jsp">
+  			<forward name="listaSocios" path="/pages/common/lookups/sociosInactivos.jsp">
+  			</forward>
+  			<forward name="listaCandidatos" path="/pages/common/lookups/candidato.jsp">
+  			</forward>
+  			<forward name="listaSociosCaso" path="/pages/caso/listaSocios.jsp">
+  			</forward>
+  			<forward name="listaSociosReporte" path="/pages/common/lookups/socios.jsp">
+  			</forward>
+  		</action>  		
+  		<action path="/getListaCargasSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaCargasSocioAction">
+  			<forward name="listaCargasSocio" path="/pages/socio/listaMisCargas.jsp">
+  			</forward>
+  		</action>
+  		<action path="/setFichaCarga" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.SetFichaCargaAction">
+  			<forward name="carga" path="/pages/socio/carga.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/actualizarCarga" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.ActualizarCargaAction">
+  			<forward name="carga" path="/pages/socio/carga.jsp">
+  			</forward>
+  		</action>
+  		<action name="CargaForm" path="/getListaCargas" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaCargasAction"  scope="request">
+  			<forward name="listaCargas" path="/pages/common/lookups/cargas.jsp">
+  			</forward>
+  			<forward name="listaCargasCaso" path="/pages/caso/listaCargas.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaConceptos" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GetListaConceptosAction">
+  			<forward name="listaConceptos" path="/pages/concepto/listaConceptos.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConceptoForm" path="/setFichaConcepto" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.SetFichaConceptoAction">
+  			<forward name="concepto" path="/pages/concepto/concepto.jsp">
+  			</forward>
+   		</action>
+  		<action name="ConceptoForm" path="/opcionesConceptos" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.OpcionesConceptosAction" validate="true" input="/pages/concepto/concepto.jsp">
+  		</action>
+  		<action name="CoberturaLookUpForm" path="/getListaCoberturas" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCoberturasAction"  scope="request" validate="true" input="/pages/cobertura/listaCoberturas.jsp">
+  			<forward name="listaCoberturas" path="/pages/cobertura/listaCoberturas.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaLookUpForm" path="/getListaCoberturasConcepto" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCoberturasAction"  scope="request" validate="true" input="/pages/concepto/listaMisCoberturas.jsp">
+  			<forward name="listaCoberturasConcepto" path="/pages/concepto/listaMisCoberturas.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaLookUpForm" path="/getListaCoberturasConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCoberturasAction"  scope="request" validate="true" input="/pages/convenio/listaMisCoberturas.jsp">
+  			<forward name="listaProductos" path="/pages/convenio/listaMisCoberturas.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaLookUpForm" path="/getListaCoberturasLookUp" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCoberturasAction"  scope="request" validate="true" input="/pages/common/lookups/coberturas.jsp">
+  			<forward name="lookUpCoberturas" path="/pages/common/lookups/coberturas.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaLookUpForm" path="/getListaCoberturasCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCoberturasAction"  scope="request" validate="true" input="/pages/caso/listaCoberturas.jsp">
+  			<forward name="listaProductosCaso" path="/pages/caso/listaCoberturas.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaForm" path="/setFichaCobertura" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.SetFichaCoberturaAction" >
+  			<forward name="cobertura" path="/pages/cobertura/cobertura.jsp">
+  			</forward>
+  		</action>
+  		<action name="CoberturaForm" path="/opcionesCobertura" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.OpcionesCoberturaAction" validate="true" input="/pages/cobertura/cobertura.jsp">
+  		</action>
+  		<action name="RangoForm" path="/opcionesRangos" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.OpcionesRangosAction" validate="true" input="/pages/cobertura/misRangos.jsp">
+  			<forward name="listaRangos" path="/getListaRangos.do">
+  			</forward>
+  		</action>
+  		<action name="RangoForm" path="/getListaRangos" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaRangosAction">
+  			<forward name="listaRangos" path="/pages/cobertura/misRangos.jsp">
+  			</forward>
+  			<forward name="listaRangosConvenio" path="/pages/convenio/misRangos.jsp">
+  			</forward>
+  		</action>
+  		<action name="RangoForm" path="/getListaRangosHistoricos" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaRangosHistoricosAction">
+  			<forward name="listaRangosHistoricos" path="/pages/cobertura/rangosHistoricos.jsp">
+  			</forward>
+  		</action>
+  		<action name="RangoForm" path="/opcionesRangoFuturo" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.OpcionesRangoFuturoAction" validate="true" input="/pages/cobertura/rangoFuturo.jsp">
+  			<forward name="listaRangos" path="/getListaRangoFuturo.do">
+  			</forward>
+  		</action>
+  		<action name="RangoForm" path="/getListaRangoFuturo" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaRangoFuturoAction">
+  			<forward name="listaRangos" path="/pages/cobertura/rangoFuturo.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioLookUpForm" path="/getListaConvenios" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaConveniosAction" scope="request" validate="true" input="/pages/convenio/listaConvenios.jsp">
+  			<forward name="listaConvenios" path="/pages/convenio/listaConvenios.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioLookUpForm" path="/getListaConveniosConcepto" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaConveniosAction" scope="request" validate="true" input="/pages/concepto/listaMisConvenios.jsp">
+  			<forward name="listaConveniosConcepto" path="/pages/concepto/listaMisConvenios.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioLookUpForm" path="/getListaConveniosCobertura" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaConveniosAction" scope="request" validate="true" input="/pages/cobertura/listaMisConvenios.jsp">
+  			<forward name="listaConveniosCobertura" path="/pages/cobertura/listaMisConvenios.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioLookUpForm" path="/getListaConveniosCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaConveniosAction" scope="request" validate="true" input="/pages/common/lookups/convenio.jsp">
+  			<forward name="listaConveniosCasos" path="/pages/common/lookups/convenio.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioForm" path="/setFichaConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.SetFichaConvenioAction">
+  			<forward name="convenio" path="/pages/convenio/convenio.jsp">
+  			</forward>
+  		</action>
+  		<action name="ConvenioForm" path="/opcionesConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.OpcionesConvenioAction" validate="true" input="/pages/convenio/convenio.jsp">
+  			<forward name="listaConvenios" path="/getListaConvenios.do">
+  			</forward>
+  		</action>
+  		<action name="TalonarioLookUpForm" path="/getListaTalonarios" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaTalonariosAction" scope="request" validate="true" input="/pages/convenio/listaMisTalonarios.jsp">
+  			<forward name="listaTalonarios" path="/pages/convenio/listaMisTalonarios.jsp">
+  			</forward>
+  		</action>
+  		<action name="TalonarioForm" path="/setFichaTalonario" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.SetFichaTalonarioAction">
+  			<forward name="talonario" path="/pages/convenio/talonario.jsp">
+			</forward>	
+  		</action>
+  		<action name="TalonarioForm" path="/opcionesTalonario" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.OpcionesTalonarioAction" validate="true" input="/pages/convenio/talonario.jsp">
+  		</action>
+  		<action name="ProductoForm" path="/setFichaProducto" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.SetFichaProductoAction">
+  			<forward name="producto" path="/pages/convenio/producto.jsp">
+			</forward>	
+  		</action>
+  		<action name="ProductoForm" path="/opcionesProducto" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.OpcionesProductoAction" validate="true" input="/pages/convenio/producto.jsp">
+  		</action>
+  		<action name="RangoForm" path="/opcionesRangosProducto" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.OpcionesRangosProductoAction" scope="request" validate="true" input="/pages/convenio/misRangos.jsp">
+  			<forward name="listaRangos" path="/getListaRangos.do?source=convenio">
+  			</forward>
+  		</action>
+  		<action path="/getListaValesSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaValesSocioAction">
+  			<forward name="listaValesSocio" path="/pages/socio/listaMisVales.jsp">
+  			</forward>
+  			<forward name="listaValesSocioCaso" path="/pages/caso/listaVales.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/setFichaVale" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.SetFichaValeAction">
+  			<forward name="vale" path="/pages/socio/vale.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/opcionesVale" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.OpcionesValeAction">
+  		</action>
+  		<action name="TalonarioDisponibleLookUpForm" path="/getTalonariosDisponibles" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetTalonariosDisponiblesAction" scope="request" validate="true" input="/pages/convenio/listaTalonarios.jsp">
+  			<forward name="listaTalonariosVO" path="/pages/convenio/listaTalonarios.jsp">
+  			</forward>
+  		</action>
+  		<action name="CasoForm" path="/setFichaCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.SetFichaCasoAction">
+  			<forward name="caso" path="/pages/caso/caso.jsp">
+  			</forward>
+  		</action> 
+  		<action name="CasoForm" path="/opcionesCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.OpcionesCasoAction" validate="true" input="/pages/caso/caso.jsp">
+  			<forward name="simularCaso" path="/pages/caso/simularCaso.jsp">
+  			</forward>
+  			<forward name="nuevoCaso" path="/setFichaCaso.do">
+  			</forward>
+  			<forward name="cierreCaso" path="/pages/caso/cierreCaso.jsp">
+  			</forward>
+  			<forward name="bonificacionEspecial" path="/pages/caso/bonificacionEspecialCaso.jsp">
+  			</forward>  			
+  			<forward name="bonificacionEspecialNormal" path="/pages/caso/bonificacionEspecialNormal.jsp"></forward>
+  			<forward name="validaOperacionDeudaTotal" path="/pages/caso/validaOperacionDeudaTotal.jsp">
+  			</forward> 
+  			<forward name="eliminaReembolso" path="/pages/caso/validaOperacionEliminarReembolso.jsp">
+  			</forward>  	 	
+  		</action>
+  		<action name="CasoLookUpForm" path="/getListaCasos" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaCasosAction" scope="request" validate="true" input="/pages/common/lookups/caso.jsp">
+  			<forward name="listaCasos" path="/pages/common/lookups/caso.jsp">
+  			</forward>
+  		</action>
+  		<action name="PreCasoForm" path="/prepareOpcionPreCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareOpcionPreCasoAction" scope="request">
+  			<forward name="ingresoIsapre" path="/prepareIngresoIsapre.do">
+  			</forward>
+  			<forward name="ingresoOtros" path="/prepareIngresoOtros.do">
+  			</forward>  			
+  			<forward name="egreso" path="/prepareEgreso.do">
+  			</forward> 
+  			<forward name="activar" path="/activarPreCasos.do">
+  			</forward>   			
+  		</action>
+   		<action name="PreCasoForm" path="/prepareListaPreCasos" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareListaPreCasosAction" scope="request">
+  			<forward name="listaPreCasos" path="/pages/preCasos/listaPreCasos.jsp">
+  			</forward>
+  		</action>
+  		<action name="PreCasoForm" path="/prepareIngresoIsapre" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareIngresoIsapreAction" scope="request">
+  			<forward name="fichaIngreso" path="/pages/preCasos/fichaIngresoTesoreria.jsp">
+  			</forward>
+  		</action>
+  		<action name="PreCasoForm" path="/prepareIngresoOtros" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareIngresoOtrosAction" scope="request">
+  			<forward name="fichaIngreso" path="/pages/preCasos/fichaIngresoTesoreria.jsp">
+  			</forward>
+  		</action>  		
+  		<action name="PreCasoForm" path="/prepareEgreso" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareEgresoAction" scope="request">
+  			<forward name="fichaEgreso" path="/pages/preCasos/fichaEgresoTesoreria.jsp">
+  			</forward>
+  		</action>
+  		<action name="PreCasoForm" path="/registrarEgreso" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.RegistrarEgresoAction" scope="request">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  			<forward name="fichaEgreso" path="/pages/preCasos/fichaEgresoTesoreria.jsp">
+  			</forward>  			
+  		</action>
+  		<action name="PreCasoForm" path="/validarEgresoProfesionales" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.ValidarEgresoProfesionalesAction" scope="request">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  		</action>
+  		<action name="PreCasoForm" path="/registrarEgresoProfesionales" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.RegistrarEgresoProfesionalesAction" scope="request">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>  		
+  		</action>
+  		<action name="PreCasoForm" path="/registrarIngreso" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.RegistrarIngresoAction" scope="request">
+  		</action>  		
+  		<action name="PreCasoForm" path="/activarPreCasos" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.ActivarPreCasosAction" scope="request">
+  		</action>
+  		<action path="/verDetalleTesoreria" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.VerDetalleTesoreriaAction">
+  			<forward name="datosTesoreria" path="/pages/preCasos/datosTesoreria.jsp">
+  			</forward>
+  		</action>
+  		<action name="DatosProfesionalesForm" path="/administrarDatosProfesionales" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.AdministrarDatosProfesionalesAction" scope="request" validate="true" input="/pages/preCasos/datosProfesionales.jsp">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaEventos" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaEventosAction">
+  			<forward name="listaEventos" path="/pages/caso/listaMisEventos.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/setFichaEvento" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.SetFichaEventoAction">
+  			<forward name="evento" path="/pages/caso/evento.jsp">
+  			</forward>
+  		</action>
+  		<action name="EventoForm" path="/registraEvento" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.RegistraEventoAction" scope="request">
+  		</action>
+  		<action path="/getListaDescuentos" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaDescuentosAction">
+  			<forward name="listaDescuentos" path="/pages/caso/listaMisDescuentos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaCasosBeneficiario" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaCasosBeneficiarioAction">
+  			<forward name="listaBonos" path="/pages/socio/listaMisBonos.jsp">
+  			</forward>
+  			<forward name="listaReembolsos" path="/pages/socio/listaMisReembolsos.jsp">
+  			</forward>
+  			<forward name="listaCasos" path="/pages/socio/listaMisCasos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaCasosConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaCasosConvenioAction">
+  			<forward name="listaCasosConvenio" path="/pages/convenio/listaMisCasos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaCasosCobertura" type="cl.araucana.bienestar.bonificaciones.ui.actions.cobertura.GetListaCasosCoberturaAction">
+  			<forward name="listaCasosCobertura" path="/pages/cobertura/listaMisCasos.jsp">
+  			</forward>
+  		</action>
+  		<action name="DetalleForm" path="/getDetallesCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetDetallesCasoAction" scope="request">
+  			<forward name="listaDetallesCaso" path="/pages/caso/listaMisDetalles.jsp">
+  			</forward>
+  		</action>
+  		<action name="DetalleForm" path="/opcionesDetallesCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.OpcionesDetallesCasoAction" validate="true" input="/pages/caso/listaMisDetalles.jsp">
+  			<forward name="listaDetallesCaso" path="/getDetallesCaso.do">
+  			</forward>
+  		</action>
+  		<action name="CalculoBonificacionForm" path="/getListaCasosAbiertos" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaCasosAbiertosAction">
+  			<forward name="listaCasosNoBonificados" path="/pages/operacion/calcularBonificacion.jsp">
+  			</forward>
+  		</action>
+  		<action name="CalculoBonificacionForm" path="/calcularBonificacion" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.CalcularBonificacionAction">
+  			<forward name="listaCasosNoBonificados" path="/getListaCasosAbiertos.do">
+  			</forward>
+  		</action>
+  		<action path="/getListaMisVales" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetListaMisValesAction">
+  			<forward name="listaVales" path="/pages/convenio/listaMisVales.jsp">
+  			</forward>
+  		</action>
+  		<action name="ResumenMovimientoForm" path="/getResumenMovimientoBeneficiario" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetResumenMovimientoBeneficiarioAction" scope="request" validate="true" input="/pages/socio/resumenMovimientos.jsp">
+  			<forward name="resumenMovimientos" path="/pages/socio/resumenMovimientos.jsp">
+  			</forward>
+  		</action>
+  		<action name="ResumenMovimientoForm" path="/getMovimientosConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.GetMovimientosConvenioAction" scope="request" validate="true" input="/pages/convenio/resumenMovimientos.jsp">
+  			<forward name="resumenMovimientos" path="/pages/convenio/resumenMovimientos.jsp">
+  			</forward>
+  		</action>
+  		<action name="CasoForm" path="/prepareLookUp" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.PrepareLookUpAction">
+  			<forward name="socio" path="/getListaSocios.do?source=caso">
+  			</forward>
+  			<forward name="carga" path="/getListaCargas.do?source=caso">
+  			</forward>
+  			<forward name="convenio" path="/getListaConveniosCaso.do?source=caso">
+  			</forward>
+  		</action>
+  		<action name="LookUpUploadFileForm" path="/prepareLookUpUpLoadFile" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.PrepareLookUpUpLoadFileAction">
+  			<forward name="convenios" path="/pages/operacion/lookupConvenios.jsp"></forward>
+  			<forward name="productos" path="/pages/operacion/lookupProductos.jsp"></forward>  			
+  		</action>  		
+  		<action name="ImpuestoForm" path="/setFichaImpuesto" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.SetFichaImpuestoAction" scope="request">
+  			<forward name="impuesto" path="/pages/caso/impuesto.jsp">
+  			</forward>
+  		</action>
+  		<action name="ImpuestoForm" path="/calculaImpuesto" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.CalculaImpuestoAction" validate="true" input="/pages/caso/impuesto.jsp">
+  			<forward name="impuesto" path="/pages/caso/impuesto.jsp">
+  			</forward>
+  		</action>
+  		<action name="CalculoReembolsoForm" path="/getListaCasosPorReembolsar" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaCasosPorReembolsarAction">
+  			<forward name="listaReembolso" path="/pages/operacion/generaReembolso.jsp">
+  			</forward>
+  		</action>
+  		<action name="CalculoReembolsoForm" path="/generaPagoReembolso" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GeneraPagoReembolsoAction">
+  			<forward name="listaReembolso" path="/getListaCasosPorReembolsar.do">
+  			</forward>
+  		</action>
+  		<action name="CalculoDescuentoForm" path="/getListaCasosPorDescontar" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.GetListaCasosPorDescontarAction">
+  			<forward name="listaDescuento" path="/pages/operacion/generaDescuento.jsp">
+  			</forward>
+  			<forward name="valida" path="/pages/operacion/operacion.jsp?bandera=true">
+  			</forward>
+  		</action>
+  		<action name="CalculoDescuentoForm" path="/generaDescuento" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GeneraDescuentoAction">
+  			<forward name="listaDescuento" path="/getListaCasosPorDescontar.do">
+  			</forward>
+  		</action>
+  		<action name="reporteSituacionForm" path="/getReporteSituacionSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetReporteSituacionSocioAction" scope="request">
+  			<forward name="reporteSocio" path="/pages/reportes/situacionSocio.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/generarAsientosContables" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GenerarAsientosContablesAction">
+  		</action>
+  		<action name="OptionForm" path="/setFichaAsientosContables" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.SetFichaAsientosContablesAction">
+  			<forward name="asientosContables" path="/pages/operacion/generaInformeContabilidad.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/generarPagosConvenios" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GenerarPagosConveniosAction" scope="session">
+  			<forward name="pagoConvenio" path="/pages/operacion/generaPagoConvenio.jsp">
+  			</forward>
+  		</action>
+  		<action path="/setFichaPagoConvenios" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.SetFichaPagoConveniosAction">
+  			<forward name="listaPagosPorRealizar" path="/pages/operacion/listaPagosPorRealizar.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaReembolsosTotales" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetListaReembolsosTotalesAction">
+  			<forward name="listaReembolsosTotales" path="/pages/reportes/listaReembolsosTotales.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getInformeReembolsos" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetInformeReembolsosAction">
+  			<forward name="informeReembolsos" path="/pages/reportes/informeReembolsos.jsp">
+  			</forward>
+  		</action> 
+  		<action path="/getListaDescuentosTotales" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetListaDescuentosTotalesAction">
+  			<forward name="listaDescuentosTotales" path="/pages/reportes/listaDescuentosTotales.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaDescuentosConvenios" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetListaDescuentosConveniosAction">
+  			<forward name="listaDescuentosConvenios" path="/pages/reportes/listaDescuentosConvenios.jsp">
+  			</forward>
+  		</action>  		
+  		<action path="/getInformeDescuentosConvenios" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetInformeDescuentosConveniosAction">
+  			<forward name="informeDescuentosConvenios" path="/pages/reportes/informeDescuentosConvenios.jsp">
+  			</forward>
+  		</action>  		
+  		<action path="/getInformeDescuentos" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetInformeDescuentosAction">
+  			<forward name="informeDescuentos" path="/pages/reportes/informeDescuentos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getDetalleDescuentosSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetDetalleDescuentosSocioAction">
+  			<forward name="detalleDescuentosSocio" path="/pages/reportes/detalleDescuentosSocio.jsp">
+  			</forward>
+  		</action>  
+  		<action path="/getListaPagosTotales" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetListaPagosTotalesAction">
+  			<forward name="listaPagosTotales" path="/pages/reportes/listaPagosTotales.jsp">
+  			</forward>
+  		</action>
+  		<action name="ResumenAportesBienestarForm" path="/getListaAportesBienestar" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetListaAportesBienestarAction" scope="request"
+  			validate="true" input="/pages/reportes/listaAportesBienestar.jsp">
+  			<forward name="listaAportesBienestar" path="/pages/reportes/listaAportesBienestar.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getInformePagos" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetInformePagosAction">
+  			<forward name="informePagos" path="/pages/reportes/informePagos.jsp">
+  			</forward>
+  		</action>
+  		<action name="OptionForm" path="/getPagosConveniosPendientes" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.GetPagosConveniosPendientesAction">
+  			<forward name="pagos" path="/pages/operacion/pagosConvenios.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getDetalleDescuentosConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetDetalleDescuentosConvenioAction">
+  			<forward name="detalleDescuentosConvenio" path="/pages/reportes/detalleDescuentosConvenio.jsp">
+  			</forward>
+  		</action>
+  		<action path="/imprimeReporteUpLoadFile" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.ImprimeReporteUpLoadFileAction">
+  			<forward name="resultUpLoadFile" path="/pages/operacion/resultUpLoadFile.jsp">
+  			</forward>  			
+		</action>  		  		  			
+  		<action path="/imprimeReporte" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.ImprimeReporteAction">
+  			<forward name="reporteSocio" path="/pages/reportes/situacionSocio.jsp">
+  			</forward>
+  			<forward name="informePagos" path="/pages/reportes/informePagos.jsp">
+  			</forward>
+  			<forward name="detalleDescuentosSocio" path="/pages/reportes/detalleDescuentosSocio.jsp">
+  			</forward>
+  			<forward name="informeReembolsos" path="/pages/reportes/informeReembolsos.jsp">
+  			</forward>
+  			<forward name="detalleDescuentosOficina" path="/pages/reportes/detalleDescuentosOficina.jsp">
+  			</forward>
+  			<forward name="detalleDescuentosConvenio" path="/pages/reportes/detalleDescuentosConvenio.jsp">
+  			</forward>  			
+  			<forward name="listaAportesBienestar" path="/pages/reportes/listaAportesBienestar.jsp">
+  			</forward>
+  			<forward name="infoDsctoSocio" path="/pages/reportes/infoDsctoSocio.jsp">
+  			</forward>
+  		</action>
+  		<action path="/imprimeSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.ImprimeReporteAction">
+  			<forward name="resumenMovimientos" path="/pages/socio/resumenMovimientos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/imprimeConvenio" type="cl.araucana.bienestar.bonificaciones.ui.actions.convenio.ImprimeReporteAction">
+  			<forward name="resumenMovimientos" path="/pages/convenio/resumenMovimientos.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getDetalleDescuentosOficina" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetDetalleDescuentosOficinaAction">
+  			<forward name="detalleDescuentosOficina" path="/pages/reportes/detalleDescuentosOficina.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getListaPrestamosSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaPrestamosSocioAction">
+  			<forward name="listaPrestamos" path="/pages/socio/listaMisPrestamos.jsp">
+  			</forward>
+  		</action> 
+  		<action path="/getListaDescuentosSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetListaDescuentosSocioAction">
+  			<forward name="listaDescuentos" path="/pages/socio/listaMisDescuentos.jsp">
+  			</forward>
+  		</action> 
+  		<action path="/getDetalleDescuentosAplicados" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.GetDetalleDescuentosAplicadosAction">
+  			<forward name="detalleDescuentos" path="/pages/socio/detalleDescuentosAplicados.jsp">
+  			</forward>
+  		</action>  
+  		<action name="CierreCasoForm" path="/cierraCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.CierraCasoAction" scope="request">
+  		</action>
+  		<action name="AporteEspecialForm" path="/bonificacionEspecial" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.BonificacionEspecialCasoAction" scope="request">
+  		</action>  		
+  		<action name="AporteEspecialForm" path="/bonificacionEspecialNormal" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.BonificacionEspecialNormalCasoAction" scope="request">
+  		</action>
+  		<action path="/prepareUpLoadFile" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.PrepareUpLoadFileAction">
+  			<forward name="upLoadFile" path="/pages/operacion/upLoadFile.jsp">
+  			</forward>
+  		</action>    		
+  		<action path="/upLoadFile" type="cl.araucana.bienestar.bonificaciones.ui.actions.operacion.UpLoadFileAction">
+  			<forward name="resultUpLoadFile" path="/pages/operacion/resultUpLoadFile.jsp">
+  			</forward>
+  		</action>  
+  		<action path="/getReporteDsctoSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetReporteDsctoSocioAction">
+  			<forward name="reporteDsctoSocio" path="/pages/reportes/reporteDsctoSocio.jsp">
+  			</forward>
+  		</action>
+  		<action path="/getInfoDsctoSocio" type="cl.araucana.bienestar.bonificaciones.ui.actions.reporte.GetInfoDsctoSocioAction">
+  			<forward name="infoDsctoSocio" path="/pages/reportes/infoDsctoSocio.jsp">
+  			</forward>
+  		</action>
+    	<action name="FiltroProfesionalesForm" path="/getListaProfesionales" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.GetListaProfesionalesAction" scope="request">
+  			<forward name="listaProfesionales" path="/pages/preCasos/listaProfesionales.jsp">
+  			</forward>
+  		</action>
+    	<action name="DatosProfesionalesForm" path="/setearProfesionalSeleccionado" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.SetearProfesionalSeleccionadoAction" scope="request">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  		</action>  			
+  		<action name="ProfesionalesForm" path="/prepareAdminProfesional" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareAdminProfesionalAction" scope="request">
+  			<forward name="adminProfesionales" path="/pages/preCasos/adminProfesionales.jsp">
+  			</forward>
+  		</action>
+  		<action name="ProfesionalesForm" path="/registrarProfesional" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.RegistrarProfesionalAction" scope="request" validate="true" input="/pages/preCasos/adminProfesionales.jsp">
+  			<forward name="listaProfesionales" path="/getListaProfesionales.do">
+  			</forward>
+  		</action>
+    	<action name="DatosDistrucionDetallesForm" path="/prepareListaDetallesCasos" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.PrepareListaDetallesCasosAction" scope="request">
+  			<forward name="listaDetallesCasos" path="/pages/preCasos/listaDetallesCasos.jsp">
+  			</forward>
+  		</action>
+    	<action name="DatosDistrucionDetallesForm" path="/setearDetalleSeleccionado" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.SetearDetalleSeleccionadoAction" scope="request"  validate="true" input="/pages/preCasos/listaDetallesCasos.jsp">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  		</action>
+    	<action path="/quitarDetalleSeleccionado" type="cl.araucana.bienestar.bonificaciones.ui.actions.preCasos.QuitarDetalleSeleccionadoAction">
+  			<forward name="datosProfesionales" path="/pages/preCasos/datosProfesionales.jsp">
+  			</forward>
+  		</action>
+    	<action name="CasoForm" path="/saldoDeudaTotalCaso" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.SaldoDeudaTotalCasoAction">
+    	</action>
+        <action name="CasoForm" path="/liberarTopeCobertura" type="cl.araucana.bienestar.bonificaciones.ui.actions.caso.LiberarTopeCoberturaAction">
+    	</action>	
+    	<action name="CasoForm" path="/CasosSocioInactivo" type="cl.araucana.bienestar.bonificaciones.ui.actions.socio.CasosSocioInactivoAction">
+    		<forward name="listaCasos" path="/pages/caso/listaCasosActivosSocioInactivo.jsp">
+  			</forward>
+    	</action>
+    	<action path="/validateCasoAjax" type="cl.araucana.bienestar.bonificaciones.ui.actions.ajax.ValidateCasoAjaxAction"/>
+  	</action-mappings>
+
+	<!-- Controller Configuration -->
+	<controller
+		processorClass="cl.araucana.common.ui.struts.SecureRequestProcessor"
+		nocache="true"/>
+
+  	<!-- Message Resources Definitions -->
+  	<message-resources parameter="resources.application" />
+
+  	<!-- Plug Ins Configuration -->
+  	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    	<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+  	</plug-in>   	
+</struts-config>

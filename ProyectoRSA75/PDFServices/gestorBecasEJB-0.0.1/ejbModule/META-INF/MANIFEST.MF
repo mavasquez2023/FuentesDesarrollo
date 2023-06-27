@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Class-Path:  log4j-1.2.13.jar schema-lib-2.4.16.jar gestorBecasEJBClie
+ nt-0.0.1.jar gestorBecasBusiness-0.0.1.jar core-2.3.jar jt400-5.3.0.9
+ .jar itext-2.0.7.jar bcmail-jdk14-138.jar bcprov-jdk14-138.jar
+Archiver-Version: Plexus Archiver
+Build-Jdk: 1.5.0_07
+Built-By: gmallea
+Created-By: Apache Maven
+

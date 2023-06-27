@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Class-Path: DistribuidorEJBClient.jar bhouse/bhutil-1.9.jar bhouse/tal
+ on.jar dependencias/antlr-2.7.6rc1.jar dependencias/asm-attrs.jar dep
+ endencias/asm.jar dependencias/backport-util-concurrent-3.0.jar depen
+ dencias/cglib-2.1.3.jar dependencias/commons-beanutils-1.7.0.jar depe
+ ndencias/commons-chain-1.1.jar dependencias/commons-collections-3.2.j
+ ar dependencias/commons-digester-1.8.jar dependencias/commons-fileupl
+ oad-1.1.1.jar dependencias/commons-io-1.1.jar dependencias/commons-la
+ ng.jar dependencias/commons-validator-1.3.1.jar dependencias/dom4j-1.
+ 6.1.jar dependencias/ehcache-1.5.0.jar dependencias/hibernate3.jar de
+ pendencias/jstl.jar dependencias/log4j-1.2.14.jar dependencias/standa
+ rd.jar dependencias/struts-core-1.3.8.jar dependencias/struts-el-1.3.
+ 8.jar dependencias/struts-extras-1.3.8.jar dependencias/struts-taglib
+ -1.3.8.jar dependencias/xml-apis.jar LaAraucana/core-2.0.jar bhouse/C
+ rypto.jar LaAraucana/etc.jar LaAraucana/fpg-1.0.jar LaAraucana/httput
+ ils.jar LaAraucana/ostermillerutils-1.0.5.jar LaAraucana/pdf-1.0.jar 
+ LaAraucana/xcore.jar dependencias/commons-logging-1.0.4.jar dependenc
+ ias/jt400.jar LaAraucana/resources.jar LaAraucana/userRegistry-2.3.ja
+ r LaAraucana/cl.jar Reportes.jar validadorSis/validadorSisBusiness-0.
+ 0.1.jar
+

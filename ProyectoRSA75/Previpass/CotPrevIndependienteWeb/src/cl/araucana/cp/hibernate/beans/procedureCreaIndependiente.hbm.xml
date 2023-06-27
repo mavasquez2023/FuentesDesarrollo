@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<sql-query name="procCreaInd" callable="true">  
+		{call PROC_CREA_INDEPEN (
+		:rutPer, 
+		:idComuna, 
+		:celular, 
+		:telefono, 
+		:fax, 
+		:direccion, 
+		:numDireccion, 
+		:numDepartamento, 
+		:nombres, 
+		:apellidoPat, 
+		:apellidoMat, 
+		:email, 
+		:idGenero,
+		:idActividad,
+		:tipoDireccion,
+		:tipoEmpresa,
+		:tipoPago,
+		:idParamGrupoConvenio)}  
+	</sql-query>	
+</hibernate-mapping>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabBenefNS"> 
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene rut, perfil y estado desde la tabla PERFILES. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabBenef" resultClass="cl.araucana.independientes.vo.LinMantTabBenefVO" parameterClass="java.util.HashMap">
+		SELECT	IDBENEFICIO idBeneficio,
+				GLOSACORTA glosaCorta,
+				GLOSA glosa,
+				CODIGOCONTABLE codigoContable,
+				ESTADO estado,
+				TIPOPAGO tipoPago,
+				VALORPAGO valorPago,
+				MONTOPAGARMAX montoPagarMax,
+				CARENCIA carencia,
+				RECURRENCIA recurrencia,
+				PLAZOCOBRO plazoCobro,
+				CHAR(FECHAINIVALIDEZ , USA) fechaIniValidez,
+				CHAR(FECHAFINVALIDEZ  , USA) fechaFinValidez,
+				ISCAUSANTEUNICO isCausanteUnico
+		FROM $IIDTA$.LISTA_BENEFICIOS
+	</select>
+	
+		<!-- Select de idbeneficio de la tabla LISTA_BENEFICIOS. 	-->
+	<select id="selectSeqBenef" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.BENEFICIO_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Insert a la tabla LISTA_BENEFICIOS.-->
+	<insert id="insertNewBenef" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.LISTA_BENEFICIOS(IDBENEFICIO,GLOSACORTA,GLOSA,CODIGOCONTABLE,ESTADO,TIPOPAGO,VALORPAGO,MONTOPAGARMAX,CARENCIA,RECURRENCIA,PLAZOCOBRO,FECHAINIVALIDEZ,FECHAFINVALIDEZ,ISCAUSANTEUNICO)
+		VALUES(#input.idBeneficio#,
+			   #input.glosaCorta#,
+			   #input.glosa#,
+			   #input.codigoContable#,
+			   #input.estado#,
+			   #input.tipoPago#,
+			   #input.valorPago#,
+			   #input.montoPagarMax#,
+			   #input.carencia#,
+			   #input.recurrencia#,
+			   #input.plazoCobro#,
+			   #input.fechaIniValidez#,
+			   #input.fechaFinValidez#,
+			   #input.isCausanteUnico#)
+	</insert>
+	
+	<!-- Update ESTADO para BENEFICIOS -->
+	<update id="cambiarEstadoMantTabBenef" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.LISTA_BENEFICIOS
+		SET		ESTADO = #input.estado#
+    	WHERE	IDBENEFICIO = #input.idBeneficio#
+	</update>
+	
+	<!-- Update BENEFICIO -->
+	<update id="updateMantTabBenef" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.LISTA_BENEFICIOS
+		SET		GLOSACORTA = #input.glosaCorta#,
+			    GLOSA = #input.glosa#,
+			    CODIGOCONTABLE = #input.codigoContable#,
+			    TIPOPAGO = #input.tipoPago#,
+			    VALORPAGO = #input.valorPago#,
+			    MONTOPAGARMAX = #input.montoPagarMax#,
+			    CARENCIA = #input.carencia#,
+			    RECURRENCIA = #input.recurrencia#,
+			    PLAZOCOBRO = #input.plazoCobro#,
+			    FECHAINIVALIDEZ = #input.fechaIniValidez#,
+			    FECHAFINVALIDEZ = #input.fechaFinValidez#,
+			    ISCAUSANTEUNICO = #input.isCausanteUnico#
+    	WHERE	IDBENEFICIO = #input.idBeneficio#
+	</update>
+	
+</sqlMap>

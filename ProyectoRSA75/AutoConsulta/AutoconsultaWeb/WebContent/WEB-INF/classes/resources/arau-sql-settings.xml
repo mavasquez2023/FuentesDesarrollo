@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- Configuraciones sql La Araucana -->
+<application-sql>
+	<SqlTablas>
+	
+		<empresa-usuarios>
+			<list>SELECT EERUTEMP, EEDVEMP, RUTUSR, EEALLOFI, EENOM, EEAPEM, EEAPEP FROM ATDTA.AT03F1 WHERE EERUTEMP = ?</list>
+			<find>SELECT EERUTEMP, EEDVEMP, RUTUSR, EEALLOFI, EENOM, EEAPEM, EEAPEP 
+			      FROM ATDTA.AT03F1 WHERE EERUTEMP = ? AND RUTUSR = ?</find>
+		</empresa-usuarios>
+
+		<servicio-usuarios>
+			<delete>DELETE FROM ATDTA.ATEUSR WHERE EERUTEMP = ? AND RUTUSR = ?</delete>
+			<insert>INSERT INTO ATDTA.ATEUSR (EERUTEMP, RUTUSR, XSRVCD, XRSRHB) VALUES (?, ?, ?, ?)</insert>
+			<update>UPDATE ATDTA.ATEUSR SET XRSRHB = ? WHERE EERUTEMP = ? AND RUTUSR = ? AND XSRVCD = ?</update>
+			<list>SELECT U.EERUTEMP, U.RUTUSR, U.XSRVCD, U.XRSRHB, S.XSRVNM, S.XSRVDS 
+			      FROM ATDTA.ATEUSR U INNER JOIN ATDTA.ATXSRV S ON U.XSRVCD = S.XSRVCD
+				  WHERE S.XSCDFC = 'SI' AND S.XSRVHB = 'SI' AND U.XRSRHB = 'SI'
+				    AND EERUTEMP = ? RUTUSR = ?</list>
+			<listAll>SELECT A.XSRVCD, A.XSRVNM, A.XSRVDS, A.XSRVHB, A.XSCDPR, A.XSCDFC, IFNULL(B.XRSRHB,'') AS XRSRHB
+			      FROM ATDTA.ATXSRV A LEFT JOIN ATDTA.ATEUSR B ON A.XSRVCD = B.XSRVCD AND B.EERUTEMP=? AND B.RUTUSR=?
+			      WHERE A.XSCDFC = 'SI'</listAll>
+			<find>SELECT U.EERUTEMP, U.RUTUSR, U.XSRVCD, U.XRSRHB, S.XSRVNM, S.XSRVDS 
+  					FROM ATDTA.ATEUSR U INNER JOIN ATDTA.ATXSRV S ON U.XSRVCD = S.XSRVCD
+   					WHERE S.XSCDFC = 'SI' AND S.XSRVHB = 'SI' AND U.XRSRHB = 'SI'
+					  AND EERUTEMP = ? AND RUTUSR = ? AND XSRVCD = ?</find>
+		</servicio-usuarios>
+
+		<usuarios>
+			<empresas>SELECT EERUTEMP, EEDVEMP, RUTUSR, EEALLOFI, EENOM, EEAPEM, EEAPEP 
+					FROM ATDTA.AT03F1 WHERE RUTUSR = ?
+			</empresas>
+			<clave>SELECT  U.EERUTEMP, U.EEDVEMP, U.RUTUSR, U.EEALLOFI, U.EENOM, U.EEAPEM, U.EEAPEP
+			       FROM ATDTA.AT30F1 C INNER JOIN ATDTA.AT03F1 U ON C.RUTUSUARIO = U.RUTUSR 
+				   WHERE U.EERUTEMP = ? AND U.RUTUSR = ? AND CLAVEPERSONAL = ?</clave>
+			<claveServicio>SELECT  U.EERUTEMP, U.EEDVEMP, U.RUTUSR, U.EEALLOFI, U.EENOM, U.EEAPEM, U.EEAPEP
+			       FROM ATDTA.AT30F1 C 
+				        INNER JOIN ATDTA.AT03F1 U ON C.RUTUSUARIO = U.RUTUSR 
+						INNER JOIN ATDTA.ATEUSR E ON U.EERUTEMP = E.EERUTEMP AND C.RUTUSUARIO = E.RUTUSR
+						INNER JOIN ATDTA.ATXSRV S ON E.XSRVCD = S.XSRVCD
+				   WHERE S.XSRVHB = 'SI' AND E.XRSRHB = 'SI'
+				     AND U.EERUTEMP = ? AND U.RUTUSR = ? AND CLAVEPERSONAL = ? AND E.XSRVCD = ? </claveServicio>
+		</usuarios>
+
+		<servicios>
+			<listas>
+				<funciones>SELECT XSRVCD, XSRVNM, XSRVDS, XSRVHB, XSCDPR, XSCDFC FROM ATDTA.ATXSRV WHERE XSCDFC = 'SI'</funciones>
+				<lista>SELECT XSRVCD, XSRVNM, XSRVDS, XSRVHB, XSCDPR, XSCDFC FROM ATDTA.ATXSRV </lista>
+			</listas>
+		</servicios>
+		<creditos>
+			<consulta>
+				<cabecera>
+				SELECT a.OFIPRO, a.CREFOL, AFIRUT, AFIRUTDV, EMPRUT, EMPRUTDV, 
+	                   AFINOM, CMPA, CREOTOFEC, CRELINGLO, CRENOMMON, CRECUOTOT, 
+	                   CRECUOMON, CREIMPMON, CREREAMON, CRENOMACU, CRETAS, CREDEUSIT,
+	                   CREESTPTM, CRETOP, d.COBEST, RUTAVAL1, RUTAVAL1DV, RUTAVAL2, RUTAVAL2DV, 
+					   (select count(1) FROM rcdta.csL210 pp join CMDTA.cm01f1 pb ON pp.CUOOFIPGO = pb.CMBA 
+						  where pp.XOFIPRO = a.OFIPRO AND pp.XCREFOL= a.CREFOL ) as CANTCUOTPAG, 
+					   0 as ESTULTCUOTA, 
+					   0 as PROXIMCUOTA, 
+					   (select min(CUOVENFEC) FROM rcdta.csL200 pp
+						  where pp.XOFIPRO = a.OFIPRO AND pp.XCREFOL= a.CREFOL and pp.CUOMONABO=0)  as FECPROXVENC,
+					   'Si' as SEGUROCESAN, 
+					   'Si' as SEGURODESAH
+	              FROM CRDTA.csL1000 a
+	                 LEFT OUTER JOIN CMDTA.CM02F1 b ON a.EMPRUT = b.CMNA
+	                 LEFT OUTER JOIN CRDTA.CRF8020 c on a.crelin = c.crelin
+	                 LEFT OUTER JOIN crdta.CSF9000 d ON a.CREFOL = d.CREFOL AND a.OFIPRO = d.OFIPRO
+				</cabecera>
+				<where-titular>
+                    WHERE AFIRUT =?
+				</where-titular>
+				<where-afiliado>
+                    WHERE RUTAVAL1 =? OR RUTAVAL2=? OR AFIRUT=?
+				</where-afiliado>
+				<where-aval>
+                    WHERE RUTAVAL1 =? OR RUTAVAL2=? OR AFIRUT=?
+				</where-aval>
+				<where-folio>
+                    WHERE a.OFIPRO =? AND a.CREFOL=?
+				</where-folio>
+				<where-empresa>
+					WHERE EMPRUT=? 
+				</where-empresa>
+			</consulta>
+			<pagos>
+               SELECT CUONUM, CUOFECPAG, CMCA, CUODOCPAG, CUODOCTIP, CUOCAPPAG, CUOINTPAG, 
+                      CUOESTPAG, XOFIPRO, XCREFOL
+                 FROM rcdta.csL210 A join CMDTA.cm01f1 B ON a.CUOOFIPGO = B.CMBA
+                 WHERE XOFIPRO =? AND XCREFOL= ?
+			</pagos>
+			<cuotas>
+                 SELECT CUONUM, CUOVENFEC, CUOMONCAP, CUOMONINT, CUOMONABO, CUOEST,
+                        XOFIPRO, XCREFOL
+                   FROM rcdta.csL200
+                   WHERE XOFIPRO =? AND XCREFOL= ?
+			</cuotas>
+		</creditos>
+	</SqlTablas>
+</application-sql>

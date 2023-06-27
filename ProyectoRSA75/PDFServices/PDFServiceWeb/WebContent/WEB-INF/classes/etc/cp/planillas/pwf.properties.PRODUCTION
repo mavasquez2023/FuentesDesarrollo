@@ -1,0 +1,13 @@
+# Common AS400 JDBC properties.
+jdbc.DriverName=com.ibm.as400.access.AS400JDBCDriver
+jdbc.userPropertyName=user
+jdbc.passwordPropertyName=password
+
+# SERVICIO 820 AS/400 Server properties.
+jdbc.url=jdbc:as400://146.83.1.96
+
+ds.properties.user=flineros
+ds.properties.password=flineros
+
+# Optional data source settings.
+ds.properties.trace=false

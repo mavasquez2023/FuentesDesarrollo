@@ -1,0 +1,53 @@
+Manifest-Version: 1.0
+Class-Path: comunes/commons-collections-3.2.jar comunes/commons-lang.j
+ ar hibernate3/ehcache-1.5.0.jar hibernate3/hibernate3.jar log4j-1.2.1
+ 4.jar core.1.1.jar antlr-2.7.6rc1.jar cl.jar commons-logging.jar comu
+ nes/commons-beanutils-1.7.0.jar comunes/dom4j-1.6.1.jar hibernate3/as
+ m.jar hibernate3/backport-util-concurrent-3.0.jar hibernate3/cglib-2.
+ 1.3.jar jar para ireport/barcode.jar jar para ireport/commons-beanuti
+ ls.jar jar para ireport/commons-collections-3.0.jar jar para ireport/
+ commons-digester-1.7.jar jar para ireport/commons-logging.jar jar par
+ a ireport/iText-2.1.7.jar jar para ireport/jasperreports-411-java14.j
+ ar jar para ireport/jt400.jar jar para ireport/mysql-connector-java-5
+ .1.12-bin.jar jar para ireport/barcode.jar jar para ireport/commons-b
+ eanutils.jar jar para ireport/commons-collections-3.0.jar jar para ir
+ eport/commons-digester-1.7.jar jar para ireport/commons-logging.jar j
+ ar para ireport/iText-2.1.7.jar jar para ireport/jasperreports-411-ja
+ va14.jar jar para ireport/jt400.jar jar para ireport/mysql-connector-
+ java-5.1.12-bin.jar jar para ireport/barcode.jar jar para ireport/com
+ mons-beanutils.jar jar para ireport/commons-collections-3.0.jar jar p
+ ara ireport/commons-digester-1.7.jar jar para ireport/commons-logging
+ .jar jar para ireport/iText-2.1.7.jar jar para ireport/jasperreports-
+ 411-java14.jar jar para ireport/jt400.jar jar para ireport/mysql-conn
+ ector-java-5.1.12-bin.jar jar para ireport/barcode.jar jar para irepo
+ rt/commons-beanutils.jar jar para ireport/commons-collections-3.0.jar
+  jar para ireport/commons-digester-1.7.jar jar para ireport/commons-l
+ ogging.jar jar para ireport/iText-2.1.7.jar jar para ireport/jasperre
+ ports-411-java14.jar jar para ireport/jt400.jar jar para ireport/mysq
+ l-connector-java-5.1.12-bin.jar jar para ireport/barcode.jar jar para
+  ireport/commons-beanutils.jar jar para ireport/commons-collections-3
+ .0.jar jar para ireport/commons-digester-1.7.jar jar para ireport/com
+ mons-logging.jar jar para ireport/iText-2.1.7.jar jar para ireport/ja
+ sperreports-411-java14.jar jar para ireport/jt400.jar jar para irepor
+ t/mysql-connector-java-5.1.12-bin.jar jar para ireport/barcode.jar ja
+ r para ireport/commons-beanutils.jar jar para ireport/commons-collect
+ ions-3.0.jar jar para ireport/commons-digester-1.7.jar jar para irepo
+ rt/commons-logging.jar jar para ireport/iText-2.1.7.jar jar para irep
+ ort/jasperreports-411-java14.jar jar para ireport/jt400.jar jar para 
+ ireport/mysql-connector-java-5.1.12-bin.jar jar para ireport/barcode.
+ jar jar para ireport/commons-beanutils.jar jar para ireport/commons-c
+ ollections-3.0.jar jar para ireport/commons-digester-1.7.jar jar para
+  ireport/commons-logging.jar jar para ireport/iText-2.1.7.jar jar par
+ a ireport/jasperreports-411-java14.jar jar para ireport/jt400.jar jar
+  para ireport/mysql-connector-java-5.1.12-bin.jar jar para ireport/ba
+ rcode.jar jar para ireport/commons-beanutils.jar jar para ireport/com
+ mons-collections-3.0.jar jar para ireport/commons-digester-1.7.jar ja
+ r para ireport/commons-logging.jar jar para ireport/iText-2.1.7.jar j
+ ar para ireport/jasperreports-411-java14.jar jar para ireport/jt400.j
+ ar jar para ireport/mysql-connector-java-5.1.12-bin.jar jar para irep
+ ort/barcode.jar jar para ireport/commons-beanutils.jar jar para irepo
+ rt/commons-collections-3.0.jar jar para ireport/commons-digester-1.7.
+ jar jar para ireport/commons-logging.jar jar para ireport/iText-2.1.7
+ .jar jar para ireport/jasperreports-411-java14.jar jar para ireport/j
+ t400.jar jar para ireport/mysql-connector-java-5.1.12-bin.jar
+

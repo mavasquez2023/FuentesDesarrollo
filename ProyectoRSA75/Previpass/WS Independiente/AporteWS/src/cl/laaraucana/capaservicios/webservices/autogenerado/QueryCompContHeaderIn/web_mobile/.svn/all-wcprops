@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile
+END
+ExtensionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/ExtensionMapper.java
+END
+QueryCompactContractHeaderResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContractHeaderResponse.java
+END
+QueryCompactContractHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContractHeader.java
+END
+QueryCompactContractHeaderRequestOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContractHeaderRequestOut.java
+END
+QueryCompContHeaderOUTServiceCallbackHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompContHeaderOUTServiceCallbackHandler.java
+END
+QueryCompContHeaderOUTServiceStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompContHeaderOUTServiceStub.java
+END
+QueryCompContHeaderOUTService.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompContHeaderOUTService.java
+END
+QueryCompactContract.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContract.java
+END
+QueryCompactContractHeaderResponseOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContractHeaderResponseOut.java
+END
+QueryCompactContractHeaderRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/webservices/autogenerado/QueryCompContHeaderIn/web_mobile/QueryCompactContractHeaderRequest.java
+END

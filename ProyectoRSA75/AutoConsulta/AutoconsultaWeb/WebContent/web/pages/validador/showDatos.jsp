@@ -1,0 +1,99 @@
+<%@ include file = "/web/includes/env.jsp"%> 
+<%@ include file = "/web/includes/header.jsp"%>
+<%@ include file = "/web/includes/top2.jsp"%>
+     
+<table border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td valign='top'>
+
+<!-- Begin de la pagina particular -->
+<font class="certificado">
+
+<bean:define id="datos" name="datosValidacion" type='cl.araucana.autoconsulta.vo.DatosValidacionVO'/>
+<br>
+<br>
+<div align='center'><font size='3'><b><bean:message key="label.validador.titulo.respuesta"/></b></font></div>
+<br>
+<br>
+<div id=tabla align='center'>
+<table  cellspacing='0'>
+	<tr>
+		<th class="certificado" nowrap>
+		 <bean:message key="label.validador.id.consultado"/>
+		</th>
+		<th align='right' class="certificado" nowrap>
+		 <bean:write name="datosValidacion" property="id"/>
+		</th>
+	</tr>
+	<tr>
+		<td class="certificado" nowrap>
+		 <bean:message key="label.validador.certificado.tipo"/>
+		</td>
+		<td align='right' class="certificado" nowrap>
+		 <bean:message key='<%="label.validador.certificado.tipo."+datos.getTipo()%>'/>
+		</td>
+	</tr>
+	<tr>
+		<td class="certificado" nowrap>
+		 <bean:message key="label.validador.certificado.fecha"/>
+		</td>
+		<td align='right' class="certificado" nowrap>
+		 <bean:write name="datosValidacion" property="fecha"/>
+		</td>
+	</tr>
+	<tr>
+		<td class="certificado" nowrap>
+		 <bean:message key="label.validador.certificado.nombre"/>
+		</td>
+		<td align='right' class="certificado" nowrap>
+		 <bean:write name="datosValidacion" property="fullNombre"/>
+		</td>
+	</tr>
+	<tr>
+		<td class="certificado" nowrap>
+		 <bean:message key="label.validador.certificado.rut"/>
+		</td>
+		<td align='right' class="certificado" nowrap>
+		 <bean:write name="datosValidacion" property="fullRut"/>
+		</td>
+	</tr>
+
+	<bean:define id="listaValores" name="datosValidacion" property="listaValores"/>
+
+	<logic:notEmpty name="listaValores">
+		<logic:iterate id="register" name="listaValores">
+			<tr>
+				<td class="certificado" nowrap>
+					<bean:write name="register" property="variable"/>
+				</td>
+				<td align='right' class="certificado" nowrap>
+					<bean:write name="register" property="valor"/>
+				</td>
+			<tr>
+		</logic:iterate>
+	</logic:notEmpty>
+</table>
+<br>
+<table>
+	<tr>
+		<html:form action='validarCertificado'>
+		<td class="texto" colspan='2' align='center'>			
+				<html:image page='/images/aceptar.gif'/>
+		</td>
+		</html:form>
+	<tr>
+</table>
+</div>
+<!-- End de la pagina particular -->
+
+</td>
+</tr>
+</table>
+
+<%
+/*
+ include file = "/web/includes/footer.jsp"
+*/
+%>
+
+

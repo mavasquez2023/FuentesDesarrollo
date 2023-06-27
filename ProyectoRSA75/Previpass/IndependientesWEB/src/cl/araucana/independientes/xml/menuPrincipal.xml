@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="menuPrincipalNS">
+
+	<select id="obtenerOficinaAnalista" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT	COUNT(*) conteo
+		FROM	$IIDTA$.ANALISTA ANA
+	    WHERE	ANA.IDANALISTA = #input#
+	    AND     ANA.OFICINA IS NOT NULL
+	</select>
+	
+   	<insert id="insertOficinaAnalista" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.ANALISTA(IDANALISTA,APELLIDOPATERNO,APELLIDOMATERNO,NOMBRES,OFICINA)
+		VALUES(#idAnalista#,#apePat#,#apeMat#,#nombre#,#oficina#)
+	</insert>
+	
+</sqlMap>

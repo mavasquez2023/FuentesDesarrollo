@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd">
+	<webservice-description>
+		<webservice-description-name>WSLMEValEmpCCAFService</webservice-description-name>
+		<wsdl-file>WEB-INF/wsdl/WSLMEValEmpCCAF.wsdl</wsdl-file>
+		<jaxrpc-mapping-file>WEB-INF/WSLMEValEmpCCAF_mapping.xml</jaxrpc-mapping-file>
+		<port-component>
+			<port-component-name>WSLMEValEmpCCAF</port-component-name>
+			<wsdl-port xmlns:pfx="urn:www:lme:gov:cl:lme">
+			pfx:WSLMEValEmpCCAF</wsdl-port>
+			<service-endpoint-interface>cl.araucana.wslme.integration.jaxrpc.ws.WSLMEValEmpCCAF</service-endpoint-interface>
+			<service-impl-bean>
+				<servlet-link>
+				cl_araucana_wslme_integration_jaxrpc_ws_WSLMEValEmpCCAF</servlet-link>
+			</service-impl-bean>
+			<handler id="Handler_1066493401322">
+               <handler-name>cl.araucana.wslme.integration.jaxrpc.ws.PrefixHandler</handler-name>
+               <handler-class>cl.araucana.wslme.integration.jaxrpc.ws.PrefixHandler</handler-class>
+            </handler>
+		</port-component>
+	</webservice-description>
+</webservices>

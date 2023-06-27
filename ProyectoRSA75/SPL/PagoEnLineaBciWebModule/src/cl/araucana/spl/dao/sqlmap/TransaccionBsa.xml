@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="TransaccionBsa">
+	<typeAlias alias="beanTrxBsa" type="cl.araucana.spl.beans.TransaccionBsa"/>
+	<typeAlias alias="beanDetTrxBsa" type="cl.araucana.spl.beans.DetalleTrxBSA"/>
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	
+	<resultMap class="beanTrxBsa" id="transaccionBsaResultMap">
+		<result property="id" column="ID_TRANSACCION_BSA" />
+		<result property="pago.id" column="ID_PAGO" />
+		<result property="total" column="TOTAL" />
+		<result property="idContrato" column="IDCONTRATO" typeHandler="charTypeHandler" />
+		<result property="nroPagos" column="NRO_PAGOS" />
+		<result property="codRetorno" column="COD_RETORNO" />
+		<result property="descRetorno" column="DESC_RETORNO" typeHandler="charTypeHandler" />
+		<result property="idRegistro" column="ID_REGISTRO" />
+		<result property="indicadorPago" column="INDICADOR_PAGO" typeHandler="charTypeHandler" />
+		<result property="nroComprobante" column="NRO_COMPROBANTE" />
+		<result property="codigoIdTrx" column="COD_IDTRANSACCION" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	<resultMap class="beanDetTrxBsa" id="detalleTrxBsaResultMap">
+		<result property="id" column="ID_DET_TRX_BSA" />
+		<result property="trxEft.id" column="ID_TRANSACCION_BSA" />
+		<result property="servRecaudacion" column="SERV_RECAUDACION" />
+		<result property="monto" column="MONTO" />
+		<result property="cantidad" column="CANTIDAD" typeHandler="charTypeHandler" />
+		<result property="precio" column="PRECIO" typeHandler="charTypeHandler" />
+		<result property="datosAdicionales" column="DATOS_ADICIONALES" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	
+	<select id="sqlSequenceTransaccionBsa" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_TRANSBSA FROM SYSIBM.SYSDUMMY1
+	</select>
+	<select id="sqlSequenceDetalleTrxBsa" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETTRXBSA FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<insert id="sqlInsertTransaccionBsa" parameterClass="beanTrxBsa">
+		insert into TRANSBSA(
+			ID_TRANSACCION_BSA, ID_PAGO, TOTAL, IDCONTRATO, 
+			NRO_PAGOS, COD_RETORNO, DESC_RETORNO, ID_REGISTRO, 
+			INDICADOR_PAGO, NRO_COMPROBANTE, COD_IDTRANSACCION) 
+    	values(
+    		#id#, #idPago#, #total#, #idContrato#, 
+    		#nroPagos#, #codRetorno#, #descRetorno#, #idRegistro#, 
+    		#indicadorPago#, #nroComprobante#, #codigoIdTrx#)
+	</insert>
+
+	<insert id="sqlInsertDetalleTrxBsa" parameterClass="beanDetTrxBsa">	
+		insert into DETTRXBSA(
+			ID_DET_TRX_BSA, ID_TRANSACCION_BSA, SERV_RECAUDACION, MONTO,
+			CANTIDAD, PRECIO, DATOS_ADICIONALES) 
+		values(
+			#id#, #idTrx#, #servRecaudacion#, #monto#, 
+			#cantidad#, #precio#, #datosAdicionales#)
+	</insert>
+	
+	<select resultMap="transaccionBsaResultMap" id="sqlFindTrxBsaByCodigoIdTrx" parameterClass="string">
+		select 	
+    		tr.ID_TRANSACCION_BSA,
+    		tr.ID_PAGO, tr.TOTAL, tr.IDCONTRATO, tr.NRO_PAGOS,
+    		tr.COD_RETORNO, tr.DESC_RETORNO, tr.ID_REGISTRO,
+    		tr.INDICADOR_PAGO, tr.NRO_COMPROBANTE, tr.COD_IDTRANSACCION
+		from TRANSBSA tr
+		where 
+			tr.COD_IDTRANSACCION = #codigo#
+	</select>
+	
+	<update id="sqlUpdateNotificacionTrxBsa" parameterClass="beanTrxBsa">
+		update TRANSBSA 
+		set COD_RETORNO=#codRetorno#, DESC_RETORNO=#descRetorno#,
+			NRO_COMPROBANTE=#nroComprobante#, ID_REGISTRO=#idRegistro#,
+			INDICADOR_PAGO=#indicadorPago#
+    	where 
+    		ID_TRANSACCION_BSA = #id# 
+	</update>
+	
+	<update id="sqlUpdateNotificacionPagoBsa" parameterClass="beanPago">
+		update PAGO
+		set FCH_TRANSACCION=#fechaTransaccion#, 
+		    FCH_CONTABLE=#fechaContable#,
+		    PAGADO=#pagado# 
+		where 
+    		ID_PAGO=#id#
+	</update>
+	
+	<update id="sqlUpdateTrxBsa" parameterClass="beanTrxBsa">
+		update TRANSBSA 
+	    set ID_PAGO=#pago.id#, TOTAL=#total#, 
+	        IDCONTRATO=#idContrato#, NRO_PAGOS=#nroPagos#, 
+	        COD_RETORNO=#codRetorno#, DESC_RETORNO=#descRetorno#, 
+	        ID_REGISTRO=#idRegistro#, INDICADOR_PAGO=#indicadorPago#, 
+	        NRO_COMPROBANTE=#nroComprobante#, COD_IDTRANSACCION=#codigoIdTrx#
+	    where ID_TRANSACCION_BSA=#id#
+	</update>
+	
+	<select resultMap="detalleTrxBsaResultMap" id="sqlFindDetallesTrxBsaByIdTrx" parameterClass="decimal">
+		select ID_DET_TRX_BSA, ID_TRANSACCION_BCH, 
+		    SERV_RECAUDACION, MONTO, CANTIDAD, 
+		    PRECIO, DATOS_ADICIONALES 
+		from DETTRXBSA
+		where
+			ID_TRANSACCION_BSA = #idTrx# 
+	</select>				
+		
+
+</sqlMap>
+

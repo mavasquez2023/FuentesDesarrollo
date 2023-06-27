@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Application Forms -->
+	<form-beans>
+
+    	<form-bean name="EncargadoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String"/>
+      		<form-property name="validate" type="java.lang.String"/>
+      		<form-property name="checkAll" type="java.lang.String"/>
+      		<form-property name="indice" type="java.lang.String" initial=""/>
+    		<form-property name="nombre" type="java.lang.String"/>
+    		<form-property name="apellidop" type="java.lang.String"/>
+    		<form-property name="apellidom" type="java.lang.String"/> 
+    		<form-property name="rutEmpresa" type="java.lang.String"/>
+    		<form-property name="rutEncargado" type="java.lang.String"/>
+    		<form-property name="accion" type="java.lang.String"/>
+    		<form-property name="accesos" type="java.lang.String[]"/>
+    	</form-bean>
+
+   	</form-beans>  
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+    	<exception handler="cl.araucana.common.ui.struts.UserFriendlyExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.ui.UserFriendlyException" />
+    	<exception handler="cl.araucana.common.ui.struts.BusinessExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.BusinessException" />
+    	<exception handler="cl.araucana.common.ui.struts.ExceptionHandler"
+        	       key="exception"
+            	   type="java.lang.Exception" />
+	</global-exceptions>
+	
+	<global-forwards>
+    	<forward name="failure" path="/common/failure.jsp" />
+    	<forward name="login" path="/login.jsp" />
+    	<forward name="success" path="/common/success.jsp" />
+  		<forward name="welcome" path="/Welcome.do"/>     	
+	</global-forwards>
+
+    <action-mappings>
+        <action
+            path="/Welcome"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/WEB-INF/pages/welcome.jsp"/> 
+
+        <action path="/SecurityPageError" type="org.apache.struts.actions.ForwardAction"
+            parameter="/securityError.jsp"/> 
+            
+		<action name="EncargadoForm" path="/adminEncargado"
+			type="cl.araucana.autoconsulta.admin.actions.AdminEncargadoAction"
+			scope="request"  validate="false" input="/WEB-INF/pages/encargado/pideEmpresa.jsp">
+  			<forward name="lista" path="/WEB-INF/pages/encargado/lista.jsp"/>
+  			<forward name="pideempresa" path="/WEB-INF/pages/encargado/pideEmpresa.jsp"/>
+  			<forward name="editar" path="/WEB-INF/pages/encargado/editarEncargado.jsp"/>
+  		</action>
+
+    </action-mappings>
+
+
+	<controller processorClass="cl.araucana.common.ui.struts.SecureRequestProcessor" nocache="true"/>
+
+  	<!-- Message Resources Definitions -->
+  	<message-resources parameter="resources.application" />
+
+  	<!-- Plug Ins Configuration -->
+  	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    	<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+  	</plug-in>
+  	<plug-in className="cl.araucana.common.ui.struts.AppPlugIn">
+    	<set-property property="settingsFileName" value="arau-settings.xml"/>
+    	<set-property property="errorsFileName" value="arau-errors.properties"/>
+  	</plug-in>
+
+</struts-config>
+

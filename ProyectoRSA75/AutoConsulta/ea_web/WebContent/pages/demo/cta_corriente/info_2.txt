@@ -1,0 +1,1 @@
+&txt_con=Corresponde a:<br>Mayor valor pagado por la Caja por concepto de Saldo a Favor.

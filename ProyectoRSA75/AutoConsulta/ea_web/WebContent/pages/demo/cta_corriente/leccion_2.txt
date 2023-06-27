@@ -1,0 +1,2 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>Siguiente paso: En los <b>Detalles por concepto (Montos en $)</b> puede acceder a los diferentes conceptos por pagar o por cobrar.</div>
+

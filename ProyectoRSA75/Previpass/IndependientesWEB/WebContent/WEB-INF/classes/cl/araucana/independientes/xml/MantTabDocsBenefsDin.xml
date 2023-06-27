@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabDocsBenefsDinNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene idDocBeneficio, glosa corta y glosa desde la tabla LISTA_DOC_BEN. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabDocsBenefsDin" resultClass="cl.araucana.independientes.vo.LinMantTabDocsBenefsDinVO" parameterClass="java.util.HashMap">
+		SELECT	IDDOCBENEFICIO idDocumento,
+				GLOSACORTA glosaCorta,
+				GLOSA glosa,
+				ESTADO estado
+		FROM $IIDTA$.LISTA_DOC_BEN
+	</select>
+	
+	<!-- Select de idbeneficio de la tabla LISTA_BENEFICIOS. 	-->
+	<select id="selectSeqDocBenDin" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.BENEFICIODOC_SEQ FROM sysibm.sysdummy1
+	</select>
+	
+	<!-- Insert a la tabla LISTA_DOC_BEN.-->
+	<insert id="insertNewBenef" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.LISTA_DOC_BEN(IDDOCBENEFICIO,GLOSACORTA,GLOSA,ESTADO)
+		VALUES(#input.idDocBenDin#,
+			   #input.glosaCorta#,
+			   #input.glosa#,
+			   #input.estado#)
+	</insert>
+	
+	<!-- Update ESTADO para DOCBENDIN -->
+	<update id="cambiarEstadoMantTabDocBenDin" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.LISTA_DOC_BEN
+		SET		ESTADO = #input.estado#
+    	WHERE	IDDOCBENEFICIO  = #input.idDocBenDin#
+	</update>
+	
+	<!-- Update DOCBENDIN -->
+	<update id="updateMantTabDocBenDin" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.LISTA_DOC_BEN
+		SET		GLOSACORTA = #input.glosaCorta#,
+				GLOSA = #input.glosa#
+    	WHERE	IDDOCBENEFICIO  = #input.idDocBenDin#
+	</update>
+	
+	
+	
+	
+</sqlMap>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans></form-beans>
+	<global-exceptions></global-exceptions>
+	<global-forwards></global-forwards>
+
+	<action-mappings>
+
+		<action path="/SecurityPageError" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/pages/_commons/securityError.html"/>	
+		<action path="/admin/Index"       type="org.apache.struts.actions.ForwardAction" parameter=".admin" />
+		
+		<!-- INI: IMPORTAR RENDICIONES -->
+		<action path="/admin/importarRendicion/frm"
+			type="cl.araucana.spl.actions.admin.rendicion.ImportarRendicionFrmAction"
+			name="importarRendicionForm" scope="request">
+			<forward name="target" path="importarRendicion.frm" />
+		</action>
+		<action path="/admin/importarRendicion/preview"
+			type="cl.araucana.spl.actions.admin.rendicion.ImportarRendicionPreviewAction"
+			name="importarRendicionForm" scope="request">
+			<forward name="inicio" path="/admin/importarRendicion/frm.do" />
+			<forward name="preview" path="importarRendicion.preview" />
+		</action>
+		<action path="/admin/importarRendicion/ins"
+			type="cl.araucana.spl.actions.admin.rendicion.ImportarRendicionInsertAction"
+			name="importarRendicionForm" scope="request">
+			<forward name="target" path="/admin/importarRendicion/frm.do" />
+		</action>
+		<!-- FIN: IMPORTAR RENDICIONES -->
+		
+		<!-- INI: MODIFICAR INCONSISTENCIA -->
+		<action path="/admin/modificarInconsistencia/frm"
+			type="cl.araucana.spl.actions.admin.inconsistencia.ModificarInconsistenciaFrmAction"
+			name="modificarInconsistenciaForm" scope="request">
+			<forward name="target" path="admin.modificarInconsistencia" />
+		</action>
+		<action path="/admin/modificarInconsistencia/mod"
+			type="cl.araucana.spl.actions.admin.inconsistencia.ModificarInconsistenciaAction"
+			name="modificarInconsistenciaForm" scope="request">
+			<forward name="target" path="admin.refrescarInconsistencia" />
+		</action>		
+		<!-- FIN: MODIFICAR INCONSISTENCIA -->
+		
+		<!-- INI: ADMINISTRACION INCONSISTENCIA -->
+		<action 
+		   path="/admin/listarInconsistencias"
+		   type="cl.araucana.spl.actions.admin.ListarInconsistenciasAction"
+		   name="inconsistenciasForm"
+		   scope="request">
+		   <forward name="target" path="admin.listarInconsistencias" />
+		</action>
+		<action
+			path="/admin/verDetallePago"
+			type="cl.araucana.spl.actions.admin.VerDetallePagoAction"
+			scope="request" name="pagoForm">
+			<forward name="target" path="admin.verDetallePago" />
+		</action>
+		<action
+			path="/admin/verBitacora"
+			type="cl.araucana.spl.actions.admin.VerBitacoraAction"
+			scope="request" name="pagoForm">
+			<forward name="target" path="admin.verBitacora" />
+		</action>
+		
+		<action 
+		   path="/admin/listarPagos"
+		   type="cl.araucana.spl.actions.admin.ListarPagosAction"
+		   name="concluirPagoForm"
+		   scope="request">
+		   <forward name="target" path="admin.listarPagos" />
+		</action>
+		
+		<action 
+		   path="/admin/pagarPagos"
+		   type="cl.araucana.spl.actions.admin.SimularPagosAction"
+		   scope="request">
+   		   <forward name="ok" path="/admin/listarPagos.do" />
+		</action>
+		<!-- FIN: ADMINISTRACION INCONSISTENCIA -->
+		
+	</action-mappings>
+	<!-- Controller Configuration -->
+	<controller
+		processorClass="cl.araucana.spl.action.roles.SecureRequestProcessor"
+		nocache="true"/>
+</struts-config>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+	For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+	This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+	to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE080">
+	<typeAlias alias="ilfe080" type="com.microsystem.lme.ibatis.domain.Ilfe080VO" />
+		
+	<resultMap id="returnIlfe080" class="ilfe080">
+		<result property="idOperador" column="IDEOPE" />
+		<result property="numLicencia" column="NUMLIC" nullValue="0" />
+		<result property="digLicencia" column="DIGLIC" nullValue="" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="horaConsulta" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	
+	<insert id="insertIlfe080" parameterClass="ilfe080">
+		INSERT INTO LIEXP.ILFE080 (IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO) VALUES
+		(#idOperador#,#numLicencia#,#digLicencia#,#fechaConsulta#,#horaConsulta#,#estado#)
+		WITH NC
+	</insert>
+	
+	<select id="getIlfe080" resultMap="returnIlfe080">
+		SELECT a.IDEOPE,a.NUMLIC,a.DIGLIC,a.FECCON,a.HORCON,a.ESTADO FROM LIEXP.ILFE080 a
+		WHERE a.ESTADO = 0 and NOT EXISTS(SELECT b.NUMIMPRE 
+		FROM LIEXP.ILFE002R b 
+		WHERE b.NUMIMPRE = a.NUMLIC)
+		WITH NC
+	</select>
+	
+	<select id="getIlfe080All" resultMap="returnIlfe080">
+		SELECT IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO FROM LIEXP.ILFE080
+		WITH UR
+	</select>
+	
+	<update id="updateIlfe080" parameterClass="ilfe080">
+		UPDATE LIEXP.ILFE080 
+		SET ESTADO = #estado# 
+		WHERE NUMLIC = #numLicencia# and IDEOPE = #idOperador#
+		WITH NC
+	</update>
+	
+	<delete id="deleteIlfe080" parameterClass="ilfe080">
+		DELETE FROM LIEXP.ILFE080 a
+		WHERE 
+		a.ESTADO = '1' and exists (select * from LIEXP.ILFE002R b where b.NUMIMPRE = a.NUMLIC)
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe080a" parameterClass="ilfe080">
+		DELETE FROM LIEXP.ILFE080 a
+		WHERE 
+		a.ESTADO = '1' and a.NUMLIC =#numLicencia# and a.IDEOPE =#idOperador# and exists (select * from LIEXP.ILFE002R b where b.NUMIMPRE = a.NUMLIC);		
+		WITH NC
+	</delete>
+	
+</sqlMap>

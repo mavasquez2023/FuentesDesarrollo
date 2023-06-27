@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/3263/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao
+END
+ParametrosDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/1638/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/ParametrosDAO.java
+END
+DatosClienteDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3511/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/DatosClienteDAO.java
+END
+AuxiliarSTLDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/2116/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/AuxiliarSTLDao.java
+END
+LogDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/IBM/!svn/ver/2731/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/LogDao.java
+END
+SolicitudSMSDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/IBM/!svn/ver/3263/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/SolicitudSMSDao.java
+END
+TransferenciaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/3294/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/TransferenciaDao.java
+END
+MigracionDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/IBM/!svn/ver/1070/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/MigracionDAO.java
+END
+DaoParent.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/DaoParent.java
+END
+CuentaCorrienteDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/IBM/!svn/ver/1451/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/dao/CuentaCorrienteDAO.java
+END

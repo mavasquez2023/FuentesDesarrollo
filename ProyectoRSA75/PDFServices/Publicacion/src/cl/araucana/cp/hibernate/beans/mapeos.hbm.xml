@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoTipoMovtoVO" table="MAPEOTIPMP">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_TIPO_MVTO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoTipoMovtoAFVO" table="MAPEOTIPMPAF">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_TIPO_MVTO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoGeneroVO" table="MAPEOGEN">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_GENERO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoPensionVO" table="MAPEOPENS">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_ENT_FONDO_PENSION" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoAPVVO" table="MAPEOAPV">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_ENT_APV" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoSaludVO" table="MAPEOSALUD">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_ENT_SALUD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoAsFamVO" table="MAPEOASFAM">
+    	<composite-id>
+        	<key-property name="idMapaCod">
+        		<column name="ID_MAPACOD" not-null="true"/> 
+        	</key-property>
+        	<key-property name="id">
+        		<column name="ID_TRAMO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="codigo">
+        		<column name="CODIGO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+    </class>
+</hibernate-mapping>

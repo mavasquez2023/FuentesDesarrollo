@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>
+	ChequeReport</display-name>
+	<servlet>
+		<description>
+		Genera Cheque PDF</description>
+		<display-name>
+		Cheque</display-name>
+		<servlet-name>Cheque</servlet-name>
+		<servlet-class>
+		cl.araucana.cheque.servlet.Cheque</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Estadisticas Cheque PDF</description>
+		<display-name>
+		Estadistica</display-name>
+		<servlet-name>Estadistica</servlet-name>
+		<servlet-class>
+		cl.araucana.cheque.servlet.Estadistica</servlet-class>
+	</servlet>
+	
+	<servlet>
+    <servlet-name>log4j-init</servlet-name>
+    <servlet-class>cl.araucana.cheque.servlet.Log4jInit</servlet-class>
+    <init-param>
+      <param-name>log4j-init-file</param-name>
+      <param-value>WEB-INF/log4j.properties</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+   </servlet>
+	<servlet>
+		<description>
+		Reinyectar PDF</description>
+		<display-name>
+		Reinyectar</display-name>
+		<servlet-name>Reinyectar</servlet-name>
+		<servlet-class>
+		cl.araucana.cheque.servlet.Reinyectar</servlet-class>
+	</servlet>
+   
+	<servlet-mapping>
+		<servlet-name>Cheque</servlet-name>
+		<url-pattern>/Cheque</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Estadistica</servlet-name>
+		<url-pattern>/Estadistica</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Reinyectar</servlet-name>
+		<url-pattern>/Reinyectar</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<security-constraint>
+		<display-name>
+		Security-Report</display-name>
+		<web-resource-collection>
+			<web-resource-name>Security-Servlet</web-resource-name>
+			<url-pattern>/Reinyectar</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+			users</description>
+			<role-name>users</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/loginerror.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description>
+		Usuarios Autenticados LDAP</description>
+		<role-name>users</role-name>
+	</security-role>
+	<resource-ref id="ResourceRef_1443459610378">
+		<description>
+		Conexión a Tesorería</description>
+		<res-ref-name>jdbc/jnditeso</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>

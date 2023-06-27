@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="EventoCargaValidacionVO" table="EVENTO_CARGA_VALIDACION">
+    	<id name="id" column="ID_EVENTO_CARGA_VALIDACION">
+   			<generator class="increment"/>
+   		</id>
+		<property name="fecha"			column="FECHA" />
+		<property name="hora"			column="HORA" />
+		<property name="accion"			column="ACCION" />
+		<property name="comentarios"	column="COMENTARIOS" />
+		<property name="rutCaja"		column="RUT_CAJA" />
+		<property name="usuario"		column="USUARIO" />
+    </class>
+</hibernate-mapping>

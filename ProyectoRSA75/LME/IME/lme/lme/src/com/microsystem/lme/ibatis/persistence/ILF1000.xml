@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ILF1000">
+	<typeAlias alias="ilf1000" type="com.microsystem.lme.ibatis.domain.Ilf1000VO"/>
+
+	<resultMap id="resultMapIlf1000"  class="ilf1000">  
+		<result property="licimpnum" column="LICIMPNUM"/>
+		<result property="afiRut" column="AFIRUT"/>
+	</resultMap>
+
+	<select id="getIlf1000" resultMap="resultMapIlf1000" parameterClass="ilf1000">
+		SELECT LICIMPNUM,AFIRUT 
+		FROM LIEXP.ILF1000 
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="licimpnum">
+				LICIMPNUM = #licimpnum#
+			</isNotNull>
+			<isNotNull prepend="AND" property="afiRut">
+				AFIRUT = #afiRut#
+			</isNotNull>			
+		</dynamic>
+		WITH UR
+	</select>
+ </sqlMap>

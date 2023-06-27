@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Pago">
+	<typeAlias alias="beanPago" type="cl.araucana.spl.beans.Pago"/>
+	<typeAlias alias="beanDetallePago" type="cl.araucana.spl.beans.DetallePago"/>
+	<typeAlias alias="beanTrxBci" type="cl.araucana.spl.beans.TransaccionBci"/>
+	<typeAlias alias="beanFiltroRendicion" type="cl.araucana.spl.beans.FiltroRendicion"/>
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+
+	<resultMap class="beanDetallePago" id="detallePagoResultMap">
+		<result property="id" column="D_ID_DETALLE_PAGO" />
+		<result property="folio" column="D_FOLIO" />
+		<result property="descripcion" column="D_DESCRIPCION" typeHandler="charTypeHandler" />
+		<result property="monto" column="D_MONTO" />
+	</resultMap>
+	
+	<resultMap class="beanTrxBci" id="transaccionBciResultMap" groupBy="pago.id">
+		<result property="id" column="T_ID_TRANSACCION_BCI" />
+		<result property="estadoBci" column="T_ESTADO_BCI" typeHandler="charTypeHandler" />
+		<result property="pago.id" column="P_ID_PAGO" />
+		<result property="pago.fechaInicio" column="P_FCH_INICIO" />
+		<result property="pago.fechaTransaccion" column="P_FCH_TRANSACCION" />
+		<result property="pago.fechaContable" column="P_FCH_CONTABLE" />
+		<result property="pago.monto" column="P_MONTO" />
+		<result property="pago.montoRendicion" column="P_MONTO_RENDICION" />
+		<result property="pago.urlRetornoOrigen" column="P_URL_RETORNO_ORIGEN" typeHandler="charTypeHandler" />
+	</resultMap>
+
+	<resultMap class="beanPago" id="pagoResultMap">
+		<result property="id" column="ID_PAGO" />
+		<result property="pagador" column="PAGADOR" typeHandler="charTypeHandler" />
+		<result property="estado.id" column="ID_ESTADO" />
+		<result property="sistema.id" column="ID_SISTEMA" />
+		<result property="convenio.id" column="ID_CONVENIO" />
+		<result property="fechaInicio" column="FCH_INICIO" />
+		<result property="fechaTransaccion" column="FCH_TRANSACCION" />
+		<result property="fechaContable" column="FCH_CONTABLE" />
+		<result property="monto" column="MONTO" />
+		<result property="montoRendicion" column="MONTO_RENDICION" />
+		<result property="pagado" column="PAGADO" />
+		<result property="glosa" column="GLOSA" typeHandler="charTypeHandler" />
+		<result property="urlRetornoOrigen" column="URL_RETORNO_ORIGEN" typeHandler="charTypeHandler" />
+		<result property="urlNotificacionOrigen" column="URL_NOTIFICACION_ORIGEN" typeHandler="charTypeHandler" />
+	</resultMap>
+	<resultMap class="beanPago" id="pagoConvenioResultMap">
+		<result property="id" column="ID_PAGO" />
+		<result property="pagador" column="PAGADOR" typeHandler="charTypeHandler" />
+		<result property="estado.id" column="ID_ESTADO" />
+		<result property="sistema.id" column="ID_SISTEMA" />
+		<result property="convenio.id" column="ID_CONVENIO" />
+		<result property="convenio.ctaCorriente" column="CTACTE" />
+		<result property="fechaInicio" column="FCH_INICIO" />
+		<result property="fechaTransaccion" column="FCH_TRANSACCION" />
+		<result property="fechaContable" column="FCH_CONTABLE" />
+		<result property="monto" column="MONTO" />
+		<result property="montoRendicion" column="MONTO_RENDICION" />
+		<result property="pagado" column="PAGADO" />
+		<result property="glosa" column="GLOSA" typeHandler="charTypeHandler" />
+		<result property="urlRetornoOrigen" column="URL_RETORNO_ORIGEN" typeHandler="charTypeHandler" />
+		<result property="urlNotificacionOrigen" column="URL_NOTIFICACION_ORIGEN" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	<select id="sqlSequencePago" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_PAGO FROM SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertPago" parameterClass="beanPago">
+		insert into PAGO(ID_PAGO, PAGADOR, ID_ESTADO, ID_SISTEMA, ID_CONVENIO, FCH_INICIO, FCH_TRANSACCION, FCH_CONTABLE, MONTO, MONTO_RENDICION, PAGADO, GLOSA, URL_RETORNO_ORIGEN, URL_NOTIFICACION_ORIGEN)
+		values (#id#, #pagador#, #idEstado#, #idSistema#, #idConvenio#, #fechaInicio#, #fechaTransaccion#, #fechaContable#, #monto#, #montoRendicion#, #pagado#, #glosa#, #urlRetornoOrigen#, #urlNotificacionOrigen#)
+	</insert>
+
+
+	<select id="sqlSequenceDetallePago" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_DETPAGO FROM  SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertDetallePago" parameterClass="beanDetallePago">
+		insert into DETPAGO(ID_DETALLE_PAGO, ID_PAGO, FOLIO, DESCRIPCION, MONTO)
+		values (#id#, #idPago#, #folio#, #descripcion#, #monto#)
+	</insert>
+
+
+	<select id="sqlSequenceTransaccionBci" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_TRANSBCI FROM SYSIBM.SYSDUMMY1
+	</select>
+	<insert id="sqlInsertTransaccionBci" parameterClass="beanTrxBci">
+		insert into TRANSBCI(ID_TRANSACCION_BCI, ID_PAGO, ESTADO_BCI)
+		values (#id#, #idPago#, #estadoBci#)
+	</insert>
+	
+	
+	<select id="sqlFindTransaccionBciByIdPago" parameterClass="decimal" resultMap="transaccionBciResultMap">
+		select
+		    t.id_transaccion_bci as t_id_transaccion_bci,
+		    t.estado_bci as t_estado_bci,
+		    p.id_pago as p_id_pago,
+		    p.fch_inicio as p_fch_inicio,
+		    p.fch_transaccion as p_fch_transaccion,
+		    p.fch_contable as p_fch_contable,
+		    p.monto as p_monto,
+		    p.monto_rendicion as p_monto_rendicion,
+		    p.url_retorno_origen as p_url_retorno_origen
+		from
+		    pago p, transbci t, detpago d
+		where
+		    p.id_pago = t.id_pago
+		    and d.id_pago = p.id_pago
+		    and p.id_pago = #idpago#
+	</select>
+	
+
+	<update id="sqlUpdateFinPago" parameterClass="beanPago">
+		update
+			PAGO
+		set
+			FCH_TRANSACCION = #fechaTransaccion#,
+			FCH_CONTABLE = #fechaContable#,
+			PAGADO = #pagado#
+		where
+			ID_PAGO = #id#
+	</update>
+	
+
+	<update id="sqlUpdateFinTransaccion" parameterClass="beanTrxBci">
+		update
+			TRANSBCI
+		set
+			ESTADO_BCI = #estadoBci#
+		where
+			ID_TRANSACCION_BCI = #id#
+	</update>
+	
+	<update id="sqlUpdatePagoTrxRendida" parameterClass="beanPago">
+		update PAGO
+		set 
+			ID_ESTADO = #estado.id#,
+    		MONTO_RENDICION = #montoRendicion#,
+    		FCH_CONTABLE = #fechaContable#
+		where 
+    		ID_PAGO = #id#
+	</update>
+	<update id="sqlUpdatePagoTrxCursada" parameterClass="beanPago">
+		update PAGO
+		set 
+			REG_LIBRO_BANCO = #estRegistroLibroBco#,
+    		COMP_TES_CUR = #estCurseCompTes#
+		where 
+    		ID_PAGO = #id#
+	</update>
+	
+	<update id="sqlUpdatePagoBitacora" parameterClass="beanPago">
+		update PAGO
+		set 
+			ID_ESTADO = #estado.id#,			
+			PAGADO = #pagado#
+		where 
+    		ID_PAGO = #id#
+	</update>
+	
+	<sql id="select_tabla_pago">
+		select 
+			ID_PAGO,
+			PAGADOR,
+			ID_ESTADO,
+			ID_SISTEMA,
+			ID_CONVENIO,
+			FCH_INICIO,
+			FCH_TRANSACCION,
+			FCH_CONTABLE,
+			MONTO,
+			MONTO_RENDICION,
+			PAGADO,
+			GLOSA,
+			URL_RETORNO_ORIGEN,
+			URL_NOTIFICACION_ORIGEN
+		from
+			pago	
+	</sql>	
+	
+	<select id="sqlFindPagoById" parameterClass="decimal" resultMap="pagoConvenioResultMap">
+		select 
+			A.ID_PAGO,
+			A.PAGADOR,
+			A.ID_ESTADO,
+			A.ID_SISTEMA,
+			A.ID_CONVENIO,
+			A.FCH_INICIO,
+			A.FCH_TRANSACCION,
+			A.FCH_CONTABLE,
+			A.MONTO,
+			A.MONTO_RENDICION,
+			A.PAGADO,
+			A.GLOSA,
+			A.URL_RETORNO_ORIGEN,
+			A.URL_NOTIFICACION_ORIGEN,
+			B.CTACTE
+		from
+			pago A
+		JOIN CONVENIO B ON
+		A.ID_CONVENIO = B.ID_CONVENIO
+		where
+			ID_PAGO = #id#			
+	</select>
+	
+	<select id="sqlFindFoliosByIdPago" parameterClass="decimal" resultMap="detallePagoResultMap">
+		select
+			ID_DETALLE_PAGO as D_ID_DETALLE_PAGO,
+			FOLIO as D_FOLIO,
+			DESCRIPCION as D_DESCRIPCION,
+			MONTO as D_MONTO
+		from
+			DETPAGO
+		where
+			ID_PAGO = #idPago#
+	</select>
+	
+	<select id="sqlFindPagoByIdPagoIdConvenio" parameterClass="beanPago" resultMap="pagoResultMap">
+		<include refid="select_tabla_pago" />
+		where 
+			ID_PAGO = #id#
+		<dynamic prepend=" and ">
+			<isNotNull property="convenio.id">
+				ID_CONVENIO = #convenio.id#			
+			</isNotNull>
+		</dynamic>	
+	</select>
+	
+	<select id="sqlFindPagosNoRendidos" parameterClass="beanFiltroRendicion" resultMap="pagoResultMap">
+		<include refid="select_tabla_pago" />
+		where
+			ID_CONVENIO = #idConvenio#			
+			AND FCH_CONTABLE IN ($fechasContables$)
+			AND ID_PAGO NOT IN ($idsPagos$)
+			AND ID_ESTADO = 1
+	</select>
+
+</sqlMap>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<insert id="insertarCodSeg" parameterClass="cl.laaraucana.capaservicios.database.vo.SolicitudSMS">
+		INSERT INTO LCDTA.CESP_SOLICITUD_SMS(COD_VALIDACION, FECHA_GEN, HORA_GEN, ESTADO, RUT_CLIENTE, DV_CLIENTE, MONTO_APROBADO, ORIGEN)
+		VALUES (#codSeguridad#, #fecha#, #hora#, #estado#, #rutCliente#, #dvRut#, #montoAprobado#, #origen#)
+		WITH NC
+		<selectKey resultClass="java.lang.String" keyProperty="idSolicitud">
+			SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1
+		s</selectKey>
+	</insert>
+	
+	<resultMap class="cl.laaraucana.capaservicios.database.vo.SolicitudSMS" id="solicitudSmsMap">
+		<result column="RUT_CLIENTE" property="rutCliente" />
+		<result column="COD_VALIDACION" property="codSeguridad" />
+	</resultMap>
+	
+	<select id="verificarCodSeg" parameterClass="cl.laaraucana.capaservicios.database.vo.SolicitudSMS"
+	resultMap="solicitudSmsMap">
+		SELECT * FROM LCDTA.CESP_SOLICITUD_SMS 
+		WHERE COD_VALIDACION = #codSeguridad# 
+		AND RUT_CLIENTE = #rutCliente#
+		AND ESTADO = 0                         
+	</select>
+	
+	<resultMap class="cl.laaraucana.capaservicios.database.vo.SolicitudSMS" id="solicitudSmsMap">
+		<result column="ID_SOLICITUD" property="idSolicitud"/>
+		<result column="RUT_CLIENTE" property="rutCliente" />
+		<result column="MONTO_APROBADO" property="montoAprobado" />
+		<result column="COD_VALIDACION" property="codSeguridad" />
+		<result column="FECHA_GEN" property="fecha" />
+		<result column="HORA_GEN" property="hora" />
+		<result column="INTENTOS" property="intentos" />
+	</resultMap>
+	
+	<select id="buscarCodigoValido" parameterClass="cl.laaraucana.capaservicios.database.vo.SolicitudSMS" resultMap="solicitudSmsMap">
+		SELECT * FROM LCDTA.CESP_SOLICITUD_SMS
+		WHERE RUT_CLIENTE = #rutCliente#
+		AND ESTADO = 0
+		ORDER BY ID_SOLICITUD ASC
+	</select>
+	
+	<update id="cambiarEstadoCodigoSMS" parameterClass="cl.laaraucana.capaservicios.database.vo.SolicitudSMS">
+		UPDATE LCDTA.CESP_SOLICITUD_SMS SET ESTADO = #estado#
+		WHERE ID_SOLICITUD = #idSolicitud#
+		WITH NC
+	</update>
+	
+	<update id="aumentarIntentos" parameterClass="cl.laaraucana.capaservicios.database.vo.SolicitudSMS">
+		UPDATE LCDTA.CESP_SOLICITUD_SMS SET INTENTOS = #intentos#
+		WHERE ID_SOLICITUD = #idSolicitud#
+		AND ESTADO = 0
+		WITH NC
+	</update>
+</sqlMap>

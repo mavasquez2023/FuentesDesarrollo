@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.SPLPagoVO" table="PAGO">
+    	<id column="ID_PAGO" name="idTrx"/>
+   		<property name="pagado" column="PAGADO" />
+   		<property name="idConvenio" column="ID_CONVENIO" />
+   		<property name="fechaContable" column="FCH_CONTABLE" />
+   		<property name="monto" column="MONTO" />   		
+  		<property name="pagador" column="PAGADOR" />   		
+   		<set name="detallePago" lazy="false" table="SPLDTA.DETPAGO">   				
+   	   		<key column="ID_PAGO" />
+			<one-to-many  class="cl.araucana.cp.hibernate.beans.SPLDetPagoVO" />
+  		</set>
+    </class>
+</hibernate-mapping>

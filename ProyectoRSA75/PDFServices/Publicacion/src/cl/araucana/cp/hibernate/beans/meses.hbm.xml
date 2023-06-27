@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="cl.araucana.cp.hibernate.beans.MesesbeanVO" table="PWF6100">
+   
+   <composite-id>
+    <key-property name="rutEmpresa" column="PWDCRUTEM"></key-property>
+   <key-property name="tipoProceso" column="PWDCTIPEN"></key-property>
+   <key-property name="folio" column="PWDCFOLIO"></key-property>
+   <key-property name="year" column="PWDCANORE"></key-property>
+   <key-property name="mes" column="PWDCMESRE"></key-property>
+    <key-property name="digem" column="PWDCDIGEM"></key-property>
+    <key-property name="digaf" column="PWDCDIGAF"></key-property>
+    <key-property name="cremim" column="PWDCREMIM"></key-property>   
+   <key-property name="monco" column="PWDCMONCO"></key-property>
+   <key-property name="fecha" column="PWDCFECPA"></key-property>
+   <key-property name="secFolio" column="PWDCSECFO"></key-property>
+   <key-property name="centid" column="PWDCENTID"></key-property>
+   
+   </composite-id> 
+    
+    <!-- <id name="id0" type="integer"><generator class="increment"></generator>
+   </id>
+   <property name="rutTrabajador">
+   		<column name="PWDCRUTAF"></column>
+   </property>
+   <property name="rutEmpresa">
+   		<column name="PWDCRUTEM"></column>
+   </property>
+   <property name="tipoProceso" type="string">
+   		<column name="PWDCTIPEN"></column>
+   </property>
+   <property name="folio" type="string">
+   		<column name="PWDCFOLIO"></column>
+   </property>
+   <property name="year" type="string">
+   		<column name="PWDCANORE"></column>
+   </property>
+   <property name="mes" type="string">
+   		<column name="PWDCMESRE"></column>
+   </property>
+   <property name="digem" type="string">
+   		<column name="PWDCDIGEM"></column>
+   </property>
+   <property name="digaf" type="string">
+   		<column name="PWDCDIGAF"></column>
+   </property>
+   <property name="cremim" type="string">
+   		<column name="PWDCREMIM"></column>
+   </property>
+   <property name="monco" type="string">
+   		<column name="PWDCMONCO"></column>
+   </property>
+   <property name="fecha" type="java.lang.Integer">
+   		<column name="PWDCFECPA"></column>
+   </property>
+   <property name="secFolio" type="string">
+   		<column name="PWDCSECFO"></column>
+   </property>
+   <property name="centid" type="string">
+   		<column name="PWDCENTID"></column>
+   </property> -->
+</class>
+   </hibernate-mapping>

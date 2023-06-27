@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="LME_TYPES_1.6.3.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_ZONA_A.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra está publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>Definiciones de tipos de datos de la Licencia Medica Electronica</Titulo>
+				<Autor>Luis Andres Baez Arribada</Autor>
+				<Institucion>SuperIntendencia de Seguridad Social - Unidad de Licencia Medica Electronica</Institucion>
+				<Creacion>2006-05-01</Creacion>
+				<Estado>Activo</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-05-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora seccion AC</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se define tipo a elementos anonimos</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agrega elemento con correo electrónico del trabajador a la zona AC</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-02-14</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agrega los elementos canal_contacto, celular_contacto y direccion_contactoa la zona AC</modificaciones>
+				</Modificado>
+				<Descripcion>Zona de uso y responsabilidad exclusiva del profesional</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="CT_ZONA_A">
+		<xsd:sequence>
+			<xsd:element name="ZONA_A1" type="CT_ZONA_A1">
+				<xsd:annotation>
+					<xsd:documentation>Identificación del trabajador</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_A2" type="CT_ZONA_A2" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identificación del hijo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_A3" type="CT_ZONA_A3">
+				<xsd:annotation>
+					<xsd:documentation>Tipo de licencia.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_A4" type="CT_ZONA_A4">
+				<xsd:annotation>
+					<xsd:documentation>Características del reposo.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_A5" type="CT_ZONA_A5">
+				<xsd:annotation>
+					<xsd:documentation>Identificación del profesional.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_A6" type="CT_ZONA_A6">
+				<xsd:annotation>
+					<xsd:documentation>Diagnóstico principal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_AC" type="CT_ZONA_AC" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Información complementaria requerida por FONASA en relación a los diagnósticos médicos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZONA_AF" type="CT_ZONA_F">
+				<xsd:annotation>
+					<xsd:documentation>Firmas digitales (PKI o Huella).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A1">
+		<xsd:sequence>
+			<xsd:element name="trabajador" type="CTPersona"/>
+			<xsd:element name="fecha_emision" type="xsd:dateTime"/>
+			<xsd:element name="fecha_inicio_reposo" type="xsd:dateTime"/>
+			<xsd:element name="tra_ndias" type="xsd:integer"/>
+			<xsd:element name="tra_ndias_palabras" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A2">
+		<xsd:sequence>
+			<xsd:element name="hijo" type="CTPersona"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A3">
+		<xsd:sequence>
+			<xsd:element name="codigo_tipo_licencia" type="STTipo_licencia"/>
+			<xsd:element name="codigo_recuperabilidad" type="STSiNo"/>
+			<xsd:element name="codigo_inicio_tram_inv" type="STSiNo"/>
+			<xsd:element name="fecha_accidente" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="codigo_trayecto" type="STSiNo" minOccurs="0"/>
+			<xsd:element name="fecha_concepcion" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A4">
+		<xsd:sequence>
+			<xsd:element name="codigo_tipo_reposo" type="STTipo_reposo"/>
+			<xsd:element name="codigo_jornada_reposo" type="STJornada_reposo" minOccurs="0" maxOccurs="2"/>
+			<xsd:element name="lugar_reposo" type="CTLugar_reposo" maxOccurs="2"/>
+			<xsd:element name="telefono_reposo" type="CTTelefono" maxOccurs="2"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A5">
+		<xsd:sequence>
+			<xsd:element name="profesional" type="CTPersona"/>
+			<xsd:element name="prof_especialidad" type="xsd:string"/>
+			<xsd:element name="codigo_tipo_profesional" type="STTipo_profesional"/>
+			<xsd:element name="prof_registro_colegio" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="prof_email" type="STEmail" minOccurs="0"/>
+			<xsd:element name="prof_telefono" type="CTTelefono" minOccurs="0"/>
+			<xsd:element name="prof_direccion" type="CTDireccion"/>
+			<xsd:element name="prof_fax" type="CTTelefono" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_A6">
+		<xsd:sequence>
+			<xsd:element name="diagnostico_principal" type="xsd:string"/>
+			<xsd:element name="diagnostico_otro" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="antecedentes_clinicos" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="examenes_apoyo" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZONA_AC">
+		<xsd:sequence>
+			<xsd:element name="coddiagnostico_principal" type="xsd:string"/>
+			<xsd:element name="diagnostico_secundario" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coddiagnostico_secundario" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coddiagnostico_otro" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="email_trabajador" type="STEmail" minOccurs="0"/>
+			<xsd:element name="canal_contacto" type="STContacto" minOccurs="0"/>
+			<xsd:element name="celular_contacto" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="direccion_contacto" type="CTDireccion" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

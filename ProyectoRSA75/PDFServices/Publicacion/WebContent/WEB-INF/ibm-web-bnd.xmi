@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1214407653859" virtualHostName="default_host">
+  <webapp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1317915600562" jndiName="jdbc/cppub" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1317915600562"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1405974517447" jndiName="jdbc/servicio" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1405974517447"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1405974567088" jndiName="jdbc/cp" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1405974567088"/>
+  </resRefBindings>
+</com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding>

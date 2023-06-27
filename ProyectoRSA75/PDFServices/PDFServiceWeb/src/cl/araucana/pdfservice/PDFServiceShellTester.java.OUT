@@ -1,0 +1,107 @@
+
+
+/*
+ * @(#) PDFServiceShellTester.java    1.0 01-06-2008
+ *
+ * Este código fuente pertenece a la Caja de Compensación de Asignación Familiar
+ * La Araucana (C.C.A.F.). Su utilización y reproducción es confidencial y está
+ * restringido a los sistemas de información propios de la institución.
+ */
+ 
+ 
+package cl.araucana.pdfservice;
+
+
+/**
+ * ...
+ *
+ * <BR>
+ *
+ * <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+ *    <TBODY>
+ *        <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+ *            <TH ALIGN="left" COLSPAN=4> <FONT SIZE="+2">
+ *                 <B>Registro de Mantenciones</B></FONT>
+ *            </TH>
+ *        </TR>
+ *
+ *        <TR>
+ *            <TD align="center"> <B>Fecha</B> </TD>
+ *            <TD align="center"> <B>Versión</B> </TD>
+ *            <TD> <B>Autor</B> </TD>
+ *            <TD align="left"><B>Descripción</B></TD>
+ *        </TR>
+ *
+ *        <TR BGCOLOR="white" CLASS="TableRowColor">
+ *            <TD> 01-06-2008 </TD>
+ *            <TD align="center"> 1.0 </TD>
+ *            <TD> Germán Pavez I. <BR> gpavez@hotmail.com </TD>
+ *            <TD> Versión inicial. </TD>
+ *        </TR>
+ *    </TBODY>
+ * </TABLE>
+ *
+ * <BR>
+ *
+ * @author Germán Pavez I. (gpavez@hotmail.com)
+ *
+ * @version 1.0
+ */
+public class PDFServiceShellTester {
+
+	public static void main(String[] args) {
+		PDFService service1 = null;
+		PDFService service2 = null;
+		PDFService service3 = null;
+
+		try {
+			service1 = new PDFService();
+			service2 = new PDFService("cpuser");
+			service3 = new PDFService("root");
+		} catch (PDFServiceException e) {
+			System.out.println("PDFService cannot be initialized.");
+
+			e.printStackTrace();
+
+			return;
+		}
+
+		PDFServiceShell shell1 = new PDFServiceShell(service1, false);
+		PDFServiceShell shell2 = new PDFServiceShell(service2);
+		PDFServiceShell shell3 = new PDFServiceShell(service3);
+
+		try {
+			System.out.println("*** shell1: run isapre.pss banmedica");
+			shell1.execute("run isapre.pss banmedica");
+
+			System.out.println("*** shell1: run isapre.pss vidatres");
+			shell1.execute("run isapre.pss banmedica");
+
+			System.out.println("*** shell1: run sisapre.pss masvida");
+			shell1.execute("run sisapre.pss masvida");
+
+			System.out.println("*** shell2: run apv.pss lainteramericana");
+			shell2.execute("run apv.pss lainteramericana");
+
+			System.out.println("*** shell2: run apv.pss cruzdelsur");
+			shell2.execute("run apv.pss cruzdelsur");
+
+			System.out.println("*** shell2: run apv.pss habitat");
+			shell2.execute("run apv.pss habitat");
+
+			System.out.println("*** shell2: kill()");
+			shell2.kill();
+
+			System.out.println("*** shell1: ps");
+			shell1.execute("ps");
+
+			System.out.println("*** shell3: ps");
+			shell3.execute("ps");
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			System.err.println(
+					"Shell was aborted. [cause=" + e.getMessage() + "]");
+		}
+	}
+}

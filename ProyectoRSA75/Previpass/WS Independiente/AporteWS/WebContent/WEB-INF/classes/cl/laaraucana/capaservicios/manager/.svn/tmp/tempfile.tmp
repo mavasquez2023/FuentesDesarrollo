@@ -1,0 +1,88 @@
+package cl.laaraucana.capaservicios.manager;
+
+import cl.laaraucana.capaservicios.util.Constantes;
+import cl.laaraucana.capaservicios.util.ConstantesWS;
+import cl.laaraucana.capaservicios.webservices.client.SimuladorServicesUtil;
+import cl.laaraucana.capaservicios.webservices.client.CreaCotizacion.VO.CreaCotizacionSalidaVO;
+import cl.laaraucana.capaservicios.webservices.vo.Log;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPIn;
+import cl.laaraucana.capaservicios.webservices.vo.ColocacionCreditoSAP.ColocacionCreditoSAPOut;
+import cl.laaraucana.capaservicios.webservices.vo.SimulacionCreditoEsp.SimulacionCreditoEspIn;
+
+public class ColocacionCreditoMGR {
+<<<<<<< .mine
+	public ColocacionCreditoSAPOut colocarCreditoEsp(ColocacionCreditoSAPIn entrada){
+		ColocacionCreditoSAPOut salida = new ColocacionCreditoSAPOut();
+		Log log = null;
+		try {
+			//Generar cotización
+			SimuladorServicesUtil crearCot = new SimuladorServicesUtil();
+			SimulacionCreditoEspIn sim = new SimulacionCreditoEspIn();
+			sim.setRutCliente(entrada.getRutCliente());
+			sim.setRutEmpresa(entrada.getRutEmpresa());
+			sim.setMontoGiro(entrada.getMontoGiro());
+			sim.setNroCuotas(entrada.getNroCuotas());
+			sim.setCodOficina(entrada.getCodOficina());
+			sim.setTipoAfiliado(entrada.getTipoAfiliado());
+			CreaCotizacionSalidaVO cotSalida = crearCot.getCreaCotizacion(sim, ConstantesSim.TIPO_EJECUCION_CREAR_COTIZACION);
+			
+			
+			//Almacenar transferencia en BD
+			
+			
+			//Modificar cotizacion en SAP
+			
+			
+			//Actualizar transferencia con folio
+			
+			
+			//Generar Xml con solicitudSTL
+			
+			
+			//Enviar solicitud a STL
+			
+			
+			//Interpretar respuesta STL
+			
+			
+			//Registrar movimiento en Log
+			
+			
+			
+		} catch (Exception e) {
+			log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al generar la colocación: " + e.getMessage());
+		}
+		salida.setLog(log);
+		return salida;
+	}
+=======
+  public ColocacionCreditoSAPOut colocarCreditoEsp(ColocacionCreditoSAPIn entrada) {
+    ColocacionCreditoSAPOut salida = new ColocacionCreditoSAPOut();
+    Log log = null;
+    try {
+      // Generar cotización
+      SimuladorServicesUtil crearCot = new SimuladorServicesUtil();
+      CreaCotizacionSalidaVO cotSalida = crearCot.getCreaCotizacion(new SimulacionCreditoEspIn(), ConstantesWS.TIPO_EJECUCION_CREAR_COTIZACION);
+
+      // Almacenar transferencia en BD
+
+      // Modificar cotizacion en SAP
+
+      // Actualizar transferencia con folio
+
+      // Generar Xml con solicitudSTL
+
+      // Enviar solicitud a STL
+
+      // Interpretar respuesta STL
+
+      // Registrar movimiento en Log
+
+    } catch (Exception e) {
+      log = new Log(Constantes.COD_RESPUESTA_ERROR, "Error al generar la colocación: " + e.getMessage());
+    }
+    salida.setLog(log);
+    return salida;
+  }
+>>>>>>> .r1071
+}

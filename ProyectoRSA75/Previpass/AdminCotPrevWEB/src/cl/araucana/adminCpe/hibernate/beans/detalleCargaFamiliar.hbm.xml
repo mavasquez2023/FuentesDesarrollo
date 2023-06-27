@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="DetalleCargaFamiliarVO" table="DETALLE_CARGA_FAMILIAR">
+    	<id column="ID_DETALLE_CARGA_FAMILIAR" name="idDetalleCargaFamiliar">
+   			<generator class="increment"/>
+   		</id>
+		<property name="idCargaFamiliar"		column="PK_ID_CARGA_FAMILIAR" />
+		<property name="rutCarga"				column="CUERPO_RUT_CARGA" />
+		<property name="dvCarga"				column="DIGITO_CARGA" />
+		<property name="nombreCarga"			column="NOMBRE_CARGA" />
+		<property name="fecNacCarga"			column="FECHA_NACIMIENTO_CARGA" />
+		<property name="fecIniVigencia"			column="FECHA_INICIO_VIGENCIA" />
+		<property name="fecFinVigencia"			column="FECHA_FIN_VIGENCIA" />
+		<property name="idTipoCarga"			column="PK_ID_TIPO_CARGA" />
+		<property name="idParentesco"			column="PK_ID_PARENTESCO" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.RCF310VO" table="RCDTA.RCF310">
+    	<composite-id >
+        	<key-property name="folioNomina">
+        		<column name="FOLNOM" not-null="true" />
+        	</key-property>
+        	<key-property name="rutDeudor">
+        		<column name="RUTDEU" not-null="true" />
+        	</key-property>
+        	<key-property name="numeroCuota">
+        		<column name="CUONUM" not-null="true" />
+        	</key-property>
+    	</composite-id>
+  		<property name="nomtoGravamenes" column="CUOVALGRA" />
+  		<property name="estadoCuota" column="ESTCUO" />
+  		<property name="dvRutDeudor" column="RUTDEUDV" />
+  		<property name="valorCuotaAnticipada" column="VALCUOANT" />
+  		<property name="valorCuota" column="VALCUOMES" />
+  		<property name="valorNoDescontada" column="VALNODES" />
+  		<property name="folioCredito" column="XCREFOL" />
+  		<property name="oficinaProceso" column="XOFIPRO" />
+
+    </class>
+</hibernate-mapping>

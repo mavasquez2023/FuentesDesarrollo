@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Gratificaciones" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="trabajador" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="empleador" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="imagen" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="desde" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="hasta" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="fecha" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="rutaf" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="logoAraucana" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Timbre" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Firma" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="rutEmpresa" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="fecha1" class="java.lang.String"/>
+	<parameter name="holding" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="convenio" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select substr((case PWDCTIPEN
+when 'P' then ''
+when 'S' then ''
+when 'M' then ''
+when 'C' then ''
+when 'X' then 'AFC TRAB. '
+when 'Y' then 'AFC EMPR. '
+when 'I' then 'SIS. '
+when 'K' then ''
+ end) || PWDCENTID,1,25) as PWDCENTID,
+(case trim(pwdcmesre) when '01' then 'Ene'
+        when '02' then 'Feb'
+        when '03' then 'Mar'
+        when '04' then 'Abr'
+        when '05' then 'May'
+        when '06' then 'Jun'
+        when '07' then 'Jul'
+        when '08' then 'Ago'
+        when '09' then 'Sep'
+        when '10' then 'Oct'
+        when '11' then 'Nov'
+        when '12' then 'Dic' end) || ' ' || pwdcanore as FECHA ,pwdcremim,pwdcmonco,
+ trim(substr(CAST(PWDCFECPA as char(8)),7,2)) || '/' || trim(substr(CAST(PWDCFECPA as char(8)),5,2))  || '/'
+|| substr(CAST(PWDCFECPA as char(8)),1,4)   as FECPA
+,pwdcfolio
+    , (case PWDCTIPEN when 'P' then 1
+        when 'S' then 2
+        when 'M' then 3
+        when 'C' then 4
+        when 'X' then 5
+        when 'Y' then 6
+		when 'I' then 7
+        when 'K' then 90 end) as pOrden,
+pwdcanore *100+pwdcmesre as Anomes
+ from pwdtad.pwf6101
+where  pwdcrutaf = '$P!{rutaf}'  and PWDCRUTEM = '$P!{rutEmpresa}' and  PWDCANORE * 100 + PWDCMESRE > $P!{desde} and PWDCANORE * 100 + PWDCMESRE <= $P!{hasta} and PWDCTIPEN <> 'D' and PWDCCONVE =$P!{convenio} and PWDCCDHOL=$P!{holding}
+and PWDCTIPEN  in ('P','S','M','C','X','Y','K','I')
+order by Anomes desc,pOrden]]>
+	</queryString>
+	<field name="PWDCENTID" class="java.lang.String"/>
+	<field name="FECHA" class="java.lang.String"/>
+	<field name="PWDCREMIM" class="java.lang.String"/>
+	<field name="PWDCMONCO" class="java.lang.String"/>
+	<field name="FECPA" class="java.lang.String"/>
+	<field name="PWDCFOLIO" class="java.lang.String"/>
+	<group name="porAnoMes">
+		<groupExpression><![CDATA[$F{FECHA}]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="12" splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText" x="397" y="0" width="46" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Santiago,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="118" y="0" width="267" height="64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Certificado de Pagos de Cotizaciones Previsionales para Gratificaciones]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd  MMMMM   yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-3" x="443" y="0" width="112" height="20"/>
+				<textElement>
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="144" y="104" width="84" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Mes y año remuneraciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="317" y="104" width="80" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Monto cotizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="397" y="104" width="76" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="473" y="104" width="82" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[N° Folio o de serie planilla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="228" y="104" width="89" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Remuneración imponible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" mode="Opaque" x="0" y="104" width="144" height="29" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Institucion Previsional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="0" y="58" width="494" height="42"/>
+				<textElement>
+					<font fontName="Courier New" size="10"/>
+				</textElement>
+				<text><![CDATA[El empleador ha pagado las cotizaciones previsionales del trabajador indicado, a través del servicio de pago electronico del sitio Internet http://www.cp.cl por los siguientes periodos e instituciones de previsión: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="0" y="33" width="92" height="20"/>
+				<textElement>
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Trabajador :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="0" y="9" width="64" height="20"/>
+				<textElement>
+					<font fontName="Courier New" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Empleador :]]></text>
+			</staticText>
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement key="textField-1" x="105" y="9" width="293" height="20"/>
+				<textElement>
+					<font fontName="Courier New" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{empleador}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement key="textField-2" x="105" y="33" width="293" height="20"/>
+				<textElement>
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{trabajador}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="144" y="0" width="84" height="15"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="0" width="144" height="15"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWDCENTID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="d/M/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField" x="397" y="0" width="76" height="15"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECPA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0" isBlankWhenNull="false">
+				<reportElement key="textField" x="228" y="0" width="89" height="15"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWDCREMIM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0" isBlankWhenNull="false">
+				<reportElement key="textField" x="317" y="0" width="80" height="15"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWDCMONCO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="473" y="0" width="82" height="15"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PWDCFOLIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="70" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-4" x="459" y="32" width="14" height="18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/ " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-1" x="405" y="32" width="45" height="18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pagina]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-1" x="30" y="29" width="474" height="1"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-2" x="30" y="30" width="302" height="12"/>
+				<textElement textAlignment="Left">
+					<font fontName="Courier New" size="10"/>
+				</textElement>
+				<text><![CDATA[Certificado de pago de cotizaciones previsionales]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-7" x="450" y="32" width="9" height="18"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="227" splitType="Stretch">
+			<image vAlign="Middle">
+				<reportElement key="image" x="163" y="91" width="215" height="114"/>
+				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText" x="23" y="131" width="114" height="55"/>
+				<textElement>
+					<font fontName="Courier New" size="11"/>
+				</textElement>
+				<text><![CDATA[Oscar Pradenas V. Gerente Operaciones La Araucana CCAF.]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement key="image" x="23" y="72" width="114" height="59"/>
+				<imageExpression><![CDATA[$P{Firma}]]></imageExpression>
+			</image>
+			<image hAlign="Center">
+				<reportElement key="image" x="459" y="91" width="77" height="77"/>
+				<imageExpression><![CDATA[$P{Timbre}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText" x="0" y="16" width="494" height="50"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[      Las planillas de cotizaciones correspondientes están publicadas en el sitio Internet http://www.cp.cl, con lo cual se da cumplimiento a lo establecido en el dictamen N° 02346/0098 del 08 de Junio del 2004 de la Dirección del Trabajo, el cual se exhibe en este mismo sitio.]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-6" x="459" y="126" width="78" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

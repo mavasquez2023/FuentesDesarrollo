@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+	For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+	This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+	to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE082">
+
+	<typeAlias alias="ilfe082" type="com.microsystem.lme.ibatis.domain.Ilfe082VO" />
+		
+	<resultMap id="returnIlfe082" class="ilfe082">
+		<result property="afiRut" column="AFIRUT" />
+		<result property="licImpNum" column="LICIMPNUM" />
+		<result property="numImpre" column="NUMIMPRE" />
+		<result property="ideOpe" column="IDEOPE" />
+		<result property="estaEnIlfe1000" column="ESTAILFE1000" />
+	</resultMap>
+	
+	<insert id="insertIlfe082" parameterClass="ilfe082">
+		INSERT INTO LIEXP.ILFE082 (AFIRUT,LICIMPNUM,NUMIMPRE,IDEOPE) VALUES
+		(#afiRut#,#licImpNum#,#numImpre#,#ideOpe#)
+		WITH NC
+	</insert>
+	
+	<select id="getIlf082ToDelete" resultMap="returnIlfe082">
+ 		SELECT COALESCE(A.LICIMPNUM,0) as ESTAILFE1000, B.* 
+		FROM (SELECT AFIRUT, LICIMPNUM FROM LIEXP.ILF1000) A
+		RIGHT JOIN LIEXP.ILFE082 B ON 
+		A.AFIRUT = B.AFIRUT AND 
+		A.LICIMPNUM = B.LICIMPNUM 
+		WITH UR
+	</select>
+
+	<delete id="deleteIlfe082" parameterClass="ilfe082">
+		DELETE FROM LIEXP.ILFE082
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="licImpNum">
+				LICIMPNUM = #licImpNum#
+			</isNotNull>
+			<isNotNull prepend="AND" property="afiRut">
+				AFIRUT = #afiRut#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE = #ideOpe#
+			</isNotNull>		
+		</dynamic>
+		WITH NC
+	</delete>
+</sqlMap>

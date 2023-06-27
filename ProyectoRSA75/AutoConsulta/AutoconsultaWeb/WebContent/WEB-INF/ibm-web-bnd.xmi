@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ejs.models.base.bindings.webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1" virtualHostName="default_host">
+  <webapp href="WEB-INF/web.xml#WebApp_1284642156016"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1176219460125" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176219460125"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1176219460140" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176219460140"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1176219460141" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176219460141"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1176219460142" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176219460142"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1176219460156" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176219460156"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1224710946321" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1224710946321"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1224710946352" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1224710946352"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1224710946368" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1224710946368"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1224712422565" jndiName="jdbc/corporativo" properties="">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1224712422565"/>
+  </resRefBindings>
+</com.ibm.ejs.models.base.bindings.webappbnd:WebAppBinding>
