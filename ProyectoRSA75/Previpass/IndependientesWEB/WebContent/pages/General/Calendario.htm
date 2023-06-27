@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Calendario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2800.1170" name=GENERATOR></HEAD>
+<LINK href="/IndependientesWEB/css/Master.css" rel="stylesheet" type="text/css">
+<BODY leftMargin=0 topMargin=0>
+<SCRIPT language=JScript>
+
+function SetFecha(dia, mes, era)
+    {
+        this.dia          = dia;
+        this.mes          = mes;
+        this.era		  = era;
+    }
+
+
+var vectoFeriados = new Array();
+
+// DIAS FERIADOS  AÑO 2006 ****************************************
+
+vectoFeriados[0]  = new SetFecha( "1", "1","2006"); // Enero
+vectoFeriados[1]  = new SetFecha("14", "4","2006"); // Abril
+vectoFeriados[2]  = new SetFecha("15", "4","2006");
+vectoFeriados[3]  = new SetFecha( "1", "5","2006"); // Mayo
+vectoFeriados[4]  = new SetFecha("21", "5","2006");
+vectoFeriados[5]  = new SetFecha("12", "6","2006"); // Junio
+vectoFeriados[6]  = new SetFecha("26", "6","2006"); // Junio
+vectoFeriados[7]  = new SetFecha("15", "8","2006"); // Agosto
+vectoFeriados[8]  = new SetFecha("18", "9","2006"); // Septiembre
+vectoFeriados[9]  = new SetFecha("19", "9","2006");
+vectoFeriados[10] = new SetFecha( "9","10","2006"); // Octubre
+vectoFeriados[11] = new SetFecha( "1","11","2006"); // Noviembre
+vectoFeriados[12] = new SetFecha( "8","12","2006"); // Diciembre
+vectoFeriados[13] = new SetFecha("25","12","2006"); // Diciembre
+
+vectoFeriados[14] = new SetFecha("1", "1", "2007"); // enero
+vectoFeriados[15] = new SetFecha("6", "4", "2007"); // abril
+vectoFeriados[16] = new SetFecha("7", "4", "2007"); // abril
+vectoFeriados[17] = new SetFecha("1", "5", "2007"); // mayo
+vectoFeriados[18] = new SetFecha("21","5", "2007"); // mayo
+vectoFeriados[19] = new SetFecha("4", "6", "2007"); // junio
+vectoFeriados[20] = new SetFecha("2", "7", "2007"); // julio
+vectoFeriados[21] = new SetFecha("15","8", "2007"); // agosto
+vectoFeriados[22] = new SetFecha("18","9", "2007"); // septiembre
+vectoFeriados[23] = new SetFecha("19","9", "2007"); // septiembre
+vectoFeriados[24] = new SetFecha("15","10","2007"); // octubre
+vectoFeriados[25] = new SetFecha("1", "11","2007"); // noviembre
+vectoFeriados[26] = new SetFecha("8", "12","2007"); // diciembre
+vectoFeriados[27] = new SetFecha("25","12","2007"); // diciembre
+
+vectoFeriados[28] = new SetFecha("1", "1", "2008"); // enero
+vectoFeriados[29] = new SetFecha("21","3", "2008"); // marzo
+vectoFeriados[30] = new SetFecha("22","3", "2008"); // marzo
+vectoFeriados[31] = new SetFecha("1", "5", "2008"); // mayo
+vectoFeriados[32] = new SetFecha("19","5", "2008"); // mayo
+vectoFeriados[33] = new SetFecha("21","5", "2008"); // mayo
+vectoFeriados[34] = new SetFecha("15","8", "2008"); // agosto
+vectoFeriados[35] = new SetFecha("18","9", "2008"); // septiembre
+vectoFeriados[36] = new SetFecha("19","9", "2008"); // septiembre
+vectoFeriados[37] = new SetFecha("1", "11","2008"); // noviembre
+vectoFeriados[38] = new SetFecha("8", "12","2008"); // diciembre
+vectoFeriados[39] = new SetFecha("25","12","2008"); // diciembre
+
+
+var gdCtrl = new Object();
+var gcGray = "#808080";;
+var gcToggle = "#96BEF0";
+var gcBG = "#e0ecfa";
+var gdCurDate = new Date();
+var giYear = gdCurDate.getFullYear();
+var giMonth = gdCurDate.getMonth()+1;
+var giDay = gdCurDate.getDate();
+var VicPopCal = new Object();
+window.returnValue="";                          // Devolviendo Valor de Fecha si no se escoge día.
+function fSetDate(iYear, iMonth, iDay){
+  if (parseInt(iMonth)<10) iMonth="0"+iMonth;
+  if (parseInt(iDay)<10)   iDay="0"+iDay;
+  gdCtrl.value = iDay+"/"+iMonth+"/"+iYear;     // Modifica Formato de fechas
+  window.returnValue=iDay+"/"+iMonth+"/"+iYear; // Devolviendo Valor de Fecha
+  window.close();
+}
+function fSetSelected(aCell){                   // Captura valor clickeado...
+  var iOffset = 0;
+  var iYear = parseInt(tbSelYear.value);
+  var iMonth = parseInt(tbSelMonth.value);
+  with (aCell.children["cellText"])
+  {
+  	var iDay = parseInt(innerText);
+  	var sw=0;
+  	var a=0;
+  	for (a=1;a<32;a++) 
+  	   if (a==iDay) sw=1;
+       if (color==gcGray)
+  		 iOffset = (Vi<10)?-1:1;
+	     iMonth += iOffset;
+	   if (iMonth<1) {
+		 iYear--;
+		 iMonth = 12;
+	    }else if (iMonth>12){
+	   	iYear++;
+		iMonth = 1;
+	    }
+  }
+  if (sw==1) fSetDate(iYear, iMonth, iDay);
+ // else alert ("fecha no valida");
+}
+
+function fBuildCal(iYear, iMonth) {
+  var aMonth=new Array();
+  for(i=1;i<7;i++)
+  	aMonth[i]=new Array(i);
+  var dCalDate=new Date(iYear, iMonth-1, 1);
+  var iDayOfFirst=dCalDate.getDay();
+  var iDaysInMonth=new Date(iYear, iMonth, 0).getDate();
+  var iOffsetLast=new Date(iYear, iMonth-1, 0).getDate()-iDayOfFirst+1;
+  var iDate = 1;
+  var iNext = 1;
+  for (d = 0; d < 7; d++)
+	aMonth[1][d] = (d<iDayOfFirst)?-(iOffsetLast+d):iDate++;
+  for (w = 2; w < 7; w++)
+  	for (d = 0; d < 7; d++)
+		aMonth[w][d] = (iDate<=iDaysInMonth)?iDate++:-(iNext++);
+  return aMonth;
+}
+
+function fDrawCal(iYear, iMonth, iCellWidth, iDateTextSize) { // Dibuja Calendario
+  var WeekDay = new Array("Do","Lu","Ma","Mi","Ju","Vi","Sa");
+  var styleTD = "width='"+iCellWidth+"'  valign='middle' align='center'"   ;            
+  with (document) {
+	write("<tr bgcolor='#96BEF0' style='{font-size: 11px;color: #FFFFFF;font-family: Verdana;font-weight: bold;}'>");
+	for(i=0; i<7; i++)
+		write("<td >" + WeekDay[i] +"</td>"); // Color fila de días
+	write("</tr>");
+  	for (w = 1; w < 7; w++) { 
+		write("<tr>");
+		for (d = 0; d < 7; d++) {
+		   if (d==0 || d==6) write("<td bgcolor='#e0ecfa' id=calCell style='cursor:hand;'   onclick='fSetSelected(this)' align='right'>");
+		   else write("<td  bgcolor='white'  id=calCell  class='texto' style='cursor:hand;'   onclick='fSetSelected(this)' align='right'> ");
+			write("<font id=cellText class='texto'> </font>");
+			write("</td>")
+		}
+		write("</tr>");
+	}
+  }
+}
+function fUpdateCal(iYear, iMonth) {
+  myMonth = fBuildCal(iYear, iMonth);
+  var i = 0;
+  for (w = 0; w < 6; w++)
+	for (d = 0; d < 7; d++)
+		with (cellText[(7*w)+d]) {
+			Vi = i++;
+			if (myMonth[w+1][d]<0) {
+				innerText = " ";
+			}else{
+			    for(var a=0;a<vectoFeriados.length;a++)
+			    {
+			      if (vectoFeriados[a].mes==tbSelMonth.value && myMonth[w+1][d] == vectoFeriados[a].dia && tbSelYear.value==vectoFeriados[a].era)
+			       {
+			       cellText[(7*w)+d].style.color="Red";
+			       cellText[(7*w)+d].style.fontWeight  = "900";
+			       innerText = myMonth[w+1][d];break;
+			       }
+			    else
+			    {
+			       cellText[(7*w)+d].style.color="Black";
+			       cellText[(7*w)+d].style.fontWeight= "100";
+				   cellText[(7*w)+d].innerText = myMonth[w+1][d];
+		     	}
+			    }
+			}
+		}
+}
+
+function fSetYearMon(iYear, iMon){
+  tbSelMonth.options[iMon-1].selected = true;
+  for (i = 0; i < tbSelYear.length; i++)
+	if (tbSelYear.options[i].value == iYear)
+		tbSelYear.options[i].selected = true;
+  fUpdateCal(iYear, iMon);
+}
+function fPrevMonth(){
+  var iMon = tbSelMonth.value;
+  var iYear = tbSelYear.value;
+  if (--iMon<1) {
+	  iMon = 12;
+	  iYear--;
+  }
+  fSetYearMon(iYear, iMon);
+}
+function fNextMonth(){
+  var iMon = tbSelMonth.value;
+  var iYear = tbSelYear.value;
+  if (++iMon>12) {
+	  iMon = 1;
+	  iYear++;
+  }
+  fSetYearMon(iYear, iMon);
+}
+
+ var gMonths = new Array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+ with (document) {
+ write("<table id='popTable' border='1' bordercolor='#c2dfff' cellpadding='0' cellspacing='0'>");
+ write("<TR>");
+ write("<td valign='middle' align='right'><input type='button' name='PrevMonth' value='<' style='{background-color: #80a7d8;font-weight: bold;font-size: 12px;color: white;height:20px;20}' onClick='fPrevMonth()'>");
+ write("&nbsp;<select name='tbSelMonth' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Vi='Won'>");
+ for (i=0; i<12; i++)
+	write("<option value='"+(i+1)+"'>"+gMonths[i]+"</option>");
+ write("</SELECT>");
+ write("&nbsp;<SELECT name='tbSelYear' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Vi='Won'>");
+ for(i=1910;i<2030;i++)
+     write("<OPTION value='"+i+"'>"+i+"</OPTION>");
+ write("</SELECT>");
+ write("&nbsp;<input type='button' name='PrevMonth' value='>' style='{background-color: #80a7d8;font-weight: bold;font-size: 12px;color: white;height:20px;20}' onclick='fNextMonth()'>");
+ write("</td>");
+ write("</TR><TR>");
+ write("<td align='center'>");
+ write("<DIV style='background-color:#ffffff;'><table width='100%' bgcolor='#4682B4' border='0' cellpadding='1' cellspacing='1' bordercolor='#4682b4'>");
+ fDrawCal(giYear, giMonth, 19, 12);
+ write("</table></DIV>");
+ write("</td>");
+ write("</TR><TR><TD align='center'>");
+ write("<font class='texto' style='cursor:hand;' onclick='fSetDate(giYear,giMonth,giDay)' >Hoy:&nbsp;"+giDay+"&nbsp;"+gMonths[giMonth-1]+" del &nbsp;"+giYear+"</font>");
+ write("</TD></TR>");write("</TD></TR>");
+ write("</TABLE>");
+ write("<script>" + "fSetYearMon(giYear, giMonth);" + "</"+"script>"); // Seteando Fecha del sistema en el calendario (mes y año);
+ }
+ </SCRIPT>
+ </BODY>
+</HTML>

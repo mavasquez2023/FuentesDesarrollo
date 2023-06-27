@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<mappedIndexes>
+	<mappedIndex>
+		<name> AnexoTrabajadores </name>
+
+		<mappings>
+			<mapping>
+				<name> periodo </name>
+				<fieldName> Periodo </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> oficina </name>
+				<fieldName> CodigoOficina </fieldName>
+			</mapping>
+			
+			<mapping>
+				<name> empresa </name>
+				<fieldName> RutEmpresa </fieldName>
+			</mapping>
+		</mappings>
+	</mappedIndex>
+</mappedIndexes>

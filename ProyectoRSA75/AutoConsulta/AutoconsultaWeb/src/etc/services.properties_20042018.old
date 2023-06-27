@@ -1,0 +1,10 @@
+##Traduce las rutas internas de Autoconsulta a las rutas de Desarrollos satelites
+
+#Compromiso Total
+ct.cargafinanciera=Satelites/certificados/compTotal.do
+#Certificados
+sat.finiquito=Satelites/certificados/finiquito/finiquitoInicioView.do
+sat.creditosvigentes=Satelites/certificados/creditosvigentes/listarCreditosVigentes.do
+sat.creditoscancelados=Satelites/certificados/creditoscancelados/listarCreditosCancelados.do
+sat.afiliacion=Satelites/certificados/afiliacion/generaCertificado.do
+sat.prepago=Satelites/certificados/prepago/getCreditosPrepago.do

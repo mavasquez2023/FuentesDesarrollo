@@ -1,0 +1,6 @@
+## MICROSYSTEM ##
+codigoOperador=5
+tipoInstitucion=C
+codUsuario=70016160
+clave=1
+urlServicio=http://moon.cloud.msys.cl:8080/ServiciosMicrosystemWeb/services/WsLMEInetSOAP

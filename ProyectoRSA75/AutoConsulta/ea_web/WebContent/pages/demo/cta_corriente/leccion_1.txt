@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>En ésta lección obtendrá el estado actual de su cuenta corriente, a la fecha de su consulta, para ésto debe comenzar seleccionando <b> La Oficina</b> y <b> Sucursal</b>.</div>

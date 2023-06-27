@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+   <web-app id="WebApp">
+      <icon>
+         <small-icon>/img/logo_tiny.gif</small-icon>
+         <large-icon>/img/logo_small.gif</large-icon>
+      </icon>
+      <display-name>EmpresasAdherentes</display-name>
+      <context-param id="ContextParam_1247097507983">
+         <param-name>organizationName</param-name>
+         <param-value>La Araucana C.C.A.F.</param-value>
+         <description>Organization name.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507991">
+         <param-name>name</param-name>
+         <param-value>EA</param-value>
+         <description>Application name.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507992">
+         <param-name>title</param-name>
+         <param-value>Cuenta Corriente Empresa</param-value>
+         <description>Application title.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507993">
+         <param-name>version</param-name>
+         <param-value>2.3</param-value>
+         <description>Application version.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507994">
+         <param-name>releaseDate</param-name>
+         <param-value>05/12/2007</param-value>
+         <description>Application release date.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507995">
+         <param-name>copyright</param-name>
+         <param-value>(c) Copyright La Araucana C.C.A.F. 2000-2011. Reservados todos los derechos.</param-value>
+      </context-param>
+      <context-param id="ContextParam_1247097507996">
+         <param-name>CTACTE_DELEGATE_IMPL</param-name>
+         <param-value>cl.araucana.ea.ctacte.delegate.BusinessDelegateImpl</param-value>
+      </context-param>
+      <context-param id="ContextParam_1247097507997">
+         <param-name>CREDITO_DELEGATE_IMPL</param-name>
+         <param-value>cl.araucana.ea.credito.delegate.BusinessDelegateImpl</param-value>
+      </context-param>
+      <context-param id="ContextParam_1247097507998">
+         <param-name>applicationName</param-name>
+         <param-value>EDOCS</param-value>
+         <description>Nombre de esta aplicaci&#243;n.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097507999">
+         <param-name>edocs.documentBaseDir</param-name>
+         <param-value>/ea/edocs/docs</param-value>
+         <description>Directorio base para almacenar los documentos indexados.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508000">
+         <param-name>edocs.indexBaseDir</param-name>
+         <param-value>/ea/edocs/docs.index</param-value>
+         <description>Directorio base auxiliar para indexar los documentos.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508001">
+         <param-name>edocs.formatDir</param-name>
+         <param-value>/ea/edocs/formatos</param-value>
+         <description>Directorio que contiene los archivos que describen los formatos de cada tipo de documento.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508002">
+         <param-name>edocs.logDir</param-name>
+         <param-value>/ea/edocs/logs</param-value>
+         <description>Directorio en el cual se almacenar&#225;n las bit&#225;coras.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508003">
+         <param-name>edocs.ncSourceDir</param-name>
+         <param-value>/ea/edocs/files/EBCRED</param-value>
+         <description>Directorio fuente con las n&#243;minas de cr&#233;dito.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508042">
+         <param-name>edocs.neSourceDir</param-name>
+         <param-value>/ea/edocs/files/EBCREDU</param-value>
+         <description>Directorio fuente con las nominas de credito.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508004">
+         <param-name>edocs.nlSourceDir</param-name>
+         <param-value>/ea/edocs/files/EBLEASIN</param-value>
+         <description>Directorio fuente con las n&#243;minas de leasing.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508009">
+         <param-name>edocs.atSourceDir</param-name>
+         <param-value>/ea/edocs/files/EBASFAM/ANEXOS</param-value>
+         <description>Directorio fuente con los anexos de trabajadores.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508015">
+         <param-name>edocs.cfSourceDir</param-name>
+         <param-value>/ea/edocs/files/EBASFAM/CARGAS</param-value>
+         <description>Directorio fuente con las cargas familiares.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508016">
+         <param-name>edocs.zippedDocPrefix</param-name>
+         <param-value>La_Araucana</param-value>
+         <description>Prefijo para los archivos ZIP enviados a las empresas.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508026">
+         <param-name>edocs.initialZipBufferSize</param-name>
+         <param-value>262144</param-value>
+         <description>Tama&#241;o inicial del buffer utilizado para archivos ZIP enviados a las empresas.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508027">
+         <param-name>edocs.kes.id</param-name>
+         <param-value>edocs</param-value>
+         <description>KES ID.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508028">
+         <param-name>edocs.kes.subject</param-name>
+         <param-value>65BF58290DA8EAEEA1D36EA8BFE384DBF2</param-value>
+         <description>KES Subject.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508029">
+         <param-name>edocs.acl</param-name>
+         <param-value>146.83.1.3=CREDITOEXP,QSECOFR,DZULETAR,ASAAVEDRA,RLOPEZC,VSAAVEDRAV,PCEAC,MVICHERATF,MRIQUELMED,CONTROL_M,A16912851B,A157257935</param-value>
+         <description>ACL for Indexer Service.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508030">
+         <param-name>edocs.NC.xlsFormatterClassName</param-name>
+         <param-value>cl.araucana.ea.edocs.XLSNCFormatter</param-value>
+         <description>XLS Formatter for NC.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508043">
+         <param-name>edocs.NE.xlsFormatterClassName</param-name>
+         <param-value>cl.araucana.ea.edocs.XLSNEFormatter</param-value>
+         <description>XLS Formatter for NE.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508031">
+         <param-name>edocs.NL.xlsFormatterClassName</param-name>
+         <param-value>cl.araucana.ea.edocs.XLSNLFormatter</param-value>
+         <description>XLS Formatter for NL.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508032">
+         <param-name>edocs.AT.xlsFormatterClassName</param-name>
+         <param-value>cl.araucana.ea.edocs.XLSATFormatter</param-value>
+         <description>XLS Formatter for AT.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508033">
+         <param-name>edocs.CF.xlsFormatterClassName</param-name>
+         <param-value>cl.araucana.ea.edocs.XLSCFFormatter</param-value>
+         <description>XLS Formatter for CF.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508034">
+         <param-name>edocs.be.documentBaseDir</param-name>
+         <param-value>/files/bono</param-value>
+         <description>Directorio base para almacenar los bonos convertidos</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508035">
+         <param-name>edocs.be.zippedDocPrefix</param-name>
+         <param-value>La_Araucana</param-value>
+         <description>Prefijo para los archivos ZIP enviados a las empresas.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508036">
+         <param-name>edocs.be.initialZipBufferSize</param-name>
+         <param-value>1024</param-value>
+         <description>Tama&#241;o inicial del buffer para el archivo zipeado</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508037">
+         <param-name>edocs.be.separadorCarpetas</param-name>
+         <param-value>/</param-value>
+         <description>Separador de carpetas del sistema origen</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508038">
+         <param-name>edocs.re.documentBaseDir</param-name>
+         <param-value>/files/rentas</param-value>
+         <description>Directorio base para almacenar los Informes de Ingresos</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508039">
+         <param-name>edocs.re.zippedDocPrefix</param-name>
+         <param-value>La_Araucana</param-value>
+         <description>Prefijo para los archivos ZIP enviados a las empresas.</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508040">
+         <param-name>edocs.re.initialZipBufferSize</param-name>
+         <param-value>1024</param-value>
+         <description>Tama&#241;o inicial del buffer para el archivo zipeado</description>
+      </context-param>
+      <context-param id="ContextParam_1247097508041">
+         <param-name>edocs.re.separadorCarpetas</param-name>
+         <param-value>/</param-value>
+         <description>Separador de carpetas del sistema origen</description>
+      </context-param>
+      <filter id="Filter_1247097508205">
+         <filter-name>LoginFilter</filter-name>
+         <display-name>LoginFilter</display-name>
+         <filter-class>cl.araucana.core.util.http.LoginFilter</filter-class>
+         <init-param id="InitParam_1247097508472">
+            <param-name>securityMode</param-name>
+            <param-value>j2ee</param-value>
+         </init-param>
+         <init-param id="InitParam_1247097508481">
+            <param-name>debug</param-name>
+            <param-value>false</param-value>
+         </init-param>
+         <init-param id="InitParam_1247097508482">
+            <param-name>dump</param-name>
+            <param-value>false</param-value>
+         </init-param>
+      </filter>
+      <filter id="Filter_1247097508482">
+         <filter-name>PostAction</filter-name>
+         <display-name>PostAction</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.PostAction</filter-class>
+      </filter>
+      <filter id="Filter_1247097508483">
+         <filter-name>ValidateUserSessionFilter</filter-name>
+         <display-name>ValidateUserSessionFilter</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.ValidateUserSessionFilter</filter-class>
+      </filter>
+      <filter id="Filter_1247097508484">
+         <filter-name>PutUserProfile</filter-name>
+         <display-name>PutUserProfile</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.PutUserProfile</filter-class>
+      </filter>
+      <filter id="Filter_1247097508485">
+         <filter-name>PostLogonFilter</filter-name>
+         <display-name>PostLogonFilter</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.PostLogonFilter</filter-class>
+      </filter>
+      <filter id="Filter_1247097508486">
+         <filter-name>PreActionFilter</filter-name>
+         <display-name>PreActionFilter</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.PreActionFilter</filter-class>
+      </filter>
+      <filter id="Filter_1247097508487">
+         <filter-name>EstadisticaFilter</filter-name>
+         <display-name>EstadisticaFilter</display-name>
+         <filter-class>cl.araucana.ea.servlet.filter.EstadisticaFilter</filter-class>
+      </filter>
+      <filter-mapping id="FilterMapping_1247097508514">
+         <filter-name>PostAction</filter-name>
+         <url-pattern>/PostAction</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508515">
+         <filter-name>ValidateUserSessionFilter</filter-name>
+         <servlet-name>action</servlet-name>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508516">
+         <filter-name>LoginFilter</filter-name>
+         <url-pattern>/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508524">
+         <filter-name>PostLogonFilter</filter-name>
+         <url-pattern>/PostLogonFilter</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508525">
+         <filter-name>PostLogonFilter</filter-name>
+         <url-pattern>/pages/logon/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508526">
+         <filter-name>PostLogonFilter</filter-name>
+         <url-pattern>/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508527">
+         <filter-name>PostLogonFilter</filter-name>
+         <url-pattern>/logon/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508528">
+         <filter-name>PreActionFilter</filter-name>
+         <servlet-name>action</servlet-name>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1247097508529">
+         <filter-name>EstadisticaFilter</filter-name>
+         <url-pattern>/edocs/zipper.do</url-pattern>
+      </filter-mapping>
+      <listener id="Listener_1247097508541">
+         <listener-class>cl.araucana.ea.servlet.event.listeners.ContextListener</listener-class>
+      </listener>
+      <listener id="Listener_1247097508547">
+         <listener-class>com.sun.faces.config.ConfigListener</listener-class>
+      </listener>
+      <listener id="Listener_1247097508548">
+         <listener-class>cl.araucana.ea.edocs.listeners.EDocsServletContextListener</listener-class>
+      </listener>
+      <listener id="Listener_1247097508549">
+         <listener-class>cl.araucana.ea.edocs.listeners.EDocsHttpSessionListener</listener-class>
+      </listener>
+      <servlet id="Servlet_1247097476281">
+         <servlet-name>action</servlet-name>
+         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+         <init-param id="InitParam_1247097508771">
+            <param-name>config</param-name>
+            <param-value>WEB-INF/struts-config.xml</param-value>
+         </init-param>
+         <init-param id="InitParam_1247097508772">
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+         </init-param>
+         <init-param id="InitParam_1247097508773">
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+         </init-param>
+         <init-param id="InitParam_1247097508778">
+            <param-name>validate</param-name>
+            <param-value>true</param-value>
+         </init-param>
+         <load-on-startup>2</load-on-startup>
+      </servlet>
+      <servlet id="Servlet_1247097476282">
+         <servlet-name>Faces Servlet</servlet-name>
+         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+         <load-on-startup>1</load-on-startup>
+      </servlet>
+      <servlet id="Servlet_1247097476283">
+         <servlet-name>JSF Resource Servlet</servlet-name>
+         <servlet-class>com.ibm.faces.webapp.JsfResourceServlet</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476284">
+         <servlet-name>ProxyServlet</servlet-name>
+         <display-name>ProxyServlet</display-name>
+         <servlet-class>cl.araucana.ea.servlet.ProxyServlet</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476285">
+         <servlet-name>EDocsAction</servlet-name>
+         <display-name>EDocsAction</display-name>
+         <servlet-class>cl.araucana.ea.edocs.servlets.EDocsAction</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476289">
+         <servlet-name>ZipperAction</servlet-name>
+         <display-name>ZipperAction</display-name>
+         <servlet-class>cl.araucana.ea.edocs.servlets.ZipperAction</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476290">
+         <servlet-name>AdminServiceAction</servlet-name>
+         <display-name>AdminServiceAction</display-name>
+         <servlet-class>cl.araucana.ea.edocs.servlets.AdminServiceAction</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476295">
+         <servlet-name>AdminServiceEduAction</servlet-name>
+         <display-name>AdminServiceEduAction</display-name>
+         <servlet-class>cl.araucana.ea.edocs.servlets.AdminServiceEduAction</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476291">
+         <servlet-name>BonoExtraordinarioServlet</servlet-name>
+         <display-name>BonoExtraordinarioServlet</display-name>
+         <servlet-class>cl.araucana.ea.edocs.be.servlets.BonoExtraordinarioServlet</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476292">
+         <servlet-name>ZipperServlet</servlet-name>
+         <display-name>ZipperServlet</display-name>
+         <servlet-class>cl.araucana.ea.edocs.be.servlets.ZipperServlet</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476293">
+         <servlet-name>RentasServlet</servlet-name>
+         <display-name>RentasServlet</display-name>
+         <servlet-class>cl.araucana.ea.edocs.re.servlets.RentasServlet</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1247097476294">
+         <servlet-name>ZipperRentasServlet</servlet-name>
+         <display-name>ZipperRentasServlet</display-name>
+         <servlet-class>cl.araucana.ea.edocs.re.servlets.ZipperRentasServlet</servlet-class>
+      </servlet>
+      <servlet-mapping id="ServletMapping_1247097508847">
+         <servlet-name>EDocsAction</servlet-name>
+         <url-pattern>/edocs/main.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508848">
+         <servlet-name>ZipperAction</servlet-name>
+         <url-pattern>/edocs/zipper.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508849">
+         <servlet-name>AdminServiceAction</servlet-name>
+         <url-pattern>/edocs/adminService.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508858">
+         <servlet-name>AdminServiceEduAction</servlet-name>
+         <url-pattern>/edocs/adminServiceEdu.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508850">
+         <servlet-name>action</servlet-name>
+         <url-pattern>*.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508851">
+         <servlet-name>Faces Servlet</servlet-name>
+         <url-pattern>/faces/*</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508852">
+         <servlet-name>JSF Resource Servlet</servlet-name>
+         <url-pattern>/jsfresource/*</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508853">
+         <servlet-name>ProxyServlet</servlet-name>
+         <url-pattern>/ProxyServlet</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508854">
+         <servlet-name>BonoExtraordinarioServlet</servlet-name>
+         <url-pattern>/BonoExtraordinario</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508855">
+         <servlet-name>ZipperServlet</servlet-name>
+         <url-pattern>/Zipper</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508856">
+         <servlet-name>RentasServlet</servlet-name>
+         <url-pattern>/Rentas</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1247097508857">
+         <servlet-name>ZipperRentasServlet</servlet-name>
+         <url-pattern>/ZipperRentas</url-pattern>
+      </servlet-mapping>
+      <welcome-file-list id="WelcomeFileList_1247097508878">
+         <welcome-file>index.html</welcome-file>
+         <welcome-file>index.htm</welcome-file>
+         <welcome-file>index.jsp</welcome-file>
+         <welcome-file>default.html</welcome-file>
+         <welcome-file>default.htm</welcome-file>
+         <welcome-file>default.jsp</welcome-file>
+         <welcome-file>servicios.jsp</welcome-file>
+      </welcome-file-list>
+      <error-page id="ExceptionTypeErrorPage_1247097508925">
+         <exception-type>javax.servlet.ServletException</exception-type>
+         <location>/pages/error/servletException.jsp</location>
+      </error-page>
+      <taglib id="TagLibRef_1247097508947">
+         <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1247097508948">
+         <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1247097508949">
+         <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1247097508950">
+         <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1247097508951">
+         <taglib-uri>/WEB-INF/struts-template.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1247097508952">
+         <taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+         <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+      </taglib>
+      <resource-ref id="ResourceRef_1095283664312">
+         <res-ref-name>DSEmpresasAdherentes</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Application</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <security-constraint id="SecurityConstraint_1247097509074">
+         <display-name>Recursos generales protegidos</display-name>
+         <web-resource-collection id="WebResourceCollection_1247097509131">
+            <web-resource-name>readers</web-resource-name>
+            <description></description>
+            <url-pattern>/proxy.do</url-pattern>
+            <url-pattern>/holding.do</url-pattern>
+            <url-pattern>/servicios.jsp</url-pattern>
+            <url-pattern>/ctaCteN1.do</url-pattern>
+            <url-pattern>/ctaCteN2.do</url-pattern>
+            <url-pattern>/ctaCteN3.do</url-pattern>
+            <url-pattern>/ctaCte/N4.do</url-pattern>
+            <url-pattern>/ctaCte/402N1.do</url-pattern>
+            <url-pattern>/ctaCte/402N2.do</url-pattern>
+            <url-pattern>/ctaCte/704N1.do</url-pattern>
+            <url-pattern>/ctaCte/declaracionCotizacionSinPago/N1.do</url-pattern>
+            <url-pattern>/ctaCte/declaracionCotizacionSinPago/N2.do</url-pattern>
+            <url-pattern>/ctaCte/morosidadCredito/N1.do</url-pattern>
+            <url-pattern>/ctaCte/morosidadCredito/N2.do</url-pattern>
+            <url-pattern>/deudaCreditoN1.do</url-pattern>
+            <url-pattern>/deudaCreditN1.do</url-pattern>
+            <url-pattern>/deudaCreditoN2.do</url-pattern>
+            <url-pattern>/tablaDesarrolloCredito.do</url-pattern>
+            <url-pattern>/prepagoFiniquitoN1.do</url-pattern>
+            <url-pattern>/prepagoFiniquitoN2.do</url-pattern>
+            <url-pattern>/liquidacionN1.do</url-pattern>
+            <url-pattern>/liquidacionN2.do</url-pattern>
+            <url-pattern>/liquidacion/402N1.do</url-pattern>
+            <url-pattern>/liquidacion/402N2.do</url-pattern>
+            <url-pattern>/liquidacion/402N3.do</url-pattern>
+            <url-pattern>/liquidacion/455N1.do</url-pattern>
+            <url-pattern>/liquidacion/658N1.do</url-pattern>
+            <url-pattern>/liquidacion/671N1.do</url-pattern>
+            <url-pattern>/liquidacion/680N1.do</url-pattern>
+            <url-pattern>/liquidacion/680N2.do</url-pattern>
+            <url-pattern>/liquidacion/704N1.do</url-pattern>
+            <url-pattern>/liquidacion/704N2.do</url-pattern>
+            <url-pattern>/liquidacion/706N1.do</url-pattern>
+            <url-pattern>/liquidacion/706N2.do</url-pattern>
+            <url-pattern>/liquidacion/712N1.do</url-pattern>
+            <url-pattern>/liquidacion/712N2.do</url-pattern>
+            <url-pattern>/liquidacion/707N1.do</url-pattern>
+            <url-pattern>/liquidacion/751N1.do</url-pattern>
+            <url-pattern>/liquidacion/751N2.do</url-pattern>
+            <url-pattern>/liquidacion/gravamenes.do</url-pattern>
+            <url-pattern>/documentoPago.do</url-pattern>
+            <url-pattern>/liquidacion/defaultN2.do</url-pattern>
+            <url-pattern>/liquidacion/defaultN3.do</url-pattern>
+            <url-pattern>/pages/servicios/index.jsp</url-pattern>
+            <url-pattern>/liquidacion/N2/abonosASaldoAduedado.do</url-pattern>
+            <url-pattern>/liquidacion/N2/pagosSaldoAFavorEmpresa.do</url-pattern>
+            <url-pattern>/certificadoSaldoDeudaCapital.do</url-pattern>
+            <url-pattern>/ctaCte/402/listadoNominaDiferenciaAsignacionFamiliar.do</url-pattern>
+            <url-pattern>/edocs/main.do</url-pattern>
+            <url-pattern>/edocs/zipper.do</url-pattern>
+            <url-pattern>/Zipper</url-pattern>
+            <url-pattern>/ZipperRentas</url-pattern>
+            <url-pattern>/BonoExtraordinario</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1247097509135">
+            <description></description>
+            <role-name>readers</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <security-constraint id="SecurityConstraint_1247097509135">
+         <web-resource-collection id="WebResourceCollection_1247097509135">
+            <web-resource-name>verifiedUser</web-resource-name>
+            <description></description>
+            <url-pattern>/servicios/servicios.html</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1247097509136">
+            <description></description>
+            <role-name>verifiedUser</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <security-constraint id="SecurityConstraint_1247097509136">
+         <web-resource-collection id="WebResourceCollection_1247097509136">
+            <web-resource-name>Encargado</web-resource-name>
+            <description></description>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1247097509142">
+            <description></description>
+            <role-name>Encargado</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <security-constraint id="SecurityConstraint_1247097509143">
+         <web-resource-collection id="WebResourceCollection_1247097509143">
+            <web-resource-name>Ejecutivo</web-resource-name>
+            <description></description>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1247097509150">
+            <description></description>
+            <role-name>Ejecutivo</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <login-config id="LoginConfig_1247097509208">
+         <auth-method>FORM</auth-method>
+         <form-login-config id="FormLoginConfig_1247097509208">
+            <form-login-page>/logon.jsp</form-login-page>
+            <form-error-page>/logonerror.jsp</form-error-page>
+         </form-login-config>
+      </login-config>
+      <security-role id="SecurityRole_1247097509244">
+         <description></description>
+         <role-name>readers</role-name>
+      </security-role>
+      <security-role id="SecurityRole_1247097509245">
+         <description></description>
+         <role-name>verifiedUser</role-name>
+      </security-role>
+      <security-role id="SecurityRole_1247097509246">
+         <description></description>
+         <role-name>administrators</role-name>
+      </security-role>
+      <security-role id="SecurityRole_1247097509247">
+         <description></description>
+         <role-name>Encargado</role-name>
+      </security-role>
+      <security-role id="SecurityRole_1247097509248">
+         <description></description>
+         <role-name>Ejecutivo</role-name>
+      </security-role>
+   </web-app>

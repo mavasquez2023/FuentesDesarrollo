@@ -1,0 +1,272 @@
+@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, blockquote, th, td, span {
+    margin: 0;
+    padding: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #FFF;
+	font-size: 12px;
+}
+a:link, a:visited, a:active {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+img {
+	border: 0px;
+}
+
+#header {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #02599E;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	background-color: #02599E;
+}
+#header .borde_sep{
+	background-image: url(../images/bg_sep.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	height: 70px;
+}
+#header h1 {
+	color: #FFF;
+}
+
+#fotoAlumno #foto {
+	border: 2px solid #FFF;
+}
+#datosAlumno .NombreAlumno {
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFF;
+}
+#datosAlumno .CarreraAlumno {
+	color: #FFF;
+}
+
+#top_links ul {
+	list-style-type: none;
+}
+#top_links ul li {
+	margin-bottom: 5px;
+}
+
+#top_links a {
+	color: #CFE0EB;
+}
+#container {
+	background-color: #FFF;
+	margin-top: 10px;
+}
+#container #content .caja_borde {
+	border: 2px solid #D6D6D6;
+	padding: 8px;
+}
+#container #content h1 {
+	font-size: 28px;
+	color: #999;
+	margin-bottom: 20px;
+}
+#container #content th {
+	background-color: #DDD;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	color: #666;
+}
+
+
+#tableHeader th {
+  text-align:left;
+}
+
+#tableHeader .label {
+  width:25%;
+}
+
+#tableLista th {
+  text-align:left;
+}
+
+#container #content td {
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #EAEAEA;
+}
+#container #content .aprobado {
+	background-image: url(../../images/punto_aprobado.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 12px;
+}
+#container #content .reprobado {
+	background-image: url(../../images/punto_reprobado.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 12px;
+}
+#container #content .encurso {
+	background-image: url(../../images/punto_encurso.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 12px;
+}
+#container #content .pendiente {
+	background-image: url(../../images/punto_pendiente.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 12px;
+}
+#container #content .convalidado {
+	background-image: url(../../images/punto_convalidado.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 12px;
+}
+#container #content .nota {
+	font-size: 11px;
+	color: #999;
+	padding-left: 10px;
+}
+
+#container #content .nombre_curso {
+	font-weight: bold;
+}
+
+#container #content .estado {
+	color: #999;
+	font-size: 11px;
+}
+#container #content .odd {
+	background-color: #f5f5f5;
+}
+
+#malla table {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #EAEAEA;
+	margin-bottom: 20px;
+}
+#malla th {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFF;
+}
+#malla td {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #EAEAEA;
+}
+
+#menu ul {
+	list-style-type: none;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #67A1C2;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+#menu h5 {
+	font-weight: bold;
+	font-size: 16px;
+	color: #004A99;	
+}
+#menu ul li {
+	font-weight: normal;
+	font-size: 12px;
+	background-image: url(../images/flecha.gif);
+	background-repeat: no-repeat;
+	background-position: 1px 4px;
+	padding-left: 10px;
+	margin-bottom: 3px;
+}
+#menu ul li a {
+	color: #333;
+}
+#menu ul li .selected {
+	font-weight: bold;
+	color: #004A99;
+}
+#login {
+	border: 1px solid #EAEAEA;
+}
+#login td {
+	padding: 5px;
+}
+.btn {
+	background-color: #004A99;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 3px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#container_footer {
+	background-color: #EFEFEF;
+}
+#container_footer #footer {
+	color: #333;
+	font-size: 11px;
+}
+.aleft {
+	float:left;
+}
+.aright {
+	float:right;
+}h2 {
+	margin-bottom: 10px;
+}
+
+#tablaEncabezado th {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #DDDDDD;
+	font-size: 12px;
+	font-weight: bold;
+	text-align:left;
+	color: #999;
+	background-color: #000;
+}
+
+caption{
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #DDDDDD;
+	margin-bottom: 1px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align:left;
+}
+
+#botones input{
+	background-color: #004A99;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 3px;
+	font-family: Arial, Helvetica, sans-serif;
+}

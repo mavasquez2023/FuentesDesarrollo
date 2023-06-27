@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DispDatosServiceImplService WSDL service -->
+
+  <service name="DispDatosServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.dispDatos.aporte.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="DispDatosServiceImplService"/>
+      <parameter name="schemaQualified" value="http://vo.service.dispDatos.aporte.araucana.cl,http://service.dispDatos.aporte.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="DispDatosServiceImpl"/>
+      <parameter name="className" value="cl.araucana.aporte.dispDatos.service.DispDatosServiceImpl"/>
+      <parameter name="wsdlPortType" value="DispDatosServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.dispDatos.aporte.araucana.cl" xmlns:retNS="http://service.dispDatos.aporte.araucana.cl" xmlns:rtns="http://vo.service.dispDatos.aporte.araucana.cl" name="obtenerInfDatos" qname="operNS:obtenerInfDatos" returnQName="retNS:obtenerInfDatosReturn" returnType="rtns:DispDatosResultVO" soapAction="">
+        <parameter xmlns:pns="http://service.dispDatos.aporte.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rut" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://service.dispDatos.aporte.araucana.cl" xmlns:retNS="http://service.dispDatos.aporte.araucana.cl" xmlns:rtns="http://vo.service.dispDatos.aporte.araucana.cl" name="obtenerInfDatosRemote" qname="operNS:obtenerInfDatosRemote" returnQName="retNS:obtenerInfDatosRemoteReturn" returnType="rtns:DispDatosResultVO" soapAction="">
+        <parameter xmlns:pns="http://service.dispDatos.aporte.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rut" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerInfDatosRemote obtenerInfDatos"/>
+
+      <typeMapping xmlns:ns="http://vo.service.dispDatos.aporte.araucana.cl" qname="ns:ErrorResultVO" type="java:cl.araucana.aporte.dispDatos.service.vo.ErrorResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://vo.service.dispDatos.aporte.araucana.cl" qname="ns:DispDatosResultVO" type="java:cl.araucana.aporte.dispDatos.service.vo.DispDatosResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://vo.service.dispDatos.aporte.araucana.cl" qname="ns:AfiliadoResultVO" type="java:cl.araucana.aporte.dispDatos.service.vo.AfiliadoResultVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

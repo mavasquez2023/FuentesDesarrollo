@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+<html>
+<head>
+<title>dropdown</title>
+<link rel="stylesheet" type="text/css" href="theme/dropdown.css">
+</head>
+<body>
+<script language="JavaScript">
+<!--
+	function redirect(select) {
+		var page = select.options[select.selectedIndex].value
+		if (page!="#") document.location.href = page
+	}
+-->
+</script>
+<select onchange="redirect(this)">
+<!-- siteedit:forEach var="item" items="${sitenav.items}" begin="0" step="1" varStatus="status" -->
+	<option value="${item.href}" class="dropdown_item_normal">${item.label}</option>
+<!-- /siteedit:forEach -->
+</select>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.AvisosVO" table="AVISOS_CLIENTE">
+    	<id name="idAvisos" column="ID_AVISO">
+    		<generator class="increment"/>
+   		</id>
+   		<property name="titulo" column="TITULO" />
+   		<property name="estado" column="ESTADO" />
+   		<property name="contenido" column="CONTENIDO" />
+   		<property name="link" column="LINK" />   		
+  		<property name="ancho" column="ANCHO" />
+  		<property name="alto" column="ALTO" />
+    </class>
+</hibernate-mapping>

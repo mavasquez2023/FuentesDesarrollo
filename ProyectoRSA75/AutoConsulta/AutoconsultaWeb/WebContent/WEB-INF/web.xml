@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+   <web-app id="WebApp_1284642156016">
+      <display-name>Autoconsulta</display-name>
+      <description>Autoconsulta Multicanal</description>
+      <context-param id="ContextParam_1284642156016">
+         <param-name>startMode</param-name>
+         <param-value>RA</param-value>
+         <description>SimulacionManager Start Mode (MQ/RA).</description>
+      </context-param>
+      <context-param id="ContextParam_1284642156017">
+         <param-name>homePage</param-name>
+         <param-value>http://rasw.laaraucana.cl/sv/</param-value>
+         <description>Home page to SV integration.</description>
+      </context-param>
+      <filter id="Filter_1284642156016">
+         <filter-name>LoginFilter</filter-name>
+         <display-name>LoginFilter</display-name>
+         <filter-class>cl.araucana.core.util.http.LoginFilter</filter-class>
+         <init-param id="InitParam_1284642156016">
+            <param-name>securityMode</param-name>
+            <param-value>j2ee</param-value>
+         </init-param>
+         <init-param id="InitParam_1284642156017">
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+         </init-param>
+         <init-param id="InitParam_1284642156018">
+            <param-name>dump</param-name>
+            <param-value>false</param-value>
+         </init-param>
+      </filter>
+      <filter id="Filter_1284642156017">
+         <filter-name>AnonPageMarkerFilter</filter-name>
+         <display-name>AnonPageMarkerFilter</display-name>
+         <filter-class>cl.araucana.autoconsulta.filters.AnonPageMarkerFilter</filter-class>
+      </filter>
+     <!-- Filtro satelites -->
+     <filter>
+		<filter-name>SessionFilter</filter-name>
+		<display-name>SessionFilter</display-name>
+		<description></description>
+		<filter-class>cl.araucana.autoconsulta.filters.SessionFilter</filter-class>
+	</filter>
+	<!-- Filtro satelites -->
+	
+      <filter-mapping id="FilterMapping_1284642156016">
+         <filter-name>LoginFilter</filter-name>
+         <url-pattern>/web/pages/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping>
+         <filter-name>LoginFilter</filter-name>
+         <url-pattern>/modulo2/j_security_check</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1284642156017">
+         <filter-name>AnonPageMarkerFilter</filter-name>
+         <url-pattern>/web/validarCertificado.do</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1284642156018">
+         <filter-name>AnonPageMarkerFilter</filter-name>
+         <url-pattern>/modulo/validarCertificado.do</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1284642156039">
+         <filter-name>AnonPageMarkerFilter</filter-name>
+         <url-pattern>/web/simuladorCreditoMovil.do</url-pattern>
+      </filter-mapping>
+      <filter-mapping id="FilterMapping_1284642156019">
+         <filter-name>AnonPageMarkerFilter</filter-name>
+         <url-pattern>/web/logout.do</url-pattern>
+      </filter-mapping>
+      <filter-mapping>
+      	<filter-name>AnonPageMarkerFilter</filter-name>
+      	<url-pattern>/modulo2/loginHuella.do</url-pattern>
+      </filter-mapping>
+      
+   <!-- Filter mapping satelites -->
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/SessionFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/web/pages/j_security_check</url-pattern>
+	</filter-mapping>
+	<!-- Fin Filter mapping satelites -->
+      
+      <listener id="Listener_1284642156016">
+         <listener-class>cl.araucana.autoconsulta.listeners.ACServletContextListener</listener-class>
+      </listener>
+      <servlet id="Servlet_1284642119266">
+         <servlet-name>action</servlet-name>
+         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+         <init-param id="InitParam_1284642156019">
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+         </init-param>
+         <init-param id="InitParam_1284642156020">
+            <param-name>config/web</param-name>
+            <param-value>/WEB-INF/struts-config-web.xml</param-value>
+         </init-param>
+         <init-param id="InitParam_1284642156021">
+            <param-name>config/modulo</param-name>
+            <param-value>/WEB-INF/struts-config-modulo.xml</param-value>
+         </init-param>
+         <init-param>
+            <param-name>config/modulo2</param-name>
+            <param-value>/WEB-INF/struts-config-modulo2.xml</param-value>
+         </init-param>
+         <init-param>
+            <param-name>config/mobile</param-name>
+            <param-value>/WEB-INF/struts-config-mobile.xml</param-value>
+         </init-param>
+         <load-on-startup>2</load-on-startup>
+         <security-role-ref id="SecurityRoleRef_1284642156016">
+            <description></description>
+            <role-name>ValidUser</role-name>
+            <role-link>ValidUser</role-link>
+         </security-role-ref>
+      </servlet>
+      <servlet id="Servlet_1284642119267">
+         <servlet-name>CrearPublicidadWeb</servlet-name>
+         <display-name>CrearPublicidadWeb</display-name>
+         <servlet-class>cl.araucana.autoconsulta.common.CrearPublicidadWeb</servlet-class>
+      </servlet>
+      <servlet id="Servlet_1284642119268">
+         <servlet-name>MostrarPublicidadWeb</servlet-name>
+         <display-name>MostrarPublicidadWeb</display-name>
+         <servlet-class>cl.araucana.autoconsulta.common.MostrarPublicidadWeb</servlet-class>
+      </servlet>
+      
+      <!-- 
+      <servlet>
+      	<servlet-name>TestServlet</servlet-name>
+      	<display-name>TestServlet</display-name>
+      	<description></description>
+      	<servlet-class>cl.araucana.autoconsulta.test.TestServlet</servlet-class>
+      </servlet>
+      <servlet-mapping>
+      	<servlet-name>TestServlet</servlet-name>
+      	<url-pattern>/TestServlet</url-pattern>
+      </servlet-mapping>-->
+      <servlet-mapping id="ServletMapping_1284642156016">
+         <servlet-name>action</servlet-name>
+         <url-pattern>*.do</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1284642156017">
+         <servlet-name>CrearPublicidadWeb</servlet-name>
+         <url-pattern>/web/CrearPublicidadWeb</url-pattern>
+      </servlet-mapping>
+      <servlet-mapping id="ServletMapping_1284642156018">
+         <servlet-name>MostrarPublicidadWeb</servlet-name>
+         <url-pattern>/web/MostrarPublicidadWeb</url-pattern>
+      </servlet-mapping>
+      <session-config id="SessionConfig_1284642156016">
+         <session-timeout>5</session-timeout>
+      </session-config>
+      <welcome-file-list id="WelcomeFileList_1284642156016">
+         <welcome-file>index.jsp</welcome-file>
+      </welcome-file-list>
+      <error-page id="ErrorCodeErrorPage_1284642156016">
+         <error-code>403</error-code>
+         <location>/admin/login.jsp?error=app</location>
+      </error-page>
+      <taglib id="TagLibRef_1284642156016">
+         <taglib-uri>/tags/struts-bean</taglib-uri>
+         <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1284642156017">
+         <taglib-uri>/tags/struts-html</taglib-uri>
+         <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1284642156018">
+         <taglib-uri>/tags/struts-logic</taglib-uri>
+         <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1284642156019">
+         <taglib-uri>/tags/struts-nested</taglib-uri>
+         <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1284642156020">
+         <taglib-uri>/tags/struts-template</taglib-uri>
+         <taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+      </taglib>
+      <taglib id="TagLibRef_1284642156021">
+         <taglib-uri>/tags/struts-tiles</taglib-uri>
+         <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+      </taglib>
+      <resource-ref id="ResourceRef_1176219460125">
+         <res-ref-name>jdbc/SeguroCesantia</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>CONTAINER</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1176219460140">
+         <res-ref-name>jdbc/ComunasCiudades</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>CONTAINER</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1176219460141">
+         <res-ref-name>jdbc/EntidadesFinancieras</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>CONTAINER</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1176219460142">
+         <res-ref-name>jdbc/UF</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>CONTAINER</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1176219460156">
+         <res-ref-name>jdbc/Oficinas</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>CONTAINER</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1224710946321">
+         <res-ref-name>jdbc/PlazosEdadAfiliado</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1224710946352">
+         <res-ref-name>jdbc/PlazosEdadPensionado</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1224710946368">
+         <res-ref-name>jdbc/PisosMinimosAfiliado</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref id="ResourceRef_1224712422565">
+         <res-ref-name>jdbc/DetalleEmpresaPensionado</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <security-constraint id="SecurityConstraint_1284642156016">
+         <display-name>Protected Resources</display-name>
+         <web-resource-collection id="WebResourceCollection_1284642156016">
+            <web-resource-name>Protected Resources</web-resource-name>
+            <description></description>
+            <url-pattern>/modulo/Menu.do</url-pattern>
+            <url-pattern>/modulo/showConsultaCheques.do</url-pattern>
+            <url-pattern>/modulo/showCertificadoASFAM.do</url-pattern>
+            <url-pattern>/modulo/showCartola.do</url-pattern>
+            <url-pattern>/modulo/showDeudaVigente.do</url-pattern>
+            <url-pattern>/modulo/showCreditoVigente.do</url-pattern>
+            <url-pattern>/modulo/showCertificadoLicenciasMedicas.do</url-pattern>
+            <url-pattern>/modulo/showListaLicenciasMedicas.do</url-pattern>
+            <url-pattern>/modulo/showSimulacion.do</url-pattern>
+            <url-pattern>/modulo/Welcome.do</url-pattern>
+            <url-pattern>/modulo/getConsultaChequesEmpresa.do</url-pattern>
+            <url-pattern>/modulo/getListaLicenciasMedicas.do</url-pattern>
+            <url-pattern>/modulo/getCertificadoLicenciasMedicas.do</url-pattern>
+            <url-pattern>/modulo/getDeudaVigente.do</url-pattern>
+            <url-pattern>/modulo/getCreditosVigentes.do</url-pattern>
+            <url-pattern>/modulo/getAsignacionFamiliar.do</url-pattern>
+            <url-pattern>/modulo/getCartolaAhorro.do</url-pattern>
+            <url-pattern>/modulo/changeClave.do</url-pattern>
+            <url-pattern>/modulo/prepareSimulacionCredito.do</url-pattern>
+            <url-pattern>/modulo/getCertificadoAfiliacion.do</url-pattern>
+            <url-pattern>/modulo/showCertificadoAfiliacion.do</url-pattern>
+            
+            <url-pattern>/modulo2/Welcome.do</url-pattern>
+            <url-pattern>/modulo2/consultas.do</url-pattern>
+            <url-pattern>/modulo2/certificados.do</url-pattern>           
+            <url-pattern>/modulo2/getDeudaVigente.do</url-pattern>
+            <url-pattern>/modulo2/getCertificadoLicenciasMedicas.do</url-pattern>
+            <url-pattern>/modulo2/getAsignacionFamiliar.do</url-pattern>
+            <url-pattern>/modulo2/getAfiliacion.do</url-pattern>
+            <url-pattern>/modulo2/getCartolaAhorro.do</url-pattern>
+            <url-pattern>/modulo2/getCreditosVigente.do</url-pattern>
+            <url-pattern>/modulo2/getEstadoLicenciasMedica.do</url-pattern>
+            <url-pattern>/modulo2/getListaLiquidacionesReembolso.do</url-pattern>
+            <url-pattern>/modulo2/pideEmpleado.do</url-pattern>
+
+            <url-pattern>/mobile/Welcome.do</url-pattern>
+            <url-pattern>/mobile/consultas.do</url-pattern>
+            <url-pattern>/mobile/certificados.do</url-pattern>
+            <url-pattern>/mobile/getDeudaVigente.do</url-pattern>
+            <url-pattern>/mobile/getCertificadoLicenciasMedicas.do</url-pattern>
+            <url-pattern>/mobile/getAsignacionFamiliar.do</url-pattern>
+            <url-pattern>/mobile/getAfiliacion.do</url-pattern>
+            <url-pattern>/mobile/getCartolaAhorro.do</url-pattern>
+            <url-pattern>/mobile/getCreditosVigente.do</url-pattern>
+            <url-pattern>/mobile/getEstadoLicenciasMedica.do</url-pattern>
+            <url-pattern>/mobile/getListaLiquidacionesReembolso.do</url-pattern>
+            <url-pattern>/mobile/pideEmpleado.do</url-pattern>
+            
+            <url-pattern>/mobile/getPdf.do</url-pattern>
+
+         <!-- Controlador que redirecciona a satelites -->         
+            <url-pattern>/web/satelitesRedir.do</url-pattern>
+             
+            <url-pattern>/web/certFiniquito.do</url-pattern>
+            <url-pattern>/web/cargaFinanciera.do</url-pattern>   
+            <url-pattern>/web/creditosVigentes.do</url-pattern>   
+            <url-pattern>/web/creditosCancelados.do</url-pattern>   
+            <url-pattern>/web/certAfiliacion.do</url-pattern>   
+            <url-pattern>/web/certPrepago.do</url-pattern>   
+                      
+            <!-- Fin Controlador que redirecciona a satelites -->
+            
+            <url-pattern>/web/Menu.do</url-pattern>
+            <url-pattern>/web/showConsultaCheques.do</url-pattern>
+            <url-pattern>/web/showCertificadoASFAM.do</url-pattern>
+            <url-pattern>/web/showCartola.do</url-pattern>
+            <url-pattern>/web/showCertificadoLicenciasMedicas.do</url-pattern>
+            <url-pattern>/web/showListaLicenciasMedicas.do</url-pattern>
+            <url-pattern>/web/showListaLiquidaciones.do</url-pattern>
+            <url-pattern>/web/Welcome.do</url-pattern>
+            <url-pattern>/web/getConsultaChequesEmpresa.do</url-pattern>
+            <url-pattern>/web/getListaLicenciasMedicas.do</url-pattern>
+            <url-pattern>/web/getBitacoraLicenciaMedica.do</url-pattern>
+            <url-pattern>/web/getCertificadoLicenciasMedicas.do</url-pattern>
+            
+            <!-- Desactivar links a funcionalidad antigua
+            
+	            <url-pattern>/web/getCreditosVigentes.do</url-pattern>	            
+            	<url-pattern>/web/showCreditoVigente.do</url-pattern>
+            	
+            	<url-pattern>/web/getDeudaVigente.do</url-pattern>
+	            <url-pattern>/web/showDeudaVigente.do</url-pattern>
+            
+	            <url-pattern>/web/getCreditos.do</url-pattern>
+	            <url-pattern>/web/getCertificadoSaldoFiniquito.do</url-pattern>	            
+	            
+	            <url-pattern>/web/getCertificadoAfiliacion.do</url-pattern>
+	            <url-pattern>/web/showCertificadoAFILI.do</url-pattern>
+             -->
+            <url-pattern>/web/getCreditoDetalle.do</url-pattern>
+            <url-pattern>/web/logonServicio.do</url-pattern>
+            <url-pattern>/web/getAsignacionFamiliar.do</url-pattern>
+            <url-pattern>/web/getCartolaAhorro.do</url-pattern>
+            <url-pattern>/web/getLiquidacionReembolsos.do</url-pattern>
+            <url-pattern>/web/getListaLiquidaciones.do</url-pattern>
+            <url-pattern>/web/Login.do</url-pattern>
+            <url-pattern>/web/getResumenMensual.do</url-pattern>
+            <url-pattern>/web/showListaPrestaciones.do</url-pattern>
+            <url-pattern>/web/prepareSimulacionCreditoWeb.do</url-pattern>
+            <url-pattern>/web/showSimulacionWeb.do</url-pattern>
+            <url-pattern>/web/crearPublicidadWeb.do</url-pattern>
+            
+            
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+         </web-resource-collection>
+         <auth-constraint id="AuthConstraint_1284642156016">
+            <description></description>
+            <role-name>ValidUser</role-name>
+         </auth-constraint>
+      </security-constraint>
+      <login-config id="LoginConfig_1284642156016">
+         <auth-method>FORM</auth-method>
+         <form-login-config id="FormLoginConfig_1284642156016">
+            <form-login-page>login.jsp</form-login-page>
+            <form-error-page>login.jsp</form-error-page>
+         </form-login-config>
+      </login-config>
+      <security-role id="SecurityRole_1284642156016">
+         <description></description>
+         <role-name>ValidUser</role-name>
+      </security-role>
+      <env-entry id="EnvEntry_1284642156016">
+         <description>Tabla de Factores para Seguro de Cesant&#237;a</description>
+         <env-entry-name>table/SeguroCesantia</env-entry-name>
+         <env-entry-value>CRDTA.CRF4000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156017">
+         <env-entry-name>cache/SeguroCesantia/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156018">
+         <description>Tabla de Comunas y Ciudades</description>
+         <env-entry-name>table/ComunasCiudades</env-entry-name>
+         <env-entry-value>BCDTA.BC23F1</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156019">
+         <env-entry-name>cache/ComunasCiudades/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156020">
+         <description>Tabla de Entidades Financieras</description>
+         <env-entry-name>table/EntidadesFinancieras</env-entry-name>
+         <env-entry-value>CRDTA.CRF8050</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156021">
+         <env-entry-name>cache/EntidadesFinancieras/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156022">
+         <description>Tabla de UF Mensual</description>
+         <env-entry-name>table/UF</env-entry-name>
+         <env-entry-value>GENERAL.TAF2000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156023">
+         <env-entry-name>cache/UF/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156024">
+         <description>Tabla de Oficinas de la Caja</description>
+         <env-entry-name>table/Oficinas</env-entry-name>
+         <env-entry-value>CMDTA.CM01F1</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156025">
+         <env-entry-name>cache/Oficinas/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156026">
+         <description>ip servidor windows que genera Imagen on fly</description>
+         <env-entry-name>conf/ipServerImagen</env-entry-name>
+         <env-entry-value>146.83.1.78</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156027">
+         <description>puerto del servidor windows que genera Imagen on fly</description>
+         <env-entry-name>conf/puertoServerImagen</env-entry-name>
+         <env-entry-value>9080</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156028">
+         <description>path de la imagen en testdesa</description>
+         <env-entry-name>conf/imgTestdesa</env-entry-name>
+         <env-entry-value>/ac/images/publicidad/</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156029">
+         <description>path del PDF credito para afiliados en testdesa</description>
+         <env-entry-name>conf/pdfAfiliados</env-entry-name>
+         <env-entry-value>/web/PDF/SolicitudesAfiliados.pdf</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156030">
+         <description>path del PDF credito para Pensionados en testdesa</description>
+         <env-entry-name>conf/pdfPensionados</env-entry-name>
+         <env-entry-value>/web/PDF/SolicitudesPensionados.pdf</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156031">
+         <description>Tabla de Plazos segun edad AFILIADOS</description>
+         <env-entry-name>table/PlazosEdadAfiliado</env-entry-name>
+         <env-entry-value>CRDTA.CRF4070</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156032">
+         <env-entry-name>cache/PlazosEdadAfiliado/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156033">
+         <description>Tabla de Plazos segun edad PENSIONADO</description>
+         <env-entry-name>table/PlazosEdadPensionado</env-entry-name>
+         <env-entry-value>CRDTA.CRF4030</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156034">
+         <description>Tabla de Pisos Minimos para AFILIADOS</description>
+         <env-entry-name>table/PisosMinimosAfiliado</env-entry-name>
+         <env-entry-value>CRDTA.CRF4060</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156035">
+         <env-entry-name>cache/PisosMinimosAfiliado/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156036">
+         <env-entry-name>cache/PlazosEdadPensionado/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156037">
+         <description>Tabla con Detalle Empresa Pensionado</description>
+         <env-entry-name>table/DetalleEmpresaPensionado</env-entry-name>
+         <env-entry-value>PREXP.PEF1510</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+      <env-entry id="EnvEntry_1284642156038">
+         <env-entry-name>cache/DetalleEmpresaPensionado/ttl</env-entry-name>
+         <env-entry-value>86000000</env-entry-value>
+         <env-entry-type>java.lang.String</env-entry-type>
+      </env-entry>
+   </web-app>

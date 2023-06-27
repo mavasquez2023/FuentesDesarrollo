@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.RCF300VO" table="RCDTA.RCF300">
+    	<id column="FOLNOM" name="folioNomina"/>
+   		<property name="codigoNomina" column="EMPNOMCOD" />
+  		<property name="rutEmpresa" column="EMPRUT" />
+  		<property name="dvRutEmpresa" column="EMPRUTDV" />
+  		<property name="numeroCaratula" column="KNUM" />
+  		<property name="montoAnticipado" column="MONANT" />
+  		<property name="montoCheque" column="MONCHE" />
+  		<property name="montoEfectivo" column="MONEFE" />
+  		<property name="montoNoDescontado" column="MONNDES" />
+  		<property name="montoPagado" column="MONPAG" />
+  		<property name="errorNomina" column="NOMERR" />
+  		<property name="estadoNomina" column="NOMEST" />
+  		<property name="fechaVencimiento" column="NOMFECVTO" />
+  		<property name="montoNomina" column="NOMMON" />
+  		<property name="estadoProceso" column="NOMPROEST" />
+  		<property name="tipoNomina" column="NOMTIP" />
+  		<property name="codigooficina" column="OFICOD" />
+  		
+   		<set name="detalleCuotas" lazy="false" table="RCDTA.RCF310">   				
+   	   		<key column="FOLNOM" />
+			<one-to-many  class="cl.araucana.cp.hibernate.beans.RCF310VO" />
+  		</set>
+    </class>
+</hibernate-mapping>

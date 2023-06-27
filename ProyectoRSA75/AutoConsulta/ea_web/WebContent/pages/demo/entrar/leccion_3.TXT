@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Accediendo al Servicio</b><br>Esta es la pantalla de acceso al sistema, desde aquí podrá acceder a los servicios que ofrece el portal. <br><br>Haga un clic en <b>Servicios</b></div>

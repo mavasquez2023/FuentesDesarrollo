@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PreviPass</title>
+<link href="css/estilos_interna.css" rel="stylesheet" type="text/css" />
+<link href="css/grid_960.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="caja_registro">
+  <form id="form1" name="form1" metdod="post" action="">
+    <table width="100%" border="0" widtd="100%">
+      <tbody>
+        <tr>
+          <td height="35" colspan="5" valign="top"><img src="img/titulo_registro.gif" widtd="74" height="21" /></td>
+        </tr>
+        <tr>
+          <td height="30" colspan="3" align="left" valign="middle" class="txt_caja">Registrese y podrá realizar todos los pagos en línea de sus cotizaciones y servicios caja.</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" widtd="199"><strong>Rut*</strong></td>
+          <td colspan="2"><input name="Rut.1" type="text" class="texto" id="rut" size="10" maxlengtd="10" onkeypress="javascript:numerosyk(document.inscripcionForm.rut);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="18" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Apellido
+            Paterno*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Apellido Paterno.2" type="text" class="texto" id="apPaterno" size="40" maxlengtd="35" onkeypress="javascript:letras(document.inscripcionForm.apPaterno);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="15" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Apellido
+            Materno*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Apellido Materno.3" type="text" class="texto" id="apMaterno" size="40" maxlengtd="35" onkeypress="javascript:letras(document.inscripcionForm.apMaterno);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="15" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Nombres* </strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Nombres.4" type="text" class="texto" id="nombres" size="40" maxlengtd="35" onkeypress="javascript:letras(document.inscripcionForm.nombres);" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Sexo*</strong></td>
+          <td colspan="2"><span class="texto">
+            <input name="Sexo.5" type="radio" id="masculino" value="Masculino" />
+            Masculino
+            <input name="Sexo.5" type="radio" id="femenino" value="Femenino" />
+            Femenino</span></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Cargo*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Cargo.6" type="text" class="texto" id="cargo" size="40" maxlengtd="35" onkeypress="javascript:numeros_letras(document.inscripcionForm.cargo);" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Dirección*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Direccion.7" type="text" class="texto" id="direccion" size="40" maxlengtd="35" onkeypress="javascript:numeros_letras(document.inscripcionForm.direccion);" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col">&nbsp;</td>
+          <td colspan="2"><span class="texto">
+            <input name="Tipo Direccion.8" type="radio" id="laborald" value="Laboral" />
+            Laboral
+            <input name="Tipo Direccion.8" type="radio" id="particulard" value="Particular" />
+            Particular</span></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Número*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Numero.9" type="text" class="texto" id="numero" size="8" maxlengtd="8" onkeypress="javascript:numeros(document.inscripcionForm.numero);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td align="left" valign="middle" bordercolor="#FFFFFF" scope="col"><strong>Departamento</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Departamento.10" type="text" class="texto" id="departamento" size="8" maxlengtd="8" onkeypress="javascript:numeros_letras(document.inscripcionForm.departamento);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Local</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Local.11" type="text" class="texto" id="local" size="8" maxlengtd="8" onkeypress="javascript:numeros_letras(document.inscripcionForm.local);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="24" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Ciudad*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Ciudad.12" type="text" class="texto" id="ciudad" size="40" maxlengtd="35" value="SANTIAGO" onkeypress="javascript:letras(document.inscripcionForm.ciudad);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="15" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Comuna*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><span class="textos_formularios">
+            <input name="Comuna.13" type="text" class="texto" id="comuna" size="40" maxlengtd="35" value="SANTIAGO" onkeypress="javascript:letras(document.inscripcionForm.comuna);" />
+          </span></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="15" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Teléfono*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Codigo de Area Telefono.14" type="text" class="texto" id="codAreaTelefono" size="3" maxlengtd="3" value="02" onkeypress="javascript:numeros(document.inscripcionForm.codAreaTelefono);" />
+            <input name="Telefono.15" type="text" class="texto" id="telefono" size="10" maxlengtd="10" onkeypress="javascript:numeros(document.inscripcionForm.telefono);" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col">&nbsp;</td>
+          <td colspan="2"><span class="texto">
+            <input name="Tipo Telefono.16" type="radio" id="laboralf" value="Laboral" />
+            Laboral
+            <input name="Tipo Telefono.16" type="radio" id="particularf" value="Particular" />
+            Particular</span></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="21" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Fax</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Codigo de Area Fax.17" type="text" class="texto" id="codAreaFax" size="3" maxlengtd="3" onkeypress="javascript:numeros(document.inscripcionForm.codAreaFax);" />
+            <input name="Fax.18" type="text" class="texto" id="fax" size="10" maxlengtd="10" onkeypress="javascript:numeros(document.inscripcionForm.fax);" /></td>
+        </tr>
+        <tr bordercolor="#CCCCCC">
+          <td height="15" align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col"><strong>Email*</strong></td>
+          <td colspan="2" align="left" valign="middle" nowrap="nowrap" bordercolor="#FFFFFF" scope="col"><input name="Email.19" type="text" class="texto" id="email" size="40" maxlengtd="35" onkeypress="javascript:numeros_letras(document.inscripcionForm.email);" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" bordercolor="#FFFFFF" class="texto" scope="col">&nbsp;</td>
+          <td colspan="2"><span class="texto">
+            <input name="Tipo Email.20" type="radio" id="laborale" value="Laboral" />
+            Laboral
+            <input name="Tipo Email.20" type="radio" id="particulare" value="Particular" />
+            Particular</span></td>
+        </tr>
+        <tr>
+          <td      ><strong>Rut Empresa*</strong></td>
+          <td widtd="341"><input name="Rut Empresa.24" type="text" class="texto" id="rutEmpresa" size="10" maxlengtd="10" onkeypress="javascript:numerosyk(document.inscripcionForm.rutEmpresa);" /></td>
+        </tr>
+        <tr>
+          <td      ><strong>Razón Social*</strong></td>
+          <td><input name="Razon Social.25" type="text" class="texto" id="razonSocial" size="40" maxlengtd="35" onkeypress="javascript:letras(document.inscripcionForm.razonSocial);" /></td>
+        </tr>
+        <tr>
+          <td      ><strong>Número de Trabadores*</strong></td>
+          <td><input name="Numero de Trabadores.26" type="text" id="nTrabajadores" size="4" maxlengtd="7" onkeypress="javascript:numeros(document.inscripcionForm.nTrabajadores);" /></td>
+        </tr>
+        <tr>
+          <td      ><strong>Tipo*</strong></td>
+          <td nowrap="nowrap"><p class="texto">
+            <input type="radio" name="Tipo.27" id="holding" value="Holding" />
+            Holding
+            <input type="radio" name="Tipo.27" id="empresaIndividual" value="Empresa Individual" />
+            Empresa Individual</p></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;">(*campos obligatorios)</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td align="left">&nbsp;</td>
+          <td colspan="2" align="left"><input name="__Limpiar__" type="reset" class="btn_limp" id="reset" onclick="javascript:panelvisibilidad('p5_1',2);" value="Limpiar" />
+          <input name="__Enviar__" type="submit" class="btn_limp" id="submit" onclick="return checkForm();" value="Registrar" /></td>
+        </tr>
+        <tr>
+          <td colspan="3">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+</body>
+</html>

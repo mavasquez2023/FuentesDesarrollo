@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+	
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.EncargadoVO" table="ENCARGADO" polymorphism="explicit">
+		<id name="idEncargado" column="ID_ENCARGADO" />
+		<property name="habilitado" column="HABILITADO" />
+		<property name="empresa" column="EMPRESA" />		
+		<property name="independiente" column="INDEPENDIENTE" />		
+		<many-to-one name="persona" column="ID_ENCARGADO" insert="false" update="false"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+
+<sqlMap namespace="A">
+
+<typeAlias alias="ilfe000" type="com.microsystem.lme.ibatis.domain.Ilfe000VO" />
+<typeAlias alias="ilfe011" type="com.microsystem.lme.ibatis.domain.Ilfe011VO"/>
+<typeAlias alias="ilfe013" type="com.microsystem.lme.ibatis.domain.Ilfe013VO"/>
+<typeAlias alias="ilfe021" type="com.microsystem.lme.ibatis.domain.Ilfe021VO"/>
+<typeAlias alias="ilfe031" type="com.microsystem.lme.ibatis.domain.Ilfe031VO"/>
+<typeAlias alias="ilfe033" type="com.microsystem.lme.ibatis.domain.Ilfe033VO"/>
+<typeAlias alias="ilfe034" type="com.microsystem.lme.ibatis.domain.Ilfe034VO"/>
+<typeAlias alias="ilfe051" type="com.microsystem.lme.ibatis.domain.Ilfe051VO"/>
+<typeAlias alias="ilfe051R" type="com.microsystem.lme.ibatis.domain.Ilfe051RVO"/>
+<typeAlias alias="ilfe080" type="com.microsystem.lme.ibatis.domain.Ilfe080VO" />
+<typeAlias alias="ilfe081" type="com.microsystem.lme.ibatis.domain.Ilfe081VO" />
+<typeAlias alias="ilfe082" type="com.microsystem.lme.ibatis.domain.Ilfe082VO" />
+<typeAlias alias="log" type="com.microsystem.lme.ibatis.domain.LmeLogVO"/>
+<typeAlias alias="urlBorder" type="com.microsystem.lme.ibatis.domain.UrlBorderVO"/>
+<typeAlias alias="ilfeOpe" type="com.microsystem.lme.ibatis.domain.IlfeOpeVO"/>	
+	
+	<insert id="insertIlfe000" parameterClass="ilfe000">
+		INSERT INTO LIEXP.ILFE000 (IDEOPE, NUMLIC, DIGLIC, FECCON, HORCON, ESTADO, FECHAEST, HORAEST, MARCONS) VALUES
+		(#ideOpe#, #numLicencia#, #digLicencia#, #fechaConsulta#, #hora#, #estado#, #fechaEstado#, #horaEstado#, #marcons#)
+		WITH NC
+	</insert>
+	
+	
+	<update id="updateIlfe000">
+		UPDATE LIEXP.ILFE000 SET ESTADO = #ESTADO# WHERE NUMLIC =
+		#numLicencia# 
+		WITH NC
+	</update>
+
+	<delete id="deleteIlfe000">
+		DELETE FROM LIEXP.ILFE000 
+		WITH NC 
+		<!--DELETE FROM LIEXP.ILFE000 WHERE MARCONS = '1' WITH NC  CONSULTA ANTES DE IMPLEMENTAR LA TABLA ILFE00HER-->
+	</delete>
+
+
+	<insert id="insertSelectIlfe000HER" parameterClass="ilfe000">
+	INSERT INTO
+	LIEXP.ILFE000HER (IDEOPE, NUMLIC, DIGLIC, FECCON,HORCON, ESTADO, FECHAEST, HORAEST, MARCA, MARCONS)
+	SELECT IDEOPE, NUMLIC, DIGLIC, FECCON, HORCON, ESTADO, FECHAEST, HORAEST, MARCA, MARCONS
+	FROM LIEXP.ILFE000 as A
+	WHERE MARCONS = 0 AND NOT EXISTS (SELECT * FROM LIEXP.ILFE000HER as B where
+	A.IDEOPE = B.IDEOPE AND A.NUMLIC = B.NUMLIC AND A.ESTADO = B.ESTADO
+	AND A.FECHAEST = B.FECHAEST AND A.HORAEST = B.HORAEST)
+	WITH NC
+	</insert>
+
+	
+	<insert id="insertIlfe002">
+	INSERT INTO LIEXP.ILFE002 (
+		IDEOPE, NUMIMPRE, DIVLICEN, ESTLICEN, FECHAEST, HORAEST, AFIRUT, AFIRUTDV, APAAFI, AMAAFI, NOMAFI, FECEMILI, FECINIRE, AFIEDAD, AFISEXO, AFIEMAIL, NUMDIALI, RUTHIJO,
+		DIVHIJO, APAHIJO, AMAHIJO, NOMHIJO, FECNACHI, TIPLICEN, RECUPERA, INITRAMI, FECACCID, TRAYECTO, FECCONCE, TIPREPOS, JORACUER, LUGREPOP, JUSSIOTR, DIRREP01,
+		CODCOM01, GLOCOM01, TELEFO01, LUGREP02, DIRREP02, CODCOM02, GLOCOM02, TELEFO02, RUTPROFE, DIVPROFE, APAPROFE, AMAPROFE, NOMPROFE, DIRPROFE, CODCOMPR,
+		GLOCOMPR, FONPROFE, FAXPROFE, EMAPROFE, GLOESPEC, CODESPEC, TIPPREST, NROCOMED, CODDIAPR, GLODIAPR, CODDIASE, GLODIASE, CODDIAOT, GLODIAOT, ANTECCLI, EXAAPOYO
+		) 
+	VALUES (
+		#ideope#, #numLicencia#,#digLicencia#, #ultimoEstado#, #fechaUltEstado#, #horaUltEstado#, #AFIRUT#, #AFIRUTDV#, #APAAFI#, #AMAAFI#, #NOMAFI#,  #FECEMILI#,  #FECINIRE#,  #AFIEDAD#, #AFISEXO#,
+		#AFIEMAIL#, #NUMDIALI#,  #RUTHIJO#, #DIVHIJO#, #APAHIJO#, #AMAHIJO#, #NOMHIJO#,  #FECNACHI#,  #TIPLICEN#,  #RECUPERA#,  #INITRAMI#,  #FECACCID#,
+		#TRAYECTO#,  #FECCONCE#,  #TIPREPOS#, #JORACUER#,  #LUGREPOP#, #JUSSIOTR#, #DIRREP01#,  #CODCOM01#, #GLOCOM01#, #TELEFO01#,  #LUGREP02#, #DIRREP02#,
+		#CODCOM02#, #GLOCOM02#, #TELEFO02#,  #RUTPROFE#, #DIVPROFE#, #APAPROFE#, #AMAPROFE#, #NOMPROFE#, #DIRPROFE#,  #CODCOMPR#, #GLOCOMPR#, #FONPROFE#,
+		#FAXPROFE#, #EMAPROFE#, #GLOESPEC#,  #CODESPEC#,  #TIPPREST#, #NROCOMED#, #CODDIAPR#, #GLODIAPR#, #CODDIASE#, #GLODIASE#, #CODDIAOT#, #GLODIAOT#,#ANTECCLI#, #EXAAPOYO#
+		)
+		WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe002">
+		DELETE FROM LIEXP.ILFE002
+		WITH NC
+	</delete>
+
+
+	<insert id="insertIlfe003">
+	INSERT INTO  LIEXP.ILFE003 (
+		IDEOPE, NUMIMPRE, ESTLICEN, FECHAEST, HORAEST, AFIRUT, AFIRUTDV, 
+		DIASAUT, FECAUTDE, FECAUTHA, DIASPREV, TIPREPAU, DERSUBSI, FECREPFI, FECRESFI, CODCAURE,
+		TIPFALLO, IDECOMPI, NRORESOL, PENDXOUT, FECREDIC, CIE10, RUTCONTR, NOMBRECO, REGCOLME,
+		CODCONTI, CODESTAB, CODREDIC, ENTIDAD, ESTABLEC, JORREPAU
+	) VALUES (
+		#ideope#, #numLicencia#, #ultimoEstado#, #fechaUltEstado#, #horaUltEstado#, #AFIRUT#, #AFIRUTDV#, 
+		#DIASAUT#, #FECAUTDE#, #FECAUTHA#, #DIASPREV#, #TIPREPAU#, #DERSUBSI#, #FECREPFI#, #FECRESFI#, 
+		#CODCAURE#, #TIPFALLO#, #IDECOMPI#, #NRORESOL#, #PENDXOUT#, #FECREDIC#, #CIE10#,#RUTCONTR#, #NOMBRECO#, #REGCOLME#, 
+		#CODCONTI#, #CODESTAB#, #CODREDIC#, #ENTIDAD#, #ESTABLEC#, #JORREPAU#
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe003">
+		DELETE FROM  LIEXP.ILFE003 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe004">
+	INSERT INTO LIEXP.ILFE004 (
+		IDEOPE, NUMIMPRE, AFIRUT, ESTLICEN, RUTEMPLE, DIGEMPLE, NOMEMPLE, APAEMPLE, AMAEMPLE, TIPEMPLE, DIREMPLE, COMEMPLE, GLOCOMEM, FONOEMPL, EMAIEMPL, FECREPEM, 
+		FECENVEM, CODCCAF, CODCOMPI, CODACTLA, CODOCUPA, GLOOTROC, CODREGPR, PENSIONA, CODINSPR, LETCAJPR, CODCALTR, AFC, NOMAFC, CONINDEF, CODESTAT, 
+		FECAFILI, FECCONTR, PORDESAU, RENIMPON, CODTIPSU, MOTRECEM
+	) VALUES (
+		#ideope#, #numLicencia#, #AFIRUT#, #ultimoEstado#, #RUTEMPLE#, #DIGEMPLE#, #NOMEMPLE#, #APAEMPLE#, #AMAEMPLE#, #TIPEMPLE#, #DIREMPLE#, #COMEMPLE#, 
+		#GLOCOMEM#, #FONOEMPL#, #EMAIEMPL#, #FECREPEM#, #FECENVEM#, #CODCCAF#, #CODCOMPI#, #CODACTLA#, #CODOCUPA#, 
+		#GLOOTROC#, #CODREGPR#, #PENSIONA#, #CODINSPR#, #LETCAJPR#, #CODCALTR#, #AFC#, #NOMAFC#, #CONINDEF#, #CODESTAT#, 
+		#FECAFILI#, #FECCONTR#, #PORDESAU#, #RENIMPON#, #CODTIPSU#, #MOTRECEM#
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe004">
+		DELETE FROM LIEXP.ILFE004 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe005">
+	INSERT INTO LIEXP.ILFE005 (
+		IDEOPE, NUMIMPRE, ESTLICEN, AFIRUT, TIPLICEN, CODINSPR, LETCAJPR, PERRENTA, 
+		NUMDIATR, REMMUNIM, IMPDESAH, IMPCESAN, SUEBASE, SUBDIAS, SUBMONTO
+	 ) VALUES (
+		#ideope#, #numLicencia#, #ultimoEstado#, #AFIRUT#, #TIPLICEN#, 
+		#CODINSPR#, #LETCAJPR#, #PERRENTA#, #NUMDIATR#, #REMMUNIM#, 
+		#IMPDESAH#, #IMPCESAN#, #SUEBASE#, #SUBDIAS#, #SUBMONTO#
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe005">
+		DELETE FROM LIEXP.ILFE005 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe006">
+	 INSERT INTO LIEXP.ILFE006 (AFIRUT, EMPRUT, PERIODO, URLARCHI, STTIPARC) 
+	 VALUES (
+		 #AFIRUT#, #RUTEMPLE#, #PERIODO#, #URLARCHI#, #STTIPARC#
+	 )
+	 WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe006">
+		DELETE FROM LIEXP.ILFE006 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe007">
+	INSERT INTO LIEXP.ILFE007 (AFIRUT, EMPRUT, PERIODO, NOMHABER, MONTO) 
+	VALUES (
+	#AFIRUT#, #RUTEMPLE#, #PERIODO#, #NOMHABER#, #MONTO#
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe007">
+		DELETE FROM LIEXP.ILFE007 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe008">
+	INSERT INTO LIEXP.ILFE008 (IDEOPE, NUMIMPRE, DIVLICEN, AFIRUT, AFIRUTDV, 
+	ADSCRITO, CODTIPSU) 
+	VALUES (
+	#ideope#, #numLicencia#, #digLicencia#, #AFIRUT#, #AFIRUTDV#, #ADSCRITO#, 
+	#CODTIPSU#
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe008">
+		DELETE FROM LIEXP.ILFE008 
+		WITH NC
+	</delete>
+	
+	<insert id="insertIlfe009">
+	INSERT INTO LIEXP.ILFE009 (IDEOPE, NUMIMPRE, AFIRUT, ESTLICEN, FECHAEST, 
+	HORAEST, MOTNREC, FECTERREL, RUTEMPLE, DIGEMPLE, CODCCAF, MOTDEVOL, TIPOLIQ) 
+	VALUES (
+	#ideope#, #numLicencia#, #AFIRUT#, #ESTLICEN#, #FECHAEST#, #HORAEST#, #MOTNREC#, 
+	#FECTERREL#, #RUTEMPLE#, #DIGEMPLE#, #CODCCAF#, #MOTDEVOL#, #TIPOLIQ# 
+	)
+	WITH NC
+	</insert>
+	
+	<delete id="deleteIlfe009">
+		DELETE FROM LIEXP.ILFE009 
+		WITH NC
+	</delete>
+
+  <resultMap id="returnObject11" class="ilfe011">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="periodo" column="PERIODO"/>
+		<result property="montoApagarSubsidio" column="MTOAPOSUB"/>
+		<result property="montoAportePensiones" column="MTOAPOPEN"/>
+		<result property="montoSubsidioDiario" column="MTOSUBDIA"/>
+		<result property="montoAporteSalud" column="MTOAPOSAL"/>
+		<result property="montoSeguroCesantia" column="MTOAPOCES"/>
+		<result property="ndiasApagarSubsidios" column="NUMDIASUB"/>
+		<result property="ndiasApagarPrevision" column="NUMDIAAPO"/>
+		<result property="marca" column="MARCA"/>
+		<result property="fecProce" column="FECPROCE"/>
+		<result property="fecPropag" column="FECPROPAG"/>
+		<result property="fecDesde" column="FECDESDE"/>
+		<result property="fecHasta" column="FECHASTA"/>
+		<result property="tipoLiquidacion" column="TIPO"/>
+		<result property="eventoLiquidacion" column="EVENTO"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+  </resultMap>
+	
+	<select id="getIlfe011" resultMap="returnObject11">
+    SELECT	IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF, LICIMPNUM, DVLIC,
+		PAGFOL, AFIRUT, NUMIMPRE, EMPRUT, PERIODO, MTOSUBDIA, MTOAPOPEN, MTOAPOSUB,
+		MTOAPOSAL, MTOAPOCES, FECPROPAG, FECDESDE, FECHASTA, NUMDIASUB, NUMDIAAPO, 
+		FECPROCE, MARCA, ENVIADA, RESPWS, TIPO, EVENTO, 
+		GLORESP
+		, IFNULL( FECRESP, '19000101') as FECRESP
+		, IFNULL( HORRESP, '000000') as HORRESP
+		, FECHAEST
+		, HORAEST	
+	FROM	LIEXP.ILFE011
+	WHERE ENVIADA = '0'
+	WITH UR
+  </select>
+  
+  <update id="updateIlfe011" parameterClass="ilfe011">
+		UPDATE LIEXP.ILFE011
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+			FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# and FECHAEST = #fechaEstado# and HORAEST = #horaEstado#
+		WITH NC
+	</update>
+
+	<resultMap id="returnObject13" class="ilfe013">
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="codigoPrevisionRemAnt" column="INSPREVER"/>
+		<result property="ndiasRemAnt" column="DIASSIL"/>
+		<result property="montoImponibleRemAnt" column="RENTA"/>
+		<result property="montoTotalRemAnt" column="TOTMONRA"/>
+		<result property="montoIncapacidadRemAnt" column="SUBSIDIO"/>
+		<result property="ndiasIncapacidadRemAnt" column="NDIASINCA"/>
+		<result property="periodo" column="PERIODO"/>
+	</resultMap>
+
+  <select id="getIlfe013" resultMap="returnObject13" parameterClass="ilfe013">
+	SELECT INSPREVER, DIASSIL, RENTA, TOTMONRA, SUBSIDIO, NDIASINCA
+	,AFIRUT , EMPRUT, PERIODO
+	FROM LIEXP.ILFE013 
+	WHERE AFIRUT = #afiRut# AND EMPRUT = #empRut#
+	ORDER BY PERIODO DESC
+	WITH UR
+  </select>
+  
+	<resultMap id="returnObject21" class="ilfe021">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="estado" column="ESTADO"/>
+		<result property="fechaProceso" column="FECPROC"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+	</resultMap>
+	
+	<!--OR (ESTADO='1' AND RESPWS = '1') -->
+  <select id="getIlfe021" resultMap="returnObject21">
+	SELECT A.IDEOPE, A.CODOPE, A.URLOPE, A.CODCCAF, A.PWDCCAF, 
+		   A.NUMIMPRE, A.ESTADO, A.FECPROC, A.ENVIADA, A.RESPWS
+		   ,A.GLORESP, A.FECRESP, A.HORRESP
+	FROM LIEXP.ILFE021 A
+	WHERE	
+	(
+		A.ENVIADA = '0' AND EXISTS (
+		SELECT B.NUMIMPRE FROM LIEXP.ILFE031 B WHERE A.IDEOPE = B.IDEOPE AND
+		A.NUMIMPRE = B.NUMIMPRE AND B.ENVIADA = 1 ) 
+	)
+	OR
+	(
+		A.ENVIADA = '0' AND NOT EXISTS (
+		SELECT B.NUMIMPRE FROM LIEXP.ILFE031 B WHERE A.IDEOPE = B.IDEOPE AND
+		A.NUMIMPRE = B.NUMIMPRE) 
+	)
+	ORDER BY IDEOPE, NUMIMPRE
+	WITH UR
+  </select>
+
+	<update id="updateIlfe021" parameterClass="ilfe021">
+		UPDATE LIEXP.ILFE021 
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+		FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+
+  <resultMap id="returnObject" class="ilfe031">    
+    <result property="ideOpe" column="IDEOPE"/>
+	<result property="codOpe" column="CODOPE"/>
+	<result property="urlOpe" column="URLOPE"/>	
+	<result property="codCcaf" column="CODCCAF"/>	
+	<result property="pwdCcaf" column="PWDCCAF"/>	
+	<result property="afiRut" column="AFIRUT"/>	
+	<result property="numImpre" column="NUMIMPRE"/>	
+	<result property="numImpdv" column="NUMIMPDV"/>	
+	<result property="empNombre" column="C1EMPNOM"/>	
+	<result property="c1empRut" column="C1EMPRUT"/>	
+	<result property="c1emprutDv" column="C1EMPRUTDV"/>	
+	<result property="empFechaRecepcion" column="C1EMPFECRE"/>	
+	<result property="empDireccionCalle" column="C1EMPDIR"/>	
+	<result property="codigoComunaCompin" column="C1COCOCP"/>	
+	<result property="codigoActividadLaboral" column="C1COACLA"/>	
+	<result property="codigoOcupacion" column="C1COOCUP"/>	
+	<result property="empOtraOcupacion" column="C1EMOTOC"/>	
+	<result property="prevFechaRecepcionCcaf" column="C2FERECCAF"/>
+	<result property="codigoRegimenPrevisional" column="C2COREPREV"/>
+	<result property="codigoLetraCaja" column="C2COLETCAJ"/>
+	<result property="prevNombre" column="C2PREVNOM"/>
+	<result property="codigoCalidadTrabajador" column="C2COCAAFIL"/>
+	<result property="codigoSeguroAfc" column="C2SEGAFC"/>
+	<result property="codigoSeguroIndef" column="C2COSEINDE"/>
+	<result property="fechaAfiliacion" column="C2FECFILIA"/>
+	<result property="fechaContrato" column="C2FECCONTR"/>
+	<result property="codigoEntidadPagadora" column="C2CODENTPA"/>
+	<result property="prevNombrePagador" column="C2PRENOMAF"/>
+	<result property="porcenDesahucio" column="C3PORCDES"/>
+	<result property="montoImponibleMesAnterior" column="C3MTOIMPO"/>
+	<result property="lmaLicenciasAnt" column="C4LICANT"/>
+	<result property="codigoTramitacionCCAF" column="C5COTRCCAF"/>
+	<result property="tieneMas100" column="C5EMP100" nullValue=""/>
+	<result property="enviada" column="ENVIADA"/>
+	<result property="fechaProceso" column="FECPROCE"/>
+	<result property="respWs" column="RESPWS"/>
+	<result property="marca" column="MARCA"/>
+	<result property="codigoTipoRegimenPrevisional" column="C2CODTIPRE"/>
+	<result property="empDireccionCiudad" column="C1EMPCIU"/>
+	<result property="empDireccionPais" column="C1EMPPAI"/>
+	<result property="empDireccionComuna" column="C1EMPCOM"/>
+	<result property="glosaEstado" column="GLORESP"/>
+	<result property="fechaConsulta" column="FECRESP"/>
+	<result property="hora" column="HORRESP"/>
+  </resultMap>
+  
+  <select id="getIlfe031" resultMap="returnObject" parameterClass="ilfe031">
+	SELECT
+		IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF,AFIRUT,NUMIMPRE,NUMIMPDV,C1EMPNOM,C1EMPRUT,C1EMPRUTDV,C1EMPFECRE,
+		C1EMPDIR,C1COCOCP,C1COACLA,C1COOCUP,C1EMOTOC,C2FERECCAF,
+		C2COREPREV,C2COLETCAJ,C2PREVNOM,case when TLETRA='IT' then 2 else 3 end as C2COCAAFIL,C2SEGAFC,C2COSEINDE,C2FECFILIA,C2FECCONTR,C2CODENTPA,C2PRENOMAF,C3PORCDES,C3MTOIMPO,C4LICANT,
+		C5COTRCCAF,C5EMP100,ENVIADA,FECPROCE,RESPWS,MARCA, C2CODTIPRE, C1EMPCIU, C1EMPPAI, C1EMPCOM
+		, GLORESP, FECRESP, HORRESP
+	FROM LIEXP.ILFE031 left join GENERAL.TAF1000
+	ON c1emprut=tvalor
+	AND tletra='IT'
+<!-- 	WHERE ENVIADA = '0' -->
+	<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="enviada">
+				ENVIADA = #enviada#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>			
+		</dynamic>
+		WITH UR
+    </select>
+
+	<update id="updateIlfe031" parameterClass="ilfe031">
+		UPDATE LIEXP.ILFE031
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#,
+		FECRESP = #fechaConsulta#, HORRESP = #hora#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# 
+		WITH NC
+	</update>
+	
+	<update id="updateIlfe031Map">
+		UPDATE LIEXP.ILFE031
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#,
+		FECRESP = #fechaConsulta#, HORRESP = #hora#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# 
+		WITH NC
+	</update>
+
+	<resultMap id="returnObject33" class="ilfe033">
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/> 
+	    <result property="anoMesRemAnt" column="PERIODO"/>
+		<result property="codigoPrevisionRemAnt" column="INSPREPER"/>
+		<result property="montoImponibleRemAnt" column="MTOIMPOANT"/>
+		<result property="montoIncapacidadRemAnt" column="MTOINCAANT"/>
+		<result property="montoTotalRemAnt" column="MTOTOTANT"/>
+		<result property="ndiasIncapacidadRemAnt" column="DIASINCANT"/>
+		<result property="ndiasRemAnt" column="DIASREMANT"/>
+	</resultMap>
+
+  <select id="getIlfe033" resultMap="returnObject33" parameterClass="ilfe033">
+    SELECT 
+		AFIRUT,EMPRUT,INSPREPER,PERIODO,DIASREMANT,MTOIMPOANT,
+		MTOTOTANT,MTOINCAANT,DIASINCANT,FECPROCE
+	FROM LIEXP.ILFE033 
+	WHERE AFIRUT = #afiRut# AND EMPRUT = #empRut#
+	WITH UR
+  </select>
+  
+	<resultMap id="returnObject34" class="ilfe034">
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="lmaFechaDesde" column="FECDESDE"/>
+		<result property="lmaFechaHasta" column="FECHASTA"/>
+		<result property="lmaFechaproceso" column="FECPROCE"/>
+		<result property="lmaNdias" column="NDIAS"/>
+	</resultMap>
+
+  <select id="getIlfe034" resultMap="returnObject34" parameterClass="ilfe034">
+	SELECT AFIRUT,EMPRUT,NUMIMPRE,NDIAS,FECDESDE,FECHASTA,FECPROCE 
+	FROM LIEXP.ILFE034 
+	WHERE AFIRUT = #afiRut#    
+	ORDER BY FECDESDE DESC
+	WITH UR
+  </select>
+
+  <resultMap id="returnObject51" class="ilfe051">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="codMot" column="CODMOT"/>
+		<result property="fechaProceso" column="FECPROC"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+  </resultMap>
+  
+  <select id="getIlfe051" resultMap="returnObject51">
+    SELECT	IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF, 
+			NUMIMPRE, CODMOT, FECPROC, ENVIADA, RESPWS 
+			, GLORESP, FECRESP, HORRESP, FECHAEST, HORAEST
+	FROM  LIEXP.ILFE051 
+	WHERE ENVIADA = '0'
+	<!-- OR (ENVIADA ='1' AND RESPWS = '1') -->
+	ORDER BY IDEOPE, NUMIMPRE
+	WITH UR
+  </select>
+
+	<update id="updateIlfe051" parameterClass="ilfe051">
+		UPDATE  LIEXP.ILFE051 
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+		FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta# 
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+	
+	<delete id="deleteIlfe051">
+		DELETE FROM  LIEXP.ILFE051 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE#
+		WITH NC
+	</delete>
+	
+  <resultMap id="returnObject51R" class="ilfe051R">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="codMot" column="CODMOT"/>
+		<result property="fechaProceso" column="FECPROC"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+		<result property="gloMot" column="GLOMOT"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+  </resultMap>
+  
+  <select id="getIlfe051R" resultMap="returnObject51R">
+    SELECT	IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF, 
+			NUMIMPRE, CODMOT, FECPROC, ENVIADA, RESPWS 
+			, GLORESP, FECRESP, HORRESP, GLOMOT, FECHAEST, HORAEST
+	FROM  LIEXP.ILFE051R 
+	WHERE ENVIADA = '0'
+	WITH UR
+  </select>
+
+	<update id="updateIlfe051R" parameterClass="ilfe051R">
+		UPDATE  LIEXP.ILFE051R 
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+		FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta# 
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+	
+	<!--<delete id="deleteIlfe051R">
+		DELETE FROM  LIEXP.ILFE051R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE#
+		WITH NC
+	</delete>-->
+	
+	<resultMap id="returnIlfe080" class="ilfe080">
+		<result property="idOperador" column="IDEOPE" />
+		<result property="numLicencia" column="NUMLIC" nullValue="0" />
+		<result property="digLicencia" column="DIGLIC" nullValue="" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="horaConsulta" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<insert id="insertIlfe080" parameterClass="ilfe080">
+		INSERT INTO LIEXP.ILFE080 (IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO) VALUES
+		(#idOperador#,#numLicencia#,#digLicencia#,#fechaConsulta#,#horaConsulta#,#estado#)
+		WITH NC
+	</insert>
+	
+	<insert id="insertIlfe085" parameterClass="ilfe080">
+		INSERT INTO LIEXP.ILFE085 (IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO) VALUES
+		(#idOperador#,#numLicencia#,#digLicencia#,#fechaConsulta#,#horaConsulta#,#estado#)
+		WITH NC
+	</insert>
+	
+	<select id="getIlfe080All" resultMap="returnIlfe080">
+		SELECT IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO FROM LIEXP.ILFE080
+		WITH UR
+	</select>
+	
+	<select id="getIlfe085" resultMap="returnIlfe080">
+		SELECT IDEOPE,NUMLIC,DIGLIC,FECCON,HORCON,ESTADO FROM LIEXP.ILFE085
+		WITH UR
+	</select>
+	
+	<update id="updateIlfe080" parameterClass="ilfe080">
+		UPDATE LIEXP.ILFE080 
+		SET ESTADO = #estado# 
+		WHERE NUMLIC = #numLicencia# and IDEOPE = #idOperador#
+		WITH NC
+	</update>
+	
+	<update id="updateIlfe085" parameterClass="ilfe080">
+		UPDATE LIEXP.ILFE085 
+		SET ESTADO = #estado# 
+		WHERE NUMLIC = #numLicencia# and IDEOPE = #idOperador#
+		WITH NC
+	</update>
+	
+	<resultMap id="returnIlfe081" class="ilfe081">
+		<result property="fecha" column="FECHA" />
+		<result property="fechaHasta" column="FECHAHASTA" />
+		<result property="estadoImed" column="EST_IMED" />
+		<result property="estadoMediPass" column="EST_MP" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="horaConsulta" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<insert id="insertIlfe081" parameterClass="ilfe081">
+		INSERT INTO LIEXP.ILFE081 (FECHA, FECHAHASTA, EST_IMED,EST_MP,FECCON,HORCON,ESTADO ) VALUES
+		(#fecha#,#fechaHasta#,#estadoImed#,#estadoMediPass#,#fechaConsulta#,#horaConsulta#,#estado#)
+		WITH NC
+	</insert>
+	
+	<select id="getIlfe081" resultMap="returnIlfe081">
+		SELECT FECHA,FECHAHASTA,EST_IMED,EST_MP,FECCON,HORCON,ESTADO 
+		FROM LIEXP.ILFE081
+		WHERE ESTADO = 0
+		WITH UR
+	</select>
+	
+	<!--<select id="getIlfe081All" resultClass="ilfe081">
+		SELECT FECHA,EST_IMED,EST_MP,FECCON,HORCON,ESTADO 
+		FROM LIEXP.ILFE081
+		WITH UR
+	</select>-->
+	
+	<!--<update id="updateIlfe081" parameterClass="ilfe081">
+		UPDATE LIEXP.ILFE081 
+		SET ESTADO = #estado# 
+		WHERE FECHA = #fecha#
+		WITH NC
+	</update>-->
+	
+	<delete id="deleteIlfe081" parameterClass="ilfe081">
+		DELETE FROM LIEXP.ILFE081
+		WHERE FECHA = #fecha#	
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe085" >
+		DELETE FROM LIEXP.ILFE085
+		WHERE ESTADO = #estado#	
+		WITH NC
+	</delete>	
+	
+	<insert id="insertIlfe082" parameterClass="ilfe082">
+		INSERT INTO LIEXP.ILFE082 (AFIRUT,LICIMPNUM,NUMIMPRE,IDEOPE) VALUES
+		(#afiRut#,#licImpNum#,#numImpre#,#ideOpe#)
+		WITH NC
+	</insert>
+	
+
+	<delete id="deleteIlfe082" parameterClass="ilfe082">
+		DELETE FROM LIEXP.ILFE082
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="licImpNum">
+				LICIMPNUM = #licImpNum#
+			</isNotNull>
+			<isNotNull prepend="AND" property="afiRut">
+				AFIRUT = #afiRut#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE = #ideOpe#
+			</isNotNull>		
+		</dynamic>
+		WITH NC
+	</delete>
+	
+	<resultMap id="resultLog"  class="log">  
+		<result property="tipoEvento" column="TIPO"/>
+		<result property="evento" column="EVENTO"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="fechaEvento" column="FECLOG"/>
+		<result property="horaEvento" column="HORLOG"/>
+		<result property="msg" column="MENSAJE"/>
+	</resultMap>
+	
+	<select id="getLog" resultMap="resultLog" parameterClass="log">
+		SELECT  TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE
+		FROM LIEXP.LMELOG
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="fechaEvento">
+				FECLOG = #fechaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="horaEvento">
+				HORLOG = #horaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codOpe">
+				CODOPE = #codOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="tipoEvento">
+				TIPO = #tipoEvento#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+
+	<insert id="insertLog" parameterClass="log">
+		INSERT INTO LIEXP.LMELOG 
+			(TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE)
+		VALUES 
+			(#tipoEvento#, #evento#, #codOpe#, #horaEvento#, #fechaEvento#, #msg#)
+		WITH NC
+	</insert>
+	
+	
+	<resultMap id="returnUrl" class="urlBorder">
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="urldeTOpe" column="URLDETOPE"/>
+		<result property="nombreServicio" column="NOMSER"/>
+	</resultMap>
+	
+	<resultMap id="returnIlfeOpe" class="ilfeOpe">
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="stsOpe" column="STSOPE"/>
+		<result property="nomOpe" column="NOMOPE"/>
+		<result property="estado" column="ESTADO"/>		
+	</resultMap>
+	
+	<select id="getOpeVordel" resultMap="returnUrl" parameterClass="urlBorder">
+	SELECT o.IDEOPE, o.URLOPE, d.URLDETOPE
+			, o.NOMOPE as NOMSER, o.CODOPE
+	FROM  LIEXP.ILFEDETOPE d , LIEXP.ILFEOPE o
+	WHERE 	o.IDEOPE=d.IDEOPE and  
+			d.NOMSER = #nombreServicio# and 
+			d.STSDETOPE = 1 and 
+			o.STSOPE = 1
+			WITH UR
+  </select>
+  
+  <select id="getIlfeOpe" resultMap="returnIlfeOpe">
+		SELECT IDEOPE, CODOPE, NOMOPE, URLOPE, STSOPE, CODCCAF, PWDCCAF 
+			, 0 as ESTADO
+		FROM LIEXP.ILFEOPE
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="stsOpe">
+				STSOPE = #stsOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE  = #ideOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codOpe">
+				CODOPE  = #codOpe#
+			</isNotNull>		
+		</dynamic>
+		ORDER BY IDEOPE
+		WITH UR
+	</select>
+	
+	<resultMap class="java.util.HashMap" id="endPointsMap">
+		<result property="key" column="codigo"/>
+	    <result property="value" column="endpoint"/>      
+	</resultMap>
+	
+	<select id="getEndPoints" resultMap="endPointsMap" parameterClass="string">
+		<!-- SELECT BAN_CODIGO as CODIGO, BAN_COD_HMG AS ENDPOINT FROM T_BANCO -->
+		SELECT o.IDEOPE, trim(o.URLOPE)||trim(d.URLDETOPE) endpoint, d.NOMSER
+			, o.NOMOPE as NOMSER, o.CODOPE, trim(o.CODOPE)||','||REPLACE(trim(d.NOMSER), ' ', '_')||','||'$value$' codigo
+			FROM  LIEXP.ILFEDETOPE d , LIEXP.ILFEOPE o
+			WHERE 	o.IDEOPE=d.IDEOPE and  
+			d.STSDETOPE = 1 and 
+			o.STSOPE = 1
+			WITH UR
+	</select>
+	
+	  <resultMap id="parametrosMap" class="java.util.HashMap" >
+     <result column="NOMBRE" property="key"/>
+     <result column="VALOR" property="value"/>
+  </resultMap>
+
+	<resultMap class="com.microsystem.lme.ibatis.domain.ParametroVO" id="parametrosMapObj">
+		<result column="PARID" property="par_id" />
+		<result column="NOMBRE" property="par_nombre" />
+		<result column="DESCRIP" property="par_descrip" />
+		<result column="TIPO" property="par_tipo_parametro" />
+		<result column="VALOR" property="par_valor" />
+	</resultMap>
+  
+ 	<select id="getParametros" resultMap="parametrosMap">		
+		SELECT TRIM(NOMBRE) NOMBRE, TRIM(VALOR) VALOR 
+		FROM LIEXP.ILFE083 
+	</select>
+	
+	<update id="updateParametro">
+		UPDATE LIEXP.ILFE083  
+		SET VALOR = #par_valor#
+		where NOMBRE = #par_nombre#
+		WITH NC
+	</update>
+</sqlMap>

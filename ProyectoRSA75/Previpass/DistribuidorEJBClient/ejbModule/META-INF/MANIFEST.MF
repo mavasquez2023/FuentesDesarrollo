@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: dependencias/log4j-1.2.14.jar 
+ log4j-1.2.14.jar 
+ dependencias/commons-lang.jar 
+ comunes/commons-lang.jar 
+ antlr-2.7.6rc1.jar
+

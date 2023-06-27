@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.NominaGRVO" table="NOMINAGR">
+    	<composite-id>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true" />
+        	</key-property>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true" />
+        	</key-property>
+    	</composite-id>
+    	
+    	<many-to-one name="estado" class="cl.araucana.cp.distribuidor.hibernate.beans.EstadoNominaVO" column="ID_ESTADO" insert="false" update="false" lazy="false" />
+   		<many-to-one name="empresa" class="cl.araucana.cp.distribuidor.hibernate.beans.EmpresaVO" column="ID_EMPRESA" lazy="false" insert="false" update="false"/>
+   		<many-to-one name="convenio" class="cl.araucana.cp.distribuidor.hibernate.beans.ConvenioVO" lazy="false" insert="false" update="false">
+    		<column name="ID_EMPRESA" />
+    		<column name="ID_CONVENIO" />
+   		</many-to-one> 
+    	
+   		<property name="idEstado" column="ID_ESTADO" />
+   		<property name="idCodigoBarras" column="ID_CODIGO_BARRA" />
+   		<property name="idEnvio" column="ID_ENVIO" />
+   		<property name="nombre" column="NOMBRE" />
+   		<property name="inicio" column="INICIO" />
+   		<property name="termino" column="TERMINO" />
+   		<property name="recibida" column="RECIBIDA" />
+   		<property name="aceptada" column="ACEPTADA" />
+   		<property name="crc" column="CODIGO_CONTROL_REENVIO" />
+   		<property name="numReenvios" column="N_REENVIOS" />
+   		<property name="numCotizaciones" column="N_COTIZACIONES" />
+   		<property name="numCotizOK" column="N_COTIZACIONES_OK" />
+   		<property name="numCotizCorregidas" column="N_COTIZACIONES_CORREGIDAS" />
+   		<property name="informaSIS" column="INFORMA_SIS" />
+    </class>
+</hibernate-mapping>

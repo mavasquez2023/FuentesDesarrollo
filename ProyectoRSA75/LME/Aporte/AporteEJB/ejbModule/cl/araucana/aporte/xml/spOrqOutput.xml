@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="spOrqOutput">
+
+	<parameterMap id="paramMap" class="map">	
+   		<parameter property="P_RUT" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_FECHAPAGO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_MONTO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_PERIODO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+	</parameterMap>
+
+	<parameterMap id="paramMap2" class="map">	
+   		<parameter property="P_FLAG" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_RUT" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_FECHAPAGO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_HORAPAGO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_MONTO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_PERIODO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_USUARIO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+	</parameterMap>
+	
+	<parameterMap id="paramMap3" class="map">	
+   		<parameter property="P_FLAG" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_RUT" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_FECHAPAGO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_HORAPAGO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_MONTO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_USUARIO" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_DOCPAGO" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+	</parameterMap>
+	
+	<parameterMap id="paramMap4" class="map">	
+   		<parameter property="P_ENTIDAD" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ENTRADA1" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA2" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA3" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA4" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA5" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ENTRADA6" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_CONTROL" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_SALIDA" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ERROR" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+	</parameterMap>
+   	<!--- Calling stored procedure --> 
+	<procedure id="SP_ACLAPT" parameterMap="paramMap" >
+		{call IIDTA.SP_ACLAPT(?,?,?,?,?)}   
+	</procedure>
+	<procedure id="SP_INGAPTLOG" parameterMap="paramMap2" >
+		{call IIDTA.SP_APTLOG(?,?,?,?,?,?,?,?)}   
+	</procedure>
+	<procedure id="SP_INGCRDLOG" parameterMap="paramMap3" >
+		{call IIDTA.SP_CRDLOG(?,?,?,?,?,?,?,?)}   
+	</procedure>
+	<procedure id="SP_DATORQ" parameterMap="paramMap4">
+		{call IIDTA.SP_DATORQ(?,?,?,?,?,?,?,?,?,?)}   
+	</procedure>
+</sqlMap>

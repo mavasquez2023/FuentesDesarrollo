@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.BalanceoCargaVO" table="BALANCEOCARGA">
+    	<composite-id >
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true" />
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true" />
+        	</key-property>
+        	<key-property name="tipoProceso">
+        		<column name="ID_TIPO_NOMINA" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="numPeriodos" column="NUM_PERIODOS" />
+   		<property name="numLineas" column="NUM_LINEAS" />
+   		<property name="cargaPromedio" column="CARGA_PROMEDIO" />   		
+   		<set name="descriptores" fetch="join" table="DESCRIPTOR">		
+   	   		<key>   	   		
+   	   			<column name="EMPRESA" />
+   	   			<column name="CONVENIO" />
+   	   			<column name="TIPO_NOMINA" />
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.DescriptorNominaVO" />
+  		</set>
+    </class>
+</hibernate-mapping>

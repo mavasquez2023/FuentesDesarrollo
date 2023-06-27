@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaREVO" table="CAUSACRP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+   		<property name="valorInformado" column="VALOR_INFORMADO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaRAVO" table="CAUSACAP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="periodo">
+        		<column name="PERIODO" not-null="true"/>
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+   		<property name="valorInformado" column="VALOR_INFORMADO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaGRVO" table="CAUSACGP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+   		<property name="valorInformado" column="VALOR_INFORMADO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaDCVO" table="CAUSACDP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+   		<property name="valorInformado" column="VALOR_INFORMADO" />
+    </class>
+     <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaAvisoREVO" table="CAUSAAVISOCRP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaAvisoRAVO" table="CAUSAAVISOCAP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="periodo">
+        		<column name="PERIODO" not-null="true"/>
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaAvisoGRVO" table="CAUSAAVISOCGP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CausaAvisoDCVO" table="CAUSAAVISOCDP">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizPendiente">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCausa">
+        		<column name="ID_CAUSA" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoCausa" column="ID_TIPO_CAUSA" />
+   		<property name="texto" column="TEXTO" />
+    </class>
+</hibernate-mapping>

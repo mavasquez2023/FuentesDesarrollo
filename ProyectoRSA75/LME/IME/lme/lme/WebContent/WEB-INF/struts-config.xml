@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<!-- Data Sources -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+		<form-bean name="UploadForm" type="com.microsystem.lme.web.UploadForm" />
+		<form-bean name="FileUploadForm" type="com.microsystem.lme.forms.FileUploadForm" />
+	</form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+		<forward name="init" path="/index.jsp">
+		</forward>
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+	
+		<action path="/upload" name="UploadForm" type="com.microsystem.lme.web.UploadAction" scope="request">
+			<forward name="salida"  path="/upload.jsp"/>
+		</action>
+		<action path="/admin/uploadcsv" name="FileUploadForm" type="com.microsystem.lme.web.LmeExecCSV" scope="request">
+			<forward name="salida"  path="/admin/index.jsp"/>
+		</action>
+		
+		<action path="/lme" type="com.microsystem.lme.web.LmeAction" parameter="event">
+		</action>
+		<action path="/log" type="com.microsystem.lme.web.JobLogAction" parameter="event">
+		</action>
+		<action path="/lcc" type="com.microsystem.lme.web.LmeQuery" parameter="event">
+		</action>
+		<action path="/exe" type="com.microsystem.lme.web.LmeExec" parameter="event">
+		</action>
+		<action path="/admin" type="com.microsystem.lme.web.LmeAdmin" parameter="event">
+		</action>
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<message-resources parameter="lme.resources.ApplicationResources"/>
+
+</struts-config>

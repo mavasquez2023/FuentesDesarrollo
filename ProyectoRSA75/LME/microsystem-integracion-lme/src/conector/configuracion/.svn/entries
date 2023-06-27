@@ -1,0 +1,43 @@
+8
+
+dir
+3233
+https://172.16.137.116/svn/IBM/was6/microsystem-integracion-lme/src/conector/configuracion
+https://172.16.137.116/svn/IBM
+
+
+
+2014-07-11T16:05:28.408370Z
+2326
+fquinteros
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+excepciones
+dir
+
+ClasspathConfig.java
+file
+
+
+
+
+2014-10-02T21:36:05.028363Z
+c5770569918e24446e4c3506adc853b1
+2014-07-11T16:05:28.408370Z
+2326
+fquinteros
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1204666128328">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204666128328" jndiName="ejb/cl/araucana/bienestar/bonificaciones/serv/ServicesSociosSLBean/ServicesSociosHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesSocios"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204668161515" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204668161515"/>
+    </resRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204666255156" jndiName="ejb/cl/araucana/bienestar/bonificaciones/serv/ServicesOperacionesSLBean/ServicesOperacionesHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesOperaciones"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204668171140" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204668171140"/>
+    </resRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204666519500" jndiName="ejb/cl/araucana/bienestar/bonificaciones/serv/ServicesConveniosSLBean/ServicesConveniosHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesConvenios"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204668120203" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204668120203"/>
+    </resRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204666646734" jndiName="ejb/cl/araucana/bienestar/bonificaciones/serv/ServicesCoberturasSLBean/ServicesCoberturasHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesCoberturas"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204668089687" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204668089687"/>
+    </resRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204667711000" jndiName="ejb/cl/araucana/bienestar/bonificaciones/serv/ServicesCasosSLBean/ServicesCasosHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesCasos"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204668064125" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204668064125"/>
+    </resRefBindings>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

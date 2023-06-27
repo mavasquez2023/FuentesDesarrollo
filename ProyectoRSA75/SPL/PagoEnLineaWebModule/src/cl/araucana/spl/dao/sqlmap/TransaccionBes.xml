@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="TransaccionBsa">
+	<typeAlias alias="beanTrxBes" type="cl.araucana.spl.beans.TransaccionBes"/>
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	
+	<resultMap class="beanTrxBes" id="transaccionBesResultMap">
+		<result property="id" column="ID_TRANSACCION_BES" />
+		<result property="pago.id" column="ID_PAGO" />
+		<result property="resultado" column="RESULTADO" typeHandler="charTypeHandler" />
+		<result property="glosaError" column="GLOSA_ERROR" typeHandler="charTypeHandler" />
+		<result property="codTrx" column="COD_TRX" typeHandler="charTypeHandler" />
+		<result property="fechaPago" column="FCH_PAGO" />
+		<result property="fechaContable" column="FCH_CONTABLE" />
+		<result property="rutCliente" column="RUT_CLIENTE" typeHandler="charTypeHandler" />
+	</resultMap>
+	
+	<select id="sqlSequenceTransaccionBes" resultClass="decimal">
+		SELECT NEXTVAL FOR SEQ_TRANSBES FROM SYSIBM.SYSDUMMY1
+	</select>
+
+	<insert id="sqlInsertTransaccionBes" parameterClass="beanTrxBes">
+		insert into TRANSBES(
+			ID_TRANSACCION_BES, ID_PAGO, RESULTADO, GLOSA_ERROR, 
+			COD_TRX, FCH_PAGO, FCH_CONTABLE, RUT_CLIENTE) 
+    	values(
+    		#id#, #idPago#, #resultado#, #glosaError#, 
+    		#codTrx#, #fechaPago#, #fechaContable#, #rutCliente#)
+	</insert>
+	
+	<select resultMap="transaccionBesResultMap" id="sqlFindTrxBesByCodigoIdTrx" parameterClass="string">
+		select 	
+    		tr.ID_TRANSACCION_BES,
+    		tr.ID_PAGO,
+    		tr.RESULTADO,
+    		tr.GLOSA_ERROR,
+    		tr.COD_TRX,
+    		tr.FCH_PAGO,
+    		tr.FCH_CONTABLE,
+    		tr.RUT_CLIENTE
+		from TRANSBES tr
+		where 
+			tr.ID_TRANSACCION_BES = #codigo#
+	</select>
+	
+	<update id="sqlUpdateNotificacionTrxBes" parameterClass="beanTrxBes">
+		update TRANSBES 
+		set RESULTADO=#resultado#,
+			GLOSA_ERROR=#glosaError#,
+    		COD_TRX=#codTrx#,
+    		FCH_PAGO=#fechaPago#,
+    		FCH_CONTABLE=#fechaContable#
+    	where 
+    		ID_TRANSACCION_BES = #id# 
+	</update>
+	
+	<update id="sqlUpdateNotificacionPagoBes" parameterClass="beanPago">
+		update PAGO
+		set FCH_TRANSACCION=#fechaTransaccion#, 
+		    FCH_CONTABLE=#fechaContable#,
+		    PAGADO=#pagado# 
+		where 
+    		ID_PAGO=#id#
+	</update>
+
+</sqlMap>
+

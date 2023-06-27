@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="CotizanteVO" table="COTIZANTE">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizante">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+        	<key-property name="periodo">
+        		<column name="PERIODO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="tieneAviso" column="TIENE_AVISO" />
+   		<property name="tieneRemu" column="CON_REMU" />
+   		<property name="tieneGrat" column="CON_GRAT" />
+   		<property name="tieneReli" column="CON_RELI" />
+   		<property name="tieneDepo" column="CON_DEPO" />
+
+   		<property name="idEntSaludReal" column="ID_ENT_SALUD" />
+   		<property name="idTramoReal" column="ID_TRAMO" />
+   		<property name="idEntExCaja" column="ID_ENT_EXCAJA" />
+   		<property name="idRegimenImp" column="ID_REGIMEN_IMPOSITIVO" />
+   		<property name="idSucursal" column="ID_SUCURSAL" />
+   		<property name="idEntPensionReal" column="ID_ENT_FONDO_PENSION" />
+   		<property name="idEntidadAPVCReal" column="ID_ENTIDAD_APVC" />
+   		<property name="idEntidadAFPVReal" column="ID_ENTIDAD_AFPV" />
+   		<property name="idEntSil" column="ID_ENT_SIL" />
+   		<property name="idEntAfcReal" column="ENT_ID_ENT_AFC" />
+   		<property name="idGeneroReal" column="ID_GENERO" />
+   		<property name="nombre" column="NOMBRES" />
+   		<property name="apellidoPat" column="APELLIDO_PATERNO" />
+   		<property name="apellidoMat" column="APELLIDO_MATERNO" />
+   		<property name="numCargaSimple" column="N_CARGAS_SIMPLES" />
+   		<property name="numCargaMaterna" column="N_CARGAS_MATERNALES" />
+   		<property name="numCargaInvalidez" column="N_CARGAS_INVALIDEZ" />
+   		<property name="numDiasTrabajados" column="N_DIAS_TRABAJADOS" />
+    </class>
+    <query name="borrasincotizaciones">DELETE FROM CotizanteVO cotizante WHERE cotizante.rutEmpresa = :empr AND cotizante.idConvenio = :conv AND tieneRemu = 0 AND tieneGrat = 0 AND tieneReli = 0 AND tieneDepo = 0</query>
+   	<query name="asignaAvisos">UPDATE CotizanteVO SET tieneAviso = 1 WHERE rutEmpresa = :empr AND idConvenio = :conv AND idCotizante in (SELECT idCotizante FROM AvisosCotizanteVO as avisos WHERE avisos.rutEmpresa = :empr and avisos.idConvenio = :conv)</query>
+</hibernate-mapping>

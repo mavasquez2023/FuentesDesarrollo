@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>Esta pantalla describe el Departamento que generó el traspaso.</div>

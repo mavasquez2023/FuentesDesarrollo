@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RepNominaSolAfi">
+
+	<parameterMap id="paramMap" class="map">
+   		<parameter property="P_FECHADESDE" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_FECHAHASTA" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_OFICINA" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_ESTADOSOLICITUD" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+	</parameterMap>
+
+   	<!--- Calling stored procedure -->
+	<procedure id="SP_NOMSOLA" parameterMap="paramMap" resultClass="cl.araucana.independientes.vo.LinRepNominaSolAfiVO">
+		{ call IIDTA.SP_NOMSOLA(?,?,?,?)}
+	</procedure>
+</sqlMap>

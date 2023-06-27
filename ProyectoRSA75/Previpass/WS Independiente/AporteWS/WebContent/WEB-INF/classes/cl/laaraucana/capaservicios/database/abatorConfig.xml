@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration>
+	<abatorContext>
+		<jdbcConnection driverClass="com.ibm.as400.access.AS400JDBCDriver"
+			connectionURL="jdbc:as400:146.83.1.5;prompt=false" userId="SISTEMAS"
+			password="SISTEMAS">
+			<classPathEntry location="C:\RAD70\lib\jt400.jar" />
+		</jdbcConnection>
+		<javaModelGenerator targetPackage="cl.laaraucana.capaservicios.database.ibatis.domain"
+			targetProject="BotonPago/src/" />
+		<sqlMapGenerator targetPackage="cl.laaraucana.capaservicios.database.ibatis.map"
+			targetProject="BotonPago/src/" />
+		<table schema="BPAGDTA" tableName="BPAGF001">
+		</table>
+	</abatorContext>
+</abatorConfiguration>

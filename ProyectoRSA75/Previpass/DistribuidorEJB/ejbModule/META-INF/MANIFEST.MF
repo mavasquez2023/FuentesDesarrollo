@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Class-Path: DistribuidorEJBClient.jar 
+ commons-logging.jar 
+ log4j-1.2.14.jar 
+ comunes/dom4j-1.6.1.jar 
+ bhouse/bhutil-1.9.jar 
+ bhouse/talon.jar 
+ comunes/commons-collections-3.2.jar 
+ comunes/commons-lang.jar 
+ hibernate3/asm.jar 
+ hibernate3/cglib-2.1.3.jar 
+ hibernate3/hibernate3.jar 
+ hibernate3/backport-util-concurrent-3.0.jar 
+ hibernate3/ehcache-1.5.0.jar 
+ comunes/commons-beanutils-1.7.0.jar 
+ cl.jar 
+ bhouse/EnvioMail.jar 
+ validadorSis/schema-lib-2.4.16.jar 
+ validadorSis/validadorSisBusiness-0.0.1.jar 
+ validadorSis/axis-1.4.jar 
+ validadorSis/castor-1.1.2.1.jar
+

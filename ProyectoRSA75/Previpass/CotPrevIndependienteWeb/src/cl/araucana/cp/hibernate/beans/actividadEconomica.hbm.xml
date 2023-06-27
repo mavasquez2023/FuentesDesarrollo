@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.ActividadEconomicaVO" table="ACTECONOMI">
+		<id name="idActividad" column="ID_ACTIVIDAD" />
+		<property name="nombre" column="NOMBRE" />
+	</class>
+</hibernate-mapping>

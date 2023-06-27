@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabTipoDocNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene rut, perfil y estado desde la tabla PERFILES. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabTipoDoc" resultClass="cl.araucana.independientes.vo.LinMantTabTipoDocVO" parameterClass="java.util.HashMap">
+		SELECT	CODIGO codigo,
+				GLOSA nombre,
+				ESTADO estado,
+				OBLIGATORIO obligatorio,
+				TIPOSOLICITUD tipoSolicitud
+		FROM $IIDTA$.TIPODOCUMENTO
+	</select>
+	
+	<!-- Query que obtiene el maximo IdTipoDocumento la tabla TIPODOCUMENTO -->
+	<select id="obtenerMaxID" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT MAX(CODIGO)
+     	FROM	$IIDTA$.TIPODOCUMENTO 
+	</select>
+	
+	<!-- Insert a la tabla TIPODOCUMENTO.-->
+		<insert id="insertNewTabTipoDoc" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.TIPODOCUMENTO(CODIGO,GLOSA,ESTADO,OBLIGATORIO,TIPOSOLICITUD)
+		VALUES(#input.codigo#,#input.glosa#,#input.estado#,#input.obligatorio#,#input.tipoSol#)
+		</insert>
+		
+	<!-- Update TIPODOCUMENTO -->
+	<update id="updateMantTabTipoDoc" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TIPODOCUMENTO
+		SET		GLOSA = #input.glosa#,
+                OBLIGATORIO = #input.obligatorio#,
+                TIPOSOLICITUD = #input.tipoSol#
+    	WHERE	CODIGO  = #input.codigo#
+	</update>
+	
+	<!-- Update ESTADO para TIPODOCUMENTO -->
+	<update id="cambiarEstadoMantTabTipoDoc" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TIPODOCUMENTO
+		SET		ESTADO = #input.estado#
+    	WHERE	CODIGO  = #input.codigo#
+	</update>
+	
+</sqlMap>

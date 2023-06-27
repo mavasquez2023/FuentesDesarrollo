@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<resultMap 
+			class="cl.laaraucana.capaservicios.webservices.vo.ConsultaDatosCliente.ClienteVO" 
+			id="datosClienteCorpMap">
+		<result column="RUTCLIENTE" property="rutCliente"  />
+		<result column="BCCLNOM" property="nombres" nullValue=" " />
+		<result column="BCCLAPEMAT" property="apellidoMaterno" nullValue=" " />
+		<result column="BCCLAPEPAT" property="apellidoPaterno" nullValue=" "/>
+		
+		<result column="BCCLSEX" property="sexo" nullValue=" "/>
+		<result column="BCCLESTCIV" property="estadoCivil" nullValue=" "/>
+		<result column="BCCLFECNAC" property="fechaNac" nullValue=" "/>
+		<result column="BCCODCOM" property="codComuna" nullValue=" "/>
+		<result column="BCDIDIR" property="direccion" nullValue=" "/>
+		<result column="BCDIDEP" property="nroDpto" nullValue=" " />
+		
+		<result column="BCCOCODUN" property="codAreaTelFijo" nullValue="0" />
+		<result column="BCCOFONUNO" property="telFijo" nullValue=" " />
+		<result column="BCCOCODTR" property="prefijoCelular" nullValue="0" />
+		<result column="BCCOFONTRE" property="nroCelular" nullValue=" " />
+		<result column="BCCOEMA" property="email" nullValue=" " />
+	</resultMap>
+	
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.ConsultaDatosCliente.EmpresaVO" id="datosEmpresaMap">
+		<result column="RUTEMP" property="rutEmpresa" />
+		<result column="ESTADO" property="estado" />
+		<result column="NOMEMP" property="razonSocial" />
+		<result column="TIPEMP" property="tipoEmpresa" />
+	</resultMap>
+	
+	<select id="getDatosEmpresa" resultMap="datosEmpresaMap" parameterClass="cl.laaraucana.capaservicios.database.vo.DatosClienteVO">
+		SELECT CONCAT(CONCAT(RUTEMP, '-'), DVRUTEMP) AS RUTEMP, ESTADO, NOMEMP, TIPEMP
+		FROM LCDTA.LC02EMPR
+		WHERE RUTEMP = #rutAfi# AND DVRUTEMP = #dvRutAfi#
+		FETCH FIRST ROW ONLY
+	</select>
+	
+	<select id="getDatosClienteCorp"  resultMap="datosClienteCorpMap" parameterClass="cl.laaraucana.capaservicios.database.vo.DatosClienteVO">
+	SELECT CONCAT(CONCAT(A.BCCLRUT, '-'), A.BCCLRUTDV) AS RUTCLIENTE,  
+		TRIM(A.BCCLNOM) AS BCCLNOM, 
+		TRIM(A.BCCLAPEPAT) AS BCCLAPEPAT, 
+		TRIM(A.BCCLAPEMAT) AS BCCLAPEMAT, 
+		TRIM(D.BCCODCOM) AS BCCODCOM, 
+		TRIM(C.BCNOMCOM) AS BCNOMCOM, 
+		TRIM(C.BCNOMCIU) AS BCNOMCIU, 
+		TRIM(D.BCDIDIR) AS BCDIDIR, 
+		TRIM(D.BCDIDEP) AS BCDIDEP, 
+		TRIM(A.BCCLSEX) AS BCCLSEX, 
+		A.BCCLESTCIV AS BCCLESTCIV, 
+		CHAR(A.BCCLFECNAC, ISO ) AS BCCLFECNAC,
+		TRIM(E.BCCOCODUN) AS BCCOCODUN,
+		TRIM(E.BCCOFONUU) AS BCCOFONUNO, 
+		<![CDATA[ RIGHT(]]> TRIM(COALESCE(E.BCCOCODTR,0))<![CDATA[ ,1) ]]>  AS BCCOCODTR, 
+		<![CDATA[ RIGHT(]]> TRIM(COALESCE(E.BCCOFONTC,'0'))<![CDATA[ ,7) ]]>  AS BCCOFONTRE, 
+		TRIM(E.BCCOEMA) AS BCCOEMA
+		FROM (SELECT * FROM BCDTA.BC04F1 where BCCLRUT=#rutAfi#) A
+		LEFT JOIN (SELECT * FROM BCDTA.BC07F1 WHERE BCCLRUT=#rutAfi#) D 
+			ON A.BCCLRUT = D.BCCLRUT		
+		LEFT JOIN (SELECT * FROM BCDTA.BC132F1 WHERE BCCLRUT=#rutAfi#) E
+			ON E.BCCLRUT = A.BCCLRUT
+		LEFT JOIN BCDTA.BC23A1 C
+			ON D.BCCODCOM=C.BCCODCOM
+		FETCH FIRST ROW ONLY
+	</select>
+	
+<!-- 			SELECT CONCAT(CONCAT(A.BCCLRUT, '-'), A.BCCLRUTDV) AS RUTCLIENTE,  
+		TRIM(A.BCCLNOM) AS BCCLNOM, 
+		TRIM(A.BCCLAPEPAT) AS BCCLAPEPAT, 
+		TRIM(A.BCCLAPEMAT) AS BCCLAPEMAT, 
+		TRIM(D.BCCODCOM) AS BCCODCOM, 
+		TRIM(C.BCNOMCOM) AS BCNOMCOM, 
+		TRIM(C.BCNOMCIU) AS BCNOMCIU, 
+		TRIM(D.BCDIDIR) AS BCDIDIR, 
+		TRIM(D.BCDIDEP) AS BCDIDEP, 
+		TRIM(A.BCCLSEX) AS BCCLSEX, 
+		A.BCCLESTCIV AS BCCLESTCIV, 
+		CHAR(A.BCCLFECNAC, ISO ) AS BCCLFECNAC,
+		TRIM(E.BCCOCODUN) AS BCCOCODUN,
+		TRIM(E.BCCOFONUNO) AS BCCOFONUNO, 
+		TRIM(E.BCCOCODTR) AS BCCOCODTR,
+		TRIM(E.BCCOFONTRE) AS BCCOFONTRE, 
+		TRIM(E.BCCOEMA) AS BCCOEMA
+		FROM (SELECT * FROM BCDTA.BC04F1 where BCCLRUT=#rutAfi#) A
+		LEFT JOIN (SELECT * FROM BCDTA.BC07F1 WHERE BCCLRUT=#rutAfi#) D 
+			ON A.BCCLRUT = D.BCCLRUT		
+		LEFT JOIN (SELECT * FROM BCDTA.BC13F1 WHERE BCCLRUT=#rutAfi#) E
+			ON E.BCCLRUT = A.BCCLRUT
+		LEFT JOIN BCDTA.BC23A1 C
+			ON D.BCCODCOM=C.BCCODCOM
+		FETCH FIRST ROW ONLY -->
+	
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.ConsultaDatosCliente.ClienteVO" 
+			   id="datosClienteMap">
+		<result column="RUTCLIENTE" property="rutCliente" nullValue=" "/>
+		<result column="SEXO" property="sexo" nullValue=" "/>
+		<result column="ESTADO_CIVIL" property="estadoCivil" nullValue=" "/>
+		<result column="FECHA_NAC" property="fechaNac" nullValue=" "/>
+		<result column="COD_COMUNA" property="codComuna" nullValue=" "/>
+		<result column="DIRECCION" property="direccion" nullValue=" "/>
+		<result column="DPTO_BLOCK" property="nroDpto" nullValue=" "/>
+		
+		<result column="COD_AREA_TEL_FIJO" property="codAreaTelFijo" />
+		<result column="TEL_FIJO" property="telFijo" nullValue=" "/>
+		<result column="PREFIJO_CELULAR" property="prefijoCelular"  nullValue="0" />
+		<result column="NRO_CELULAR" property="nroCelular" nullValue=" " />
+		
+		<result column="EMAIL" property="email" nullValue=" "/>
+	</resultMap>
+	<select id="getDatosCliente"  resultMap="datosClienteMap">
+		SELECT CONCAT(CONCAT(RUT_CLIENTE, '-'), DV_CLIENTE) AS RUTCLIENTE, 
+		COD_COMUNA,
+		DIRECCION,
+		DPTO_BLOCK,
+		COD_AREA_TEL_FIJO, 
+		TEL_FIJO,
+		TRIM(E.BCCLSEX) AS SEXO,
+		CHAR(E.BCCLFECNAC, ISO ) AS FECHA_NAC,
+		TRIM(E.BCCLESTCIV) AS ESTADO_CIVIL,
+		TRIM(F.BCCOCODTR) AS PREFIJO_CELULAR, 
+		TRIM(F.BCCOFONTRE) AS NRO_CELULAR,
+		TRIM(F.BCCOEMA) AS EMAIL 
+		FROM LCDTA.CESP_DATOS_CLIENTE A
+		LEFT JOIN (SELECT * FROM BCDTA.BC13F1 WHERE BCCLRUT=#rutAfi#) F
+		ON F.BCCLRUT = A.RUT_CLIENTE
+		LEFT JOIN (SELECT * FROM BCDTA.BC04F1 where BCCLRUT=#rutAfi#) E
+		ON E.BCCLRUT = A.RUT_CLIENTE 
+		WHERE RUT_CLIENTE = #rutAfi#
+		AND DV_CLIENTE = #dvRutAfi#
+	</select>
+	
+ 	<update id="actualizarDatosCliente" parameterClass="cl.laaraucana.capaservicios.database.vo.DatosClienteVO">
+		UPDATE LCDTA.CESP_DATOS_CLIENTE
+		SET
+			COD_COMUNA = #cliente.codComuna#,
+			DIRECCION = #cliente.direccion#,
+			DPTO_BLOCK = #cliente.nroDpto#,
+			COD_AREA_TEL_FIJO = #cliente.codAreaTelFijo#,
+			TEL_FIJO = #cliente.telFijo#,
+			FECHA_ACT = DATE (CURRENT TIMESTAMP),
+			HORA_ACT = TIME (CURRENT TIMESTAMP)
+		WHERE
+		RUT_CLIENTE = #rutAfi# 
+		AND DV_CLIENTE = #dvRutAfi#
+		with NC
+	</update>
+	
+<!-- 			UPDATE LCDTA.CESP_DATOS_CLIENTE
+		SET
+			COD_COMUNA = #cliente.codComuna#,
+			DIRECCION = #cliente.direccion#,
+			DPTO_BLOCK = #cliente.nroDpto#,
+			COD_AREA_TEL_FIJO = #cliente.codAreaTelFijo#,
+			TEL_FIJO = #cliente.telFijo#,
+			SEXO = #cliente.sexo#,
+			FECHA_NAC = #cliente.fechaNac#,
+			ESTADO_CIVIL = #cliente.estadoCivil#,
+			PREFIJO_CELULAR = #cliente.prefijoCelular#,
+			NRO_CELULAR = #cliente.nroCelular#,
+			EMAIL = #cliente.email#,
+			FECHA_ACT = DATE (CURRENT TIMESTAMP),
+			HORA_ACT = TIME (CURRENT TIMESTAMP)
+		WHERE
+		RUT_CLIENTE = #rutAfi# 
+		AND DV_CLIENTE = #dvRutAfi#
+		with NC -->
+	
+ 	<insert id="ingresarDatosCliente" parameterClass="cl.laaraucana.capaservicios.database.vo.DatosClienteVO">
+		INSERT INTO LCDTA.CESP_DATOS_CLIENTE
+		(
+		RUT_CLIENTE,
+		DV_CLIENTE,
+		SEXO,
+		FECHA_NAC,
+		ESTADO_CIVIL,
+		COD_COMUNA,
+		DIRECCION,
+		DPTO_BLOCK,
+		COD_AREA_TEL_FIJO,
+		TEL_FIJO,
+		PREFIJO_CELULAR,
+		NRO_CELULAR,
+		EMAIL,
+		FECHA_ACT,
+		HORA_ACT
+		)
+		VALUES
+		(
+		#rutAfi#, 
+		#dvRutAfi#,
+		#cliente.sexo#,
+		#cliente.fechaNac#,
+		#cliente.estadoCivil#,
+		#cliente.codComuna#,
+		#cliente.direccion#,
+		#cliente.nroDpto#,
+		#cliente.codAreaTelFijo#,
+		#cliente.telFijo#,
+		#cliente.prefijoCelular#,
+		#cliente.nroCelular#,
+		#cliente.email#,
+		DATE (current timestamp),
+		TIME (current timestamp)
+		)
+		with NC
+	</insert>
+	
+</sqlMap>

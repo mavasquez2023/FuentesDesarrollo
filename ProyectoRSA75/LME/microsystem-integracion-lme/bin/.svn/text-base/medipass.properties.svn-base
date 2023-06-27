@@ -1,0 +1,14 @@
+### CONFIGURACIÓN MEDIPASS ###
+#tipoInstitucion=C
+#codUsuario=10105
+#clave=10105
+#codigoOperador=4
+#urlServicio=http://desarrollo.medipass.cl/webapp/ws/ws_fonasa.php
+
+### CONFIGURACIÓN MICROSYSTEM ###
+tipoInstitucion=C
+codUsuario=70016160
+clave=70016160
+codigoOperador=5
+urlServicio=http://moon.cloud.msys.cl:8080/FLMProxyWS/services/LMEPort
+urlServicio=http://127.0.0.1:8080/FLMProxyWS/services/LMEPort

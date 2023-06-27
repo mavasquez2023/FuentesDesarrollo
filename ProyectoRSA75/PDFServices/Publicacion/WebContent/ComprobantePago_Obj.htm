@@ -1,0 +1,27 @@
+<html>
+<BODY>
+<FORM id="form1" name="Recibeparam" METHOD="POST" ACTION="ArsdocQueryServlet" target="LIST">
+	<br>_display_fields:<input type="text" name="_display_fields" size="100" value="TipoProceso:Tipo Proceso,Periodo,NumeroComprobante:Numero Comprobante,RutEmpresa:Rut Empresa,RazonSocial:Razon Social,Convenio,TipoInforme:Tipo Informe">
+	<br>_alignDisplayFields:<input type="text" name="_alignDisplayFields" size="100" value="TipoProceso:center,Convenio:center">
+	<br>_folder:<input type="text" name="_folder" value="Comprobantes Pago Holding:Comprobantes de Pago">	
+	<br>_max_hits:<input type="text" name="_max_hits" value="200">
+	<br>_sort_field_order:<input type="text" name="_sort_field_order" value="TipoInforme:A,TipoProceso:A,Periodo:D,NumeroComprobante:A">
+	<br>_html:<input type="text" name="_html" value="araucana.htm">
+	<br>_dataTypes:<input type="text" name="_dataTypes" size="100" value="TipoProceso:string,Periodo:date,NumeroComprobante:int,RutEmpresa:int,RazonSocial:string,Convenio:int,TipoInforme:string,Holding:int">	
+	<br>_dateFormats:<input type="text" name="_dateFormats" value="Periodo:yyyyMM">
+	<br>_sqlOperators:<input type="text" name="_sqlOperators" size="100" value="TipoProceso:=,Periodo:between,NumeroComprobante:=,RutEmpresa:in,RazonSocial:like,Convenio:in,TipoInforme:=,Holding:in">	
+	<br>_nameAdditionalField:<input type="text" name="_nameAdditionalField" value="Holding">
+	<br>_dateAdditionalField:<input type="text" name="_dateAdditionalField" value="01012006">
+	<br>_applicationGroup:<input type="text" name="_applicationGroup" size="100" value="Comprobantes Pago,Comprobantes Pago Holding">
+	<br>_nameComparedField:<input type="text" name="_nameComparedField" value="Periodo">
+	<br>_excludedFieldsInGet:<input type="text" name="_excludedFieldsInGet" value="RazonSocial">
+	<br>TipoProceso:<input type="text" name="TipoProceso" value="">
+	<br>Periodo:<input type="text" name="Periodo" value="">
+	<br>Numero Comprobante:<input type="text" name="NumeroComprobante" value="">
+	<br>Rut Empresa:<input type="text" name="RutEmpresa" value="">
+	<br>Convenio:<input type="text" name="Convenio" value="">
+	<br>Holding:<input type="text" name="Holding" value="">
+</FORM>
+	
+</BODY>
+</html>

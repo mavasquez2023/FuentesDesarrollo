@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.DistribuidorVO" table="NODO">
+        <id name="idNodo" type="int" column="ID_NODO"/>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="30" not-null="true" default=""/>
+        </property>
+        <property name="host" type="string">
+            <column name="HOST" length="30" not-null="true" />
+        </property>
+        <property name="port" type="int" >
+            <column name="PORT" not-null="true" default="0"/>
+        </property>
+        <property name="adminPort" type="int">
+            <column name="ADMIN_PORT" not-null="true" default="0" check="ADMIN_PORT between 0 and 32000"/>
+        </property>
+        <property name="url" type="string">
+            <column name="URL" length="80" not-null="true"/>
+        </property>
+        <property name="distribuidor" type="int">
+            <column name="DISTRIBUIDOR" not-null="true" default="0" check="DISTRIBUIDOR between 0 and 1"/>
+        </property>
+        <property name="habilitado" type="int">
+            <column name="HABILITADO" not-null="true" default="1" check="HABILITADO between 0 and 1"/>
+        </property>
+        <property name="contextFactory" type="string">
+            <column name="INITIAL_CONTEXT_FACTORY" length="100" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

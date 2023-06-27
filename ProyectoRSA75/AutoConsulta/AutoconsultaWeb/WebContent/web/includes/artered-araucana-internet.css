@@ -1,0 +1,534 @@
+.certificado, .certificado td {
+	FONT-WEIGHT: normal;
+	FONT-FAMILY: Arial, Helvetica;
+	color: #333333;
+	font-size: 13px;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+header .contenedor {
+	padding-left: 30px;
+}
+header {
+	background-color: #fff;
+	padding: 15px 0px;
+	box-shadow: -8px 0px 10px 0px;
+	margin-bottom: 8px;
+}
+.menu {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #cccccc;
+	width: 155px;
+}
+.numero {
+	font-size: 14px;
+	background-repeat: no-repeat;
+	height: 26px;
+	width: 27px;
+	font-weight: bold;
+	color: #7B7B7B;
+	display: block;
+	padding-top: 5px;
+	background-position: 0px 0px;
+	text-align: center;
+}
+
+
+.texto {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-FAMILY: Arial, Helvetica
+}
+.textobold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13pt;
+	COLOR: #333;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.titulo {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #ffffff;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #003360;
+	TEXT-DECORATION: none
+}
+.subtitulo {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #000066;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #003360;
+	TEXT-DECORATION: none
+}
+.seccion {
+	FONT-SIZE: 13pt;
+	COLOR: #000066;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #003380
+}
+.combo {
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+#tabla_simulador {
+	border: 1px solid #333;
+	width: 800px;
+}
+
+.field {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-FAMILY: Arial, Helvetica
+}
+.lineaimpar {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #006666;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #003450
+}
+
+.lineapar {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #006666;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #ffffff
+}
+.menu  th {
+	background-color: #005d8b;
+	font-family: Arial, Helvetica;
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 5px;
+	text-align: left;
+}
+
+.opcion {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #ffffff;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.grupoopcion {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-FAMILY: Arial, Helvetica;
+	TEXT-DECORATION: none;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+}
+.subopcion {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-FAMILY: Arial, Helvetica;
+	TEXT-DECORATION: none;
+	color: #424242;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	background-image: url(../images/fondomenu.gif);
+	background-position: 4px 7px;
+	background-repeat: no-repeat;
+        display: block;
+}
+h1 {
+	font-size: 25px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	color: #999999;
+	padding: 0px;
+	margin: 0px;
+        text-transform: uppercase;
+}
+
+.celeste {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	background-image: url(../images/fondo_top_ahorro.jpg);
+	height: 24px;
+	color: #333;
+}
+.c12azul {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.blanco {
+	BACKGROUND-COLOR: #ffffff
+}
+.c11azul {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.c11rojo {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.title12 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.title13 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.celeste2 {
+	BACKGROUND-COLOR: #7392bd
+}
+.title15 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 15px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.c13az {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 17px;
+	COLOR: 005d8b;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none;
+	padding-left: 5px;
+}
+.boton {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #eaedf7;
+	background-image: url(../images/fondobot.jpg);
+	color: #FFFFFF;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+
+.boton:hover {
+    background-color: #0079B2;
+    background-image: url("../images/fondobot2.jpg");
+    background-position: left top;
+    background-repeat: repeat-x;
+    border-style: none;
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    height: 24px;
+}
+
+.botonOver {
+    background-color: #0079B2;
+    background-image: url("../images/fondobot2.jpg");
+    background-position: left top;
+    background-repeat: repeat-x;
+    border-style: none;
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    height: 24px;
+}
+
+
+.data1 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.c11 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.c12 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.LetraNegraDiezNormalArial {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	COLOR: #333;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.tituloconsultas {
+	font-size: 25px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	color: #999999;
+	padding: 0px;
+	margin: 0px;
+}
+.menu td {
+}
+h2 {
+	font-size: 13px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	color: #333;
+	margin: 0px;
+	height: 24px;
+	padding-top: 4px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	background-color: #EAEAEA;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-left-color: #CCC;
+	background-image: url(../images/fondo_top_ahorro.jpg);
+	border-bottom-width: 1px;
+	border-bottom-color: #CCC;
+}
+.table  {
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	width: 807px;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+.table td {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	height: 22px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.hr {
+	clear: both;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	border:none !important;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	background-image: url(../images/corp_linea_puntos.gif);
+}
+.table2 {
+	width: auto;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #cccccc;
+}
+.table2 td {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	height: 22px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.botongrisOver {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(/AutoconsultaWeb/web/includes/fondo_boton_gris2.jpg);
+	color: #818181;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #EAEAEA;
+	float: right;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: 1px solid #D5D5D5;
+}
+.botongris {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 13px;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	background-image: url(../images/v2/fondo_boton_gris.jpg);
+	color: #2D2D2D;
+	height: 25px;
+	background-repeat: repeat-x;
+	background-position: left top;
+	float: right;
+	background-color: #EAEAEA;
+	border: 1px solid #D5D5D5;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.sello_agua {
+	font-size: 1px;
+}
+
+.bitacora{
+	text-align: center;
+	height: 90px;
+}
+
+#titulo-bitacora {
+	font-size: 25px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	color: #999999;
+	padding: 0px;
+	margin: 0px;
+}
+
+.tabla-bitacora {
+	width: 250px;
+	FONT-FAMILY: Arial, Helvetica;
+	font-size: 13px;
+	margin-left: 65px;
+}
+
+.tabla-bitacora table {
+	width: 100%;
+	border: 1px;
+	border-style: solid;
+	border-color: #CECECE;
+	margin-top: 5px;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+
+.tabla-bitacora table th {
+	border: 1 px;
+	text-align: center;
+	background: #EAEAEA;
+	border-right: 1px solid #CECECE;
+}
+
+.tabla-bitacora table tr td {
+	border-top: 1px;
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #CECECE;
+	border-right: 1px solid #CECECE;
+	text-align: left;
+}
+
+.tabla-bitacora table td {
+	text-align: center;
+}
+
+#loading{
+	width: 100%;
+}
+
+.left{
+	text-align: left;
+}
+
+#modal{width:750px;height:70%;padding:30px;display:none;background:#FFF;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.7);-webkit-box-shadow:0 0 4px rgba(0,0,0,0.7);-moz-box-shadow:0 0 4px rgba(0,0,0,0.7)}
+#modal p{color:#666;text-shadow:none}
+
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+.text-left{
+	text-align: left; 
+}
+
+.text-right{
+	text-align: right;
+}
+
+.text-center{
+	text-align: center; 
+}
+
+.row{
+	display: inline;
+}
+
+.col-4{
+	width: 31%;
+    display: inline-block;		
+}
+
+.col-6{
+	width: 50%;
+    display: inline-block;	
+}
+
+.col-3{
+	width: 25%;
+	display: inline-block;
+}
+
+.errorMsg{
+	color: red;
+	font-weight: bold;
+}

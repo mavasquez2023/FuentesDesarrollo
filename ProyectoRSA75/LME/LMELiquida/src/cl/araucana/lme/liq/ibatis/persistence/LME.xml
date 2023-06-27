@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+
+<sqlMap namespace="A">
+
+<typeAlias alias="ilfe011" type="cl.araucana.lme.liq.ibatis.domain.Ilfe011VO"/>
+<typeAlias alias="ilfe031" type="cl.araucana.lme.liq.ibatis.domain.Ilfe031VO" />
+<typeAlias alias="ilfe033" type="cl.araucana.lme.liq.ibatis.domain.Ilfe033VO" />
+<typeAlias alias="log" type="cl.araucana.lme.liq.ibatis.domain.LmeLogVO"/>
+<typeAlias alias="urlBorder" type="cl.araucana.lme.liq.ibatis.domain.UrlBorderVO"/>
+<typeAlias alias="ilfeOpe" type="cl.araucana.lme.liq.ibatis.domain.IlfeOpeVO"/>	
+<typeAlias alias="estadistic" type="cl.araucana.lme.liq.ibatis.domain.EstadisticTO"/>
+
+  
+	<resultMap id="returnUrl" class="urlBorder">
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="urldeTOpe" column="URLDETOPE"/>
+		<result property="nombreServicio" column="NOMSER"/>
+	</resultMap>
+	
+	<select id="getOpeVordel" resultMap="returnUrl" parameterClass="urlBorder">
+	SELECT o.IDEOPE, o.URLOPE, d.URLDETOPE
+			, o.NOMOPE as NOMSER, o.CODOPE
+	FROM  LIEXP.ILFEDETOPE d , LIEXP.ILFEOPE o
+	WHERE 	o.IDEOPE=d.IDEOPE and  
+			d.NOMSER = #nombreServicio# and 
+			d.STSDETOPE = 1 and 
+			o.STSOPE = 1
+			WITH UR
+  </select>
+  
+  <resultMap id="returnIlfeOpe" class="ilfeOpe">
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="stsOpe" column="STSOPE"/>
+		<result property="nomOpe" column="NOMOPE"/>
+		<result property="estado" column="ESTADO"/>		
+	</resultMap>
+	
+  <select id="getIlfeOpe" resultMap="returnIlfeOpe">
+		SELECT IDEOPE, CODOPE, NOMOPE, URLOPE, STSOPE, CODCCAF, PWDCCAF 
+			, 0 as ESTADO
+		FROM LIEXP.ILFEOPE
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="stsOpe">
+				STSOPE = #stsOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE  = #ideOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codOpe">
+				CODOPE  = #codOpe#
+			</isNotNull>		
+		</dynamic>
+		ORDER BY IDEOPE
+		WITH UR
+	</select>
+	
+	<resultMap class="java.util.HashMap" id="endPointsMap">
+		<result property="key" column="codigo"/>
+	    <result property="value" column="endpoint"/>      
+	</resultMap>
+	
+	<select id="getEndPoints" resultMap="endPointsMap" parameterClass="string">
+		<!-- SELECT BAN_CODIGO as CODIGO, BAN_COD_HMG AS ENDPOINT FROM T_BANCO -->
+		SELECT o.IDEOPE, trim(o.URLOPE)||trim(d.URLDETOPE) endpoint, d.NOMSER
+			, o.NOMOPE as NOMSER, o.CODOPE, trim(o.CODOPE)||','||REPLACE(trim(d.NOMSER), ' ', '_')||','||'$value$' codigo
+			FROM  LIEXP.ILFEDETOPE d , LIEXP.ILFEOPE o
+			WHERE 	o.IDEOPE=d.IDEOPE and  
+			d.STSDETOPE = 1 and 
+			o.STSOPE = 1
+			WITH UR
+	</select>  	
+  	
+  	<resultMap id="resultMap11"  class="ilfe011">  
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="estado" column="ESTADO"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="rutEmp" column="EMPRUT"/>
+		<result property="periodo" column="PERIODO"/>
+	</resultMap>
+	
+  	<select id="getIlfe011_Consumo" resultMap="resultMap11" parameterClass="java.util.HashMap">
+		select a.IDEOPE, a.NUMIMPRE, a.ESTADO, a.FECHAEST, a.HORAEST, a.AFIRUT, a.EMPRUT, a.PERIODO from liexp.ilfe011 a join liexp.ilfe031 b
+		on a.numimpre= b.numimpre
+		and a.ideope= b.ideope
+		and a.afirut= b.afirut
+		where a.evento in (21, 22, 31, 32)
+		and a.gloresp= 'ERROR: Para poder Liquidar ZONA C debe contener ZONA C1, C2'
+		and a.ideope= #ideope#
+		and upper(b.gloresp) = 'OK'
+		and b.ENVIADA= 1
+		order by 1, 2
+		WITH UR
+  	</select>
+  	
+  	<update id="limpiaIlfe011" parameterClass="ilfe011">
+		UPDATE LIEXP.ILFE011
+		SET ENVIADA = #enviada#, GLORESP = #glosaEstado#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre# and FECHAEST = #fechaEstado# and HORAEST = #horaEstado#
+		WITH NC
+	</update>
+  	
+  	<select id="isIlfe033" resultClass="java.lang.Integer">
+		SELECT COUNT(*)  FROM LIEXP.ILFE033
+		WHERE AFIRUT = #afiRut#
+		AND EMPRUT = #empRut#
+		WITH UR
+  	</select>
+  	
+  	<insert id="insertIlfe033" parameterClass="ilfe033">
+		INSERT INTO LIEXP.ILFE033 (AFIRUT,EMPRUT,PERIODO,INSPREPER,DIASREMANT,MTOTOTANT,MTOINCAANT,DIASINCANT,FECPROCE) 
+		values (#rutAfiliado#,#rutEmpleador#,#periodoRenta#,#codigoEntidadPrevisional#,#numeroDiasRemuneracion#,#totalRemuneraciones#,#montoSubsidio#,#numeroDiasSubsidio#,#fechaProceso#)
+		WITH NC
+  	</insert>
+		
+  	<resultMap id="return31" class="ilfe031">
+  		<result property="ideOpe" column="IDEOPE"/>
+  		<result property="codOpe" column="CODOPE"/>
+  		<result property="rutAfiliado" column="AFIRUT"/>
+  		<result property="nroLicencia" column="NUMIMPRE"/>
+  		<result property="dvNroLicencia" column="NUMIMPDV"/>
+		<result property="nombreEmpleador" column="C1EMPNOM"/>
+		<result property="rutEmpleador" column="C1EMPRUT"/>
+		<result property="dvRutEmpleador" column="C1EMPRUTDV"/>
+		<result property="fechaRecepcionEmpresa" column="C1EMPFECRE"/>
+		<result property="direccionEmpleador" column="C1EMPDIR"/>
+		<result property="ciudadEmpleador" column="C1EMPCIU"/>
+		<result property="paisEmpleador" column="C1EMPPAI"/>
+		<result property="comunaEmpleador" column="C1EMPCOM"/>
+		<result property="codigoComunaCompin" column="C1COCOCP"/>
+		<result property="codigoActividadLaboral" column="C1COACLA"/>
+		<result property="codigoOcupacion" column="C1COOCUP"/>
+		<result property="otraOcupacion" column="C1EMOTOC"/>
+		<result property="fechaRecepcionCaja" column="C2FERECCAF"/>
+		<result property="codigoTipoRegimenPrevisional" column="C2CODTIPRE"/>
+		<result property="codigoEntidadPrevisonal" column="C2COREPREV"/>
+		<result property="codigoLetraCaja" column="C2COLETCAJ"/>
+		<result property="nombreEntidadPrevisional" column="C2PREVNOM"/>
+		<result property="codigoCalidadTrabajador" column="C2COCAAFIL"/>
+		<result property="trabajadorAfiliadoAFC" column="C2SEGAFC"/>
+		<result property="contratoDuracionIndefinido" column="C2COSEINDE"/>
+		<result property="fechaAfiliacion" column="C2FECFILIA"/>
+		<result property="fechaContrato" column="C2FECCONTR"/>
+		<result property="codigoEntidadPagadora" column="C2CODENTPA"/>
+		<result property="nombreEntidadPagadora" column="C2PRENOMAF"/>
+		<result property="rentaImponible" column="C3MTOIMPO"/>
+		<result property="licenciasAnteriores" column="C4LICANT"/>
+		<result property="codigoTramitacionCCAF" column="C5COTRCCAF"/>
+		<result property="tieneMas100" column="C5EMP100"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="porcentajeDesahucio" column="C3PORCDES"/>
+	</resultMap>
+  	
+  	<select id="getIlfe031_aux" resultMap="return31">
+	  	select IDEOPE,CODOPE,AFIRUT,NUMIMPRE,NUMIMPDV,C1EMPNOM,C1EMPRUT,C1EMPRUTDV,C1EMPFECRE,C1EMPDIR,C1EMPCIU,C1EMPPAI,C1EMPCOM,C1COCOCP,
+	  	C1COACLA,C1COOCUP,C1EMOTOC,C2FERECCAF,C2CODTIPRE,C2COREPREV,C2COLETCAJ,C2PREVNOM,C2COCAAFIL,
+		C2SEGAFC,C2COSEINDE,C2FECFILIA,C2FECCONTR,C2CODENTPA,C2PRENOMAF,C3MTOIMPO,C4LICANT,C5COTRCCAF,C5EMP100,
+		CODCCAF,PWDCCAF,URLOPE,C3PORCDES
+		from liexp.ilfe031
+		where NUMIMPRE = #numImpre#
+		and AFIRUT = #afiRut#
+		and IDEOPE = #ideOpe#	
+		order by fecproce desc
+		fetch first 1 rows only
+		WITH UR
+  	</select>
+  	
+  	<update id="updateIlfe031" parameterClass="ilfe031">
+		UPDATE LIEXP.ILFE031
+		SET ENVIADA = #enviada#, RESPWS = #respuestaWS#, GLORESP = #glosaRespuesta#,
+		FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #nroLicencia# 
+		WITH NC
+	</update>
+	
+  	<resultMap id="parametrosMap" class="java.util.HashMap" >
+    	<result column="NOMBRE" property="key"/>
+    	<result column="VALOR" property="value"/>
+  	</resultMap>
+
+	<resultMap class="cl.araucana.lme.liq.ibatis.domain.ParametroVO" id="parametrosMapObj">
+		<result column="PARID" property="par_id" />
+		<result column="NOMBRE" property="par_nombre" />
+		<result column="DESCRIP" property="par_descrip" />
+		<result column="TIPO" property="par_tipo_parametro" />
+		<result column="VALOR" property="par_valor" />
+	</resultMap>
+  
+ 	<select id="getParametros" resultMap="parametrosMap">		
+		SELECT TRIM(NOMBRE) NOMBRE, TRIM(VALOR) VALOR 
+		FROM LIEXP.ILFE083
+		WITH UR
+	</select>
+	
+	<update id="updateParametro">
+		UPDATE LIEXP.ILFE083  
+		SET VALOR = #par_valor#
+		where NOMBRE = #par_nombre#
+		WITH NC
+	</update>
+		
+  	<resultMap id="resultLog"  class="log">  
+		<result property="tipoEvento" column="TIPO"/>
+		<result property="evento" column="EVENTO"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="fechaEvento" column="FECLOG"/>
+		<result property="horaEvento" column="HORLOG"/>
+		<result property="msg" column="MENSAJE"/>
+	</resultMap>
+	
+	<select id="getLog" resultMap="resultLog" parameterClass="log">
+		SELECT  TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE
+		FROM LIEXP.LMELOG
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="fechaEvento">
+				FECLOG = #fechaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="horaEvento">
+				HORLOG = #horaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codOpe">
+				CODOPE = #codOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="tipoEvento">
+				TIPO = #tipoEvento#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+
+	<insert id="insertLog" parameterClass="log">
+		INSERT INTO LIEXP.LMELOG 
+			(TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE)
+		VALUES 
+			(#tipoEvento#, #evento#, #codOpe#, #horaEvento#, #fechaEvento#, #msg#)
+		WITH NC
+	</insert>
+	
+	<insert id="insertEstadistica" parameterClass="java.util.HashMap">
+		INSERT INTO LIEXP.ESTADISTIC
+			(FECEVT, HOREVT, CODOPE, TOTAL, DEVOLUCION, VALIDACION, ZONAC)
+		VALUES 
+			(#fechaEvento#, #horaEvento#, #codOpe#, #total#, #devolucion#, #validacion#, #zonac#)
+		WITH NC
+	</insert>
+	
+</sqlMap>

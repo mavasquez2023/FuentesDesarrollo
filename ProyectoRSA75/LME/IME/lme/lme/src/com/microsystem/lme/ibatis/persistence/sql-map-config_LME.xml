@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+  <properties resource="lme/resources/ApplicationResources.properties"/>
+    <!--
+    	<property name="commitRequired" value="false"/>
+    	<property name="autoCommit" value="false"/>
+    	<property name="JDBC.Connection.transactionIsolation" value="0" />
+    	<property name="JDBC.DefaultAutoCommit" value="true" />
+        -->
+  	<transactionManager type="EXTERNAL" >
+        <property name="DefaultAutoCommit" value="true"/>
+    	<property name="SetAutoCommitAllowed" value="true"/>
+        <dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/AS400"/> 
+        </dataSource>
+  	</transactionManager>
+  	<!--
+  	PRD
+  	<transactionManager type="EXTERNAL" >
+        <property name="DefaultAutoCommit" value="true"/>
+    	<property name="SetAutoCommitAllowed" value="true"/>
+        <dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/AS400"/> 
+        </dataSource>
+  	</transactionManager>
+  	
+  	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.2"/>
+		<property name="JDBC.Username" value="usrsist"/>
+		<property name="JDBC.Password" value="usrsist"/>
+		</dataSource>
+	</transactionManager>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.5"/>
+		<property name="JDBC.Username" value="schema"/>
+		<property name="JDBC.Password" value="schema"/>
+		</dataSource>
+	</transactionManager>
+	-->
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/LME.xml" />
+
+</sqlMapConfig>

@@ -1,0 +1,4 @@
+#Fri Mar 19 09:00:54 CLT 2021
+eclipse.preferences.version=1
+classpath.helper/org.eclipse.jdt.launching.JRE_CONTAINER\:\:org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType\:\:WebSphere\ v6\ JRE/owners=jst.java\:1.4
+classpath.helper/org.eclipse.jst.server.core.container\:\:com.ibm.ws.ast.st.runtime.runtimeTarget.v60\:\:was.base.v6/owners=jst.ejb\:2.1

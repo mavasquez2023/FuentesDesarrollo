@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ConsModMasivaSol">
+
+<!-- Consulta a procedimiento almacenado. -->
+<!-- Declaracion de parametros de entrada y de busqueda -->
+	<parameterMap id="paramMap" class="map">	
+   		<parameter property="P_FECHADESDE" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter>
+   		<parameter property="P_FECHAHASTA" jdbcType="CHAR" javaType="java.lang.String" mode="IN"></parameter> 
+   		<parameter property="P_ESTADOSOLICITUD" jdbcType="NUMERCI" javaType="java.lang.Integer" mode="IN"></parameter>
+
+   		<!--  <parameter property="S_SOLICITUDES" jdbcType="CURSOR" javaType="java.sql.ResultSet" mode="OUT"></parameter>-->
+	</parameterMap>
+
+   	<!--- Calling stored procedure --> 
+	<procedure id="SP_NOMASOL" parameterMap="paramMap" resultClass="cl.araucana.independientes.vo.LinConsModMasivaSolVO">
+		{ call IIDTA.SP_NOMASOL(?,?,?)}   
+	</procedure>
+	
+	<!-- Select id con datos capturados desde checkbox -->
+	<select id="obtenerIdCheckBox" resultClass="cl.araucana.independientes.vo.SolicitudVO" parameterClass="java.util.HashMap">
+		SELECT 	S.IDSOLICITUD
+		FROM 	$IIDTA$.SOLICITUD S,
+				$IIDTA$.PERSONA P,
+				$IIDTA$.AFILIADO A
+		WHERE	P.IDPERSONA = A.IDPERSONAAFILIADO
+		AND		A.IDPERSONAAFILIADO = S.IDAFILIADOAGRUPACION
+		AND		S.FOLIO = #input#
+	</select>
+	
+	<!-- Update tipoestasoSolicitud para consulta modificacion masiva de solicitudes -->
+	<update id="updateTipoEstadoSolicitudCheckBox" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.SOLICITUD
+		SET		TIPOESTADOSOLICITUD = #input.tipoEstadoSolicitud#
+		WHERE	FOLIO = #input.folio#
+	</update>
+	
+	<!-- Query que obtiene codigo y glosa desde la tabla TablasGlobales. Recibe un string y retorna un objeti tipo Parametro. 
+		Para posibles destinos de estados dado un estado determinado.-->
+	<select id="getEstadosDestinoPosiblesMasiva" resultClass="cl.araucana.independientes.vo.param.Parametro" parameterClass="java.util.HashMap">
+		SELECT 	A.CODIGO_DES codigo, B.GLOSA glosa 
+		FROM 	$IIDTA$.ESTTRANSIO A, 
+				$IIDTA$.TABLASGLOBALES B 
+		WHERE 	B.CODIGO = A.CODIGO_DES 
+		AND 	B.ENTIDAD = 11 
+		AND 	A.CODIGO_ORI = #input#
+	</select>	
+</sqlMap>

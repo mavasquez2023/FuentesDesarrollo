@@ -1,0 +1,49 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database
+https://172.16.137.116/svn/IBM
+
+
+
+2014-10-15T12:48:08.023621Z
+3268
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+dao
+dir
+
+vo
+dir
+
+ibatis
+dir
+
+abatorConfig.xml
+file
+
+
+
+
+2014-05-12T22:03:55.142605Z
+e30ac08108bb65e61e974535de8d7563
+2014-05-05T15:12:56.859012Z
+918
+acanifru
+

@@ -1,0 +1,28 @@
+<html>
+<BODY>
+<FORM id="form1" name="Recibeparam" METHOD="POST" ACTION="ArsdocQueryServlet" target="LIST">
+	<br>_display_fields:<input type="text" name="_display_fields" size="100" value="TipoProceso:Tipo Proceso,FechaProceso:Fecha Proceso,RutEmpresa:Rut Empresa,NombreTrabajador:Nombre Trabajador,RutTrabajador:Rut Trabajador,Convenio,Sucursal,TipoInforme:Tipo Informe">
+	<br>_alignDisplayFields:<input type="text" name="_alignDisplayFields" size="100" value="TipoProceso:center,Convenio:center">
+	<br>_folder:<input type="text" name="_folder" value="Informe Cotizaciones Holding:Informe Cotizaciones">	
+	<br>_max_hits:<input type="text" name="_max_hits" value="200">
+	<br>_sort_field_order:<input type="text" name="_sort_field_order" value="TipoInforme:A,TipoProceso:A,FechaProceso:D,RutEmpresa:A,NombreTrabajador:A">
+	<br>_html:<input type="text" name="_html" value="araucana.htm">
+	<br>_dataTypes:<input type="text" name="_dataTypes" size="100" value="TipoProceso:string,FechaProceso:date,NombreTrabajador:string,RutTrabajador:int,RutEmpresa:int,Convenio:int,Sucursal:string,TipoInforme:string,Holding:string">	
+	<br>_dateFormats:<input type="text" name="_dateFormats" value="FechaProceso:yyyyMM">
+	<br>_sqlOperators:<input type="text" name="_sqlOperators" size="100" value="TipoProceso:=,FechaProceso:between,NombreTrabajador:like,RutEmpresa:in,RutTrabajador:in,Convenio:in,Sucursal:in,TipoInforme:=,Holding:in">	
+	<br>_nameAdditionalField:<input type="text" name="_nameAdditionalField" value="Holding">
+	<br>_dateAdditionalField:<input type="text" name="_dateAdditionalField" value="01012006">
+	<br>_applicationGroup:<input type="text" name="_applicationGroup" size="100" value="Informe Cotizaciones,Informe Cotizaciones Holding">
+	<br>_nameComparedField:<input type="text" name="_nameComparedField" value="FechaProceso">
+	<br>_excludedFieldsInGet:<input type="text" name="_excludedFieldsInGet" value="NombreTrabajador">
+	<br>Tipo Proceso:<input type="text" name="TipoProceso" value="">
+	<br>Fecha Proceso:<input type="text" name="FechaProceso" value="">	
+	<br>Rut Empresa:<input type="hidden" name="RutEmpresa" value="">
+	<br>Nombre Trabajador:<input type="hidden" name="NombreTrabajador" value="">
+	<br>Rut Trabajador:<input type="hidden" name="RutTrabajador" value="">
+	<br>Convenio:<input type="hidden" name="Convenio" value="">
+	<br>Sucursal:<input type="hidden" name="Sucursal" value="">
+	<br>Holding:<input type="hidden" name="Holding" value="">
+</FORM>
+</BODY>
+</html>

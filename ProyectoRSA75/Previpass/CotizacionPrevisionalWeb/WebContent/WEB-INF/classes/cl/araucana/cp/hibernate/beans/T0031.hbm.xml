@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.T0031VO" table="LSGDTA.T0031">
+    	<id column="RESDESFOL" name="folioNomina"/>
+  		<property name="rutEmpresa" column="EMPRUT" />
+  		<property name="fechaVencimiento" column="PERPRO" />
+  		
+   		<set name="detalleCuotas" lazy="false" table="LSGDTA.T0032">   				
+   	   		<key column="RESDESFOL" />
+			<one-to-many  class="cl.araucana.cp.hibernate.beans.T0031VO" />
+  		</set>
+    </class>
+</hibernate-mapping>

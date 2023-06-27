@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.ConvenioVO" table="CONVENIO">
+		<composite-id>
+			<key-property name="idEmpresa" column="ID_EMPRESA" />
+			<key-property name="idConvenio" column="ID_CONVENIO" />
+		</composite-id>
+
+		<property name="habilitado" column="HABILITADO" />
+		<property name="idGrupoConvenio" column="ID_GRUPO_CONVENIOS" />
+		<property name="idMapaNomRem" column="ID_MAPANOM_REM" />
+		<property name="idMapaNomGra" column="ID_MAPANOM_GRA" />
+		<property name="idMapaNomDep" column="ID_MAPANOM_DEP" />
+		<property name="idMapaNomRel" column="ID_MAPANOM_REL" />
+		<property name="idMapaCod" column="ID_MAPACOD" />
+		<property name="idOpcion" column="ID_OPCION" />
+		<property name="idCcaf" column="ID_CCAF" />
+		<property name="idMutual" column="ID_MUTUAL" />
+		<property name="creado" column="CREADO" />
+		<property name="ultimoUso" column="ULTIMO_USO" />
+		<property name="mutualNumeroAdherente" column="MUTUAL_NUMERO_ADHERENTE" />
+		<property name="mutualTasaAdicional" column="MUTUAL_TASA_ADICIONAL" />
+		<property name="mutualCalculoIndividual" column="MUTUAL_CALCULO_INDIVIDUAL" />
+		<property name="numNominas" column="N_NOMINAS" />
+		<property name="numNominasOk" column="N_NOMINAS_OK" />
+		<property name="numNominasCorregidas" column="N_NOMINAS_CORREGIDAS" />
+		<property name="numCotizaciones" column="N_COTIZACIONES" />
+		<property name="numCotizacionesOk" column="N_COTIZACIONES_OK" />
+		<property name="numCotizacionesCorregidas" column="N_COTIZACIONES_CORREGIDAS" />
+		<property name="numBloqueos" column="N_BLOQUEOS" />
+		<property name="calculoMovPersonal" column="CALCULO_MOV_PERSONAL" />
+		<property name="descripcion" column="DESCRIPCION" />
+		<property name="idActividad" column="ID_ACTIVIDAD" />
+	</class>
+</hibernate-mapping>

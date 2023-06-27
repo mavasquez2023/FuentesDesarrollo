@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="NominasForm" type="cl.araucana.cp.presentation.struts.forms.ListarActionForm" />
+        <form-bean name="ConveniosActionForm" type="cl.araucana.cp.presentation.struts.forms.ConveniosActionForm" />
+
+		<!-- NOMINAS -->
+        <form-bean name="ListarNominasForm" type="cl.araucana.cp.presentation.struts.forms.nomina.ListarActionForm" />
+		<!-- COTIZANTES -->
+        <form-bean name="TrabListarAllActionForm" type="cl.araucana.cp.presentation.struts.forms.cotizante.ListarAllActionForm" />
+        <form-bean name="CotizantesListarActionForm" type="cl.araucana.cp.presentation.struts.forms.cotizante.ListarActionForm" />
+        <form-bean name="CotizacionActionForm" type="cl.araucana.cp.presentation.struts.forms.cotizante.CotizacionActionForm" />
+		<!-- COMPROBANTES -->
+        <form-bean name="PagarActionForm" type="cl.araucana.cp.presentation.struts.forms.comprobante.PagarActionForm" />
+        <form-bean name="DetalleActionForm" type="cl.araucana.cp.presentation.struts.forms.comprobante.DetalleActionForm" />
+        <!-- CONVENIOS -->
+        <form-bean name="ListaConveniosActionForm" type="cl.araucana.cp.presentation.struts.forms.convenio.ListaConveniosActionForm" />
+        <form-bean name="EditarConvenioActionForm" type="cl.araucana.cp.presentation.struts.forms.convenio.EditarConvenioActionForm" />
+        <form-bean name="DetalleConvenioActionForm" type="cl.araucana.cp.presentation.struts.forms.convenio.DetalleConvenioActionForm" />
+		<!-- EMPRESAS -->
+        <form-bean name="ListarEmpresasActionForm" type="cl.araucana.cp.presentation.struts.forms.ListarEmpresasActionForm" />
+        <form-bean name="DetalleEmpresaActionForm" type="cl.araucana.cp.presentation.struts.forms.DetalleEmpresaActionForm" />
+        <!-- MAPEO -->
+        <form-bean name="ListaCodigosActionForm" type="cl.araucana.cp.presentation.struts.forms.mapeo.ListaCodigosActionForm" />
+        <form-bean name="EdicionCodigosActionForm" type="cl.araucana.cp.presentation.struts.forms.mapeo.EdicionCodigosActionForm" />
+        <form-bean name="MapeoArchivosActionForm" type="cl.araucana.cp.presentation.struts.forms.mapeo.MapeoArchivosActionForm" />
+        <!-- SUCURSALES -->
+        <form-bean name="SucursalActionForm" type="cl.araucana.cp.presentation.struts.forms.SucursalActionForm" />
+        <!-- USUARIOS -->
+        <form-bean name="ListarUsuariosActionForm" type="cl.araucana.cp.presentation.struts.forms.usuario.ListarUsuariosActionForm" />
+        <form-bean name="DetalleUsuariosActionForm" type="cl.araucana.cp.presentation.struts.forms.usuario.DetalleUsuariosActionForm" />
+        <form-bean name="PermisosRolLectorActionForm" type="cl.araucana.cp.presentation.struts.forms.usuario.PermisosRolLectorActionForm" />        
+		<!-- CONSULTAS -->
+        <form-bean name="ConsultaActionForm" type="cl.araucana.cp.presentation.struts.forms.ConsultaActionForm" />    
+        <!-- DESCARGA PRODUCTOS CAJA -->
+        <form-bean name="DescargaPCActionForm" type="cl.araucana.cp.presentation.struts.forms.DescargaPCActionForm" />    
+        <!-- SABANA -->
+        <form-bean name="detalleSabanaForm" type="cl.araucana.cp.presentation.struts.forms.DetalleSabanaForm" />             
+        <!-- INFORME -->
+        <form-bean name="InformeForm" type="cl.araucana.cp.presentation.struts.forms.InformeActionForm" />
+        <!-- INFORME -->
+        <form-bean name="InformeDNPForm" type="cl.araucana.cp.presentation.struts.forms.InformeActionDNPForm" />
+        <!-- CHANGE PASSWORD -->
+        <form-bean name="ChangePasswordForm" type="cl.araucana.cp.presentation.struts.forms.ChangePasswordActionForm" />        
+        
+        <!-- CARGAS FAMILIARES -->        
+        <form-bean name="ConsultaCargasForm"      type="cl.araucana.cp.presentation.struts.forms.cargasFamiliares.ConsultaCargasActionForm" />
+        <form-bean name="ConsultaCargasPDFForm"   type="cl.araucana.cp.presentation.struts.forms.cargasFamiliares.ConsultaCargasPDFActionForm" />
+        <form-bean name="ConsultaNominasForm"     type="cl.araucana.cp.presentation.struts.forms.cargasFamiliares.ConsultaNominasActionForm" />
+        <form-bean name="ValidaNominasCargasForm" type="cl.araucana.cp.presentation.struts.forms.cargasFamiliares.ValidaNominasCargasActionForm" />        
+
+    </form-beans>
+    
+    <global-forwards>
+	    <forward name="error" path="error" />
+	    <forward name="usuarioNoBD" path="/araucana/login/usuarioNoEncontrado.jsp" />
+	    <forward name="inicio" path="inicio" />
+    </global-forwards>
+    
+    <action-mappings>
+        <!-- ENVIOS -->
+        <action path="/dispatcher" type="cl.araucana.cp.presentation.struts.actions.envioRecepcion.DispatcherAction">
+        	<forward name="login" path="/araucana/login/loginCPE.jsp" />
+        </action>
+
+        <action path="/adispatcher" type="cl.araucana.cp.presentation.struts.actions.envioRecepcion.AdaptedDispatcherAction" >
+        	<forward name="envio_adaptado" path="envio_adaptado" />
+        </action>	
+
+        <action path="/adispatcherNominaUnica" type="cl.araucana.cp.presentation.struts.actions.envioRecepcion.AdaptedDispatcherNominaUnicaAction" >
+        	<forward name="envio_adaptado" path="/WEB-INF/adapted/nozippedNominaUnica.jsp"/>
+        </action>	
+
+
+        <action path="/receiver" type="cl.araucana.cp.presentation.struts.actions.envioRecepcion.ReceptorAction" scope="request">
+        	<forward name="forward" path="/home.jsp" />
+        	<forward name="showReceiptReport" path="showReceiptReport" />
+	       	<forward name="showReceiptReportNomUnica" path="/WEB-INF/adapted/showReceiptReport.jsp"/>
+        </action>
+        
+        <action path="/receiverNominaUnica" type="cl.araucana.cp.presentation.struts.actions.envioRecepcion.ReceptorAction" scope="request">
+        	<forward name="forward" path="/home.jsp" />
+        	<forward name="showReceiptReport" path="showReceiptReport" />
+        </action>
+        
+        <action path="/Inicio" type="cl.araucana.cp.presentation.struts.actions.InicioAction" scope="request">
+	        <forward name="inicio" path="inicio" />
+	        <forward name="mustUserChangePassword" path="changePassword" />
+		</action>
+
+        <action path="/Tiles" type="cl.araucana.cp.presentation.struts.actions.Tiles" scope="request" name="NominasForm" validate="false">
+	        <forward name="inicio" path="inicio" />
+	        <forward name="loginAdmin" path="/araucana/login/loginAdmin.jsp" />
+        </action>
+        <!-- COTIZANTES -->
+        <action path="/TrabCotizantesAll" type="cl.araucana.cp.presentation.struts.actions.cotizante.ListarAllAction" name="TrabListarAllActionForm" scope="request">
+	        <forward name="trabListaAll"     path="trabListaAll" />
+	        <forward name="cotizacionEditar" path="/EditarCotizacion.do" />
+	        <forward name="cotizacionFicha"  path="/EditarCotizacion.do" />
+	        <forward name="blanco"           path="blancoNomTrab" />
+        </action>
+        <action path="/ListarCotizantes" type="cl.araucana.cp.presentation.struts.actions.cotizante.ListarAction" name="CotizantesListarActionForm" scope="request">
+	        <forward name="cotizantesLista"		path="cotizantesLista" />
+	        <forward name="cotizacionEditar"	path="/EditarCotizacion.do" />
+	        <forward name="cotizacionFicha"		path="/EditarCotizacion.do" />
+	        <forward name="cotizacionEditarR"	path="/EditarCotizacion.do" />
+	        <forward name="cotizacionEditarF"	path="/EditarCotizacion.do" />
+	        <forward name="listarNominas"		path="/ListarNominas.do" />
+        </action>
+        <action path="/EditarCotizacion" type="cl.araucana.cp.presentation.struts.actions.cotizante.EditarAction" name="CotizacionActionForm" scope="request" validate="false">
+	        <forward name="trabajadorEditarD"	path="trabajadorEditarD" />
+	        <forward name="trabajadorEditarG"	path="trabajadorEditarG" />
+	        <forward name="trabajadorEditarA"	path="trabajadorEditarA" />
+	        <forward name="trabajadorEditarR"	path="trabajadorEditarR" />
+	        <forward name="trabajadorEditarF"	path="trabajadorEditarF" />
+	        <forward name="trabajadorVerD"		path="trabajadorVerD" />
+	        <forward name="trabajadorVerG"		path="trabajadorVerG" />
+	        <forward name="trabajadorVerA"		path="trabajadorVerA" />
+	        <forward name="trabajadorVerR"		path="trabajadorVerR" />
+	        <forward name="trabajadorVerF"		path="trabajadorVerF" />
+	        <forward name="cancelar"			path="/ListarCotizantes.do"  />
+	        <forward name="volver"				path="/ListarCotizantes.do"  />
+	        <forward name="recargar"			path="/EditarCotizacion.do"  />
+  	        <forward name="trabListaAll"        path="/TrabCotizantesAll.do" />
+	        <forward name="editarCotizanteActualizado"        path="/EditarCotizacion.do" />
+	    </action>
+        <action path="/EliminarCotizacion" type="cl.araucana.cp.presentation.struts.actions.cotizante.EliminarAction">
+	        <forward name="exito" path="cotizantesLista" />
+        </action>
+        <action path="/BuscarCotizanteAjax" type="cl.araucana.cp.presentation.struts.actions.cotizante.BuscarAction"/>
+
+        <!-- NOMINAS -->
+
+        <action path="/ListarNominas" type="cl.araucana.cp.presentation.struts.actions.nomina.ListarAction" name="NominasForm" scope="request" validate="false">
+        	<forward name="exito" path="procesos" />
+            <forward name="pagar" path="/PagarComprobantes.do" />
+        </action>
+        
+        <action path="/ListarErroresNomina" type="cl.araucana.cp.presentation.struts.actions.nomina.ListarErroresAction">
+        	<forward name="exito" path="errores"/>
+        </action>
+
+        <action path="/CrearNomina" type="cl.araucana.cp.presentation.struts.actions.nomina.CrearAction" scope="request" validate="false">
+        	<forward name="exito" path="/ListarNominas.do" />
+        </action>
+
+        <!-- COMPROBANTES -->
+        <action path="/DetalleComprobante" name="DetalleActionForm" scope="request" type="cl.araucana.cp.presentation.struts.actions.comprobante.DetalleAction">
+        	<forward name="comprobanteFicha" path="comprobanteFicha" />
+        	<forward name="pago" path="/PagarComprobantes.do" />
+        	<forward name="imprimir" path="/araucana/jsp/imprimirComprobanteFicha.jsp" />
+        </action>
+        <action path="/EditarComprobante" name="ConveniosActionForm" scope="request" type="cl.araucana.cp.presentation.struts.actions.comprobante.EditarComprobanteAction">
+        	<forward name="exito" path="comprobanteEditar" />
+        	<forward name="cancel" path="ListarNominas.do" />
+        	<forward name="pagar" path="PagarComprobantes.do" />
+        </action>
+        <action path="/PagarComprobantes" name="PagarActionForm" type="cl.araucana.cp.presentation.struts.actions.comprobante.PagarAction" >
+        	<forward name="pagoNominas" path="pagoNominas" />
+        	<forward name="resumen" path="resumenComprProvi" />
+        	<forward name="comprobanteFicha" path="/DetalleComprobante.do" />
+			<forward name="send" path="/araucana/PagoEnLinea/sendXml.jsp" /> 
+			<forward name="pagados" path="/ListarNominas.do" /> 
+        </action>
+		<action path="/Notificacion" type="cl.araucana.cp.presentation.struts.actions.NotificacionSPLAction"/>
+		<!-- CONSULTAS -->
+        <action path="/Consulta" name="ConsultaActionForm" type="cl.araucana.cp.presentation.struts.actions.consulta.ConsultaAction" scope="request">
+	        <forward name="consulta" path="consulta" />
+	    </action>
+	    <!-- DESCARGA PRODUCTOS CAJA -->
+        <action path="/DescargaPC" name="DescargaPCActionForm" type="cl.araucana.cp.presentation.struts.actions.prodcaja.DescargaPCAction" scope="request">
+	        <forward name="descargaPC" path="descargaPC" />
+	        <forward name="showReceiptReport" path="showReceiptReport" />
+	    </action>
+	    <!-- SABANA -->
+		<action path="/Sabana" name="detalleSabanaForm" type="cl.araucana.cp.presentation.struts.actions.consulta.DetalleSabanaAction" scope="request">
+	        <forward name="exito" path="sabana" />
+	    </action>
+		<!-- EMPRESAS -->
+		<action path="/ListarEmpresas" name="ListarEmpresasActionForm" type="cl.araucana.cp.presentation.struts.actions.empresa.ListarEmpresasAction" scope="request">
+	        <forward name="exito" path="empresaLista" />
+	        <forward name="crear" path="/DetalleEmpresa.do" />
+	        <forward name="imprimir" path="/araucana/jsp/imprimirListaEmpresas.jsp" />
+        </action>
+		<action path="/DetalleEmpresa" name="DetalleEmpresaActionForm" type="cl.araucana.cp.presentation.struts.actions.empresa.DetalleEmpresaAction" scope="request" validate="false">
+	        <forward name="exitoMostrar" path="empresaFicha" />
+	        <forward name="exitoEditar" path="empresaEditar" />
+	        <forward name="Editar" path="DetalleEmpresa.do" />
+	        <forward name="Cancelar" path="ListarEmpresas.do" />
+	        <forward name="ListarConvenios" path="/ListarConvenios.do" />
+	        <forward name="ListarSucursales" path="/SucursalesLista.do" />
+        </action>
+		<!-- CONVENIOS -->
+		<action path="/ListarConvenios" name="ListaConveniosActionForm" type="cl.araucana.cp.presentation.struts.actions.convenio.ListaConveniosAction" scope="request">
+	        <forward name="crear" path="/EditarConvenio.do" />
+	        <forward name="exito" path="conveniosLista" />
+	        <forward name="imprimir" path="/araucana/jsp/imprimirListaConvenios.jsp" />
+        </action>
+		<action path="/EditarConvenio" name="EditarConvenioActionForm" type="cl.araucana.cp.presentation.struts.actions.convenio.EditarConvenioAction" scope="request">
+	        <forward name="exitoEditar" path="conveniosEditar" />
+	        <forward name="exitoCrear" path="conveniosCrear" />
+	        <forward name="Cancelar" path="/ListarConvenios.do" />
+        </action>
+		<action path="/DetalleConvenio" name="DetalleConvenioActionForm" type="cl.araucana.cp.presentation.struts.actions.convenio.DetalleConvenioAction" scope="request">
+	        <forward name="exito" path="conveniosFicha" />
+	        <forward name="Editar" path="/EditarConvenio.do" />
+        </action>
+		<!-- SUCURSALES -->
+		<action path="/SucursalesLista" name="SucursalActionForm" type="cl.araucana.cp.presentation.struts.actions.empresa.SucursalesListaAction" scope="request">
+	        <forward name="exito" path="sucursalesLista" />
+	        <forward name="imprimir" path="/araucana/jsp/imprimirListaSucursales.jsp" />
+	        <forward name="crear" path="/SucursalesEditar.do" />
+	        <forward name="refresh" path="/SucursalesLista.do" />
+        </action>
+        <action path="/SucursalesEditar" name="SucursalActionForm" type="cl.araucana.cp.presentation.struts.actions.empresa.SucursalesEditarAction" scope="request">
+	        <forward name="ficha" path="sucursalesFicha" />
+	        <forward name="editar" path="sucursalesEditar" />
+	        <forward name="crear" path="sucursalesEditar" />
+	        <forward name="editarRedir" path="/SucursalesEditar.do" />
+	        <forward name="Cancelar" path="/SucursalesLista.do" />
+	        <forward name="Listar" path="/SucursalesLista.do" />
+            <forward name="refresh" path="/SucursalesEditar.do" />
+        </action>
+		<!-- USUARIOS -->
+        <action path="/ListarUsuarios" name="ListarUsuariosActionForm" type="cl.araucana.cp.presentation.struts.actions.usuarios.ListarUsuariosAction" scope="request">
+			<forward name="exito" path="usuarioLista" />
+			<forward name="imprimir" path="/araucana/jsp/imprimirListaUsuarios.jsp" />
+			<forward name="crear" path="/DetalleUsuarios.do" />
+			<forward name="refresh" path="/ListarUsuarios.do" />
+        </action>
+        <action path="/DetalleUsuarios" name="DetalleUsuariosActionForm" type="cl.araucana.cp.presentation.struts.actions.usuarios.DetalleUsuariosAction" scope="request">
+			<forward name="exitoFicha" path="usuarioFicha" />
+			<forward name="refresh" path="/DetalleUsuarios.do" />
+			<forward name="exitoEditar" path="usuarioEditar" />
+			<forward name="Editar" path="/DetalleUsuarios.do" />
+			<forward name="Cancelar" path="/ListarUsuarios.do" />
+        </action>
+        <action path="/PermisosRolLector" name="PermisosRolLectorActionForm" type="cl.araucana.cp.presentation.struts.actions.usuarios.PermisosRolLectorAction" scope="request">
+			<forward name="exito" path="/araucana/jsp/permisosRolLector.jsp" />
+        </action>
+
+		<!-- MAPEO -->
+        <action path="/ListaCodigosFicha" name="ListaCodigosActionForm" type="cl.araucana.cp.presentation.struts.actions.mapeo.ListaCodigosAction" scope="request">
+            <forward name="exito"    path="codigosFicha" />
+            <forward name="imprimir" path="/araucana/jsp/imprimirListaCodigos.jsp" />
+            <forward name="blanco"   path="blancoDefCod" />
+        </action>
+        <action path="/EdicionCodigosFicha" name="EdicionCodigosActionForm" type="cl.araucana.cp.presentation.struts.actions.mapeo.EdicionCodigosAction">
+	        <forward name="exito" path="codigosEditar" />
+	        <forward name="refresh" path="EdicionCodigosFicha.do" />
+	        <forward name="cancelar" path="ListaCodigosFicha.do" />
+		</action>
+        <action path="/ListaMapeoArchivos" name="MapeoArchivosActionForm" type="cl.araucana.cp.presentation.struts.actions.mapeo.ListarMapeoArchivosAction">
+	        <forward name="exito" path="archivosLista" />
+		</action>
+        <action path="/DetalleMapeoArchivos" name="MapeoArchivosActionForm" type="cl.araucana.cp.presentation.struts.actions.mapeo.DetalleMapeoArchivosAction">
+	        <forward name="editar" path="archivosEditar" />
+	        <forward name="detalle" path="archivosFicha" />
+	        <forward name="cancelar" path="ListaMapeoArchivos.do" />
+	        <forward name="refresh" path="DetalleMapeoArchivos.do" />
+	        <forward name="imprimir" path="/araucana/jsp/imprimirMapeoArchivos.jsp" />
+	        <forward name="guardarRedirect" path="DetalleMapeoArchivos.do" />
+		</action>
+		<!-- PAGO EN LINEA -->
+        <action path="/RetornoSPL" type="cl.araucana.cp.presentation.struts.actions.RetornoSPLAction">
+	        <forward name="retorno" path="retorno" />
+		</action>
+		
+		<!-- INFORME -->
+		<action path="/BuscarInforme" type="cl.araucana.cp.presentation.struts.actions.informe.BuscarInformeAction" name="InformeForm" scope="request">
+	        <forward name="exito" path="/ResultadoInforme.do" />
+		</action>
+		<action path="/ResultadoInforme" type="cl.araucana.cp.presentation.struts.actions.informe.DetalleInformeAction" name="InformeForm" scope="request">
+	        <forward name="exito" path="detalleInforme" />
+		</action>
+		<action path="/ResultadoInformeDNP" type="cl.araucana.cp.presentation.struts.actions.informe.DetalleInformeDNPAction" name="InformeDNPForm" scope="request">
+	        <forward name="exito" path="detalleInformeDNP" />
+		</action>
+		
+		<action path="/DetalleInfoDeclaraNoPago" type="cl.araucana.cp.presentation.struts.actions.informe.DetalleInfoDeclaracionNoPagoAction" name="InformeDNPForm" scope="request">
+	        <forward name="exito" path="detalleInfoDeclaraNoPago" />
+		</action>		
+		<action path="/ListarAvisos" type="cl.araucana.cp.presentation.struts.actions.informe.ListarAvisosAction">
+        	<forward name="exito" path="listadoAvisos" />
+        </action>
+        <action path="/ListarErrores" type="cl.araucana.cp.presentation.struts.actions.nomina.ListarErroresAction">
+        	<forward name="exito" path="listadoErrores" />
+        </action>
+		
+        <action path="/ChangePassword" type="cl.araucana.cp.presentacion.struts.actions.changePassword.ChangePasswordAction" name="ChangePasswordForm" scope="request">
+        	<forward name="exito" path="exitoChangePassword" />
+        	<forward name="error" path="errorChangePassword" />        	
+        </action>
+
+        <action path="/PrepareChangePassword" type="cl.araucana.cp.presentacion.struts.actions.changePassword.PrepareChangePasswordAction">
+        	<forward name="changePasword" path="changePassword" />
+        </action>
+
+        <action path="/InformacionNomina" type="cl.araucana.cp.presentation.struts.actions.informacion.nomina.InformacionNominaAction">
+        	<forward name="exito" path="informacionNomina" />
+        </action>
+
+        <action path="/BarCode" type="cl.araucana.barcode.BarCode"/>
+
+        <action path="/RedireccionPlanillas" type="cl.araucana.cp.presentation.struts.actions.RedireccionPlanillasAction"/>
+
+		<action path="/cerrarPago" forward="/araucana/jsp/cerrarPago.jsp"></action>
+
+		<!-- CARGAS FAMILIARES -->
+        <action path="/ConsultaCargas" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.ConsultaCargasAction" name="ConsultaCargasForm" scope="request">
+	        <forward name="trabListaCargas"  path="trabListaCargas" />
+        	<forward name="blancoCargasFam"  path="blancoCargasFam" />
+			<!-- <forward name="cargasPorTrabPDF" path="cargasPorTrabPDF" /> -->
+        </action>
+        <action path="/ConsultaCargasPDF" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.ConsultaCargasPDFAction" name="ConsultaCargasPDFForm" scope="request">
+        	<forward name="cargasFamPDF" path="cargasFamPDF" />
+        </action>
+        <action path="/ConsultaNominas" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.ConsultaNominasAction" name="ConsultaNominasForm" scope="request" validate="false">
+        	<forward name="exito" path="listaNominas" />
+        </action>
+        <action path="/ValidarNominasCargas" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.ValNomCargasAction" name="ConsultaNominasForm" scope="request" validate="false">
+        	<forward name="exito" path="listaNominas" />
+        </action>
+        <action path="/CompruebaNominasCargas" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.CompNomCargasAction" name="ConsultaNominasForm" scope="request" validate="false">
+        	<forward name="exito" path="listaNominas" />
+        </action>
+   		<action path="/ListarAvisoCargas" type="cl.araucana.cp.presentation.struts.actions.cargasFamiliares.ListarAvisoCargasAction">
+        	<forward name="exito" path="listadoAvisos" />
+        </action>
+        <action path="/GenerarComprobPDF" name="CotizacionActionForm"
+			parameter="Generar PDF"
+			type="cl.araucana.cp.presentation.struts.actions.informe.GenerarComprobPDFAction">
+		</action>
+    </action-mappings>
+
+    <message-resources parameter="cl.araucana.cp.presentation.struts.resources.Mensajes" />
+
+	<!-- Plugs -->
+	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+	       <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+	       <set-property property="moduleAware" value="true" />
+	</plug-in>
+</struts-config>

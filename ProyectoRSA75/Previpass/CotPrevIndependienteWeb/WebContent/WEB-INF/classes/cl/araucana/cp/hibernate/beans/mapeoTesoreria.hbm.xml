@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.hibernate.beans.MapeoTesoreriaVO" table="MAPEO_TESORERIA">
+    	<composite-id >
+        	<key-property name="idTipoNomina">
+        		<column name="ID_TIPO_NOMINA" not-null="true" />
+        	</key-property>
+        	<key-property name="idTipoSeccion">
+        		<column name="ID_TIPO_SECCION" not-null="true" />
+        	</key-property>
+        	<key-property name="idDetalleSeccion">
+        		<column name="ID_TIPO_DETALLE" not-null="true" />
+        	</key-property>
+        	<key-property name="idConceptoTesoreria">
+        		<column name="ID_CONCEPTO" not-null="true" />
+        	</key-property>
+        	<key-property name="idMontoDetSeccion">
+        		<column name="ID_MONTO" not-null="true" />
+        	</key-property>
+        	<key-property name="idConceptoTesoreriaInd">
+        		<column name="ID_CONCEPTO_IND" not-null="true" />
+        	</key-property>
+        	<key-property name="aplicaPara">
+        		<column name="APLICA_PARA" not-null="true" />
+        	</key-property>
+    	</composite-id>
+    </class>
+</hibernate-mapping>

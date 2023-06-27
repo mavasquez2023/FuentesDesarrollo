@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+  <properties resource="lme/resources/ApplicationResources.properties"/>
+  <settings
+    cacheModelsEnabled="false"
+    enhancementEnabled="true"
+    maxSessions="64"
+    maxTransactions="8"
+    maxRequests="128"/>
+        <transactionManager type="JDBC">
+	 	<property name="commitRequired" value="false"/>
+		<!--<property name="JDBC.Connection.transactionIsolation" value="1"/>-->
+        <dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/AS400"/> 
+        </dataSource>
+  	</transactionManager> 
+    
+  <!--	
+  	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.2"/>
+		<property name="JDBC.Username" value="usrsist"/>
+		<property name="JDBC.Password" value="usrsist"/>
+		</dataSource>
+	</transactionManager>
+	
+  -->
+  
+  <!--
+  <transactionManager type="JDBC">
+	 	<property name="commitRequired" value="false"/>
+		<property name="JDBC.Connection.transactionIsolation" value="1"/>
+        <dataSource type="JNDI">
+		<property name="DataSource" value="jdbc/testdesa4"/> 
+        </dataSource>
+   </transactionManager> 
+	
+	
+ 	 <transactionManager type="JDBC" >
+	   <dataSource type="SIMPLE"> 
+ 	    <property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/> 
+	    <property name="JDBC.ConnectionURL" value="jdbc:as400://${host}/liexp"/> 
+	    <property name="JDBC.Username" value="${user}"/> 
+	    <property name="JDBC.Password" value="${pass}"/> 
+	   </dataSource> 
+	 </transactionManager> 
+	 
+	 <transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.5"/>
+		<property name="JDBC.Username" value="sistemas"/>
+		<property name="JDBC.Password" value="sistemas"/>
+		</dataSource>
+	</transactionManager>
+	
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+		<property name="JDBC.ConnectionURL"
+		value="jdbc:as400://146.83.1.2"/>
+		<property name="JDBC.Username" value="schema"/>
+		<property name="JDBC.Password" value="schema"/>
+		</dataSource>
+	</transactionManager>
+	
+	-->
+	
+
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE000.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE002.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE011.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE013.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE021.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE031.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE033.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE034.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE051.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE051R.xml" />
+	<sqlMap resource="com/microsystem/lme/ibatis/persistence/AS400.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/Ilfe002Inverso.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILF1000.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ConsultaEndPoint_SqlMap.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE080.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE081.xml" />
+	<sqlMap	resource="com/microsystem/lme/ibatis/persistence/ILFE082.xml" />
+
+</sqlMapConfig>

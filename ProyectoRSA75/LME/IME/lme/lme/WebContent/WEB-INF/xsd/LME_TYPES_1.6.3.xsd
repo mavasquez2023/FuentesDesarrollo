@@ -1,0 +1,3582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:www:lme:gov:cl:lme" xmlns:lme="urn:www:lme:gov:cl:lme" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="urn:www:lme:gov:cl:lme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<archivo>LME_TYPES.1.6.3.xsd</archivo>
+			<metadatos>
+				<LICENCIA>Esta obra está publicada bajo una Attribution-NonCommercial-ShareAlike 2.0 de Creative Commons. Para ver una copia de esta licencia, visite http://creativecommons.org/licenses/by-nc-sa/2.0/cl/.</LICENCIA>
+				<Titulo>DEFINICIONES DE TIPOS DE DATOS DE LA LICENCIA MEDICA ELECTRONICA</Titulo>
+				<Autor>LUIS ANDRES BAEZ ARRIBADA</Autor>
+				<Institucion>UNIDAD DE LICENCIA MEDICA ELECTRONICA - SUPERINTENDENCIA DE SEGURIDAD SOCIAL</Institucion>
+				<Creacion>2006-05-01</Creacion>
+				<Estado>ACTIVO</Estado>
+				<Version>1.6.3</Version>
+				<!-- Repetir elemento Modificado cuantas veces sea necesario de acuerdo a futuras modificaciones -->
+				<Modificado>
+					<fecha>2011-12-02</fecha>
+					<Colaborador>Binarybag</Colaborador>
+					<modificaciones>Se cambio del campo numero en CTDireccion de integer a string</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-12-02</fecha>
+					<Colaborador>Binarybag</Colaborador>
+					<modificaciones>Se cambio la expresion regular de tipo STEmail</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-16</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se incorpora un codigo de entidad para FONASA</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorporan nuevos estados de la LME, en tipo STEstado_licencia</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-17</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorporan los tipos de datos STCodigoCCAF, STCodigoOperador, CTLiquidacion, CTDetalleHaber y CTHaberes</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-17</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora el codigo de la CCAF en los atributos del tipo CTEstado</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-20</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora el tipo simple STCodigo_comuna y se modifican el tipo CTDireccion de datos que utilizaba comuna como string</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-05-20</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora el tipo simple STCodigovalidaCCAF</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-01</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agregan los atributos motivo_devolucion_CCAF y tipo_liquidacion_CCAF y a CTEstado</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-01</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se incorpora el tipo simple STAFP, STMotivo_devolucionCCAF y STTipo_liquidacion</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-02</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>El tipo complejo de zona de firma, que fué sacado de las zonas individuales para tener comtabilidad con SOAP Codificado de .NET</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se cambia el elemento “detalle” del tipo complejo CTHaber de 12 repeticiones a indeterminadas repeticiones</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se cambia el elemento “archivo” del tipo complejo CTHaber, se define como tipo CTDireccion_archivo</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se modifica el tipo complejo CTDetalleHaber</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se crean los siguientes tipos de datos STTipo_archivo y CTDireccion_archivo</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se cambia la definición “choice” por una secuencia y se permite que no vengan</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-16</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agregan 2 códigos de ISAPRES ( 68 y 76)</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2011-06-17</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se cambia el tipo simple STAFP por STCodigo_regimen_prevision y se crea el tipo simple STLetra_caja</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-02-14</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agrega el tipo de datos STContacto y STEvento_liquidacionCCAF</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-02-14</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agregan los atributos tipo_liquidacion_CCAF y evento_liquidacion_CCAF al tipo complejo CTLiquidacion</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-06-07</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan a las causales de devolución de CCAF, nuevas causales para ser utilizadas por las ISAPRES</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-06-28</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agrega tipo complejo CTPrestador y tipo simple STTipo_prestador</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-08-01</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan codigos 11, 12, 55 y 63 al tipo STEstado_licencia</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-08-01</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan codigos 16, 17 y 18 al tipo STCodigo_regimen_prevision</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-09-12</fecha>
+					<Colaborador>SUSESO - FONASA</Colaborador>
+					<modificaciones>Se agrega codigo 12 al tipo STCodigo_regimen_prevision</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2012-11-08</fecha>
+					<Colaborador>SUSESO - SUSA</Colaborador>
+					<modificaciones>Se incoporan códigos de 4 ISAPRES</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2014-09-03</fecha>
+					<Colaborador>SUSESO - COMPIN</Colaborador>
+					<modificaciones>Se incopora la definición de tipo simple STTipo_pendiente</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2014-12-24</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agrega atributo motivo_devolucion_CCAF_otro al tipo complejo CTEstado</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2015-11-27</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan a las causales de devolución de CCAF, nuevas causales para ser utilizadas por las COMPIN, rango 201-300;  Se limita rango 101-200 sólo a ISAPRES.</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2015-12-22</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agrega a las causales de devolución de CCAF (STMotivo_devolucionCCAF), causal 300 correspondiente a "Otro"</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2016-07-07</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan los códigos 212, 213 y 214 al tipo STMotivo_devolucionCCAF</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2018-04-17</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se modifica documentacion de codigo 81 del tipo STCodigo_entidad</modificaciones>
+				</Modificado>
+				<Modificado>
+					<fecha>2018-08-01</fecha>
+					<Colaborador>SUSESO</Colaborador>
+					<modificaciones>Se agregan nuevas comunas de la region de Ñuble (16)</modificaciones>
+				</Modificado>				
+				<Descripcion>DEFINICIONES DE TIPOS DE DATOS DE LA LICENCIA MEDICA ELECTRONICA (LME)</Descripcion>
+			</metadatos>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:simpleType name="STRut">
+		<xsd:annotation>
+			<xsd:documentation>ROL UNICO TRIBUTARIO Y FOLIO DE LA LME (99..99-X)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{1,8}-([0-9]|K)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_formulario">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE LME</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>LM OTORGADA POR PRESTADOR INSTITUCIONAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>LM OTORGADA POR PRESTADOR INDIVIDUAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>LICENCIA MEDICA ELECTRONICA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STEstado_licencia">
+		<xsd:annotation>
+			<xsd:documentation>ESTADOS POSIBLES DE UNA LME</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>OTORGADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>COPIA IMPRESA RECEPCIONADA EN CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>COPIA IMPRESA RECEPCIONADA EN COMPIN</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>ANULADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>NO TRAMITADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="31">
+				<xsd:annotation>
+					<xsd:documentation>NO TRAMITADA PARA CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>NO RECEPCIONADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="41">
+				<xsd:annotation>
+					<xsd:documentation>NO RECEPCIONADA PARA CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>TRAMITADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="51">
+				<xsd:annotation>
+					<xsd:documentation>TRAMITADA PARA CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="52">
+				<xsd:annotation>
+					<xsd:documentation>VALIDADA POR CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="53">
+				<xsd:annotation>
+					<xsd:documentation>VALIDADA POR CCAF SIN TODOS LOS ANTECEDENTES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="54">
+				<xsd:annotation>
+					<xsd:documentation>VALIDADA POR CCAF - PLAZO DE CCAF VENCIDO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="55">
+				<xsd:annotation>
+					<xsd:documentation>ZONA C DE COMPIA IMPRESA CONSOLIDADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>DEVUELTA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="62">
+				<xsd:annotation>
+					<xsd:documentation>DEVUELTA POR CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="63">
+				<xsd:annotation>
+					<xsd:documentation>DEVUELTA POR ENTIDAD PAGADORA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>PRONUNCIADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="72">
+				<xsd:annotation>
+					<xsd:documentation>PRONUNCIADA PARA PAGO POR CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:documentation>LIQUIDADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTPersona">
+		<xsd:sequence>
+			<xsd:element name="apellido_paterno" type="xsd:string"/>
+			<xsd:element name="apellido_materno" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="nombres" type="xsd:string"/>
+			<xsd:element name="rut" type="STRut"/>
+			<xsd:element name="fecha_nacimiento" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="edad" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="sexo" type="STSexo" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STSexo">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES DE SEXO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>MASCULINO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>FEMENINO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STSiNo">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES DE SI Y NO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>SI</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>NO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_licencia">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE LICENCIA MEDICA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>ENFERMEDAD O ACCIDENTE COMUN</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>PRORROGA MEDICINA PREVENTIVA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>LICENCIA MATERNAL PRE Y POST NATAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>ENFERMEDAD GRAVE DE HIJO MENOR DE 1 AÑO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>ACCIDENTE DEL TRABAJO O DEL TRAYECTO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>ENFERMEDAD PROFESIONAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>PATOLOGIA DEL EMBARAZO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_reposo">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES DE CARACTERISTICA DEL REPOSO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>REPOSO LABORAL TOTAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>REPOSO LABORAL PARCIAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STJornada_reposo">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES PARA JORNADA DE REPOSO PARCIAL</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>MAÑANA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>TARDE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>NOCHE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTLugar_reposo">
+		<xsd:annotation>
+			<xsd:documentation>DATOS DEL LUGAR DEL REPOSO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="codigo_lugar_reposo" type="STTipo_lugar_reposo"/>
+			<xsd:element name="direccion_reposo" type="CTDireccion"/>
+			<xsd:element name="justifica_domicilio" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STTipo_lugar_reposo">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE LUGAR DEL REPOSO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>SU DOMICILIO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>HOSPITAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>OTRO DOMICILIO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTDireccion">
+		<xsd:sequence>
+			<xsd:element name="calle" type="xsd:string"/>
+			<xsd:element name="numero" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="depto" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="comuna" type="STCodigo_comuna"/>
+			<xsd:element name="ciudad" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="pais" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STTipo_profesional">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES PARA EL TIPO DE PROFESIONAL</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>MEDICO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>DENTISTA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>MATRONA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STEmail">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="([\.a-zA-Z0-9_\-])+@([a-zA-Z0-9_\-])+(([a-zA-Z0-9_\-])*\.([a-zA-Z0-9_\-])+)+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STN_resolucion">
+		<xsd:annotation>
+			<xsd:documentation>NUMERO DE RESOLUCION (9..9-9..9)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+			<xsd:minLength value="3"/>
+			<xsd:pattern value="[\d]*-[\d]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STContinuacion">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES QUE INDICAN SI UNA LICENCIA MEDICA ES CONTINUACION DE OTRA ANTERIOR</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>PRIMERA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>CONTINUACION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_resolucion">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES QUE INDICAN EL TIPO DE RESOLUCION DE LA LICENCIA MEDICA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>AUTORIZASE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>RECHAZASE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>AMPLIASE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>REDUCESE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>PENDIENTE DE RESOLUCION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STCausa_rechazo">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES QUE INDICAN LA CUASA DE RECHAZO DE LA LICENCIA MEDICA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>REPOSO INJUSTIFICADO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>DIAGNOSTICO IRRECUPERABLE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>FUERA DE PLAZO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>INCUMPLIMIENTO REPOSO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>OTRO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_subsidio">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES PARA EL TIPO DE DERECHO A SUBSIDIO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>CON DERECHO A SUBSIDIO UNA VEZ VERIFICADOS LOS REQUISITOS DISPUESTOS EN EL D.F.L. Nº 44/78 Y LEY Nº 16744</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>CON DERECHO A SUBSIDIO DE CARGO DEL EMPLEADOR O ENTIDAD RESPONSABLE ART. 56 DS Nº 3/84</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>SIN DERECHO A SUBSIDIO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTTelefono">
+		<xsd:annotation>
+			<xsd:documentation>NUMERO TELEFONICO (PAIS, AREA, TELEFONO)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="telefono" type="xsd:integer"/>
+		</xsd:sequence>
+		<xsd:attribute name="codigo_pais" type="xsd:integer" use="optional"/>
+		<xsd:attribute name="codigo_area" type="xsd:integer" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="STActividad_laboral">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES DE ACTIVIDADES LABORALES DEL TRABAJADOR</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:documentation>AGRICULTURA, SERVICIOS AGRICOLAS, SILVICULTURA Y PESCA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>MINAS, PETROLEOS Y CANTERAS</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>INDUSTRIAS MANUFACTURERAS</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>CONSTRUCCION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>ELECTRICIDAD, GAS Y AGUA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>COMERCIO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>TRANSPORTE, ALMACENAMIENTO Y COMUNICACIONES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>FINANZAS, SEGUROS BIENES MUEBLES Y SERVICIOS TECNICOS, PROFESIONALES Y OTROS</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:documentation>SERVICIOS ESTATALES, SOCIALES, PERSONALES E INTERNACIONALES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:documentation>ACTIVIDAD NO ESPECIFICADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STOcupacion">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES DE OCUPACIONES LABORALES DEL TRABAJADOR</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>EJECUTIVO O DIRECTIVO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>PROFESOR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>OTRO PROFESIONAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14">
+				<xsd:annotation>
+					<xsd:documentation>TECNICO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:documentation>VENDEDOR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="16">
+				<xsd:annotation>
+					<xsd:documentation>ADMINISTRATIVO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="17">
+				<xsd:annotation>
+					<xsd:documentation>OPERARIO, TRABAJADOR MANUAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="18">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR DE CASA PARTICULAR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="19">
+				<xsd:annotation>
+					<xsd:documentation>OTRO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STRegimen_previsional">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE REGIEM PREVISIONAL</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>D.L. 3501 INP</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>D.L. 3500 A.F.P.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STCalidad_trabajador">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE CALIDAD DEL TRABAJADOR</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR SECTOR PUBLICO AFECTO A LEY 18.834</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR SECTOR PÚBLICO NO AFECTO A LEY 18.834</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR DEPENDIENTE SECTOR PRIVADO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR INDEPENDIENTE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STEntidad_pagadora">
+		<xsd:annotation>
+			<xsd:documentation>OPCIONES PARA EL TIPO DE SUBSIDIO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>SERVICIO DE SALUD</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>ISAPRE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>EMPLEADOR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>SERVICIO DE SALUD</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>MUTUAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>INP</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>EMPLEADOR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<!--  Subsidio para licencias tipo 1,2,3,4 o 7 - A,B,C,D   -->
+			<!--  Subsidio para licencias tipo 5 o 6 - E,F,G,H   -->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTRemuneracion">
+		<xsd:sequence>
+			<xsd:element name="codigo_prevision_rem_ant" type="xsd:integer"/>
+			<xsd:element name="ano_mes_rem_ant" type="xsd:gYearMonth"/>
+			<xsd:element name="ndias_rem_ant" type="xsd:integer"/>
+			<xsd:element name="monto_imponible_rem_ant" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_total_rem_ant" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_incapacidad_rem_ant" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="ndias_incapacidad_rem_ant" type="xsd:integer" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CTLicencia_anterior">
+		<xsd:sequence>
+			<xsd:element name="lma_ndias" type="xsd:integer"/>
+			<xsd:element name="lma_fecha_desde" type="xsd:date"/>
+			<xsd:element name="lma_fecha_hasta" type="xsd:date"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STTipo_pronunciamiento">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE PRONUNCIAMIENTO POR PARTE DE LAS ENTIDADES</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>PRONUNCIAMIENTO INICIAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>RECONSIDERACION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>REDICTAMEN</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STMotivo_norecepcion">
+		<xsd:annotation>
+			<xsd:documentation>CAUSAS POSIBLES DE NO RECEPCION DE LA LICENCIA MEDICA ELECTRONICA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>INEXISTENCIA DE RELACION LABORAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>RELACION LABORAL TERMINADA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR CON PERMISO SIN GOCE DE SUELDO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>TRABAJADOR SECTOR PUBLICO CON FERIADO LEGAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>OTRAS RAZONES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTHuellaDigital">
+		<xsd:annotation>
+			<xsd:documentation>
+        Una huella digital, incluye:
+        - El RUT de la persona que firma (informativo, se puede inferir de la huella).
+        - La huella digital en formato WSQ y codificada en "Base 64".
+        - El hash de la parte del documento que se esta firmando.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="rut" type="STRut"/>
+			<xsd:element name="huella" type="xsd:base64Binary"/>
+			<xsd:element name="hash" type="xsd:base64Binary"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CTFirma">
+		<xsd:annotation>
+			<xsd:documentation>
+        Una firma digital valida para la LME, incluye:
+        - Una descripcion: solo informativa, para hacer el XML mas facil de leer.
+          La idea es que incluya informacion descriptiva de la firma, como a quien pertenece
+          y a que entidad representa (esta informacion es posible extraerla desde la firma misma).
+        - La firma: que es una huella digital (CTHuellaDigital) o una firma digital (ds:Signature)
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="descripcion" type="xsd:string"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="huella_digital" type="CTHuellaDigital"/>
+				<xsd:element ref="ds:Signature"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="CTEstado">
+		<xsd:sequence>
+			<xsd:element name="estado_licencia" type="STEstado_licencia"/>
+			<xsd:element name="fecha_estado" type="xsd:dateTime"/>
+		</xsd:sequence>
+		<xsd:attribute name="motivo_norecepcion" type="STMotivo_norecepcion" use="optional"/>
+		<xsd:attribute name="fecha_termino_relacion" type="xsd:date" use="optional"/>
+		<xsd:attribute name="emp_rut" type="STRut" use="optional"/>
+		<xsd:attribute name="codigo_tramitacion_CCAF" type="STCodigoCCAF"/>
+		<xsd:attribute name="motivo_devolucion_CCAF" type="STMotivo_devolucionCCAF" use="optional"/>
+		<xsd:attribute name="motivo_devolucion_CCAF_otro" type="xsd:string" use="optional"/>
+		<xsd:attribute name="tipo_liquidacion_CCAF" type="STTipo_liquidacionCCAF" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="STCodigo_entidad">
+		<xsd:annotation>
+			<xsd:documentation>ENTIDADES QUE SE PUEDEN PRONUNCIAR SOBRE UNA LME</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>61603000-0 : FONASA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="57">
+				<xsd:annotation>
+					<xsd:documentation>81461700-9 : PROMEPART</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="63">
+				<xsd:annotation>
+					<xsd:documentation>70905700-6 : ISAPRE FUSAT</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="67">
+				<xsd:annotation>
+					<xsd:documentation>94954000-6 : COLMENA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="68">
+				<xsd:annotation>
+					<xsd:documentation>89441300-K : RIO BLANCO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="70">
+				<xsd:annotation>
+					<xsd:documentation>95078000-2 : NORMEDICA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="71">
+				<xsd:annotation>
+					<xsd:documentation>96856780-2 : CONSALUD ( ACTUALMENTE OPERA CON CODIGO "107" EN SISTEMA DE SALUD )</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="76">
+				<xsd:annotation>
+					<xsd:documentation>71235700-2 : FUNDACION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="78">
+				<xsd:annotation>
+					<xsd:documentation>96501450-0 : CRUZ BLANCA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="80">
+				<xsd:annotation>
+					<xsd:documentation>96502530-8 : VIDA TRES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="81">
+				<xsd:annotation>
+					<xsd:documentation>96504160-5 : NUEVA MASVIDA S.A.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="85">
+				<xsd:annotation>
+					<xsd:documentation>79727230-2 : CTC - ISTEL S.A.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="88">
+				<xsd:annotation>
+					<xsd:documentation>96522500-5 : MASVIDA S.A.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="99">
+				<xsd:annotation>
+					<xsd:documentation>96572800-7 : BANMEDICA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="108">
+				<xsd:annotation>
+					<xsd:documentation>96936100-0 : ALEMANA SALUD</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="94">
+				<xsd:annotation>
+					<xsd:documentation>79906120-1 : CRUZ DEL NORTE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="65">
+				<xsd:annotation>
+					<xsd:documentation>79566720-2 : CHUQUICAMATA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="62">
+				<xsd:annotation>
+					<xsd:documentation>76521250-2 : SAN LORENZO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STCodigoCCAF">
+		<xsd:annotation>
+			<xsd:documentation>CODIGO DE TRAMITACION DE LME ASOCIADOS A CCAF</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="10100">
+				<xsd:annotation>
+					<xsd:documentation>NO SE TRAMITA EN CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10101">
+				<xsd:annotation>
+					<xsd:documentation>SE TRAMITA EN CCAF 18 DE SEPTIEMBRE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10102">
+				<xsd:annotation>
+					<xsd:documentation>SE TRAMITA EN CCAF LOS ANDES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10103">
+				<xsd:annotation>
+					<xsd:documentation>SE TRAMITA EN CCAF GABRIELA MISTRAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10105">
+				<xsd:annotation>
+					<xsd:documentation>SE TRAMITA EN CCAF LA ARAUCANA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10106">
+				<xsd:annotation>
+					<xsd:documentation>SE TRAMITA EN CCAF LOS HEROES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTHaberes">
+		<xsd:sequence>
+			<xsd:element name="detalle" type="CTDetalleHaber" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="archivo" type="CTDireccion_archivo" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CTDireccion_archivo">
+		<xsd:sequence>
+			<xsd:element name="tipo_archivo" type="STTipo_archivo"/>
+			<xsd:element name="url_archivo" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STTipo_archivo">
+		<xsd:annotation>
+			<xsd:documentation>TIPOS DE ARCHIVO QUE SE ADJUNTAN EN LA INFORMACION COMPLEMENTARIA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>LIQUIDACION DE SUELDO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>COTIZACION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>CONTRATO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>OTRO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTDetalleHaber">
+		<xsd:sequence>
+			<xsd:element name="ano_mes_renta" type="xsd:gYearMonth"/>
+			<xsd:element name="nombre_haber" type="xsd:string"/>
+			<xsd:element name="monto_haber" type="xsd:integer"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STCodigoOperador">
+		<xsd:annotation>
+			<xsd:documentation>CODIGOS DEFINIDOS POR FONASA PARA LOS OPERADORES ACTUALES</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>I-MED</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>MEDIPASS</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>MICROSYSTEM</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTLiquidacion">
+		<xsd:sequence>
+			<xsd:element name="periodo_renta" type="xsd:gYearMonth"/>
+			<xsd:element name="monto_subsidio_diario" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_aporte_pensiones" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_aporte_salud" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_seguro_Cesantia" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="monto_apagar_subsidio" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="fecha_desde_liquidacion" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="fecha_hasta_liquidacion" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="fecha_pago_probable" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="ndias_apagar_subsidios" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="ndias_apagar_prevision" type="xsd:integer" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="tipo_liquidacion_CCAF" type="STTipo_liquidacionCCAF"/>
+		<xsd:attribute name="evento_liquidacion_CCAF" type="STEvento_liquidacionCCAF"/>
+	</xsd:complexType>
+	<xsd:simpleType name="STCodigo_comuna">
+		<xsd:annotation>
+			<xsd:documentation>CODIGOS DE COMUNAS</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="15101">
+				<xsd:annotation>
+					<xsd:documentation>Arica</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15102">
+				<xsd:annotation>
+					<xsd:documentation>Camarones</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15201">
+				<xsd:annotation>
+					<xsd:documentation>Putre</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15202">
+				<xsd:annotation>
+					<xsd:documentation>General Lagos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01101">
+				<xsd:annotation>
+					<xsd:documentation>Iquique</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01107">
+				<xsd:annotation>
+					<xsd:documentation>Alto Hospicio</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01401">
+				<xsd:annotation>
+					<xsd:documentation>Pozo Almonte</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01402">
+				<xsd:annotation>
+					<xsd:documentation>Camiña</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01403">
+				<xsd:annotation>
+					<xsd:documentation>Colchane</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01404">
+				<xsd:annotation>
+					<xsd:documentation>Huara</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="01405">
+				<xsd:annotation>
+					<xsd:documentation>Pica</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02101">
+				<xsd:annotation>
+					<xsd:documentation>Antofagasta</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02102">
+				<xsd:annotation>
+					<xsd:documentation>Mejillones</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02103">
+				<xsd:annotation>
+					<xsd:documentation>Sierra Gorda</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02104">
+				<xsd:annotation>
+					<xsd:documentation>Taltal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02201">
+				<xsd:annotation>
+					<xsd:documentation>Calama</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02202">
+				<xsd:annotation>
+					<xsd:documentation>Ollagüe</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02203">
+				<xsd:annotation>
+					<xsd:documentation>San Pedro de Atacama</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02301">
+				<xsd:annotation>
+					<xsd:documentation>Tocopilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="02302">
+				<xsd:annotation>
+					<xsd:documentation>María Elena</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03101">
+				<xsd:annotation>
+					<xsd:documentation>Copiapó</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03102">
+				<xsd:annotation>
+					<xsd:documentation>Caldera</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03103">
+				<xsd:annotation>
+					<xsd:documentation>Tierra Amarilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03201">
+				<xsd:annotation>
+					<xsd:documentation>Chañaral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03202">
+				<xsd:annotation>
+					<xsd:documentation>Diego de Almagro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03301">
+				<xsd:annotation>
+					<xsd:documentation>Vallenar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03302">
+				<xsd:annotation>
+					<xsd:documentation>Alto del Carmen</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03303">
+				<xsd:annotation>
+					<xsd:documentation>Freirina</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="03304">
+				<xsd:annotation>
+					<xsd:documentation>Huasco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04101">
+				<xsd:annotation>
+					<xsd:documentation>La Serena</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04102">
+				<xsd:annotation>
+					<xsd:documentation>Coquimbo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04103">
+				<xsd:annotation>
+					<xsd:documentation>Andacollo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04104">
+				<xsd:annotation>
+					<xsd:documentation>La Higuera</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04105">
+				<xsd:annotation>
+					<xsd:documentation>Paiguano</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04106">
+				<xsd:annotation>
+					<xsd:documentation>Vicuña</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04201">
+				<xsd:annotation>
+					<xsd:documentation>Illapel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04202">
+				<xsd:annotation>
+					<xsd:documentation>Canela</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04203">
+				<xsd:annotation>
+					<xsd:documentation>Los Vilos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04204">
+				<xsd:annotation>
+					<xsd:documentation>Salamanca</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04301">
+				<xsd:annotation>
+					<xsd:documentation>Ovalle</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04302">
+				<xsd:annotation>
+					<xsd:documentation>Combarbalá</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04303">
+				<xsd:annotation>
+					<xsd:documentation>Monte Patria</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04304">
+				<xsd:annotation>
+					<xsd:documentation>Punitaqui</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="04305">
+				<xsd:annotation>
+					<xsd:documentation>Río Hurtado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05101">
+				<xsd:annotation>
+					<xsd:documentation>Valparaíso</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05102">
+				<xsd:annotation>
+					<xsd:documentation>Casablanca</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05103">
+				<xsd:annotation>
+					<xsd:documentation>Concón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05104">
+				<xsd:annotation>
+					<xsd:documentation>Juan Fernández </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05105">
+				<xsd:annotation>
+					<xsd:documentation>Puchuncaví</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05106">
+				<xsd:annotation>
+					<xsd:documentation>Quilpué</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 05801</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05107">
+				<xsd:annotation>
+					<xsd:documentation>Quintero</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05108">
+				<xsd:annotation>
+					<xsd:documentation>Villa Alemana</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 05804</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05109">
+				<xsd:annotation>
+					<xsd:documentation>Viña del Mar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05201">
+				<xsd:annotation>
+					<xsd:documentation>Isla de Pascua</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05301">
+				<xsd:annotation>
+					<xsd:documentation>Los Andes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05302">
+				<xsd:annotation>
+					<xsd:documentation>Calle Larga</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05303">
+				<xsd:annotation>
+					<xsd:documentation>Rinconada</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05304">
+				<xsd:annotation>
+					<xsd:documentation>San Esteban</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05401">
+				<xsd:annotation>
+					<xsd:documentation>La Ligua  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05402">
+				<xsd:annotation>
+					<xsd:documentation>Cabildo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05403">
+				<xsd:annotation>
+					<xsd:documentation>Papudo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05404">
+				<xsd:annotation>
+					<xsd:documentation>Petorca   </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05405">
+				<xsd:annotation>
+					<xsd:documentation>Zapallar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05501">
+				<xsd:annotation>
+					<xsd:documentation>Quillota</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05502">
+				<xsd:annotation>
+					<xsd:documentation>Calera</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05503">
+				<xsd:annotation>
+					<xsd:documentation>Hijuelas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05504">
+				<xsd:annotation>
+					<xsd:documentation>La Cruz</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05505">
+				<xsd:annotation>
+					<xsd:documentation>Limache</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 05802</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05506">
+				<xsd:annotation>
+					<xsd:documentation>Nogales</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05507">
+				<xsd:annotation>
+					<xsd:documentation>Olmué</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 05803</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05601">
+				<xsd:annotation>
+					<xsd:documentation>San Antonio</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05602">
+				<xsd:annotation>
+					<xsd:documentation>Algarrobo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05603">
+				<xsd:annotation>
+					<xsd:documentation>Cartagena</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05604">
+				<xsd:annotation>
+					<xsd:documentation>El Quisco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05605">
+				<xsd:annotation>
+					<xsd:documentation>El Tabo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05606">
+				<xsd:annotation>
+					<xsd:documentation>Santo Domingo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05701">
+				<xsd:annotation>
+					<xsd:documentation>San Felipe</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05702">
+				<xsd:annotation>
+					<xsd:documentation>Catemu</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05703">
+				<xsd:annotation>
+					<xsd:documentation>Llaillay</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05704">
+				<xsd:annotation>
+					<xsd:documentation>Panquehue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05705">
+				<xsd:annotation>
+					<xsd:documentation>Putaendo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05706">
+				<xsd:annotation>
+					<xsd:documentation>Santa María</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05801">
+				<xsd:annotation>
+					<xsd:documentation>Quilpué</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05802">
+				<xsd:annotation>
+					<xsd:documentation>Limache</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05803">
+				<xsd:annotation>
+					<xsd:documentation>Olmué</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="05804">
+				<xsd:annotation>
+					<xsd:documentation>Villa Alemana</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06101">
+				<xsd:annotation>
+					<xsd:documentation>Rancagua</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06102">
+				<xsd:annotation>
+					<xsd:documentation>Codegua</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06103">
+				<xsd:annotation>
+					<xsd:documentation>Coinco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06104">
+				<xsd:annotation>
+					<xsd:documentation>Coltauco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06105">
+				<xsd:annotation>
+					<xsd:documentation>Doñihue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06106">
+				<xsd:annotation>
+					<xsd:documentation>Graneros</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06107">
+				<xsd:annotation>
+					<xsd:documentation>Las Cabras</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06108">
+				<xsd:annotation>
+					<xsd:documentation>Machalí</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06109">
+				<xsd:annotation>
+					<xsd:documentation>Malloa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06110">
+				<xsd:annotation>
+					<xsd:documentation>Mostazal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06111">
+				<xsd:annotation>
+					<xsd:documentation>Olivar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06112">
+				<xsd:annotation>
+					<xsd:documentation>Peumo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06113">
+				<xsd:annotation>
+					<xsd:documentation>Pichidegua</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06114">
+				<xsd:annotation>
+					<xsd:documentation>Quinta de Tilcoco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06115">
+				<xsd:annotation>
+					<xsd:documentation>Rengo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06116">
+				<xsd:annotation>
+					<xsd:documentation>Requínoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06117">
+				<xsd:annotation>
+					<xsd:documentation>San Vicente</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06201">
+				<xsd:annotation>
+					<xsd:documentation>Pichilemu</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06202">
+				<xsd:annotation>
+					<xsd:documentation>La Estrella </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06203">
+				<xsd:annotation>
+					<xsd:documentation>Litueche</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06204">
+				<xsd:annotation>
+					<xsd:documentation>Marchihue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06205">
+				<xsd:annotation>
+					<xsd:documentation>Navidad    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06206">
+				<xsd:annotation>
+					<xsd:documentation>Paredones</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06301">
+				<xsd:annotation>
+					<xsd:documentation>San Fernando</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06302">
+				<xsd:annotation>
+					<xsd:documentation>Chépica</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06303">
+				<xsd:annotation>
+					<xsd:documentation>Chimbarongo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06304">
+				<xsd:annotation>
+					<xsd:documentation>Lolol</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06305">
+				<xsd:annotation>
+					<xsd:documentation>Nancagua</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06306">
+				<xsd:annotation>
+					<xsd:documentation>Palmilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06307">
+				<xsd:annotation>
+					<xsd:documentation>Peralillo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06308">
+				<xsd:annotation>
+					<xsd:documentation>Placilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06309">
+				<xsd:annotation>
+					<xsd:documentation>Pumanque</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="06310">
+				<xsd:annotation>
+					<xsd:documentation>Santa Cruz</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07101">
+				<xsd:annotation>
+					<xsd:documentation>Talca</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07102">
+				<xsd:annotation>
+					<xsd:documentation>Constitución</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07103">
+				<xsd:annotation>
+					<xsd:documentation>Curepto</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07104">
+				<xsd:annotation>
+					<xsd:documentation>Empedrado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07105">
+				<xsd:annotation>
+					<xsd:documentation>Maule</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07106">
+				<xsd:annotation>
+					<xsd:documentation>Pelarco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07107">
+				<xsd:annotation>
+					<xsd:documentation>Pencahue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07108">
+				<xsd:annotation>
+					<xsd:documentation>Río Claro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07109">
+				<xsd:annotation>
+					<xsd:documentation>San Clemente</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07110">
+				<xsd:annotation>
+					<xsd:documentation>San Rafael</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07201">
+				<xsd:annotation>
+					<xsd:documentation>Cauquenes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07202">
+				<xsd:annotation>
+					<xsd:documentation>Chanco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07203">
+				<xsd:annotation>
+					<xsd:documentation>Pelluhue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07301">
+				<xsd:annotation>
+					<xsd:documentation>Curicó</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07302">
+				<xsd:annotation>
+					<xsd:documentation>Hualañé</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07303">
+				<xsd:annotation>
+					<xsd:documentation>Licantén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07304">
+				<xsd:annotation>
+					<xsd:documentation>Molina</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07305">
+				<xsd:annotation>
+					<xsd:documentation>Rauco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07306">
+				<xsd:annotation>
+					<xsd:documentation>Romeral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07307">
+				<xsd:annotation>
+					<xsd:documentation>Sagrada Familia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07308">
+				<xsd:annotation>
+					<xsd:documentation>Teno</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07309">
+				<xsd:annotation>
+					<xsd:documentation>Vichuquén </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07401">
+				<xsd:annotation>
+					<xsd:documentation>Linares</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07402">
+				<xsd:annotation>
+					<xsd:documentation>Colbún</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07403">
+				<xsd:annotation>
+					<xsd:documentation>Longaví</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07404">
+				<xsd:annotation>
+					<xsd:documentation>Parral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07405">
+				<xsd:annotation>
+					<xsd:documentation>Retiro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07406">
+				<xsd:annotation>
+					<xsd:documentation>San Javier</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07407">
+				<xsd:annotation>
+					<xsd:documentation>Villa Alegre</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="07408">
+				<xsd:annotation>
+					<xsd:documentation>Yerbas Buenas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08101">
+				<xsd:annotation>
+					<xsd:documentation>Concepción</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08102">
+				<xsd:annotation>
+					<xsd:documentation>Coronel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08103">
+				<xsd:annotation>
+					<xsd:documentation>Chiguayante</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08104">
+				<xsd:annotation>
+					<xsd:documentation>Florida</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08105">
+				<xsd:annotation>
+					<xsd:documentation>Hualqui</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08106">
+				<xsd:annotation>
+					<xsd:documentation>Lota </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08107">
+				<xsd:annotation>
+					<xsd:documentation>Penco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08108">
+				<xsd:annotation>
+					<xsd:documentation>San Pedro de la Paz</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08109">
+				<xsd:annotation>
+					<xsd:documentation>Santa Juana</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08110">
+				<xsd:annotation>
+					<xsd:documentation>Talcahuano</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08111">
+				<xsd:annotation>
+					<xsd:documentation>Tomé</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08112">
+				<xsd:annotation>
+					<xsd:documentation>H ualpén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08201">
+				<xsd:annotation>
+					<xsd:documentation>Lebu</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08202">
+				<xsd:annotation>
+					<xsd:documentation>Arauco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08203">
+				<xsd:annotation>
+					<xsd:documentation>Cañete</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08204">
+				<xsd:annotation>
+					<xsd:documentation>Contulmo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08205">
+				<xsd:annotation>
+					<xsd:documentation>Curanilahue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08206">
+				<xsd:annotation>
+					<xsd:documentation>Los Alamos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08207">
+				<xsd:annotation>
+					<xsd:documentation>Tirúa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08301">
+				<xsd:annotation>
+					<xsd:documentation>Los Angeles</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08302">
+				<xsd:annotation>
+					<xsd:documentation>Antuco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08303">
+				<xsd:annotation>
+					<xsd:documentation>Cabrero</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08304">
+				<xsd:annotation>
+					<xsd:documentation>Laja</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08305">
+				<xsd:annotation>
+					<xsd:documentation>Mulchén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08306">
+				<xsd:annotation>
+					<xsd:documentation>Nacimiento</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08307">
+				<xsd:annotation>
+					<xsd:documentation>Negrete</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08308">
+				<xsd:annotation>
+					<xsd:documentation>Quilaco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08309">
+				<xsd:annotation>
+					<xsd:documentation>Quilleco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08310">
+				<xsd:annotation>
+					<xsd:documentation>San Rosendo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08311">
+				<xsd:annotation>
+					<xsd:documentation>Santa Bárbara</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08312">
+				<xsd:annotation>
+					<xsd:documentation>Tucapel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08313">
+				<xsd:annotation>
+					<xsd:documentation>Yumbel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08314">
+				<xsd:annotation>
+					<xsd:documentation>Alto Biobío</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08401">
+				<xsd:annotation>
+					<xsd:documentation>Chillán</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16101</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08402">
+				<xsd:annotation>
+					<xsd:documentation>Bulnes</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16102</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08403">
+				<xsd:annotation>
+					<xsd:documentation>Cobquecura</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16202</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08404">
+				<xsd:annotation>
+					<xsd:documentation>Coelemu</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16203</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08405">
+				<xsd:annotation>
+					<xsd:documentation>Coihueco</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16302</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08406">
+				<xsd:annotation>
+					<xsd:documentation>Chillán Viejo</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16103</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08407">
+				<xsd:annotation>
+					<xsd:documentation>El Carmen</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16104</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08408">
+				<xsd:annotation>
+					<xsd:documentation>Ninhue</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16204</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08409">
+				<xsd:annotation>
+					<xsd:documentation>Ñiquén</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16303</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08410">
+				<xsd:annotation>
+					<xsd:documentation>Pemuco</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16105</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08411">
+				<xsd:annotation>
+					<xsd:documentation>Pinto</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16106</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08412">
+				<xsd:annotation>
+					<xsd:documentation>Portezuelo</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16205</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08413">
+				<xsd:annotation>
+					<xsd:documentation>Quillón</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16107</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08414">
+				<xsd:annotation>
+					<xsd:documentation>Quirihue</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16201</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08415">
+				<xsd:annotation>
+					<xsd:documentation>Ránquil </xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16206</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08416">
+				<xsd:annotation>
+					<xsd:documentation>San Carlos</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16301</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08417">
+				<xsd:annotation>
+					<xsd:documentation>San Fabián</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16304</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08418">
+				<xsd:annotation>
+					<xsd:documentation>San Ignacio</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16108</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08419">
+				<xsd:annotation>
+					<xsd:documentation>San Nicolás</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16305</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08420">
+				<xsd:annotation>
+					<xsd:documentation>Treguaco </xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16207</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="08421">
+				<xsd:annotation>
+					<xsd:documentation>Yungay</xsd:documentation>
+					<xsd:documentation>Uso desaconsejado, utilizar código 16109</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09101">
+				<xsd:annotation>
+					<xsd:documentation>Temuco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09102">
+				<xsd:annotation>
+					<xsd:documentation>Carahue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09103">
+				<xsd:annotation>
+					<xsd:documentation>Cunco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09104">
+				<xsd:annotation>
+					<xsd:documentation>Curarrehue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09105">
+				<xsd:annotation>
+					<xsd:documentation>Freire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09106">
+				<xsd:annotation>
+					<xsd:documentation>Galvarino</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09107">
+				<xsd:annotation>
+					<xsd:documentation>Gorbea</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09108">
+				<xsd:annotation>
+					<xsd:documentation>Lautaro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09109">
+				<xsd:annotation>
+					<xsd:documentation>Loncoche</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09110">
+				<xsd:annotation>
+					<xsd:documentation>Melipeuco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09111">
+				<xsd:annotation>
+					<xsd:documentation>Nueva Imperial</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09112">
+				<xsd:annotation>
+					<xsd:documentation>Padre Las Casas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09113">
+				<xsd:annotation>
+					<xsd:documentation>Perquenco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09114">
+				<xsd:annotation>
+					<xsd:documentation>Pitrufquén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09115">
+				<xsd:annotation>
+					<xsd:documentation>Pucón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09116">
+				<xsd:annotation>
+					<xsd:documentation>Saavedra</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09117">
+				<xsd:annotation>
+					<xsd:documentation>Teodoro Schmidt</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09118">
+				<xsd:annotation>
+					<xsd:documentation>Toltén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09119">
+				<xsd:annotation>
+					<xsd:documentation>Vilcún</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09120">
+				<xsd:annotation>
+					<xsd:documentation>Villarrica</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09121">
+				<xsd:annotation>
+					<xsd:documentation>Cholchol</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09201">
+				<xsd:annotation>
+					<xsd:documentation>Angol</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09202">
+				<xsd:annotation>
+					<xsd:documentation>Collipulli</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09203">
+				<xsd:annotation>
+					<xsd:documentation>Curacautín</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09204">
+				<xsd:annotation>
+					<xsd:documentation>Ercilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09205">
+				<xsd:annotation>
+					<xsd:documentation>Lonquimay</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09206">
+				<xsd:annotation>
+					<xsd:documentation>Los Sauces</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09207">
+				<xsd:annotation>
+					<xsd:documentation>Lumaco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09208">
+				<xsd:annotation>
+					<xsd:documentation>Purén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09209">
+				<xsd:annotation>
+					<xsd:documentation>Renaico</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09210">
+				<xsd:annotation>
+					<xsd:documentation>Traiguén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="09211">
+				<xsd:annotation>
+					<xsd:documentation>Victoria</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14101">
+				<xsd:annotation>
+					<xsd:documentation>Valdivia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14102">
+				<xsd:annotation>
+					<xsd:documentation>Corral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14103">
+				<xsd:annotation>
+					<xsd:documentation>Lanco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14104">
+				<xsd:annotation>
+					<xsd:documentation>Los Lagos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14105">
+				<xsd:annotation>
+					<xsd:documentation>Máfil</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14106">
+				<xsd:annotation>
+					<xsd:documentation>Mariquina</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14107">
+				<xsd:annotation>
+					<xsd:documentation>Paillaco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14108">
+				<xsd:annotation>
+					<xsd:documentation>Panguipulli</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14201">
+				<xsd:annotation>
+					<xsd:documentation>La Unión</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14202">
+				<xsd:annotation>
+					<xsd:documentation>Futrono</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14203">
+				<xsd:annotation>
+					<xsd:documentation>Lago Ranco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14204">
+				<xsd:annotation>
+					<xsd:documentation>Río Bueno</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10101">
+				<xsd:annotation>
+					<xsd:documentation>Puerto Montt</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10102">
+				<xsd:annotation>
+					<xsd:documentation>Calbuco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10103">
+				<xsd:annotation>
+					<xsd:documentation>Cochamó</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10104">
+				<xsd:annotation>
+					<xsd:documentation>Fresia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10105">
+				<xsd:annotation>
+					<xsd:documentation>Frutillar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10106">
+				<xsd:annotation>
+					<xsd:documentation>Los Muermos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10107">
+				<xsd:annotation>
+					<xsd:documentation>Llanquihue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10108">
+				<xsd:annotation>
+					<xsd:documentation>Maullín</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10109">
+				<xsd:annotation>
+					<xsd:documentation>Puerto Varas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10201">
+				<xsd:annotation>
+					<xsd:documentation>Castro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10202">
+				<xsd:annotation>
+					<xsd:documentation>Ancud</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10203">
+				<xsd:annotation>
+					<xsd:documentation>Chonchi</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10204">
+				<xsd:annotation>
+					<xsd:documentation>Curaco de Vélez</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10205">
+				<xsd:annotation>
+					<xsd:documentation>Dalcahue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10206">
+				<xsd:annotation>
+					<xsd:documentation>Puqueldón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10207">
+				<xsd:annotation>
+					<xsd:documentation>Queilén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10208">
+				<xsd:annotation>
+					<xsd:documentation>Quellón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10209">
+				<xsd:annotation>
+					<xsd:documentation>Quemchi</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10210">
+				<xsd:annotation>
+					<xsd:documentation>Quinchao</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10301">
+				<xsd:annotation>
+					<xsd:documentation>Osorno</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10302">
+				<xsd:annotation>
+					<xsd:documentation>Puerto Octay</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10303">
+				<xsd:annotation>
+					<xsd:documentation>Purranque</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10304">
+				<xsd:annotation>
+					<xsd:documentation>Puyehue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10305">
+				<xsd:annotation>
+					<xsd:documentation>Río Negro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10306">
+				<xsd:annotation>
+					<xsd:documentation>San Juan de la Costa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10307">
+				<xsd:annotation>
+					<xsd:documentation>San Pablo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10401">
+				<xsd:annotation>
+					<xsd:documentation>Chaitén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10402">
+				<xsd:annotation>
+					<xsd:documentation>Futaleufú</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10403">
+				<xsd:annotation>
+					<xsd:documentation>Hualaihué</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10404">
+				<xsd:annotation>
+					<xsd:documentation>Palena</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11101">
+				<xsd:annotation>
+					<xsd:documentation>Coihaique</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11102">
+				<xsd:annotation>
+					<xsd:documentation>Lago Verde</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11201">
+				<xsd:annotation>
+					<xsd:documentation>Aisén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11202">
+				<xsd:annotation>
+					<xsd:documentation>Cisnes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11203">
+				<xsd:annotation>
+					<xsd:documentation>Guaitecas </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11301">
+				<xsd:annotation>
+					<xsd:documentation>Cochrane</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11302">
+				<xsd:annotation>
+					<xsd:documentation>O'Higgins</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11303">
+				<xsd:annotation>
+					<xsd:documentation>Tortel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11401">
+				<xsd:annotation>
+					<xsd:documentation>Chile Chico</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11402">
+				<xsd:annotation>
+					<xsd:documentation>Río Ibáñez</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12101">
+				<xsd:annotation>
+					<xsd:documentation>Punta Arenas</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12102">
+				<xsd:annotation>
+					<xsd:documentation>Laguna Blanca </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12103">
+				<xsd:annotation>
+					<xsd:documentation>Río Verde</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12104">
+				<xsd:annotation>
+					<xsd:documentation>San Gregorio</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12201">
+				<xsd:annotation>
+					<xsd:documentation>Cabo de Hornos (Ex-Navarino)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12202">
+				<xsd:annotation>
+					<xsd:documentation>Antártica</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12301">
+				<xsd:annotation>
+					<xsd:documentation>Porvenir</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12302">
+				<xsd:annotation>
+					<xsd:documentation>Primavera</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12303">
+				<xsd:annotation>
+					<xsd:documentation>Timaukel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12401">
+				<xsd:annotation>
+					<xsd:documentation>Natales</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12402">
+				<xsd:annotation>
+					<xsd:documentation>Torres del Paine</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13101">
+				<xsd:annotation>
+					<xsd:documentation>Santiago</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13102">
+				<xsd:annotation>
+					<xsd:documentation>Cerrillos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13103">
+				<xsd:annotation>
+					<xsd:documentation>Cerro Navia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13104">
+				<xsd:annotation>
+					<xsd:documentation>Conchalí</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13105">
+				<xsd:annotation>
+					<xsd:documentation>El Bosque</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13106">
+				<xsd:annotation>
+					<xsd:documentation>Estación Central</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13107">
+				<xsd:annotation>
+					<xsd:documentation>Huechuraba</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13108">
+				<xsd:annotation>
+					<xsd:documentation>Independencia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13109">
+				<xsd:annotation>
+					<xsd:documentation>La Cisterna</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13110">
+				<xsd:annotation>
+					<xsd:documentation>La Florida</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13111">
+				<xsd:annotation>
+					<xsd:documentation>La Granja</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13112">
+				<xsd:annotation>
+					<xsd:documentation>La Pintana</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13113">
+				<xsd:annotation>
+					<xsd:documentation>La Reina</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13114">
+				<xsd:annotation>
+					<xsd:documentation>Las Condes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13115">
+				<xsd:annotation>
+					<xsd:documentation>Lo Barnechea</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13116">
+				<xsd:annotation>
+					<xsd:documentation>Lo Espejo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13117">
+				<xsd:annotation>
+					<xsd:documentation>Lo Prado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13118">
+				<xsd:annotation>
+					<xsd:documentation>Macul</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13119">
+				<xsd:annotation>
+					<xsd:documentation>Maipú</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13120">
+				<xsd:annotation>
+					<xsd:documentation>Ñuñoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13121">
+				<xsd:annotation>
+					<xsd:documentation>Pedro  Aguirre Cerda</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13122">
+				<xsd:annotation>
+					<xsd:documentation>Peñalolén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13123">
+				<xsd:annotation>
+					<xsd:documentation>Providencia</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13124">
+				<xsd:annotation>
+					<xsd:documentation>Pudahuel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13125">
+				<xsd:annotation>
+					<xsd:documentation>Quilicura</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13126">
+				<xsd:annotation>
+					<xsd:documentation>Quinta Normal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13127">
+				<xsd:annotation>
+					<xsd:documentation>Recoleta</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13128">
+				<xsd:annotation>
+					<xsd:documentation>Renca</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13129">
+				<xsd:annotation>
+					<xsd:documentation>San Joaquín</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13130">
+				<xsd:annotation>
+					<xsd:documentation>San Miguel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13131">
+				<xsd:annotation>
+					<xsd:documentation>San Ramón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13132">
+				<xsd:annotation>
+					<xsd:documentation>Vitacura</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13201">
+				<xsd:annotation>
+					<xsd:documentation>Puente Alto</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13202">
+				<xsd:annotation>
+					<xsd:documentation>Pirque  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13203">
+				<xsd:annotation>
+					<xsd:documentation>San José de Maipo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13301">
+				<xsd:annotation>
+					<xsd:documentation>Colina  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13302">
+				<xsd:annotation>
+					<xsd:documentation>Lampa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13303">
+				<xsd:annotation>
+					<xsd:documentation>Tiltil</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13401">
+				<xsd:annotation>
+					<xsd:documentation>San Bernardo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13402">
+				<xsd:annotation>
+					<xsd:documentation>Buin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13403">
+				<xsd:annotation>
+					<xsd:documentation>Calera de Tango</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13404">
+				<xsd:annotation>
+					<xsd:documentation>Paine</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13501">
+				<xsd:annotation>
+					<xsd:documentation>Melipilla</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13502">
+				<xsd:annotation>
+					<xsd:documentation>Alhué</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13503">
+				<xsd:annotation>
+					<xsd:documentation>Curacaví</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13504">
+				<xsd:annotation>
+					<xsd:documentation>María Pinto </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13505">
+				<xsd:annotation>
+					<xsd:documentation>San Pedro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13601">
+				<xsd:annotation>
+					<xsd:documentation>Talagante</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13602">
+				<xsd:annotation>
+					<xsd:documentation>El Monte</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13603">
+				<xsd:annotation>
+					<xsd:documentation>Isla de Maipo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13604">
+				<xsd:annotation>
+					<xsd:documentation>Padre Hurtado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13605">
+				<xsd:annotation>
+					<xsd:documentation>Peñaflor</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="16101">
+				<xsd:annotation>
+					<xsd:documentation>Chillán</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16102">
+				<xsd:annotation>
+					<xsd:documentation>Bulnes</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>				
+			<xsd:enumeration value="16103">
+				<xsd:annotation>
+					<xsd:documentation>Chillán Viejo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>				
+			<xsd:enumeration value="16104">
+				<xsd:annotation>
+					<xsd:documentation>El Carmen</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16105">
+				<xsd:annotation>
+					<xsd:documentation>Pemuco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16106">
+				<xsd:annotation>
+					<xsd:documentation>Pinto</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>				
+			<xsd:enumeration value="16107">
+				<xsd:annotation>
+					<xsd:documentation>Quillón</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16108">
+				<xsd:annotation>
+					<xsd:documentation>San Ignacio</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16109">
+				<xsd:annotation>
+					<xsd:documentation>Yungay</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16201">
+				<xsd:annotation>
+					<xsd:documentation>Quirihue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16202">
+				<xsd:annotation>
+					<xsd:documentation>Cobquecura</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16203">
+				<xsd:annotation>
+					<xsd:documentation>Coelemu</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16204">
+				<xsd:annotation>
+					<xsd:documentation>Ninhue</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16205">
+				<xsd:annotation>
+					<xsd:documentation>Portezuelo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16206">
+				<xsd:annotation>
+					<xsd:documentation>Ránquil</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16207">
+				<xsd:annotation>
+					<xsd:documentation>Treguaco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16301">
+				<xsd:annotation>
+					<xsd:documentation>San Carlos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16302">
+				<xsd:annotation>
+					<xsd:documentation>Coihueco</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16303">
+				<xsd:annotation>
+					<xsd:documentation>Ñiquén</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>	
+			<xsd:enumeration value="16304">
+				<xsd:annotation>
+					<xsd:documentation>San Fabián</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>				
+			<xsd:enumeration value="16305">
+				<xsd:annotation>
+					<xsd:documentation>San Nicolás</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>				
+			<xsd:enumeration value="99999">
+				<xsd:annotation>
+					<xsd:documentation>Fuera del territorio nacional</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STCodigo_regimen_prevision">
+		<xsd:annotation>
+			<xsd:documentation>CODIGOS DE REGIMEN PREVISIONAL</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="-1">
+				<xsd:annotation>
+					<xsd:documentation>No cotiza A.F.P.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1003">
+				<xsd:annotation>
+					<xsd:documentation>CUPRUM</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1005">
+				<xsd:annotation>
+					<xsd:documentation>HABITAT</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1008">
+				<xsd:annotation>
+					<xsd:documentation>PROVIDA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1032">
+				<xsd:annotation>
+					<xsd:documentation>PLANVITAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1033">
+				<xsd:annotation>
+					<xsd:documentation>CAPITAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1034">
+				<xsd:annotation>
+					<xsd:documentation>MODELO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>C.PREV.EMP.PART. Y ORG. AUX.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>CAJA BANCARIA DE PENSIONES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>CAJA PREV. Y ESTIMULO EMP. BANCO CHILE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>SESSION DE PREVISION BANCO CENTRAL CHILE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>CAJA PREV. ESTIMULO BANCO ESTADO CHILE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>C.PREV. MAR.MERC.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>C.PREV. MAR.MERC.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:documentation>C.PREV. HIPICA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:documentation>SERV. SEG. SOC.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:documentation>C. PREV. EMP. METROP. OBRAS SANIT. DEP. EM.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>C. PREV. EMP. METROP. OBRAS SANIT. DEP. OB.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>C. PREV. FERROCARRILES.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>CANAEMPU</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14">
+				<xsd:annotation>
+					<xsd:documentation>CANAEMPU Y PER.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:documentation>CANAEMPU STGO.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="16">
+				<xsd:annotation>
+					<xsd:documentation>CAMUVAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="17">
+				<xsd:annotation>
+					<xsd:documentation>CAPREMUR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="18">
+				<xsd:annotation>
+					<xsd:documentation>CAPRESOMO</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STMotivo_devolucionCCAF">
+		<xsd:annotation>
+			<xsd:documentation>CODIGOS DE MOTIVOS DE DEVOLUCION DE LME POR PARTE DE LA CCAF, ISAPRE o FONASA</xsd:documentation>
+			<xsd:documentation>CODIGOS DEL 1 AL 10 SON PARA USO EXCLUSIVO DE CCAF PARA DEVOLVER A EMPLEADOR</xsd:documentation>
+			<xsd:documentation>CODIGOS DEL 101 AL 200 SON PARA USO EXCLUSIVO DE ISAPRES PARA DEVOLVER A EMPLEADOR</xsd:documentation>
+			<xsd:documentation>CODIGOS DEL 201 AL 300 SON PARA USO EXCLUSIVO DE COMPIN PARA DEVOLVER A EMPLEADOR</xsd:documentation>
+			<xsd:documentation>CODIGOS DEL 10100 AL 10106 SON PARA USO EXCLUSIVO DE CCAF Y COMPIN PARA ASIGNAR OTRA ENTIDAD PAGADORA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>Empresa no afiliada a CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>No tiene calidad de trabajador dependiente</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>Documento adjuntado no se puede visualizar</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>Liquidación de sueldo no acompañada, o número insuficiente o no legible.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>Cotizaciones previsionales no acompañadas, o número insuficiente o no legible.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>Contrato de Trabajo no acompañado o no legible.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>Trabajador desvinculado y su licencia pierde continuidad</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:documentation>Empresa desafiliada y licencia pierde continuidad</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:documentation>Empresa recién afiliada y presenta licencia continua de otra institución</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:documentation>Cotizaciones registradas en Isapre</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="101">
+				<xsd:annotation>
+					<xsd:documentation>Verificar Estado 3</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="102">
+				<xsd:annotation>
+					<xsd:documentation>Verificar estado 4</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="103">
+				<xsd:annotation>
+					<xsd:documentation>Ausencia o error de datos consignados en la Zona C</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="104">
+				<xsd:annotation>
+					<xsd:documentation>Error Liquidación de sueldo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="105">
+				<xsd:annotation>
+					<xsd:documentation>Error Cotizaciones previsionales</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="106">
+				<xsd:annotation>
+					<xsd:documentation>Error Contrato de Trabajo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="107">
+				<xsd:annotation>
+					<xsd:documentation>Problema en documento adjuntado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="200">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución genérica por parte de la ISAPRE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="201">
+				<xsd:annotation>
+					<xsd:documentation>Verificar estado 3</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="202">
+				<xsd:annotation>
+					<xsd:documentation>Verificar estado 4</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203">
+				<xsd:annotation>
+					<xsd:documentation>Falta contrato de trabajo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="204">
+				<xsd:annotation>
+					<xsd:documentation>Contrato de trabajo incompleto</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="205">
+				<xsd:annotation>
+					<xsd:documentation>Contrato de trabajo no actualizado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="206">
+				<xsd:annotation>
+					<xsd:documentation>Falta certificado de afiliación</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="207">
+				<xsd:annotation>
+					<xsd:documentation>Falta liquidación de sueldo, o información insuficiente o no legible</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="208">
+				<xsd:annotation>
+					<xsd:documentation>Faltan cotizaciones</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="209">
+				<xsd:annotation>
+					<xsd:documentation>Error en RUT del empleador</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="210">
+				<xsd:annotation>
+					<xsd:documentation>Afiliado a ISAPRE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="211">
+				<xsd:annotation>
+					<xsd:documentation>Afiliado a CCAF</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="212">
+				<xsd:annotation>
+					<xsd:documentation>Falta certificado de nacimiento del menor</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="213">
+				<xsd:annotation>
+					<xsd:documentation>Falta epicrisis (recién nacido prematuro, peso inferior a 1.500 gramos o parto múltiple)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="214">
+				<xsd:annotation>
+					<xsd:documentation>Faltan 3 últimas liquidaciones de sueldo, anteriores a la concepción</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="300">
+				<xsd:annotation>
+					<xsd:documentation>Otro</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10100">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a FONASA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10101">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a CCAF 18 DE SEPTIEMBRE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10102">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a CCAF LOS ANDES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10103">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a CCAF GABRIELA MISTRAL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10105">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a CCAF LA ARAUCANA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10106">
+				<xsd:annotation>
+					<xsd:documentation>Causal de devolución porque entidad pagadora no corresponde. Redirecciona a CCAF LOS HEROES</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_liquidacionCCAF">
+		<xsd:annotation>
+			<xsd:documentation>CODIGOS DE TIPOS DE LIQUIDACION PARTE DE LA CCAF</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>LME liquidada con derecho a Subsidio por Incapacidad Laboral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>LME sin derecho a Subsidio por Incapacidad Laboral</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>LME sin documentación que permita liquidación
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CT_ZONA_F">
+		<xsd:sequence>
+			<xsd:element name="firma" type="CTFirma" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="STLetra_caja">
+		<xsd:annotation>
+			<xsd:documentation>LETRAS DE CAJA DE REGIMEN PREVISIONAL</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-K]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STContacto">
+		<xsd:annotation>
+			<xsd:documentation>CANAL DE CONTACTO TRABAJADOR</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>EMAIL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>CELULAR</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>DIRECCION</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STEvento_liquidacionCCAF">
+		<xsd:annotation>
+			<xsd:documentation>Evento asociado al Tipo de Liquidacion</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>Primer Pago al Trabajador</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Siguiente Pago al Trabajador</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Reliquidacion de Pago al Trabajador</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14">
+				<xsd:annotation>
+					<xsd:documentation>Pago a Trabajador Fallecido</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:documentation>Pago a Beneficiario Retencion Judicial</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="21">
+				<xsd:annotation>
+					<xsd:documentation>Licencia Rechazada</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="22">
+				<xsd:annotation>
+					<xsd:documentation>Sin derecho por Otros Motivos</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="31">
+				<xsd:annotation>
+					<xsd:documentation>Sin antecedentes primer aviso</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="32">
+				<xsd:annotation>
+					<xsd:documentation>Sin antecedentes mes 6</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CTPrestador">
+		<xsd:sequence>
+			<xsd:element name="tipo_prestador" type="STTipo_prestador"/>
+			<xsd:element name="rut_prestador" type="STRut"/>
+			<xsd:element name="codigo_publico" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="codigo_interno_operador" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="STTipo_prestador">
+		<xsd:annotation>
+			<xsd:documentation>Tipo de prestador de LME</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>Prestador institucional público</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>Prestador institucional privado</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>Prestador persona natural</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="STTipo_pendiente">
+		<xsd:annotation>
+			<xsd:documentation>CAUSALES DE PENDIENTE DE RESOLUCION</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>P1 : PENDIENTE POR PERITAJE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>P2 : PENDIENTE POR ANTECEDENTES MEDICOS</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation> P3 : PENDIENTE POR FISCALIZACION DOMICILIARIA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation> P4 : PENDIENTE POR FISCALIZACION EMPRESA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,1 @@
+<div id="conectado">usuario<bean:write name="application.userinformation"  property="nombres"/><br/></div>

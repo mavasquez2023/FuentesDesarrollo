@@ -1,0 +1,24 @@
+
+.pg-normal {
+	color: black;
+	font-weight: normal;
+	text-decoration: none;    
+	cursor: pointer;    
+}
+.pg-selected {
+	color: black;
+	font-weight: bold;        
+	text-decoration: underline;
+	cursor: pointer;
+}
+#pageNavPosition{
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 18px;
+	font-weight: normal;        
+	color: black;
+	/* font-weight: bold; */
+	/* text-decoration: underline; */
+	cursor: pointer;      
+}
+
+

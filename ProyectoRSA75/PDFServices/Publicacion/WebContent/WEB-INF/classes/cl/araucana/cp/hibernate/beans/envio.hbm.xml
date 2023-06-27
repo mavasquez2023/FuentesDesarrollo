@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EnvioVO" table="ENVIO">
+    	<id column="ID_ENVIO" name="id">
+            <generator class="sequence">
+                <param name="sequence">S_NEW_ENVIO</param>
+            </generator>
+   		</id>
+   		<property name="idEstado" column="ID_ESTADO" />
+   		<property name="idNodo" column="ID_NODO" />
+   		<property name="idEncargado" column="ID_ENCARGADO" />
+   		<property name="recibido" column="RECIBIDO" />
+   		<property name="duracion" column="DURACION" />
+   		<property name="numNominas" column="N_NOMINAS" />
+   		<property name="numAceptadas" column="ACEPTADAS" />
+    </class>
+</hibernate-mapping>

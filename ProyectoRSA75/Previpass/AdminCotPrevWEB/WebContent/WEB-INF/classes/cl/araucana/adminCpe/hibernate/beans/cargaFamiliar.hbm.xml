@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="CargaFamiliarVO" table="CARGA_FAMILIAR">
+    	<id column="ID_CARGA_FAMILIAR" name="idCargaFamiliar">
+   			<generator class="increment"/>
+   		</id>
+   		<property name="idEntidadCCAF"		column="PK_ID_ENTIDAD_CCAF" />
+   		<property name="rutEmpresa"			column="CUERPO_RUT_EMPRESA" />
+   		<property name="dvEmpresa"			column="DIGITO_EMPRESA" />
+   		<property name="rutTrabajador"		column="CUERPO_RUT_TRABAJADOR" />   		
+   		<property name="dvTrabajador"		column="DIGITO_TRABAJADOR" />
+   		<property name="nombreTrabajador"	column="NOMBRE_TRABAJADOR" />
+   		<property name="idTramoAF"			column="PK_ID_TRAMO_AF" />
+    </class>
+</hibernate-mapping>

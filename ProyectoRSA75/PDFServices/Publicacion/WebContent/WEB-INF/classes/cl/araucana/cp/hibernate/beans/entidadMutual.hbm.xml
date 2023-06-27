@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.EntidadMutualVO" table="ENTIDAD_MUTUAL">
+		<id name="id" column="ID_MUTUAL"/>
+   		<property name="idEntPagadora" column="ID_ENT_PAGADORA" />
+   		<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>
+    </class>
+</hibernate-mapping>

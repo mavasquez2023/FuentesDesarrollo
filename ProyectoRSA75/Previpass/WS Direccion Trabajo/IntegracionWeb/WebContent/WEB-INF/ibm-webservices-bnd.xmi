@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wsbnd:WSBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wsbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wsbnd.xmi" xmi:id="WSBinding_1320952990562">
+  <wsdescBindings xmi:id="WSDescBinding_1337286710888" wsDescNameLink="IntegracionDTService">
+    <pcBindings xmi:id="PCBinding_1337286710888" pcNameLink="IntegracionDT"/>
+  </wsdescBindings>
+  <routerModules xmi:id="RouterModule_1190443154972" transport="http" name="IntegracionWeb.war"/>
+</com.ibm.etools.webservice.wsbnd:WSBinding>

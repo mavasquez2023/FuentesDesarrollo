@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.TipoSeccionVO" table="TIPO_SECCION">
+    	<id column="ID_TIPO_SECCION" name="id"/>
+   		<property name="dnp" column="DNP" />
+   		<property name="pagoIndividual" column="PAGOINDIVIDUAL" />
+   		<property name="muestraVertical" column="MOSTRAR_VERTICAL" />
+   		<property name="clave" column="CLAVE" />
+   		<property name="descripcion" column="DESCRIPCION" />
+
+		<property name="m1Nombre" column="M1_NOMBRE" />
+		<property name="m2Nombre" column="M2_NOMBRE" />
+		<property name="m3Nombre" column="M3_NOMBRE" />
+		<property name="m4Nombre" column="M4_NOMBRE" />
+		<property name="m5Nombre" column="M5_NOMBRE" />
+		<property name="m6Nombre" column="M6_NOMBRE" />
+		<property name="m7Nombre" column="M7_NOMBRE" />
+		<property name="m8Nombre" column="M8_NOMBRE" />
+		<property name="m9Nombre" column="M9_NOMBRE" />
+		<property name="m10Nombre" column="M10_NOMBRE" />
+		<property name="m11Nombre" column="M11_NOMBRE" />
+		<property name="m12Nombre" column="M12_NOMBRE" />
+   		<bag name="tipoDetalle" cascade="save-update" lazy="false" table="TIPO_DETALLE">
+   			<key>
+   				<column name="ID_TIPO_SECCION" />
+   			</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.TipoDetalleVO" />
+  		</bag>
+    </class>
+</hibernate-mapping>

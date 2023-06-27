@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionDCVO" table="DEPCONVENI">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/> 
+        	</key-property>
+        	<key-property name="idCotizante">
+        		<column name="ID_COTIZANTE" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idEstadoEdicion" column="ID_ESTADO_EDICION" />
+   		<property name="rentaImponible" column="RENTA_IMPONIBLE" />
+   		<property name="depositoConvenido" column="DEPOSITO_CONVENIDO" />
+   		<property name="tipoRegimenPrev" column="TIPO_REGIMEN_PREVISIONAL" />
+   		<property name="tasaPactada" column="TASA_PACTADA" />   		
+   		<property name="indemAporte" column="INDEMNIZACION_APORTE" />
+   		<property name="indemInicio" column="INDEMNIZACION_INICIO" />
+   		<property name="indemTermino" column="INDEMNIZACION_TERMINO" />
+   		<property name="numPeriodos" column="N_PERIODOS" />
+   		<property name="idEntDep" column="ID_ENT_DEP" />
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionGRVO" table="GRATIFICAC">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/>
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/>
+        	</key-property>
+        	<key-property name="idCotizante">
+        		<column name="ID_COTIZANTE" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="idEstadoEdicion" column="ID_ESTADO_EDICION" />
+   		<property name="gratificacion" column="GRATIFICACION" />
+   		<property name="rentaImpInp" column="RENTA_IMPONIBLE_INP" />
+   		<property name="saludObligatorio" column="SALUD_OBLIGATORIO" />
+   		<property name="previsionObligatorio" column="PREVISION_OBLIGATORIO" />
+   		<property name="segCesRemImp" column="SEG_CES_REM_IMP" />   		
+   		<property name="segCesTrab" column="SEG_CES_APORTE_TRABAJADOR" />
+   		<property name="segCesEmpl" column="SEG_CES_APORTE_EMPLEADOR" />
+   		<property name="tasaTrabPesado" column="TASA_TRABAJO_PESADO" />
+   		<property name="tipoTrabPesado" column="TIPO_TRABAJO_PESADO" />   		
+   		<property name="trabPesado" column="TRABAJO_PESADO" />
+   		<property name="mutualImp" column="MUTUAL_IMPONIBLE" />
+   		<property name="inpMutual" column="INP_PENSION" />
+   		<property name="ccafAporte" column="CCAF_APORTE" />
+   		<property name="inicio" column="INICIO" />
+   		<property name="termino" column="TERMINO" />
+   		
+   		<property name="previsionSIS" column="PREVISION_SIS" />
+   		<property name="rentaImponibleSIS" column="RENTA_IMPONIBLE_SIS" />   		
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionRAVO" table="RELIQUIDAC">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/>
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/>
+        	</key-property>
+        	<key-property name="idCotizante">
+        		<column name="ID_COTIZANTE" not-null="true" />
+        	</key-property>
+        	<key-property name="periodo">
+        		<column name="PERIODO" not-null="true"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idEstadoEdicion" column="ID_ESTADO_EDICION" />
+   		<property name="reliquidacion" column="RELIQUIDACION" />
+   		<property name="rentaImpInp" column="RENTA_IMPONIBLE_INP" />
+   		<property name="saludObligatorio" column="SALUD_OBLIGATORIO" />
+   		<property name="previsionObligatorio" column="PREVISION_OBLIGATORIO" />
+   		<property name="segCesRemImp" column="SEGURO_CESANTIA" />   		
+   		<property name="segCesTrab" column="SEG_CES_APORTE_TRABAJADOR" />
+   		<property name="segCesEmpl" column="SEG_CES_APORTE_EMPLEADOR" />
+   		<property name="tasaTrabPesado" column="TASA_TRABAJO_PESADO" />
+   		<property name="tipoTrabPesado" column="TIPO_TRABAJO_PESADO" />   		
+   		<property name="trabPesado" column="TRABAJO_PESADO" />
+   		<property name="mutualImp" column="MUTUAL_IMPONIBLE" />
+   		<property name="inpMutual" column="INP_PENSION" />
+   		<property name="ccafAporte" column="CCAF_APORTE" />
+   		<property name="inicio" column="INICIO" />
+   		<property name="termino" column="TERMINO" />
+   		
+   		<property name="previsionSIS" column="PREVISION_SIS" />
+   		<property name="rentaImponibleSIS" column="RENTA_IMPONIBLE_SIS" />   
+   		<property name="otrosAFBR" column="AFBR" />
+   				
+    </class>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.CotizacionREVO" table="REMUNERAC">
+    	<composite-id>
+        	<key-property name="rutEmpresa">
+        		<column name="ID_EMPRESA" not-null="true"/>
+        	</key-property>
+        	<key-property name="idConvenio">
+        		<column name="ID_CONVENIO" not-null="true"/>
+        	</key-property>
+        	<key-property name="idCotizante">
+        		<column name="ID_COTIZANTE" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="idEstadoEdicion" column="ID_ESTADO_EDICION" />
+   		<property name="rentaImp" column="RENTA_IMPONIBLE" />
+   		<property name="rentaImpInp" column="RENTA_IMPONIBLE_INP" />
+   		<property name="asigFamiliar" column="ASIG_FAMILIAR" />
+   		<property name="asigFamRetro" column="ASIG_FAM_RETROACTIVO" />
+   		<property name="asigFamReint" column="ASIG_FAM_REINTEGROS" />
+   		<property name="saludObligatorio" column="SALUD_OBLIGATORIO" />
+   		<property name="saludPactado" column="SALUD_PACTADO" />
+   		<property name="saludAdicional" column="SALUD_ADICIONAL_VOLUNTARIO" />
+   		<property name="saludTotal" column="SALUD_TOTAL" />
+   		<property name="previsionObligatorio" column="PREVISION_OBLIGATORIO" />
+   		<property name="previsionAdicional" column="PREVISION_ADICIONAL_VOLUNTARIO" />
+   		<property name="previsionAhorro" column="PREVISION_CTA_AHORRO" />
+   		<property name="previsionTotal" column="PREVISION_TOTAL" />
+   		<property name="inpBonificacion" column="INP_BONIFICACION" />
+   		<property name="inpDesahucio" column="INP_DESAHUCIO" />
+   		<property name="inpMutual" column="INP_MUTUAL" />
+   		<property name="ccafCredito" column="CCAF_CREDITOS" />
+   		<property name="ccafDental" column="CCAF_DENTALES" />
+   		<property name="ccafLeasing" column="CCAF_LEASING" />
+   		<property name="ccafSeguro" column="CCAF_SEGURO_VIDA" />
+   		<property name="ccafAporte" column="CCAF_APORTE" />
+   		<property name="segCesRemImp" column="SEGURO_CESANTIA" />   		
+   		<property name="segCesTrab" column="SEG_CES_APORTE_TRABAJADOR" />
+   		<property name="segCesEmpl" column="SEG_CES_APORTE_EMPLEADOR" />
+   		<property name="tasaTrabPesado" column="TASA_TRABAJO_PESADO" />
+   		<property name="tipoTrabPesado" column="TIPO_TRABAJO_PESADO" />   		
+   		<property name="trabPesado" column="TRABAJO_PESADO" />
+   		<property name="mutualImp" column="MUTUAL_IMPONIBLE" />
+
+   		<property name="apvcAporteEmpl" column="APVC_APORTE_EMPL" />
+   		<property name="apvcAporteTrab" column="APVC_APORTE_TRAB" />
+   		<property name="apvcNumContr" column="APVC_NUM_CONTRATO" />
+   		<property name="afpvRutDpndiente" column="RUT_DEPENDIENTE" />
+   		<property name="afpvNombreDpndiente" column="NOMBRE_DEPENDIENTE" />
+   		<property name="afpvAplldioPatDpndiente" column="APELLIDO_PAT_DEP" />
+   		<property name="afpvAplldioMatDpndiente" column="APELLIDO_MAT_DEP" />
+   		
+   		<property name="previsionSIS" column="PREVISION_SIS" />
+   		<property name="rentaImponibleSIS" column="RENTA_IMPONIBLE_SIS" />   		
+
+		<!-- CAMPOS DEPÓSITO CONVENIDO -->
+   		<property name="depositoConvenido" column="DEPOSITO_CONVENIDO" />
+   		<property name="tipoRegimenPrev" column="TIPO_REGIMEN_PREVISIONAL" />
+   		<property name="tasaPactada" column="TASA_PACTADA" />   		
+   		<property name="indemAporte" column="INDEMNIZACION_APORTE" />
+   		<property name="indemInicio" column="INDEMNIZACION_INICIO" />
+   		<property name="indemTermino" column="INDEMNIZACION_TERMINO" />
+   		<property name="numPeriodos" column="N_PERIODOS" />
+   		<property name="idEntDep" column="ID_ENT_DEP" />
+		<property name="otrosAFBR" column="AFBR" />
+		
+   	 	<bag name="movimientoPersonal" cascade="all-delete-orphan" table="MVTOPERSO" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.MovtoPersonalVO" />
+   		</bag>
+   		
+   		<bag name="movimientoPersonalAF" cascade="all-delete-orphan" table="MVTOPERSOAF" lazy="true" inverse="true">
+   			<key>   	   
+        		<column name="ID_EMPRESA"/> 		
+        		<column name="ID_CONVENIO"/> 
+   	   			<column name="ID_COTIZANTE"/>
+   	   		</key>
+			<one-to-many class="cl.araucana.cp.distribuidor.hibernate.beans.MvtoPersoAFVO" />
+   		</bag>
+    </class>
+</hibernate-mapping>

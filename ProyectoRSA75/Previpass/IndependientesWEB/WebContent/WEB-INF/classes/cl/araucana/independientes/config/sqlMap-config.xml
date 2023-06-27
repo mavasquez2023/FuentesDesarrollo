@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<!-- Asegúrate siempre de usar las cabeceras XML correcta como la de arriba! -->
+<sqlMapConfig>
+	<settings  useStatementNamespaces="true" />
+	
+	
+	<transactionManager type="JDBC" >
+		<dataSource type="JNDI" >
+			<property name="DataSource" value="jdbc/independientesdesa"></property>
+		</dataSource>
+	</transactionManager>
+		
+  	
+	<!--
+	
+	<transactionManager type="JDBC" >
+	  	<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.2"/>
+	  		<property name="JDBC.Username" value="USRWAS"/>
+	  		<property name="JDBC.Password" value="USRWAS85"/>
+  		</dataSource>
+  	</transactionManager>
+  	
+ 
+	
+  		<transactionManager type="JDBC" >
+	<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.79"/>
+	  		<property name="JDBC.Username" value="LVALENZUEM"/>
+	  		<property name="JDBC.Password" value="IBM7654321"/>
+  		</dataSource>
+  	</transactionManager>
+  	
+	<transactionManager type="JDBC" >
+	<dataSource type="SIMPLE">  		
+	  		<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
+	  		<property name="JDBC.ConnectionURL" value="jdbc:as400://146.83.1.79"/>
+	  		<property name="JDBC.Username" value="LVALENZUEM"/>
+	  		<property name="JDBC.Password" value="IBM7654321"/>
+  		</dataSource>
+  	</transactionManager>
+  	-->
+  	
+  	
+	<sqlMap resource="cl/araucana/independientes/xml/newsolicitud.xml" />	
+	<sqlMap resource="cl/araucana/independientes/xml/modsolicitud.xml" />	
+	<sqlMap resource="cl/araucana/independientes/xml/parametros.xml" />	
+	<sqlMap resource="cl/araucana/independientes/xml/modafiliado.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/repNominaSolAfi.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/repNominaSolDesafAfi.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/consModMasivaSol.xml"/>	
+	<sqlMap resource="cl/araucana/independientes/xml/repNominaApoAfi.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/solBeneficios.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/consMasivaApo.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/intercaja.xml"/>
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabGlob.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabPerf.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabProm.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabTipoDoc.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabBenef.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabDocsBenefsDin.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/mantTabRelBenefsDinDocsBenefs.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/menuPrincipal.xml" />
+	<sqlMap resource="cl/araucana/independientes/xml/NewSolDesafiliacion.xml" />	
+	<sqlMap resource="cl/araucana/independientes/xml/ModSolDesafiliacion.xml" />	
+	
+</sqlMapConfig>

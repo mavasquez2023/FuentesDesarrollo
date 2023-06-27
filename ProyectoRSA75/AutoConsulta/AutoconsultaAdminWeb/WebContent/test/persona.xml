@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="personaNS">
+	
+	
+	<select id="obtenerPersona" resultClass="cl.araucana.template.ws.persistencia.vo.PersonaVO" parameterClass="java.lang.Integer">
+			select 
+			    rut,
+			    nombre,
+			    apellido_paterno as apellidoPaterno,
+			    apellido_materno as apellidoMaterno
+			from
+			    libacache.persona
+			where
+			    rut = 555
+	
+	</select>
+	
+	<select id="obtenerPersonas" resultClass="cl.araucana.template.ws.persistencia.vo.PersonaVO" >
+			select 
+			    rut,
+			    nombre,
+			    apellido_paterno as apellidoPaterno,
+			    apellido_materno as apellidoMaterno
+			from
+			    libacache.persona
+	
+	</select>
+	<insert id="ingresarPersona" parameterClass="cl.araucana.template.ws.persistencia.vo.PersonaVO">
+	
+		<selectKey resultClass="java.lang.Integer" >
+	              select 1 from sysibm.sysdummy1
+	
+		</selectKey>
+	
+	
+		insert into libacache.persona
+			(rut,nombre,apellido_paterno,apellido_materno)
+		values
+			(#rut#,#nombre#,#apellidoPaterno#,#apellidoMaterno#)
+		with nc
+	</insert>
+	
+	<update id="actualizarDatosPersona" parameterClass="cl.araucana.template.ws.persistencia.vo.PersonaVO">
+		update libacache.persona
+			set nombre=#nombre#,
+				apellido_paterno=#apellidoPaterno#,
+				apellido_materno =#apellidoMaterno#
+		where
+			rut = #rut#
+		with nc
+	</update>
+	
+	<delete id="eliminarPersona" parameterClass="java.lang.Integer">
+			delete from libacache.persona
+			where
+			    rut = #value#
+			with nc
+	
+	</delete>
+	
+	<!-- 
+	Script creacion
+	create table libacache.persona (
+		rut int primary key not null,
+		nombre varchar(20),
+		apellido_paterno varchar(30),
+		apellido_materno varchar(30)
+		)
+	 -->
+	
+</sqlMap>

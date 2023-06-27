@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ILFE002">
+	<typeAlias alias="ilfe002" type="com.microsystem.lme.ibatis.domain.Ilfe002VO"/>
+
+	<resultMap id="resultMap002R"  class="ilfe002">  
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="estadoLicencia" column="ESTLICEN"/>
+	</resultMap>
+	
+	<resultMap id="resultMapLmeCero"  class="ilfe002">  
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="dvImpre" column="DIVLICEN"/>
+		<result property="estadoLicencia" column="ESTLICEN"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="fechaOpr" column="FECHAOPR"/>
+		<result property="msgErr" column="MSGERR"/>
+		<result property="numimprela" column="NUMIMPRELA"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+	</resultMap>
+	
+	 
+
+<!--	WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numLicencia# AND ESTLICEN = #estado#-->
+	<select id="getIlfe002R" resultMap="resultMap002R" parameterClass="ilfe002">
+		SELECT IDEOPE, NUMIMPRE, ESTLICEN 
+		FROM LIEXP.ILFE002R 
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE = #ideOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>			
+			<isNotNull prepend="AND" property="estadoLicencia">
+				ESTLICEN = #estadoLicencia#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codError">
+				CODERR = #codError#
+			</isNotNull>
+			<isNotNull prepend="AND" property="fechaEstado">
+				FECHAEST = #fechaEstado#
+			</isNotNull>
+			<isNotNull prepend="AND" property="horaEstado">
+				HORAEST = #horaEstado#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+ 
+   <select id="getInverso" resultMap="resultMap002R" parameterClass="ilfe002" >
+       SELECT IDEOPE, NUMIMPRE, ESTLICEN 
+		FROM LIEXP.ILFE002R 
+		WHERE IDEOPE = #ideOpe#
+		  AND NUMIMPRE = #numImpre#
+		  AND NUMIMPRE = #afiRut#
+		  WITH UR
+   </select>
+ 
+  
+  
+   <update id="updateLMECero" >
+		UPDATE LIEXP.ILFE002R SET IDEOPE = #_ideOpe#, NUMIMPRE = #_numimpre# , DIVLICEN = #_dv# 
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numimpre# AND ESTLICEN=#estLicen# AND AFIRUT=#afiRut#
+		WITH NC
+	</update>
+    <update id="updateLMECeroNumImprela" >
+		UPDATE LIEXP.ILFE002R SET IDEOPE = #_ideOpe#, NUMIMPRE = #_numimpre# , DIVLICEN = #_dv# , NUMIMPRELA = #_numimprela#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numimpre# AND ESTLICEN=#estLicen# AND AFIRUT=#afiRut#
+		WITH NC
+	</update>
+	<update id="updateLMECeroNumImprela8600" >
+		UPDATE LIEXP.ILF8600 SET NUMIMPRE = #_numimprela# , LICIMPNUM = #_numimprela#
+		WHERE AFIRUT=#afiRut# AND LICIMPNUM = #numimprela#
+		WITH NC
+	</update>
+    
+ <select id="getLmeCero" resultMap="resultMapLmeCero" parameterClass="ilfe002" >
+ SELECT I2.* FROM (
+ <![CDATA[
+		(SELECT  
+        ILFE002R.IDEOPE
+	  , ILFE002R.NUMIMPRE
+	  , ILFE002R.DIVLICEN
+	  , ILFE002R.ESTLICEN
+	  , ILFE002R.AFIRUT
+	  , ILFE002R.FECHAOPR
+	  , ILFE002R.MSGERR
+	  , ILFE002R.NUMIMPRELA 
+	  , ILFE002R.FECHAEST
+	  , ILFE002R.HORAEST	
+					FROM LIEXP.ILFE002RL2 ILFE002R
+					WHERE ESTLICEN=0
+					AND MSGERR <> ' '
+					AND MSGERR <> 'OK'
+					AND NOT EXISTS(SELECT 1
+					                 FROM LIEXP.ILFE002R ILFE002R2
+					                 WHERE ILFE002R2.NUMIMPRE = ILFE002R.NUMIMPRE
+					                   and ILFE002R2.AFIRUT = ILFE002R.AFIRUT
+					                   and ILFE002R2.IDEOPE = ILFE002R.IDEOPE
+					                   and ILFE002R2.estlicen <> 0)
+					                   )
+         ]]>
+    ) I2 LEFT JOIN 
+    LIEXP.ILFE082 I82 ON
+    I82.AFIRUT = I2.AFIRUT AND
+    I82.LICIMPNUM = I2.NUMIMPRELA AND
+    I82.NUMIMPRE =  I2.NUMIMPRE AND 
+    I82.IDEOPE = I2.IDEOPE
+    WHERE I82.LICIMPNUM IS NULL
+    order by I2.FECHAOPR desc
+    WITH UR
+      </select>
+  <!-- AND CODERR = 1 -->
+ 
+ 
+	<insert id="insertIlfe002">
+	INSERT INTO LIEXP.ILFE002 (
+		IDEOPE, NUMIMPRE, DIVLICEN, ESTLICEN, FECHAEST, HORAEST, AFIRUT, AFIRUTDV, APAAFI, AMAAFI, NOMAFI, FECEMILI, FECINIRE, AFIEDAD, AFISEXO, AFIEMAIL, NUMDIALI, RUTHIJO,
+		DIVHIJO, APAHIJO, AMAHIJO, NOMHIJO, FECNACHI, TIPLICEN, RECUPERA, INITRAMI, FECACCID, TRAYECTO, FECCONCE, TIPREPOS, JORACUER, LUGREPOP, JUSSIOTR, DIRREP01,
+		CODCOM01, GLOCOM01, TELEFO01, LUGREP02, DIRREP02, CODCOM02, GLOCOM02, TELEFO02, RUTPROFE, DIVPROFE, APAPROFE, AMAPROFE, NOMPROFE, DIRPROFE, CODCOMPR,
+		GLOCOMPR, FONPROFE, FAXPROFE, EMAPROFE, GLOESPEC, CODESPEC, TIPPREST, NROCOMED, CODDIAPR, GLODIAPR, CODDIASE, GLODIASE, CODDIAOT, GLODIAOT, ANTECCLI, EXAAPOYO
+		) 
+	VALUES (
+		#ideope#, #numLicencia#,#digLicencia#, #ultimoEstado#, #fechaUltEstado#, #horaUltEstado#, #AFIRUT#, #AFIRUTDV#, #APAAFI#, #AMAAFI#, #NOMAFI#,  #FECEMILI#,  #FECINIRE#,  #AFIEDAD#, #AFISEXO#,
+		#AFIEMAIL#, #NUMDIALI#,  #RUTHIJO#, #DIVHIJO#, #APAHIJO#, #AMAHIJO#, #NOMHIJO#,  #FECNACHI#,  #TIPLICEN#,  #RECUPERA#,  #INITRAMI#,  #FECACCID#,
+		#TRAYECTO#,  #FECCONCE#,  #TIPREPOS#, #JORACUER#,  #LUGREPOP#, #JUSSIOTR#, #DIRREP01#,  #CODCOM01#, #GLOCOM01#, #TELEFO01#,  #LUGREP02#, #DIRREP02#,
+		#CODCOM02#, #GLOCOM02#, #TELEFO02#,  #RUTPROFE#, #DIVPROFE#, #APAPROFE#, #AMAPROFE#, #NOMPROFE#, #DIRPROFE#,  #CODCOMPR#, #GLOCOMPR#, #FONPROFE#,
+		#FAXPROFE#, #EMAPROFE#, #GLOESPEC#,  #CODESPEC#,  #TIPPREST#, #NROCOMED#, #CODDIAPR#, #GLODIAPR#, #CODDIASE#, #GLODIASE#, #CODDIAOT#, #GLODIAOT#,#ANTECCLI#, #EXAAPOYO#
+		)
+		WITH NC
+	</insert>
+
+	<update id="updateIlfe002R">
+		UPDATE LIEXP.ILFE002R SET CODERR = 0, MSGERR = #label#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		AND ESTLICEN = 0
+		WITH NC
+	</update>
+
+	<update id="updateIlfe002RError">
+		UPDATE LIEXP.ILFE002R SET MSGERR = #label#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+
+	<delete id="deleteIlfe002">
+		DELETE FROM LIEXP.ILFE002
+		WITH NC
+	</delete>
+
+	<delete id="deleteIlfe002R">
+		DELETE FROM LIEXP.ILFE002R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE# AND ESTLICEN NOT IN (62, 1)		
+		WITH NC
+	</delete>
+
+
+</sqlMap>

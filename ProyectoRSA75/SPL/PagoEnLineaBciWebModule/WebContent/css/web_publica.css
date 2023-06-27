@@ -1,0 +1,242 @@
+@charset "utf-8";
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-repeat: no-repeat;
+	background-color: #FFFFFF;
+	background-image: url();
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+a:visited {
+	color: #333333;
+}
+.titulos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: #FF8A00;
+	font-variant: normal;
+	padding-left: 5px;
+
+
+}
+.subtitulos {
+	font-family: "Trebuchet MS", Verdana, Arial;
+	font-size: 16px;
+	color: #666666;
+	font-weight: bold;
+	padding-left: 5px;
+
+}
+
+a:hover {
+	color: #333333;
+	text-decoration: underline;
+
+
+}
+a:active {
+	color: #333333;
+	text-decoration: none;
+
+
+}
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	text-decoration: none;
+
+
+
+}
+
+.boton_ppal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	background-image: url(../images/btn_bg.jpg);
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFFFFF;
+	right: auto;
+	width: 146px;
+	height: 20px;
+	border: 0;
+	text-align: right;
+	padding-right: 7px;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-repeat: no-repeat;
+}
+.noticias {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #333333;
+	font-style: normal;
+}
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.textobold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
+
+}
+.boton_login {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 39px;
+	border: 0;
+	height: 16px;
+	background-image: url(../images/bg_btnl.jpg);
+	background-repeat: no-repeat;
+}
+.titulo_login {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FF8A00;
+	font-variant: normal;
+}
+.mensaje_login {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: bold;
+	color: #FF8A00;
+	font-variant: normal;
+}
+.noticiasbold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #333333;
+	font-style: normal;
+	font-weight: bold;
+}
+.texto_bco {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.textospie {
+
+	color: #666666;
+	font: normal 9px Verdana, Arial, Helvetica, sans-serif;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.titulos_tabla {
+	font-size: 11px;
+	color: #FF8A00;
+	font-variant: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.btn_caja {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #666666;
+	font-weight: bold;
+
+}
+.sotwaretext {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.8px;
+	color: #000000;
+	font-style: normal;
+	font-weight: bold;
+}
+.Outline {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.fondomenu_old {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	background-image: url(../images/bg_menusec1.jpg);
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	right: auto;
+	width: 146px;
+	height: 20px;
+	border: 0;
+	text-align: right;
+	padding-right: 7px;
+}
+
+.fondomenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	background-image: url(../images/bkg_bot_menu.gif);
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFFFFF;
+	right: auto;
+	width: 160px;
+	height: 20px;
+	border: 0;
+	text-align: right;
+	padding-right: 29px;
+	background-position: left top;
+	letter-spacing: 0.4px;
+	word-spacing: 0.4px;
+	cursor: hand;
+}
+
+.menusegmentos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding-left: 1px;
+	line-height: 20px;
+
+
+
+}
+.bde-gris {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+}
+.vde-menu {
+	background-color: #E6F0F1;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #226A82;
+}

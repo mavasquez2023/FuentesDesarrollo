@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: dependencias/log4j-1.2.15.jar previpassBusiness.jar depend
+ encias/standard-1.1.2.jar
+

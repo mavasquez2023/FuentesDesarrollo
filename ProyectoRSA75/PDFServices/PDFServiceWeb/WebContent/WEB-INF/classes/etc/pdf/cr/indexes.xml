@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<indexes>
+
+	<!-- NOMINA DE CREDITO AFILIADOS -->
+
+	<index>
+		<name> NominaCreditoAfiliados </name>
+		<description> Indice para las nominas de credito AFILIADOS </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<value> Nomina Creditos PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Nomina Creditos PDF </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Nomina Creditos PDF </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> Periodo </name>
+				<description> Periodo de Cobranza </description>
+				<type> ndate </type>
+			</field>
+			
+			<field>
+				<name> Folio </name>
+				<type> int </type>
+				<docID> 1 </docID>
+			</field>			
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> CodigoOficina </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> CodigoNomina </name>
+				<type> int </type>
+			</field>
+		</fields>
+	</index>
+
+	<!-- NOMINA DE CREDITO PENSIONADOS -->
+
+	<index>
+		<name> NominaCreditoPensionados </name>
+		<description> Indice para las nominas de credito PENSIONADOS </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<value> Nomina Creditos Pensionados PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Nomina Creditos Pensionados PDF </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Nomina Creditos Pensionados </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> Periodo </name>
+				<description> Periodo de Cobranza </description>
+				<type> ndate </type>
+			</field>
+			
+			<field>
+				<name> Folio </name>
+				<type> int </type>
+				<docID> 1 </docID>
+			</field>			
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+		</fields>
+	</index>
+</indexes>

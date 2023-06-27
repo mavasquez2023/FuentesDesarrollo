@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.DatosAuxiliares.CodigoVO" id="listaBancosMap">
+		<result column="BAN_CODIGO" property="codigo" />
+		<result column="BAN_NOMBRE" property="desc" />
+	</resultMap>
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.DatosAuxiliares.CodigoVO" id="tiposCuentaMap">
+		<result column="TCU_CODIGO" property="codigo" />
+		<result column="TCU_DESCRIP" property="desc" />
+	</resultMap>
+  
+ 	<select id="getListaBancos" resultMap="listaBancosMap">
+ 		SELECT * FROM STLDTA.T_BANCO
+	</select>
+	
+	<select id="getTiposCuenta" resultMap="tiposCuentaMap">
+		SELECT * FROM STLDTA.T_TIPO_CUENTA
+	</select>
+	
+	<resultMap id="parametrosMap" class="java.util.HashMap" >
+    	<result column="PAR_NOMBRE" property="key"/>
+	    <result column="PAR_VALOR" property="value"/>
+	</resultMap>
+	
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.DatosAuxiliares.CodigoVO" id="comunasMap">
+		<result column="COD_COMUNA" property="codigo" />
+		<result column="BCNOMCOM" property="desc" />
+	</resultMap>
+	<select id="getComunas" resultMap="comunasMap">
+		SELECT CONCAT(CONCAT(CONCAT(CONCAT(A.BCCODCOM,';'), B.BCPVCOD), ';'),C.BCCODREG) AS COD_COMUNA, TRIM(A.BCNOMCOM) AS BCNOMCOM
+		FROM BCDTA.BC23F1 A
+		JOIN BCDTA.BC24R1 B ON
+		A.BCPVCOD = B.BCPVCOD
+		JOIN BCDTA.BC41F1 C ON
+		SUBSTRING(B.BCPVCOD,0,length(TRIM(B.BCPVCOD))-1) = C.BCCODREG
+		ORDER BY A.BCNOMCOM
+	</select>
+	
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.DatosAuxiliares.CodigoVO" id="provinciasMap">
+		<result column="BCPVCOD" property="codigo" />
+		<result column="BCPVNOM" property="desc" nullValue=" " />
+	</resultMap>
+	<select id="getProvincias" resultMap="provinciasMap">
+		SELECT BCPVCOD, TRIM(BCPVNOM) AS BCPVNOM FROM BCDTA.BC24R1
+	</select>
+	
+	<resultMap class="cl.laaraucana.capaservicios.webservices.vo.DatosAuxiliares.CodigoVO" id="regionesMap">
+		<result column="BCCODREG" property="codigo" />
+		<result column="BCNOMREG" property="desc" nullValue=" " />
+	</resultMap>
+	<select id="getRegiones" resultMap="regionesMap">
+		SELECT BCCODREG, TRIM(BCNOMREG) AS BCNOMREG FROM BCDTA.BC41F1
+	</select>
+</sqlMap>

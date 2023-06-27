@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<menus-config>
+	<!-- modulo nombre="Gestión de Pago" url="Inicio.do?accion=inicio" accion="inicio" roles="ECL, ECE, ADE"-->
+	<modulo nombre="Gestión de Pago" url="ListarNominas.do?accion=inicio&amp;limpiaPath=" accion="inicio" roles="ECL, ECE, ADE"/>
+		<!-- tab nombre="Gestión de Comprobantes" activar="procesos" subAccion="procesos" url="ListarNominas.do?accion=inicio&amp;subAccion=procesos&amp;limpiaPath=" roles="ECL, ECE, ADE" />
+	</modulo-->
+	<modulo nombre="Mis Reportes" url="ResultadoInforme.do?accion=reportes" accion="reportes" roles="ECL, ECE, ADE">
+		<tab nombre="Avisos"          activar="errorAviso" subAccion="errorAviso" url="BuscarInforme.do?accion=reportes&amp;subAccion=errorAviso&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+		<tab nombre="Detalle Comprobantes"    activar="detalles"   subAccion="detalles"   url="Sabana.do?accion=reportes&amp;subAccion=detalles&amp;limpiaPath="          roles="ECL, ECE, ADE"/>		
+		<tab nombre="Descargar Nóminas Excel" activar="excel"      subAccion="excel"      url="Consulta.do?accion=reportes&amp;subAccion=excel&amp;limpiaPath="           roles="ECL, ECE, ADE"/>		
+		<tab nombre="Mis Plantillas"		  activar="planillas"  subAccion="planillas"  url="RedireccionPlanillas.do"													  roles="ECL, ECE, ADE"/>
+	</modulo>
+	<modulo nombre="Administración" url="ListarEmpresas.do?accion=admin&amp;subAccion=empresas&amp;subSubAccion=empresaLista&amp;limpiaPath=" accion="admin" roles="ECL, ECE, ADE">
+		<tab nombre="Independiente"   activar="Independiente" subAccion="empresas" url="ListarEmpresas.do?accion=admin&amp;subAccion=empresas&amp;subSubAccion=empresaLista&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+		<tab nombre="Encargados" activar="usuarios" subAccion="usuarios" url="ListarUsuarios.do?accion=admin&amp;subAccion=usuarios&amp;subSubAccion=usuarioLista&amp;limpiaPath=" roles="ADE"/>
+	</modulo>
+	<!--modulo nombre="Consultas" url="Consulta.do?accion=consulta" accion="consulta" roles="ECL, ECE, ADE"/-->
+</menus-config>

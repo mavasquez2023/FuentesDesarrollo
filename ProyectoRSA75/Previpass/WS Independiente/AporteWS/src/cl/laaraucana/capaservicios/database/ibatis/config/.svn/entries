@@ -1,0 +1,52 @@
+8
+
+dir
+3272
+https://172.16.137.116/svn/IBM/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/config
+https://172.16.137.116/svn/IBM
+
+
+
+2014-09-02T18:33:37.914316Z
+3042
+acanifru
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+IbatisConfig.xml
+file
+3812
+
+
+
+2014-12-31T12:27:45.118606Z
+b7dbc0b1b679b1be0102a887f7f5dc53
+2015-01-05T12:40:12.909406Z
+3812
+acanifru
+
+MyClassSqlConfig.java
+file
+3812
+
+
+
+2014-11-17T14:31:11.018039Z
+f229c354781e4cce54242ff0f2d37c4a
+2015-01-05T12:40:12.909406Z
+3812
+acanifru
+

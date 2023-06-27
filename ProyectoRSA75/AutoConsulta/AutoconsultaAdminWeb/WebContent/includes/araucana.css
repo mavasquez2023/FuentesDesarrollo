@@ -1,0 +1,160 @@
+.txtHomeSmall {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+}
+body {
+	background-attachment: scroll;
+	background-color: #666666;
+	//background-image:  url(/images/fondo01.gif);
+	background-repeat: repeat-x;
+
+}
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	text-align: left;
+
+}
+ul {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: red;
+	text-align: left;
+
+}
+li {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: red;
+	text-align: left;
+
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #003366;
+}
+.pie {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	text-align: center;
+	background-color: #6699FF;
+
+}
+.caminito {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-align: left;
+	background-color: #E8E8E8;
+
+}
+.opciones {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.vinculosUp {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+
+
+}
+.menuDespl {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	background-color: #6699FF;
+}
+.textoNormal {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	text-align: justify;
+}
+.centrado {
+	text-align: center;
+}
+.derecha {
+	text-align: right;
+}
+.lookup01 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+}
+.botonFiltrar {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	background-color: #006699;
+}
+.textoHeader1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+}
+.celdaColor1 {
+	background-color: #6699FF;
+}
+.tablaHeaderConvenio1 {
+	background-color: #efefef;
+}
+.tablaHeaderCobertura1 {
+
+	background-color: #cecece;
+}
+.tablaHeaderConcepto1 {
+
+	background-color: #a2a2a2;
+}
+.tablaHeaderSocio1 {
+
+	background-color: #E8E8E8;
+}
+.tablaHeaderCaso1 {
+
+
+	background-color: #FFFFCC;
+}
+.celdaColor2 {
+	background-color: #999999;
+
+}
+.celdaColor3 {
+
+	background-color: #333333;
+}
+.txtHomeVersion {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0099CC;
+}
+.txtHomeVersion2 {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #CCCCCC;
+}
+.txtHomeVersion3 {
+
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.txtHomeVersion4 {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+}

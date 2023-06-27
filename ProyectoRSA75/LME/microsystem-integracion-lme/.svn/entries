@@ -1,0 +1,77 @@
+8
+
+dir
+3233
+https://172.16.137.116/svn/IBM/was6/microsystem-integracion-lme
+https://172.16.137.116/svn/IBM
+
+
+
+2014-07-30T18:10:08.409036Z
+2655
+fquinteros
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+.classpath
+file
+
+
+
+
+2014-10-02T21:36:11.822042Z
+68ddc141d6a1c9c5285774cca7c1ebaa
+2014-07-15T19:35:28.151899Z
+2382
+fquinteros
+
+conector-lme.jar
+file
+
+
+
+delete
+2014-10-02T21:36:12.017062Z
+8c498d6cd1d955764b111770d0933fd9
+2014-07-30T18:10:08.409036Z
+2655
+fquinteros
+has-props
+
+.project
+file
+
+
+
+
+2014-10-02T21:36:12.022062Z
+5365391970afca23c6314b1d97b3419a
+2014-07-04T20:35:45.037011Z
+2271
+fquinteros
+
+lib
+dir
+
+src
+dir
+
+bin
+dir
+
+.settings
+dir
+

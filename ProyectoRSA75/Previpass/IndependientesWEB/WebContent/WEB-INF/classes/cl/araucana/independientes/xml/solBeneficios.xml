@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="solBeneficiosNS">
+
+	<select id="obtenerAfiliadoBeneficios" resultClass="cl.araucana.independientes.vo.AfiliadoBeneficiosVO" parameterClass="java.util.HashMap">
+		SELECT	PER.IDDOCUMENTO 				idDocumentoPersona,
+				AFI.IDPERSONAAFILIADO			idPersonaAfiliado,
+	       		AFI.TIPOESTADOAFILIADO			tipoEstadoAfiliado,
+	       		PER.APELLIDOPATERNO 			apellidoPaterno,
+	       		PER.APELLIDOMATERNO 			apellidoMaterno,
+	       		PER.NOMBRES 					nombres,
+	       		CHAR(SOL.FECHAVIGENCIA, USA)	fechaVigencia
+		FROM	$IIDTA$.SOLICITUD	SOL,
+	       		$IIDTA$.AFILIADO 	AFI,
+	        	$IIDTA$.PERSONA 	PER
+		WHERE	SOL.IDAFILIADOAGRUPACION	= 	AFI.IDPERSONAAFILIADO
+		AND     AFI.IDPERSONAAFILIADO    	= 	PER.IDPERSONA
+		AND     PER.IDDOCUMENTO          	=	#input#
+		AND		SOL.TIPOSOLICITUD			=	1
+		AND     SOL.FECHAVIGENCIA 			=  (SELECT MAX(SOL.FECHAVIGENCIA) 
+												FROM	$IIDTA$.SOLICITUD	SOL,
+								       					$IIDTA$.AFILIADO 	AFI,
+								        				$IIDTA$.PERSONA 	PER
+												WHERE	SOL.IDAFILIADOAGRUPACION = AFI.IDPERSONAAFILIADO
+												AND     SOL.TIPOSOLICITUD = 1
+												AND     AFI.IDPERSONAAFILIADO    = PER.IDPERSONA
+												AND     PER.IDDOCUMENTO          = #input# )
+	</select>
+	
+	<!-- RESPALDO MODIFICACION QUERY ANA 20120724
+	<select id="obtenerEstadoPagoAporte" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)                                          
+		FROM 	$IIDTA$.PERSONA 		PER,
+				$IIDTA$.AFILIADO 		AFI,
+				$IIDTA$.APORTE 			APO,
+				$IIDTA$.TABLASGLOBALES	T1,
+				$IIDTA$.TABLASGLOBALES	T2
+		WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+		AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+		AND 	APO.FECHAPAGO IS NOT NULL
+		AND 	APO.PERIODO = DATE(RTRIM((CHAR(YEAR(CURRENT TIMESTAMP + (T1.CODIGO - 1) MONTH))))|| '-' || RTRIM ((CHAR(MONTH (CURRENT TIMESTAMP + (T1.CODIGO - 1) MONTH)))) || '-' || RTRIM ((CHAR(T2.CODIGO))))
+		AND 	T1.ENTIDAD = 34
+		AND 	T2.ENTIDAD = 33
+		AND		PER.IDDOCUMENTO = #input#
+	</select>
+	 -->
+	<!-- RESPALDO MODIFICACION QUERY ANA 20120807
+	<select id="obtenerEstadoPagoAporte" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT (CASE WHEN APD.ESTADO IS NOT NULL THEN APD.ESTADO ELSE 0 END) ESTADO                                  
+		FROM 	$IIDTA$.PERSONA 		PER,
+				$IIDTA$.AFILIADO 		AFI,
+				$IIDTA$.APORTE 			APO,
+				$IIDTA$.APORTEDETALLE   APD,
+			    $IIDTA$.TABLASGLOBALES	T1,
+				$IIDTA$.TABLASGLOBALES	T2
+		WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+		AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+		AND 	APO.PERIODO = DATE(RTRIM((CHAR(YEAR(CURRENT TIMESTAMP + (T1.CODIGO) MONTH))))|| '-' || RTRIM ((CHAR(MONTH (CURRENT TIMESTAMP + (T1.CODIGO) MONTH)))) || '-' || RTRIM ((CHAR(T2.CODIGO))))
+		AND     APD.IDAPORTE = APO.IDAPORTE
+		AND     APD.EVENTOCONTABLE = 1
+		AND 	T1.ENTIDAD = 34
+		AND 	T2.ENTIDAD = 33
+		AND		PER.IDDOCUMENTO = #input# 
+	</select>
+	-->
+	<select id="obtenerEstadoPagoAporte" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT CASE WHEN COUNT(*) != 0 THEN (
+				SELECT (CASE WHEN APD.ESTADO IS NOT NULL THEN APD.ESTADO ELSE 0 END) ESTADO                                  
+				FROM 	$IIDTA$.PERSONA 		PER,
+						$IIDTA$.AFILIADO 		AFI,
+						$IIDTA$.APORTE 			APO,
+						$IIDTA$.APORTEDETALLE   APD,
+					    $IIDTA$.TABLASGLOBALES	T1,
+						$IIDTA$.TABLASGLOBALES	T2
+				WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+				AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+				AND 	APO.PERIODO BETWEEN DATE(RTRIM((CHAR(YEAR(CURRENT TIMESTAMP + INTEGER(TRIM(T1.GLOSA)) MONTH))))|| '-' || RTRIM ((CHAR(MONTH (CURRENT TIMESTAMP + INTEGER(TRIM(T1.GLOSA)) MONTH)))) || '-01') AND #ultimoDM#
+				AND     APD.IDAPORTE = APO.IDAPORTE
+				AND     APD.EVENTOCONTABLE = 1
+				AND 	T1.ENTIDAD = 34
+				AND 	T2.ENTIDAD = 33
+				AND		PER.IDDOCUMENTO = #input# )
+				ELSE -1 END ESTADO
+		FROM 	$IIDTA$.PERSONA 		PER,
+				$IIDTA$.AFILIADO 		AFI,
+				$IIDTA$.APORTE 			APO
+				WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+				AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+				AND		PER.IDDOCUMENTO = #input#
+	</select>
+	
+	<!-- JLGN 13-02-2013 -->
+	<select id="obtenerEstadoPagoAporteAnterior" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT CASE WHEN COUNT(*) != 0 THEN (
+				SELECT (CASE WHEN APD.ESTADO IS NOT NULL THEN APD.ESTADO ELSE 0 END) ESTADO                                  
+				FROM 	$IIDTA$.PERSONA 		PER,
+						$IIDTA$.AFILIADO 		AFI,
+						$IIDTA$.APORTE 			APO,
+						$IIDTA$.APORTEDETALLE   APD,
+					    $IIDTA$.TABLASGLOBALES	T1,
+						$IIDTA$.TABLASGLOBALES	T2
+				WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+				AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+				AND 	APO.PERIODO BETWEEN DATE(RTRIM((CHAR(YEAR(CURRENT TIMESTAMP - INTEGER(TRIM('1')) MONTH))))|| '-' || RTRIM ((CHAR(MONTH (CURRENT TIMESTAMP - INTEGER(TRIM('1')) MONTH)))) || '-01') AND #ultimoDMA#
+				AND     APD.IDAPORTE = APO.IDAPORTE
+				AND     APD.EVENTOCONTABLE = 1
+				AND 	T1.ENTIDAD = 34
+				AND 	T2.ENTIDAD = 33
+				AND		PER.IDDOCUMENTO = #input# )
+				ELSE -1 END ESTADO
+		FROM 	$IIDTA$.PERSONA 		PER,
+				$IIDTA$.AFILIADO 		AFI,
+				$IIDTA$.APORTE 			APO
+				WHERE	AFI.IDPERSONAAFILIADO = PER.IDPERSONA
+				AND 	APO.IDPERSONAAFILIADO = AFI.IDPERSONAAFILIADO
+				AND		PER.IDDOCUMENTO = #input#
+	</select>
+   
+   	<select id="obtenerContRecurrencia" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM $IIDTA$.BENEF00002	BEN
+		WHERE	BEN.IDBENF 		= #idBeneficio#
+		AND		BEN.IDPERAFIL	= #idAfi#
+		AND		BEN.FOL NOT IN (	SELECT BEN2.FOLREV
+									FROM $IIDTA$.BENEF00002 BEN2
+									WHERE	BEN2.IDBENF 		= #idBeneficio#
+									AND		BEN2.IDPERAFIL	= #idAfi#
+									AND 	BEN2.EST = 4)
+		AND		BEN.EST IN (1, 2, 3)
+		AND		BEN.FECSOLIC BETWEEN #iniAnio# AND #finAnio#
+	</select>
+   
+   	<!-- RESPALDO MODIFICACION JLGN 21-02-2013
+   	<select id="obtenerContCausanteUnico" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM	$IIDTA$.BENEF00002	BEN
+		WHERE	BEN.IDBENF 		= #idBeneficio#
+		AND		BEN.RUTCAUS = #rutCausante#
+		AND		BEN.FOL NOT IN (	SELECT BEN2.FOLREV
+									FROM $IIDTA$.BENEF00002 BEN2
+									WHERE	BEN2.IDBENF 		= #idBeneficio#
+									AND		BEN2.IDPERAFIL	= #idAfi#
+									AND 	BEN2.EST = 4)
+		AND		BEN.EST IN (1, 2, 4)
+	</select> -->
+	
+	<select id="obtenerContCausanteUnico" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM	$IIDTA$.BENEF00002	BEN
+		WHERE	BEN.IDBENF 		= #idBeneficio#
+		AND		BEN.RUTCAUS = #rutCausante#
+		AND		BEN.FOL NOT IN (	SELECT BEN2.FOLREV
+									FROM $IIDTA$.BENEF00002 BEN2
+									WHERE	BEN2.IDBENF 		= #idBeneficio#
+									AND		BEN2.IDPERAFIL	= #idAfi#
+									AND 	BEN2.EST = 4)
+		AND		BEN.EST IN (1, 2, 3)
+	</select>
+   
+   	<select id="selectIdBeneficioAfiliado" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.BENEFICIOAFILIADO_SEQ FROM sysibm.sysdummy1
+	</select>
+   
+   	<insert id="insertNewBeneficioAfiliado" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.BENEF00002 (
+			IDBENAFIL,
+			IDPERAFIL,
+			IDBENF,
+			FECSOLIC,
+			EST,
+			NOMCAUS,
+			RUTCAUS,
+			FECCAUS,
+			COPAG,
+			MNTPAG,
+			FECPAG,
+			RUTTERC,
+			IDANALIS,
+			TIPCOMPR,
+			FOL,
+			FOLREV,
+			NOMTERC)
+		VALUES(
+			#input.idBeneficioAfiliado#,
+			#input.idPersonaAfiliado#,
+			#input.idbeneficio#,
+			#input.fechaSolicitud#,
+			#input.estado#,
+			#input.nombreCausante#,
+			#input.rutCausante#,
+			#input.fechaCausante#,
+			#input.copago#,
+			#input.montoPagar#,
+			#input.fechaPago#,
+			#input.rutTercero#,
+			#input.idAnalista#,
+			#input.tipoComprobante#,
+			#input.folio#,
+			#input.folioReversado#,
+			#input.nombreTercero#
+		)
+	</insert>
+   
+   	<select id="selectIdDocumentoBenAfi" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT nextval FOR $IIDTA$.DOCBENFAFI_SEQ FROM sysibm.sysdummy1
+	</select>
+   
+   	<insert id="insertNewDocumentoBenAfi" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.DOCUMENTO_BEN_AFI (
+			IDDOCUMENTOBENAFI,
+			IDBENEFICIOAFILIADO,
+			IDDOCBENEFICIO,
+			ESTADO)
+		VALUES(
+			#input.idDocumentoBenAfi#,
+			#input.idBeneficioAfiliado#,
+			#input.idDocBeneficio#,
+			#input.estadoDocBeneficio#
+		)
+	</insert>
+	
+	<select id="obtenerHistoricoBeneficios" resultClass="cl.araucana.independientes.vo.BeneficioVO" parameterClass="java.util.HashMap">
+		SELECT	CHAR(BEN.FECSOLIC, USA)	strFechaSolicitud,
+				BEN.IDBENF			idbeneficio,
+				BEN.RUTCAUS			rutCausante,
+				BEN.MNTPAG			montoPagar,
+				BEN.EST				estado,
+				BEN.IDANALIS		idAnalista,
+				BEN.FOL				folio,
+				BEN.FOLREV		    folioReversado,
+				BEN.TIPCOMPR		tipoComprobante
+		FROM 	$IIDTA$.BENEF00002	BEN,
+				$IIDTA$.AFILIADO		AFI,
+				$IIDTA$.PERSONA			PER
+		WHERE	BEN.IDPERAFIL	=	AFI.IDPERSONAAFILIADO
+		AND		AFI.IDPERSONAAFILIADO	=	PER.IDPERSONA
+		AND		PER.IDDOCUMENTO			=	#input#
+	</select>
+   
+   	<select id="obtenerBeneficiosPorFolio" resultClass="cl.araucana.independientes.vo.BeneficioVO" parameterClass="java.util.HashMap">
+		SELECT	CHAR(BEN.FECSOLIC, USA)	strFechaSolicitud,
+				BEN.IDPERAFIL       idPersonaAfiliado,
+				BEN.IDBENF			idbeneficio,
+				BEN.RUTCAUS			rutCausante,
+				BEN.NOMCAUS		    nombreCausante,
+				BEN.FECCAUS		    fechaCausante,
+				BEN.MNTPAG			montoPagar,
+				BEN.EST				estado,
+				BEN.IDANALIS		idAnalista,
+				BEN.FOL				folio,
+				BEN.FOLREV		    folioReversado,
+				BEN.TIPCOMPR		tipoComprobante
+		FROM 	$IIDTA$.BENEF00002	BEN
+		WHERE	BEN.FOL = #input#
+	</select>
+   
+   	<update id="updateBeneficioAnula" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.BENEF00002 BEN
+		SET BEN.EST = 4
+		WHERE BEN.FOL = #input#									 
+	</update>
+   
+   	<update id="updateBeneficioReversa" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.BENEF00002 BEN
+		SET BEN.EST = 5
+		WHERE BEN.FOL = #input#									 
+	</update>
+   
+   	<select id="obtenerDatosPersona" resultClass="cl.araucana.independientes.vo.PersonaVO" parameterClass="java.util.HashMap">
+		SELECT	B.IDPERSONA idPersona,
+				B.IDDOCUMENTO idDocumento,
+				B.DIGVERIFICADOR digVerificador,
+				B.APELLIDOPATERNO apellidoPaterno,
+				B.APELLIDOMATERNO apellidoMaterno,
+				B.NOMBRES nombres,
+				CHAR(B.FECHANAC, USA) fechaNacimiento,
+				B.TIPOSEXO tipoSexo,
+				B.TIPONACIONALIDAD tipoNacionalidad
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.AFILIADO F
+		WHERE B.IDPERSONA = #input#
+	</select>
+    
+    <select id="obtenerOficinaAnalista" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT	OFICINA oficina
+		FROM	$IIDTA$.ANALISTA ANA
+	    WHERE	ANA.IDANALISTA = #input#
+	</select>
+	
+	<!-- Inicio REQ 6988 JLGN 11-03-2013 -->
+	<select id="obtenerBeneficiosTesoreria" resultClass="cl.araucana.independientes.vo.BeneficioVO" parameterClass="java.util.HashMap">
+		SELECT	BEN.FOL 			folio, 
+				TES.TE3YA			glosaEstado,
+				TES.TE4CA           formaPago
+		FROM 	$IIDTA$.BENEF00002	BEN,
+				$IIDTA$.AFILIADO	AFI,
+				$IIDTA$.PERSONA		PER,
+				$TEDTA$.TE07F1      TES
+		WHERE	BEN.IDPERAFIL	=	AFI.IDPERSONAAFILIADO
+		AND		AFI.IDPERSONAAFILIADO	=	PER.IDPERSONA
+		AND		PER.IDDOCUMENTO			=	#input#
+		AND     BEN.FOL = TES.TE3WA
+	</select>
+	
+		<update id="updatePagoAnula" parameterClass="java.util.HashMap">
+		UPDATE $IIDTA$.BENEF00002 BEN
+		SET BEN.EST = 2
+		WHERE BEN.FOL = #input#									 
+	</update>	
+	<!-- Fin REQ 6988 JLGN 11-03-2013 -->
+</sqlMap>

@@ -1,0 +1,273 @@
+body{margin: 0px; padding: 0px; font: 11px Arial, Helvetica, sans-serif; color: #666;}
+
+h1{color: #033D7D; font: bold 24px Arial, Helvetica, sans-serif; margin: 0px; padding: 0px 0px 23px 0px;}
+h1 strong, h1 b{font-weight: normal;}
+h2{color: #033D7D; font: bold 16px Arial, Helvetica, sans-serif;}
+h3{color: #033D7D; font: bold 12px Arial, Helvetica, sans-serif;}
+
+form,label{margin: 0px; padding: 0px;}
+/*label{cursor: pointer;}*/
+
+a:link{color: #0267C3; text-decoration: underline;}
+a:visited{color: #0267C3; text-decoration: underline;}
+a:hover{color: #0267C3; text-decoration: none;}
+a:active{color: #0267C3; text-decoration: none;}
+
+:focus{outline: none;}
+
+.margin-top {margin-top:10px;}
+
+/*CLASES GENERICAS*/
+.align_left{text-align: left;}
+.align_center{text-align: center;}
+.align_right{text-align: right;}
+
+.float_left{float: left;}
+.float_right{float: right;}
+
+.img_float_left{float: left; margin: 2px 10px 5px 0px;}
+.img_float_right{float: right; margin: 2px 0px 5px 10px;}
+
+
+/*TEXTO INTRODUCCION: ASIGNA FONT-SIZE 14px*/
+.texto_destacado{font-size: 14px;}
+
+/*TITULO GRANDE*/
+.titulo_destacado{color: #033D7D; font: bold 24px Arial, Helvetica, sans-serif; margin: 0px; padding: 0px 0px 23px 0px;}
+
+
+/*MAIN*/
+#main{clear: both;width: 970px; margin: 0px auto; padding: 4px 0px 10px 0px; font-size: 12px;}
+#main p{margin: 0px; padding: 0px 0px 15px 0px; line-height: 1.3em;}
+
+
+/*PORTADA*/
+#main #portada{width: 970px; overflow: hidden;}
+
+
+/*PORTADA: LEFT, CAJA DE CALENDARIO*/
+#main #portada #col_01{width: 270px; float: left;}
+
+
+/*PORTADA: TAB PROCESO COMPRA*/
+#main #portada #proceso_compra{background: url(/images/sitio_personas/layout/fondo_caja_proceso_compra.jpg) no-repeat left bottom; color: #033D7D; font-size: 11px; width: 270px; height: 391px; margin: 0px 0px 9px 0px;}
+#main #portada #proceso_compra #tabs{margin: 0px; padding: 0px; list-style: none; height: 36px; font-weight: bold; font-size: 11px; line-height: 100%; color: #89929A;}
+#main #portada #proceso_compra #tabs li{background: url(/images/sitio_personas/layout/fondo_tabs_home.jpg) no-repeat 0px 0px; margin: 0px; padding: 0px; float: left; height: 36px; text-align: center;}
+#main #portada #proceso_compra #tabs li a:link, #main #portada #proceso_compra #tabs li a:visited{background: url(/images/sitio_personas/layout/fondo_tabs_home.jpg) no-repeat 0px 0px; padding: 8px 0px 0px 0px; height: 28px; width: 90px; color: #89929A; text-decoration: none; float: left; display: block;}
+#main #portada #proceso_compra #tabs li a:hover, #main #portada #proceso_compra #tabs li a:active{color: #89929A; text-decoration: none;}
+
+#main #portada #proceso_compra #tabs li.activo, #main #portada #proceso_compra #tabs li.activo a:link, #main #portada #proceso_compra #tabs li.activo a:visited{background: url(/images/sitio_personas/layout/fondo_tabs_home_activo.gif) no-repeat 0px 0px; color: #033D7D;}
+
+#main #portada #proceso_compra .cont_tabs{padding: 12px 0px 0px 14px;}
+#main #portada #proceso_compra .cont_tabs p{margin: 0px; padding: 0px 0px 5px 0px; height: 24px; #height: 15px; #padding: 0px 0px 3px 0px; clear: both;}
+*>#main #portada #proceso_compra .cont_tabs p{height: auto; min-height: 24px;}
+
+#main #portada #proceso_compra .cont_tabs input{border: 1px solid #6C7D8D; color: #666666; width: 240px; height: 16px; font-size: 11px; padding: 2px 0px 0px 2px; z-index:12;}
+#main #portada #proceso_compra .cont_tabs select{border: 1px solid #6C7D8D; color: #666666; /*width: 240px;*/ height: 18px; font-size: 11px; padding: 0px; z-index:12;}
+
+#main #portada #proceso_compra .cont_tabs .calendario{background: url(/images/sitio_personas/layout/ic_calendario.gif) no-repeat 0px 0px; width: 25px; height: 20px; float: left; margin: 0px 15px 0px 4px;}
+#main #portada #proceso_compra .cont_tabs .calendario a{width: 25px; height: 20px; display: block; text-decoration: none; letter-spacing: 1px; text-indent: -9000px; font-size: 1px;}
+
+#main #portada #proceso_compra .cont_tabs .radiobutton{border: none; width: auto; margin: 0px 3px 0px 0px; padding: 0px; height: auto; vertical-align: middle;}
+
+#main #portada #proceso_compra .cont_tabs input.fechas{float: left; width: 80px;}
+
+#main #portada #proceso_compra .cont_tabs .columnas{float: left; width: 82px; height: 47px;}
+#main #portada #proceso_compra .cont_tabs .columnas select{width: 76px;}
+
+#main #portada #proceso_compra .cont_tabs .boton_accion {margin: 0px; padding: 0px 10px 20px 0px; clear: both; text-align: right;}
+#main #portada #proceso_compra .cont_tabs .boton_accion input{background: url(/images/sitio_personas/layout/bot_110x27.gif) no-repeat 0px 0px; color: #FFF; text-align: center; font: bold 11px Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; border: none; cursor: pointer; width: 110px; height: 27px;}
+
+#main #portada #proceso_compra .cont_tabs .linea{height: 1px; font-size: 1px; border-top: 1px solid #98999B; margin: 0 14px 10px 0;}
+
+#main #portada #proceso_compra .cont_tabs .ver_condiciones {background:83px 10px no-repeat; width: 100px; height: 14px; float: right; padding: 10px 17px 0px 0px; text-align:right;}
+#main #portada #proceso_compra img {margin: 6px 0px 12px 13px; padding: 0px 0px 0px 0px; border: none;}
+
+/*Tab LANPASS igualado a home LP*/
+#main #portada #proceso_compra .cont_tabs_lp{padding: 12px 0px 0px 14px;}
+#main #portada #proceso_compra .cont_tabs_lp p{margin: 0px; padding: 0px 0px 10px 0px; height: 24px; clear: both;}
+*>#main #portada #proceso_compra .cont_tabs_lp p{height: auto; min-height: 24px;}
+#main #portada #proceso_compra .cont_tabs_lp img.logo_lp {width: 194px; height: 44px; margin: 8px 0px 0px 23px; padding: 0px 0px 30px 0px; border: none;}
+
+#main #portada #proceso_compra .cont_tabs_lp input{border: 1px solid #6C7D8D; color: #666; width: 240px; height: 16px; font-size: 11px; padding: 2px 0px 0px 2px;}
+#main #portada #proceso_compra .cont_tabs_lp select{border: 1px solid #6C7D8D; color: #666; width: 240px; height: 18px; font-size: 11px; padding: 0px; z-index:12;}
+
+#main #portada #proceso_compra .cont_tabs_lp .calendario{background: url(/images/sitio_personas/layout/ic_calendario.gif) no-repeat 0px 0px; width: 25px; height: 20px; float: left; margin: 0px 15px 0px 4px;}
+#main #portada #proceso_compra .cont_tabs_lp .calendario a{width: 25px; height: 20px; display: block; text-decoration: none; letter-spacing: 1px; text-indent: -9000px; font-size: 1px;}
+
+#main #portada #proceso_compra .cont_tabs_lp .radiobutton{border: none; width: auto; margin: 0px 3px 0px 0px; padding: 0px; height: auto;}
+
+#main #portada #proceso_compra .cont_tabs_lp input.fechas{float: left; width: 80px;}
+
+#main #portada #proceso_compra .cont_tabs_lp .columnas{float: left; width: 82px; height: 37px;}
+#main #portada #proceso_compra .cont_tabs_lp .columnas select{width: 76px;}
+
+#main #portada #proceso_compra .cont_tabs_lp .boton_accion {margin: 0px; padding: 0px 10px 20px 0px; clear: both; text-align: right;}
+#main #portada #proceso_compra .cont_tabs_lp .boton_accion input{background: url(/images/sitio_personas/layout/bot_110x27.gif) no-repeat 0px 0px; color: #FFF; text-align: center; font: bold 11px Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; border: none; cursor: pointer; width: 110px; height: 27px;}
+
+#main #portada #proceso_compra .cont_tabs_lp .boton_continuar {margin: 0px; padding: 15px 10px 50px 0px; clear: both; text-align: right;}
+#main #portada #proceso_compra .cont_tabs_lp .boton_continuar input{background: url(/images/sitio_personas/layout/bot_110x27.gif) no-repeat 0px 0px; color: #FFF; text-align: center; font: bold 11px Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; border: none; cursor: pointer; width: 110px; height: 27px;}
+#main #portada #proceso_compra .cont_tabs_lp .ver_condiciones {/*background: url(/images/sitio_personas/layout/ver_condiciones_ico.gif) 83px 10px no-repeat;*/ width: 100px; height: 14px; float: right; padding: 10px 17px 0px 0px; text-align:right;}
+
+
+/*CALENDARIO*/
+.titulo {background-color: #DCE0EE; border: 0; color: #363636; font-size: 1.2em; font-weight: bold;}
+#cuerpo table{border-collapse: collapse;}
+.table {border: 1px solid #DCE0EE; margin: 0 0 15px 0; font-size: 1.0em; list-style: none; }
+.table strong {font-weight: bold; color: black;}
+.table th {background-color: #F3F4F9; border-bottom: 1px solid #DCE0EE; border-top: 1px solid #DCE0EE; color: #003E7E; font-style: normal; font-weight: normal; height: 20px; padding: 0 5px 0 5px; text-align: left; vertical-align: middle;}
+.table td {vertical-align: middle; color: #363636; padding: 5px 3px;}
+.table input {vertical-align: bottom; }
+#contenido_interno{color: #666; width: 555px;}
+
+.boton-secundario {display: inline-block; margin: 0; border: 0; padding: 4px 15px 5px 10px; text-align: right; line-height:25px; font: bold 11px Arial, Helvetica, sans-serif; color: #fff; cursor: pointer; overflow: visible; text-decoration: none; cursor: pointer; -ms-border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 4px; background: url(/images/common/bg_button_page_blue.gif) right top no-repeat;}
+
+/***********Estilos MATACALENDARIO (reciclaje de personas2k10 y base2k8)********************/
+
+#detalle_programas #bloque_imagen_calendario{background-color: #ffffff; padding: 0px; margin: 0px; width:760px; float:left;}
+#detalle_programas #bloque_imagen_calendario .imagenes{float: left; width: 340px; margin:0px; padding: 0px 8px 0px 0px; background-color:#ffffff;}
+#detalle_programas #bloque_imagen_calendario .imagenes img{border: none; margin: 0px; padding:0px; float: left;}
+#detalle_programas #bloque_imagen_calendario .caja_calendario_detalle_mata{float: left; width: 412px; padding: 0px; margin:0px; background-color:#FFFFFF; color:#FFFFFF;}
+
+.caja_calendario_detalle_mata #calendario{background: #F3F3F3; width: 480px; /*height: 190px;*/padding: 2px 10px 4px 10px; border: 2px solid #DCE0EE; float: left; 	color: #000065; font-size: 10px;}
+.caja_calendario_detalle_mata #calendario .fila_1{width: 480px; float: left; color: #033D7D; font-size: 11px; background:transparent url(/images/common/hr.jpg) repeat-x scroll left bottom; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_origen{width: 194px; float: left; color: #033D7D; font-size: 11px; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_origen label{width: 184px; float: left; color: #033D7D; font-size: 11px; padding:0px 10px 0px 0px; margin:0px 0px 0px 0px; cursor:inherit;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_origen select{font-size: 11px; color: #666; width: 156px; margin: 0px; padding: 0px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_destino {width: 194px; float: left; color: #033D7D; font-size: 11px; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_destino .ciudad_destino {float: left; color: #333333; font-size: 11px; padding:0px; margin:0px; width:160px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_destino label{width: 184px; float: left; color: #033D7D; font-size: 11px; padding:0px 10px 0px 0px; margin:0px 0px 0px 0px; cursor:inherit;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_destino .destino_fijo{background: transparent; border: none; color: #333; font-size: 11px; width:160px;}
+.caja_calendario_detalle_mata #calendario .fila_1 .bloque_destino .readonly{background: #F3F3F3; border: none; color: #333; font-size: 11px;}
+
+.caja_calendario_detalle_mata #calendario .fila_2{width: 480px; float: left; color: #033D7D; font-size: 10px; background:transparent url(/images/common/hr.jpg) repeat-x scroll left bottom; padding:7px 0px 25px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_ida {float:left; margin:0px; padding:0px; width:194px; color: #033D7D; font-size: 11px;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_ida label {margin: 0px; padding: 2px 10px 2px 0px; display: block; width: 184px; float: left; font-weight:bold; cursor:inherit; color:#033D7D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_ida input, .caja_calendario_detalle #calendario .fila_2 #bloque_fecha_ida .text {font-size: 0.98em; color: #666; margin: 0px; padding: 3px !important; width:70px; float:left !important; clear:none; border:1px solid #6C7D8D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_ida select {font-size: 0.98em; color: #666; margin: 0px; padding: 0px !important; width:156px; float:left !important; clear:none; border:1px solid #6C7D8D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_regreso {float:left; margin:0px; padding:0px; width:194px; color: #033D7D; font-size: 11px;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_regreso label {margin: 0px; padding: 2px 10px 2px 0px; display: block; width: 184px; float: left; font-weight:bold; cursor:inherit; color:#033D7D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_regreso input, .caja_calendario_detalle #calendario .fila_2 #bloque_fecha_regreso .text {font-size: 0.98em; color: #666; margin: 0px; padding: 3px !important; width:70px; float:left !important; clear:none; border:1px solid #6C7D8D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_regreso select {font-size: 0.98em; color: #666; margin: 0px; padding: 0px !important; width:156px; float:left !important; clear:none; border:1px solid #6C7D8D;}
+.caja_calendario_detalle_mata #calendario .fila_2 #bloque_fecha_regreso img, .caja_calendario_detalle #calendario .fila_2 #bloque_fecha_ida img {border:0; margin:0px 0px 0px 5px; padding:0px;}
+
+.caja_calendario_detalle_mata #calendario .fila_3{width: 490px; float: left; color: #033D7D; font-size: 11px; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_cabina {float:left; margin:0px !important; padding:0px; width:194px; color: #033D7D; font-size: 11px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_cabina label {margin: 0px; padding: 0px 10px 0px 0px; display: block; width: 184px; float: left; font-weight:bold; cursor:inherit; color:#033D7D;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_cabina select {font-size: 0.98em; color: #666; margin: 0px; padding: 0px; width:156px; float:left !important; clear:none; border:1px solid #6C7D8D;}
+
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros {float:left; margin:0px !important; padding:0px; width:290px; color: #033D7D; font-size: 11px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros  .bloque_pasajeros_adultos{width: 96px; float: left; color: #033D7D; margin:0px; padding:0px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros  .bloque_pasajeros_adultos label{float: left; color: #033D7D; font-size: 11px; margin:0px; padding:0px; font-weight:bold; width:96px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros  .bloque_pasajeros_adultos input{float: left; color: #333333; font-size: 11px; margin:0px; padding:0px; font-weight:normal; width:65px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_adultos select{font-size:11px; margin-bottom:0; width:60px; border:1px solid #6C7D8D; color:#666666;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_ninos{width: 86px; float: left; color: #000065; margin:0px; padding:0px; margin-right:8px !important;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_ninos label{float: left; color: #033D7D; font-size: 11px; margin:0px; padding:0px; font-weight:bold; width:86px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_ninos select{font-size:11px; margin-bottom:0; width:60px; border:1px solid #6C7D8D; color:#666666;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros  .bloque_pasajeros_ninos input{float: left; color: #333333; font-size: 11px; margin:0px; padding:0px; font-weight:normal; width:65px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_infantes{width: 86px; float: left; color: #033D7D; margin:0px; padding:0px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_infantes label{float: left; color: #033D7D; font-size: 11px; margin:0px; padding:0px; font-weight:bold; width:86px;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros .bloque_pasajeros_infantes select{font-size:11px; margin-bottom:0; width:60px; border:1px solid #6C7D8D; color:#666666;}
+.caja_calendario_detalle_mata #calendario .fila_3 #bloque_pasajeros  .bloque_pasajeros_infantes input{float: left; color: #333333; font-size: 11px; margin:0px; padding:0px; font-weight:normal; width:65px;}
+
+.caja_calendario_detalle_mata #calendario .fila_4{width: 388px; float: left; color: #333333; font-size: 11px; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+
+.caja_calendario_detalle_mata #calendario .fila_5{width: 388px; float: left; color: #033D7D; font-size: 11px; background:transparent url(/images/common/hr.jpg) repeat-x scroll left bottom; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special {float:left; margin:0px 0px 5px 0px !important; padding:0; /*width:388px;*/}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .mensaje_edad_menores {float:left; font-size:11px; font-weight:normal; margin:0 !important; padding:0 0 5px !important; width:388px;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos {float:left; margin:0px 20px 0px 0px !important; padding:0; width:119px;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos label {float:left; margin:0px 10px 0px 0px !important; padding:0; /*width:100%;*/font-weight:normal; color: #033D7D; cursor:inherit;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos select{font-size: 11px; color: #666; width: 60px; margin: 0px; padding: 0px; border:1px solid #6C7D8D; 	float:left;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos_3 {float:left; margin:0px!important; padding:0; width:100px;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos_3 label {float:left; margin:0px 5px 0px 0px !important; padding:0; width:30px !important; font-weight:normal; color: #033D7D; cursor:inherit;}
+.caja_calendario_detalle_mata #calendario .fila_5 #bloque_edad_menores_special .bloque_edad_ninos_3 select{font-size: 11px; color: #666; width: 60px; margin: 0px; padding: 0px; border:1px solid #6C7D8D; float:left;}
+
+.caja_calendario_detalle_mata #calendario .fila_6{width: 460px; float: left; color: #000065; font-size: 11px; padding:5px 0px 5px 0px; margin:0px 0px 0px 0px;}
+.caja_calendario_detalle_mata #calendario .fila_6 .button{float: right; padding:0px; margin:0px; width:160px; text-align:right;}
+
+.caja_calendario_detalle_mata #calendario .fila_6 .button a.button-page {float:right;}
+
+/***********Fin estilos MATACALENDARIO (reciclaje de personas2k10 y base2k8)********************/
+
+/***********Botones calendario********************/
+
+.blue {background: url(/images/common/bg_button_page_blue.gif) right top no-repeat;}
+
+.blue-small {background: url(/images/sitio_personas/layout/bot_ir.gif) right top no-repeat;}
+
+.button-page {display: inline-block; margin: 0; border: 0; padding: 4px 15px 5px 10px; text-align: right; line-height:25px; font: bold 11px Arial, Helvetica, sans-serif; color: #fff; cursor: pointer; overflow: visible; text-decoration: none; cursor: pointer; -ms-border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 4px; background: url(/images/common/bg_button_page_blue.gif) right top no-repeat;}
+
+.terminos_condiciones_promocion_calendario{float:left; padding:30px 0; width: 950px !important;}
+
+/***********Fin botones calendario********************/
+	
+	
+
+/***********Widget CALENDARIO********************/
+
+/* The main calendar widget.  DIV containing a table. */
+div.calendar { position: relative; }
+.calendar {z-index: 100;}
+.calendar td , .calendar tr {padding: 1px;}
+.calendar table {border: 1px solid #999999; font-size: 10px; color: #000; cursor: default; background: #f7f7f7; font-family: tahoma,verdana,sans-serif; width: 120px; border-collapse: separate;}
+
+/* Header part -- contains navigation buttons and day names. */
+.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */ text-align: center;    /* They are the navigation buttons */ padding: 1px;          /* Make the buttons seem like they're pressing */width: 25px;}
+.calendar .nav {/*background: #cccccc url(/images/jscalendar/menuarrow.gif) no-repeat 100% 100%;*/ background-color: #033d7d;}
+.calendar thead .title { /* This holds the current "month, year" */ font-weight: bold; /* Pressing it will take you to the current date */ text-align: center; background-color: #033d7d; color: #ffffff; padding: 0px; border-bottom: 1px solid #dddddd; vertical-align: middle; height: 18px;}
+.calendar thead .titleclose {color: #fff; background: #033d7d url(../img/close_window.gif) no-repeat center center; font-size: 10px; border-bottom: 1px solid #dddddd;}
+.calendar thead .titleclose:hover {background: #033d7d url(../img/close_window_hover.gif) no-repeat center center;}
+.calendar thead .headrow { /* Row <TR> containing navigation buttons */ /*background: #778;*/ color: #ffffff; font-weight: bold; border: 1px solid #999999;}
+.calendar thead .daynames { /* Row <TR> containing the day names */ /*background: #bdf;*/ background-color: #939da6;}
+.calendar thead .name { /* Cells <TD> containing the day names */ /*border-bottom: 1px solid #556;*/ padding: 2px; text-align: center; color: #ffffff; font-weight: bold;}
+.calendar thead .weekend { /* How a weekend day name shows in header */ /*color: #a66;*/ /*color: #e21f26;*/}
+.calendar thead .hilite { /* How do the buttons in header appear when hover */ background-color: #4e77a4; color: #fff; /*border: 1px solid #04f;*/ /*padding: 1px;*/ cursor: pointer;}
+.calendar thead .active { /* Active (pressed) buttons in header */ background-color: #ffffff; /*padding: 2px 0px 0px 2px;*/}
+.calendar thead .active.titleclose {background-color: #033d7d;}
+
+/* The body part -- contains all the days in month. */
+.calendar tbody .day { /* Cells <TD> containing month days dates */ width: 15px; color: #456; text-align: right; /*padding: 2px 4px 2px 2px;*/}
+.calendar tbody .day.othermonth {font-size: 80%; color: #bbb;}
+.calendar tbody .day.othermonth.oweekend {color: #fbb;}
+.calendar table .wn {/*padding: 2px 3px 2px 2px;*/ border-right: 1px solid #000; background: #bdf;}
+.calendar tbody .rowhilite td {/*background: white; border: 1px solid white;*/}
+.calendar tbody .rowhilite td.wn {background: white;}
+.calendar tbody td {border: 1px solid #f7f7f7;}
+.calendar tbody td.hilite { /* Hovered cells <TD> */ background: #e4e7ea; /*padding: 1px 3px 1px 1px;*/ cursor: pointer;}
+.calendar tbody td.active { /* Active (pressed) cells <TD> */ background: #cde; border: 1px solid #000; /*padding: 2px 2px 0px 2px;*/}
+.calendar tbody td.selected { /* Cell showing today date */ font-weight: bold; border: 1px solid #000; /*padding: 1px 3px 1px 1px;*/ background: #fff; color: #000;}
+.calendar tbody td.weekend { /* Cells showing weekend days */ color: #6a8cab;}
+.calendar tbody td.today { /* Cell showing selected date */ font-weight: bold; color: #0267c3;}
+.calendar tbody .disabled { color: #CCC; }
+.calendar tbody .emptycell { /* Empty cells (the best is to hide them) */ visibility: hidden;}
+.calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */ display: none;}
+
+/* The footer part -- status bar and "Close" button */
+.calendar tfoot .footrow { /* The <TR> in footer (only one right now) */ text-align: center; /*background: #556;*/ background: white; border-top: 1px solid #556; color: #cc0000;}
+.calendar tfoot td {border-top: 1px solid #556;}
+.calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */ background: #fff; color: #445; border-top: 1px solid #556; padding: 1px;}
+.calendar tfoot .hilite { /* Hover style for buttons in footer */ background: #a7b1be; border-top: 1px solid #556; color: #000; padding: 1px; cursor: pointer;}
+.calendar tfoot .active { /* Active (pressed) style for buttons in footer */ /*background: #77c;*/ border-top: 1px solid #556; padding: 2px 0px 0px 2px;}
+
+/* Combo boxes (menus that display months/years for direct selection) */
+.calendar .combo {position: absolute; display: none; top: 0px; left: 0px; width: 4em; cursor: default; border: 1px solid #655; background: white; color: #000; font-size: 90%; z-index: 200;}
+.calendar .combo .label,
+.calendar .combo .label-IEfix {text-align: center; padding: 1px;}
+.calendar .combo .label-IEfix {width: 4em;}
+.calendar .combo .hilite {background: #e4e7ea;}
+.calendar .combo .active {/*border-top: 1px solid #46a; border-bottom: 1px solid #46a;*/background: #a7b1be;color: white; font-weight: bold;}
+.calendar td.time {border-top: 1px solid #000; padding: 1px 0px; text-align: center; background-color: #f4f0e8;}
+
+.calendar td.time .hour,
+.calendar td.time .minute,
+
+.calendar td.time .ampm {padding: 0px 3px 0px 4px; border: 1px solid #889; font-weight: bold; background-color: #fff;}
+.calendar td.time .ampm {text-align: center;}
+.calendar td.time .colon {padding: 0px 2px 0px 3px; font-weight: bold;}
+.calendar td.time span.hilite {border-color: #000; background-color: #667; color: #fff;}
+.calendar td.time span.active {border-color: #f00; background-color: #000; color: #0f0;}
+
+/* PROPIEDADES ************************************/
+.flotar_der{float:right;}
+.flotar_izq{float: left;}
+

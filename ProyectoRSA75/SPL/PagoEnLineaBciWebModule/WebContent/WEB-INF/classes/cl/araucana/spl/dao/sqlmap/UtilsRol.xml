@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="UtilisRol">
+	<typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+	
+	<resultMap class="cl.araucana.spl.action.roles.OpcionDVO" id="utilisRol">
+		<result property="id" column="OPC_ID"/>
+		<result property="idSistema" column="SIS_ID"/>
+		<result property="descripcion" column="OPC_DESCRIPCION"/>
+		<result property="codigo" column="OPC_CODIGO"/>
+		<result property="fechaCreacion" column="OPC_FECHA"/>
+		<result property="usuario" column="OPC_USUARIO"/>
+		<result property="publico" column="esPublico"/>
+	</resultMap>
+	
+	<resultMap class="cl.araucana.spl.beans.Rol" id="rol">
+		<result property="idSistema" column="ROL_ID"/>
+		<result property="id" column="SIS_ID"/>
+		<result property="codigoNegocio" column="ROL_CODIGO_NEGOCIO"/>
+		<result property="nombre" column="ROL_NOMBRE"/>
+		<result property="eliminable" column="ROL_ELIMINABLE"/>
+		<result property="fechaCreacion" column="ROL_FECHA"/>
+		<result property="usuario" column="ROL_USUARIO"/>
+	</resultMap>
+	
+    <select id="sqlUtilisRol" parameterClass="java.lang.String" resultMap="utilisRol">
+			 select 
+			 OPC.OPC_ID,
+			 OPC.SIS_ID,
+			 OPC.OPC_DESCRIPCION,
+			 OPC.OPC_CODIGO,
+			 OPC.OPC_FECHA,
+			 OPC.OPC_USUARIO,
+			 0 as esPublico
+			 from USEGURIDAD.opc OPC, USEGURIDAD.rro RRO,USEGURIDAD.rol ROL, USEGURIDAD.usu USU, USEGURIDAD.sis SIS
+			 where  sis.sis_id     = rol.sis_id
+			 and    rro.rol_id     = rol.rol_id
+			 and    rro.opc_id     = opc.opc_id
+			 and    usu.rol_id     = rol.rol_id
+			 and    sis.sis_codigo = 'PagoEnLineaWeb'
+			 and    usu.rut        = #rutUsuario#
+			 and    usu.usu_estado = 'A'
+			 and   OPC.OPC_ID not in(
+				select OPC.OPC_ID 
+				from   USEGURIDAD.opc OPC, USEGURIDAD.rro RRO, USEGURIDAD.rol ROL, USEGURIDAD.sis SIS 
+				where  sis.sis_id     = rol.sis_id
+				and    rro.rol_id     = rol.rol_id
+				and    rro.opc_id     = opc.opc_id
+				and    sis.sis_codigo ='PagoEnLineaWeb'
+				and    rol.rol_codigo_negocio = 'PUBLICO'				
+			 )
+			 union
+			 select OPC.OPC_ID,
+			 OPC.SIS_ID,
+			 OPC.OPC_DESCRIPCION,
+			 OPC.OPC_CODIGO,
+			 OPC.OPC_FECHA,
+			 OPC.OPC_USUARIO,
+			 1 as esPublico
+			 from   USEGURIDAD.opc OPC, USEGURIDAD.rro RRO, USEGURIDAD.rol ROL, USEGURIDAD.sis SIS
+			 where  sis.sis_id     = rol.sis_id
+			 and    rro.rol_id     = rol.rol_id
+			 and    rro.opc_id     = opc.opc_id
+			 and    sis.sis_codigo = 'PagoEnLineaWeb'
+			 and    rol.rol_codigo_negocio = 'PUBLICO'
+	</select>	
+	
+	
+	<select id="sqlRol" parameterClass="java.lang.String" resultMap="rol">
+			SELECT 
+			ROL.ROL_ID,
+			ROL.SIS_ID,
+			ROL.ROL_CODIGO_NEGOCIO,
+			ROL.ROL_NOMBRE,
+			ROL.ROL_ELIMINABLE,
+			ROL.ROL_FECHA,  
+			ROL.ROL_USUARIO from USEGURIDAD.ROL ROL,USEGURIDAD.SIS SIS, USEGURIDAD.USU USU 
+			where   ROL.ROL_ID = USU.ROL_ID     AND 
+			SIS.SIS_ID = ROL.SIS_ID     AND 
+			USU.RUT = #rutUsuario#              AND 
+			ROL.ROL_CODIGO_NEGOCIO = 'ADMINISTRADOR' AND 
+			 SIS.SIS_CODIGO = 'PagoEnLineaWeb'
+	</select>	
+</sqlMap>

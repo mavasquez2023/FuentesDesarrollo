@@ -1,0 +1,2 @@
+000001 11/02/2016 21:49:19 INFO    clinit<>                                              ***  Log for 'cl.araucana.wsccaf.dao.DB2DAO' started  ***
+000002 11/02/2016 21:49:19 SEVERE  init<>                                                NamingException, mensaje:Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial

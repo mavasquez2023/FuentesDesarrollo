@@ -1,0 +1,52 @@
+8
+
+dir
+3233
+https://172.16.137.116/svn/IBM/was6/microsystem-integracion-lme/.settings
+https://172.16.137.116/svn/IBM
+
+
+
+2014-07-11T16:05:28.408370Z
+2326
+fquinteros
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9f9b6b36-38eb-fb45-9c4b-f8f2eef16383
+
+org.eclipse.jdt.core.prefs
+file
+
+
+
+
+2014-10-02T21:36:11.784038Z
+1c83e72a54ba6ac97452a90863c2b4e1
+2014-07-11T16:05:28.408370Z
+2326
+fquinteros
+
+org.eclipse.jdt.ui.prefs
+file
+
+
+
+
+2014-10-02T21:36:11.789039Z
+d88a479010d848273bdb218713a9ac57
+2014-07-04T20:35:45.037011Z
+2271
+fquinteros
+

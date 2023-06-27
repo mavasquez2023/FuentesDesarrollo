@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<menus-config>
+	<!-- modulo nombre="Gestión de Pago" url="Inicio.do?accion=inicio" accion="inicio" roles="ECL, ECE, ADE"-->
+	<modulo nombre="Gestión de Pago" url="ListarNominas.do?accion=inicio&amp;limpiaPath=" accion="inicio" roles="ECL, ECE, ADE"/>
+		<!-- tab nombre="Gestión de Comprobantes" activar="procesos" subAccion="procesos" url="ListarNominas.do?accion=inicio&amp;subAccion=procesos&amp;limpiaPath=" roles="ECL, ECE, ADE" />
+	</modulo-->
+	<modulo nombre="Nóminas Trabajadores" url="TrabCotizantesAll.do?accion=nominas&amp;flgBlanco=1" accion="nominas" roles="ECL, ECE, ADE">
+		<tab nombre="Trabajadores"   activar="trabajadores" subAccion="trabajadores" url="TrabCotizantesAll.do?accion=nominas&amp;subAccion=trabajadores&amp;subSubAccion=trabListaAll&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+		<tab nombre="Enviar Nóminas" activar="envio" subAccion="envio"               url="sender.do" onclick="javascript:return validaUnzippedAdaptedSender(this);"                                     roles="ECE, ADE"/>		
+	</modulo>
+	<modulo nombre="Productos Caja" url="DescargaPC.do?accion=reportes&amp;subAccion=excel&amp;limpiaPath=" accion="reportes" roles="ECL, ECE, ADE">
+		<tab nombre="Descargar"   activar="excel"      subAccion="excel"      url="DescargaPC.do?accion=reportes&amp;subAccion=excel&amp;limpiaPath="           	roles="ECL, ECE, ADE"/>
+	</modulo>
+	<modulo nombre="Mis Reportes" url="ResultadoInforme.do?accion=reportes" accion="reportes" roles="ECL, ECE, ADE">
+		<tab nombre="Avisos-Errores"          activar="errorAviso" subAccion="errorAviso" url="BuscarInforme.do?accion=reportes&amp;subAccion=errorAviso&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+		<tab nombre="Detalle Comprobantes"    activar="detalles"   subAccion="detalles"   url="Sabana.do?accion=reportes&amp;subAccion=detalles&amp;limpiaPath="          roles="ECL, ECE, ADE"/>		
+		<tab nombre="Descargar Nóminas Excel" activar="excel"      subAccion="excel"      url="Consulta.do?accion=reportes&amp;subAccion=excel&amp;limpiaPath="           roles="ECL, ECE, ADE"/>		
+		<tab nombre="Declaraciones y No Pago" activar="excel"      subAccion="excel"      url="DetalleInfoDeclaraNoPago.do?accion=reportes&amp;subAccion=excel&amp;limpiaPath="           roles="ECL, ECE, ADE"/>		
+		<!--<tab nombre="Mis Plantillas"		  activar="planillas"  subAccion="planillas"  url="RedireccionPlanillas.do"													  roles="ECL, ECE, ADE"/> -->
+	</modulo>
+	<modulo nombre="Definición de Códigos" url="ListaCodigosFicha.do?accion=mapeo&amp;flgBlanco=1" accion="mapeo" roles="ECL, ECE, ADE">
+		<tab nombre="Códigos Conceptos"       activar="codigosFicha"  subAccion="codigosFicha"  url="ListaCodigosFicha.do?accion=mapeo&amp;subAccion=codigosFicha&amp;limpiaPath="   roles="ECL, ECE, ADE"/>
+		<tab nombre="Descripción de Archivos" activar="archivosLista" subAccion="archivosLista" url="ListaMapeoArchivos.do?accion=mapeo&amp;subAccion=archivosLista&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+	</modulo>
+	<modulo nombre="Administración" url="ListarEmpresas.do?accion=admin&amp;subAccion=empresas&amp;subSubAccion=empresaLista&amp;limpiaPath=" accion="admin" roles="ECL, ECE, ADE">
+		<tab nombre="Empresas"   activar="empresas" subAccion="empresas" url="ListarEmpresas.do?accion=admin&amp;subAccion=empresas&amp;subSubAccion=empresaLista&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+		<tab nombre="Encargados" activar="usuarios" subAccion="usuarios" url="ListarUsuarios.do?accion=admin&amp;subAccion=usuarios&amp;subSubAccion=usuarioLista&amp;limpiaPath=" roles="ADE"/>
+	</modulo>
+	<modulo nombre="Consulta en Línea" url="ConsultaCargas.do?accion=cargas&amp;flgBlanco=1" accion="cargas" roles="ECL, ECE, ADE">
+		<tab nombre="Consulta Cargas Fam."  activar="cfConsulta"   subAccion="cfConsulta"   url="ConsultaCargas.do?accion=cargas&amp;subAccion=cfConsulta&amp;limpiaPath="    roles="ECL, ECE, ADE"/>
+		<tab nombre="Reporte de Cargas" activar="cfValidacion" subAccion="cfValidacion" url="ConsultaNominas.do?accion=cargas&amp;subAccion=cfValidacion&amp;limpiaPath=" roles="ECL, ECE, ADE"/>
+	</modulo>
+	<!--modulo nombre="Consultas" url="Consulta.do?accion=consulta" accion="consulta" roles="ECL, ECE, ADE"/-->
+</menus-config>

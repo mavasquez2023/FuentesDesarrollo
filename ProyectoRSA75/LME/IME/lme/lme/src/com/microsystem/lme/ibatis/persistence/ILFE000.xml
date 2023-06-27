@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+	For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+	This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+	to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE000">
+	<typeAlias alias="ilfe000" type="com.microsystem.lme.ibatis.domain.Ilfe000VO" />
+		
+	<resultMap id="returnIlfe000" class="ilfe000">
+		<result property="ideOpe" column="IDEOPE" />
+		<result property="numLicencia" column="NUMLIC" nullValue="0" />
+		<result property="digLicencia" column="DIGLIC" nullValue="" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="hora" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+		<result property="fechaEstado" column="FECHAEST" />
+		<result property="horaEstado" column="HORAEST" />		
+		<result property="marca" column="MARCA" />
+		<result property="marcons" column="MARCONS" />
+	</resultMap>
+	
+	<insert id="insertIlfe000" parameterClass="ilfe000">
+		INSERT INTO LIEXP.ILFE000 (IDEOPE, NUMLIC, DIGLIC, FECCON, HORCON, ESTADO, FECHAEST, HORAEST, MARCONS) VALUES
+		(#ideOpe#, #numLicencia#, #digLicencia#, #fechaConsulta#, #hora#, #estado#, #fechaEstado#, #horaEstado#, #marcons#)
+		WITH NC
+	</insert>
+	
+	<!--<select id="getIlfe000" parameterClass="ilfe000"
+		resultClass="string">
+		SELECT NUMLIC FROM LIEXP.ILFE000 WHERE IDEOPE = #ideOpe# and
+		NUMLIC = #numLicencia# and ESTADO = #estado#
+		WITH UR
+	</select>-->
+	
+	<update id="updateIlfe000">
+		UPDATE LIEXP.ILFE000 SET ESTADO = #ESTADO# WHERE NUMLIC =
+		#numLicencia# 
+		WITH NC
+	</update>
+
+	<delete id="deleteIlfe000">
+		DELETE FROM LIEXP.ILFE000 
+		WITH NC 
+		<!--DELETE FROM LIEXP.ILFE000 WHERE MARCONS = '1' WITH NC  CONSULTA ANTES DE IMPLEMENTAR LA TABLA ILFE00HER-->
+	</delete>
+
+	<delete id="deleteIlfe000InIlfe002R">
+		DELETE FROM LIEXP.ILFE000 a 
+		WHERE EXISTS(SELECT b.NUMIMPRE 
+		FROM LIEXP.ILFE002R b WHERE b.NUMIMPRE = a.NUMLIC and b.ESTLICEN = a.ESTADO and b.FECHAEST = a.FECHAEST and b.HORAEST = a.HORAEST)
+		WITH NC
+	</delete>
+
+	<insert id="insertSelectIlfe000HER" parameterClass="ilfe000">
+	INSERT INTO
+	LIEXP.ILFE000HER (IDEOPE, NUMLIC, DIGLIC, FECCON,HORCON, ESTADO, FECHAEST, HORAEST, MARCA, MARCONS)
+	SELECT IDEOPE, NUMLIC, DIGLIC, FECCON, HORCON, ESTADO, FECHAEST, HORAEST, MARCA, MARCONS
+	FROM LIEXP.ILFE000 as A
+	WHERE MARCONS = 0 AND NOT EXISTS (SELECT * FROM LIEXP.ILFE000HER as B where
+	A.IDEOPE = B.IDEOPE AND A.NUMLIC = B.NUMLIC AND A.ESTADO = B.ESTADO
+	AND A.FECHAEST = B.FECHAEST AND A.HORAEST = B.HORAEST)
+	WITH NC
+	</insert>
+</sqlMap>

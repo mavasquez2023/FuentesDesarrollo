@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Todas las Planillas</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<!-- <link href="theme/Master.css" rel="stylesheet" type="text/css" /> -->
+		<link href="common/css/estilo_formularios.css" rel="stylesheet" type="text/css" />
+		<link href="common/css/collapsible_menu.css" rel="stylesheet" type="text/css" />
+		<link href="common/css/grid_960.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" src="Includes/FuncionesJava.js"></script>
+		<script language="javascript" src="common/js/planillas.js"></script>
+		<script>
+	
+	function Aceptar(){
+		window.parent.frames['frmResultado'].document.all.TipoProceso.value = form1.TipoProceso.value;
+		if (form1.FechaProceso2.value != ""){
+			window.parent.frames['frmResultado'].document.all.FechaProceso.value = form1.FechaProceso.value + " " + form1.FechaProceso2.value;
+		}else if(form1.FechaProceso.value != ""){
+			window.parent.frames['frmResultado'].document.all.FechaProceso.value = form1.FechaProceso.value + " " + "205908";
+		}else{
+			if ("${inicotiza}" != "") {
+			    window.parent.frames['frmResultado'].document.all.FechaProceso.value= "${inicotiza}" + " " + "205908";
+			}else{
+				alert("Ingrese un período para la búsqueda");
+				return false;
+			}
+		}
+		window.parent.frames['frmResultado'].document.all.FolioPlanilla.value = form1.FolioPlanilla.value;
+		window.parent.frames['frmResultado'].document.all.RutEmpresa.value = form1.RutEmpresa.value;
+		window.parent.frames['frmResultado'].document.all.Convenio.value = form1.Convenio.value;
+		window.parent.frames['frmResultado'].document.all.Sucursal.value = form1.Sucursal.value;
+		window.parent.frames['frmResultado'].document.all.Holding.value = window.parent.frames['frmPresenta'].document.all.ocuHolding.value;
+		window.parent.frames['frmResultado'].document.all.form1.submit();
+	}
+	
+	function BajarPDF(){
+		var strCondicion = "";
+	        strCondicion = strCondicion + " AND Holding IN (" + window.parent.frames['frmPresenta'].document.all.ocuHolding.value.replace(" ", ",") + ")";
+		if (form1.TipoProceso.selectedIndex != 0) {
+			strCondicion = strCondicion + " AND TipoProceso = ''" + form1.TipoProceso.value + "''";
+	    }
+		if (form1.FechaProceso.value != "") {
+			strCondicion = strCondicion + " AND FechaProceso BETWEEN " + (cantidaddias(form1.FechaProceso.value)-5);
+			if (form1.FechaProceso2.value == ""){
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso.value)+5);
+			}else{
+				strCondicion = strCondicion + " AND " + (cantidaddias(form1.FechaProceso2.value)+5);
+			}
+	    }
+		if (form1.FolioPlanilla.value != "") {
+			strCondicion = strCondicion + " AND FolioPlanilla = ''" + form1.FolioPlanilla.value + "''";
+	    }
+	
+	        strCondicion = strCondicion + " AND Convenio IN (" + JTrim(form1.Convenio.value) + ")";
+	
+		if (form1.Sucursal.value != "") {
+			strCondicion = strCondicion + " AND Sucursal IN (''" + JTrim(form1.Sucursal.value) + "'')";
+	    }
+		if (form1.RutEmpresa.selectedIndex == 0) {
+			aux = form1.RutEmpresa.value;
+			largo = aux.length;
+			aux = aux.substring(0, largo - 1);
+		} else {
+			aux = form1.RutEmpresa.value;
+		}
+		
+		strCondicion = strCondicion + " AND RutEmpresa IN (" + aux + ")";
+		
+		window.parent.frames['frmDownload'].document.all.inTipo.value = "1";
+		window.parent.frames['frmDownload'].document.all.inCondicion.value = strCondicion;
+		window.parent.frames['frmDownload'].document.all.form2.submit();
+		}
+		function sizeRows() 
+		{ 
+			var frameset = parent.document.getElementById("main_frame"); 
+			frameset.rows = "208,*"; 
+		} 
+		
+	</script>	
+	</head>
+<body leftmargin="3" topmargin="3" marginwidth="3" marginheight="3" onload="window.open('PlanillaTodas_Obj.htm','frmResultado');window.open('Download.htm','frmDownload');sizeRows();">
+
+		<FORM id="form1">
+			
+				<font class="titulo">Solicitud Planillas</font>
+				<br/>
+				<br/>
+				<table width="650" border="0" cellspacing="5" cellpadding="0" id="tabla_cont">
+				
+					<tr>
+						<td width="18%" height="29" align="left" valign="middle">Tipo Proceso </td>
+						<td width="27%" align="left" valign="middle"><strong>
+							<select name="TipoProceso" size="1" id="TipoProceso" class="campos" >
+								<option value="">Todos</option>
+								<option value="R">Remuneraciones</option>
+								<option value="G">Gratificaciones</option>
+								<option value="D">Dep. Convenidos</option>
+								<option value="A">Reliquidaci&oacute;n</option>														
+					  </select>
+					</strong></td>
+			
+			
+					  <td align="left" valign="middle" nowrap="nowrap">Período</td>
+	                  <td align="left" valign="middle" nowrap="nowrap">Desde<strong>
+						<input type="text" class="campos"  id="FechaProceso" value="${periodoant}" style="font-family:Arial;font-size:8pt;" size="10" maxlength="6" onkeypress="JValidaCaracter('Numerico','');" onblur="ValidaFecha(this); ValidaRango(this, FechaProceso2); ValidaFeinicotiza(this, FechaProceso2, ${inicotiza})">&nbsp;		
+								
+					 </strong>Hasta<strong>
+							<input type="text" class="campos"  id="FechaProceso2" value="${periodo}" style="font-family:Arial;font-size:8pt;" size="8" maxlength="10" onkeypress="JValidaCaracter('Numerico','');" onblur="ValidaFecha(this); ValidaRango(FechaProceso, this); ValidaFeinicotiza(FechaProceso, this, ${inicotiza})">
+						<span class="fecha_cuadro">(aaaamm)</span> </strong>
+					</td>
+				</tr>
+				<tr>
+					
+					<td align="left" valign="middle" nowrap="nowrap">Rut Empresa :</td>
+				
+					<td align="left" valign="middle">
+							<div id="divRut"></div>
+					</td>
+
+					<td align="left" valign="middle" nowrap="nowrap">Raz&oacute;n Social :</td>
+				
+					<td align="left" valign="middle">
+								<div id="divRazon"></div> 
+					</td>
+				</tr>
+				<tr>
+					 <td align="left" valign="middle">Convenio :</td>
+					 	<td align="left" valign="middle">
+						 			<div id="divConvenio"></div>
+						</td>
+					 <td align="left" valign="middle">Sucursal :</td>
+					 	<td align="left" valign="middle">
+					 				<div id="divSucursal"></div>
+					 	</td>
+				</tr>
+				<tr>
+					
+						<td width="14%" align="left" valign="middle">Folio :</td>
+						
+						<td>
+
+								<input name="FolioPlanilla" type="text" id="FolioPlanilla" class="campos" style="font-family:Arial;font-size:8pt;" onblur="validaFolio();" onkeypress="JValidaCaracter('Numerico','');" size="12" maxlength="10">
+						</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center">
+						<input type="button" value="Buscar" class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="Aceptar();">
+						<input type="reset" value="Limpiar" class="btn1" style="Cursor:Pointer; Cursor:Hand">
+						<input type="button" value="Bajar ZIP" class="btn1" style="Cursor:Pointer; Cursor:Hand" onclick="BajarPDF();">
+					</td>
+				</tr>
+			</table>
+		</FORM>
+	<script>
+	document.all.divRazon.innerHTML = window.parent.frames['frmPresenta'].document.all.ocuRazon.value;
+	document.all.divConvenio.innerHTML = window.parent.frames['frmPresenta'].document.all.ocuConvenio.value;
+	document.all.divRut.innerHTML = window.parent.frames['frmPresenta'].document.all.ocuRut.value;
+	document.all.divSucursal.innerHTML = window.parent.frames['frmPresenta'].document.all.ocuSucursal.value;
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSConsultaFonasaImplService WSDL service -->
+
+  <service name="WSConsultaFonasaImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://impl.services.business.clientewsfonasa.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="WSConsultaFonasaImplService"/>
+      <parameter name="schemaQualified" value="http://exception.common.clientewsfonasa.araucana.cl,http://to.business.clientewsfonasa.araucana.cl,http://impl.services.business.clientewsfonasa.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="WSConsultaFonasaImpl"/>
+      <parameter name="className" value="cl.araucana.clientewsfonasa.business.services.impl.WSConsultaFonasaImpl"/>
+      <parameter name="wsdlPortType" value="WSConsultaFonasaImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:retNS="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:rtns="http://to.business.clientewsfonasa.araucana.cl" name="consultarRutFonasa" qname="operNS:consultarRutFonasa" returnQName="retNS:consultarRutFonasaReturn" returnType="rtns:ResponseWSFonasaTO" soapAction="">
+        <parameter xmlns:pns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rut" type="tns:string"/>
+        <fault xmlns:fns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://exception.common.clientewsfonasa.araucana.cl" name="ServiceException" qname="fns:fault" class="cl.araucana.clientewsfonasa.common.exception.ServiceException" type="tns:ServiceException"/>
+        <fault xmlns:fns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://exception.common.clientewsfonasa.araucana.cl" name="DaoException" qname="fns:fault1" class="cl.araucana.clientewsfonasa.common.exception.DaoException" type="tns:DaoException"/>
+      </operation>
+      <operation xmlns:operNS="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:retNS="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:rtns="http://to.business.clientewsfonasa.araucana.cl" name="consultarEstadoFormulario" qname="operNS:consultarEstadoFormulario" returnQName="retNS:consultarEstadoFormularioReturn" returnType="rtns:ResponseFormFonasaTO" soapAction="">
+        <parameter xmlns:pns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:color" type="tns:int"/>
+        <parameter xmlns:pns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numeroLicencia" type="tns:int"/>
+        <parameter xmlns:pns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rutAfiliado" type="tns:int"/>
+        <fault xmlns:fns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://exception.common.clientewsfonasa.araucana.cl" name="ServiceException" qname="fns:fault" class="cl.araucana.clientewsfonasa.common.exception.ServiceException" type="tns:ServiceException"/>
+        <fault xmlns:fns="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns="http://exception.common.clientewsfonasa.araucana.cl" name="DaoException" qname="fns:fault1" class="cl.araucana.clientewsfonasa.common.exception.DaoException" type="tns:DaoException"/>
+      </operation>
+      <parameter name="allowedMethods" value="consultarEstadoFormulario consultarRutFonasa"/>
+
+      <typeMapping xmlns:ns="http://to.business.clientewsfonasa.araucana.cl" qname="ns:ResponseWSFonasaTO" type="java:cl.araucana.clientewsfonasa.business.to.ResponseWSFonasaTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://exception.common.clientewsfonasa.araucana.cl" qname="ns:ServiceException" type="java:cl.araucana.clientewsfonasa.common.exception.ServiceException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://to.business.clientewsfonasa.araucana.cl" qname="ns:ResponseFormFonasaTO" type="java:cl.araucana.clientewsfonasa.business.to.ResponseFormFonasaTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://exception.common.clientewsfonasa.araucana.cl" qname="ns:DaoException" type="java:cl.araucana.clientewsfonasa.common.exception.DaoException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

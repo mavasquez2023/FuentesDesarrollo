@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<publishers>
+
+	<publisher>
+		<name> cr_nc_odcm </name>
+		<description> Publicador de nominas de credito en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.cr.pdfservice.nc.NCBatchedODCMPDFPublisher </class>
+		<default> false </default>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /cr/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/cr/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/cr/mapped_indexes.xml </mappedIndexes>
+	</publisher>
+
+	<publisher>
+		<name> cp_planillas_odcm </name>
+		<description> Publicador de planillas de cotizaciones en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.cp.pdfservice.planillas.PlanillaBatchedODCMPDFPublisher </class>
+		<default> true </default>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /cp/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/common/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/common/mapped_indexes.xml </mappedIndexes>
+	</publisher>
+	
+	<publisher>
+		<name> cp_certcot_odcm </name>
+		<description> Publicador de certificados de cotizaciones en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.cp.pdfservice.certificados.CertCotBatchedODCMPDFPublisher </class>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /cp/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 4000 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/common/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/common/mapped_indexes.xml </mappedIndexes>
+	</publisher>
+
+	<publisher>
+		<name> cp_infocot_odcm </name>
+		<description> Publicador de informes de cotizaciones en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.cp.pdfservice.informes.InfoCotBatchedODCMPDFPublisher </class>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /cp/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/common/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/common/mapped_indexes.xml </mappedIndexes>
+	</publisher>
+	
+	<publisher>
+		<name> cp_compcot_odcm </name>
+		<description> Publicador de informes de comprobantes en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.cp.pdfservice.comprobantes.CompCotBatchedODCMPDFPublisher </class>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /cp/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/common/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/common/mapped_indexes.xml </mappedIndexes>
+	</publisher>		
+
+	<publisher>
+		<name> lsg_na_odcm </name>
+		<description> Publicador de nominas de ahorro en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.lsg.pdfservice.na.NABatchedODCMPDFPublisher </class>
+		<default> false </default>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /lsg/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/lsg/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/lsg/mapped_indexes.xml </mappedIndexes>
+	</publisher>	
+
+	<publisher>
+		<name> asfam_ax_odcm </name>
+		<description> Publicador de anexos de trabajadores en IBM OnDemand Content Manager </description>
+		<class> cl.araucana.asfam.pdfservice.ax.AXBatchedODCMPDFPublisher </class>
+
+		<properties>
+			<property>
+				<name> onDemandCmdDir </name>
+				<description> Directorio base de comandos ARS </description>
+				<value> /OnDemand for WinNT/bin </value>
+			</property>
+
+			<property>
+				<name> server </name>
+				<value> 146.83.1.11 </value>
+			</property>
+
+			<property>
+				<name> userPrincipal </name>
+				<value> 5555394F5245464554547052543035455155524E4F6E68474D7973344D43516D4D43736D4958683457566B3D </value>
+			</property>
+
+			<property>
+				<name> tmpDir </name>
+				<value> /asfam/tmp/odcm </value>
+			</property>
+			
+			<property>
+				<name> maxScopeLength </name>
+				<value> 2800 </value>
+			</property>
+			
+			<property>
+				<name> unloaders </name>
+				<value> 4 </value>
+			</property>
+			
+			<property>
+				<name> loaders </name>
+				<value> 16 </value>
+			</property>
+			
+			<property>
+				<name> partitionSize </name>
+				<value> 500 </value>
+			</property>			
+		</properties>
+		
+		<indexes> /etc/pdf/asfam/indexes.xml </indexes>
+		<mappedIndexes> /etc/pdf/asfam/mapped_indexes.xml </mappedIndexes>
+	</publisher>
+	
+</publishers>

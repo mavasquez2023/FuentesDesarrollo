@@ -1,0 +1,1 @@
+&txt_con=Corresponde a:<br>Mayor valor cobrado por la Empresa por concepto de Asignación Familiar en relación a uno o más trabajadores, en el período indicado.

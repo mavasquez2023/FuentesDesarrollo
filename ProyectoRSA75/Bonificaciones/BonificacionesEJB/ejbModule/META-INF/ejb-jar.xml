@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar id="ejb-jar_ID" version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+	<display-name>
+	BonificacionesEJB</display-name>
+	<enterprise-beans>
+		<session id="ServicesSocios">
+			<ejb-name>ServicesSocios</ejb-name>
+			<home>cl.araucana.bienestar.bonificaciones.serv.ServicesSociosSLBean.ServicesSociosHome</home>
+			<remote>cl.araucana.bienestar.bonificaciones.serv.ServicesSociosSLBean.ServicesSocios</remote>
+			<ejb-class>cl.araucana.bienestar.bonificaciones.serv.ServicesSociosSLBean.ServicesSociosBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204668161515">
+				<res-ref-name>ServicesSocios</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+		<session id="ServicesOperaciones">
+			<ejb-name>ServicesOperaciones</ejb-name>
+			<home>cl.araucana.bienestar.bonificaciones.serv.ServicesOperacionesSLBean.ServicesOperacionesHome</home>
+			<remote>cl.araucana.bienestar.bonificaciones.serv.ServicesOperacionesSLBean.ServicesOperaciones</remote>
+			<ejb-class>cl.araucana.bienestar.bonificaciones.serv.ServicesOperacionesSLBean.ServicesOperacionesBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204668171140">
+				<res-ref-name>ServicesOperaciones</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+		<session id="ServicesConvenios">
+			<ejb-name>ServicesConvenios</ejb-name>
+			<home>cl.araucana.bienestar.bonificaciones.serv.ServicesConveniosSLBean.ServicesConveniosHome</home>
+			<remote>cl.araucana.bienestar.bonificaciones.serv.ServicesConveniosSLBean.ServicesConvenios</remote>
+			<ejb-class>cl.araucana.bienestar.bonificaciones.serv.ServicesConveniosSLBean.ServicesConveniosBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204668120203">
+				<res-ref-name>ServicesConvenios</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+		<session id="ServicesCoberturas">
+			<ejb-name>ServicesCoberturas</ejb-name>
+			<home>cl.araucana.bienestar.bonificaciones.serv.ServicesCoberturasSLBean.ServicesCoberturasHome</home>
+			<remote>cl.araucana.bienestar.bonificaciones.serv.ServicesCoberturasSLBean.ServicesCoberturas</remote>
+			<ejb-class>cl.araucana.bienestar.bonificaciones.serv.ServicesCoberturasSLBean.ServicesCoberturasBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204668089687">
+				<res-ref-name>ServicesCoberturas</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+		<session id="ServicesCasos">
+			<ejb-name>ServicesCasos</ejb-name>
+			<home>cl.araucana.bienestar.bonificaciones.serv.ServicesCasosSLBean.ServicesCasosHome</home>
+			<remote>cl.araucana.bienestar.bonificaciones.serv.ServicesCasosSLBean.ServicesCasos</remote>
+			<ejb-class>cl.araucana.bienestar.bonificaciones.serv.ServicesCasosSLBean.ServicesCasosBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204668064125">
+				<res-ref-name>ServicesCasosDS</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>ServicesSocios</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<method>
+				<ejb-name>ServicesCasos</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<method>
+				<ejb-name>ServicesCoberturas</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<method>
+				<ejb-name>ServicesConvenios</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<method>
+				<ejb-name>ServicesOperaciones</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Supports</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
+</ejb-jar>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+	<resultMap class="cl.laaraucana.capaservicios.database.vo.CuentaCorrienteVO" id="CuentaCorrienteMap">
+		<result column="RUTAFI" property="rutAfi" />
+		<result column="DVRUTAFI" property="dvAfi" />
+		<result column="NROCTA" property="nroCuenta" nullValue=" " />
+		<result column="TIPOCTA" property="tipoCuenta" nullValue="0" />
+		<result column="BANCO" property="codBanco" nullValue="0" />
+	</resultMap>
+  
+	<select id="getCtasCorrientesByRut" 
+			parameterClass="cl.laaraucana.capaservicios.database.vo.CuentaCorrienteVO" 
+			resultMap="CuentaCorrienteMap">
+		SELECT * FROM LCDTA.LC10CTAAFIL 
+		WHERE RUTAFI = #rutAfi# AND DVRUTAFI = #dvAfi#
+	</select>
+	
+	<insert id="insertarCtaCorriente" parameterClass="cl.laaraucana.capaservicios.database.vo.CuentaCorrienteVO">
+		INSERT INTO LCDTA.LC10CTAAFIL (RUTAFI, DVRUTAFI, NROCTA, TIPOCTA, BANCO) 
+		VALUES (#rutAfi#, #dvAfi#, #nroCuenta#, #tipoCuenta#, #codBanco#)
+		WITH NC
+	</insert>
+	
+	<delete id="eliminarCtaCorriente">
+		DELETE FROM LCDTA.LC10CTAAFIL 
+		WHERE RUTAFI = #rutAfi# AND DVRUTAFI = #dvAfi# AND NROCTA = #nroCuenta#
+		WITH NC
+	</delete>
+	
+	
+	<select id="verificarExistenciaCta" resultClass="int" parameterClass="cl.laaraucana.capaservicios.database.vo.CuentaCorrienteVO">
+		SELECT COUNT(*) FROM LCDTA.LC10CTAAFIL
+		WHERE RUTAFI= #rutAfi#
+		AND DVRUTAFI = #dvAfi#
+		AND NROCTA = #nroCuenta#
+	</select>
+	
+</sqlMap>

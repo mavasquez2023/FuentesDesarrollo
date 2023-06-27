@@ -1,0 +1,6 @@
+## IMED ##
+codigoOperador=3
+tipoInstitucion=C
+codUsuario=10105
+clave=12345
+urlServicio=http://200.0.156.60:8080/lme2_fonasa/pronunciamiento/lmes/service

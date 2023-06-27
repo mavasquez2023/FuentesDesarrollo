@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.DetalleAporteCcafVO" table="DETALLE_APORTE_CCAF">
+    	<composite-id >
+        	<key-property name="idCodigoBarra">
+        		<column name="ID_CODIGO_BARRA" not-null="true" />
+        	</key-property>
+        	<key-property name="idAporte">
+        		<column name="ID_APORTE" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="fechaVencimiento" column="FECHA_VENCIMIENTO" />
+   		<property name="interesReajuste" column="INTERESES_REAJUSTABLE" />
+   		<property name="monto" column="MONTO" />
+   		<property name="rentaPromedio" column="RENTA_PROMEDIO" />
+   		<property name="montoTotal" column="MONTO_TOTAL" />
+   	</class>
+</hibernate-mapping>

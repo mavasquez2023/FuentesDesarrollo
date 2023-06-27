@@ -1,0 +1,82 @@
+@charset "utf-8";
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+img {
+	border: 0px;
+}
+.header .logo {
+	text-align: center;
+}
+.header .user {
+	padding-left: 15px;
+	font-size: 11px;
+	padding-top: 5px;
+	padding-right: 15px;
+}
+
+.header h1 {
+	background-color: #005D8B;
+	color: #FFF;
+	font-size: 16px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	text-align: center;
+}
+.content {
+	padding: 0px;
+}
+.content h2 {
+	font-size: 20px;
+	font-weight: normal;
+	color: #333;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.content .menu {
+	margin: 0px;
+	list-style-type: none;
+	padding: 0px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCC;
+}
+.content .menu li {
+	color: #005D8B;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	padding-right: 45px;
+	padding-left: 15px;
+	font-size: 14px;
+}
+.content .menu li a:link, .content .menu li a:visited {
+	color: #005D8B;
+	text-decoration: none;
+}
+.content .menu li a:hover {
+	color: #333333;
+}
+.footer {
+	padding: 15px;
+	font-size: 10px;
+}
+label {
+  width:100px;
+}
+.credito {
+	font-size:24px;
+	color:#004D8C;
+}
+
+.monto {
+	font-size:65px;
+	color:#004D8C;
+}

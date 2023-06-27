@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<display-name>
+	Publicacion</display-name>
+	
+	<servlet>
+		<servlet-name>PaginaPresentacion</servlet-name>
+		<servlet-class>publicacion.PaginaPresentacion</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>frame_izquierdo</servlet-name>
+		<servlet-class>publicacion.frame_izquierdo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadPDF</servlet-name>
+		<servlet-class>downloadPDF.DownloadPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PrintPDF</servlet-name>
+		<servlet-class>printPDF.PrintPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ArsdocQueryServlet</servlet-name>
+		<servlet-class>
+			cl.araucana.ondemandconnector.servlet.ArsdocQueryServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ArsdocGetServlet</servlet-name>
+		<servlet-class>cl.araucana.ondemandconnector.servlet.ArsdocGetServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PaginaPresentacionJaas</servlet-name>
+		<servlet-class>publicacion.PaginaPresentacionJaas</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>listMonth</display-name>
+		<servlet-name>listMonth</servlet-name>
+		<servlet-class>month.listMonth</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>DescargarPdf</display-name>
+		<servlet-name>DescargarPdf</servlet-name>
+		<servlet-class>descargarPDF.DescargarPdf</servlet-class>
+		 <init-param>
+            <param-name>rutaZip</param-name>
+            <param-value>/Publicacion/DocumentosZip/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>rutaJasper</param-name>
+            <param-value>/Publicacion/PDFJasper/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>rutaPdf</param-name>
+            <param-value>/Publicacion/DocumentosPdf/</param-value>
+            </init-param>
+             <init-param>
+            <param-name>rutaBarra</param-name>
+            <param-value>/Publicacion/PDFJasper/</param-value>
+        </init-param>
+      </servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		 <servlet-name>GenerarDocumentoPDF</servlet-name>
+		<servlet-class>month.GenerarDocumentoPDF</servlet-class>
+		<init-param>
+            <param-name>rutaJasper</param-name>
+            <param-value>/Publicacion/PDFJasper/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>rutaPdf</param-name>
+            <param-value>/Publicacion/DocumentosPdf/</param-value>
+            </init-param>
+            <init-param>
+            <param-name>rutaZip</param-name>
+            <param-value>/Publicacion/DocumentosZip/</param-value>
+        </init-param>
+         <init-param>
+            <param-name>rutaBarra</param-name>
+            <param-value>/Publicacion/PDFJasper/</param-value>
+        </init-param>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		CertificadoAnualData</display-name>
+		<servlet-name>CertificadoAnualData</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.certificadoAnual.CertificadoAnualData</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		CertificadoAnualPDF</display-name>
+		<servlet-name>CertificadoAnualPDF</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.certificadoAnual.CertificadoAnualPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		ComprobantePagoPDF</display-name>
+		<servlet-name>ComprobantePagoPDF</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.comprobantePago.ComprobantePagoPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		ComprobantePagoData</display-name>
+		<servlet-name>ComprobantePagoData</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.comprobantePago.ComprobantePagoData</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		ComprobantePagoDataPDF</display-name>
+		<servlet-name>ComprobantePagoDataPDF</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.comprobantePago.ComprobantePagoDataPDF</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ArchivoCotizacionPrevisional</display-name>
+		<servlet-name>ArchivoCotizacionPrevisional</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.archivoCotizacionPrevisional.ArchivoCotizacionPrevisional</servlet-class>
+	</servlet>	
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminHomologacion</display-name>
+		<servlet-name>AdminHomologacion</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.adminHomologacion.AdminHomologacion</servlet-class>
+	</servlet>	
+	<servlet>
+		<description>
+		</description>
+		<display-name>ArchivoCotizacionPrevisionalZIP</display-name>
+		<servlet-name>ArchivoCotizacionPrevisionalZIP</servlet-name>
+		<servlet-class>
+		cl.araucana.cp.archivoCotizacionPrevisional.ArchivoCotizacionPrevisionalZIP</servlet-class>
+	</servlet>
+	
+	
+	 
+	 
+     
+
+	<!-- servlet mapping para autenticación a través de id domino INICIO -->
+	<servlet-mapping>
+		<servlet-name>PrintPDF</servlet-name>
+		<url-pattern>/PrintPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PaginaPresentacion</servlet-name>
+		<url-pattern>/PaginaPresentacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>frame_izquierdo</servlet-name>
+		<url-pattern>/frame_izquierdo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ArsdocQueryServlet</servlet-name>
+		<url-pattern>/ArsdocQueryServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ArsdocGetServlet</servlet-name>
+		<url-pattern>/ArsdocGetServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadPDF</servlet-name>
+		<url-pattern>/DownloadPDF</url-pattern>
+	</servlet-mapping>
+	
+	 <context-param>
+    	  <param-name>urlRedirectLogin</param-name>
+      	  <!--<param-value>http://www.schema.cl/</param-value> Local GMALLEA 23-04-2012 -->
+      	  <param-value>http://www.previpass.cl/</param-value>
+    </context-param>
+           
+        
+        
+	<!-- servlet mapping para autenticación a través de id domino FIN -->
+
+	<servlet-mapping>
+		<servlet-name>PaginaPresentacionJaas</servlet-name>
+		<url-pattern>PaginaPresentacionJaas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>listMonth</servlet-name>
+		<url-pattern>/listMonth</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DescargarPdf</servlet-name>
+		<url-pattern>/DescargarPdf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GenerarDocumentoPDF</servlet-name>
+		<url-pattern>/GenerarDocumentoPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CertificadoAnualData</servlet-name>
+		<url-pattern>/CertificadoAnualData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CertificadoAnualPDF</servlet-name>
+		<url-pattern>/CertificadoAnualPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComprobantePagoPDF</servlet-name>
+		<url-pattern>/ComprobantePagoPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComprobantePagoData</servlet-name>
+		<url-pattern>/ComprobantePagoData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComprobantePagoDataPDF</servlet-name>
+		<url-pattern>/ComprobantePagoDataPDF</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ArchivoCotizacionPrevisional</servlet-name>
+		<url-pattern>/ArchivoCotizacionPrevisional</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ArchivoCotizacionPrevisionalZIP</servlet-name>
+		<url-pattern>/ArchivoCotizacionPrevisionalZIP</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminHomologacion</servlet-name>
+		<url-pattern>/AdminHomologacion</url-pattern>
+	</servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>cotizacion.jsp</welcome-file>
+	</welcome-file-list>
+
+	<env-entry>
+		<description>Direccion IP de servidor AS400 de OnDemand</description>
+		<env-entry-name>AS400IP</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>146.83.1.11</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Usuario OnDemand de trabajo</description>
+		<env-entry-name>AS400Usuario</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>QONDADM</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Password usuario OnDemand de trabajo</description>
+		<env-entry-name>AS400Password</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>QONDADM</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Servidor Domino de autenticacion de usuario</description>
+		<env-entry-name>DB2Server</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>jdbc:as400://146.83.1.11</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Directorio IFS de bajada de PDFs</description>
+		<env-entry-name>AS400Directorio</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/reports/GET</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Servidor Domino de autenticacion de usuario</description>
+		<env-entry-name>DominoServer</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/Cotizain.nsf/Extranet</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Ubicacion directorio de bajada temporal de archivos</description>
+		<env-entry-name>DirectorioDownload</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/Download/</env-entry-value>
+	</env-entry>
+	  
+	<env-entry>
+		<description>Maxima cantidad de documentos a integrar en pdf integrado</description>
+		<env-entry-name>MaximoDocumentosPDF</env-entry-name>
+		<env-entry-type>java.lang.Integer</env-entry-type>
+		<env-entry-value>200</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<description>Maxima cantidad de documentos a integrar en zip</description>
+		<env-entry-name>MaximoDocumentosZIP</env-entry-name>
+		<env-entry-type>java.lang.Integer</env-entry-type>
+		<env-entry-value>200</env-entry-value>
+	</env-entry>
+	
+	
+		<!--  seguridad -->
+	 <security-constraint> 
+		<display-name>autenticación jaas</display-name>
+		<web-resource-collection>
+			<web-resource-name>Resources</web-resource-name>
+			<description>zona protegida por jaas</description>
+			 <url-pattern>/PaginaPresentacionJaas</url-pattern> 
+			 		
+			<url-pattern>/cotizacionJaas.jsp</url-pattern> 
+			 
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>rolUser</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint> 
+	</security-constraint> 
+
+    <!-- se ocupa en fase de desarrollo -->
+	 <!-- <login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>default</realm-name>
+	</login-config>
+	-->
+	 <login-config>
+  		<auth-method>FORM</auth-method>
+	  	<form-login-config>
+	  		<form-login-page>/pages/login/login.jsp</form-login-page>
+	  		<form-error-page>/pages/login/loginerror.jsp</form-error-page>
+  		</form-login-config>
+	</login-config> 
+ 
+	 <security-role>
+		<description>rolUser</description>
+		<role-name>rolUser</role-name>
+	</security-role> 
+	
+	<resource-ref id="ResourceRef_1317915600562">
+         <res-ref-name>jdbc/cppub</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+     </resource-ref>
+	<resource-ref id="ResourceRef_1405974517447">
+		<description>
+		Datasource Servicio</description>
+		<res-ref-name>jdbc/servicio</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1405974567088">
+		<description>
+		Datasource Previpass</description>
+		<res-ref-name>jdbc/cp</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+     
+</web-app>

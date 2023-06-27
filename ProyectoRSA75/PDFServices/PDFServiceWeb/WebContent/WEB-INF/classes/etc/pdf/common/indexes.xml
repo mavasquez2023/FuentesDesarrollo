@@ -1,0 +1,1248 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<indexes>
+
+	<!-- PLANILLAS DE COTIZACIONES PREVISIONALES -->
+
+	<index>
+		<name> PlanillaIsapre </name>
+		<description> Indice para las planillas de Isapres </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion ISAPRES en ODCM </description>
+				<value> Planillas Isapres Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas Isapres Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas Isapres Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreIsapre </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+	
+	<index>
+		<name> PlanillaAfp </name>
+		<description> Indice para las planillas de AFPs </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion AFPs en ODCM </description>
+				<value> Planillas AFPs Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas AFPs Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas AFPs Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaAfpAV </name>
+		<description> Indice para las planillas de AFPs AFILIADOS VOLUNTARIOS </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion AFPs AFILIADOS VOLUNTARIOS en ODCM </description>
+				<value> Planillas AFPs AV Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas AFPs AV Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas AFPs AV Holding </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaAfpDnp </name>
+		<description> Indice para las planillas de AFPs DNP </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion AFPs DNP en ODCM </description>
+				<value> Planillas AFPs DNP Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas AFPs DNP Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas AFPs DNP Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaApv </name>
+		<description> Indice para las planillas de APVs </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion APVs en ODCM </description>
+				<value> Planillas AFPs CV Holding PDF </value>
+				
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas APVs Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas APVs Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaApvColectivo </name>
+		<description> Indice para las planillas de APV COLECTIVO </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion APV COLECTIVO en ODCM </description>
+				<value> Planillas APVs Colectivo Holding PDF </value>
+				
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas APVs Colectivo Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas APVs Colectivo Holding </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+	
+	<index>
+		<name> PlanillaTp </name>
+		<description> Indice para las planillas de TPs </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion AFPs TP en ODCM </description>
+				<value> Planillas AFPs TP Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas AFPs TP Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas AFPs TP Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+	
+	<index>
+		<name> PlanillaMutual </name>
+		<description> Indice para las planillas de Mutuales </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion Mutuales en ODCM </description>
+				<value> Planillas Mutuales Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas Mutuales Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas Mutuales Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreMutual </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>	
+
+	<index>
+		<name> PlanillaCcaf </name>
+		<description> Indice para las planillas de Cajas </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion Cajas en ODCM </description>
+				<value> Planillas Cajas Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas Cajas Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas Cajas Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreCaja </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>	
+
+	<index>
+		<name> PlanillaInp </name>
+		<description> Indice para las planillas del INP </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion INP en ODCM </description>
+				<value> Planillas INP Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas INP Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas INP Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NumeroSerie </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaInpDnp </name>
+		<description> Indice para las planillas DNP del INP </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion INP en ODCM </description>
+				<value> Planillas INP DNP Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas INP DNP Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas INP DNP Holding </value>
+			</property>
+						
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NumeroSerie </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+
+	<index>
+		<name> PlanillaInpDnpPagada </name>
+		<description> Indice para las planillas DNP Pagadas del INP </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion INP en ODCM </description>
+				<value> Planillas INP Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas INP Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas INP Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NumeroSerie </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+	
+
+	<!-- CERTIFICADOS DE COTIZACIONES PREVISIONALES -->
+	
+	<index>
+		<name> CertificadoCotizaciones </name>
+		<description> Indice para los certificados de cotizaciones previsionales </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion CERTIFICADOS en ODCM </description>
+				<value> Certificado Cotizaciones Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Certificado Cotizaciones Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Certificado Cotizaciones Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+					
+		<fields>
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+				<docID> 1 </docID>
+			</field>
+
+			<field>
+				<name> RutTrabajador </name>
+				<type> int </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+				<docID> 3 </docID>
+			</field>
+			
+			<field>
+				<name> NombreTrabajador </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+			</field>
+		</fields>
+	</index>
+		
+		<!-- INFORMES DE COTIZACIONES PREVISIONALES -->
+		
+	<index>
+		<name> InformeCotizaciones </name>
+		<description> Indice para las informes de cotizaciones </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion Informes en ODCM </description>
+				<value> Informe Cotizaciones Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Informe Cotizaciones Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Informe Cotizaciones Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+		
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> RutTrabajador </name>
+				<type> int </type>
+				<docID> 3 </docID>
+			</field>			
+		
+			<field>
+				<name> TipoProceso </name>
+				<description> Tipo de Informe de Cotizacion </description>
+				<type> char </type>
+				<docID> 4 </docID>
+			</field>
+			
+			<field>
+				<name> NombreTrabajador </name>
+				<type> string </type>
+			</field>			
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+		</fields>
+	</index>
+	
+		<!-- COMPROBANTE DE PAGO DE COTIZACIONES -->
+	<index>
+		<name> ComprobantePago </name>
+		<description> Indice para los comprobantes de pago de cotizaciones </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion Informes en ODCM </description>
+				<value> Comprobantes Pago Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Comprobantes Pago Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Comprobantes Pago Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> Periodo </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+			</field>
+
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+		
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+		
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+
+			<field>
+				<name> TipoProceso </name>
+				<description> Tipo de Comprobante de Pago </description>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> NumeroComprobante </name>
+				<description> Numero de Comprobante </description>
+				<type> int </type>
+				<docID> 1 </docID>
+			</field>
+
+		</fields>
+	</index>	
+
+	<index>
+		<name> PlanillaAfpSil </name>
+		<description> Indice para las planillas de AFPs SIL </description>
+
+		<properties>
+			<property>
+				<name> applicationName </name>
+				<description> Nombre de aplicacion AFPs SIL en ODCM </description>
+				<value> Planillas AFPs SIL Holding PDF </value>
+			</property>
+
+			<property>
+				<name> applicationGroupName </name>
+				<value> Planillas AFPs SIL Holding </value>
+			</property>
+				
+			<property>
+				<name> folderName </name>
+				<value> Planillas AFPs SIL Holding </value>
+			</property>
+				
+			<property>
+				<name> hiddenPredicate </name>
+				<value> TipoInforme = 'PDF' </value>
+			</property>
+		</properties>
+
+		<fields>
+			<field>
+				<name> FechaProceso </name>
+				<description> Periodo de Cotizacion </description>
+				<type> ndate </type>
+				<docID> 1 </docID>
+			</field>
+			
+			<field>
+				<name> Holding </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RutEmpresa </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> RazonSocial </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> Convenio </name>
+				<type> int </type>
+			</field>
+			
+			<field>
+				<name> TipoProceso </name>
+				<type> char </type>
+			</field>
+			
+			<field>
+				<name> Sucursal </name>
+				<type> string </type>
+			</field>
+			
+			<field>
+				<name> NombreAFP </name>
+				<type> string </type>
+				<docID> 2 </docID>
+			</field>
+			
+			<field>
+				<name> FolioPlanilla </name>
+				<type> string </type>
+				<docID> 3 </docID>
+			</field>
+		</fields>
+	</index>
+	
+</indexes>

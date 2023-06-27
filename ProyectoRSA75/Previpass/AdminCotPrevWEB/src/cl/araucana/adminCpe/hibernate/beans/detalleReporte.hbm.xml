@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.util.vo.DetalleReporteVO" table="DETALLE_REPORTE">
+		<composite-id>
+	    	<key-property column="ID_REPORTE" name="idReporte"/>
+    		<key-property column="ID_TIPO_SECCION" name="idTipoSeccion"/>
+    	</composite-id>
+   		<property name="montos" column="MONTOS" />
+   		<property name="montosOrden" column="MONTOS_ORDEN" />
+	</class>
+</hibernate-mapping>
+	

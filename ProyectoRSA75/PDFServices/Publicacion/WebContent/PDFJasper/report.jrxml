@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="182"/>
+	<parameter name="empleador" class="java.lang.String"/>
+	<parameter name="trabajador" class="java.lang.String"/>
+	<parameter name="fecha" class="java.util.Date"/>
+	<parameter name="imagen" class="java.lang.String"/>
+	<parameter name="RUT" class="java.lang.String"/>
+	<parameter name="desde" class="java.lang.Integer"/>
+	<parameter name="hasta" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+
+     substr(PWDCENTID,1,16) as PWDCENTID,
+    CAST(PWDCANORE || '-' ||  PWDCMESRE || '-' || '01' as date)  as FECHA,
+     PWDCREMIM,
+     PWDCMONCO,
+     trim(substr(CAST(PWDCFECPA as char(8)),7,2)) || '/' || trim(substr(CAST(PWDCFECPA as char(8)),5,2))  || '/' || substr(CAST(PWDCFECPA as char(8)),1,4)   as fecpa ,
+     PWDCFOLIO
+from     pwdtad.pwf6100
+where
+     PWDCRUTAF =  $P!{RUT} and  PWDCANORE * 100 + PWDCMESRE  > $P!{desde} and  PWDCANORE * 100 + PWDCMESRE < $P!{hasta}
+order by FECHA desc ]]>
+	</queryString>
+	<field name="PWDCENTID" class="java.lang.String"/>
+	<field name="FECHA" class="java.util.Date"/>
+	<field name="PWDCREMIM" class="java.math.BigDecimal"/>
+	<field name="PWDCMONCO" class="java.math.BigDecimal"/>
+	<field name="FECPA" class="java.lang.String"/>
+	<field name="PWDCFOLIO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<image hAlign="Center">
+				<reportElement x="0" y="0" width="144" height="56"/>
+				<imageExpression><![CDATA["C:\\Documents and Settings\\usuario\\Escritorio\\reporte\\araucana.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="462" y="0" width="93" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="415" y="0" width="47" height="20"/>
+				<textElement/>
+				<text><![CDATA[Santiago, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="0" width="267" height="64"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Certificado de Pagos de Cotizaciones Previsionales para Remuneraciones por Ahorro Previsional Voluntario]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="130" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="95" width="130" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="130" y="95" width="98" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="130" y="95" width="98" height="35" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes y año remuneraciones]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="228" y="95" width="89" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="317" y="95" width="80" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="317" y="95" width="80" height="35" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto cotizado]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="397" y="95" width="76" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="397" y="95" width="76" height="35"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de pago]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="473" y="95" width="82" height="35" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="473" y="95" width="82" height="35" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Folio o de serie planilla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="95" width="89" height="35" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remuneración imponible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="130" height="35" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Institucion Previsional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="494" height="30"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[      El empleador ha pagado las cotizaciones previsionales del trabajador indicado, por los siguientes periodos e instituciones de previsión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="33" width="311" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{trabajador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="9" width="311" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{empleador}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="33" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Trabajador :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="9" width="64" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Empleador :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="130" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="130" y="0" width="98" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="228" y="0" width="89" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="317" y="0" width="80" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="397" y="0" width="76" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="473" y="0" width="82" height="20"/>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="130" y="0" width="98" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0">
+				<reportElement x="228" y="0" width="84" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PWDCREMIM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0" isBlankWhenNull="false">
+				<reportElement x="317" y="0" width="76" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PWDCMONCO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="5" y="0" width="125" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PWDCENTID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="0" width="77" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PWDCFOLIO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="d/M/yyyy" isBlankWhenNull="true">
+				<reportElement x="397" y="0" width="72" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{FECPA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="458" y="9" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="218" splitType="Stretch">
+			<image>
+				<reportElement x="144" y="96" width="215" height="57"/>
+				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="411" y="158" width="114" height="49"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Oscar Pradenas V. Gerente Operaciones La Araucana CCAF.]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement x="411" y="82" width="114" height="76"/>
+				<imageExpression><![CDATA["C:\\Documents and Settings\\usuario\\Escritorio\\reporte\\firma.JPG"]]></imageExpression>
+			</image>
+			<image hAlign="Center">
+				<reportElement x="0" y="82" width="131" height="114"/>
+				<imageExpression><![CDATA["C:\\Documents and Settings\\usuario\\Escritorio\\reporte\\timbre.JPG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="16" width="494" height="50"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[      Las planillas de cotizaciones correspondientes están publicadas en el sitio Internet http://www.cp.cl, con lo cual se da cumplimiento a lo establecido en el dictamen N° 02346/0098 del 08 de Junio del 2004 de la Dirección del Trabajo, el cual se exhibe en este mismo sitio.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

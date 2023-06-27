@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<head>
+<title>logout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<form method="post" action="ibm_security_logout" name="logout" id="logoutForm">
+	<input type="hidden" name="logout" value="Logout">
+	<input type="hidden" name="logoutExitPage" value="/CotizacionPrevisionalWeb/">
+</form>
+<script type="text/javascript">
+<!--
+	var http;
+	if (window.XMLHttpRequest)
+		http = new XMLHttpRequest();
+	else if (window.ActiveXObject)
+	{
+		try 
+		{
+			http = new ActiveXObject("MSXML2.XMLHTTP");
+		} catch (e) 
+		{
+			try 
+			{
+				http = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {}
+		}
+	}
+	if (!http)
+	{
+		alert("No ha sido posible crear una instancia de XMLHttpRequest");
+	}
+
+	logoutApp = function()
+	{
+		var url = "/AdminCotPrevWEB/ibm_security_logout";
+
+		http.open("POST", url, true);
+
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.setRequestHeader("Content-length", 0);
+		http.setRequestHeader("Connection", "close");
+		http.onreadystatechange = function() {}
+		http.send('');
+
+		return true;
+	}
+	logoutApp();
+	<% 
+			request.getSession().setAttribute("clAdmin", "no");
+			request.getSession().invalidate(); 
+		 %>
+	top.location.replace("/CotizacionPrevisionalWeb/araucana/login/loginCPE.jsp");
+//-->
+</script>
+</body>
+</html>

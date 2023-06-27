@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>previpassWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<filter>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>cl.previpass.security.AuthorizationFilter</filter-class>
+		<init-param>
+			<param-name>cualquiera</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>PerfilFilter</filter-name>
+		<filter-class>cl.previpass.security.PerfilFilter</filter-class>
+		<init-param>
+			<param-name>cualquiera</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>/cp_movper.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PerfilFilter</filter-name>
+		<url-pattern>/menu.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PerfilFilter</filter-name>
+		<url-pattern>/cotizaciones.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PerfilFilter</filter-name>
+		<url-pattern>/planillas.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PerfilFilter</filter-name>
+		<url-pattern>/pago_atrasado.jsp</url-pattern>
+	</filter-mapping>
+	 <env-entry>
+	   <description>Portal Publico</description>
+	   <env-entry-name>urlPortalPublico</env-entry-name>
+	   <env-entry-type>java.lang.String</env-entry-type>
+	   <env-entry-value>http://www.previpass.cl</env-entry-value>
+	 </env-entry>	
+	 <env-entry>
+	   <description>Datasource (JNDI)</description>
+	   <env-entry-name>previpassDataSource</env-entry-name>
+	   <env-entry-type>java.lang.String</env-entry-type>
+	   <env-entry-value>jdbc/cp</env-entry-value>
+	 </env-entry>	
+	 <env-entry>
+	   <description>Database (vacio si no es necesario especificar)</description>
+	   <env-entry-name>previpassDatabase</env-entry-name>
+	   <env-entry-type>java.lang.String</env-entry-type>
+	   <env-entry-value>CPEDTA</env-entry-value>
+	   <!-- <env-entry-value>CPEDTAD</env-entry-value> -->
+	 </env-entry>	
+	 <env-entry>
+	   <description>Activa modelo para Administradores de Cajas</description>
+	   <env-entry-name>modeAdminCCAF</env-entry-name>
+	   <env-entry-type>java.lang.String</env-entry-type>
+	   <env-entry-value>on</env-entry-value>
+	 </env-entry>	
+    
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>segurizados</web-resource-name>
+			<url-pattern>*.jsp</url-pattern>
+			<url-pattern>*.html</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>rolUser</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>no_segurizados</web-resource-name>
+			<url-pattern>/test/*</url-pattern>
+			<url-pattern>/login.jsp</url-pattern>
+			<url-pattern>/launch.html</url-pattern>
+			<url-pattern>/inicioEspecial.jsp</url-pattern>
+			<url-pattern>/inicioEspecialBase.jsp</url-pattern>
+			<url-pattern>/inicioNormal.jsp</url-pattern>
+			<url-pattern>/publico.jsp</url-pattern>
+			<url-pattern>/entrada.jsp</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+	</security-constraint>
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login.jsp?error=true</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<security-role>
+		<description>rolUser</description>
+		<role-name>rolUser</role-name>
+	</security-role>
+
+</web-app>

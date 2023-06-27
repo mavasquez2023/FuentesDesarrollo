@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LMELOG">
+	<typeAlias alias="log" type="com.microsystem.lme.ibatis.domain.LmeLogVO"/>
+	
+	<resultMap id="resultLog"  class="log">  
+		<result property="tipoEvento" column="TIPO"/>
+		<result property="evento" column="EVENTO"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="fechaEvento" column="FECLOG"/>
+		<result property="horaEvento" column="HORLOG"/>
+		<result property="msg" column="MENSAJE"/>
+	</resultMap>
+	
+	<select id="getLog" resultMap="resultLog" parameterClass="log">
+		SELECT  TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE
+		FROM LIEXP.LMELOG
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="fechaEvento">
+				FECLOG = #fechaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="horaEvento">
+				HORLOG = #horaEvento#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codOpe">
+				CODOPE = #codOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="tipoEvento">
+				TIPO = #tipoEvento#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+
+	<insert id="insertLog" parameterClass="log">
+		INSERT INTO LIEXP.LMELOG 
+			(TIPO, EVENTO, CODOPE, HORLOG, FECLOG, MENSAJE)
+		VALUES 
+			(#tipoEvento#, #evento#, #codOpe#, #horaEvento#, #fechaEvento#, #msg#)
+		WITH NC
+	</insert>
+</sqlMap>

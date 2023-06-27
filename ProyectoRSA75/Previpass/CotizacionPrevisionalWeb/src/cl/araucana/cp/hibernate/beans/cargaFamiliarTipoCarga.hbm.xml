@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+    <class name="CargaFamiliarTipoCargaVO" table="CARGA_FAMILIAR_TIPO_CARGA">
+    	<id column="ID_CARGA_FAMILIAR_TIPO_CARGA" name="idCargaFamiliarTipoCarga">
+   			<generator class="increment"/>
+   		</id>
+   		<property name="idTipoCarga"		column="PK_ID_TIPO_CARGA" />
+   		<property name="idCargaFamiliar"	column="PK_ID_CARGA_FAMILIAR" />
+   		<property name="numeroCargas"		column="NUMERO_CARGAS" />
+    </class>
+</hibernate-mapping>

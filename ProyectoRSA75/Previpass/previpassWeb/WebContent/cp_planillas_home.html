@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Previpass - Planillas</title>
+<link href="css/estilo_formularios.css" rel="stylesheet" type="text/css" />
+<link href="css/collapsible_menu.css" rel="stylesheet" type="text/css" />
+<link href="css/grid_960.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" type="text/javascript" src="Scripts/jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="Scripts/collapsible_menu.js"></script>
+<script type="text/javascript">
+function swapAll(id, imgId)
+{
+	obj = document.getElementById(id);
+	img = document.getElementById(imgId);
+    if ( obj.style.display == '' )
+    {
+		obj.style.display='none';
+		img.src   = '/img/ico_mas.gif';
+		img.alt   = "Expandir";
+		img.title = "Expandir";
+	} else
+	{
+		obj.style.display = '';
+		img.src   = '/img/ico_menos.gif';
+		img.alt   = "Contraer";
+		img.title = "Contraer";
+	}
+}
+</script>
+</head>
+
+<body onLoad="initMenu(&#39;inicio&#39;, &#39;&#39;);">
+<table width="940" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+    <ul>
+    	<li><img src="img/ico_cerrar.gif" width="11" height="12" hspace="3" /><a href="#">Cerrar Sesión</a></li>
+    	<li><img src="img/ico_contacto.gif" width="11" height="12" hspace="3" /> <a href="#">Contáctenos</a></li>
+    	<li><img src="img/ico_clave.gif" width="11" height="12" hspace="3" /> <a href="#">Cambiar Clave</a></li>
+    	<li><img src="img/ico_calendario.gif" width="11" height="12" hspace="3" /> <a href="#">Calendario</a></li>
+    	<li> <img src="img/ico_home.gif" width="11" height="12" hspace="3" /> <a href="#">Home</a></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><table width="850" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" style="padding-top:25px;">
+        <div class="menu">
+        <ul class="menu_collapse" id="menu1">
+    	<li><a href="cp_planillas.html">Planillas Cajas</a></li>
+    	<li><a href="#">Planillas AFPs</a>
+	        <ul>
+            	<li><a href="#">Declaración y Pago</a></li>
+                <li><a href="#">Trabajos Pesados</a></li>
+                <li><a href="#">Afiliado Voluntario</a></li>
+                <li><a href="#">Declaración y no Pago</a></li>
+                <li><a href="#">Subsidio Incap. Laboral</a></li>
+            </ul>        
+        </li>
+    	<li><a href="#">Planillas APV</a>
+        	<ul>
+                <li><a href="#">Planillas APV</a></li>
+                <li><a href="#">Planillas APV Colectivo</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Planillas Isapres</a></li>
+    	<li><a href="#">Planillas Mutuales</a></li>
+    	<li><a href="#">Planillas INP</a>
+        	<ul>
+            	<li><a href="#">Declaración y Pago</a></li>
+                <li><a href="#">Declaración y no Pago</a></li>
+                <li><a href="#">Declaración y Pago Atrasado</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Comprobante de Pago</a></li>
+		<li><a href="#">Certificados  Cotizaciones</a></li>
+        <li><a href="#">Informe Cotizaciones</a></li>
+  		</ul>
+		</div>
+        
+        </td>
+        <td align="left" valign="top" style="padding-top:25px;" class="txt">
+          
+          Una vez finalizado el Pago de Cotizaciones Previsionales Electrónica por www.previpass.cl, el cliente tiene la opción de visualizar, imprimir y descargar las planillas y certificados de cotización electrónica para el mes en proceso, además disponer de información histórica de los procesos anteriores y otros documentos relacionados a cotizaciones.
+            <h3>Instrucciones de uso:</h3>
+  <h4>Para usar esta sección es necesario descargar los plug-in siguientes:</h4>
+          <ul>
+            <li><a href="http://cpe-test.cp.cl/Publicacion/PlugIns/AdbeRdr60_esp.exe" target="_blank">Descargar Acrobat Reader 6.0 para visualizar Planillas firmadas <img src="img/pdf.jpg" alt="Acrobat Reader" width="18" height="20" border="0" align="absmiddle" /></a></li>
+            <li><a href="http://cpe-test.cp.cl/Publicacion/HelpPublicacion.htm" target="_blank">Utilización del sitio haga click aquí</a></li>
+            </ul><br /><br /><br />
+          <h4>
+            Resolución de la Dirección del Trabajo...</h4>
+          <ul>
+            <li><a href="http://cpe-test.cp.cl/Publicacion/PlugIns/Gobierno.pdf" target="_blank">Visualización resolución haga click aquí</a></li>
+            </ul><br /><br />
+          <h3>Seguridad y Confiabilidad:</h3>
+          Previpass, para dar fe y seguridad de la información publicada, ha invertido en tecnología de punta para brindar elementos de seguridad a los documentos de Planillas electrónicas y Certificados de Cotizaciones Previsionales. <br />
+          <br />
+          Los archivos PDF que publica www.previpass.cl y que son descargados desde este sitio, cuentan con un código de barras bidimensional PDF-417, con el cual puede identificar adulteraciones al contenido de sus documentos una vez impresos, brindando seguridad y confiabilidad en su información. </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

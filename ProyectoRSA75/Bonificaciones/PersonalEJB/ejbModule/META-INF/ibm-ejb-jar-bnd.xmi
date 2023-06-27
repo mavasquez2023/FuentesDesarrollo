@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1204665630468">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1204665630468" jndiName="ejb/cl/araucana/personal/serv/ServicesEmpleadosSLBean/ServicesEmpleadosHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#ServicesEmpleados"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1204667415875" jndiName="jdbc/corporativo">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1204667415875"/>
+    </resRefBindings>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

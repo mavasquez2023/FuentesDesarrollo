@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from InServiceIndService WSDL service -->
+
+  <service name="InServiceInd" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.cp.araucana.cl"/>
+      <parameter name="wsdlServiceElement" value="InServiceIndService"/>
+      <parameter name="schemaQualified" value="http://services.cp.araucana.cl"/>
+      <parameter name="wsdlServicePort" value="InServiceInd"/>
+      <parameter name="className" value="cl.araucana.cp.services.InServiceInd"/>
+      <parameter name="wsdlPortType" value="InServiceInd"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.cp.araucana.cl" xmlns:retNS="http://services.cp.araucana.cl" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="creaIndependiente" qname="operNS:creaIndependiente" returnQName="retNS:creaIndependienteReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rut" type="tns:int"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dv" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:apellidoPaterno" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:apellidoMaterno" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombres" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:genero" type="tns:int"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:codigoActividadEconomica" type="tns:int"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:tipoDireccion" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:direccion" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numero" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dpto" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idComuna" type="tns:int"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:telefono" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fax" type="tns:string"/>
+        <parameter xmlns:pns="http://services.cp.araucana.cl" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:celular" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="creaIndependiente"/>
+
+  </service>
+</deployment>

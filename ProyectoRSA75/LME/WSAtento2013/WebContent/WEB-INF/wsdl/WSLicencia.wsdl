@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:impl="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:intf="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns:tns2="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns:tns3="http://exception.integration.wsatento.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://ws.jaxrpc.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns2="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.jaxrpc.integration.wsatento.araucana.cl"/>
+   <element name="getLicenciasResponse">
+    <complexType>
+     <sequence>
+      <element name="getLicenciasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Licencia"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLicencias">
+    <complexType>
+     <sequence>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+      <element name="clave" nillable="true" type="xsd:string"/>
+      <element name="rut" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_nillable_Licencia">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Licencia" nillable="true" type="tns2:Licencia"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://bean.jaxrpc.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Licencia">
+    <sequence>
+     <element name="codigoSucursalPago" nillable="true" type="xsd:string"/>
+     <element name="compin" nillable="true" type="xsd:int"/>
+     <element name="dias" nillable="true" type="xsd:int"/>
+     <element name="fechaPago" nillable="true" type="xsd:dateTime"/>
+     <element name="tipo" nillable="true" type="xsd:int"/>
+     <element name="fechaDesde" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://exception.integration.wsatento.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="WSAtentoException">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="WSAtentoException" nillable="true" type="tns3:WSAtentoException"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getLicenciasResponse">
+     <wsdl:part element="intf:getLicenciasResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="WSAtentoException">
+     <wsdl:part element="tns3:WSAtentoException" name="fault"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getLicenciasRequest">
+     <wsdl:part element="intf:getLicencias" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="WSLicencia">
+     <wsdl:operation name="getLicencias">
+       <wsdl:input message="intf:getLicenciasRequest" name="getLicenciasRequest"/>
+
+       <wsdl:output message="intf:getLicenciasResponse" name="getLicenciasResponse"/>
+
+       <wsdl:fault message="intf:WSAtentoException" name="WSAtentoException"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="WSLicenciaSoapBinding" type="intf:WSLicencia">
+ <wsaw:UsingAddressing wsdl:required="false" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="getLicencias">
+       <wsdlsoap:operation soapAction="getLicencias"/>
+
+       <wsdl:input name="getLicenciasRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="getLicenciasResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="WSAtentoException">
+         <wsdlsoap:fault name="WSAtentoException" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="WSLicenciaService">
+     <wsdl:port binding="intf:WSLicenciaSoapBinding" name="WSLicencia">
+       <wsdlsoap:address location="https://localhost:9443/WSAtento/services/WSLicencia"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

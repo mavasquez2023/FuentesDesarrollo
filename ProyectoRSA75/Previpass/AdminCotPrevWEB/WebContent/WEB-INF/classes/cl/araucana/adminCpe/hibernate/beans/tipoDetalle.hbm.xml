@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.TipoDetalleVO" table="TIPO_DETALLE">
+    	<composite-id >
+        	<key-property name="idTipoNomina">
+        		<column name="ID_TIPO_NOMINA" not-null="true" />
+        	</key-property>
+        	<key-property name="idTipoSeccion">
+        		<column name="ID_TIPO_SECCION" not-null="true" />
+        	</key-property>
+        	<key-property name="idDetalleSeccion">
+        		<column name="ID_TIPO_DETALLE" not-null="true" />
+        	</key-property>
+        	<key-property name="idEntPagadora">
+        		<column name="ID_ENT_PAGADORA" not-null="true" />
+        	</key-property>
+    	</composite-id>   
+    	<property name="nombre" formula="( SELECT ENTPAGAD.NOMBRE FROM ENTPAGAD WHERE ENTPAGAD.ID_ENT_PAGADORA = ID_ENT_PAGADORA )" type="string"/>		
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mantTabGlobNS">
+
+	<!-- Select a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene glosa, entidad y estado desde la tabla TablasGlobales. Retorna un objeto tipo Parametro. -->
+	<select id="obtenerTabGlob" resultClass="cl.araucana.independientes.vo.LinMantTabGlobVO" parameterClass="java.util.HashMap">
+		SELECT	CODIGO codigo,
+				GLOSA glosa,
+				ENTIDAD entidad,
+				A.ESTADO estado
+		FROM	$IIDTA$.TABLASGLOBALES A LEFT OUTER JOIN $IIDTA$.TABLAENTIDADES B ON ENTIDAD = CODENTIDAD
+		WHERE	ENTIDAD = 1 OR
+				ENTIDAD = 4 OR
+				ENTIDAD = 5 OR
+				ENTIDAD = 7 OR
+				ENTIDAD = 8 OR
+				ENTIDAD = 9 OR
+				ENTIDAD = 14 OR
+				ENTIDAD = 15 OR
+				ENTIDAD = 19 OR
+				ENTIDAD = 22 OR
+				ENTIDAD = 25 OR
+				ENTIDAD = 30 OR
+				ENTIDAD = 31 OR
+				ENTIDAD = 33 OR
+				ENTIDAD = 34 OR
+				ENTIDAD = 35 OR
+				ENTIDAD = 36 OR
+				ENTIDAD = 41 OR
+				ENTIDAD = 50 OR
+				ENTIDAD = 51 OR
+				ENTIDAD = 59 OR
+				ENTIDAD = 60 OR
+				ENTIDAD = 65 OR
+				ENTIDAD = 66 OR
+				ENTIDAD = 68 OR
+				ENTIDAD = 70 OR
+				ENTIDAD = 71
+		ORDER BY B.GLOSAENTIDAD
+
+	</select>
+	
+		<!-- Select con filtro de entidades a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene glosa, entidad y estado desde la tabla TablasGlobales. Retorna un objeto tipo Parametro. -->
+	<select id="filtrarTabGlob" resultClass="cl.araucana.independientes.vo.LinMantTabGlobVO" parameterClass="java.util.HashMap">
+		SELECT	CODIGO codigo,
+				GLOSA glosa,
+				ENTIDAD entidad,
+				ESTADO estado
+		FROM $IIDTA$.TABLASGLOBALES
+		WHERE	ENTIDAD = #input.entidad#
+	</select>
+	
+	<!-- Select con filtro de entidades a las tablas involucradas en el negocio.-->
+	<!-- Query que obtiene glosa, entidad y estado desde la tabla TablasGlobales. Retorna un objeto tipo Parametro. -->
+	<select id="filtrarEstadoTabGlob" resultClass="cl.araucana.independientes.vo.TablasGlobalesVO" parameterClass="java.util.HashMap">
+		SELECT	CODIGO codigo,
+				GLOSA glosa,
+				ENTIDAD entidad,
+				ESTADO estado
+		FROM $IIDTA$.TABLASGLOBALES
+		WHERE	ENTIDAD = #input.entidad#
+	</select>
+	
+	<!-- Query que obtiene el maximo codigo la tabla TABLASGLOBALES-->
+	<select id="obtenerMaxID" resultClass="string" parameterClass="java.util.HashMap">
+		SELECT	MAX(CODIGO)
+     	FROM	$IIDTA$.TABLASGLOBALES
+     	WHERE	ENTIDAD = #input.entidad#
+	</select>
+	
+	<!-- Insert a la tabla TABLASGLOBALES.-->
+		<insert id="insertNewTabGlob" parameterClass="java.util.HashMap">
+		INSERT INTO $IIDTA$.TABLASGLOBALES(CODIGO,GLOSA,ENTIDAD,ESTADO)
+		VALUES(#input.codigo#,#input.glosa#,#input.entidad#,#input.estado#)
+		</insert>
+		
+	<!-- Update TABLAGLOBAL -->
+	<update id="updateMantTabGlob" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TABLASGLOBALES
+		SET		GLOSA = #input.glosa#
+		WHERE	CODIGO = #input.codigo# and ENTIDAD = #input.entidad#
+	</update>
+	
+	<!-- Update ESTADO para tablas globales -->
+	<update id="cambiarEstadoMantTabGlob" parameterClass="java.util.HashMap">
+		UPDATE 	$IIDTA$.TABLASGLOBALES
+		SET		ESTADO = #input.estado#
+		WHERE	CODIGO = #input.codigo# and ENTIDAD = #input.entidad#
+	</update>
+	
+</sqlMap>

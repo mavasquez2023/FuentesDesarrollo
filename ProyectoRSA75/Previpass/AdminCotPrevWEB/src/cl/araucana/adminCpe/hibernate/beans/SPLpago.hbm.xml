@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.adminCpe.hibernate.beans.SPLPagoVO" table="PAGO">
+    	<id column="ID_PAGO" name="idPago"/>
+   		<property name="pagador" column="PAGADOR" />
+   		<property name="idEstado" column="ID_ESTADO" />
+   		<property name="idSistema" column="ID_SISTEMA" />
+   		<property name="idConvenio" column="ID_CONVENIO" />
+   		<property name="fechaInicio" column="FCH_INICIO" />   		
+   		<property name="fechaTransaccion" column="FCH_TRANSACCION" /> 
+   		<property name="fechaContable" column="FCH_CONTABLE" /> 
+   		<property name="monto" column="MONTO" /> 
+   		<property name="montoRendicion" column="MONTO_RENDICION" /> 
+   		<property name="pagado" column="PAGADO" /> 
+   		<property name="glosa" column="GLOSA" /> 
+   		<property name="urlRetornoOrigen" column="URL_RETORNO_ORIGEN" /> 
+   		<property name="urlNotificacionOrigen" column="URL_NOTIFICACION_ORIGEN" />   		
+    </class>
+</hibernate-mapping>

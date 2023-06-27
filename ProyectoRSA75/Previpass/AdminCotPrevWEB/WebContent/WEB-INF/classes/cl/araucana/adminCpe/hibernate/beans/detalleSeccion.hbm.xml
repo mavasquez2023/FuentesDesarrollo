@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.DetalleSeccionVO" table="DETALLE_SECCION">
+    	<composite-id >
+        	<key-property name="idCodigoBarra">
+        		<column name="ID_CODIGO_BARRA" not-null="true" />
+        	</key-property>
+        	<key-property name="idTipoSeccion">
+        		<column name="ID_TIPO_SECCION" not-null="true" />
+        	</key-property>
+        	<key-property name="idDetalleSeccion">
+        		<column name="ID_DETALLE_SECCION" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="m1" column="M1" />
+   		<property name="m2" column="M2" />
+   		<property name="m3" column="M3" />
+   		<property name="m4" column="M4" />
+   		<property name="m5" column="M5" />
+   		<property name="m6" column="M6" />
+   		<property name="m7" column="M7" />
+   		<property name="m8" column="M8" />
+   		<property name="m9" column="M9" />
+   		<property name="m10" column="M10" />
+   		<property name="m11" column="M11" />
+   		<property name="m12" column="M12" />
+   		<property name="numTrabajadores" column="N_TRABAJADORES" />
+   		<property name="tipoPago" column="TIPO_PAGO" />
+    </class>
+</hibernate-mapping>

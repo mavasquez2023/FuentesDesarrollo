@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE051R">
+
+  <typeAlias alias="ilfe051R" type="com.microsystem.lme.ibatis.domain.Ilfe051RVO"/>
+
+  <resultMap id="returnObject51R" class="ilfe051R">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="codMot" column="CODMOT"/>
+		<result property="fechaProceso" column="FECPROC"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+		<result property="gloMot" column="GLOMOT"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+		
+		
+  </resultMap>
+  
+  <select id="getIlfe051R" resultMap="returnObject51R">
+    SELECT	IDEOPE, CODOPE, URLOPE, CODCCAF, PWDCCAF, 
+			NUMIMPRE, CODMOT, FECPROC, ENVIADA, RESPWS 
+			, GLORESP, FECRESP, HORRESP, GLOMOT, FECHAEST, HORAEST
+	FROM  LIEXP.ILFE051R 
+	WHERE ENVIADA = '0'
+	WITH UR
+  </select>
+
+	<update id="updateIlfe051R" parameterClass="ilfe051R">
+		UPDATE  LIEXP.ILFE051R 
+		SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+		FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta# 
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+	
+	<delete id="deleteIlfe051R">
+		DELETE FROM  LIEXP.ILFE051R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE#
+		WITH NC
+	</delete>
+
+</sqlMap>

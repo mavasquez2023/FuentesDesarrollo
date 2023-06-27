@@ -1,0 +1,144 @@
+<% String indent="&nbsp&nbsp&nbsp"; %>
+<%  
+String isAdminCosal=(String)request.getSession().getAttribute("isAdminCosal");
+%> 
+<div align='center'>
+
+<!-- Begin Opciones del menu -->
+<script>
+	function logoff(){
+
+		document.logout.submit(); 
+	}
+
+</script>    
+<logic:present name="servicios"> 
+ 
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="90%">
+	<tr>
+		<td nowrap>
+
+ 	<form method="post" action="<%=request.getContextPath().toString()%>/ibm_security_logout" name="logout">
+	
+		<input type="hidden" name="logout" value="Logout" />	 
+		<INPUT TYPE="hidden" name="logoutExitPage" value="/index.jsp" />
+
+		<html:link styleClass="subopcion" href="javascript:logoff()"><font color="white">Cerrar Sesi&oacute;n</font>				</html:link>
+		
+	</form>	
+		</td>
+	</tr>
+	
+    <% if (session.getAttribute("encargadoEmpresa")==null) { %>
+	
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page="/changeClave.do">
+			<font color="white"><bean:message key="opcion.cambio.clave"/></font>
+			</html:link>
+		</td>
+	</tr>
+	
+	<% } %>
+	
+	<tr>
+		<td nowrap>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td nowrap>
+			&nbsp;
+		</td>
+	</tr> 
+		<tr>
+		<td nowrap class='grupoopcion'><bean:message key='opcion.grupo.simulacion'/></td>
+	</tr>	
+	<logic:iterate id="opcion" name="servicios" type="cl.araucana.autoconsulta.common.Servicio">
+	<%if(opcion.getTipo()==2) {%>
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page='<%= opcion.getAction() %>'>
+				<bean:write name="opcion" property="nombre"/>
+			</html:link>
+		</td>
+	</tr>
+	<%}%>
+	</logic:iterate>
+	<tr>
+		<td nowrap>
+			&nbsp;
+		</td>
+	</tr>
+
+	<tr>
+		<td nowrap class='grupoopcion'><bean:message key='opcion.grupo.certificados'/></td>
+	</tr>	
+	<logic:iterate id="opcion" name="servicios" type="cl.araucana.autoconsulta.common.Servicio">
+	<%if(opcion.getTipo()==1) {%>
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page='<%= opcion.getAction() %>'>
+				<bean:write name="opcion" property="nombre"/>
+			</html:link>
+		</td>
+	</tr>
+	<%}%>
+	</logic:iterate>
+	<tr>
+		<td nowrap>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td nowrap class='grupoopcion'><bean:message key='opcion.grupo.consultas'/></td>
+	</tr>
+<% if(isAdminCosal.equalsIgnoreCase("false")) {%>
+	<logic:iterate id="opcion" name="servicios" type="cl.araucana.autoconsulta.common.Servicio">
+	<%if(opcion.getTipo()==0) {%>
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page='<%= opcion.getAction() %>'>
+				<bean:write name="opcion" property="nombre"/>
+			</html:link>
+		</td>
+	</tr>
+	<%}%>	
+	</logic:iterate>	
+<%}%>	
+<% if(isAdminCosal.equalsIgnoreCase("true")) {%>
+
+	<logic:iterate id="opcion" name="servicios" type="cl.araucana.autoconsulta.common.Servicio">
+	<%if(opcion.getTipo()==0 && !opcion.getAction().equalsIgnoreCase("/getListaLiquidaciones.do")) {%>
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page='<%= opcion.getAction() %>'>
+				<bean:write name="opcion" property="nombre"/>
+			</html:link>
+		</td>
+	</tr>
+	<%}	%>
+	<%if(opcion.getTipo()==3) {%>
+	<tr>
+		<td nowrap>
+			<html:link styleClass="subopcion" page='<%= opcion.getAction() %>'>
+				<bean:write name="opcion" property="nombre"/>
+			</html:link>
+		</td>
+	</tr>
+	<%}%>	
+	</logic:iterate>	
+<%}%>		
+	<tr>
+		<td nowrap>
+			&nbsp;
+		</td>
+	</tr>
+</table>
+
+</logic:present>
+
+<!-- End Opciones del menu -->
+
+</div>

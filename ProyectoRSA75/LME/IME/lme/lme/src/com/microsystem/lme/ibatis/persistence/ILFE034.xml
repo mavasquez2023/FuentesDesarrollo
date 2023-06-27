@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE034">
+	<typeAlias alias="ilfe034" type="com.microsystem.lme.ibatis.domain.Ilfe034VO"/>
+
+	<resultMap id="returnObject34" class="ilfe034">
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+ 
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="lmaFechaDesde" column="FECDESDE"/>
+		<result property="lmaFechaHasta" column="FECHASTA"/>
+		<result property="lmaFechaproceso" column="FECPROCE"/>
+		<result property="lmaNdias" column="NDIAS"/>
+	</resultMap>
+
+  <select id="getIlfe034" resultMap="returnObject34" parameterClass="ilfe034">
+	SELECT AFIRUT,EMPRUT,NUMIMPRE,NDIAS,FECDESDE,FECHASTA,FECPROCE 
+	FROM LIEXP.ILFE034 
+	WHERE AFIRUT = #afiRut#    
+	ORDER BY FECDESDE DESC
+	WITH UR
+  </select>
+
+</sqlMap>

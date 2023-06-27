@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/IBM/!svn/ver/3268/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map
+END
+TRANSFERENCIA_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/IBM/!svn/ver/3291/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/TRANSFERENCIA_SqlMap.xml
+END
+CODIGOS_STL_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/IBM/!svn/ver/3178/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/CODIGOS_STL_SqlMap.xml
+END
+DATOS_CLIENTE_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/IBM/!svn/ver/3812/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/DATOS_CLIENTE_SqlMap.xml
+END
+T_PARAMETRO_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/IBM/!svn/ver/1635/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/T_PARAMETRO_SqlMap.xml
+END
+CUENTAS_CORRIENTES_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/IBM/!svn/ver/3178/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/CUENTAS_CORRIENTES_SqlMap.xml
+END
+CONSULTA_MIGRACION_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/CONSULTA_MIGRACION_SqlMap.xml
+END
+SOLICITUD_SMS_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/IBM/!svn/ver/2456/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/ibatis/map/SOLICITUD_SMS_SqlMap.xml
+END

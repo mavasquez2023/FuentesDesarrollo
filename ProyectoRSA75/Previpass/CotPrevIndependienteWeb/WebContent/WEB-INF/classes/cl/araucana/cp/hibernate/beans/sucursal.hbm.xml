@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.SucursalVO" table="SUCURSAL">
+    	<composite-id >
+        	<key-property name="idEmpresa">
+        		<column name="ID_EMPRESA" not-null="true" />
+        	</key-property>
+        	<key-property name="idSucursal">
+        		<column name="ID_SUCURSAL" not-null="true" />
+        	</key-property>
+    	</composite-id>
+		<many-to-one name="comuna" column="ID_COMUNA" />
+   		<property name="nombre" column="NOMBRE" />
+   		<property name="email" column="EMAIL" />
+   		<property name="telefono" column="TELEFONO" />
+   		<property name="celular" column="CELULAR" />
+   		<property name="fax" column="FAX" />
+   		<property name="direccion" column="DIRECCION" />
+   		<property name="numero" column="NUMERO" />
+   		<property name="departamento" column="DEPARTAMENTO" />
+    </class>
+</hibernate-mapping>

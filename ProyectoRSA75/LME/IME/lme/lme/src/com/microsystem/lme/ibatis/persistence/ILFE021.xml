@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE021">
+	<typeAlias alias="ilfe021" type="com.microsystem.lme.ibatis.domain.Ilfe021VO"/>
+
+	<resultMap id="returnObject21" class="ilfe021">
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codOpe" column="CODOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="estado" column="ESTADO"/>
+		<result property="fechaProceso" column="FECPROC"/>
+		<result property="enviada" column="ENVIADA"/>
+		<result property="respWs" column="RESPWS"/>
+
+		<result property="glosaEstado" column="GLORESP"/>
+		<result property="fechaRespuesta" column="FECRESP"/>
+		<result property="horaRespuesta" column="HORRESP"/>
+	</resultMap>
+	
+	<!--OR (ESTADO='1' AND RESPWS = '1') -->
+  <select id="getIlfe021" resultMap="returnObject21">
+	SELECT A.IDEOPE, A.CODOPE, A.URLOPE, A.CODCCAF, A.PWDCCAF, 
+		   A.NUMIMPRE, A.ESTADO, A.FECPROC, A.ENVIADA, A.RESPWS
+		   ,A.GLORESP, A.FECRESP, A.HORRESP
+	FROM LIEXP.ILFE021 A
+	WHERE	
+	(
+		A.ENVIADA = '0' AND EXISTS (
+		SELECT B.NUMIMPRE FROM LIEXP.ILFE031 B WHERE A.IDEOPE = B.IDEOPE AND
+		A.NUMIMPRE = B.NUMIMPRE AND B.ENVIADA = 1 ) 
+	)
+	OR
+	(
+		A.ENVIADA = '0' AND NOT EXISTS (
+		SELECT B.NUMIMPRE FROM LIEXP.ILFE031 B WHERE A.IDEOPE = B.IDEOPE AND
+		A.NUMIMPRE = B.NUMIMPRE) 
+	)
+	ORDER BY IDEOPE, NUMIMPRE
+	WITH UR
+  </select>
+
+<update id="updateIlfe021" parameterClass="ilfe021">
+	UPDATE LIEXP.ILFE021 
+	SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, 
+	FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#
+	WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+	WITH NC
+</update>
+
+</sqlMap>

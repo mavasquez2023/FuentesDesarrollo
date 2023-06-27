@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Studio">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK href="theme/Master.css" rel="stylesheet" type="text/css">
+<SCRIPT language="JavaScript" src="js/calendar.js"></SCRIPT>
+<script>
+function tryit() {
+	sour="25/11/2005";
+	alert(sour.replace(/\//gi, ""));
+	var d = new Date();
+	d.setDate("25");
+	d.setMonth("7");
+	d.setYear("2004");
+	alert(d.toString());
+	//getDia();
+}
+
+function checkDate(sDate) {
+	re = /(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19[7-9][0-9]|20[0-3][0-9])/gi;
+	if(sDate.length != 10 || !sDate.match(re)) {
+		alert("La forma de la fecha (dd/mm/aaaa) no es correcto: " + sDate);
+		return false;
+	}
+
+	var today = new Date();
+	
+	dd = sDate.slice(0, 2);
+	mm = Number(sDate.slice(3, 5))-1;
+	yyyy = sDate.slice(6, 10);
+	var selectedDate = new Date(yyyy, mm, dd);
+
+	if(today - selectedDate >= 86400000) {
+		alert("La Fecha Finiquito debe ser posterior a hoy.");
+		return false;
+	}
+	return true;
+}
+
+</script>
+<TITLE>calendar.html</TITLE>
+</HEAD>
+<BODY>
+<form action="/" method="post">
+<INPUT name="fechaFiniquito" size="10" maxlength="10"> (dd/mm/yyyy)
+<a href="javascript:opencalendar(0, 'fechaFiniquito')">calendar</a>
+<p />
+
+<a href="#" title="Calendario">
+<img src="http://www7.lan.com/images/html/calendario.gif" alt="calendario" name="calendario1" onclick="opencalendar(0, 'fechaFiniquito')" onmouseout="MM_swapImage('calendario1','','/images/html/calendario.gif',0)" width="22" height="17"></a>
+<input type="button" value="checkDate" onclick="if(checkDate(document.forms[0].fechaFiniquito.value)) {alert('a')};return false;" />
+</form>
+</BODY>
+</HTML>

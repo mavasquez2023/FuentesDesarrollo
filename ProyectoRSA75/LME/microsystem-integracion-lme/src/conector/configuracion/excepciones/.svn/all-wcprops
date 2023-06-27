@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/IBM/!svn/ver/2326/was6/microsystem-integracion-lme/src/conector/configuracion/excepciones
+END
+ConfiguracionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/IBM/!svn/ver/2326/was6/microsystem-integracion-lme/src/conector/configuracion/excepciones/ConfiguracionException.java
+END
+ConfiguracionParametroNoEncontradoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/IBM/!svn/ver/2326/was6/microsystem-integracion-lme/src/conector/configuracion/excepciones/ConfiguracionParametroNoEncontradoException.java
+END
+ConfiguracionArchivoNoEncontradoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/IBM/!svn/ver/2326/was6/microsystem-integracion-lme/src/conector/configuracion/excepciones/ConfiguracionArchivoNoEncontradoException.java
+END
+ConfiguracionParametroTipoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/IBM/!svn/ver/2326/was6/microsystem-integracion-lme/src/conector/configuracion/excepciones/ConfiguracionParametroTipoException.java
+END

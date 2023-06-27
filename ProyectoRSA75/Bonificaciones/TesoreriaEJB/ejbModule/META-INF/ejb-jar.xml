@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar id="ejb-jar_ID" version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+	<display-name>
+	TesoreriaEJB</display-name>
+	<enterprise-beans>
+		<session id="ServicesTesoreria">
+			<ejb-name>ServicesTesoreria</ejb-name>
+			<home>cl.araucana.tesoreria.serv.ServicesTesoreriaSLBean.ServicesTesoreriaHome</home>
+			<remote>cl.araucana.tesoreria.serv.ServicesTesoreriaSLBean.ServicesTesoreria</remote>
+			<ejb-class>cl.araucana.tesoreria.serv.ServicesTesoreriaSLBean.ServicesTesoreriaBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204667296140">
+				<res-ref-name>TesoreriaDS</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Shareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+	</enterprise-beans>
+</ejb-jar>
+

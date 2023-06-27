@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.RutEspecialesVO" table="RUT_ESPECIALES">
+    	<id name="rutEspecial" column="RUT_ESPECIAL" ></id>
+   		<property name="nombre" column="NOMBRE" />
+   		<property name="apellidoMaterno" column="APELLIDO_MATERNO" />
+   		<property name="apellidoPaterno" column="APELLIDO_PATERNO" />
+    </class>
+</hibernate-mapping>

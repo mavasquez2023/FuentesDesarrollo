@@ -1,0 +1,8 @@
+000001 05/03/2010 10:00:19 INFO    clinit<>                                              ***  Log for 'cl.recursos.testers.A' started  ***
+000002 05/03/2010 10:00:19 INFO    init<>                                                new instance to A
+000005 05/03/2010 10:00:19 INFO    m1()                                                  info from m1
+000006 05/03/2010 10:00:19 WARNING m1()                                                  warning from m1
+000007 05/03/2010 10:00:19 SEVERE  m1()                                                  severe from m1
+000008 05/03/2010 10:00:19 INFO    m2()                                                  info from m2
+000009 05/03/2010 10:00:19 WARNING m2()                                                  warning from m2
+000010 05/03/2010 10:00:19 SEVERE  m2()                                                  severe from m2

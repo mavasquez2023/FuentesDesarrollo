@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/excepciones
+END
+ErrorRespuestaOperadorException.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/excepciones/ErrorRespuestaOperadorException.java
+END
+ErrorInvocacionOperadorException.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/lme/ws/cliente/operador/excepciones/ErrorInvocacionOperadorException.java
+END

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SistemaBean">
+ <typeAlias alias="beanSistema" type="cl.araucana.spl.beans.Sistema"/>
+ <typeAlias alias="charTypeHandler" type="cl.araucana.spl.util.IbatisCharTypeHandler"/>
+
+	<resultMap class="cl.araucana.spl.beans.Sistema" id="sistemaResultMap">
+		<result property="id" column="ID_SISTEMA" />
+		<result property="codigo" column="CODIGO" typeHandler="charTypeHandler" />
+		<result property="descripcion" column="DESCRIPCION" typeHandler="charTypeHandler" />
+		<result property="clave" column="CLAVE" typeHandler="charTypeHandler" />
+	</resultMap>
+	<select id="sqlFindSistemaOrigenByCodigo" parameterClass="string" resultMap="sistemaResultMap">
+		select
+			ID_SISTEMA,
+			CODIGO,
+			DESCRIPCION,
+			CLAVE
+		from
+			SISTEMA
+		where
+			CODIGO = #codigo#
+	</select>	
+	<select id="sqlFindSistemaOrigenByIdPago" parameterClass="decimal" resultMap="sistemaResultMap">
+		select
+		    s.id_sistema,
+		    s.codigo,
+		    s.descripcion,
+			clave
+		from
+		    pago p, sistema s
+		where
+		    p.id_pago = #idpago#
+		    and p.id_sistema = s.id_sistema
+   	</select>
+
+	<select id="sqlFindSistemas" resultMap="sistemaResultMap">
+		select
+		    id_sistema,
+		    codigo,
+		    descripcion,
+			clave
+		from
+		    sistema
+   	</select>
+
+
+</sqlMap>

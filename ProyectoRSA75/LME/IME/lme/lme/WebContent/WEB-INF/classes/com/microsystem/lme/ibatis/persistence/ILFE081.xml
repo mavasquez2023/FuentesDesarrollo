@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+	For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+	This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+	to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE081">
+
+	<typeAlias alias="ilfe081" type="com.microsystem.lme.ibatis.domain.Ilfe081VO" />
+		
+	<resultMap id="returnIlfe081" class="ilfe081">
+	
+		<result property="fecha" column="FECHA" />
+		<result property="estadoImed" column="EST_IMED" />
+		<result property="estadoMediPass" column="EST_MP" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="horaConsulta" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+		
+	</resultMap>
+	
+	
+	<insert id="insertIlfe081" parameterClass="ilfe081">
+		INSERT INTO LIEXP.ILFE081 (FECHA,EST_IMED,EST_MP,FECCON,HORCON,ESTADO ) VALUES
+		(#fecha#,#estadoImed#,#estadoMediPass#,#fechaConsulta#,#horaConsulta#,#estado#)
+		WITH NC
+	</insert>
+	
+	<select id="getIlfe081" resultMap="returnIlfe081">
+		SELECT FECHA,EST_IMED,EST_MP,FECCON,HORCON,ESTADO 
+		FROM LIEXP.ILFE081
+		WHERE ESTADO = 0
+		WITH UR
+	</select>
+	
+	<select id="getIlfe081All" resultClass="ilfe081">
+		SELECT FECHA,EST_IMED,EST_MP,FECCON,HORCON,ESTADO 
+		FROM LIEXP.ILFE081
+		WITH UR
+	</select>
+	
+	<update id="updateIlfe081" parameterClass="ilfe081">
+		UPDATE LIEXP.ILFE081 
+		SET ESTADO = #estado# 
+		WHERE FECHA = #fecha#
+		WITH NC
+	</update>
+
+
+	<delete id="deleteIlfe081" parameterClass="ilfe081">
+		DELETE FROM LIEXP.ILFE081
+		WHERE FECHA = #fecha#	
+		WITH NC
+	</delete>
+	
+</sqlMap>

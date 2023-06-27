@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>En éste recuadro describe los trabajadores que generan la diferencia  por cobrar. </div>

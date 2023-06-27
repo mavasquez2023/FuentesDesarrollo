@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<display-name>
+	AporteEAR</display-name>
+	<module id="WebModule_1327929223312">
+		<web>
+			<web-uri>AporteWS.war</web-uri>
+			<context-root>AporteWS</context-root>
+		</web>
+	</module>
+	<module id="EjbModule_1327929487281">
+		<ejb>AporteEJB.jar</ejb>
+	</module>
+</application>

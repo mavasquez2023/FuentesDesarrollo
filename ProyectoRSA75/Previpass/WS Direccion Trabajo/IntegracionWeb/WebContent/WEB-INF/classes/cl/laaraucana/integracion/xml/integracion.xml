@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="integracionNS">
+	
+	
+	<resultMap id="CotizacionesMap" class="cl.laaraucana.integracion.vo.CotizacionVO">
+	  	<result property="rutEmpresa" column="RUT_EMPRESA" />
+	  	<result property="rutTrabajador" column="RUT_TRABAJADOR" />
+	  	<result property="nombreTrabajador" column="NOMBRE_TRABAJADOR" />
+	  	<result property="periodo" column="PERIODO" />
+	  	<result property="tipoPago" column="TIPO_PAGO" />
+	  	<result property="rentaImponible" column="RENTA_IMPONIBLE" />
+	  	<result property="montoPagado" column="MONTO_PAGADO" />
+	  	<result property="folio" column="FOLIO" />
+	  	<result property="codMovPersonal" column="PWDCMOVPE" />
+	  	<result property="fechaDesde" column="FECHA_DESDE" />
+	  	<result property="fechaHasta" column="FECHA_HASTA" />
+	  	<result property="diasTrabajados" column="DIAS_TRABAJADOS" />
+	  	
+	  	
+	</resultMap> 
+	
+	
+	<select id="obtenerCotizaciones" resultClass="cl.laaraucana.integracion.vo.CotizacionVO" parameterClass="cl.laaraucana.integracion.vo.DatoEntradaVO">
+	
+	
+	{call PWDTAD.PRC_RECINFCER (#rutEmpl#, #rutTrab#,#mes#,#agno#,#conBitacora#)}
+	
+	
+	
+	</select>
+	
+	<select id="obtenerCotizaciones2" resultMap="CotizacionesMap" parameterClass="cl.laaraucana.integracion.vo.DatoEntradaVO">
+	
+	
+		{call PWDTAD.PRC_RECINFCER (#rutEmpl#, #rutTrab#,#mes#,#agno2#,#conBitacora#)}
+	
+	
+	
+	</select>
+	
+	<select id="obtenerCorreos" resultClass="java.lang.String">
+	
+		select 
+			trim(valor) as emails
+		from 
+			cpedta.parametro
+		where 
+			id_parametro= #id_parametro#
+	
+	</select>
+
+	
+	
+</sqlMap>

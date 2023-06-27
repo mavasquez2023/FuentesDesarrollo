@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.MapeoTesoreriaVO" table="MAPEO_TESORERIA">
+    	<composite-id >
+        	<key-property name="idTipoNomina">
+        		<column name="ID_TIPO_NOMINA" not-null="true" />
+        	</key-property>
+        	<key-property name="idTipoSeccion">
+        		<column name="ID_TIPO_SECCION" not-null="true" />
+        	</key-property>
+        	<key-property name="idDetalleSeccion">
+        		<column name="ID_TIPO_DETALLE" not-null="true" />
+        	</key-property>
+        	<key-property name="idConceptoTesoreria">
+        		<column name="ID_CONCEPTO" not-null="true" />
+        	</key-property>
+        	<key-property name="idMontoDetSeccion">
+        		<column name="ID_MONTO" not-null="true" />
+        	</key-property>
+    	</composite-id>
+    	<property name="nombreNomina" formula="( select TIPONOMINA.DESCRIPCION from TIPONOMINA where TIPONOMINA.ID_TIPO_NOMINA = ID_TIPO_NOMINA )" type="string"/>		
+    	<property name="nombreSeccion" formula="( select TIPO_SECCION.DESCRIPCION from TIPO_SECCION where TIPO_SECCION.ID_TIPO_SECCION = ID_TIPO_SECCION )" type="string"/>
+    	<property name="nombreConcepto" formula="( select CONCEPTO_TESORERIA.DESCRIPCION from CONCEPTO_TESORERIA where CONCEPTO_TESORERIA.ID_CONCEPTO = ID_CONCEPTO )" type="string"/>
+    	<property name="idOrdenNomina" formula="( select TIPONOMINA.ORDEN from TIPONOMINA where TIPONOMINA.ID_TIPO_NOMINA = ID_TIPO_NOMINA )" type="int"/>
+    </class>
+</hibernate-mapping>

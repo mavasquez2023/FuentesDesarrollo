@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions targetNamespace="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:intf="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns:tns1="http://to.business.clientewsfonasa.araucana.cl" xmlns:tns2="http://exception.common.clientewsfonasa.araucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://impl.services.business.clientewsfonasa.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://to.business.clientewsfonasa.araucana.cl"/>
+   <import namespace="http://exception.common.clientewsfonasa.araucana.cl"/>
+   <element name="consultarRutFonasa">
+    <complexType>
+     <sequence>
+      <element name="rut" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarRutFonasaResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarRutFonasaReturn" type="tns1:ResponseWSFonasaTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns2:ServiceException"/>
+   <element name="fault1" type="tns2:DaoException"/>
+   <element name="consultarEstadoFormulario">
+    <complexType>
+     <sequence>
+      <element name="color" type="xsd:int"/>
+      <element name="numeroLicencia" type="xsd:int"/>
+      <element name="rutAfiliado" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarEstadoFormularioResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarEstadoFormularioReturn" type="tns1:ResponseFormFonasaTO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://to.business.clientewsfonasa.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exception.common.clientewsfonasa.araucana.cl"/>
+   <complexType name="ResponseWSFonasaTO">
+    <sequence>
+     <element name="estado" nillable="true" type="xsd:short"/>
+     <element name="estadoFormat" nillable="true" type="xsd:string"/>
+     <element name="extApellidoMat" nillable="true" type="xsd:string"/>
+     <element name="extApellidoPat" nillable="true" type="xsd:string"/>
+     <element name="extCodEstBen" nillable="true" type="xsd:string"/>
+     <element name="extDescEstado" nillable="true" type="xsd:string"/>
+     <element name="extFechaNacimi" nillable="true" type="xsd:dateTime"/>
+     <element name="extFechaNacimiFormat" nillable="true" type="xsd:string"/>
+     <element name="extNombres" nillable="true" type="xsd:string"/>
+     <element name="extSexo" nillable="true" type="xsd:string"/>
+     <element name="gloEstado" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResponseFormFonasaTO">
+    <sequence>
+     <element name="estado" nillable="true" type="xsd:short"/>
+     <element name="glosaEstado" nillable="true" type="xsd:string"/>
+     <element name="glosaResultado" nillable="true" type="xsd:string"/>
+     <element name="resultado" nillable="true" type="xsd:short"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exception.common.clientewsfonasa.araucana.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://to.business.clientewsfonasa.araucana.cl"/>
+   <complexType name="ServiceException">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DaoException">
+    <sequence>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="consultarEstadoFormularioRequest">
+
+      <wsdl:part element="impl:consultarEstadoFormulario" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="DaoException">
+
+      <wsdl:part element="impl:fault1" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarRutFonasaResponse">
+
+      <wsdl:part element="impl:consultarRutFonasaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarRutFonasaRequest">
+
+      <wsdl:part element="impl:consultarRutFonasa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarEstadoFormularioResponse">
+
+      <wsdl:part element="impl:consultarEstadoFormularioResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSConsultaFonasaImpl">
+
+      <wsdl:operation name="consultarRutFonasa">
+
+         <wsdl:input message="impl:consultarRutFonasaRequest" name="consultarRutFonasaRequest"/>
+
+         <wsdl:output message="impl:consultarRutFonasaResponse" name="consultarRutFonasaResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:DaoException" name="DaoException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarEstadoFormulario">
+
+         <wsdl:input message="impl:consultarEstadoFormularioRequest" name="consultarEstadoFormularioRequest"/>
+
+         <wsdl:output message="impl:consultarEstadoFormularioResponse" name="consultarEstadoFormularioResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:DaoException" name="DaoException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSConsultaFonasaImplSoapBinding" type="impl:WSConsultaFonasaImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultarRutFonasa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarRutFonasaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarRutFonasaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DaoException">
+
+            <wsdlsoap:fault name="DaoException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarEstadoFormulario">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarEstadoFormularioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarEstadoFormularioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DaoException">
+
+            <wsdlsoap:fault name="DaoException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSConsultaFonasaImplService">
+
+      <wsdl:port binding="impl:WSConsultaFonasaImplSoapBinding" name="WSConsultaFonasaImpl">
+
+         <wsdlsoap:address location="https://localhost:9080/ClienteWSFonasa/services/WSConsultaFonasaImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

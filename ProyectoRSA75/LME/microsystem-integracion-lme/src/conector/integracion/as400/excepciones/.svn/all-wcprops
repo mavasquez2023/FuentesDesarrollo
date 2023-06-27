@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/integracion/as400/excepciones
+END
+ConexionAS400SysException.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/integracion/as400/excepciones/ConexionAS400SysException.java
+END
+EjecucionAS400SysException.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/integracion/as400/excepciones/EjecucionAS400SysException.java
+END
+ConexionJDBCAS400SysException.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/integracion/as400/excepciones/ConexionJDBCAS400SysException.java
+END
+EjecucionJDBCAS400SysException.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/IBM/!svn/ver/2327/was6/microsystem-integracion-lme/src/conector/integracion/as400/excepciones/EjecucionJDBCAS400SysException.java
+END

@@ -1,0 +1,25 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+}
+.container {
+	padding: 1em;
+}
+.container .logo {
+	display: none;
+}
+.container h1 {
+	font-size: 20px;
+}
+.container h2 {
+	font-size: 16px;
+}
+
+/*Media queries*/
+@media screen and (min-width : 800px) {
+.container .logo {
+	display: block;
+}
+}

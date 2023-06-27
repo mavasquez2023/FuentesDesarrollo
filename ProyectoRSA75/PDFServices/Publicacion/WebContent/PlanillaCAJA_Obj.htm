@@ -1,0 +1,28 @@
+<html>
+<BODY>
+<FORM id="form1" name="Recibeparam" METHOD="POST" ACTION="ArsdocQueryServlet" target="LIST">
+	<br>_display_fields:<input type="text" name="_display_fields" size="100" value="TipoProceso:Tipo Proceso,FechaProceso:Fecha Proceso,FolioPlanilla:Folio Planilla,RutEmpresa:Rut Empresa,RazonSocial:Razon Social,NombreCaja:Nombre Caja,Convenio,Sucursal,TipoInforme:Tipo Informe">
+	<br>_alignDisplayFields:<input type="text" name="_alignDisplayFields" size="100" value="TipoProceso:center,Convenio:center">
+	<br>_folder:<input type="text" name="_folder" value="Planillas Cajas Holding:Planillas Cajas">	
+	<br>_max_hits:<input type="text" name="_max_hits" value="200">
+	<br>_sort_field_order:<input type="text" name="_sort_field_order" value="TipoInforme:A,TipoProceso:A,FechaProceso:D,FolioPlanilla:A">
+	<br>_html:<input type="text" name="_html" value="araucana.htm">
+	<br>_dataTypes:<input type="text" name="_dataTypes" size="100" value="TipoProceso:string,FechaProceso:date,NombreCaja:string,FolioPlanilla:string,RutEmpresa:int,RazonSocial:string,Convenio:int,Sucursal:string,TipoInforme:string,Holding:string">	
+	<br>_dateFormats:<input type="text" name="_dateFormats" value="FechaProceso:yyyyMM">
+	<br>_sqlOperators:<input type="text" name="_sqlOperators" size="100" value="TipoProceso:=,FechaProceso:between,NombreCaja:like,FolioPlanilla:=,RutEmpresa:in,RazonSocial:like,Convenio:in,Sucursal:in,TipoInforme:=,Holding:in">	
+	<br>_nameAdditionalField:<input type="text" name="_nameAdditionalField" value="Holding">
+	<br>_dateAdditionalField:<input type="text" name="_dateAdditionalField" value="01012006">
+	<br>_applicationGroup:<input type="text" name="_applicationGroup" size="100" value="Planillas Cajas,Planillas Cajas Holding">
+	<br>_nameComparedField:<input type="text" name="_nameComparedField" value="FechaProceso">
+	<br>_excludedFieldsInGet:<input type="text" name="_excludedFieldsInGet" value="RazonSocial">
+	<br>Tipo Proceso:<input type="text" name="TipoProceso" value="">
+	<br>Fecha Proceso:<input type="text" name="FechaProceso" value="">
+	<br>Folio Planilla:<input type="text" name="FolioPlanilla" value="">
+	<br>Rut Empresa:<input type="text" name="RutEmpresa" value="">
+	<br>Nombre Caja:<input type="text" name="NombreCaja" value="">
+	<br>Convenio:<input type="text" name="Convenio" value="">
+	<br>Sucursal:<input type="text" name="Sucursal" value="">
+	<br>Holding:<input type="hidden" name="Holding" value="">
+</FORM>
+</BODY>
+</html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+  <insert id="ingresarTransferencia" parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO" >
+	INSERT INTO LCDTA.CESP_TRANSFERENCIA
+		(
+		NRO_COT_SAP,
+		RUT_CLIENTE,
+		DV_CLIENTE,
+		RUT_EMPRESA,
+		DV_EMPRESA,
+		NOMBRES,
+		APELLIDO_PATERNO,
+		APELLIDO_MATERNO,
+		EMAIL,
+		NRO_CELULAR,
+		MONTO_GIRO,
+		NRO_CUENTA_DESTINO,
+		TIPO_CUENTA,
+		COD_BANCO,
+		COMENTARIO,
+		ORIGEN,
+		ESTADO_COL,
+		FECHA_GIRO,
+		HORA_GIRO)
+	VALUES(
+		#nroCotSAP#,
+		#rutCliente#,
+		#dvCliente#,
+		#rutEmpresa#,
+		#dvEmpresa#,
+		#nombres#,
+		#apellidoPaterno#,
+		#apellidoMaterno#,
+		#email#,
+		#nroCelular#,
+		#montoGiro#,
+		#nroCuentaDestino#,
+		#tipoCuenta#,
+		#codBanco#,
+		#comentario#,
+		#origen#,
+		#estadoCol#,
+		DATE (current timestamp),
+		TIME (current timestamp)
+		) WITH NC
+	<selectKey resultClass="java.lang.Long" keyProperty="folioInterno">
+		SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1
+	</selectKey>
+  </insert>
+  
+  <update id="actualizarRespTransf" parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO">
+  	UPDATE LCDTA.CESP_TRANSFERENCIA 
+  	SET ESTADO_COL = #estadoCol#, FOLIO_CREDITO = #folioCredito#, FOLIO_TESORERIA = #folioTesoreria#
+  	WHERE
+  	NRO_COT_SAP = #nroCotSAP#
+  	WITH NC
+  </update>
+  
+   <update id="actualizarEstadoTransf" parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO">
+  	UPDATE LCDTA.CESP_TRANSFERENCIA 
+  	SET ESTADO_COL = #estadoCol#, ESTADO_PAGO = #estadoPago#, GLOSA_PAGO = #glosaPago#
+  	WHERE
+  	FOLIO_INTERNO = #folioInterno#
+  	WITH NC
+  </update>
+  
+  <insert id="registrarColocacion" parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO">
+  	INSERT INTO LCDTA.LC07TRAZA
+  	(
+  	RUTUSR,
+  	DVRUTUSR,
+  	FECHAEV, 
+  	HORAEV, 
+  	EVENTO,
+  	OFICINA,
+  	FOLIO, 
+  	MONTO, 
+  	RUTEMP, 
+  	DVRUTEMP, 
+  	RUTAFI, 
+  	DVRUTAFI,
+  	CREATEDATE,
+  	CREATETIME
+  	) 
+  	VALUES 
+  	(
+  	#rutCliente#,
+  	#dvCliente#,
+  	(select YEAR(CURRENT DATE) * 10000 + MONTH(CURRENT DATE)* 100 + DAY(CURRENT DATE) FROM SYSIBM.SYSDUMMY1),
+  	(SELECT REPLACE(CHAR(CURRENT TIME,ISO),'.','') FROM SYSIBM.SYSDUMMY1),
+  	#evento#,
+  	#codOficina#,
+  	#folioCredito#,
+  	#montoGiro#,
+  	#rutEmpresa#,
+  	#dvEmpresa#,
+  	#rutCliente#,
+  	#dvCliente#,
+  	DATE (current timestamp),
+  	TIME (current timestamp)
+  	) 
+  	WITH NC
+  </insert>
+  
+  <resultMap class="cl.laaraucana.capaservicios.database.vo.TransferenciaVO" id="transferenciaMap">
+  	<result column="EMAIL" property="email" />
+  	<result column="NRO_CELULAR" property="nroCelular" />
+  	<result column="FOLIO_INTERNO" property="folioInterno" />
+  	<result column="FOLIO_TESORERIA" property="folioTesoreria" />
+  	<result column="FOLIO_CREDITO" property="folioCredito" />
+  	<result column="RUT_CLIENTE" property="rutCliente" />
+  	<result column="DV_CLIENTE" property="dvCliente" />
+  	<result column="FOLIO_CREDITO" property="folioCredito" />
+  	<result column="MONTO_GIRO" property="montoGiro" />
+  	<result column="RUT_EMPRESA" property="rutEmpresa" />
+  	<result column="DV_EMPRESA" property="dvEmpresa" />
+  	<result column="MONTO_GIRO" property="montoGiro" />
+  </resultMap>
+  
+  <select id="getTransferenciaById"  parameterClass="java.lang.Long" resultMap="transferenciaMap">
+  	SELECT * FROM LCDTA.CESP_TRANSFERENCIA
+  	WHERE FOLIO_INTERNO = #folioInterno#
+  	AND FOLIO_TESORERIA IS NOT NULL
+  	AND FOLIO_CREDITO IS NOT NULL
+  </select>
+  
+  <!-- Actualiza tipo de pago segun resultado de transferencia  -->
+  <update id="actCompTesoreria" parameterClass="cl.laaraucana.capaservicios.database.vo.ComprobanteTesoreria">
+  		UPDATE TEDTA.TE07F1 SET
+  		TE41A = #tipoPago#,
+  		SAJKM92 = #usuario#,
+  		OBF005 = current date,
+  		OBF006 = current time
+  		WHERE TE3WA = #folioTes#
+  		WITH NC
+  </update>
+  
+  <resultMap class="cl.laaraucana.capaservicios.webservices.vo.ConsultaTransferencia.Transferencia" id="consultaTransfMap">	
+  	<result column="RUTCLIENTE" property="rutCliente" />
+  	<result column="FOLIO_CREDITO" property="folioCredito" />
+  	<result column="FECHA_GIRO" jdbcType="DATE" property="fechaTransf" />
+  	<result column="HORA_GIRO" property="horaTransf" />
+  	<result column="NOMBRES" property="nombres" />
+  	<result column="APELLIDO_PATERNO" property="apellidoPaterno" />
+  	<result column="APELLIDO_MATERNO" property="apellidoMaterno" />
+  	<result column="BAN_NOMBRE" property="nombreBanco" />
+  	<result column="TCU_DESCRIP" property="tipoCuenta" />
+  	<result column="NRO_CUENTA_DESTINO" property="nroCuenta" />
+  	<result column="EMAIL" property="email" />
+  	<result column="MONTO_GIRO" property="montoGiro" />
+  </resultMap>
+  
+  <select id="consultaTransferencia" 
+  		  resultMap="consultaTransfMap"
+  		  parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO">
+		SELECT 
+  		CONCAT(CONCAT(T.RUT_CLIENTE, '-'), T.DV_CLIENTE) AS RUTCLIENTE,
+  		T.FOLIO_CREDITO,
+  		CHAR(T.FECHA_GIRO, ISO ) AS FECHA_GIRO,
+  		T.HORA_GIRO,
+  		T.NOMBRES,
+  		T.APELLIDO_PATERNO,
+  		T.APELLIDO_MATERNO,
+  		B.BAN_NOMBRE,
+  		C.TCU_DESCRIP,
+  		T.NRO_CUENTA_DESTINO,
+  		T.EMAIL,
+  		T.MONTO_GIRO
+  		FROM LCDTA.CESP_TRANSFERENCIA T
+  		JOIN STLDTA.T_TIPO_CUENTA C ON
+  		T.TIPO_CUENTA = C.TCU_CODIGO
+  		JOIN STLDTA.T_BANCO B ON
+  		B.BAN_CODIGO =  T.COD_BANCO
+  		WHERE FOLIO_CREDITO = #folioCredito#
+  		AND RUT_CLIENTE = #rutCliente#
+  		AND DV_CLIENTE = #dvCliente#
+  </select>
+  
+  
+   <resultMap class="cl.laaraucana.capaservicios.database.vo.TransferenciaVO" id="transferenciaMapSTL">
+  	<result column="NRO_COT_SAP" property="nroCotSAP" />
+  	<result column="FOLIO_INTERNO" property="folioInterno" />
+  	<result column="RUT_CLIENTE" property="rutCliente" />
+  	<result column="DV_CLIENTE" property="dvCliente" />
+  	<result column="RUT_EMPRESA" property="rutEmpresa" />
+  	<result column="DV_EMPRESA" property="dvEmpresa" />
+  	<result column="NOMBRES" property="nombres" nullValue=" "/>
+  	<result column="APELLIDO_PATERNO" property="apellidoPaterno" nullValue=" " />
+  	<result column="APELLIDO_MATERNO" property="apellidoMaterno" nullValue=" "/>
+  	<result column="COD_BANCO" property="codBanco" />
+  	<result column="TIPO_CUENTA" property="tipoCuenta" />
+  	<result column="NRO_CUENTA_DESTINO" property="nroCuentaDestino" />
+  	<result column="MONTO_GIRO" property="montoGiro" />
+  	<result column="EMAIL" property="email" nullValue=" "/>
+  	<result column="NRO_CELULAR" property="nroCelular" />
+	<result column="FECHA_GIRO" property="fechaGiro" />
+	<result column="HORA_GIRO" property="horaGiro" />
+	
+	<result column="BAN_NOMBRE" property="nombBanco" />
+	<result column="TCU_DESCRIP" property="nombtipoCuenta" />
+  </resultMap>
+  
+    <select id="consultaTransfByNroCot" 
+  		  resultMap="transferenciaMapSTL"
+  		  parameterClass="cl.laaraucana.capaservicios.database.vo.TransferenciaVO">
+		SELECT 
+		T.NRO_COT_SAP,
+		T.FOLIO_INTERNO,
+  		T.RUT_CLIENTE,
+  		T.DV_CLIENTE,
+  		T.RUT_EMPRESA,
+  		T.DV_EMPRESA,
+  		T.NOMBRES,
+  		T.APELLIDO_PATERNO,
+  		T.APELLIDO_MATERNO,
+  		T.COD_BANCO,
+  		T.TIPO_CUENTA,
+  		T.NRO_CUENTA_DESTINO,
+  		T.MONTO_GIRO,
+  		T.EMAIL,
+  		T.NRO_CELULAR,
+  		CHAR(T.FECHA_GIRO, ISO ) AS FECHA_GIRO,
+		HORA_GIRO,
+		B.BAN_NOMBRE,
+  		C.TCU_DESCRIP
+  		FROM LCDTA.CESP_TRANSFERENCIA T
+  		JOIN STLDTA.T_TIPO_CUENTA C ON
+  		T.TIPO_CUENTA = C.TCU_CODIGO
+  		JOIN STLDTA.T_BANCO B ON
+  		B.BAN_CODIGO =  T.COD_BANCO
+  		WHERE NRO_COT_SAP = #nroCotSAP#
+  		AND ESTADO_COL = #estadoCol#
+  		FETCH FIRST ROW ONLY
+  </select>
+</sqlMap>

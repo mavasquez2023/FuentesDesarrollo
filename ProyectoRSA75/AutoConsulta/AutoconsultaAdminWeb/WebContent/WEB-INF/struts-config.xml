@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Application Forms -->
+	<form-beans>
+    	<form-bean name="RutForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String" initial=""/>
+      		<form-property name="validate" type="java.lang.String" initial=""/>
+      		<form-property name="checkAll" type="java.lang.String" initial=""/>
+    		<form-property name="indice" type="java.lang.String" initial=""/>      		
+    	</form-bean>
+    	<form-bean name="EncargadoForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rut" type="java.lang.String"/>
+      		<form-property name="validate" type="java.lang.String"/>
+      		<form-property name="checkAll" type="java.lang.String"/>
+      		<form-property name="indice" type="java.lang.String" initial=""/>
+    		<form-property name="nombre" type="java.lang.String"/>
+    		<form-property name="apellidop" type="java.lang.String"/>
+    		<form-property name="apellidom" type="java.lang.String"/>      		
+    	</form-bean>
+    	<form-bean name="ADMINUForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      		<form-property name="rutEmpresa" type="java.lang.String" initial=""/>
+      		<form-property name="dvEmpresa" type="java.lang.String" initial=""/>
+      		<form-property name="rutUsuario" type="java.lang.String" initial=""/>
+      		<form-property name="dvUsuario" type="java.lang.String" initial=""/>
+     		<form-property name="validar" type="java.lang.String" initial=""/>
+     		<form-property name="accesos" type="java.lang.String[]"/>
+     		<form-property name="accion" type="java.lang.String"/>
+    	</form-bean>
+   	</form-beans>  
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+    	<exception handler="cl.araucana.common.ui.struts.UserFriendlyExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.ui.UserFriendlyException" />
+    	<exception handler="cl.araucana.common.ui.struts.BusinessExceptionHandler"
+        	       key="exception"
+            	   type="cl.araucana.common.BusinessException" />
+    	<exception handler="cl.araucana.common.ui.struts.ExceptionHandler"
+        	       key="exception"
+            	   type="java.lang.Exception" />
+	</global-exceptions>
+	
+	<global-forwards>
+    	<forward name="failure" path="/common/failure.jsp" />
+    	<forward name="success" path="/common/success.jsp" />
+  		<forward name="welcome" path="/Welcome.do"/>     	
+	</global-forwards>
+
+    <action-mappings>
+        <action
+            path="/Welcome"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/pages/welcome.jsp"/> 
+
+        <action path="/SecurityPageError" type="org.apache.struts.actions.ForwardAction"
+            parameter="/securityError.jsp"/> 
+            
+  		<action name="RutForm" path="/ManageEncargados"
+			type="cl.araucana.autoconsulta.ui.actions.admin.ManageEncargadosAction"
+			scope="request" validate="true" input="/common/validate.jsp">
+  			<forward name="rutEmpresa" path="/pages/encargado/rutEmpresa.jsp"/>
+  			<forward name="detalles" path="/pages/encargado/detalles.jsp"/>
+  		</action>
+
+  		<action name="RutForm" path="/ManageEncargadosInsert"
+			type="cl.araucana.autoconsulta.ui.actions.admin.ManageEncargadosAction"
+			scope="request" validate="true" input="/common/validate.jsp">
+  			<forward name="rutEmpresa" path="/pages/encargado/rutEmpresa.jsp"/>
+  			<forward name="detalles" path="/pages/encargado/detalles.jsp"/>
+  			<forward name="detalleEncargado" path="/prepareDetalleEncargado.do"/>
+  		</action>
+  		
+  		<action name="EncargadoForm" path="/prepareDetalleEncargado"
+			type="cl.araucana.autoconsulta.ui.actions.admin.PrepareDetalleEncargadoAction"
+			scope="request" validate="true" input="/common/validate.jsp">
+  			<forward name="detalleEncargado" path="/pages/encargado/detalleEncargado.jsp"/>
+  		</action>
+		<action name="EncargadoForm" path="/registrarEncargado"
+			type="cl.araucana.autoconsulta.ui.actions.admin.RegistrarEncargadoAction"
+			scope="request"  validate="true" input="/common/validate.jsp">
+  			<forward name="detalles" path="/pages/encargado/detalles.jsp"/>
+  		</action>
+  		<action name="ADMINUForm" path="/asignarServicios"
+			type="cl.araucana.autoconsulta.ui.actions.admin.AdminUsuarioAction"  scope="request" validate="false">
+  			<forward name="asignaAplicacion" path="/pages/encargado/asignaAplicacion.jsp"></forward>
+  		</action>
+
+    </action-mappings>
+
+	<!-- Controller Configuration
+		 cl.araucana.common.ui.struts.SecureRequestProcessor
+		 org.apache.struts.action.RequestProcessor
+    -->
+	<controller 
+		processorClass="cl.araucana.common.ui.struts.SecureRequestProcessor"
+		nocache="true"/>
+
+  	<!-- Message Resources Definitions -->
+  	<message-resources parameter="resources.application" />
+
+  	<!-- Plug Ins Configuration -->
+  	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    	<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+  	</plug-in>
+  	<plug-in className="cl.araucana.common.ui.struts.AppPlugIn">
+    	<set-property property="settingsFileName" value="arau-settings.xml"/>
+    	<set-property property="errorsFileName" value="arau-errors.properties"/>
+  	</plug-in>
+
+</struts-config>
+

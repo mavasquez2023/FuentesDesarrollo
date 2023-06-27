@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar id="ejb-jar_ID" version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+	<display-name>
+	PrestamoEJB</display-name>
+	<enterprise-beans>
+		<session id="ServicesPrestamo">
+			<ejb-name>ServicesPrestamo</ejb-name>
+			<home>cl.araucana.prestamo.serv.ServicesPrestamoSLBean.ServicesPrestamoHome</home>
+			<remote>cl.araucana.prestamo.serv.ServicesPrestamoSLBean.ServicesPrestamo</remote>
+			<ejb-class>cl.araucana.prestamo.serv.ServicesPrestamoSLBean.ServicesPrestamoBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<resource-ref id="ResourceRef_1204667369000">
+				<res-ref-name>PrestamoDS</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Shareable</res-sharing-scope>
+			</resource-ref>
+		</session>
+	</enterprise-beans>
+</ejb-jar>
+

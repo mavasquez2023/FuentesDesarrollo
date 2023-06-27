@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Drop Down List Sample
+  Specification file: dropdown
+ ******************************************/
+
+/*
+ * Este estilo se aplica a elemento de la casilla. (Por ejemplo, al código <a>)
+ */
+.dropdown_item_normal {
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:4px;
+	padding-right:0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	text-decoration: none;
+    font-size: 12px;
+}

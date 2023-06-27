@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<!-- Asegúrate siempre de usar las cabeceras XML correcta como la de arriba! -->
+<sqlMapConfig>
+	<settings  useStatementNamespaces="true" />
+	
+	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="jdbc/cp"></property>
+			</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="cl/laaraucana/integracion/xml/integracion.xml" />
+	
+</sqlMapConfig>

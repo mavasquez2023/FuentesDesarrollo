@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+
+<sqlMap namespace="B">
+
+	<typeAlias alias="ilfe002" type="com.microsystem.lme.ibatis.domain.Ilfe002VO"/>
+	<typeAlias alias="ilfe080" type="com.microsystem.lme.ibatis.domain.Ilfe080VO" />
+	<typeAlias alias="ilf1000" type="com.microsystem.lme.ibatis.domain.Ilf1000VO"/>
+	<typeAlias alias="ilfe082" type="com.microsystem.lme.ibatis.domain.Ilfe082VO" />
+	<typeAlias alias="ilfeOpe" type="com.microsystem.lme.ibatis.domain.IlfeOpeVO"/>
+
+	<resultMap id="returnLicencias"  class="ilfeOpe"> 
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numLicencia" column="NUMLIC" nullValue="0"/>
+		<result property="digLicencia" column="DIGLIC" nullValue=""/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="stsOpe" column="STSOPE"/>
+		<result property="nomOpe" column="NOMOPE"/>
+		<result property="estado" column="ESTADO"/>	
+	</resultMap> 
+	
+	<resultMap id="returnLicencias2"  class="ilfeOpe"> 
+		<result property="codOpe" column="CODOPE"/>
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numLicencia" column="NUMLIC" nullValue="0"/>
+		<result property="digLicencia" column="DIGLIC" nullValue=""/>
+		<result property="urlOpe" column="URLOPE"/>
+		<result property="codCcaf" column="CODCCAF"/>
+		<result property="pwdCcaf" column="PWDCCAF"/>
+		<result property="stsOpe" column="STSOPE"/>
+		<result property="nomOpe" column="NOMOPE"/>
+		<result property="estado" column="ESTADO"/>	
+		<result property="fechaEstado" column="FECHAEST"/>	
+		<result property="horaEstado" column="HORAEST"/>	
+	</resultMap> 
+
+	<select id="getLicenciasMixtas" resultMap="returnLicencias">
+		SELECT DISTINCT O.CODOPE, L.NUMIMPRE AS NUMLIC, O.IDEOPE,
+                O.URLOPE, O.CODCCAF, O.PWDCCAF
+				,O.STSOPE, O.NOMOPE, L.ESTLICEN AS ESTADO, L.DIVLICEN AS DIGLIC
+		FROM LIEXP.ILFE002R AS L, LIEXP.ILFEOPE AS O
+		WHERE 
+			L.IDEOPE = O.IDEOPE AND  
+			L.ESTLICEN = 0 AND L.CODERR = 1
+		<!--  se leen licencias de hasta 1 mes -->
+			AND YEAR(current_date)||RIGHT('0'||MONTH(current_date), 2)|| RIGHT('0'||DAY(current_date), 2) - FECHAOPR &lt;=30
+		ORDER BY O.CODOPE, L.NUMIMPRE
+		WITH UR
+	</select>
+	
+	<select id="getLicencias" resultMap="returnLicencias2">
+		SELECT DISTINCT L.IDEOPE, L.NUMLIC, L.DIGLIC, L.FECHAEST, L.HORAEST, O.CODOPE, O.URLOPE, O.CODCCAF, O.PWDCCAF
+<!-- 		, O.STSOPE, O.NOMOPE, L.ESTADO -->
+			, 1 as STSOPE, 1 as NOMOPE, 1 as ESTADO 
+		FROM LIEXP.ILFE001 AS L, LIEXP.ILFEOPE AS O
+		WHERE L.IDEOPE = O.IDEOPE
+		ORDER BY L.IDEOPE, L.NUMLIC
+		WITH UR
+	</select>
+
+	<resultMap id="resultMap002R"  class="ilfe002">  
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="estadoLicencia" column="ESTLICEN"/>
+	</resultMap>
+
+	<select id="getIlfe002R" resultMap="resultMap002R" parameterClass="ilfe002">
+		SELECT IDEOPE, NUMIMPRE, ESTLICEN 
+		FROM LIEXP.ILFE002R 
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE = #ideOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>			
+			<isNotNull prepend="AND" property="estadoLicencia">
+				ESTLICEN = #estadoLicencia#
+			</isNotNull>
+			<isNotNull prepend="AND" property="codError">
+				CODERR = #codError#
+			</isNotNull>
+			<isNotNull prepend="AND" property="fechaEstado">
+				FECHAEST = #fechaEstado#
+			</isNotNull>
+			<isNotNull prepend="AND" property="horaEstado">
+				HORAEST = #horaEstado#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+	
+	<select id="getInverso" resultMap="resultMap002R" parameterClass="ilfe002" >
+       SELECT IDEOPE, NUMIMPRE, ESTLICEN 
+		FROM LIEXP.ILFE002R 
+		WHERE IDEOPE = #ideOpe#
+		  AND NUMIMPRE = #numImpre#
+		  AND NUMIMPRE = #afiRut#
+		  WITH UR
+   	</select>
+   	
+   	
+   	<update id="updateLMECero" >
+		UPDATE LIEXP.ILFE002R SET IDEOPE = #_ideOpe#, NUMIMPRE = #_numimpre# , DIVLICEN = #_dv# 
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numimpre# AND ESTLICEN=#estLicen# AND AFIRUT=#afiRut#
+		WITH NC
+	</update>
+    <update id="updateLMECeroNumImprela" >
+		UPDATE LIEXP.ILFE002R SET IDEOPE = #_ideOpe#, NUMIMPRE = #_numimpre# , DIVLICEN = #_dv# , NUMIMPRELA = #_numimprela#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numimpre# AND ESTLICEN=#estLicen# AND AFIRUT=#afiRut#
+		WITH NC
+	</update>
+	<update id="updateLMECeroNumImprela8600" >
+		UPDATE LIEXP.ILF8600 SET NUMIMPRE = #_numimprela# , LICIMPNUM = #_numimprela#
+		WHERE AFIRUT=#afiRut# AND LICIMPNUM = #numimprela#
+		WITH NC
+	</update>
+	
+	
+	<resultMap id="resultMapLmeCero"  class="ilfe002">  
+		<result property="ideOpe" column="IDEOPE"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="dvImpre" column="DIVLICEN"/>
+		<result property="estadoLicencia" column="ESTLICEN"/>
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="fechaOpr" column="FECHAOPR"/>
+		<result property="msgErr" column="MSGERR"/>
+		<result property="numimprela" column="NUMIMPRELA"/>
+		<result property="fechaEstado" column="FECHAEST"/>
+		<result property="horaEstado" column="HORAEST"/>
+	</resultMap>
+	
+	<select id="getLmeCero" resultMap="resultMapLmeCero" parameterClass="ilfe002" >
+	 SELECT I2.* FROM (
+	 <![CDATA[
+			(SELECT  
+	        ILFE002R.IDEOPE
+		  , ILFE002R.NUMIMPRE
+		  , ILFE002R.DIVLICEN
+		  , ILFE002R.ESTLICEN
+		  , ILFE002R.AFIRUT
+		  , ILFE002R.FECHAOPR
+		  , ILFE002R.MSGERR
+		  , ILFE002R.NUMIMPRELA 
+		  , ILFE002R.FECHAEST
+		  , ILFE002R.HORAEST	
+						FROM LIEXP.ILFE002RL2 ILFE002R
+						WHERE ESTLICEN=0
+						AND MSGERR <> ' '
+						AND MSGERR <> 'OK'
+						AND NOT EXISTS(SELECT 1
+						                 FROM LIEXP.ILFE002R ILFE002R2
+						                 WHERE ILFE002R2.NUMIMPRE = ILFE002R.NUMIMPRE
+						                   and ILFE002R2.AFIRUT = ILFE002R.AFIRUT
+						                   and ILFE002R2.IDEOPE = ILFE002R.IDEOPE
+						                   and ILFE002R2.estlicen <> 0)
+						                   )
+	         ]]>
+	    ) I2 LEFT JOIN 
+	    LIEXP.ILFE082 I82 ON
+	    I82.AFIRUT = I2.AFIRUT AND
+	    I82.LICIMPNUM = I2.NUMIMPRELA AND
+	    I82.NUMIMPRE =  I2.NUMIMPRE AND 
+	    I82.IDEOPE = I2.IDEOPE
+	    WHERE I82.LICIMPNUM IS NULL
+	    order by I2.FECHAOPR desc
+	    WITH UR
+      </select>
+      
+      <update id="updateIlfe002R">
+		UPDATE LIEXP.ILFE002R SET CODERR = 0, MSGERR = #label#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		AND ESTLICEN = 0
+		WITH NC
+	</update>
+	
+	<update id="updateIlfe002RError">
+		UPDATE LIEXP.ILFE002R SET MSGERR = #label#
+		WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#
+		WITH NC
+	</update>
+
+	<delete id="deleteIlfe002R">
+		DELETE FROM LIEXP.ILFE002R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE# AND ESTLICEN NOT IN (62, 1)		
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe000InIlfe002R">
+			DELETE FROM LIEXP.ILFE000 a 
+			WHERE EXISTS(SELECT b.NUMIMPRE 
+			FROM LIEXP.ILFE002R b WHERE b.NUMIMPRE = a.NUMLIC and b.ESTLICEN = a.ESTADO and b.FECHAEST = a.FECHAEST and b.HORAEST = a.HORAEST)
+			WITH NC
+	</delete>
+	
+	
+	<resultMap id="resultMap002R"  class="com.microsystem.lme.ibatis.domain.Ilfe002InversoVO">  
+		<result property="estLicen" column="ESTLICEN"/>
+		<result property="numImpre" column="NUMIMPRE"/>
+		<result property="afiRut" column="AFIRUT"/>
+	</resultMap>
+	
+	<select id="getIlfe002RInverso" resultMap="resultMap002R" parameterClass="com.microsystem.lme.ibatis.domain.Ilfe002InversoVO">
+		SELECT AFIRUT, NUMIMPRE,ESTLICEN 
+		FROM LIEXP.ILFE002R 
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="ideOpe">
+				IDEOPE = #ideOpe#
+			</isNotNull>
+			<isNotNull prepend="AND" property="numImpre">
+				NUMIMPRE = #numImpre#
+			</isNotNull>			
+			<isNotNull prepend="AND" property="afiRut">
+				AFIRUT = #afiRut#
+			</isNotNull>
+			<isNotNull prepend="AND" property="estLicen">
+				ESTLICEN = #estLicen#
+			</isNotNull>
+		</dynamic>
+		WITH UR
+	</select>
+	
+		
+	<resultMap id="returnIlfe080" class="ilfe080">
+		<result property="idOperador" column="IDEOPE" />
+		<result property="numLicencia" column="NUMLIC" nullValue="0" />
+		<result property="digLicencia" column="DIGLIC" nullValue="" />
+		<result property="fechaConsulta" column="FECCON" />
+		<result property="horaConsulta" column="HORCON" />
+		<result property="estado" column="ESTADO" />
+	</resultMap>
+	
+	<select id="getIlfe080" resultMap="returnIlfe080">
+		SELECT a.IDEOPE,a.NUMLIC,a.DIGLIC,a.FECCON,a.HORCON,a.ESTADO FROM LIEXP.ILFE080 a
+		WHERE a.ESTADO = 0 and NOT EXISTS(SELECT b.NUMIMPRE 
+		FROM LIEXP.ILFE002R b 
+		WHERE b.NUMIMPRE = a.NUMLIC)
+		WITH NC
+	</select>
+	
+	<delete id="deleteIlfe080" >
+		DELETE FROM LIEXP.ILFE080 
+		WHERE ESTADO = #estado#
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe080a" parameterClass="ilfe080">
+		DELETE FROM LIEXP.ILFE080 a
+		WHERE 
+		a.ESTADO = '1' and a.NUMLIC =#numLicencia# and a.IDEOPE =#idOperador# and exists (select * from LIEXP.ILFE002R b where b.NUMIMPRE = a.NUMLIC);		
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe003R">
+		DELETE FROM  LIEXP.ILFE003R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE# AND ESTLICEN NOT IN (62, 1)
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe004R">
+		DELETE FROM LIEXP.ILFE004R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE# AND ESTLICEN NOT IN (62, 1)
+		WITH NC
+	</delete>
+	
+	<delete id="deleteIlfe005R">
+		DELETE FROM LIEXP.ILFE005R 
+		WHERE IDEOPE = #IDEOPE# AND NUMIMPRE = #NUMIMPRE# AND ESTLICEN NOT IN (62, 1)
+		WITH NC
+	</delete>
+
+	<resultMap id="resultMapIlf1000"  class="ilf1000">  
+		<result property="licimpnum" column="LICIMPNUM"/>
+		<result property="afiRut" column="AFIRUT"/>
+	</resultMap>
+
+	<select id="getIlf1000" resultMap="resultMapIlf1000" parameterClass="ilf1000">
+		SELECT LICIMPNUM,AFIRUT 
+		FROM LIEXP.ILF1000 
+		<dynamic prepend="WHERE ">
+			<isNotNull prepend="AND" property="licimpnum">
+				LICIMPNUM = #licimpnum#
+			</isNotNull>
+			<isNotNull prepend="AND" property="afiRut">
+				AFIRUT = #afiRut#
+			</isNotNull>			
+		</dynamic>
+		WITH UR
+	</select>
+	
+	<resultMap id="returnIlfe082" class="ilfe082">
+		<result property="afiRut" column="AFIRUT" />
+		<result property="licImpNum" column="LICIMPNUM" />
+		<result property="numImpre" column="NUMIMPRE" />
+		<result property="ideOpe" column="IDEOPE" />
+		<result property="estaEnIlfe1000" column="ESTAILFE1000" />
+	</resultMap>
+	
+	<select id="getIlf082ToDelete" resultMap="returnIlfe082">
+ 		SELECT COALESCE(A.LICIMPNUM,0) as ESTAILFE1000, B.* 
+		FROM (SELECT AFIRUT, LICIMPNUM FROM LIEXP.ILF1000) A
+		RIGHT JOIN LIEXP.ILFE082 B ON 
+		A.AFIRUT = B.AFIRUT AND 
+		A.LICIMPNUM = B.LICIMPNUM 
+		WITH UR
+	</select>
+	
+
+</sqlMap>

@@ -1,0 +1,378 @@
+a {
+	font-size:12px;
+	color:#333;
+	text-decoration:none;
+	/* font-weight:bold; */
+}
+a:hover {
+	color:#999;
+}
+li {
+	text-decoration:none;
+	list-style:none;
+	display:block;
+	float:right;
+	margin-left:10px;
+	margin-right:10px;
+}
+h3  {
+	color:#1C74A9;
+}
+h4 {
+	color:#1C74A9;
+	font-size:12px;
+}
+/*MENU LATERAL*/
+.menu {
+	width:170px;
+	margin-right:15px;
+}
+/*TABLA CONTENIDOS*/
+#tabla_cont {
+	border:1px solid #CCC;
+	background-color:#F0F0F0;
+	font-size:11px;
+	color:#333;
+	font-weight:normal;
+}
+#tabla_cont .titulo_cuadro2 {
+	color:#1C74A9;
+	font-size:14px;
+	padding-bottom:8px;
+}
+#tabla_cont .campos  {
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-size:10px;
+    margin: 2px;
+    padding: 1px;
+}
+#tabla_cont .btn1 {
+    background:url(../img/btn_busc.gif);
+    color:#FFF;
+    height:20px;
+    text-align: center;
+    width:70px;
+	margin: 12px 0px 0px 8px;
+	border:none;
+	font-size:11px;
+	font-weight:bold;
+	padding-bottom:2px;
+}
+.btn_grande {
+    background:url(../img/btn_grande.jpg) top no-repeat;
+    border:none;
+    color:#FFF;
+    font: bold 10px Arial;
+    height:20px;
+    text-align: center;
+    width:140px;
+    cursor: hand;
+}
+.btn_xgrande {
+    background:url(../img/btn_xl.jpg) top no-repeat;
+    border:none;
+    color:#FFF;
+    font: bold 10px Arial;
+    height:20px;
+    text-align: center;
+    width:210px;
+    cursor: hand;
+}
+.titulo {
+	font-size:20px;
+	color:#1A72A9;
+	font-weight:bold;
+	padding-bottom:10px;
+	text-align:left;
+}
+.datos {
+	color:#1A72A9;
+	font-size:13px;
+	text-align:right;
+	padding-bottom:15px;
+}
+#tabla_datos {
+	border:1px solid #CCCCCC;
+	font-size:10px;
+	text-align:center;
+}
+#tabla_datos th {
+	background-color:#BBCDDD;
+	font-size:10px;
+	font-weight:bold;
+	height:20px;
+	vertical-align:middle;
+}
+#tabla_datos td {
+	border-bottom:1px solid #CCCCCC;
+	padding:2px;
+}
+#tabla_datos a {
+	font-size:12px;
+	color:#1A72A9;
+	text-decoration:none;
+}
+#tabla_datos a:hover {
+	color:#666;
+}
+#tabla_datos a:visited {
+	color:#226A82;
+}
+.btn {
+	background:url(../img/btn_login.jpg) no-repeat;
+	color:#FFF;
+	font-weight:bold;
+	font-size:11px;
+	border:none;
+	height:20px;
+	width:65px;
+	cursor: hand;
+}
+/*CALENDARIO*/
+#calendario {
+	background-color:#E8EEF7;
+	font-size:12px;
+	width:600px;
+	padding:8px;
+	color:#333;
+}
+#calendario .titulo {
+	color:#1972A9;
+	font-size:16px;
+	margin-top:8px;
+	padding-bottom:4px;
+	text-align:center;
+}
+#calendario a {
+	font-size:11px;
+	text-decoration:none;
+	color:#333;
+}
+#calendario a:hover {
+	color:#1972A9;
+}
+.meses {
+	font-size:12px;
+	color:#333;
+	border:1px solid #C3D2E7;
+
+}
+.meses_titulos {
+	font-size:14px;
+	color:#333;
+	padding-bottom:8px;
+	font-weight:bold;
+}
+/*ERRORES POP UP*/
+#errores_p {
+	width:550px;
+	border:1px solid #cccccc;
+	margin:8px;
+}
+/*PLANILLAS*/
+.txt {
+	color:#333;
+	padding-left:15px;
+}
+.txt ul {
+	list-style-type:none;
+	margin-left:0px;
+	margin-right:0px;
+}
+.txt li a {
+	list-style:none;
+	float:left;
+	width:500px;
+	font-weight:normal;
+	margin-bottom:4px;
+	color:#1C74A9;
+}
+.txt li a:hover {
+	color:#333;
+}
+#cuadro_opc {
+	background-color:#F0F0F0;
+	font-size:11px;
+	font-weight:bold;
+}
+#cuadro_opc td {
+	height:20px;
+}
+#cuadro_opc .titulo_cuadro {
+	color:#1C74A9;
+	font-size:13px;
+	padding-bottom:5px;
+}
+.fecha_cuadro {
+	font-size:10px;
+	font-weight:normal;
+}
+.menu_sup {
+	width:818px;
+	height:30px;
+	background:url(../img/bg_menu_sup.gif);
+}
+.menu_sup ul {
+	list-style-type:none;
+	margin:0px;
+	float:left;
+	padding:0px;
+}
+.menu_sup li {
+	float:left;
+	text-align:center;
+    margin:0px;
+	list-style-type:none;
+}
+.menu_sup li ul {
+	border:1px solid #CCCCCC;
+	background-color:#EEEEEE;
+	float:left;
+	list-style-type:none;
+}
+.menu_sup a {
+	font-size:11px;
+	font-weight:bold;
+	color:#1C74A9;
+	text-decoration:none;
+	display:block;
+	padding:0px 16px 0px 16px;
+	height:30px;
+}
+.menu_sup a:hover {
+	color:#FFF;
+	background-color:#1C74A9;
+}
+.menu_sup .active {
+	color:#FFF;
+	background-color:#1C74A9;
+	font-size:11px;
+	font-weight:bold;
+	padding:0px 16px 0px 16px;
+	height:30px;
+}
+.menu_terc {
+	background-color:#EEEEEE;
+	border:1px solid #CCCCCC;
+	height:30px;
+}
+.menu_terc a {
+	font-weight:normal;
+	font-size:11px;
+	color:#333;
+	padding:1px 10px 1px 10px;
+	text-align:center;
+}
+.menu_terc a:hover  {
+	color:#FFFFFF;
+	background-color:#1A72A9;
+}
+.seleccionado_terc {
+	color:#FFF;
+	background-color:#1A72A9;
+	text-align:center;
+	font-size:11px;
+}
+/*MENU LATERAL PAGO ATRASADO*/
+#menu_lateral_p ul {
+	list-style: none;
+	padding:0;
+	margin-top:5px;
+	margin-right:0;
+	margin-bottom:5px;
+	margin-left:0;
+	height:20px;
+}
+#menu_lateral_p li {
+	background:url(../img/btn_lateral_p_off.jpg) top no-repeat;
+	padding-bottom:3px;
+	margin:0px;
+	margin-left:8px;
+	float:left;
+}
+#menu_lateral_p a {
+	text-decoration:none;
+	width:214px;
+	text-align:center;
+	display:block;
+	height:20px;
+	padding-top:2px;
+}
+#menu_lateral_p a:hover {
+	color:#1C74A9;
+	background:url(../img/btn_lateral_p_on.jpg) top no-repeat;
+	width:214px;
+	height:20px;
+}
+#menu_lateral_p .selected {
+	background:url(../img/btn_lateral_p_on.jpg) top no-repeat;
+	height:20px;
+	color:#1C74A9;
+	padding-bottom:8px;
+	width:214px;
+	text-align:center;
+	font-weight:bold;
+	padding-top:2px;
+}
+/*CONTENIDO PAGO ATRASADO*/
+.txt_pago_atrasado{ 
+	color:#333;
+	text-align:left;
+}
+.btn_largo {
+	background:url(../img/btn_generar_compro.jpg);
+	width:180px;
+	color:#FFF;
+	font: bold 11px Arial;
+    height:20px;
+    text-align: center;
+	border:none;
+	cursor: hand;
+}
+.btn2 {
+    background:url(../img/btn_busc.gif);
+    color:#FFF;
+    height:20px;
+    text-align: center;
+    width:70px;
+	margin: 12px 0px 0px 8px;
+	border:none;
+	font-size:11px;
+	font-weight:bold;
+	padding-bottom:2px;
+	cursor: hand;
+}
+#tabla_contenido {
+	border:1px solid #CCCCCC;
+	font-size:11px;
+	text-align:center;
+}
+#tabla_contenido th {
+	background-color:#BBCDDD;
+	font-size:11px;
+	font-weight:bold;
+	height:25px;
+	vertical-align:middle;
+}
+#tabla_contenido td {
+	border-bottom:1px solid #CCCCCC;
+	padding:2px;
+	height:20px;
+}
+#calendario_calculo {
+	width:220px;
+	border:1px solid #CCCCCC;
+	font-size:11px;
+	color:#333;
+	background-color:#F0F0F0;
+}
+#calendario_calculo a {
+	font-size:11px;
+	padding:8px;
+}
+
+#calendario_calculo a:hover {
+	color:#1C74A9;
+}
+	

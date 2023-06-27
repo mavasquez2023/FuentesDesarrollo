@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://impl.integracion.laaraucana.cl" xmlns:impl="http://impl.integracion.laaraucana.cl" xmlns:intf="http://impl.integracion.laaraucana.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://impl.integracion.laaraucana.cl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="integracionDTResponse">
+    <complexType>
+     <sequence>
+      <element name="integracionDTReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="integracionDT">
+    <complexType>
+     <sequence>
+      <element name="entrada" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="integracionDTRequest">
+     <wsdl:part element="intf:integracionDT" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="integracionDTResponse">
+     <wsdl:part element="intf:integracionDTResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="IntegracionDT">
+     <wsdl:operation name="integracionDT">
+       <wsdl:input message="intf:integracionDTRequest" name="integracionDTRequest"/>
+
+       <wsdl:output message="intf:integracionDTResponse" name="integracionDTResponse"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="IntegracionDTSoapBinding" type="intf:IntegracionDT">
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="integracionDT">
+       <wsdlsoap:operation soapAction="integracionDT"/>
+
+       <wsdl:input name="integracionDTRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="integracionDTResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="IntegracionDTService">
+     <wsdl:port binding="intf:IntegracionDTSoapBinding" name="IntegracionDT">
+       <wsdlsoap:address location="https://localhost:9443/IntegracionWeb/services/IntegracionDT"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

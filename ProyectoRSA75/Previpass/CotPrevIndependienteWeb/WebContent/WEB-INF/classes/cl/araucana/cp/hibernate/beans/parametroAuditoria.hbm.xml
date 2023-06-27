@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cl.araucana.cp.distribuidor.hibernate.beans">
+	<class name="ParametroAuditoriaVO" table="EVENTLOG_PARAMETER">
+    	<composite-id>
+        	<key-property name="idTipoEvento">
+        		<column name="ID_EVENT_TYPE"/> 
+        	</key-property>
+        	<key-property name="idParametro">
+        		<column name="ID_PARAMETER"/> 
+        	</key-property>
+    	</composite-id>
+   		<property name="idTipoParametro" column="ID_PARAMETER_TYPE" />
+   		<property name="nombre" column="NAME" />
+   		<property name="descripcion" column="DESCRIPTION" />
+   		<property name="largo" column="LENGTH" />
+	</class>
+</hibernate-mapping>

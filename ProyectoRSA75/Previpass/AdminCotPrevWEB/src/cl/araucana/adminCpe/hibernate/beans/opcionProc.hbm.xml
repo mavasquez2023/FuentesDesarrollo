@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="cl.araucana.cp.distribuidor.hibernate.beans.OpcionProcVO" table="OPCIONPROC">
+		<id name="idOpcion" column="ID_OPCION" />
+		<property name="inpSucursal" column="GENERAR_INP_POR_SUCURSAL" />
+		<property name="mutualSucursal" column="GENERAR_MUTUAL_POR_SUCURSAL" />
+		<property name="ccafSucursal" column="GENERAR_CCAF_POR_SUCURSAL" />
+		<property name="calInp" column="CALCULAR_MONTO_INP" />
+		<property name="calMutual" column="CALCULAR_MONTO_MUTUAL" />
+		<property name="calcCcaf" column="CALCULAR_MONTO_CCAF" />
+		<property name="calcTotSalud" column="CALCULAR_MONTO_TOTAL_SALUD" />
+		<property name="calcTotPrevision" column="CALCULAR_MONTO_TOTAL_PREVISION" />
+		<property name="imprimirPlantillas" column="IMPRIMIR_PLANILLAS" />
+		<property name="numBloqueos" column="N_BLOQUEOS" />
+		<property name="calFonasa" column="CALCULAR_MONTO_FONASA" />
+	</class>
+</hibernate-mapping>

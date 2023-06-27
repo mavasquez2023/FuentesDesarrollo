@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cl.araucana.cp.distribuidor.hibernate.beans.DetalleCreditoCcafVO" table="DETALLE_CREDITO_CCAF">
+    	<composite-id >
+        	<key-property name="idCodigoBarra">
+        		<column name="ID_CODIGO_BARRA" not-null="true" />
+        	</key-property>
+        	<key-property name="idCredito">
+        		<column name="ID_CREDITO" not-null="true" />
+        	</key-property>
+    	</composite-id>
+   		<property name="capital" column="CAPITAL" />
+   		<property name="codigoOficina" column="CODIGO_OFICINA" />
+   		<property name="estadoActual" column="ESTADO_ACTUAL" />
+   		<property name="fechaVencimiente" column="FECHA_VENCIMIENTO" />
+		<property name="folioCredito" column="FOLIO_CREDITO" />
+		<property name="gravamenes" column="GRAVAMENES" />
+		<property name="interes" column="INTERESE" />
+		<property name="lineaCredito" column="LINEA_CREDITO" />
+		<property name="montoAbonado" column="MONTO_ABONADO" />
+		<property name="montoDescuenro" column="MONTO_DESCUENTO" />
+		<property name="multa" column="MULTA" />
+		<property name="numCuata" column="N_CUOTA" />
+		<property name="seguros" column="SEGUROS" />
+		<property name="totalCouta" column="TOTAL_CUOTAS" />
+		<property name="valorCuota" column="VALOR_CUOTA" />
+		<property name="montoTotal" column="MONTO_TOTAL" />
+   	</class>
+</hibernate-mapping>
+
+
+
+

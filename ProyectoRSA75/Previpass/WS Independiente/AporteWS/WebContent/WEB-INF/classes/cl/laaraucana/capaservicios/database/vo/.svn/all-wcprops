@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IBM/!svn/ver/3099/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo
+END
+CuentaCorrienteVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/IBM/!svn/ver/1450/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/CuentaCorrienteVO.java
+END
+ParametrosVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/ParametrosVO.java
+END
+SolicitudSMS.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/IBM/!svn/ver/1271/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/SolicitudSMS.java
+END
+DatosClienteVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/IBM/!svn/ver/1251/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/DatosClienteVO.java
+END
+ComprobanteTesoreria.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/IBM/!svn/ver/1446/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/ComprobanteTesoreria.java
+END
+TransferenciaVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/IBM/!svn/ver/3099/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/TransferenciaVO.java
+END
+MigracionVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/IBM/!svn/ver/918/was85/InterfazServiciosCES/src/cl/laaraucana/capaservicios/database/vo/MigracionVO.java
+END

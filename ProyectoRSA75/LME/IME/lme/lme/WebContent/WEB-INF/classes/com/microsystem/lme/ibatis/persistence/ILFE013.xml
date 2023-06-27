@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="ILFE013">
+	<typeAlias alias="ilfe013" type="com.microsystem.lme.ibatis.domain.Ilfe013VO"/>
+
+	<resultMap id="returnObject13" class="ilfe013">
+		<result property="afiRut" column="AFIRUT"/>
+		<result property="empRut" column="EMPRUT"/>
+		<result property="codigoPrevisionRemAnt" column="INSPREVER"/>
+		<result property="ndiasRemAnt" column="DIASSIL"/>
+		<result property="montoImponibleRemAnt" column="RENTA"/>
+		<result property="montoTotalRemAnt" column="TOTMONRA"/>
+		<result property="montoIncapacidadRemAnt" column="SUBSIDIO"/>
+		<result property="ndiasIncapacidadRemAnt" column="NDIASINCA"/>
+		<result property="periodo" column="PERIODO"/>
+	</resultMap>
+
+  <select id="getIlfe013" resultMap="returnObject13" parameterClass="ilfe013">
+	SELECT INSPREVER, DIASSIL, RENTA, TOTMONRA, SUBSIDIO, NDIASINCA
+	,AFIRUT , EMPRUT, PERIODO
+	FROM LIEXP.ILFE013 
+	WHERE AFIRUT = #afiRut# AND EMPRUT = #empRut#
+	ORDER BY PERIODO DESC
+	WITH UR
+  </select>
+
+<!--<update id="updateIlfe013" parameterClass="ilfe013">-->
+<!--	UPDATE LIEXP.ILFE013 -->
+<!--	SET ENVIADA = #enviada#, RESPWS = #respWs#, GLORESP = #glosaEstado#, -->
+<!--	FECRESP = #fechaRespuesta#, HORRESP = #horaRespuesta#-->
+<!--	WHERE IDEOPE = #ideOpe# AND NUMIMPRE = #numImpre#-->
+<!--</update>-->
+
+</sqlMap>

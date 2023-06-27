@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RepNominaApoAfi">
+
+	<parameterMap id="paramMap" class="map">	
+   		<parameter property="P_RUT" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="IN"></parameter>
+   		<parameter property="P_NOMBRES" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_APELLIDOPATERNO" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_APELLIDOMATERNO" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>
+   		<parameter property="P_ESTADO" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter> 
+   		<parameter property="P_OFICINAAFILIACION" jdbcType="CHAR" javaType="java.lang.String" mode="OUT"></parameter>     		
+	</parameterMap>
+
+   	<!--- Calling stored procedure --> 
+	<procedure id="SP_CONSAPTPREV" parameterMap="paramMap" resultClass="cl.araucana.independientes.vo.LinRepNominaApoAfiVO">
+		{ call IIDTA.SP_APTPREV(?,?,?,?,?,?)}   
+	</procedure>
+	
+	<select id="obtenerEstSolAfi" resultClass="cl.araucana.independientes.vo.EstadoSolAfiVO" parameterClass="java.util.HashMap">
+		SELECT	A.TIPOSOLICITUD tipoSolicitud,
+				A.TIPOESTADOSOLICITUD tipoEstadoSolicitud,
+				CHAR(A.FECHAVIGENCIA , USA) fechaVigencia,
+				F.TIPOESTADOAFILIADO
+		FROM	$IIDTA$.PERSONA B,
+				$IIDTA$.SOLICITUD A,
+				$IIDTA$.AFILIADO F
+		WHERE	A.IDAFILIADOAGRUPACION = F.IDPERSONAAFILIADO
+		AND     F.IDPERSONAAFILIADO = B.IDPERSONA
+		AND     B.IDDOCUMENTO       = #input#
+		AND		A.TIPOSOLICITUD = 2
+	</select>
+	
+</sqlMap>
