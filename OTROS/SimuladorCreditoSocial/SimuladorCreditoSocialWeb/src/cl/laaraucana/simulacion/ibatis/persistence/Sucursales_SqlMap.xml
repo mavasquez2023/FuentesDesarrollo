@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="sucursalesResult" class="cl.laaraucana.simulacion.ibatis.vo.SucursalesVO" >
+	  <result column="id" property="id" jdbcType="NUMBER" />
+	  <result column="codigo" property="codigo" jdbcType="CHAR" />
+	  <result column="Descripcion" property="descripcion" jdbcType="CHAR" />
+  </resultMap>
+  
+ 	<select id="sucursales" resultMap="sucursalesResult" parameterClass="string">
+		select * from Sucursales order by Descripcion
+	</select>
+	
+	 
+</sqlMap>

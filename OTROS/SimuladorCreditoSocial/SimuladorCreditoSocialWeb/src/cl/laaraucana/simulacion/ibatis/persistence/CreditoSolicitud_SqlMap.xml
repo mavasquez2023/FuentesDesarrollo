@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="creditosolicitud" class="cl.laaraucana.simulacion.ibatis.vo.CreditoSolicitudVO" >
+    <result column="nombre" property="nombre" jdbcType="CHAR" />
+    <result column="rutAfi" property="rutAfiliado" jdbcType="NUMBER" />
+    <result column="dvAfi" property="dvAfiliado" jdbcType="CHAR" />
+    <result column="celular" property="celular" jdbcType="CHAR" />    
+    <result column="telefono" property="telefono" jdbcType="CHAR" />    
+    <result column="email" property="email" jdbcType="CHAR" /> 
+    <result column="tipoAfi" property="tipoAfiliado" jdbcType="CHAR" /> 
+    <result column="monSimu" property="montoSimulado" jdbcType="NUMBER" /> 
+    <result column="numCuoSimu" property="numeroCuotasSimuladas" jdbcType="NUMBER" /> 
+    <result column="sucursal" property="sucursal" jdbcType="CHAR" /> 
+    <result column="fecha" property="fecha" jdbcType="DATE" />    
+  </resultMap>
+    
+ 	<insert id="creditosolicitudQuery" parameterClass="cl.laaraucana.simulacion.ibatis.vo.CreditoSolicitudVO">
+		 insert into SOLCREDITOSIM (nombre, rutAfi, dvAfi, celular, telefono, email, tipoAfi, monSimu, numCuoSimu, sucursal, fecha) 
+		 values (#nombre#, #rutAfiliado#, #dvAfiliado#, #celular#, #telefono#, #email#, #tipoAfiliado#, #montoSimulado#, #numeroCuotasSimuladas#, #sucursal#, #fecha#)
+	</insert>
+
+</sqlMap>

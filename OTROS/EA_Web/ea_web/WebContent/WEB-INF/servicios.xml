@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE service_definition [
+<!ELEMENT service_definition (service+)>
+<!ELEMENT service (pgm,host,uid,pwd)>
+<!ATTLIST service id CDATA #IMPLIED>
+<!ELEMENT pgm  (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ELEMENT uid  (#PCDATA)>
+<!ELEMENT pwd  (#PCDATA)>
+]>
+<service_definition>
+	<service id="1">
+		<pgm>/QSYS.LIB/SEOBJ.LIB/CCFE001.PGM</pgm>
+		<host>146.83.1.3</host>
+		<uid>SEBUSINESS</uid>
+		<pwd>SEBUSINESS</pwd>
+	</service>
+	<service id="2">
+		<pgm>/QSYS.LIB/SEOBJ.LIB/CRCC2XF.PGM</pgm>
+		<host>146.83.1.3</host>
+		<uid>SEBUSINESS</uid>
+		<pwd>SEBUSINESS</pwd>
+	</service>
+		<service id="3">
+		<pgm>/QSYS.LIB/SEOBJ.LIB/CRCC2YF.PGM</pgm>
+		<host>146.83.1.3</host>
+		<uid>SEBUSINESS</uid>
+		<pwd>SEBUSINESS</pwd>
+	</service>
+	<service id="4">
+		<pgm>/QSYS.LIB/SEOBJ.LIB/CRC860.PGM</pgm>
+		<host>146.83.1.3</host>
+		<uid>SEBUSINESS</uid>
+		<pwd>SEBUSINESS</pwd>
+	</service>
+	<service id="5">
+		<pgm>/QSYS.LIB/SEOBJ.LIB/CRC888.PGM</pgm>
+		<host>146.83.1.3</host>
+		<uid>SEBUSINESS</uid>
+		<pwd>SEBUSINESS</pwd>
+	</service>
+</service_definition>

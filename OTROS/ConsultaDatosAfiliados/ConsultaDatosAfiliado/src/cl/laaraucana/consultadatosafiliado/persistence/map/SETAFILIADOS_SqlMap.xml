@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="parametrosMap" class="java.util.HashMap" >
+    	<result column="PAR_NOMBRE" property="key"/>
+	    <result column="PAR_VALOR" property="value"/>
+	</resultMap>
+	
+	<resultMap class="cl.laaraucana.consultadatosafiliado.persistence.dto.Afiliado" id="setDatoAfiliadoMap">
+		<result column="FECCONS" property="fechaConsulta" />
+		<result column="HORCONS" property="horaConsulta" />
+		<result column="RUTCONS" property="rutConsultado" />
+		<result column="ROL" property="rol" />
+		<result column="ESTADO" property="estado" />
+	</resultMap>
+	<insert id="setDatosAfiliado" parameterClass="cl.laaraucana.consultadatosafiliado.persistence.dto.Afiliado">
+   
+   INSERT INTO PUBDTA.BITCONWSAS(FECCONS, HORCONS, RUTCONS, ROL, ESTADO)
+    VALUES( #fechaConsulta#, #horaConsulta#, #rutConsultado#, #rol#, #estado# )
+	</insert>
+</sqlMap>

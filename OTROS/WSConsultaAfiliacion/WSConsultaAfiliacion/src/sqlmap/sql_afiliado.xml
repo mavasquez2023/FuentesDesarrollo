@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="afiliacion">
+	
+	<resultMap id="map-item-name" class="java.util.HashMap">
+   		<result property="ESTADO" column="ESTADO"/>
+   		<result property="RUTBENEF" column="RUTBENEF"/>
+	</resultMap>
+
+	<select id="obtenerEstadoAfiliacion" resultMap="map-item-name" parameterClass="java.lang.Integer">
+	
+		select case when sum(cant)>=1 then 1 else 0 end as ESTADO, RUTBENEF from (
+			SELECT	count(1) as cant, se5fajc as rutbenef from AFDTA.AF03F1 
+				where SE5FAJC= #rut#
+				and SE5FAR9!='C'
+                group by se5fajc
+			UNION
+			SELECT	count(1) as cant, se5fajc as rutbenef from BPAFDTA.AF03F1 
+				where SE5FAJC= #rut#
+				and SE5FAR9!='C'
+                group by se5fajc
+			UNION
+			SELECT	count(1) as cant, afirut as rutbenef from PREXP.PEF1500
+				where AFIRUT= #rut#
+				and AFIESTAFI in( 3, 6 )
+ 				and AFIFECAFI &lt;=  YEAR(current date)*10000 +  MONTH(current date) * 100 + day(current date)
+				and (AFIVENPEN &gt;= YEAR(current date)*10000 +  MONTH(current date) * 100 +   day(current date)
+      			or AFIVENPEN = 0)
+                group by afirut
+			UNION
+			select count(1) as cant, se5fajc as rutbenef from AFDTA.AF05F1
+				where  AF8LA = 'A'
+				and  AF8KA != 'M'
+				and AF8HA = #rut#
+                group by se5fajc
+			UNION
+			select count(1) as cant, a.iddocumento as rutbenef from iidta.persona a join iidta.afiliado b
+				on a.idpersona= b.idpersonaafiliado
+				where b.tipoestadoafiliado=2
+				and a.iddocumento= #rut#
+                group by a.iddocumento
+		) as A
+        group by rutbenef
+		WITH UR
+		
+	</select >
+	
+	<select id="obtenerEstadoAfiliacionSinCargas" resultMap="map-item-name" parameterClass="java.lang.Integer">
+	
+		select case when sum(cant)>=1 then 1 else 0 end as ESTADO, RUTBENEF from (
+			SELECT	count(1) as cant, se5fajc as rutbenef from AFDTA.AF03F1 
+				where SE5FAJC= #rut#
+				and SE5FAR9!='C'
+                group by se5fajc
+			UNION
+			SELECT	count(1) as cant, se5fajc as rutbenef from BPAFDTA.AF03F1 
+				where SE5FAJC= #rut#
+				and SE5FAR9!='C'
+                group by se5fajc
+			UNION
+			SELECT	count(1) as cant, afirut as rutbenef from PREXP.PEF1500
+				where AFIRUT= #rut#
+				and AFIESTAFI in( 3, 6 )
+ 				and AFIFECAFI &lt;=  YEAR(current date)*10000 +  MONTH(current date) * 100 + day(current date)
+				and (AFIVENPEN &gt;= YEAR(current date)*10000 +  MONTH(current date) * 100 +   day(current date)
+      			or AFIVENPEN = 0)
+                group by afirut
+			UNION
+			select count(1) as cant, a.iddocumento as rutbenef from iidta.persona a join iidta.afiliado b
+				on a.idpersona= b.idpersonaafiliado
+				where b.tipoestadoafiliado=2
+				and a.iddocumento= #rut#
+                group by a.iddocumento
+		) as A
+        group by rutbenef
+		WITH UR
+		
+	</select >
+	
+	<resultMap class="cl.araucana.wsafiliado.vo.DataAfiliadoVO" id="dataSalidaFull">
+		<result property="rut" column="rut" />
+	  	<result property="nombre" column="nombre" />
+	  	<result property="rutemp" column="rutemp" />
+	  	<result property="estado" column="estado" />
+	  	<result property="razonSocial" column="razon_social" />
+	  	<result property="fechaAfiliacion" column="fecha_afiliacion" />
+	  	<result property="fechaNacimiento" column="fecha_nacimiento" />
+	  	<result property="sexo" column="sexo" />
+	  	<result property="tipoAfiliado" column="tipo_afiliado" />
+	</resultMap>
+	
+	<select id="obtenerDatosAfiliacionFull" resultMap="dataSalidaFull" parameterClass="java.lang.Integer" >
+			SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                a1.CMNA || '-' || a3.CMOA as rutemp,
+                a3.CMPA as razon_social,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 'ACTIVO' ELSE 'INACTIVO' END as estado,
+                CHAR(a1.SE5FBU9) as fecha_afiliacion,
+                CHAR(a2.SE5FAR7) as fecha_nacimiento,
+                a2.SE5FARB as sexo,
+                'TRABAJADOR' as tipo_afiliado
+                from AFDTA.AF03F1 a1 join AFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+                join CMDTA.CM02F1 a3
+                on a1.cmna= a3.cmna
+				where a1.SE5FAJC= #rut#
+		UNION
+			SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                a1.CMNA || '-' || a3.CMOA as rutemp,
+                a3.CMPA as razon_social,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 'ACTIVO' ELSE 'INACTIVO' END as estado,
+                CHAR(a1.SE5FBU9) as fecha_afiliacion,
+                CHAR(a2.SE5FAR7) as fecha_nacimiento,
+                a2.SE5FARB as sexo,
+                'EEPP' as tipo_afiliado
+            from BPAFDTA.AF03F1 a1 join BPAFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+            join BPAFDTA.CM02F1 a3
+                on a1.cmna= a3.cmna
+			where a1.SE5FAJC= #rut#
+		UNION
+			SELECT	
+                 a1.AFIRUT||'-'||a1.AFIRUTDV as rut,
+                trim(a1.AFINOM) || ' ' || trim(a1.AFIAPE) as nombre,
+                a1.EMPRUT || '-' || a1.EMPRUTDV as rutemp,
+                a2.MERASO as razon_social,
+                CASE WHEN a1.AFIESTAFI= '3' 
+                AND AFIFECAFI &lt;=  YEAR(current date)*10000 +  MONTH(current date) * 100 + day(current date)
+                AND (AFIVENPEN &gt;=YEAR(current date)*10000 +  MONTH(current date) * 100 +   day(current date)
+                or AFIVENPEN = 0)
+                THEN 'ACTIVO' ELSE 'INACTIVO' END as estado,
+                CHAR(a1.AFIFECAFI) as fecha_afiliacion,
+                CHAR(a1.AFIFECNAC) as fecha_nacimiento,
+                '' as sexo,
+                'PENSIONADO' as tipo_afiliado 
+            from PREXP.PEF1500 a1 join PREXP.PEF1010 a2
+                on a1.EMPRUT= a2.EMPRUT
+            where a1.AFIRUT= #rut#
+		UNION
+			select a1.iddocumento || '-' || a1.DIGVERIFICADOR as rut,
+                trim(a1.NOMBRES) || ' ' || trim(a1.APELLIDOPATERNO) || ' ' || trim(a1.APELLIDOMATERNO)as nombre,
+                a1.iddocumento || '-' || a1.DIGVERIFICADOR as rutemp,
+                trim(a1.NOMBRES) || ' ' || trim(a1.APELLIDOPATERNO) || ' ' || trim(a1.APELLIDOMATERNO)as razon_social,
+                CASE WHEN a2.tipoestadoafiliado= 2 THEN 'ACTIVO' ELSE 'INACTIVO' END as estado,
+                '' as fecha_afiliacion,
+                CHAR(a1.FECHANAC) as fecha_nacimiento,
+                CASE WHEN TIPOSEXO=1 THEN 'F' ELSE 'M' END as sexo,
+                'INDEPENDIENTE' as tipo_afiliado
+            from iidta.persona a1 join iidta.afiliado a2
+				on a1.idpersona= a2.idpersonaafiliado
+			where a1.iddocumento= #rut#
+	</select>
+	
+	<resultMap class="cl.araucana.wsafiliado.vo.DataCargaVO" id="dataSalidaCargaFull">
+		<result property="rut" column="rut_carga" />
+	  	<result property="nombre" column="nombre_carga" />
+	  	<result property="rutBeneficiario" column="rut_afiliado" />
+	  	<result property="estado" column="estado_carga" />
+	  	<result property="sexo" column="sexo_carga" />
+	  	<result property="fechaNacimiento" column="fecha_nacimiento_carga" />
+	  	<result property="fechaVencimiento" column="fecha_vencimiento_carga" />
+	  	<result property="tipoCarga" column="tipo_carga" />
+	</resultMap>
+	
+	<select id="obtenerDatosCargaFull" resultMap="dataSalidaCargaFull" parameterClass="java.lang.Integer">
+			select  AF8HA || '-' || AF8IA as rut_carga,
+        		SE5FAJC as rut_afiliado,
+        		trim(AF8GA) || ' ' || trim(AF8EA) || ' ' || trim(AF8GA) as nombre_carga,
+        		AF8JA as fecha_nacimiento_carga,
+        		AF8MA as sexo_carga,
+        		AF8RA as fecha_vencimiento_carga,
+        		'TRABAJADOR' as tipo_carga,
+        		CASE  WHEN AF8LA='A' AND AF8KA != 'M' THEN 'ACTIVA' ELSE 'INACTIVA' END as estado_carga,
+        		AF8KA as parentesco 
+  			from AFDTA.AF05F1
+  			where AF8HA= #rut#  
+	</select>
+	
+	<resultMap class="cl.araucana.wsafiliado.vo.DataAfiliadoVO" id="dataSalida">
+		<result property="rut" column="rut" />
+	  	<result property="nombre" column="nombre" />
+	  	<result property="estado" column="estado" />
+	  	<result property="tipoAfiliado" column="tipo_afiliado" />
+	  	<result property="categoria" column="categoria" />
+	</resultMap>
+	
+	<select id="obtenerDatosAfiliacion" resultMap="dataSalida" parameterClass="java.lang.Integer" >
+		SELECT A.rut, A.nombre, A.estado, A.tipo_afiliado, A.categoria  from (
+        SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+                from AFDTA.AF03F1 a1 join AFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+				where a1.SE5FAJC= #rut#
+		UNION
+			SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+            from BPAFDTA.AF03F1 a1 join BPAFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+			where a1.SE5FAJC= #rut#
+		UNION
+			SELECT	
+                 a1.AFIRUT||'-'||a1.AFIRUTDV as rut,
+                trim(a1.AFINOM) || ' ' || trim(a1.AFIAPE) as nombre,
+                CASE WHEN a1.AFIESTAFI= '3' 
+                AND AFIFECAFI &lt;=  YEAR(current date)*10000 +  MONTH(current date) * 100 + day(current date)
+                AND (AFIVENPEN &gt;=YEAR(current date)*10000 +  MONTH(current date) * 100 +   day(current date)
+                or AFIVENPEN = 0)
+                THEN 1 ELSE 0 END as estado,
+                'PENSIONADO' as tipo_afiliado,
+                1 as categoria
+            from PREXP.PEF1500 a1
+            where a1.AFIRUT= #rut#
+		UNION
+			select a1.iddocumento || '-' || a1.DIGVERIFICADOR as rut,
+                trim(a1.NOMBRES) || ' ' || trim(a1.APELLIDOPATERNO) || ' ' || trim(a1.APELLIDOMATERNO)as nombre,
+                CASE WHEN a2.tipoestadoafiliado= 2 THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+            from iidta.persona a1 join iidta.afiliado a2
+				on a1.idpersona= a2.idpersonaafiliado
+			where a1.iddocumento= #rut#
+		UNION
+			select  AF8HA || '-' || AF8IA as rut,
+        		trim(AF8GA) || ' ' || trim(AF8EA) || ' ' || trim(AF8FA) as nombre,
+                CASE  WHEN AF8LA='A' AND AF8KA != 'M' THEN 1 ELSE 0 END as estado,
+        		'TRABAJADOR' as tipo_afiliado,
+                0 as categoria
+  			from AFDTA.AF05F1
+  			where AF8HA= #rut#
+        ) as A
+       GROUP BY A.rut, A.nombre, A.estado, A.tipo_afiliado, A.categoria
+	</select>
+	
+	<select id="obtenerDatosAfiliacionSinCargas" resultMap="dataSalida" parameterClass="java.lang.Integer" >
+		SELECT A.rut, A.nombre, A.estado, A.tipo_afiliado, A.categoria  from (
+        SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+                from AFDTA.AF03F1 a1 join AFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+				where a1.SE5FAJC= #rut#
+		UNION
+			SELECT
+                a1.SE5FAJC||'-'||a1.SE5FBH3 as rut,
+                trim(a2.SE5FBIO) || ' ' || trim(a2.SE5FBIM) || ' ' || trim(a2.SE5FBIK) as nombre,
+                CASE WHEN a1.SE5FAR9!= 'C' THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+            from BPAFDTA.AF03F1 a1 join BPAFDTA.AF02F1 a2
+                on a1.SE5FAJC= a2.SE5FAJC
+			where a1.SE5FAJC= #rut#
+		UNION
+			SELECT	
+                 a1.AFIRUT||'-'||a1.AFIRUTDV as rut,
+                trim(a1.AFINOM) || ' ' || trim(a1.AFIAPE) as nombre,
+                CASE WHEN a1.AFIESTAFI= '3' 
+                AND AFIFECAFI &lt;=  YEAR(current date)*10000 +  MONTH(current date) * 100 + day(current date)
+                AND (AFIVENPEN &gt;=YEAR(current date)*10000 +  MONTH(current date) * 100 +   day(current date)
+                or AFIVENPEN = 0)
+                THEN 1 ELSE 0 END as estado,
+                'PENSIONADO' as tipo_afiliado,
+                1 as categoria
+            from PREXP.PEF1500 a1
+            where a1.AFIRUT= #rut#
+		UNION
+			select a1.iddocumento || '-' || a1.DIGVERIFICADOR as rut,
+                trim(a1.NOMBRES) || ' ' || trim(a1.APELLIDOPATERNO) || ' ' || trim(a1.APELLIDOMATERNO)as nombre,
+                CASE WHEN a2.tipoestadoafiliado= 2 THEN 1 ELSE 0 END as estado,
+                'TRABAJADOR' as tipo_afiliado,
+                1 as categoria
+            from iidta.persona a1 join iidta.afiliado a2
+				on a1.idpersona= a2.idpersonaafiliado
+			where a1.iddocumento= #rut#
+        ) as A
+       GROUP BY A.rut, A.nombre, A.estado, A.tipo_afiliado, A.categoria
+	</select>
+	
+	<select id="obtenerStatus" resultClass="java.lang.Integer">
+	
+		SELECT count(1) SQLID FROM SYSIBM.SYSDUMMY1
+	
+	</select>
+	
+</sqlMap> 

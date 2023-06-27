@@ -1,0 +1,116 @@
+package com.alexis.service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.alexis.dao.PagingAndSortingRepository;
+import com.alexis.dao.UserDao;
+import com.alexis.model.Usuario;
+
+@Service("usuarioServices")
+@Transactional
+public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
+
+	@Autowired
+	private UserDao dao;
+	
+	@Autowired
+	private PagingAndSortingRepository<Usuario, ?>	dao2;
+	
+	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+
+		Usuario user = dao.findByUsername(userId);
+
+		if (user == null) {
+			throw new UsernameNotFoundException("Invalid username or password.");
+		}
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+				getAuthority());
+	}
+	/*
+	 * private Collection<? extends GrantedAuthority> getAuthorities(
+	 * Collection<Role> roles) {
+	 * 
+	 * return getGrantedAuthorities(getPrivileges(roles)); }
+	 * 
+	 * private List<String> getPrivileges(Collection<Role> roles) {
+	 * 
+	 * List<String> privileges = new ArrayList<>(); List<Role> collection = new
+	 * ArrayList<>();
+	 * 
+	 * collection.addAll(roles);
+	 * 
+	 * for (Role item : collection) { privileges.add(item.getRole());
+	 * System.out.println(item.getRole()); } return privileges; }
+	 * 
+	 * 
+	 * private List<GrantedAuthority> getGrantedAuthorities(List<String> privileges)
+	 * { List<GrantedAuthority> authorities = new ArrayList<>(); for (String
+	 * privilege : privileges) { authorities.add(new
+	 * SimpleGrantedAuthority(privilege)); } return authorities; }
+	 * 
+	 */
+
+	private List<SimpleGrantedAuthority> getAuthority() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+	}
+
+	public void save(Usuario entity) {
+		// TODO Auto-generated method stub
+		dao.save(entity);
+	}
+
+	public void delete(long id) {
+		dao.deleteById(id);
+	}
+
+	public void update(Usuario entity) {
+		// TODO Auto-generated method stub
+		dao.save(entity);
+	}
+
+	public List<Usuario> findAll() {
+		List<Usuario> list = new ArrayList<>();
+		dao.findAll().iterator().forEachRemaining(list::add);
+		return list;
+	}
+
+	public Usuario findById(long id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).get();
+	}
+
+	public Usuario findByUsername(String username) {
+		// TODO Auto-generated method stub
+		Usuario user = new Usuario();
+		try {
+			user = dao.findByUsername(username);
+		} catch (Exception e) {
+
+		}
+		return user;
+	}
+	
+   public Usuario getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+       return dao.getByUserEmail(email);
+	}
+   
+   public void updatePassword(String email, String password) {
+		// TODO Auto-generated method stub
+      dao.updatePassword(email, password);
+	}
+   
+   Page<Usuario> users =  dao2.findAll(new PageRequest(1, 20));
+
+}

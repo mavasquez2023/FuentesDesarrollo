@@ -1,0 +1,10 @@
+# Created on 2019-02-27T22:58:49.214
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream 'La pantalla no puede tener el n£mero de l¡neas y columnas especificado.'.
+java.lang.IllegalArgumentException: Stream stdin corrupted. Expected comma after third character in command 'La pantalla no puede tener el n£mero de l¡neas y columnas especificado.'.
+	at org.apache.maven.plugin.surefire.booterclient.output.ForkClient$OperationalData.<init>(ForkClient.java:506)
+	at org.apache.maven.plugin.surefire.booterclient.output.ForkClient.processLine(ForkClient.java:212)
+	at org.apache.maven.plugin.surefire.booterclient.output.ForkClient.consumeLine(ForkClient.java:179)
+	at org.apache.maven.plugin.surefire.booterclient.output.ThreadedStreamConsumer$Pumper.run(ThreadedStreamConsumer.java:88)
+	at java.lang.Thread.run(Thread.java:748)
+
+

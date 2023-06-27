@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+     <!--   <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.password">alex2539</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://localhost;databaseName=platzi</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="show_sql">true</property>
+        -->
+        
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.password">alex2539</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+        <property name="hibernate.connection.username">platzi</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="show_sql">true</property>
+        
+        <mapping class="cl.platzi.hibernate.entities.Course" />
+        <mapping class="cl.platzi.hibernate.entities.SocialMedia" />
+        <mapping class="cl.platzi.hibernate.entities.Teacher" />
+        <mapping class="cl.platzi.hibernate.entities.TeacherSocialMedia" />
+        
+    </session-factory>
+</hibernate-configuration>

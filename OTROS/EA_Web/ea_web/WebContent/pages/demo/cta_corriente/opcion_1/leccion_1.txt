@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Cuenta Corriente</b><br>Esta pantalla está determinada por periodos  y su respectivo monto por cobrar. Para conocer mayores antecedentes, seleccione el periodo 2002/11.</div>

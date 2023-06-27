@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ConsultaDatosAfiliadoEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="ConsultaDatosAfiliado.war" deploy-path="/" handle="module:/resource/ConsultaDatosAfiliado/ConsultaDatosAfiliado">
+            <dependent-object>Module_1569414198158</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

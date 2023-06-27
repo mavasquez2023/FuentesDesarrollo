@@ -1,0 +1,1 @@
+&txt_con=Corresponde a:<br>Pago anticipado del Saldo a Favor por parte de su empresa, descontándolo de los montos a enterar en la Caja por conceptos de Crédito y Ahorro.

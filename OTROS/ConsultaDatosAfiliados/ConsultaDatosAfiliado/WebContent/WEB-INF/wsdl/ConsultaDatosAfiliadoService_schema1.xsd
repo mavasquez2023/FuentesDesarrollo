@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://delegate.consultadatosafiliado.laaraucana.cl/" version="1.0" xmlns:tns="http://delegate.consultadatosafiliado.laaraucana.cl/">
+
+  <xs:element name="obtenerDatosAfiliado" type="tns:obtenerDatosAfiliado"/>
+
+  <xs:element name="obtenerDatosAfiliadoResponse" type="tns:obtenerDatosAfiliadoResponse"/>
+
+  <xs:complexType name="obtenerDatosAfiliado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerDatosAfiliadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:datosAfiliado"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosAfiliado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="datosAfiliado" type="tns:persona"/>
+      <xs:element minOccurs="0" name="datosEmpresa" type="tns:datosEmpresa"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="empresas" nillable="true" type="tns:datosEmpresa"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="empresasACargo" nillable="true" type="tns:datosEmpresa"/>
+      <xs:element minOccurs="0" name="log" type="tns:log"/>
+      <xs:element minOccurs="0" name="perfil" type="tns:perfiles"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persona">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="codAreaTelFijo" type="xs:string"/>
+      <xs:element minOccurs="0" name="codComuna" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="estadoCivil" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaNac" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombres" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroCelular" type="xs:string"/>
+      <xs:element minOccurs="0" name="nroDpto" type="xs:string"/>
+      <xs:element minOccurs="0" name="prefijoCelular" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutAfiliado" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexo" type="xs:string"/>
+      <xs:element minOccurs="0" name="telFijo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estado" type="xs:string"/>
+      <xs:element minOccurs="0" name="razonSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="rutEmpresa" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoEmpresa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="msgRespuesta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="perfiles">
+    <xs:sequence>
+      <xs:element name="esAfiliadoActivo" type="xs:boolean"/>
+      <xs:element name="esAfiliadoCesado" type="xs:boolean"/>
+      <xs:element name="esAhorrante" type="xs:boolean"/>
+      <xs:element name="esEmpleadoPublico" type="xs:boolean"/>
+      <xs:element name="esEmpresa" type="xs:boolean"/>
+      <xs:element name="esEmpresaPublica" type="xs:boolean"/>
+      <xs:element name="esEncargadoEmpresa" type="xs:boolean"/>
+      <xs:element name="esIndependiente" type="xs:boolean"/>
+      <xs:element name="esPensionado" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
