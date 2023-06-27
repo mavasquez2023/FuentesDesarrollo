@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Data Sources -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+		<form-bean name="liquidacionForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" initial="EMPRESA" />			               		
+			<form-property name="rutEmpresa" type="java.lang.Long" initial="0" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" initial="0"  />
+			<form-property name="codigoSucursal" type="java.lang.Integer" initial="0" />
+			<form-property name="periodoLiquidacion" type="java.lang.Long" initial="0" />
+			<form-property name="fechaLiquidacion" type="java.lang.Long" initial="0" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" initial="0" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" initial="0" />
+		</form-bean>
+		<form-bean name="liquidacionN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" initial="EMPRESA" />			               		
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="periodoLiquidacion" type="java.lang.Long" />
+			<form-property name="fechaLiquidacion" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="liquidacionN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+		</form-bean>		
+		<form-bean name="deudaCreditoN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" />			               		
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="rutAfiliado" type="java.lang.Long" />
+			<form-property name="fechaFiniquito" type="java.lang.Long">
+			</form-property>			               
+		</form-bean>
+		<form-bean name="deudaCreditoN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="rutAfiliado" type="java.lang.Long" />			               
+			<form-property name="folio" type="java.lang.Long" />
+			<form-property name="codigoOficinaProceso" type="java.lang.Integer" />
+			<form-property name="page" type="java.lang.Integer" initial="1" />
+			<form-property name="count" type="java.lang.Integer" initial="10" />
+			<form-property name="codigoOficina" initial="0" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" initial="0" type="java.lang.Integer">
+			</form-property>
+		</form-bean>
+		<form-bean name="deudaCreditoN3Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.String" />			               
+			<form-property name="rutAfiliado" type="java.lang.String" />			               
+			<form-property name="folio" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="ctaCteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" initial="0"/>			               
+			<form-property name="codigoOficina" type="java.lang.Integer" initial="0"/>
+			<form-property name="codigoSucursal" type="java.lang.Integer" initial="0"/>
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="ctaCteN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" initial="EMPRESA"/>			               		
+			<form-property name="rutEmpresa" type="java.lang.Long" initial="0"/>			               
+			<form-property name="codigoOficina" type="java.lang.Integer" initial="0"/>
+			<form-property name="codigoSucursal" type="java.lang.Integer" initial="0"/>
+		</form-bean>
+		<form-bean name="ctaCteN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+		</form-bean>
+		<form-bean name="ctaCteN3Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="ctaCteN4Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodo" type="java.lang.Long" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+			<!--
+			<form-property name="fecha" type="java.util.Date" />
+			-->
+		</form-bean>
+		<form-bean name="ctaCte704Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+			<form-property name="fecha" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="ctaCte720Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+			<form-property name="llave" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="morosidadCreditoN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="page" type="java.lang.Integer" initial="1" />
+			<form-property name="count" type="java.lang.Integer" initial="10" />
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>			
+		</form-bean>
+		<form-bean name="morosidadCreditoN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="periodo" type="java.lang.Long" />
+			<form-property name="page" type="java.lang.Integer" initial="1" />
+			<form-property name="count" type="java.lang.Integer" initial="10" />
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>			
+		</form-bean>
+		<form-bean name="declaracionCotizacionSinPagoN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+		</form-bean>
+		<form-bean name="declaracionCotizacionSinPagoN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+			<form-property name="codigoBarra" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="ucForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+		</form-bean>
+		<form-bean name="documentoPagoForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="periodoLiquidacion" type="java.lang.Long" />
+			<form-property name="fechaLiquidacion" type="java.lang.Long" />
+		</form-bean>
+		<form-bean name="tablaDesarrolloCreditoForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />
+			<form-property name="rutAfiliado" type="java.lang.Long" />
+			<form-property name="codigoOficinaProceso" type="java.lang.Integer" />
+			<form-property name="folio" type="java.lang.Long" />
+			<form-property name="page" type="java.lang.Integer" initial="1" />
+			<form-property name="count" type="java.lang.Integer" initial="10" />
+			<form-property name="pf" type="java.lang.String">
+			</form-property>		
+		</form-bean>
+		<form-bean name="prepagoFiniquitoN1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" />
+			<form-property name="rutEmpresa" type="java.lang.Long" />
+			<form-property name="rutAfiliado" type="java.lang.Long" />
+			<form-property name="fechaFiniquito" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="prepagoFiniquitoN2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />
+			<form-property name="rutAfiliado" type="java.lang.Long" />
+			<form-property name="codigoOficinaProceso" type="java.lang.Integer" />
+			<form-property name="folio" type="java.lang.Long" />
+			<form-property name="fechaFiniquito" type="java.lang.String">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacionN1sForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacon402N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacon704N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacion680N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoReemplazo" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+		</form-bean>		
+		<form-bean name="liquidacon706N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+		</form-bean>	
+		<form-bean name="liquidacon712N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoLiquidacion" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaLiquidacion" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacon720Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long" />
+			<form-property name="codigoOficina" type="java.lang.Integer" />
+			<form-property name="codigoSucursal" type="java.lang.Integer" />
+			<form-property name="periodoLiquidacion" type="java.lang.Long" />
+			<form-property name="fechaLiquidacion" type="java.lang.Long" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" />
+			<form-property name="llave" type="java.lang.Long" />
+		</form-bean>		
+		<form-bean name="ctaCte402N1Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+		<form-bean name="ctaCte402N2Form" type="org.apache.struts.action.DynaActionForm">
+				<form-property name="rutEmpresa" type="java.lang.Long">
+			</form-property>
+			<form-property name="codigoOficina" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoSucursal" type="java.lang.Integer">
+			</form-property>
+			<form-property name="codigoConcepto" type="java.lang.Integer">
+			</form-property>
+			<form-property name="periodoRemuneracion" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+
+		<form-bean name="proxyForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="empresaElegida" type="java.lang.Long">
+			</form-property>
+			<form-property name="status" type="java.lang.String">
+			</form-property>			               		
+		</form-bean>
+		<form-bean name="certificadoSaldoDeudaCapitalForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rutAfiliado" type="java.lang.Long">
+			</form-property>
+			<form-property name="fechaFiniquito" type="java.lang.Long">
+			</form-property>
+		</form-bean>
+		<form-bean name="liquidacion751N2Form" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="idChanged" type="java.lang.String" initial="EMPRESA" />			               		
+			<form-property name="rutEmpresa" type="java.lang.Long" initial="0" />			               
+			<form-property name="codigoOficina" type="java.lang.Integer" initial="0"  />
+			<form-property name="codigoSucursal" type="java.lang.Integer" initial="0" />
+			<form-property name="periodoLiquidacion" type="java.lang.Long" initial="0" />
+			<form-property name="fechaLiquidacion" type="java.lang.Long" initial="0" />
+			<form-property name="codigoConcepto" type="java.lang.Integer" initial="0" />
+			<form-property name="periodoRemuneracion" type="java.lang.Long" initial="0" />
+			<form-property name="folioMovimiento" type="java.lang.Long" initial="0">
+			</form-property>
+		</form-bean>
+		<form-bean name="capturaEmpresaForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="rut" type="java.lang.String">
+			</form-property>
+		</form-bean>
+				
+	</form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+		<exception type="cl.araucana.ea.struts.exceptions.AutheticationFailedException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.AutheticationFailedExceptionHandler" 
+			key="autheticationFailedException" 
+			path="autheticationFailed" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.DuplicateFormSubmissionException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.DuplicateFormSubmissionExceptionHandler" 
+			key="duplicateFormSubmissionException" 
+			path="duplicateFormSubmission" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.InvalidParameterException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.InvalidParameterExceptionHandler" 
+			key="invalidParameterException" 
+			path="invalidParameter" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.InvalidProfileException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.InvalidProfileExceptionHandler" 
+			key="invalidProfileException" 
+			path="invalidProfile" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.InvalidSessionStatusException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.InvalidSessionStatusExceptionHandler" 
+			key="invalidSessionStatusException" 
+			path="invalidSessionStatus" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.ServiceUnavailableException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.ServiceUnavailableExceptionHandler" 
+			key="serviceUnavailableException" 
+			path="serviceUnavailable" 
+			scope="request" 
+			bundle="ExceptionResources" />
+		<exception type="cl.araucana.ea.struts.exceptions.UnauthorizedAccessException" 
+			handler="cl.araucana.ea.struts.exceptionHandlers.UnauthorizedAccessExceptionHandler" 
+			key="unauthorizedAccessException" 
+			path="unauthorizedAccess" 
+			scope="request" 
+			bundle="ExceptionResources" />
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+		<forward name="home" path="/proxy.do" />
+
+<!--	Integración con Sucursal Virtual (gpavez@hotmail.com, 01/11/2007)
+		<forward name="logout" path="/ibm_security_logout?logoutExitPage=/proxy.do" />
+-->
+		<forward name="logout" path="/logout.do" />
+		
+		<forward name="defaultError" path="/pages/error/default.jsp" />
+		<forward name="authenticationFailed" path="/pages/error/authenticationFailed.jsp" />
+		<forward name="duplicateFormSubmission" path="/pages/error/duplicateFormSubmission.jsp" />
+		<forward name="invalidParameter" path="/pages/error/invalidParameter.jsp" />
+
+<!--	Integración con Sucursal Virtual (gpavez@hotmail.com, 01/11/2007)
+		<forward name="invalidProfile" path="/ibm_security_logout?logoutExitPage=/pages/error/invalidProfile.jsp" />
+		<forward name="invalidSessionStatus" path="/ibm_security_logout?logoutExitPage=/pages/error/invalidSessionStatus.jsp" />
+-->
+		<forward name="invalidProfile" path="/logout.do" />
+		<forward name="invalidSessionStatus" path="/logout.do" />
+
+		<forward name="serviceUnavailable" path="/pages/error/serviceUnavailable.jsp" />
+		<forward name="unauthorizedAccess" path="/pages/error/unauthorizedAccess.jsp" />
+		<forward name="input.simulacion.page" path="input.simulacion.page" redirect="true">
+		</forward>
+		<forward name="faq" path="/faq.jsp">
+		</forward>
+		<forward name="demo" path="/uc.jsp">
+		</forward>
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+		<action path="/holding" 
+			type="cl.araucana.ea.struts.actions.HoldingAction" 
+			name="liquidacionForm" 
+			scope="request">
+			<forward name="noHolding" path="/liquidacionN1.do">
+			</forward>
+			<forward name="holding" path="/deprecated/servicios/liquidacion/holding.jsp">
+			</forward>
+		</action>
+		<action path="/liquidacionN1" 
+			type="cl.araucana.ea.struts.actions.LiquidacionN1Action" 
+			name="liquidacionN1Form" 
+			scope="request">
+			<forward name="success" path="liquidacionN1.page">
+			</forward>
+		</action>
+		<action path="/ctaCteN1" 
+			type="cl.araucana.ea.struts.actions.CtaCteN1Action" 
+			name="ctaCteN1Form" 
+			scope="request">
+			<exception 
+				handler="cl.araucana.ea.struts.exceptionHandlers.InvalidProfileExceptionHandler" 
+				key="invalidProfileException" 
+				path="/proxy.do" 
+				scope="request" 
+				type="cl.araucana.ea.exceptions.InvalidProfileException">
+			</exception>
+			<forward name="success" path="cuentaCorrienteN1.page">
+			</forward>				
+		</action>
+		<action path="/ctaCteN2" 
+			type="cl.araucana.ea.struts.actions.CtaCteN2Action" 
+			name="ctaCteN2Form" 
+			scope="request">
+			<icon>
+				<small-icon>/img/logo_tiny.gif</small-icon>
+				<large-icon>/img/logo_small.gif</large-icon>
+			</icon>
+			<forward name="success" path="cuentaCorrienteN2.page">
+			</forward>
+		</action>
+		<action path="/ctaCteN3" 
+			type="cl.araucana.ea.struts.actions.CtaCteN3Action" 
+			name="ctaCteN3Form" 
+			scope="request">
+			<forward name="success" path="cuentaCorrienteN3.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/N4" 
+			type="cl.araucana.ea.struts.actions.CtaCteN4Action" 
+			name="ctaCteN4Form" 
+			scope="request">
+			<forward name="success" path="/deprecated/servicios/cuentaCorriente/ctaCteN4.jsp">
+			</forward>
+			<forward name="underConstruction" path="ctaCte.uc.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/402N1" 
+			type="cl.araucana.ea.struts.actions.CtaCte402N1Action" 
+			name="ctaCte402N1Form" 
+			scope="request">
+			<forward name="success" path="ctaCte.402.nivel1.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/402N2" 
+			type="cl.araucana.ea.struts.actions.CtaCte402N2Action" 
+			name="ctaCte402N2Form" 
+			scope="request">
+			<forward name="success" path="ctaCte.402.nivel2.page">
+			</forward>
+		</action>		
+		<action path="/ctaCte/402/listadoNominaDiferenciaAsignacionFamiliar" 
+			type="cl.araucana.ea.struts.actions.ListadoNominaDiferenciaAsignacionFamiliarAction" 
+			name="ctaCte402N2Form" 
+			scope="request">
+			<forward name="listado" path="/pages/service/ctaCte/listadoNominaDiferenciaAsignacionFamiliar.jsp">
+			</forward>
+		</action>
+		<action path="/ctaCte/720N1" 
+			type="cl.araucana.ea.struts.actions.CtaCte720N1Action" name="ctaCte720Form" scope="request">
+			<forward name="aPaginaCompensacionSaldoAFavorN1" path="ctaCte.720.nivel1.page">
+			</forward>
+			<forward name="aPaginaCompensacionSaldoAFavorN2" path="/ctaCte/720N2.do">
+			</forward>
+		</action>
+		<action path="/ctaCte/720N2" 
+			type="cl.araucana.ea.struts.actions.CtaCte720N2Action" name="ctaCte720Form" scope="request">
+			<forward name="success" path="ctaCte.720.nivel2.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/morosidadCredito/N1" type="cl.araucana.ea.struts.actions.MorosidadCreditoN1Action" name="morosidadCreditoN1Form" scope="request">
+			<forward name="success" path="cuentaCorriente.morosidadCredito.nivel1.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/morosidadCredito/N2" type="cl.araucana.ea.struts.actions.MorosidadCreditoN2Action" name="morosidadCreditoN2Form" scope="request">
+			<forward name="success" path="cuentaCorriente.morosidadCredito.nivel2.page">
+			</forward>
+		</action>
+		<action path="/deudaCreditoN1" type="cl.araucana.ea.struts.actions.DeudaCreditoN1Action" name="deudaCreditoN1Form" scope="request">
+			<forward name="success" path="creditoN1.page">
+			</forward>								
+		</action>
+		<action path="/deudaCreditoN2" type="cl.araucana.ea.struts.actions.DeudaCreditoN2Action" name="deudaCreditoN2Form" scope="request">
+			<forward name="success" path="creditoN2.page">
+			</forward>												
+		</action>
+		<action path="/deudaCreditoN3" type="cl.araucana.ea.struts.actions.DeudaCreditoN3Action" name="deudaCreditoN3Form" scope="request">
+			<forward name="success" path="/deprecated/servicios/endeudamiento/deudaCreditoN2.jsp">
+			</forward>								
+		</action>
+		<action path="/certificadoSaldoDeudaCapital" 
+				type="cl.araucana.ea.struts.actions.CertificadoSaldoDeudaCapitalAction"
+				scope="request" 
+				name="deudaCreditoN1Form">
+			<forward name="certificado" path="/pages/service/credito/certificadoSaldoDeudaCapital.jsp">
+			</forward>
+		</action>		 
+		
+		<action path="/liquidacionN2" 
+			type="cl.araucana.ea.struts.actions.LiquidacionN2Action" 
+			name="liquidacionN2Form" 
+			scope="request">
+			<forward name="success" path="liquidacionN2.page">
+			</forward>
+		</action>
+		<action path="/uc.do" type="cl.araucana.ea.struts.actions.UCAction" name="ucForm" scope="request">
+			<forward name="success" path="/uc.jsp">
+			</forward>
+		</action>
+		<action path="/penguin" type="cl.araucana.ea.struts.actions.LoadPenguinAction">
+			<forward name="success" path=".view.penguins">
+			</forward>
+		</action>
+		<action path="/loadPenguin" type="LoadPenguinAction">
+			<forward name="success" path=".view.penguins">
+			</forward>
+		</action>
+		<action path="/ctaCte/declaracionCotizacionSinPago/N1" type="cl.araucana.ea.struts.actions.DeclaracionCotizacionSinPagoN1Action" name="declaracionCotizacionSinPagoN1Form" scope="request">
+			<forward name="success" path="declaracionCotizacionSinPagoN1.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/declaracionCotizacionSinPago/N2" type="cl.araucana.ea.struts.actions.DeclaracionCotizacionSinPagoN2Action" name="declaracionCotizacionSinPagoN2Form" scope="request">
+			<forward name="success" path="declaracionCotizacionSinPagoN2.page">
+			</forward>
+		</action>
+		<action path="/tablaDesarrolloCredito" type="cl.araucana.ea.struts.actions.TablaDesarrolloCreditoAction" name="tablaDesarrolloCreditoForm" scope="request">
+			<forward name="success" path="tablaDesarrolloCredito.page">
+			</forward>
+			<forward name="certificado" path="/pages/service/credito/certificado.jsp">
+			</forward>
+		</action>
+		<action path="/prepagoFiniquitoN1" type="cl.araucana.ea.struts.actions.PrepagoFiniquitoN1Action" name="prepagoFiniquitoN1Form" scope="request">
+			<forward name="success" path="prepagoFiniquitoN1.page">
+			</forward>
+		</action>
+		<action path="/prepagoFiniquitoN2" type="cl.araucana.ea.struts.actions.PrepagoFiniquitoN2Action" name="prepagoFiniquitoN2Form" scope="request">
+			<forward name="success" path="prepagoFiniquitoN2.page">
+			</forward>
+		</action>
+		<action path="/documentoPago" name="documentoPagoForm" scope="request" type="cl.araucana.ea.struts.actions.DocumentoPagoAction">
+			<forward name="success" path="documentoPago.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/402N1" type="cl.araucana.ea.struts.actions.Liquidacion402N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/abonosASaldoAduedado.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/402N2" type="cl.araucana.ea.struts.actions.Liquidacion402N2Action" name="liquidacon402N2Form" scope="request">
+			<forward name="success" path="liquidacion.402.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/402N3" type="cl.araucana.ea.struts.actions.Liquidacion402N3Action" name="liquidacon402N2Form" scope="request">
+			<forward name="success" path="liquidacion.402.nivel3.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/455N1" type="cl.araucana.ea.struts.actions.Liquidacion455N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="liquidacion.455.nivel1.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/658N1" type="cl.araucana.ea.struts.actions.Liquidacion658N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/pagosSaldoAFavorEmpresa.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/671N1" type="cl.araucana.ea.struts.actions.Liquidacion671N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="abonoAMorosidadCredito.nivel2.liquidacion.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/680N1" type="cl.araucana.ea.struts.actions.Liquidacion680N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="liquidacion.680.nivel1.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/680N2" type="cl.araucana.ea.struts.actions.Liquidacion680N2Action" name="liquidacion680N2Form">
+			<forward name="success" path="liquidacion.680.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/704N1" type="cl.araucana.ea.struts.actions.Liquidacion704N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/abonosASaldoAduedado.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/704N2" type="cl.araucana.ea.struts.actions.Liquidacion704N2Action" name="liquidacon704N2Form" scope="request">
+			<forward name="success" path="liquidacion.704.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/706N1" type="cl.araucana.ea.struts.actions.Liquidacion706N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="nivel1.706.liquidacion.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/706N2" type="cl.araucana.ea.struts.actions.Liquidacion706N2Action" name="liquidacon706N2Form" scope="request">
+			<forward name="success" path="nivel2.706.liquidacion.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/707N1" type="cl.araucana.ea.struts.actions.Liquidacion707N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/pagosSaldoAFavorEmpresa.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/712N1" type="cl.araucana.ea.struts.actions.Liquidacion712N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/abonosASaldoAduedado.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/712N2" type="cl.araucana.ea.struts.actions.Liquidacion712N2Action" name="liquidacon712N2Form" scope="request">
+			<forward name="success" path="liquidacion.712.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/720N1" type="cl.araucana.ea.struts.actions.Liquidacion720N1Action" name="liquidacon720Form" scope="request">
+			<forward name="aPaginaCompensacionSaldoAFavorN1" path="liquidacion.720.nivel1.page">
+			</forward>
+			<forward name="aPaginaCompensacionSaldoAFavorN2" path="/liquidacion/720N2.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/720N2" type="cl.araucana.ea.struts.actions.Liquidacion720N2Action" name="liquidacon720Form" scope="request">
+			<forward name="success" path="liquidacion.720.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/gravamenes" type="cl.araucana.ea.struts.actions.LiquidacionGravamenesAction" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="liquidacion.gravamenes.page">
+			</forward>
+		</action>
+		<action path="/ctaCte/704N1" type="cl.araucana.ea.struts.actions.CtaCte704Action" name="ctaCte704Form" scope="request">
+			<forward name="success" path="ctaCte704.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/751N1" type="cl.araucana.ea.struts.actions.Liquidacion751N1Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="/liquidacion/N2/pagosSaldoAFavorEmpresa.do">
+			</forward>
+		</action>
+		<action path="/liquidacion/751N2" name="liquidacion751N2Form" scope="request" type="cl.araucana.ea.struts.actions.Liquidacion751N2Action">
+			<forward name="success" path="liquidacion.751.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/defaultN2" type="cl.araucana.ea.struts.actions.LiquidacionDefaultN2Action" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="liquidacion.default.nivel2.page">
+			</forward>
+		</action>
+		<action path="/liquidacion/defaultN3" type="cl.araucana.ea.struts.actions.LiquidacionDefaultN3Action" name="liquidacionN1sForm" scope="request">
+			<forward name="underConstruction" path="liquidacion.uc.page">
+			</forward>
+		</action>
+
+		<action path="/liquidacion/N2/pagosSaldoAFavorEmpresa" type="cl.araucana.ea.struts.actions.LiquidacionN2PagosASaldoAFavorEmpresaAction" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="pagosSaldoAFavorEmpresa.nivel2.liquidacion">
+			</forward>
+		</action>
+		<action path="/liquidacion/N2/abonosASaldoAduedado" type="cl.araucana.ea.struts.actions.LiquidacionN2AbonosASaldoAdeudadoAction" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="abonosASaldoAdeudado.nivel2.liquidacion">
+			</forward>
+		</action>		 
+		<action path="/liquidacion/N2/saldoFavorPorCotizacion" type="cl.araucana.ea.struts.actions.LiquidacionN2SaldoFavorPorCotizacionAction" name="liquidacionN1sForm" scope="request">
+			<forward name="success" path="saldoFavorPorCotizacion.nivel2.liquidacion">
+			</forward>
+		</action>
+		<action path="/admin/appConfig" type="cl.araucana.ea.struts.actions.AppConfigAction">
+			<forward contextRelative="true" name="success" path="/config.admin.page">
+			</forward>
+		</action>
+		<action path="/proxy" type="cl.araucana.ea.struts.actions.ProxyAction" name="proxyForm" scope="request">
+			<forward name="servicio" path="index.service.page">
+			</forward>
+			<forward name="seleccionaEmpresa" path="seleccionEmpresa.page">
+			</forward>
+			<forward name="capturaEmpresa" path="capturaEmpresa.page">
+			</forward>
+		</action>
+		<action path="/capturaEmpresa" type="cl.araucana.ea.struts.actions.CapturaEmpresaAction" name="capturaEmpresaForm" scope="request">
+			<forward name="servicio" path="index.service.page">
+			</forward>
+			<forward name="errorEmpresa" path="capturaEmpresa.page">
+			</forward>
+		</action>
+		<action path="/certificado" type="cl.araucana.ea.struts.actions.CertificadoAction" name="deudaCreditoN1Form" scope="request">
+		</action>
+		
+		<action path="/logout" type="cl.araucana.ea.struts.actions.LogoutAction">
+			<forward name="restart" path="/logon.jsp"></forward>
+		</action>
+		
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<controller locale="true">
+	</controller>
+	<message-resources parameter="cl.araucana.ea.struts.resources.ApplicationResources"/>
+	<message-resources parameter="cl.araucana.ea.struts.resources.ExceptionResoureces" key="ExceptionResources">
+	</message-resources>
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-parser-validate" value="true" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+
+</struts-config>

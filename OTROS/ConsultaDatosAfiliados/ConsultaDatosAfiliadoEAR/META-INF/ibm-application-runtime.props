@@ -1,0 +1,3 @@
+#Created by WebSphere.  Do not modify.
+#Sat Jan 16 12:52:47 ART 2016
+com.ibm.ws.runtime.components.ConsultaDatosAfiliado.war=WebSphere\:specname\=WS_JaxWsWebService+WebSphere\:specname\=WS_WebServiceInit+WebSphere\:specname\=WS_WebContainer

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+
+<TITLE>La Araucana C.C.A.F. - Nuevo Formato N&oacute;minas de Cr&eacute;dito</TITLE>
+
+<link rel="stylesheet" type="text/css" href="css/edocs.css">
+
+<script language="JavaScript1.2">
+<!--
+
+    function back() {
+        if (window.history.length > 0) {
+            window.history.back();
+        }
+        
+        return false;
+    }	
+-->
+</script>
+
+</HEAD>
+<BODY>
+
+<div align="center">
+  <center>
+  <table border="0" width="70%" bgcolor="#C0C0C0">
+    <tr>
+      <td width="100%" align="left">
+         <PRE>
+
+<center><b>Nuevo Formato N&oacute;mina de Crédito</b></center>
+
+ Señor Encargado de Empresa:
+ 
+      La N&oacute;mina de Descuentos de Crédito tendr&aacute; el siguiente formato a partir
+  del per&iacute;odo <b>Noviembre/2007</b>:
+
+
+  Campo     Descripci&oacute;n                        Longitud     Tipo de Dato
+  ------------------------------------------------------------------------------
+  01        C&oacute;digo de Oficina                         3     Num&eacute;rico
+  02        Rut de Empresa                            9     Num&eacute;rico
+  03        Dig.Verificador Empresa                   1     Alfanum&eacute;rico
+  04        C&oacute;digo de N&oacute;mina                          3     Num&eacute;rico
+  05        Folio del Cr&eacute;dito                        11     Num&eacute;rico
+  06        Rut Afiliado                              9     Num&eacute;rico
+  07        Dig.Verificador Afiliado                  1     Alfanum&eacute;rico
+  08        Nombres del Afiliado                     36     Alfab&eacute;tico
+  09        N&uacute;mero Cuota                              2     Num&eacute;rico
+  10        Total de Cuotas                           2     Num&eacute;rico
+  11        Fecha Vencimiento (AAAAMM)                6     Num&eacute;rico
+  12        Tipo Operaci&oacute;n                            2     Num&eacute;rico
+  13        L&iacute;nea de Cr&eacute;dito                          3     Num&eacute;rico
+  14        Valor de la Cuota                         7     Num&eacute;rico
+  ------------------------------------------------------------------------------
+  Total longitud de Registro: 95.
+
+  *** Los cambios respecto al formato antigüo son:
+
+     Campo 11 <b>(MODIFICADO)</b> El año se representa en 4 d&iacute;gitos (AAAA).
+     Campo 13 <b>(NUEVO)</b>      L&iacute;nea de cr&eacute;dito con la cual se curs&oacute; la operaci&oacute;n.
+     Campo 14 <b>(MODIFICADO)</b> No incluye decimales.
+     
+     <center><form><input type="button" name="cancelar" class="button" value="Volver" onclick="back();"></form></center></PRE>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+</BODY>
+</HTML>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cuentasService">
+
+	<resultMap id="cuentas"
+		class="cl.laaraucana.cuentabancaria.vo.CuentaVo">
+		<result column="token" property="token" />
+		<result column="rutafi" property="rutafi" />
+		<result column="dvafi" property="dvafi" />
+		<result column="nomafi" property="nomafi" />
+		<result column="codbanco" property="codbanco" />
+		<result column="numcuenta" property="numcuenta" />
+		<result column="codtipocuenta" property="codtipocuenta" />
+		<result column="email" property="email" />
+		<result column="tipoprod" property="tipoprod" />
+		<result column="codcanal" property="codcanal" />
+	</resultMap>
+	
+	
+ 
+    <select id="getCuentasByRut" resultMap="cuentas" >
+    
+     select 
+     token, 
+     rutafi, 
+     dvafi, 
+     nomafi, 
+     codbanco, 
+     numcuenta,
+     codtipocuenta,
+     email,
+     tipoprod,
+     codcanal 
+     from Cuenta 
+     where rutafi = #rutafi# and numcuenta = #numcuenta# and estado = 'V'
+    
+    </select>
+    
+    <select id="getCuentasByNumCuenta" resultMap="cuentas">
+    
+     select 
+     token, 
+     rutafi, 
+     dvafi, 
+     nomafi, 
+     codbanco, 
+     numcuenta,
+     codtipocuenta,
+     email,
+     tipoprod,
+     codcanal 
+     from Cuenta where numcuenta = #numcuenta# and
+     rutafi = #rutafi# and
+     dvafi = #dvafi# and
+     codbanco = #codbanco# and
+     estado = 'V'
+    
+    </select>
+    
+	<insert id="setCuentas" parameterClass="cl.laaraucana.cuentabancaria.vo.CuentaVo" >
+
+	 insert into Cuenta (
+	 token, 
+	 rutafi, 
+	 dvafi, 
+	 nomafi, 
+	 codbanco, 
+	 numcuenta, 
+	 codtipocuenta, 
+	 email, 
+	 tipoprod, 
+	 codcanal, 
+	 fechaRegistro, 
+	 estado
+	 )
+     values
+     (
+     #token#, 
+     #rutafi#, 
+     #dvafi#, 
+     #nomafi#, 
+     #codbanco#, 
+     #numcuenta#, 
+     #codtipocuenta#, 
+     #email#, 
+     #tipoprod#, 
+     #codcanal#, 
+     GETDATE(), 
+     'V'
+     )
+	</insert>
+	
+	<update id="editStatusCuenta" parameterClass="cl.laaraucana.cuentabancaria.vo.CuentaVo">
+	
+	update Cuenta set estado = 'R', fechaRegistro = GETDATE()  where  
+	token = #token# and 
+	rutafi = #rutafi# and  
+	dvafi =  #dvafi# and  
+	codbanco = #codbanco# and 
+	numcuenta = #numcuenta#
+	
+	 
+	</update>
+	
+	<resultMap id="cuentasDesc"
+		class="cl.laaraucana.cuentabancaria.vo.CuentaDescripcionVo">
+		<result column="nomafi" property="nomafi" />
+		<result column="nombreBanco" property="nombreBanco" />
+		<result column="numcuenta" property="numcuenta" />
+		<result column="tipoCuenta" property="tipoCuenta" />
+		<result column="email" property="email" />
+		<result column="tipoproddesc" property="tipoproddesc" />
+		<result column="estadodesc" property="estadodesc" />
+	</resultMap>
+	
+	<select id="getConsultaCuenta" resultMap="cuentasDesc" >
+	
+	select 
+	nomafi, 
+	b.nombre as nombreBanco, 
+	numcuenta, 
+	tc.descripcion as tipoCuenta,
+    email,
+    (case c.tipoprod when 1 then 'Licencia médica'
+    when 2 then 'Crédito social'
+    when 3 then 'Pago en exceso' end) as tipoproddesc,
+    (case c.estado when 'V' then 'Vigente'
+    else 'Revocado' end) as estadodesc 
+    from Cuenta c inner join 
+    tipoCuenta tc 
+    on c.codtipocuenta = tc.idtipocuenta
+    inner join Banco b
+    on c.codbanco = b.codigo
+    where c.rutafi = #rutafi# and  
+	c.dvafi =  #dvafi# and b.estado = 'A' 
+	and tc.estado = 'V'   
+	
+	
+	</select>
+	
+	
+	
+</sqlMap>
+
+ 

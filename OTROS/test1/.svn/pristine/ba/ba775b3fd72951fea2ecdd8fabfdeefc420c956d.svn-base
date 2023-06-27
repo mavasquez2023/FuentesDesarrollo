@@ -1,0 +1,17 @@
+package com.alexis.dao;
+
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.alexis.model.Usuario;
+
+@Repository
+public interface UserDao extends CrudRepository<Usuario, Long> {
+    Usuario findByUsername(String username);
+    
+      
+    
+}
+
+

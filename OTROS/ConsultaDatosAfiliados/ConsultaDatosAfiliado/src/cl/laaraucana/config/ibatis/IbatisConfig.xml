@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+ 
+<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:comp/env/ConsultaDatosAfiliadoDS" />
+		</dataSource>
+</transactionManager>
+
+ 
+
+
+<!--   
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:comp/env/ConsultaDatosAfiliadoDS" />
+		</dataSource>
+	</transactionManager>
+<transactionManager type="JDBC">
+		<property name="commitRequired" value="false"/>
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.ibm.as400.access.AS400JDBCDriver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:as400:146.83.1.2;prompt=false" />
+			<property name="JDBC.Username" value="usrwas" />
+			<property name="JDBC.Password" value="usrwas85" />
+		</dataSource>
+	</transactionManager> -->
+<sqlMap resource="cl/laaraucana/consultadatosafiliado/persistence/map/AFILIADOS_SqlMap.xml" />
+<sqlMap resource="cl/laaraucana/consultadatosafiliado/persistence/map/EMPRESAS_SqlMap.xml" />
+<sqlMap resource="cl/laaraucana/consultadatosafiliado/persistence/map/PERFILES_SqlMap.xml" />
+<sqlMap resource="cl/laaraucana/consultadatosafiliado/persistence/map/SETAFILIADOS_SqlMap.xml" />
+</sqlMapConfig>

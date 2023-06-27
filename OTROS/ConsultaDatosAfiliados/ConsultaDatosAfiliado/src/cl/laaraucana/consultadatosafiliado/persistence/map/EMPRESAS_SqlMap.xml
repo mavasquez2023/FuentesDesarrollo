@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="parametrosMap" class="java.util.HashMap" >
+    	<result column="PAR_NOMBRE" property="key"/>
+	    <result column="PAR_VALOR" property="value"/>
+	</resultMap>
+	
+	<resultMap id="datosEmpresaMap" class="cl.laaraucana.consultadatosafiliado.persistence.dto.DatosEmpresa" >
+		<result column="RUTEMP" property="rutEmpresa"/>
+		<result column="RAZONSOCIAL" property="razonSocial"/>
+		<result column="ESTADO" property="estado"/>
+		<result column="TIPO" property="tipoEmpresa"/>
+		<result column="ESPUBLICA" property="esPublica"/>
+	</resultMap>
+	
+	<select id="getDatosEmpresa" resultMap="datosEmpresaMap">
+		SELECT A.* FROM (
+		SELECT 
+		0 ESPUBLICA,
+		A.CMNA || '-' || A.CMOA RUTEMP, 
+		TRIM(A.CMPA) RAZONSOCIAL, 
+		A.CMQA ESTADO, 
+		A.CMSA TIPO 
+		FROM CMDTA.CM02L1 A
+		INNER JOIN 
+		(
+				SELECT DISTINCT(CMNA) FROM 
+				CMDTA.CM03F1 WHERE CMNA = #rutAfiliado#
+		) B 
+		ON A.CMNA=B.CMNA WHERE A.CMNA = #rutAfiliado#
+		UNION
+		SELECT 
+		1 ESPUBLICA,
+		CMNA || '-' || CMOA RUTEMP, 
+		TRIM(CMPA) RAZONSOCIAL, 
+		CMQA ESTADO, 
+		CMSA TIPO 
+		FROM BPAFDTA.CM02L1 
+		WHERE CMNA = #rutAfiliado#
+		) A ORDER BY ESPUBLICA DESC FETCH FIRST ROW ONLY
+		WITH UR
+	</select>
+	
+	<select id="getEmpresasACargo" resultMap="datosEmpresaMap">
+		SELECT 
+		0 ESPUBLICA,
+		TRIM(E.CMPA) RAZONSOCIAL,
+		A.EERUTEMP || '-' || A.EEDVEMP RUTEMP,
+		A.EEALLOFI,
+		'' ESTADO,
+		'' TIPO
+		FROM ATDTA.AT03F1 A 
+		LEFT join (select * from CMDTA.CM02L1) E ON 
+		A.EERUTEMP = E.CMNA
+		WHERE A.RUTUSR = #rutAfiliado#
+		WITH UR
+	</select>
+	
+	<select id="getEmpresas" resultMap="datosEmpresaMap">
+		SELECT 
+		0 ESPUBLICA,
+		B.CMNA || '-' || B.CMOA RUTEMP,
+		TRIM(B.CMPA) RAZONSOCIAL,
+		B.CMQA ESTADO,
+		B.CMSA TIPO
+		FROM (SELECT * FROM AFDTA.AF03A1 WHERE SE5FAJC = #rutAfiliado#) A 
+		JOIN CMDTA.CM02F1 B 
+		ON A.CMNA = B.CMNA
+		
+		UNION ALL
+		
+		SELECT 
+		1 ESPUBLICA,
+		B.CMNA || '-' || B.CMOA RUTEMP,
+		TRIM(B.CMPA) RAZONSOCIAL,
+		B.CMQA ESTADO,
+		B.CMSA TIPO
+		FROM (SELECT * FROM BPAFDTA.AF03A1 WHERE SE5FAJC = #rutAfiliado#) A 
+		JOIN BPAFDTA.CM02F1 B 
+		ON A.CMNA = B.CMNA
+		WITH UR
+	</select>
+</sqlMap>

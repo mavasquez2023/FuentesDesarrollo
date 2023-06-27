@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Servicios del Sistema</b><br>En ésta pantalla podremos acceder a los servicios de CONSULTAS, donde podrá conocer los montos que la Caja o su Empresa se adeudan.</div>

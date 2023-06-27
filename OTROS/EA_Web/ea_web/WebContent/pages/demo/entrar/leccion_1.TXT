@@ -1,0 +1,1 @@
+&txt_con=<br><div align="justify"><b>Ingresar a Internet</b><br>Comenzaremos con el procedimiento para ingresar al sistema, desde su escritorio de Windows. Ingrese al navegador <b>Internet Explorer</b>, a través del acceso directo que se encuentra en el escritorio. </div>

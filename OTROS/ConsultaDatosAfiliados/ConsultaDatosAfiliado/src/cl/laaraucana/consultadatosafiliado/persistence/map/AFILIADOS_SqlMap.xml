@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="parametrosMap" class="java.util.HashMap" >
+    	<result column="PAR_NOMBRE" property="key"/>
+	    <result column="PAR_VALOR" property="value"/>
+	</resultMap>
+	
+	<resultMap class="cl.laaraucana.consultadatosafiliado.persistence.dto.Persona" id="datoAfiliadoMap">
+		<result column="RUTCLIENTE" property="rutAfiliado" />
+		<result column="BCCLNOM" property="nombres" />
+		<result column="BCCLAPEPAT" property="apellidoMaterno" />
+		<result column="BCCLAPEMAT" property="apellidoPaterno" />
+		<result column="BCCLSEX" property="sexo" />
+		<result column="BCCLESTCIV" property="estadoCivil" />
+		<result column="BCCLFECNAC" property="fechaNac" />
+		<result column="BCCODCOM" property="codComuna" />
+		<result column="BCDIDIR" property="direccion" />
+		<result column="BCDIDEP" property="nroDpto" />
+		<result column="BCCOCODUN" property="codAreaTelFijo" />
+		<result column="BCCOFONUNO" property="telFijo" />
+		<result column="BCCOCODTR" property="prefijoCelular" />
+		<result column="BCCOFONTRE" property="nroCelular" />
+		<result column="BCCOEMA" property="email" />
+	</resultMap>
+	<select id="getDatosAfiliado" resultMap="datoAfiliadoMap">
+		SELECT A.BCCLRUT || '-' || A.BCCLRUTDV AS RUTCLIENTE,  
+		TRIM(A.BCCLNOM) AS BCCLNOM, 
+		TRIM(A.BCCLAPEPAT) AS BCCLAPEPAT, 
+		TRIM(A.BCCLAPEMAT) AS BCCLAPEMAT, 
+		TRIM(D.BCCODCOM) AS BCCODCOM, 
+		TRIM(C.BCNOMCOM) AS BCNOMCOM, 
+		TRIM(C.BCNOMCIU) AS BCNOMCIU, 
+		TRIM(D.BCDIDIR) AS BCDIDIR, 
+		TRIM(D.BCDIDEP) AS BCDIDEP, 
+		TRIM(A.BCCLSEX) AS BCCLSEX, 
+		A.BCCLESTCIV AS BCCLESTCIV, 
+		CHAR(A.BCCLFECNAC, ISO ) AS BCCLFECNAC,
+		TRIM(E.BCCOCODUN) AS BCCOCODUN,
+		TRIM(E.BCCOFONUU) AS BCCOFONUNO, 
+		<![CDATA[ RIGHT(]]> TRIM(COALESCE(E.BCCOCODTR,0))<![CDATA[ ,1) ]]>  AS BCCOCODTR, 
+		<![CDATA[ RIGHT(]]> TRIM(COALESCE(E.BCCOFONTC,'0'))<![CDATA[ ,7) ]]>  AS BCCOFONTRE, 
+		TRIM(E.BCCOEMA) AS BCCOEMA
+		FROM (SELECT * FROM BCDTA.BC04F1 where BCCLRUT=#rutAfiliado#) A
+		LEFT JOIN (SELECT * FROM BCDTA.BC07F1 WHERE BCCLRUT=#rutAfiliado#) D 
+			ON A.BCCLRUT = D.BCCLRUT		
+		LEFT JOIN (SELECT * FROM BCDTA.BC132F1 WHERE BCCLRUT=#rutAfiliado#) E
+			ON E.BCCLRUT = A.BCCLRUT
+		LEFT JOIN BCDTA.BC23A1 C
+			ON D.BCCODCOM=C.BCCODCOM
+		FETCH FIRST ROW ONLY
+		WITH UR
+	</select>
+</sqlMap>

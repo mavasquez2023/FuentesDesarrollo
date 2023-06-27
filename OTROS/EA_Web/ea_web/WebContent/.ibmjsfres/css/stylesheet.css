@@ -1,0 +1,315 @@
+.s-form-bg, td.s-form-bg {
+	background-color: #efefcf;
+}
+
+
+.s-form-tool-cell{
+	width:28px;
+}
+
+.s-form-tool-spacer{
+	width:15px;
+}
+
+.s-tool-bg {
+	background-color:#efefce;
+}
+
+
+/*	--------------------------------------------------------------------
+	Date Picker
+	Note: The "td." prefix was needed before various styles below for 
+		this to look correct when invoked as a Date Pick control.  
+*/
+
+.s-datePick-DateNav {
+	width:140px;
+	cursor:default;
+	background-color:#d6d6b6;
+}
+
+/* Current date/time panel styles */
+.s-dateNav-hr {
+	color:#ffffe3;
+}
+
+td.s-dateNav-Day {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:medium;
+	font-weight:bold;
+	color:black;
+	text-align:center;
+	cursor:hand}
+
+td.s-dateNav-Desc {
+	font-family:Verdana, Arial, Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:black;
+	text-align:right;
+	cursor:hand}
+
+
+.s-datePick-DateCtl {
+	position:absolute;
+	overflow:visible;
+	z-index:10;
+	background-color:#d6d6b6;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	width:112px;
+	height:125px;
+	cursor:default;
+}
+
+td.s-datePick-Hdg-text {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:black;
+	text-align:center;
+	cursor:default;
+}
+
+/* was width:21 and height:11 */
+.s-datePick-Arrow {
+	cursor:pointer;
+	cursor:hand;
+	width:9px;
+	height:9px;
+	border:0px;
+}
+
+
+td.s-datePick-WeekDay-text {
+	font-family:Verdana, Arial, Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:black;
+	text-align:center;
+	width:14%;
+	vertical-align:middle;
+}
+
+td.s-datePick-OtherMonth {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:#eeeeee;
+	text-align:center;
+	cursor:pointer;
+	cursor:hand;
+	vertical-align:middle;
+}
+
+td.s-datePick-CurrMonth {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:#003366;
+	text-align:center;
+	cursor:pointer;	
+	cursor:hand;
+	vertical-align:middle;
+}
+
+td.s-datePick-CurrDay {
+	background-color:black;
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+	cursor:pointer;	
+	cursor:hand;
+	vertical-align:middle;
+}
+
+td.s-datePick-OtherMonthCurr {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:#eeeeee;
+	text-align:center;
+	cursor:pointer;	
+	cursor:hand;
+	border-style:dotted;
+	border-width:1px;
+	border-color:black;
+	vertical-align:middle;
+}
+
+td.s-datePick-CurrMonthCurr {
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:#003366;
+	text-align:center;
+	cursor:pointer;	
+	cursor:hand;
+	border-style:dotted;
+	border-width:1px;
+	border-color:black;
+	vertical-align:middle;
+}
+
+td.s-datePick-Today {
+	background-color:white;
+	font-family:Verdana,Arial,Helvetica;
+	font-size:xx-small;
+	font-weight:normal;
+	color:black;
+	text-align:center;
+	cursor:pointer;	
+	cursor:hand;
+	vertical-align:middle;
+}
+
+/*	--------------------------------------------------------------------
+	Time Picker
+*/
+.h-timePick {
+	position:absolute;
+	visibility:hidden;
+	overflow-x:visible;
+	overflow-y:auto;
+	z-index:10;
+	background-color:white;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	width:82px;
+	height:120px;
+	cursor:default;
+}
+
+
+/*	--------------------------------------------------------------------
+	Zone Picker
+*/
+.h-zonePick {
+	position:absolute;
+	visibility:hidden;
+	overflow-x:visible;
+	overflow-y:auto;
+	z-index:10;
+	background-color:white;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+	width:410px;
+	height:120px;
+	cursor:default;
+}
+
+
+/* 	----------------------
+ 	Slider
+ 	--------------------------
+*/
+.s-slider-Ctl {
+	z-index:0;
+	position:absolute;
+	background-color:#d6d6b6;
+	border:1px;
+	border-style:solid;
+	border-color:black;
+}
+
+/* 	----------------------
+ 	Actionbar
+ 	--------------------------
+*/
+
+.s-actionbar-Nav A:link {
+	text-decoration:none;
+}
+
+.s-actionbar-Nav A:visited {
+	text-decoration:none;
+}
+
+.s-actionbar-Nav A:hover {
+	text-decoration:underline;
+}
+
+.s-actionbar-Nav IMG {
+	border:0;
+}
+/*
+.s-actionbar-Nav TABLE {
+	border-collapse:collapse;
+}
+*/
+.s-actionbar-Nav TD {
+	padding:1;
+}
+
+
+/*	--------------------------------------------------------------------
+	END
+	--------------------------------------------------------------------
+*/
+
+/****************************************************
+*DATAGRID STYLES
+*****************************************************/
+
+
+.panelClass{
+	background-color: #bdc0d5;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.rowClass1{
+	border-top-color: #eff1f8;
+	border-bottom-color: #9eacd1;
+	border-left-color: #eff1f8;
+	border-right-color: #9eacd1;
+	background-color: #dbe0ee;
+	border-width: 1px;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.rowClass2{
+	border-top-color: #ced6e8;
+	border-bottom-color: #8496c6;
+	border-left-color: #ced6e8;
+	border-right-color: #8496c6;
+	background-color: #b8c2de;
+	border-width: 1px;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.rowSelectClass{
+	border-top-color: #c7cbd8;
+	border-bottom-color: #f1f2f5;
+	border-left-color: #c7cbd8;
+	border-right-color: #f1f2f5;
+	background-color: #e0e2e9;
+	border-width: 1px;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.columnHeaderClass{
+	background-color: #4b4b4b;
+	color: white;
+	border-left-color: #6e6e6e;
+	border-top-color: #6e6e6e;
+	border-right-color: black;
+	border-width: 1px;
+	border-bottom-color: black;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+/****************************************************
+*DATAGRID STYLES - end
+*****************************************************/

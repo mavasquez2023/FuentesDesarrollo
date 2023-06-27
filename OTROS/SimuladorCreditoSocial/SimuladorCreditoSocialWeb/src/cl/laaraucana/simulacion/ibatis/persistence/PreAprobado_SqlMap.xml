@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+
+  <resultMap id="preAprobadoResult" class="cl.laaraucana.simulacion.ibatis.vo.PreAprobadoVO" >
+	  <result column="RUTCLIENTE" property="rutCliente" jdbcType="NUMBER" />
+	  <result column="DVCLIENTE" property="dv" jdbcType="CHAR" />
+	  <result column="TIPOCLIENTE" property="tipoCliente" jdbcType="NUMBER" />
+	  <result column="MONTOPREAPRO" property="montoPreAprobado" jdbcType="NUMBER" />
+	  <result column="FECHAVALIDEZ" property="fechaValidez" jdbcType="DATE" />
+  </resultMap>
+  
+ 	<select id="consultaPreAprobado" resultMap="preAprobadoResult" parameterClass="string">
+		select * from ATDTA.AT52F1 where RUTCLIENTE=#value#
+	</select>
+	
+	<select id="consultaMontoPreAprobado" resultClass="java.lang.Long" parameterClass="string">
+		select MONTOPREAPRO from ATDTA.AT52F1 where RUTCLIENTE=#value#
+	</select>
+
+</sqlMap>

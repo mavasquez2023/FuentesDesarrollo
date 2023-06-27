@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="perfilMap" class="cl.laaraucana.consultadatosafiliado.persistence.dto.Perfil" >
+    	<result column="RUT" property="rut"/>
+	    <result column="PERFIL" property="perfil"/>
+	    <result column="ESTADO" property="estado"/>
+	    <result column="NOMBRES" property="nombre"/>
+	    <result column="APELLIDOPAT" property="apellidoPaterno"/>
+	    <result column="APELLIDOMAT" property="apellidoMaterno"/>
+	</resultMap>
+	
+	<select id="getPerfiles" resultMap="perfilMap">
+		SELECT 
+		'AFILIADO' PERFIL,
+		A.SE5FAJC || '-' || A.SE5FBH3 RUT,
+		A.SE5FBIO NOMBRES, 
+		A.SE5FBIM APELLIDOPAT, 
+		A.SE5FBIK APELLIDOMAT,
+		C.SE5FAR9 ESTADO
+		FROM (SELECT * FROM AFDTA.AF02A1 WHERE SE5FAJC = #rutAfiliado#) A
+		LEFT JOIN (SELECT * FROM  AFDTA.AF03F1 WHERE SE5FAJC = #rutAfiliado#) C
+		ON A.SE5FAJC = C.SE5FAJC
+		
+		UNION
+		
+		SELECT 
+		'EMPPUBLICO' PERFIL,
+		A.SE5FAJC || '-' || A.SE5FBH3 RUT,
+		A.SE5FBIO NOMBRES, 
+		A.SE5FBIM APELLIDOPAT, 
+		A.SE5FBIK APELLIDOMAT,
+		C.SE5FAR9 ESTADO
+		FROM (SELECT * FROM BPAFDTA.AF02A1 WHERE SE5FAJC = #rutAfiliado#) A
+		LEFT JOIN (SELECT * FROM  BPAFDTA.AF03F1 WHERE SE5FAJC = #rutAfiliado#) C
+		ON A.SE5FAJC = C.SE5FAJC
+		
+		UNION
+		
+		SELECT 
+		'PENSIONADO' PERFIL,
+		AFIRUT || '-' || AFIRUTDV RUT,
+		AFINOM NOMBRES,
+		AFIAPE APELLIDOPAT,
+		'' APELLIDOMAT,
+		'A' ESTADO
+		FROM  
+		PREXP.PEF1500 
+		WHERE AFIRUT = #rutAfiliado#
+		
+		UNION
+		
+		SELECT 
+		'AHORRANTE' PERFIL,
+		AHORUT || '-' || AHORUTDV RUT,
+		AHONOM NOMBRES,
+		AHOAPEPAT APELLIDOPAT,
+		AHOAPEMAT APELLIDOMAT,
+		'A' ESTADO
+		FROM LSGDTA.I00501 
+		WHERE AHORUT = #rutAfiliado#
+		
+		UNION
+		
+		SELECT
+		'INDEPENDIENTE' PERFIL,
+		IDDOCUMENTO || '-' || DIGVERIFICADOR,
+		NOMBRES,
+		APELLIDOPATERNO APELLIDOPAT,
+		APELLIDOMATERNO APELLIDOMAT,
+		'A' ESTADO
+		FROM
+		IIDTA.PERSONA
+		WHERE IDDOCUMENTO = #rutAfiliado#
+		WITH UR
+	</select>
+</sqlMap>

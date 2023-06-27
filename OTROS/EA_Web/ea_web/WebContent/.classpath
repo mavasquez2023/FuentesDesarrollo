@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="JavaSource"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts.jar" sourcepath="E:/resources/Resources/struts/jakarta-struts-1.1-src.zip"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxp-api.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/xalan.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-digester.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/xercesImpl.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jdbc2_0-stdext.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/saxpath.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxen-full.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/sax.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-validator.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils.jar"/>
+    <classpathentry exported="true" kind="src" path="/ea_credito"/>
+    <classpathentry exported="true" kind="src" path="/ea_ctacte"/>
+    <classpathentry exported="true" kind="src" path="/ea_common"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.9.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload-1.0.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-api.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-ibm.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-ri.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl_el.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/mozutil.jar"/>
+    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v5.1 EE JRE"/>
+    <classpathentry kind="con" path="com.ibm.etools.server.target.container/com.ibm.etools.websphere.serverTarget.base.v51/j2ee.ejb/1"/>
+    <classpathentry kind="src" path="/URLNotifier"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/URLNotifier.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/httputils.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/userRegistry.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/ostermillerutils-1.0.5.jar"/>
+    <classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,221 @@
+package com.alexis.controller;
+
+import java.util.ArrayList;
+ 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.alexis.dto.RoleDto;
+import com.alexis.dto.UsuarioDto;
+import com.alexis.model.Role;
+import com.alexis.model.Usuario;
+import com.alexis.service.RoleService;
+import com.alexis.service.UsuarioService;
+
+@RestController
+@RequestMapping("/api")
+public class UsuarioController {
+
+	@Autowired
+	private UsuarioService usuarioservice;
+
+	@Autowired
+	private RoleService roleservice;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/addUsuario", method = RequestMethod.POST, headers = "Accept=application/json")
+	public ResponseEntity<?> createUser(@RequestBody Usuario usuario, UriComponentsBuilder uriComponentsBuilder) {
+
+		if (usuario.getNombres().isEmpty() || usuario.getNombres() == null) {
+
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		
+
+		for (Role rol : usuario.getRoles()) {
+               
+			 
+			  
+
+				Role role = new Role();
+				 
+				role.setRole(rol.getRole());
+				 
+				usuario.setActivo(1);
+				usuario.setPassword(encoder.encode(usuario.getPassword()));
+				role.setUsuario(usuario);
+				roleservice.save(role);
+			 
+			 
+			 
+
+		}
+		
+		roleservice.deleteByIdNull();
+
+		return new ResponseEntity<>(usuario, HttpStatus.OK);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value = "/usuario", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<List<UsuarioDto>> getUser() {
+
+		List<Usuario> usuario = new ArrayList<Usuario>();
+
+		usuario = usuarioservice.findAll();
+
+		if (usuario.isEmpty()) {
+
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+
+		List<UsuarioDto> usuarios = new ArrayList<UsuarioDto>();
+
+		for (Usuario user : usuario) {
+
+			usuarios.add(new UsuarioDto(user.getId(), user.getActivo(), user.getApellidos(), user.getDireccion(),
+					user.getEmail(), user.getNombres(), user.getPassword(), user.getTelefono(), user.getUsername()));
+
+		}
+
+		return new ResponseEntity<List<UsuarioDto>>(usuarios, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/usuario", method = RequestMethod.PATCH, headers = "Accept=application/json")
+	public ResponseEntity<?> updateUser(@RequestBody Usuario usuario) {
+
+		if (usuario.getNombres().isEmpty() || usuario.getNombres() == null) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+ 
+		roleservice.deleteByUserId(usuario.getId());
+		
+		Usuario usuario2 = usuarioservice.findByUsername(usuario.getUsername());
+		
+		usuario2.setActivo(1);
+		usuario2.setApellidos(usuario.getApellidos());
+		usuario2.setDireccion(usuario.getDireccion());
+		usuario2.setNombres(usuario.getNombres());
+		usuario2.setEmail(usuario.getEmail());
+		usuario2.setTelefono(usuario.getTelefono());
+		usuario2.setUsername(usuario.getUsername());	
+		usuario2.setPassword(encoder.encode(usuario.getPassword()));
+		
+		 
+		for (Role rol : usuario.getRoles()) {
+            int count = 0;
+			for (Role roles : usuario2.getRoles()) {
+				if(rol.getRole().equals(roles.getRole())) {
+					
+					count++;
+				}
+				
+			}
+			if(count == 0) {
+				
+				
+			Role role = new Role();
+			role.setUsuario(usuario2);
+			role.setRole(rol.getRole());
+			roleservice.save(role);
+			}
+		}
+
+
+		return new ResponseEntity<Usuario>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+	public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
+
+		if (id == null || id < 0) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		Usuario usuario = usuarioservice.findById(id);
+
+		if (usuario == null) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		usuarioservice.delete(id);
+
+		return new ResponseEntity<Usuario>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<?> getUserById(@PathVariable("id") Long id) {
+
+		if (id == null || id < 0) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		Usuario user = usuarioservice.findById(id);
+
+		if (user == null) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		UsuarioDto usuario = new UsuarioDto(user.getId(), user.getActivo(), user.getApellidos(), user.getDireccion(),
+				user.getEmail(), user.getNombres(), "", user.getTelefono(), user.getUsername());
+
+		return new ResponseEntity<>(usuario, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/role/{username}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<List<RoleDto>> getrole(@PathVariable("username") String username) throws Exception {
+
+		if (username.isEmpty()) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		Usuario usuario = usuarioservice.findByUsername(username);
+
+		if (usuario == null) {
+
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		List<RoleDto> role = new ArrayList<RoleDto>();
+
+		for (Role user : usuario.getRoles()) {
+
+			role.add(new RoleDto(user.getIdRol(), user.getRole()));
+		}
+
+		return new ResponseEntity<List<RoleDto>>(role, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	public static <T> List<T> toList(Optional<T> option) {
+	    return option.
+	            map(Collections::singletonList).
+	            orElse(Collections.emptyList());
+	}
+
+}
