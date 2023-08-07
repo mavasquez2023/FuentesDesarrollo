@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.jst.j2ee.commonarchivecore.looseconfig="commonarchive.looseconfig.xmi" uri="C:\Spring Tool Suite 3.0\workspaces\WSPagoEnExeso\WSPagoEnExesoEAR" binariesPath="C:\Spring Tool Suite 3.0\workspaces\WSPagoEnExeso\WSPagoEnExesoEAR" resourcesPath="C:\Spring Tool Suite 3.0\workspaces\WSPagoEnExeso\WSPagoEnExesoEAR">
+  <looseArchives xsi:type="org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseWARFile" uri="ApiPagoEnExeso.war" binariesPath="C:\Spring Tool Suite 3.0\workspaces\WSPagoEnExeso\ApiPagoEnExeso\WebContent" resourcesPath="C:\Spring Tool Suite 3.0\workspaces\WSPagoEnExeso\ApiPagoEnExeso\WebContent"/>
+</org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseApplication>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><wasPublishControllerMergedCache>
+<serverType serverId="*">
+<include>
+<extensions value="class, xml, xmi, wsdl, jar, mf, xsd, composite, componentType, bp, json"/>
+</include>
+<exclude>
+<extensions value="bmp, cab,  composite_diagram, css, doc, exe, gif, htm, html, ico, ini, jhtml, jpeg, jpg, js, jsp, jspf, jspx, jpg, oasis_composite_diagram, pdf, png, properties, swf, tif, tiff, ttf, txt, xhtml, xls, zip"/>
+</exclude>
+</serverType>
+</wasPublishControllerMergedCache>
