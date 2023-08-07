@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="com.ibm.ws.ast.st.v85.core.launchConfigurationType">
+<stringAttribute key="server-id" value="WebSphere Application Server traditional V8.5 at localhost"/>
+</launchConfiguration>

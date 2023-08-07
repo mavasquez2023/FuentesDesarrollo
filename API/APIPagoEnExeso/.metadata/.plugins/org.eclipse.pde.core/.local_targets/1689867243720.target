@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?pde version="3.8"?><target name="WebSphere Application Server traditional V8.5" sequenceNumber="0">
+<locations>
+<location path="C:/Program Files (x86)/IBM/WebSphere/AppServer/dev" type="Directory"/>
+<location path="C:/Program Files (x86)/IBM/WebSphere/AppServer/dev/JavaEE" type="Directory"/>
+<location path="C:/Program Files (x86)/IBM/WebSphere/AppServer/dev/sip" type="Directory"/>
+<location path="C:/Program Files (x86)/IBM/WebSphere/AppServer/dev/osgi/4.2" type="Directory"/>
+<location path="C:/Spring Tool Suite 3.0/workspaces/WSPagoEnExeso/.metadata/.plugins/com.ibm.etools.aries.core/system/" type="Directory"/>
+</locations>
+</target>

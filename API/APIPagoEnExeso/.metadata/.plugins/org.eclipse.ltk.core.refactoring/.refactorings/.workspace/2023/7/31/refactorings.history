@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WSPagoEnExesoEAR&apos; to &apos;ApiPagoEnExesoEAR&apos;" description="Rename resource &apos;WSPagoEnExesoEAR&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/WSPagoEnExesoEAR" name="ApiPagoEnExesoEAR" stamp="1690809861439" updateReferences="true"/>
+</session>

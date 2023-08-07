@@ -1,0 +1,2 @@
+always.use.jre.trust.key.stores.nonibm=true
+jre.home.path.nonibm=C:/Program Files (x86)/IBM/WebSphere/AppServer/java/jre

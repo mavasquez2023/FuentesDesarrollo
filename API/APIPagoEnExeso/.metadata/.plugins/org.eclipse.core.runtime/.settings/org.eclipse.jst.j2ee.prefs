@@ -1,0 +1,7 @@
+allowClasspathDep=true
+com.ibm.etools.j2ee.preferences.duplicateManifestClasspath=warning
+com.ibm.etools.j2ee.preferences.duplicateWebLibClasspath=warning
+com.ibm.etools.j2ee.preferences.missingManifestClasspath=warning
+com.ibm.etools.j2ee.preferences.missingWebLibClasspath=warning
+eclipse.preferences.version=1
+org.eclipse.jst.j2ee.ui.preference.incrementalDeployment=true
